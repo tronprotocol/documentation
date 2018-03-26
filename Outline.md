@@ -67,9 +67,11 @@ TRON是一种去中心化的区块链平台，它具有支持智能合约，高�
 4. TRON测试网、主网直到Exodus的发布上线
 	
 ### 社区
-+ Reddit
++ [Reddit](https://www.reddit.com/r/Tronix/)
 + Stack exchange
-+ Gitter Rooms
++ [Slack Workspace](https://tronfoundation.slack.com/)（Invitation needed）
++ [Gitter Rooms](https://gitter.im/tronprotocol/java-tron)
++ [Telegram](https://t.me/tronnetworkCN)
 + Meetup
 + Skype
 + 论坛
@@ -84,7 +86,14 @@ TRON是一种去中心化的区块链平台，它具有支持智能合约，高�
 
 ### 选择客户端
 + 为什么选择优先Java开发客户端
+    
+    Java作为社区成员最多，商业化普及程度最高的高级语言，其社区天然的支撑能力是其他程序语言社区无法相提并论的。
+    波场希望能有效地调动社区力量，以更加去中心化的开发模式来完成去中心化平台的建设。
+
 + 将来会有更多语言版本的TRON客户端
+    
+    TRON会在将来逐一实现其他语言的版本，包括Scala. C++, Python ,Go等语言的不同版本。
+    
 + 用户如何安装客户端（PC端）
 		
 ### Java-Tron
@@ -114,6 +123,9 @@ TRON是一种去中心化的区块链平台，它具有支持智能合约，高�
 ## 验证节点打包
 + 算法
 + DPOS VS POS VS POW
+
+    POW共识机制一直存在浪费资源、效率低下、TPS不高的问题。这些都与TRON的价值观、定位不吻合。基于我们的设计理念，为了真正实现能用于日常场景的区块链平台，我们选择了POS机制作为TRON的共识机制的基调。TRON的共识机制从DPOS出发。在调查了整个区块链领域的现有的优秀的改进想法后，我们对DPOS机制作出改进，以达到我们的需求，从而确定了TRON的共识。
+
 
 ## 发布资产与交易
 + 发布资产
