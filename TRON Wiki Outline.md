@@ -4,7 +4,9 @@
 
 ### TRON：Decentralize Internet Again 
 
-TRON is dedicated to the basic construction and continual promotion of decentralized Internet. TRON protocol is one of the world’s largest decentralized application operation system protocol, which is based on blockchain and provides high-throughput, scalable, and highly-reliable underlying public-chain support for decentralized application. More application scenarios can be supported because of high TPS of TRON public chain, which exceeds tens of thousands. Besides, TRON public chain has greatly aroused enthusiasm of the ecological participants through the way of free using and high incentives. It not only meets the strict requirements of online decentralized entertainment applications that are highly concurrent, low calculation delay, and demanding much data transmission, and also delivers an amazing interactive decentralized user experience. Developers can develop their own and community applications by using TRON protocol and virtual machine. Smart contracts can be used for distributed crowdfunding and digital asset distribution. TRON protocol has been used to operate decentralized applications such as APP, Obike, Uplive, game.com, Kitty live, Mico and so on. The number of active users has exceeded 100 million, with distribution in over 100 countries around the world.
+TRON is an ambitious project dedicated to building the infrastructure for a truly decentralized Internet. The Tron Protocol, one of the largest blockchain based operating systems in the world, offers scalable, high-availability and high-throughput support that underlies all the decentralized applications in the TRON ecosystem. TRON enables large-scale development and engagement. With over ten thousand transactions per second, high concurrency, low latency and massive data transmission, TRON is ideal for building decentralized entertainment applications. Free features and incentive systems allow developers to create premium app experiences for users. TRON Protocol and the TVM allow anyone to develop DAPPs for themselves or their communities, with smart contracts making decentralized crowdfunding and token issuance easier than ever. Tron DAPP projects already include Peiwo, Obike, Uplive, game.com, Kitty live and Mico,  with 100M+ active users from more than 100 countries and regions around the world.
+
+
 
 ### What is TRON?
 
@@ -83,7 +85,7 @@ TRON operates as a decentralized blockchain platform for supporting smart contra
 
 ### Choosing a client
 
-+ Why should I choose Java develop clients?
++ Why we choose Java clients?
 
    TRON enables JAVA development—a programming language that owns the highest number of community members and is highly commercialized. The natural support capability of JAVA’s community is incomparable to others. In order to accomplish the construction of decentralized platform with a more decentralized development model, TRON hopes to effectively mobilize the strength of the community.
 
