@@ -4,7 +4,7 @@
  + There are 3 types of accounts, including the basic account, the asset release account and the contract account. Attributes included in each account are name, types, address, balance and related assets.
  + A basic account is able to apply to be a validation node, which has several parameters. These include extra attributes, a public key, a URL, voting statistics, a performance history, etc.
 
-      There are three different `Account types`: `Normal`, `AssetIssue`, `Contract`.
+      There are three different `Account types`: `Normal`, `AssetIssue` and `Contract`.
 
           enum AccountType {   
              Normal = 0;   
@@ -274,7 +274,7 @@
 
         message `TXInput` contains `raw_data` and `signature`.  
         `raw_data`: a `raw` message.  
-        `signature`: the signature for this `TXInput`.
+        `signature`: the signature of this `TXInput`.
 
         message `raw` contains `txID`, `vout` and `pubKey`.  
         `txID`: transaction ID.  
@@ -317,7 +317,7 @@
         `block_headers`: block headers if there is any.  
         `transactions`: transactions if there is any.
 
-        `Items` have four types: `ERR`, `TRX`, `BLOCK` and `BLOCKHEADER`.  
+        `Items` has four types: `ERR`, `TRX`, `BLOCK` and `BLOCKHEADER`.  
         `ERR`: error.  
         `TRX`: transaction.  
         `BLOCK`: block.  
@@ -400,7 +400,7 @@ ON Protobuf protocol
 + There are 3 types of accounts, including the basic account, the asset release account and the contract account. Attributes included in each account are name, types, address, balance and related assets.
 + A basic account is able to apply to be a validation node, which has several parameters. These include extra attributes, a public key, a URL, voting statistics, a performance history, etc.
 
-     There are three different `Account types`: `Normal`, `AssetIssue`, `Contract`.
+     There are three different `Account types`: `Normal`, `AssetIssue` and `Contract`.
 
       enum AccountType {   
          Normal = 0;   
@@ -528,7 +528,7 @@ ON Protobuf protocol
      `vote_address`: the voted address of the asset.  
      `support`: are the votes supportive or not – e.g. _true_.  
      `owner_address`: the address of the contract owner – e.g. “_0xu82h…7237_”.  
-     `count`: the amount of votes- e.g. _2324234_.
+     `count`: the amount of votes - e.g. _2324234_.
 
          message VoteAssetContract {   
            bytes owner_address = 1;   
@@ -551,9 +551,9 @@ ON Protobuf protocol
            }
 
      A `WitnessCreateContract` contains 3 parameters:  
-     `private_key`: the private key of the contract– e.g. “_0xu82h…7237_”.  
+     `private_key`: the private key of the contract – e.g. “_0xu82h…7237_”.  
      `owner_address`: the address of the contract owner – e.g. “_0xu82h…7237_”.  
-     `url`: the url for the witness – e.g. “_https://www.noonetrust.com_”.
+     `url`: the url of the witness – e.g. “_https://www.noonetrust.com_”.
 
          message WitnessCreateContract {   
            bytes owner_address = 1;   
@@ -566,11 +566,11 @@ ON Protobuf protocol
      `name`: the name of this contract – e.g. “Billscontract”.  
      `total_supply`: the maximum supply of this asset – e.g. _1000000000_.  
      `trx_num`: the number of TRONIX – e.g._232241_.  
-     `num`: number of corresponding asset.  
+     `num`: the number of corresponding asset.  
      `start_time`: the starting date of this contract – e.g._20170312_.  
-     `end_time`: the expiring date of this contract – e.g. _20170512_.  
-     `decay_ratio`: decay ratio.  
-     `vote_score`: the reveived vots on this contract – e.g. _12343_.  
+     `end_time`: the expiration date of this contract – e.g. _20170512_.  
+     `decay_ratio`: the decay ratio.  
+     `vote_score`: the number of received votes on this contract – e.g. _12343_.  
      `description`: the description of this contract – e.g.”_trondada_”.  
      `url`: the url of this contract – e.g. “_https://www.noonetrust.com_”.
 
@@ -602,7 +602,7 @@ Input, transaction and head block all require a signature.
 
      message `Transaction` contains `raw_data` and `signature`.  
      `raw_data`: message `raw`.  
-     `signature`: signatures form all input nodes.
+     `signature`: signatures from all input nodes.
 
     `raw` contains 7 parameters:  
     `type`: the transaction type of `raw` message.  
@@ -661,7 +661,7 @@ Input, transaction and head block all require a signature.
 
     message `TXOutput` contains `value` and `pubKeyHash`.  
     `value`: output value.  
-    `pubKeyHash`: Hash of public key
+    `pubKeyHash`: hash of public key
 
       message TXOutput {   
         int64 value = 1;   
@@ -669,10 +669,10 @@ Input, transaction and head block all require a signature.
        }
 
     message `TXInput` contains `raw_data` and `signature`.  
-    `raw_data`: a message `raw`.  
-    `signature`: signature for this `TXInput`.
+    `raw_data`: a `raw` message.  
+    `signature`: the signature of this `TXInput`.
 
-    message `raw` contains `txID`, `vout` and `pubKey`.  
+    `raw` message contains `txID`, `vout` and `pubKey`.  
     `txID`: transaction ID.  
     `vout`: value of last output.  
     `pubKey`: public key.
@@ -713,7 +713,7 @@ Input, transaction and head block all require a signature.
     `block_headers`: block headers if there are any.  
     `transactions`: transactions if there are any.
 
-    `Items` have four types: `ERR`, `TRX`, `BLOCK` and `BLOCKHEADER`.  
+    `Items` has four types: `ERR`, `TRX`, `BLOCK` and `BLOCKHEADER`.  
     `ERR`: error.  
     `TRX`: transaction.  
     `BLOCK`: block.  
