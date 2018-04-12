@@ -2,6 +2,8 @@
 
 ## Architecture
 
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Architecture.png)
+
 Tron adopts a 3-layer architecture comprised of storage layer, core layer and application layer.
 
 + Storage Layer

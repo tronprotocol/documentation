@@ -2,6 +2,8 @@
 
 ## 核心架构
 
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Architecture.png)
+
 TRON采用了三层体系架构，分别为存储层，核心层和应用层。
 
 + 存储层 
