@@ -6,9 +6,9 @@
 
 1， 在TRON区块链浏览器中注册账号。  必须注册账号才能使用TRON区块链浏览器，请访问网站：    
 
-    http://git.razko.nl/wallet-web/#/login  
+   http://git.razko.nl/wallet-web/#/login  
 
-    现在可以通过 https://trxscan.org 直接访问TRON区块链浏览器和Web钱包  。
+   现在可以通过 https://trxscan.org 直接访问TRON区块链浏览器和Web钱包  。
     
 2， 勾选以下三项条款，然后创建账户。
 
