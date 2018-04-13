@@ -26,10 +26,6 @@
 
    + Product already DEMO grade or beyond; strict prohibition of projects with no more product than a slideshow; applicant’s verification of ownership over the software.
 
-**Requirement of contract**
-
-   + in one page.
-
 **Range of accepted products**
 
-   + Enthusiasts’ forum, blockchain explorer, wallet, DAPP, fully developed online open-source testing homes and tools, etc.Regarding DAPP, a label that reads “financed by Tron Loan” could be attached to the State of DAPP page.
+   + Enthusiasts’ forum,  DAPP, fully developed online open-source testing homes and tools, etc.Regarding DAPP, a label that reads “financed by Tron Loan” could be attached to the State of DAPP page.
