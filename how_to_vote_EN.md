@@ -1,6 +1,6 @@
-# Running a Delegate
+# Vote for Delegate
 
-## The following steps serve as an introduction on how to become a delegate through our TRON blockchain explorer.
+## The following steps serve as an introduction on how to vote for delegate through our TRON blockchain explorer.
 
 ### Steps
  
