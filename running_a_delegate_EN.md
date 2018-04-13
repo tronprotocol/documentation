@@ -6,11 +6,11 @@
  
 1, A registered account is required in TRON blockchain explorer.   In order to use TRON blockchain explorer, you will need to register an account, please visit our website:    
 
-    http://git.razko.nl/wallet-web/#/login
+   http://git.razko.nl/wallet-web/#/login
  
-    Direct visit to Tron blockchain explorer and the Web wallet can be made through 
+   Direct visit to Tron blockchain explorer and the Web wallet can be made through 
     
-    https://trxscan.org   
+   https://trxscan.org   
   
 2, Tick off the follow three items, then click the button “Create Account”.     
 
