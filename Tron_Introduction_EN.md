@@ -8,7 +8,6 @@ TRON enables large-scale development and engagement. With over ten thousand tran
 
 # Justin Sun
 
-Founder：
 
 Born in 1990 Masters, University of Pennsylvania, Bachelors, Peking University
 

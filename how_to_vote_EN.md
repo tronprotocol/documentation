@@ -20,21 +20,19 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)
 
-4, You can get started to apply to be a delegate.   Click the button “ Apply_for_delegate” first.  
-
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/apply_for_delegate.png)
-
-5, Provide your personal website address. The type of address includes but is not limited to: website, blog, social media account, etc.  
-
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/personal_address.png)
-
-6, Vote for delegate  . Click the button "Votes" in account options.  
+4, Vote for delegate  . Click the button "Votes" in account options.  
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/votes.png)
 
-7, You can vote for all the delegates. The maximum number of votes is no more than the user’s amount of TRX holding at a given time. Please choose the number of TRX and submit your votes.  
+5, You can vote for all the delegates. Please choose the number of TRX and submit your votes.   
 
+Rules：
+   + The maximum number of votes is no more than the user’s amount of TRX holding at a given time. 
+   + Each account can vote for several delegates for several times.
+   + The final votes will be tallied at 24 o'clock and the list of delegates will be updated.
+   + TRX for testing will not be consumed in the voting process.
+   
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
 
-8, After approval voting, the top 27 delegates by total approval are selected. The state of active delegates is updated once every maintenance interval (1 day).
+6, After approval voting, the top 27 delegates by total approval are selected. The state of active delegates is updated once every maintenance interval (1 day).

@@ -18,22 +18,20 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)    
 
-4， 可以申请成为见证节点。首先点击按钮 "Apply_for_delegate” 。       
-
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/apply_for_delegate.png)   
-
-5， 请提供您的个人网站地址。个人网站、博客、社交媒体账号地址等均可成为有效地址。  
-
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/personal_address.png)    
-
-6， 节点投票  。通过账户选项点击投票按钮  。
+4， 节点投票  。通过账户选项点击投票按钮  。
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/votes.png)
 
-7， 为候选节点投票。用户的最高投票数必须少于或者等于手持TRX的数量。请选择相应的TRX数量，提交投票。   
+5， 为候选节点投票。请选择相应的TRX数量，提交投票。
 
+规则：
+   + 用户的最高投票数必须少于或者等于手持TRX的数量。
+   + 每个用户可多次投票给多个候选人。
+   + 当日24点确定最终投票结果并更新节点列表。
+   + 投票操作均不消耗TRX。
+   
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png) 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
 
-8， 获得投票数最高的前27各节点会被选中。节点状态每天更新一次。
+6， 获得投票数最高的前27各节点会被选中。节点状态每天更新一次。
 
