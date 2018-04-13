@@ -1,4 +1,4 @@
-## What is Delegate
+# What is Delegate
 
 **Delegate can produce blocks and verify transactions. Meanwhile, TRON foundation enables delegates to make an actual profit from creating blocks.**
 
