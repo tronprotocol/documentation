@@ -14,15 +14,15 @@ High TPS guarantees low calculation delay, speeding up transactions to parallel 
 
 + Scalability
      
-Applications are given a wider variety of ways to be deployed in TRON         because of its scalability and highly effective smart contract.
+Applications are given a wider variety of ways to be deployed in TRON because of its scalability and highly effective smart contract.
 
 Thanks to the high efficiency and infinite possibilities of the smart contract, Tron possesses great scalability, allowing for a wide variety of applications to be deployed in Tron.
 
 The marriage of an excellent database structure and the account system simplifies the actualization of complex designs and models, which brings convenience to project development and supports high TPS. Existing applications, websites and operating services can be transferred to TRON by its large user base, which allows Tron to better rival against existing institutions.
 
-+ Highly Avaibility.
++ Highly Avaibility
 
-TRON is keen on building a decentralized consensus mechanism.  The network structure, user assets and intrinsic values will become more reliable with a higher degree of decentralization. Meanwhile, the consensus mechanism of TRON is mouch more energy-efficient compared with the POW mode.
+TRON is keen on building a decentralized consensus mechanism.  The network structure, user assets and intrinsic values will become more reliable with a higher degree of decentralization. Even so, the consensus mechanism of TRON is much more energy-efficient compared with the POW mode.
 
 + Low Cost
 
@@ -33,14 +33,15 @@ TRON adopts a design with low calculation cost, which makes it easier for differ
 TRON is committed to building utility blockchain products with thorough research on  users’ demands and expectations.
 
 ## Core Design
+
 + Unique Consensus
 
-Under TRON’s improved POS consensus, several voted nodes, which share equal rights and deployed by global users themselves, cooperate to accomplish calculation tasks.
+Under TRON’s improved POS consensus, several elected nodes, which share equal rights and deployed by global users themselves, cooperate to accomplish calculation tasks.
 High-performance, decentralized/distributed nodes are spontaneously chosen by holders who prioritizes their own interest.
 
 + Smart Contract with High Efficiency
 
-    It will be actualized in the following ways:
+    It will be fulfilled in the following ways:
 
     + TRON supports JAVA development—a programming language that has mature development communities, supports multiple scenarios and is highly effective.
     + High-efficiency consensus mechanism 
