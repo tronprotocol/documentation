@@ -18,7 +18,7 @@
      
    +     ./gradlew run  
    
-With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync Block Completed!!!”
+With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync Block Completed!!!”.
 
 3，The deployment of Solidity Node is as follows:  
    
@@ -30,7 +30,7 @@ With these, the Full Node is set up and ready for the synchronization of blockch
    
    +     ./gradlew run -PmainClass=org.tron.program.SolidityNode
 
-With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync with trust node Completed!!!”
+With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync with trust node Completed!!!”.
 
 4，Connecting grpc-gateway to SolidityNode (optional step)
 
