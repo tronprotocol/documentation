@@ -67,6 +67,37 @@ Lucien Chen: CTO of Tron
 
 Marcus Zhao: Director of Technology, Tron
 
+## Procedure of application 
+
++ Complete your application with the following information：  
+
+1.	Individual/Team Name 
+2.	Country 
+3.	Contact Name 
+4.	E-mail 
+5.	Project Name 
+6.	Project type :single option)： 1）.Cold Wallet；2）.Hot wallet ；3）.Blockchain Explorer
+
++ A confirmation email will be sent to the registered email address after successful application：
+
+    You are now registered for Tron Programming Contest. Please submit your project on Tron’s official webpage (link) by 23:59 (GMT+8) on May 20, 2018. Failure to submit your project within designated time is regarded as your voluntary withdrawal from the contest. Thank you for your participation and good luck! 
+
+## Project Submission：
+
+1.	Individual/Team Name
+2.	Country
+3.	Contact Name
+4.	E-mail
+5.	Skype
+6.	Phone: Please include your country code or your number will be invalid.
+7.	Wechat
+8.	Project name
+9.	Project Type: 1）.Cold Wallet；2）.Hot Wallet；3）.Blockchain Explorer.
+10.	Project Description
+11.	Website: A compulsory option when choosing blockchain explorer or Chrome-embedded wallet.
+12.	Github : (link).
+13.	Video Introduction（link）.
+14.	Attachment:Uploaded file no larger than 500M.
 
 
 
