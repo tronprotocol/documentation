@@ -29,3 +29,7 @@
 **Range of accepted products**
 
    + Enthusiasts’ forum,  DAPP, fully developed online open-source testing homes and tools, etc.Regarding DAPP, a label that reads “financed by Tron Loan” could be attached to the State of DAPP page.
+
+**Contact**
+
+   + Send your applications to load@tron.network.
