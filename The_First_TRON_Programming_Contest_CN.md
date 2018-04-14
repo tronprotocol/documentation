@@ -35,6 +35,12 @@
     
    TRON相关代码及技术文档详见: https://github.com/tronprotocol
 
+5, 开发者可以在TRON社区自由组队交流讨论，协同创作。推荐交流平台为波场官方Slack，https://tronfoundation.slack.com/
+
+6, 提交作品代码时间为：2018年4月20日至2018年5月20日，截止时间前未提交代码的视为放弃比赛。
+
+7, 提交的作品必须包含可执行程序及代码。
+
 ## 奖项设置
 
 奖金总奖池为$1,000,000。  
@@ -46,11 +52,6 @@
 + 区块浏览器：$300，000.
 + 参与奖：凡是我们认为属于完成品的作品，都将自动获得波场创业者基金$100,000借款支持的资格，详情见https://github.com/tronprotocol/Documentation/blob/master/TRON_Loan_CN.md
 
-5, 开发者可以在TRON社区自由组队交流讨论，协同创作。推荐交流平台为波场官方Slack，https://tronfoundation.slack.com/
-
-6, 提交作品代码时间为：2018年4月20日至2018年5月20日，截止时间前未提交代码的视为放弃比赛。
-
-7, 提交的作品必须包含可执行程序及代码。
 
 ## 大赛流程
 
@@ -78,11 +79,11 @@
 
 + 提交如下信息项即可成功报名：
 
-1.	个人/团队名称*（Individual/Team Name）；
-2.	国家*（Country）；
-3.	联系人姓名*（Contact Name）；
-4.	邮箱*（E-mail）；
-5.	项目名称*（Project Name）；
+1.	个人/团队名称（Individual/Team Name）；
+2.	国家（Country）；
+3.	联系人姓名（Contact Name）；
+4.	邮箱（E-mail）；
+5.	项目名称（Project Name）；
 6.	项目类别（单选）： 1）.冷钱包；2）.热钱包；3）.区块浏览器。
 
 + 成功报名后我们将给报名邮箱发送一封成功报名的邮件：  
@@ -91,18 +92,18 @@
 
 ## 作品提交：
 
-1.	个人/团队名称*（Individual/Team Name）；
-2.	国家*（Country）：
-3.	联系人姓名*（Contact Name）；
-4.	邮箱*（E-mail）；
-5.	Skype*；
-6.	电话*（Phone）：需带区号，不带区号提示输入不合法；
+1.	个人/团队名称（Individual/Team Name）；
+2.	国家（Country）：
+3.	联系人姓名（Contact Name）；
+4.	邮箱（E-mail）；
+5.	Skype；
+6.	电话（Phone）：需带区号，不带区号提示输入不合法；
 7.	微信（Wechat）；
-8.	项目名称*（Project name）；
-9.	项目类别*【1）.冷钱包；2）.热钱包；3）.区块浏览器。】；
-10.	项目说明*（Project Description）；
+8.	项目名称（Project name）；
+9.	项目类别【1）.冷钱包；2）.热钱包；3）.区块浏览器。】；
+10.	项目说明（Project Description）；
 11.	网址（Website）：选择区块浏览器以及嵌入Chrome钱包时为必填项；
-12.	Github*（链接）；
+12.	Github（链接）；
 13.	Video Introduction（链接）；
 14.	附件（Attachment）：上传文件需小于500M；
 

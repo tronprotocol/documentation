@@ -79,7 +79,7 @@ Please file your application for Tron Programming Contest on Tron’s official w
 
 + Complete your application with the following information:  
 
-  1, Individual/Team Name 
+  1, Individual/Team Name   
 2, Country  
 3, Name of Contract Person  
 4, E-mail  
