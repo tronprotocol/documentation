@@ -35,7 +35,7 @@ Tron Programming Contest is due to take place from April 20-May 27, 2018. Reward
 
     For files of relevant code and technological support please refer to: https://github.com/tronprotocol.
 
-5, The freedom belongs to developers to exchange ideas or team up in Tron community. The recommended platform is the official Slack of Tron, https://tronfoundation.slack.com/.
+5, The freedom belongs to developers to exchange ideas or team up in Tron community. The recommended platform is the official Slack of Tron, https://tronfoundation.slack.com/， and official forum of TRON, http://tronsr.org/.
 
 6, Please submit your project from April 20-May 20, 2018. Failure to make your submission is regarded as voluntary withdrawal from the contest.
 
@@ -71,40 +71,49 @@ Lucien Chen: CTO of Tron
 
 Marcus Zhao: Director of Technology, Tron
 
-## Application 
+## Application  Procedure
 
-Please file your application for Tron Programming Contest on Tron’s official website.
++ Step 1. Please submit your application to program@tron.network by May 20, 2018. Please name the subject in the format of “Application_Individual/Team name_Participating project” (e.g. “Application_Tron team_blockchain explorer”), or the email will be categorized as spam, leading to an unsuccessful application.
 
-## Procedure of application
+    **Application Form**
+        
+    |Type|Information|  
+    |---|---| 
+    |Individual/Team Name*|    
+    |Country*|
+    |Name of Contact Person*|
+    |E-mail*|
+    |Phone（include country code）*|
+    |Project Name*|
+    |Project Type（single option）*|（ ）Cold Wallet；（ ）Hot Wallet；（ ）Blockchain Explorer|
+   
+    Attention: item with * is required.
+ 
++ Step 2. Applicants will receive a confirmation email upon successful application:
 
-+ Complete your application with the following information:  
-
-  1, Individual/Team Name   
-2, Country  
-3, Name of Contract Person  
-4, E-mail  
-5, Project Name  
-6,Project type (single option)： 1）.Cold Wallet；2）.Hot wallet ；3）.Blockchain Explorer.
-
-+ A confirmation email will be sent to the registered email address after successful application：
-
-      You are now registered for Tron Programming Contest. Please submit your project on Tron’s official webpage (link) by 23:59 (GMT+8) on May 20, 2018. Failure to submit your project within designated time is regarded as your voluntary withdrawal from the contest. Thank you for your participation and good luck!
-
+    You have successfully signed up for Tron Programming Contest. Please submit your project to program@tron.network by 23:59 on May 20, 2018 (GMT+8). Submission after the deadline is regarded as withdrawal from the context. Thank you for your participation!
+     
 ## Project Submission
+ 
++ Step 1. Please submit your project, along with your application form, to program@tron.network by May 20, 2018 (GMT+8). Please name the subject of the email in the format of “Project submission_Individual/Team name_Participating project”(e.g. “Project submission_Tron team_Blockchain explorer”), or the email will be categorized as spam, leading to an unsuccessful submission.
 
-1, Individual/Team Name  
- 2, Country  
-3, Name of Contact Person  
-4, E-mail  
-5, Skype  
-6, Phone：please include your country code or your number will be invalid.  
-7, Wechat  
-8, Project name  
-9, Project Type【1）.Cold Wallet；2）.Hot Wallet；3）.Blockchain Explorer。】  
-10, Project Description   
-11, Website：A compulsory option when choosing blockchain explorer or Chrome-embedded wallet.  
-12, Github（link）  
-13, Video Introduction（link）  
-14, Attachment：Uploaded file no larger than 500M；
+    **Submission Form**
 
+    |Type|Information|
+    |---|---|
+    |Individual/Team Name*|
+    |Country*|
+    |Name of Contact Person*|
+    |E-mail*|
+    |Phone*（include country code）|
+    |Project Name*|
+    |Project Type*（singel option）|( )Code Wallet；( )Hot Wallet; ( ）Blockchain Explorer|
+    |Project Description*（In the form of link,installation package，etc.）|Please send instllation package or other related forms in the attachement. |
+    |Github*|
+    |Video Introduction|
+    |Name of Attachement|
+    Attention: item with * is required.
+ 
++ Step 2. Applicants will receive a confirmation email upon successful project submission:
 
+    You have successfully submitted your project. We will evaluate the submitted project carefully. Announcement of the results of Tron Programming Contest will be made on May 27, 2018. Thank you for your participation!

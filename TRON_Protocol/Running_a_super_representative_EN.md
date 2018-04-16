@@ -1,6 +1,6 @@
-# Running a Delegate
+# Running a Super Representative
 
-## The following steps serve as an introduction on how to become a delegate through our TRON blockchain explorer.
+## The following steps serve as an introduction on how to become a Super Representative through our TRON blockchain explorer.
 
 ### Steps
 
@@ -37,4 +37,4 @@
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
 
-8, After approval voting, the top 27 delegates by total approval are selected. The state of active delegates is updated once every maintenance interval (1 day).
+8, After approval voting, the top 27 SRs by total approval are selected. The state of active SRs is updated once every maintenance interval (1 day).
