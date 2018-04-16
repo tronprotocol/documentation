@@ -57,7 +57,7 @@ With our validation as a complete project, its designer(s) can apply for a loan 
 
 April 20, 2018—Start of application  
 
-May 20, 20180—End of project submission  
+May 20, 2018—End of project submission  
 
 May 27, 2018—Announcement of rewards  
 
