@@ -6,10 +6,10 @@
 
 1， 在TRON区块链浏览器中注册账号。  必须注册账号才能使用TRON区块链浏览器，请访问网站：    
 
-   http://git.razko.nl/wallet-web/#/login  
+   https://trxscan.org/#/login  
 
    现在可以通过 https://trxscan.org 直接访问TRON区块链浏览器和Web钱包  。
-    
+
 2， 勾选以下三项条款，然后创建账户。
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
@@ -29,9 +29,8 @@
    + 每个用户可多次投票给多个候选人。
    + 当日24点确定最终投票结果并更新节点列表。
    + 投票操作均不消耗TRX。
-   
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png) 
+
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
 
 6， 获得投票数最高的前27各节点会被选中。节点状态每天更新一次。
-
