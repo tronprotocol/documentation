@@ -1,15 +1,15 @@
 # 运行见证节点
-   
+
 ## 以下我们会介绍如何通过TRON区块链浏览器申请成为见证节点。
 
 ### 步骤
 
 1， 在TRON区块链浏览器中注册账号。  必须注册账号才能使用TRON区块链浏览器，请访问网站：    
 
-   http://git.razko.nl/wallet-web/#/login  
+   https://trxscan.org/#/login  
 
    现在可以通过 https://trxscan.org 直接访问TRON区块链浏览器和Web钱包  。
-    
+
 2， 勾选以下三项条款，然后创建账户。
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
@@ -32,8 +32,7 @@
 
 7， 为候选节点投票。用户的最高投票数必须少于或者等于手持TRX的数量。请选择相应的TRX数量，提交投票。   
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png) 
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
 
 8， 获得投票数最高的前27各节点会被选中。节点状态每天更新一次。
-
