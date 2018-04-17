@@ -30,7 +30,7 @@ With these, the Full Node is set up and ready for the synchronization of blockch
    
    +     ./gradlew run -PmainClass=org.tron.program.SolidityNode
 
-With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync with trust node Completed!!!”
+With these, the Solidity Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync with trust node Completed!!!”
 
 4，Connecting grpc-gateway to SolidityNode (optional step)
 
@@ -82,7 +82,7 @@ GRPC interface is available on Solidity Node, providing Http interface for gRPC 
       //addressbase58=
       //27mAse8NBVPM4M7Mpp5sxZcLcYkpSqrcoHX
 
-Please note: All addresses of transactions and bock storage should be in byte[] as it has 14 bytes less than the base58check format (21 vs 35). Besides the initial address and the witness address in the configuration file, which adopt the base58check format, all other addresses in blockchain nodes should maintain their original format. Where it involves input and output for the wallet, format conversion has to be made, but what is presented to users should be in base58check format. Addresses should be validated before being converted to base58check format.
+Please note: All addresses of transactions and block storage should be in byte[] as it has 14 bytes less than the base58check format (21 vs 35). Besides the initial address and the witness address in the configuration file, which adopt the base58check format, all other addresses in blockchain nodes should maintain their original format. Where it involves input and output for the wallet, format conversion has to be made, but what is presented to users should be in base58check format. Addresses should be validated before being converted to base58check format.
 
 6，Connecting with Solidity Node or grpc-gateway to check your balance
 

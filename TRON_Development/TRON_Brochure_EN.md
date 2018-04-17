@@ -89,7 +89,8 @@ Before the launch of TRON’s main net, the migration from ERC20 to TRX, the off
 ##Community Plan
 
 The community is always an integral part of any blockchain project, so it is our hope to evoke the members’ passion for full participation in Tron’s construction. This is a belief that we have unwaveringly held since the very inception of our project.
-There are numerous ways for Tron’s community members to be a part of the project, for instance, through participation in core programming tasks or third-party development through APIs to be opened up by Tron. What’s more, a wide variety of competitions open to all users will be held for LOGO design, essay writing, poster design, competitive programming, etc. 
+
+There are numerous ways for Tron’s community members to be a part of the project, for instance, through participation in core programming tasks or third-party development through APIs to be opened up by Tron. Furthermore, a wide variety of competitions open to all users will be held for LOGO design, essay writing, poster design, competitive programming, etc. 
 
 + Providing Types
 
@@ -110,13 +111,13 @@ There are numerous ways for Tron’s community members to be a part of the proje
 
 Tron adheres to the Google Protobuf protocol, which covers multiple aspects such as accounts, blocks and transfers. 
 
-There are 3 types of accounts—basic account, asset release account and contract account—with the six properties of name, type, address, balance and related asset valid for every one of the three accounts.
+There are 3 types of accounts: basic account, asset release account, and contract account. Each of those three types has six properties: name, type, address, balance and related asset.
 
 A basic account can apply to be a witness, which possesses other attributes and parameters including voting statistics, public key, URL, history performance, etc.
 
 A block typically consists of several transactions and a blockheader, which is comprised of basic block information like timestamp, root of Merkle tree, parent hash, signature, to name just a few.
 
-There are eight categories of transaton contract: account creation contract, transfer contract, asset transfer contract, asset voting contract, witness voting contract, witness creation contract, asset issuance contract and deployment contract.
+There are eight categories of contract transaction: account creation contract, transfer contract, asset transfer contract, asset voting contract, witness voting contract, witness creation contract, asset issuance contract and deployment contract.
 
 Each transaction contains several TXInputs, TXOutputs and other properties.
 
@@ -124,6 +125,6 @@ Signature is required for input, transaction and block header.
     
 Inventory, protocol involved in transfers, is mainly used to inform recipient nodes of transmitted data.  
 
-Please find in the appendix the detailed protocl. The specificities of the protocol is subject to change with program upgrading, so please always make reference to the latest version available.
+Please find in the appendix the detailed protocol. The specificities of the protocol is subject to change with program upgrading, so please always make reference to the latest version available.
 
 
