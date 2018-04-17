@@ -1,6 +1,6 @@
 # Transition Manual for Exchanges and TRX
 
-## It is suggested that exchanges deploy a Full Node and a Solidity Node in Tron blockchain for improved security. The Full Node will synchronize all data in the blockain, while the Solidity Node will only synchronize data from irreversible blocks already confirmed. Transaction broadcasting can be conducted through the Full Node. With the Solidity Node, users can check their account balance.
+## It is suggested that exchanges deploy a Full Node and a Solidity Node in Tron blockchain for improved security. The Full Node will synchronize all data in the blockhain, while the Solidity Node will only synchronize data from irreversible blocks already confirmed. Transaction broadcasting can be conducted through the Full Node. With the Solidity Node, users can check their account balance.
 
 1，The prerequisite of Full Node and Solidity Node deployment:  
 
