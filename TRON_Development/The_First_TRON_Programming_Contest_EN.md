@@ -1,6 +1,6 @@
 # Tron Programming Contest
 
-**April 20-May 27, 2018**
+**April 17-May 27, 2018**
 
 Be enchanted by blockchain technology  
 Let minds spark their utmost brilliance  
@@ -15,7 +15,7 @@ First-place prizes will be offered to designers of the three applications.
 
 ## Introduction
 
-Tron Programming Contest is due to take place from April 20-May 27, 2018. Rewards will be granted to winners developing cold wallets, hot wallets and blockchain explorers compatible with Tron’s main net.
+Tron Programming Contest is due to take place from April 17-May 27, 2018. Rewards will be granted to winners developing cold wallets, hot wallets and blockchain explorers compatible with Tron’s main net.
 
 ## Rules of Contest
 
@@ -37,7 +37,7 @@ Tron Programming Contest is due to take place from April 20-May 27, 2018. Reward
 
 5, The freedom belongs to developers to exchange ideas or team up in Tron community. The recommended platform is the official Slack of Tron, https://tronfoundation.slack.com/， and official forum of TRON, http://tronsr.org/.
 
-6, Please submit your project from April 20-May 20, 2018. Failure to make your submission is regarded as voluntary withdrawal from the contest.
+6, Please submit your project from April 17-May 20, 2018. Failure to make your submission is regarded as voluntary withdrawal from the contest.
 
 7, Submitted work must include an operable program and code.
 
