@@ -27,7 +27,7 @@ TRON [reddit](https://www.reddit.com/r/Tronix/) 社区聚集了大批TRON项目�
 
 http://tronsr.org/
 
-## The TRON Foundation
+## TRON Foundation
 
 波场基金会致力于波场生态的良性的发展，促进新技术和应用的开发，和各个开发者一起协同做大波场生态。
 
