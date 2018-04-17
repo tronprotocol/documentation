@@ -19,7 +19,7 @@
      `type`: what type of this account is – e.g. _0_ stands for type `Normal`.  
      `balance`: balance of this account – e.g. _4213312_.  
      `votes`: received votes on this account – e.g. _{(“0x1b7w…9xj3”,323), (“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_.  
-     `asset`: other assets expect TRX in this account – e.g. _{<“WishToken”,66666>,<”Dogie”,233>}_.
+     `asset`: other assets except TRX in this account – e.g. _{<“WishToken”,66666>,<”Dogie”,233>}_.
      `latest_operation_time`: the latest operation time of this account.
      
       // Account 
@@ -80,7 +80,7 @@
      `parentHash`: the hash of last block – e.g. “_7dacsa…3ed_.”  
      `number`: the height of this block – e.g. _13534657_.  
      `witness_id`: the id of witness which packed this block – e.g. “_0xu82h…7237_”.  
-     `witness_address`: the adresss of the witness packed this block – e.g. “_0xu82h…7237_”.
+     `witness_address`: the adesss of the witness packed this block – e.g. “_0xu82h…7237_”.
 
          message BlockHeader {   
            message raw {     

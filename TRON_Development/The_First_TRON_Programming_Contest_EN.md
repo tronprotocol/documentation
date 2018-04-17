@@ -19,7 +19,7 @@ Tron Programming Contest is due to take place from April 20-May 27, 2018. Reward
 
 ## Rules of Contest
 
-1, Application begins on April 20, 2018. Submission of application as well as code ends at 23:59 (GMT+8) on May 20, 2018.
+1, Application begins on April 17, 2018. Submission of application as well as code ends at 23:59 (GMT+8) on May 20, 2018.
 
 2, Developers can apply and participate individually or in team.
 
@@ -51,11 +51,12 @@ First-place winners for the following three applications will take home a reward
 + Hot wallet: S350,000 (adaptable platforms: iOS, Android, PC terminal, explorer; preference is with wallets supporting multiple platforms)
 + Blockchain explorer: $300,000
 
-With our validation as a complete project, its designer(s) can apply for a loan of entrepreneurship of $100,000. For more information please refer to (link of Tron foundation)
+With our validation as a complete project, its designer(s) can apply for a loan of entrepreneurship of $100,000. For more information please refer to  
+https://github.com/tronprotocol/Documentation/blob/master/TRON_Development/TRON_Loan_EN.md
 
 ## Timeline
 
-April 20, 2018—Start of application  
+April 17, 2018—Start of application  
 
 May 20, 2018—End of project submission  
 
