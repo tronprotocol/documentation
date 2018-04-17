@@ -51,7 +51,8 @@ First-place winners for the following three applications will take home a reward
 + Hot wallet: S350,000 (adaptable platforms: iOS, Android, PC terminal, explorer; preference is with wallets supporting multiple platforms)
 + Blockchain explorer: $300,000
 
-With our validation as a complete project, its designer(s) can apply for a loan of entrepreneurship of $100,000. For more information please refer to (link of Tron foundation)
+With our validation as a complete project, its designer(s) can apply for a loan of entrepreneurship of $100,000. For more information please refer to  
+https://github.com/tronprotocol/Documentation/blob/master/TRON_Development/TRON_Loan_EN.md
 
 ## Timeline
 
