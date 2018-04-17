@@ -54,7 +54,7 @@ First-place winners for the following three applications will take home a reward
 With our validation as a complete project, its designer(s) can apply for a loan of entrepreneurship of $100,000. For more information please refer to  
 https://github.com/tronprotocol/Documentation/blob/master/TRON_Development/TRON_Loan_EN.md
 
-## Timeline
+## TimeLine
 
 April 20, 2018—Start of application  
 
