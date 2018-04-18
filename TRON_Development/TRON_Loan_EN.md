@@ -10,7 +10,7 @@ Loan Amount: USD$100,000
 
 Disbursement: Within 6 – 24 hours  
 
-Disbursement Method: Once eligibility for TRON LOAN is verified, applicants will receive the equivalent of USD$100,000 in digital assets from the Tron Foundation. After funds are disbursed, TRON will publicize information on participating projects and funding flows are official tRON channels.
+Disbursement Method: Once eligibility for TRON LOAN is verified, applicants will receive the equivalent of USD$100,000 in digital assets from the Tron Foundation. After funds are disbursed, TRON will publicize information on participating projects and funding flows on official TRON channels.
 
 #### Repayment
 
