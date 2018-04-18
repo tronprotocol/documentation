@@ -642,6 +642,23 @@
               }
             };
             
+   `WalletSolidity`钱包服务包含多个RPC。  
+      __`GetAccount`__：获取`Account`。    
+      __`ListAccounts`__：通过`ListAccounts`查看账户列表。    
+      __`ListWitness`__：通过`ListWitness`查看见证节点列表。  
+      __`ListNodes`__：通过`ListNodes`查看节点列表。  
+      __`GetAssetIssueList`__：通过`GetAssetIssueList`查看资产发布节点列表。  
+      __`GetAssetIssueByTimeStamp`__：通过`TimeStamp`获取发行资产。
+      __`GetAssetIssueByAccount`__：通过`Account`获取发行资产。  
+      __`GetAssetIssueByName`__：通过`Name`获取发行资产。  
+      __`GetNowBlock`__：获取区块。  
+      __`GetBlockByNum`__：根据块号获取区块。  
+      __`TotalTransaction`__：查看总交易量。 
+      __`getTransactionById`__：通过`Id`获取转账。  
+      __`getTransactionsByTimestamp`__：通过时间戳获取转账。  
+      __`getTransactionsFromThis`__：通过某一账户获取转账。  
+      __`getTransactionsToThis`__：转账至某一账户。 
+      
             service WalletSolidity {
             
               rpc GetAccount (Account) returns (Account) {
@@ -694,29 +711,6 @@
             
               }
             };
-            
-            
-            // the api of tron's db
-            service Database {
-              // for tapos
-              rpc getBlockReference (EmptyMessage) returns (BlockReference) {
-            
-              }
-              rpc GetDynamicProperties (EmptyMessage) returns (DynamicProperties) {
-            
-              }
-              rpc GetNowBlock (EmptyMessage) returns (Block) {
-            
-              }
-              rpc GetBlockByNum (NumberMessage) returns (Block) {
-            
-              }
-            };
-            
-            message BlockReference {
-              int64 block_num = 1;
-              bytes block_hash = 2;
-            } 
       
    `Address`: 节点地址。  
    消息体`Address` 包含2个参数：  

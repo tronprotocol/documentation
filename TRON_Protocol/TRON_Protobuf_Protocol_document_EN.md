@@ -678,7 +678,39 @@ Input, transaction and head block all require signature.
           };
         }
       };
-      
+    
+   `WalletSolidity` service contains several RPCs.  
+    __`GetAccount`__ :  
+    Get account by giving a `Account`.  
+    __`ListAccounts`__: 
+    Check out the list of accounts by giving a `listAccounts` 
+    __`ListWitness`__:  
+    Check out the list of witnesses by giving a `LitWitness`.    
+    __`ListNodes`__:  
+    Check out the list of nodes by giving a `ListNodes`.  
+    __`GetAssetIssueList`__:  
+    Get the list of issue asset by giving a `GetAssetIssueList`.  
+    __`GetAssetIssueListByTimeStamp`__:  
+    Get the list of issue asset by giving a `GetAssetIssueListByTimeStamp`.  
+    __`GetAssetIssueByAccount`__:  
+    Get issue asset by giving a `Account`.  
+    __`GetAssetIssueByName`__:  
+    Get issue asset by giving a`Name`.  
+    __`GetNowBlock`__:  
+    Get block.  
+    __`GetBlockByNum`__:  
+    Get block by block number.  
+    __`TotalTransaction`__:  
+    Check out the total transaction.
+    __`getTransactionById`__:  
+    Get the list of transaction by giving a `getTransactionById`.
+    __`getTransactionsByTimeStamp`__:  
+    Get the list of transaction by giving a `getTransactionsByTimeStamp`.  
+    __`getTransactionsFromThis`__:  
+    Get transaction from giving a `Account`.  
+    __`getTransactionsToThis`__:  
+    Send transaction to a giving `Account`.   
+           
       service WalletSolidity {
       
         rpc GetAccount (Account) returns (Account) {
@@ -732,29 +764,6 @@ Input, transaction and head block all require signature.
         }
       };
       
-      
-      // the api of tron's db
-      service Database {
-        // for tapos
-        rpc getBlockReference (EmptyMessage) returns (BlockReference) {
-      
-        }
-        rpc GetDynamicProperties (EmptyMessage) returns (DynamicProperties) {
-      
-        }
-        rpc GetNowBlock (EmptyMessage) returns (Block) {
-      
-        }
-        rpc GetBlockByNum (NumberMessage) returns (Block) {
-      
-        }
-      };
-      
-      message BlockReference {
-        int64 block_num = 1;
-        bytes block_hash = 2;
-      }
-       
    `AccountList`: the list of acounts in the blockchain explorer.  
    message `AccountList` contains one parameter:  
    `account`:
