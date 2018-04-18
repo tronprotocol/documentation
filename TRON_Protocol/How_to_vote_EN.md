@@ -32,7 +32,6 @@ Rules：
    + The final votes will be tallied at 24 o'clock and the list of delegates will be updated.
    + TRX for testing will not be consumed in the voting process.
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_vote.png)
 
 6, After approval voting, the top 27 delegates by total approval are selected. The state of active delegates is updated once every maintenance interval (1 day).

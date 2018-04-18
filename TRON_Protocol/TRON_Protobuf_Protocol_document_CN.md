@@ -102,8 +102,8 @@
    `remain_num`：在同步过程中，剩余的区块数量。
    
    A `BlockId` contains 2 parameters:  
-   `hash`: 该区块的哈希值。    
-   `number`: 哈希值和高度即为当前区块块号。
+   `hash`：该区块的哈希值。    
+   `number`：高度即为当前区块块号。
    
     message ChainInventory {
       message BlockId {
@@ -399,8 +399,8 @@
      }
 
    `Inventory`包含`type`和`items`。  
-   `type`：物品种类。  
-   `items`：物品清单。
+   `type`：清单种类。  
+   `items`：清单列表。
 
     message InventoryItems {   
       int32 type = 1;   
@@ -503,133 +503,232 @@
    __`GetBlockByNum`__：根据块号获取区块。  
    __`TotalTransaction`__：查看总交易量。  
    
-       service Wallet {
-       
-         rpc GetAccount (Account) returns (Account) {
-       
-         };
-       
-         rpc CreateTransaction (TransferContract) returns (Transaction) {
-       
-         };
-       
-         rpc BroadcastTransaction (Transaction) returns (Return) {
-       
-         };
-       
-         rpc ListAccounts (EmptyMessage) returns (AccountList) {
-       
-         };
-       
-         rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {
-              
-         };
-       
-         rpc CreateAccount (AccountCreateContract) returns (Transaction) {
-       
-         };
-       
-         rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {
-       
-         };
-       
-         rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {
-       
-         };
-       
-         rpc WitnessList (EmptyMessage) returns (WitnessList) {
-       
-         };
-       
-         rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {
-       
-         };
-       
-         rpc CreateWitness (WitnessCreateContract) returns (Transaction) {
-       
-         };
-       
-         rpc TransferAsset (TransferAssetContract) returns (Transaction) {
-       
-         }
-       
-         rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {
-       
-         }
-       
-         rpc ListNodes (EmptyMessage) returns (NodeList) {
-       
-         }
-         rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
-       
-         }
-         rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
-       
-         }
-         rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {
-       
-         }
-         rpc GetNowBlock (EmptyMessage) returns (Block) {
-       
-         }
-         rpc GetBlockByNum (NumberMessage) returns (Block) {
-       
-         }
-         rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
-       
-         }
-       };
-
-   `AccountList`： 区块链浏览器中的账户列表。  
-   消息体 `AccountList` 包含1个参数：  
-   `account`：
-   
-        message AccountList {
-          repeated Account accounts = 1;
-        }  
-   
-   `WitnessList`：区块链浏览器中的见证节点列表。  
-   消息体 `WitnessList` 包含1个参数：  
-   `witnesses`：
+      service Wallet {
+            
+              rpc GetAccount (Account) returns (Account) {
+                option (google.api.http) = {
+                  post: "/wallet/getaccount"
+                  body: "*"
+                };
+            
+              };
+            
+              rpc CreateTransaction (TransferContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/createtransaction"
+                  body: "*"
+                };
+              };
+            
+              rpc BroadcastTransaction (Transaction) returns (Return) {
+                option (google.api.http) = {
+                  post: "/wallet/broadcasttransaction"
+                  body: "*"
+                };
+              };
+            
+              rpc ListAccounts (EmptyMessage) returns (AccountList) {
+                option (google.api.http) = {
+                      post: "/wallet/listaccount"
+                      body: "*"
+                  };
+            
+              };
+            
+              rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/updateaccount"
+                  body: "*"
+                };
+              };
+            
+              rpc CreateAccount (AccountCreateContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/createaccount"
+                  body: "*"
+                };
+              };
+            
+              rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/votewitnessaccount"
+                  body: "*"
+                };
+              };
+            
+              rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/createassetissue"
+                  body: "*"
+                };
+              };
+            
+              rpc ListWitnesses (EmptyMessage) returns (WitnessList) {
+                option (google.api.http) = {
+                  post: "/wallet/listwitnesses"
+                  body: "*"
+                };
+              };
+            
+              rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/updatewitness"
+                  body: "*"
+                };
+              };
+            
+              rpc CreateWitness (WitnessCreateContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/createwitness"
+                  body: "*"
+                };
+              };
+            
+              rpc TransferAsset (TransferAssetContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/transferasset"
+                  body: "*"
+                };
+              }
+            
+              rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/participateassetissue"
+                  body: "*"
+                };
+              }
+            
+              rpc ListNodes (EmptyMessage) returns (NodeList) {
+                option (google.api.http) = {
+                  post: "/wallet/listnodes"
+                  body: "*"
+                };
+              }
+              rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
+                option (google.api.http) = {
+                  post: "/wallet/getassetissuelist"
+                  body: "*"
+                };
+              }
+              rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
+                option (google.api.http) = {
+                  post: "/wallet/getassetissuebyaccount"
+                  body: "*"
+                };
+              }
+              rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {
+                option (google.api.http) = {
+                  post: "/wallet/getassetissuebyname"
+                  body: "*"
+                };
+              }
+              rpc GetNowBlock (EmptyMessage) returns (Block) {
+                option (google.api.http) = {
+                  post: "/wallet/getnowblock"
+                  body: "*"
+                };
+              }
+              rpc GetBlockByNum (NumberMessage) returns (Block) {
+                option (google.api.http) = {
+                  post: "/wallet/getblockbynum"
+                  body: "*"
+                };
+              }
+              rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
+                option (google.api.http) = {
+                  post: "/wallet/totaltransaction"
+                  body: "*"
+                };
+              }
+            };
+            
+   `WalletSolidity`钱包服务包含多个RPC。  
+      __`GetAccount`__：获取`Account`。    
+      __`ListAccounts`__：通过`ListAccounts`查看账户列表。    
+      __`ListWitness`__：通过`ListWitness`查看见证节点列表。  
+      __`ListNodes`__：通过`ListNodes`查看节点列表。  
+      __`GetAssetIssueList`__：通过`GetAssetIssueList`查看资产发布节点列表。  
+      __`GetAssetIssueByTimeStamp`__：通过`TimeStamp`获取发行资产。
+      __`GetAssetIssueByAccount`__：通过`Account`获取发行资产。  
+      __`GetAssetIssueByName`__：通过`Name`获取发行资产。  
+      __`GetNowBlock`__：获取区块。  
+      __`GetBlockByNum`__：根据块号获取区块。  
+      __`TotalTransaction`__：查看总交易量。 
+      __`getTransactionById`__：通过`Id`获取转账。  
+      __`getTransactionsByTimestamp`__：通过时间戳获取转账。  
+      __`getTransactionsFromThis`__：通过某一账户获取转账。  
+      __`getTransactionsToThis`__：转账至某一账户。 
       
-           message WitnessList {
-             repeated Witness witnesses = 1;
-           }
-           
-   `AssetIssueList`：区块链浏览器中的发布资产列表。  
-   消息体 `AssetIssueList` 包含1个参数:  
-   `assetIssue`：
-      
-           message AssetIssueList {
-             repeated AssetIssueContract assetIssue = 1;
-           }
-      
-     
-   `NodeList`： 分布节点图中的节点列表。  
-   消息体 `NodeList` 包含1个参数：  
-   `nodes`：
-      
-            message NodeList {
-              repeated Node nodes = 1;
-            }
+            service WalletSolidity {
+            
+              rpc GetAccount (Account) returns (Account) {
+            
+              };
+            
+              rpc ListAccounts (EmptyMessage) returns (AccountList) {
+            
+              };
+            
+              rpc ListWitnesses (EmptyMessage) returns (WitnessList) {
+            
+              };
+            
+              rpc ListNodes (EmptyMessage) returns (NodeList) {
+            
+              }
+              rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
+            
+              }
+              rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList) {
+            
+              }
+              rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
+            
+              }
+              rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {
+            
+              }
+              rpc GetNowBlock (EmptyMessage) returns (Block) {
+            
+              }
+              rpc GetBlockByNum (NumberMessage) returns (Block) {
+            
+              }
+              //get transaction
+              rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
+            
+              }
+              rpc getTransactionById (BytesMessage) returns (Transaction) {
+            
+              }
+              rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {
+            
+              }
+              rpc getTransactionsFromThis (Account) returns (TransactionList) {
+            
+              }
+              rpc getTransactionsToThis (Account) returns (NumberMessage) {
+            
+              }
+            };
       
    `Address`: 节点地址。  
    消息体`Address` 包含2个参数：  
    `host`：节点所有者。  
    `port`：节点的端口号。
       
-             message Address {
-               bytes host = 1;
-               int32 port = 2;
-             }
+    message Address {
+      bytes host = 1;
+      int32 port = 2;
+     }
                   
     
    消息体`Return`只含有一个参数：  
    `result`: 布尔表类型标志位。  
 
-              message `Return` {   
-                 bool result = 1; 
-              }
+    message `Return` {   
+      bool result = 1; 
+     }
               
 +  网络UDP消息结构。
 

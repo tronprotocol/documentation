@@ -20,13 +20,13 @@ Thanks to the high efficiency and infinite possibilities of the smart contract, 
 
 The marriage of an excellent database structure and the account system simplifies the actualization of complex designs and models, which brings convenience to project development and supports high TPS. Existing applications, websites and operating services can be transferred to TRON by its large user base, which allows Tron to better rival against existing institutions.
 
-+ Highly Avaibility
++ Highly Availability
 
 TRON is keen on building a decentralized consensus mechanism.  The network structure, user assets and intrinsic values will become more reliable with a higher degree of decentralization. Even so, the consensus mechanism of TRON is much more energy-efficient compared with the POW mode.
 
 + Low Cost
 
-TRON adopts a design with low calculation cost, which makes it easier for different apps on Tron to expand its user base and more commercially operable .
+TRON adopts a design with low calculation cost, which makes it easier for different apps on Tron to expand its user base and more commercially competitive .
 
 + User-friendly
 
@@ -55,4 +55,4 @@ We aim to build a TRON ecosystem that everyone can participate in and benefit fr
 + By deploying their DAPPs on Tron, developers can expand their scope of business and bring publicity to their values and beliefs.
 + Witnesses supports the functioning of Tron network and gain remuneration for their effort.
 
-Whether a user, developer or Tron’ selected witness, each and every one of use devotes ourselves to the construction and prosperity of Tron’s ecosystem and be rewarded for our commitment.
+Whether a user, developer or Tron’ selected witness, each and every one of us devotes ourselves to the construction and prosperity of Tron’s ecosystem and be rewarded for our commitment.
