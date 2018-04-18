@@ -76,7 +76,7 @@ Tron is home to its own virtual machin, on which Smart contract operates, allowi
 
 + Wallet
 
-    A wallet tracks the state of every asset, all state transaction of TRX and other users, and also allow one to send or receive transaction. (With the wallet, users can view heir holding of TRX as well as other assets, or initiate or take transactions.)
+    A wallet tracks the state of every asset, all state transaction of TRX and other users, and also allow one to send or receive transaction. (With the wallet, users can view their holding of TRX as well as other assets, or initiate or take transactions.)
 
 ## Blockchain Explorer
 

@@ -21,7 +21,7 @@ Log on to gitter with your github account to participate in Tron’s discussions
 
 [java-tron](https://github.com/tronprotocol/java-tron) – about full node, the launch of mainnet, testnet.  
 [wallet-web](https://github.com/tronprotocol/wallet-web) – blockchain explorer and web wallet developed by community.  
-[wallet-cli](https://github.com/tronprotocol/wallet-cli) – the official blockchain explorer and web wallet.
+[wallet-cli](https://github.com/tronprotocol/wallet-cli) – blockchain explorer and web wallet developed by TRON team.
 
 ## TRON Forum
 
@@ -35,7 +35,7 @@ Tron Foundation open to the community
 
 [Official Website](https://tron.network/en.html)  
 [Twitter](https://twitter.com/tronfoundation)  
-[Facebook](https://www.facebook.com/TronFoundation)
+[Facebook](https://www.facebook.com/TronFoundation)  
 [Slack](https://tronfoundation.slack.com)  
 [CoinMarketCap](https://coinmarketcap.com/currencies/tron/)  
 [Github](https://github.com/tronprotocol)  
