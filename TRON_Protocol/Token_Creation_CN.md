@@ -42,7 +42,7 @@
 
 8，根据已发行资产的价格，选择相应的购买数量，点击"Confirm Transaction"，确认交易。
 
-![https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/participate.png]
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/participate.png)
 
 9，点击"Account"即可查看已经拥有的资产余额。
 
@@ -50,6 +50,6 @@
 
 10，点击"send"进入转账界面。选择要转账的地址，数量和转账的的资产类型。
 
-
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/send.png)
 
 
