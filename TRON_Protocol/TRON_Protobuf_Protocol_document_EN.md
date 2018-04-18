@@ -103,7 +103,7 @@
      
      A `BlockId` contains 2 parameters:  
      `hash`: the hash of block.  
-     `number`: the hash and height of block.
+     `number`: the height of block.
      
          message ChainInventory {
             message BlockId {
@@ -353,7 +353,7 @@ Input, transaction and head block all require signature.
      `ret`: the state of transaction.  
      `fee`: the fee for transaction.
     
-     `code` is definition of `ret` and contains 2 types：`SUCCESS` and `FAILED`.
+     `code` is the enumerator that defines `ret` property and can be  2 types：`SUCCESS` and `FAILED`.
      
         message Result {
           enum code {
@@ -411,8 +411,8 @@ Input, transaction and head block all require signature.
          }
 
     `InventoryItems` contains `type` and `items`.  
-    `type`: what type of item.  
-    `items`: items in an `InventoryItems`.
+    `type`: what type of inventory.  
+    `items`: the list of inventory. 
 
         message InventoryItems {   
           int32 type = 1;   
@@ -436,9 +436,9 @@ Input, transaction and head block all require signature.
      `ids`: the identification of block.  
      `type`: what type of the block.
     
-     `ids` contains 2 paremeters:  
+     `ids` contains 2 parameters:  
      `hash`: the hash of block.  
-     `number`: the hash and height of block.
+     `number`: the height of block.
       
          message BlockId {
             bytes hash = 1;
@@ -543,14 +543,145 @@ Input, transaction and head block all require signature.
       service Wallet {
       
         rpc GetAccount (Account) returns (Account) {
+          option (google.api.http) = {
+            post: "/wallet/getaccount"
+            body: "*"
+          };
       
         };
       
         rpc CreateTransaction (TransferContract) returns (Transaction) {
-      
+          option (google.api.http) = {
+            post: "/wallet/createtransaction"
+            body: "*"
+          };
         };
       
         rpc BroadcastTransaction (Transaction) returns (Return) {
+          option (google.api.http) = {
+            post: "/wallet/broadcasttransaction"
+            body: "*"
+          };
+        };
+      
+        rpc ListAccounts (EmptyMessage) returns (AccountList) {
+          option (google.api.http) = {
+                post: "/wallet/listaccount"
+                body: "*"
+            };
+      
+        };
+      
+        rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/updateaccount"
+            body: "*"
+          };
+        };
+      
+        rpc CreateAccount (AccountCreateContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/createaccount"
+            body: "*"
+          };
+        };
+      
+        rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/votewitnessaccount"
+            body: "*"
+          };
+        };
+      
+        rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/createassetissue"
+            body: "*"
+          };
+        };
+      
+        rpc ListWitnesses (EmptyMessage) returns (WitnessList) {
+          option (google.api.http) = {
+            post: "/wallet/listwitnesses"
+            body: "*"
+          };
+        };
+      
+        rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/updatewitness"
+            body: "*"
+          };
+        };
+      
+        rpc CreateWitness (WitnessCreateContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/createwitness"
+            body: "*"
+          };
+        };
+      
+        rpc TransferAsset (TransferAssetContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/transferasset"
+            body: "*"
+          };
+        }
+      
+        rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {
+          option (google.api.http) = {
+            post: "/wallet/participateassetissue"
+            body: "*"
+          };
+        }
+      
+        rpc ListNodes (EmptyMessage) returns (NodeList) {
+          option (google.api.http) = {
+            post: "/wallet/listnodes"
+            body: "*"
+          };
+        }
+        rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
+          option (google.api.http) = {
+            post: "/wallet/getassetissuelist"
+            body: "*"
+          };
+        }
+        rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
+          option (google.api.http) = {
+            post: "/wallet/getassetissuebyaccount"
+            body: "*"
+          };
+        }
+        rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {
+          option (google.api.http) = {
+            post: "/wallet/getassetissuebyname"
+            body: "*"
+          };
+        }
+        rpc GetNowBlock (EmptyMessage) returns (Block) {
+          option (google.api.http) = {
+            post: "/wallet/getnowblock"
+            body: "*"
+          };
+        }
+        rpc GetBlockByNum (NumberMessage) returns (Block) {
+          option (google.api.http) = {
+            post: "/wallet/getblockbynum"
+            body: "*"
+          };
+        }
+        rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
+          option (google.api.http) = {
+            post: "/wallet/totaltransaction"
+            body: "*"
+          };
+        }
+      };
+      
+      service WalletSolidity {
+      
+        rpc GetAccount (Account) returns (Account) {
       
         };
       
@@ -558,46 +689,17 @@ Input, transaction and head block all require signature.
       
         };
       
-        rpc UpdateAccount (AccountUpdateContract) returns (Transaction) {
-      
-        };
-      
-        rpc CreateAccount (AccountCreateContract) returns (Transaction) {
-      
-        };
-      
-        rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction) {
-      
-        };
-      
-        rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {
-      
-        };
-      
         rpc ListWitnesses (EmptyMessage) returns (WitnessList) {
       
         };
-      
-        rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {
-      
-        };
-      
-        rpc CreateWitness (WitnessCreateContract) returns (Transaction) {
-      
-        };
-      
-        rpc TransferAsset (TransferAssetContract) returns (Transaction) {
-      
-        }
-      
-        rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction) {
-      
-        }
       
         rpc ListNodes (EmptyMessage) returns (NodeList) {
       
         }
         rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
+      
+        }
+        rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList) {
       
         }
         rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
@@ -612,11 +714,47 @@ Input, transaction and head block all require signature.
         rpc GetBlockByNum (NumberMessage) returns (Block) {
       
         }
+        //get transaction
         rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
       
         }
+        rpc getTransactionById (BytesMessage) returns (Transaction) {
+      
+        }
+        rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {
+      
+        }
+        rpc getTransactionsFromThis (Account) returns (TransactionList) {
+      
+        }
+        rpc getTransactionsToThis (Account) returns (NumberMessage) {
+      
+        }
       };
-   
+      
+      
+      // the api of tron's db
+      service Database {
+        // for tapos
+        rpc getBlockReference (EmptyMessage) returns (BlockReference) {
+      
+        }
+        rpc GetDynamicProperties (EmptyMessage) returns (DynamicProperties) {
+      
+        }
+        rpc GetNowBlock (EmptyMessage) returns (Block) {
+      
+        }
+        rpc GetBlockByNum (NumberMessage) returns (Block) {
+      
+        }
+      };
+      
+      message BlockReference {
+        int64 block_num = 1;
+        bytes block_hash = 2;
+      }
+       
    `AccountList`: the list of acounts in the blockchain explorer.  
    message `AccountList` contains one parameter:  
    `account`:
