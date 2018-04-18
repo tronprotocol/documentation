@@ -16,7 +16,7 @@ Disbursement Method: Once eligibility for TRON LOAN is verified, applicants will
 
 There are currently two repayment methods:
 
-+ If the project completes a new round of financing, total investment will equal to 80% of the company’s new valuation, and will be converted into equity for the developer’s company.
++ If the project completes a new round of financing, the funding will be converted into equity proportionate to the share of the USD$100,000 in 80% of the company’s new valuation.
 
 + Loans provided by TRON will be interest-free for the first three years, after which the developer shall repay the principal balance of USD$100,000.
 
