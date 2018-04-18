@@ -22,7 +22,7 @@
 
 4, You can get started to apply to be a delegate.   Click the button “ Apply_for_delegate” first.  
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/apply_for_delegate.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/apply_for_super_representative.png)
 
 5, Provide your personal website address. The type of address includes but is not limited to: website, blog, social media account, etc.  
 
@@ -34,7 +34,6 @@
 
 7, You can vote for all the delegates. The maximum number of votes is no more than the user’s amount of TRX holding at a given time. Please choose the number of TRX and submit your votes.  
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_vote.png)
 
 8, After approval voting, the top 27 SRs by total approval are selected. The state of active SRs is updated once every maintenance interval (1 day).
