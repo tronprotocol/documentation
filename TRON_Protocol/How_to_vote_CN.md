@@ -16,7 +16,7 @@
 
 3， 新账户必须存有一定数量的TRX。  为测试需要，用户可以申请测试使用的10000个TRX。请点击按钮 "Request TRX for testing"。          
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)    
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)
 
 4， 节点投票  。通过账户选项点击投票按钮  。
 
@@ -30,7 +30,6 @@
    + 当日24点确定最终投票结果并更新节点列表。
    + 投票操作均不消耗TRX。
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_1.png)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_votes_2.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_vote.png)
 
 6， 获得投票数最高的前27各节点会被选中。节点状态每天更新一次。
