@@ -694,7 +694,9 @@
               rpc GetBlockByNum (NumberMessage) returns (Block) {
             
               }
-              //get transaction
+              
+   获取交易。
+   
               rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
             
               }

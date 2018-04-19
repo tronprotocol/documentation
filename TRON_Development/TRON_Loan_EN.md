@@ -15,12 +15,8 @@ Disbursement Method: Once eligibility for TRON LOAN is verified, applicants will
 #### Repayment
 
 There are currently two repayment methods:
-
-+ If the project completes a new round of financing, total investment will equal to 80% of the company’s new valuation, and will be converted into equity for the developer’s company.
-
-+ Loans provided by TRON will be interest-free for the first three years, after which the developer shall repay the principal balance of USD$100,000.
-
-The scope of eligible projects includes but is not limited to the following blockchain-based developments:
++ If the developer’s project completes a new round of financing, the loan of USD$100,000 will be converted to its equivalent in equity, at 80% of the company’s new valuation amount. [USD$100,000 / (0.80 x New Valuation)]
++ Loans provided through TRON LOAN will be interest-free for the first 18 months. The  developer shall repay the principal balance of USD$100,000 within 18 months, either in USD or mainstream digital asset equivalent at the time of repayment.
 
 By setting up TRON LOAN, TRON aims to expand and strengthen its network ecosystem, instead of seeking short-term commercial gains. If projects fail due to force majeure, the developer does not need to repay the principal balance.
 
