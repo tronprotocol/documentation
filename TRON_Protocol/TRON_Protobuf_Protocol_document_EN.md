@@ -746,7 +746,9 @@ Input, transaction and head block all require signature.
         rpc GetBlockByNum (NumberMessage) returns (Block) {
       
         }
-        //get transaction
+       
+   Get transaction.
+        
         rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
       
         }

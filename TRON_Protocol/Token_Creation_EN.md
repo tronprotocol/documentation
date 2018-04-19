@@ -24,7 +24,13 @@
 
 5，Click “create” to enter token creation page. Fill in required information and then click “Issue Token” to issue your tokens.
 
-   +  It is very easy to create your own tokens in TRON’s ecosystem. With the parameters of token name, the number of tokens in circulation, token description, address of personal website, exchange rate to TRX, and participation, you will be able to issue your own tokens.
+   +  It is very easy to create your own tokens in TRON’s ecosystem, you will be able to issue your own tokens. The following parameters shown as below:  
+   **Token name**  
+   **Total Supply**:Total amount of tokens which will be in circulation.  
+   **Token description**  
+   **Address of personal website**: A website where users can find more information about the token.  
+   **Exchange rate to TRX**: Specify the price of a single token by defining how many tokens a participant will receive for every TRX they spend.  
+   **Participation**:Specify the participation period in which tokens will be issued. During the participation period users can exchange TRX for tokens.
    
    + You will be charged 1024 TRX for your creation of tokens.
 
