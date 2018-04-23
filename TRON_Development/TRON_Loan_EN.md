@@ -43,6 +43,7 @@ The scope of eligible projects includes but is not limited to the following bloc
 
 + High quality utility applications for search, conversion, development assistance, etc.
 
+*Projects must be TRON related.
 
 #### How to Apply
 
