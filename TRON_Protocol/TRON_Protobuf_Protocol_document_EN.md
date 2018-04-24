@@ -709,7 +709,7 @@ Input, transaction and head block all require signature.
     __`getTransactionsFromThis`__:  
     `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList`. 
     __`getTransactionsToThis`__:  
-    `getTransactionsToThis` takes a parameter of `Account`, and returns ` NumberMessage`.  
+    `getTransactionsToThis` takes a parameter of `Account`, and returns ` NumberMessage`. 
            
       service WalletSolidity {
       
