@@ -6,7 +6,7 @@
    
    For token holders, with your ERC20 tokens saved to cryptocurrency exchanges (the only required operation on your part), further operations for token migration will be automatically completed for you in due time.  
    
-   For exchanges, it is kindly requested that you post your notice of TRX migration as soon as possible, with the format of the technical transition file for TRX migration being git. Please check the link: https://github.com/tronprotocol/Documentation/tree/master/TRX  
+   For exchanges, it is kindly requested that you post your notice of TRX migration as soon as possible, with the format of the technical transition file: https://github.com/tronprotocol/Documentation/tree/master/TRX  
    
    For further information or support, all exchanges are welcome to contact us at trx@tron.network.
 
