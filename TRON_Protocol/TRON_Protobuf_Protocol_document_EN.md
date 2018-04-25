@@ -681,35 +681,35 @@ Input, transaction and head block all require signature.
     
    `WalletSolidity` service contains several RPCs.  
     __`GetAccount`__ :  
-    Get account by giving a `Account`.  
+    `GetAccount` takes a parameter of Account, and returns an `Account` object.  
     __`ListAccounts`__: 
-    Check out the list of accounts by giving a `listAccounts` 
+    `listAccounts` takes a parameter of EmptyMessage , and returns `listAccounts` object.
     __`ListWitness`__:  
-    Check out the list of witnesses by giving a `LitWitness`.    
+   `LitWitness` takes a parameter of EmptyMessage, and returns `WitnessList` object.    
     __`ListNodes`__:  
-    Check out the list of nodes by giving a `ListNodes`.  
+   `ListNodes` takes a parameter of EmptyMessage, and returns `NodeList` object.
     __`GetAssetIssueList`__:  
-    Get the list of issue asset by giving a `GetAssetIssueList`.  
+    `GetAssetIssueList` takes a parameter of EmptyMessage, and returns `AssetIssueList` object. 
     __`GetAssetIssueListByTimeStamp`__:  
-    Get the list of issue asset by giving a `GetAssetIssueListByTimeStamp`.  
+    `GetAssetIssueListByTimeStamp` takes a parameter of EmptyMessage, and returns `AsssetIssueList` object.
     __`GetAssetIssueByAccount`__:  
-    Get issue asset by giving a `Account`.  
-    __`GetAssetIssueByName`__:  
-    Get issue asset by giving a`Name`.  
+    `GetAssetIssueByAccount` takes a parameter of `Account`, and returns `AssetIssueList` object. 
+    _`GetAssetIssueByName`__:  
+    `GetAssetIssueByName` takes a parameter of `BytesMessage`, and returns `AssetIssueContract`.
     __`GetNowBlock`__:  
-    Get block.  
+    `GetNowBlock` takes a parameter of `EmptyMessage`, and returns `Block`.
     __`GetBlockByNum`__:  
-    Get block by block number.  
+    `GetBlockByNumber` takes a parameter of `NumberMessage`, and returns `Block`.
     __`TotalTransaction`__:  
-    Check out the total transaction.
+    `TotalTransaction` takes a parameter of `EmptyMessage`, and returns `NumberMessage`.
     __`getTransactionById`__:  
-    Get the list of transaction by giving a `getTransactionById`.
+    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction`.
     __`getTransactionsByTimeStamp`__:  
-    Get the list of transaction by giving a `getTransactionsByTimeStamp`.  
+    `getTransactionsByTimeStamp` takes a parameter of `TimeMessage`, and returns `TransactionList`.
     __`getTransactionsFromThis`__:  
-    Get transaction from giving a `Account`.  
+    `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList`. 
     __`getTransactionsToThis`__:  
-    Send transaction to a giving `Account`.   
+    `getTransactionsToThis` takes a parameter of `Account`, and returns ` NumberMessage`. 
            
       service WalletSolidity {
       

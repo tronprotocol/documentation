@@ -6,7 +6,7 @@
    
    普通用户只需把ERC20代币充值到交易所，到相应的时间节点就能无需操作，自动迁移。  
    
-   请交易所尽快发布支持TRX迁移的公告，迁移的对接技术文档为git，请查看如下链接：https://github.com/tronprotocol/Documentation/tree/master/TRX
+   请交易所尽快发布支持TRX迁移的公告，迁移的对接技术文档为：https://github.com/tronprotocol/Documentation/tree/master/TRX
     
    也欢迎交易所联系trx@tron.network，我们将第一时间提供支持。
 
