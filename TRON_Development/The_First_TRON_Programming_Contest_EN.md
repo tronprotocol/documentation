@@ -23,9 +23,9 @@ First-place prizes will be offered to designers of the five applications like th
 
 4, All development must be based on Tron blockchain technology and should be one of the following five applications compatible with Tron’s main net:  
     
-+ Wallet based on Windows(including off-line signature function)
-+ Wallet based on Mac(Off-line signature function is optional but a plus)
-+ Wallet based on iOS/Android(including off-line signature function)
++ Wallet based on Windows (including off-line signature function)
++ Wallet based on Mac (Off-line signature function is optional but a plus.)
++ Wallet based on iOS/Android (including off-line signature function)
 + Wallet embedded with Google Chrome
 + Blockchain Explorer
 
@@ -44,9 +44,9 @@ The reward pool is $1,000,000.
 
 First-place winners for the following five applications will take home a reward of $180,000-280,000:
 
-+ Wallet based on Windows(including off-line signature function): $180,000
- + Wallet based on Mac(off-line signature function is optional but a plus): $180,000 
-+ Wallet based on iOS/Android(including off-line signature function): $180,000 
++ Wallet based on Windows (including off-line signature function): $180,000  
++ Wallet based on Mac (off-line signature function is optional but a plus): $180,000 
++ Wallet based on iOS/Android (including off-line signature function): $180,000 
 + Wallet embedded with Google Chrome: $180,000
 + Blockchain Explorer: $280,000.
 
