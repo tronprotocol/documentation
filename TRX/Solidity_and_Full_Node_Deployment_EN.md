@@ -1,12 +1,12 @@
-# 在一台主机上同时部署SolidityNode和FullNode
+# Deployment of SolidityNode and FullNode on the same host
 
-+ 新建目录
++ Create new directory
 
       /Users/huzhenyuan/deploy
       /Users/huzhenyuan/deploy/FullNode
       /Users/huzhenyuan/deploy/SolidityNode
 
-+ 对FullNode和SolidityNode分别进入两个文件夹，然后执行以下操作：
++ Create two folders for FullNode and SolidityNode respectively and execute the following operations:
  
     **FullNode**：
 
@@ -18,8 +18,9 @@
         cpsrc/main/resources/config.conf ../
         cd ..
 
-    为了能够快速的发现由Tron部署的节点，需要打开`config.conf`。把`seed.node`里面的`ip.list`中包含的地址列表复制到`node`的`active`中，像这样：  
-    
+    `config.conf` has to be open to discover nodes deployed by TRON faster copy and paste the address list in `ip.list` under `seed.node` to `active in` the `node`,   
+     as follows：
+   
             active = [  
                 # Initial active peers   
                # Sample entries:   
@@ -37,7 +38,7 @@
             "47.91.216.69:18888",  
             "39.106.220.120:18888"   
             ]  
-    然后就可以启动FullNode了：  
+    Then FullNode can be switched on:  
             
             nohupjava -jar java-tron.jar -c config.conf&
             
@@ -51,7 +52,8 @@
         cpsrc/main/resources/config.conf ../
         cd ..
  
-     为了避免和`FullNode`端口冲突，和连接本地的`FullNode`，需要打开`config.conf`。把`node`里面的`trustNode`修改为本地`127.0.0.1:50051`。把`listen.port`修改为18888以外的数字，像这样：
+     `config.conf` is required to be executed in order to avoid conflicts with `FullNode` interface and connect local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`. Change `listen.port` to any number other than 18888,
+     as follows:
  
             node {
              # trust node for solidity node
@@ -59,6 +61,6 @@
             trustNode = "127.0.0.1:50051"
             listen.port = 18889
  
-    然后就可以启动SolidityNode了：
+    Then SolidityNode can be switched on：
         
             nohup java -jar java-tron.jar -c config.conf&
