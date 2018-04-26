@@ -37,4 +37,4 @@
     
 13. Q: Is a well formed technical plan all we need, or must we have the hardware before applying.
 
-    A: The technical plan has two parts:1 before June 26 the first election & 2 after June 26 the first election. The second part just need the plan. For the first part you can only have the plan for now but only after you have hardware we can test your node and tell everyone "yes, they do have a test node."And if you can not have the hardware set until June 26, you can just eat your words and still can apply for SR. Applying to be a SR has no direct connection to qualifying a SR.
+    A: The technical plan has two parts:1 before June 26 the first election & 2 after June 26 the first election. The second part just need the plan. For the first part you can only have the plan for now but only after you have hardware we can test your node and tell everyone "yes, they do have a test node."Applying to be a SR has no direct connection to qualifying a SR.

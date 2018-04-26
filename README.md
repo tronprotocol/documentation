@@ -50,4 +50,4 @@
 
 ## 常见问题
 
-有关超级代表、超级代表节点运行、申请、竞选的相关问题请查询【FAQ_about_SR_CN]()
+有关超级代表、超级代表节点运行、申请、竞选的相关问题请查询[FAQ_about_SR_CN](https://github.com/tronprotocol/Documentation/blob/master/FAQ_CN/FAQ_about_SR_CN.md).
