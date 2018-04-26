@@ -13,10 +13,6 @@ Tron offers to global developers and community members a world-class platform of
 
 First-place prizes will be offered to designers of the five applications like the Wallet based on Windows, Mac, iOS/Android platform, wallet embedded with Google Chrome and blockchain explorer.
 
-## Introduction
-
-Tron Programming Contest is due to take place from April 17-May 27, 2018. Rewards will be granted to winners developing cold wallets, hot wallets and blockchain explorers compatible with Tron’s main net.
-
 ## Rules of Contest
 
 1, Application begins on April 17, 2018. Submission of application as well as code ends at 23:59 (GMT+8) on May 20, 2018.
@@ -45,12 +41,12 @@ Tron Programming Contest is due to take place from April 17-May 27, 2018. Reward
 
 The reward pool is $1,000,000.  
 
-First-place winners for the following  five applications will take home a reward of $300,000-350,000:
+First-place winners for the following five applications will take home a reward of $300,000-350,000:
 
 + Wallet based on Windows: $180,000
 + Wallet based on Mac: $180,000
 + Wallet based on iOS/Android: $180,000
-+ Wallet embedded with Google Chrome: $180.00
++ Wallet embedded with Google Chrome: $180,00
 + Blockchain Explorer: $280,000.
 
 The developer of any product we deem to be complete will receive a $100,000 TRON LOAN. For more information please refer to  
