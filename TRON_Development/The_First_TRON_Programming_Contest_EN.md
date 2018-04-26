@@ -11,7 +11,7 @@ Take home $1,000,000 for your excellence in programming
 
 Tron offers to global developers and community members a world-class platform of blockchain development and a valuable opportunity to exchange ideas. Participants are also encouraged to develop third-party apps compatible with Tron’s main net and to contribute to the construction and the flourish of Tron’s ecosystem.  
 
-First-place prizes will be offered to designers of the five applications like the Wallet based on Windows, Mac, iOS/Android platform, wallet embedded with Google Chrome and blockchain explorer.
+First-place prizes will be offered to designers of the six applications like the hot wallet based on Windows, Mac, iOS/Android platform, hot wallet embedded with Google Chrome, cold wallet and blockchain explorer.
 
 ## Rules of Contest
 
@@ -19,17 +19,18 @@ First-place prizes will be offered to designers of the five applications like th
 
 2, Developers can apply and participate individually or in team.
 
-3, Each team/individual participant can sign up for 4 sub-contests.
+3, Each team/individual participant can sign up for 6 sub-contests.
 
-4, All development must be based on Tron blockchain technology and should be one of the following five applications compatible with Tron’s main net:  
+4, All development must be based on Tron blockchain technology and should be one of the following six applications compatible with Tron’s main net:  
     
-+ Wallet based on Windows
-+ Wallet based on Mac
-+ Wallet based on iOS/Android
-+ Wallet embedded with Google Chrome
-+ Blockchain Explorer
++ Hot wallet based on Windows.
++ Hot wallet based on Mac:.
++ Hot wallet based on iOS/Android.
++ Hot wallet embedded with Google Chrome.
++ Cold wallet.
++ Blockchain Explorer.
 
-    For files of relevant code and technological support please refer to: https://github.com/tronprotocol.
+For files of relevant code and technological support please refer to: https://github.com/tronprotocol.
 
 5, The freedom belongs to developers to exchange ideas or team up in Tron community. The recommended platform is the official Slack of Tron, https://tronfoundation.slack.com/， and official forum of TRON, http://tronsr.org/.
 
@@ -41,13 +42,13 @@ First-place prizes will be offered to designers of the five applications like th
 
 The reward pool is $1,000,000.  
 
-First-place winners for the following five applications will take home a reward of $300,000-350,000:
+First-place winners for the following six applications will take home a reward of $300,000-350,000:
 
-+ Wallet based on Windows: $180,000
-+ Wallet based on Mac: $180,000
-+ Wallet based on iOS/Android: $180,000
-+ Wallet embedded with Google Chrome: $180,00
-+ Blockchain Explorer: $280,000.
++ Hot wallet based on Windows: $150,000 
++ Hot wallet based on Mac: $150,000 
++ Hot wallet based on iOS/Android: $150,000 
++ Hot wallet embedded with Google Chrome: $150,000
++ Cold wallet: $150,000 + Blockchain Explorer: $250,000.
 
 The developer of any product we deem to be complete will receive a $100,000 TRON LOAN. For more information please refer to  
 https://github.com/tronprotocol/Documentation/blob/master/TRON_Development/TRON_Loan_EN.md
@@ -84,7 +85,7 @@ Marcus Zhao: Director of Technology, Tron
     |E-mail*|
     |Phone（include country code）*|
     |Project Name*|
-    |Project Type（single option）*|（ ）Wallet based on Windows；（ ) Wallet based on Mac；( ) Wallet based on iOS/Android; ( ) Wallet embedded with Google Chrome;（ ）Blockchain Explorer|
+    |Project Type（single option）*|(  )Hot wallet based on Windows; (  )Hot wallet based on Mac;(  )Hot wallet based on iOS/Android; (  )Hot wallet embedded with Google Chrome;(  )Cold wallet; (  )Blockchain Explorer;|
    
     Attention: item with * is required.
  
@@ -106,7 +107,7 @@ Marcus Zhao: Director of Technology, Tron
     |E-mail*|
     |Phone*（include country code）|
     |Project Name*|
-    |Project Type*（singel option）|( ) Wallet based on Windows; ( ) Wallet based on Mac; ( ) Wallet based on iOS/Android; ( ) Wallet embedded with Google Chrome; ( ）Blockchain Explorer|
+    |Project Type*（singel option）|(  )Hot wallet based on Windows; (  )Hot wallet based on Mac; (  )Hot wallet based on iOS/Android; (  )Hot wallet embedded with Google Chrome; (  )Cold wallet; (  )Blockchain Explorer;|
     |Project Description*（In the form of link,installation package，etc.）|Please send instllation package or other related forms in the attachement. |
     |Github*|
     |Video Introduction|
