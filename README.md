@@ -1,38 +1,38 @@
 # Documentation
 
-## Translation Guide
+# Translation Guide
 
 + If you want to help with documentation translations, you can join and do that by following link: https://crowdin.com/project/trondocs
 
-## Documentation Guide
+# Documentation Guide
 
 + If you want to know more about the recent progress of TRON project, please check [TRON Development](https://github.com/ybhgenius/Documentation/tree/master/TRON_Development).  
 + If you want to know more about the protocol documentation, voting process, SP information, community and etc. Please check [TRON Protocol](https://github.com/ybhgenius/Documentation/tree/master/TRON_Protocol).  
 + If you want to know more about TRX migration, please check [TRX](https://github.com/ybhgenius/Documentation/tree/master/TRX).
 
-## Super Representative Guide
+# Super Representative Guide
        
 # 文档
 
-## 翻译指引
+# 翻译指引
 
 + 如果你想参与从事波场文档的翻译工作，请访问如下链接：https://crowdin.com/project/trondocs
 
-## 文档指引
+# 文档指引
 
 + 如果你想了解波场的发展进程以及最新动态，请查看[TRON Development.CN](https://github.com/ybhgenius/Documentation/tree/master/TRON_Development_CN)相关文档。  
 + 如果你想了解波场的相关技术协议，投票流程，节点信息，社区环境等，请查看[TRON Protocol.CN](https://github.com/ybhgenius/Documentation/tree/master/TRON_Protocol_CN)相关文档。
 + 如果你想了解波场TRX迁移，请查看[TRX.CN](https://github.com/ybhgenius/Documentation/tree/master/TRX_CN)相关文档。
 
-## 超级代表文档指引
+# 超级代表文档指引
 
-### 什么是超级代表？  
+# 什么是超级代表？  
 
 请参见：  
 
 <https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol_CN/What_is_a_Super_Representative_CN.md>
 
-### 如何申请成为一个超级代表？
+# 如何申请成为一个超级代表？
 
 **Step1.**
 
@@ -58,4 +58,4 @@
 
 <https://github.com/ybhgenius/Documentation/blob/master/TRON_Protocol_CN/A_Guide_to_Recommended_Super_Representative_Application_CN.md>
 
-### 常见问题
+# 常见问题
