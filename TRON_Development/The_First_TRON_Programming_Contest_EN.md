@@ -112,6 +112,7 @@ Marcus Zhao: Director of Technology, Tron
     |Github*|
     |Video Introduction|
     |Name of Attachement|
+    
     Attention: item with * is required.
  
 + Step 2. Applicants will receive a confirmation email upon successful project submission:
