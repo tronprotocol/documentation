@@ -1,10 +1,10 @@
-# A Guide to Recommended Super Representative Application
+# A Guide to Recommended Super Representative Candidate
 
-## How can I become a recommended Super Representative?
+## How can I become a recommended Super Representative Candidate?
 
 ### Step 1. 
 
-To become a recommended Super Representative, candidates must meet the following nine requirements.
+To become a recommended Super Representative candidate, candidates must meet the following nine requirements.
 
 + Part 1. An official website:  
 
