@@ -47,7 +47,7 @@
         cd /Users/huzhenyuan/deploy/SolidityNode
         git clone https://github.com/tronprotocol/java-tron
         cd java-tron/
-        ./gradlewshadowJar -PmainClass=org.tron.program.SolidityNode
+        ./gradlew shadowJar -PmainClass=org.tron.program.SolidityNode
         cp build/libs/java-tron.jar ../
         cpsrc/main/resources/config.conf ../
         cd ..

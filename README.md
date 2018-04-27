@@ -11,7 +11,33 @@
 + If you want to know more about TRX migration, please check [TRX](https://github.com/ybhgenius/Documentation/tree/master/TRX).
 
 # Super Representative Guide
-       
+
+## What is a Super Representative?
+
+Please take  [What is a Super Representative](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol/What_is_a_Super_Representative_EN.md) for reference.
+
+## How to become a Super Representative
+
+**Step1.**
+
+First of all, you need to run a Super Representative. For more information about running a Super Representative, please visit [java-tron Guide](https://github.com/tronprotocol/java-tron/blob/develop/README.md) and take *Running a local node and connecting to the public testnet* -> *Running a Super Node* as reference.
+
+**Step2.** 
+
+Visit our blockchain explorer to apply for Super Representative, please take [Running a Super Representative](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol/Running_a_Super_Representative_EN.md) as reference.
+
+**Step3.** 
+
+After approval voting, the top 15 Super Representatives by total approval are selected in the testnet stage. The voting of Super Representative is held once every 4 hours. Please take [How to vote](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol/How_to_vote_EN.md) as reference.
+
+## How to become a recommended Super Representative.
+
+To become a recommended Super Representative, candidates must meet nine requirements and submit application to us. We will evaluate the quality and validity of the submitted information, based on the results of which announcements of recommended Super Representatives will be made  on TRON’s official forum (tronsr.org). Please take [A Guide to Recommended Super Representative Application](https://github.com/ybhgenius/Documentation/blob/master/TRON_Protocol/A_Guide_to_Recommended_Super_Representative_Application_EN.md) as reference.
+
+## FAQ
+
+For more information about running, application, voting of Super Representative, please visit [FAQ_about_SR](https://github.com/tronprotocol/Documentation/blob/master/FAQ_CN/FAQ_about_SR_CN.md).
+
 # 文档
 
 # 翻译指引
@@ -20,9 +46,9 @@
 
 # 文档指引
 
-+ 如果你想了解波场的发展进程以及最新动态，请查看[TRON Development.CN](https://github.com/ybhgenius/Documentation/tree/master/TRON_Development_CN)相关文档。  
-+ 如果你想了解波场的相关技术协议，投票流程，节点信息，社区环境等，请查看[TRON Protocol.CN](https://github.com/ybhgenius/Documentation/tree/master/TRON_Protocol_CN)相关文档。
-+ 如果你想了解波场TRX迁移，请查看[TRX.CN](https://github.com/ybhgenius/Documentation/tree/master/TRX_CN)相关文档。
++ 如果你想了解波场的发展进程以及最新动态，请查看[TRON Development](https://github.com/ybhgenius/Documentation/tree/master/TRON_Development_CN)相关文档。  
++ 如果你想了解波场的相关技术协议，投票流程，节点信息，社区环境等，请查看[TRON Protocol](https://github.com/ybhgenius/Documentation/tree/master/TRON_Protocol_CN)相关文档。
++ 如果你想了解波场TRX迁移，请查看[TRX](https://github.com/ybhgenius/Documentation/tree/master/TRX_CN)相关文档。
 
 # 超级代表文档指引
 
