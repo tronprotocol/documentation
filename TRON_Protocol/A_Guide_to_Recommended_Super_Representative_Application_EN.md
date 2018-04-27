@@ -82,4 +82,4 @@ Note:
 
 ### Step 3. 
 
-When you have finished filling out the application form, please submit it to sr@tron.network. We will evaluate the quality and validity of the submitted information, based on the results of which announcements of recommended Super Representatives will be made at around 21:00 (GMT+8) every Thursday on TRON’s 
+When you have finished filling out the application form, please submit it to sr@tron.network. We will evaluate the quality and validity of the submitted information, based on the results of which announcements of recommended Super Representatives will be made at around 21:00 (GMT+8) every Thursday on TRON’s official forum.
