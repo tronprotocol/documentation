@@ -1,4 +1,4 @@
-# A Guide to Recommended Super Representative Canditate
+# A Guide to Recommended Super Representative Candidate
 
 ## How can I become a recommended Super Representative Candidate?
 
