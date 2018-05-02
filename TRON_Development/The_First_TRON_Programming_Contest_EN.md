@@ -23,10 +23,10 @@ First-place prizes will be offered to designers of the five applications like th
 
 4, All development must be based on Tron blockchain technology and should be one of the following five applications compatible with Tron’s main net:  
     
-+ Wallet based on Windows (including off-line signature function)
-+ Wallet based on Mac (Off-line signature function is optional but a plus.)
-+ Wallet based on iOS/Android (including off-line signature function)
-+ Wallet embedded with Google Chrome
++ Wallet based on Windows (including off-line signature function and voting function)
++ Wallet based on Mac (Off-line signature function is optional but a plus and voting function is necessary.)
++ Wallet based on iOS/Android (including off-line signature function and voting function)
++ Wallet embedded with Google Chrome (including voting function)
 + Blockchain Explorer
 
 
