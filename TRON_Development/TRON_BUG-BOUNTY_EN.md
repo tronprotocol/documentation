@@ -1,7 +1,7 @@
 
-#BUG-BOUNTY
+# BUG-BOUNTY
 
-##Event introduction
+## Event introduction
 
 Starting now, community members can participate in the Bug Bounty by identifying bugs and reporting them to TRON. TRON Foundation will rate and reward the reports based on the importance of the bug, how hidden the bug is, estimated workload of the discovery, and subsequent workload of communication with TRON. 
 
@@ -18,17 +18,17 @@ Here are some possible ways to find bugs:
 Github: https://github.com/tronprotocol
 
 
-##Reward mechanism
+## Reward mechanism
 
 We will rate your submitted report and offer reward accordingly. Furthermore, if your submission also includes a fix and/or corresponding code, you can earn an even greater reward.
 
 
-##How to report bugs
+## How to report bugs
 
 Please submit your bug report in the Issues tab on TRON's Github project page, with the subject line beginning with [Bounty].
 
 
-##Further clarification
+## Further clarification
 
 1. Bug Bounty begins upon this announcement.
 
