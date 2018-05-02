@@ -1,7 +1,7 @@
 
 Private运行环境下full node模式的问题
 -----
-1. config.conf中的genesis.block.witnesses替换成在https://trxscan.org/注册时给出的address字符串：
+1. config.conf中的genesis.block.witnesses替换成在https://trxscan.org/ 注册时给出的address字符串：
   是否需要删除其他address？url和voteCount字段是否需要删除？
   
 2. seed.node ip.list 替换成自己公网的ip地址后，使用启动命令 java -jar java-tron.jar 启动后，如何测试部署是否正常，比如是否有测试接口或者命令，类似redis，get ping 会返回 pong？
