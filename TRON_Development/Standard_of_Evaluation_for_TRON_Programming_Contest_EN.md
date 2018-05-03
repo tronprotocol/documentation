@@ -48,14 +48,19 @@ We will score projects submitted for the programming contest based on the follow
    
 ### Evaluation Form
 
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
-.tg .tg-us36{border-color:inherit;vertical-align:top}
-</style>
-<table class="tg">
+<table class="tg" style="undefined;table-layout: fixed; width: 848px">
+<colgroup>
+<col style="width: 109px">
+<col style="width: 74px">
+<col style="width: 92px">
+<col style="width: 72px">
+<col style="width: 89px">
+<col style="width: 84px">
+<col style="width: 91px">
+<col style="width: 90px">
+<col style="width: 76px">
+<col style="width: 71px">
+</colgroup>
   <tr>
     <th class="tg-c3ow" rowspan="2">Individual/Team<br>Name</th>
     <th class="tg-c3ow" colspan="4">Basic criteria</th>
@@ -83,6 +88,18 @@ We will score projects submitted for the programming contest based on the follow
     <td class="tg-us36"></td>
     <td class="tg-us36"></td>
     <td class="tg-us36"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l"></td>
   </tr>
 </table>
 
