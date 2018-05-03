@@ -11,7 +11,7 @@ Here are some possible ways to find bugs:
 
 * Participate in elections and identify problems;
 
-* Use DApps (e.g. block explorer and wallet) and identify problems;
+* Using the blockchain explorer, wallets, and other apps;
 
 * Review TRON's open-source code on Github and identify problems;
 
@@ -25,14 +25,14 @@ We will rate your submitted report and offer reward accordingly. Furthermore, if
 
 ## How to report bugs
 
-Please submit your bug report in the Issues tab on TRON's Github project page, with the subject line beginning with [Bounty].
+Submit your comments via the Issues section on TRON’s GitHub project page. Subject line should read [Bounty].
 
 
 ## Further clarification
 
 1. Bug Bounty begins upon this announcement.
 
-2. Bug report should include bug description, instructions to encounter bug, corresponding screenshots and your suggested fix (optional).
+2. Bug report should include bug description, how to reproduce the bug, corresponding screenshots and your suggested fix (optional).
 
 3. For different reports on the same bug, we will only rate and reward the earliest submission.
 
