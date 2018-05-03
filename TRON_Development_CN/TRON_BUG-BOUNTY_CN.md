@@ -1,4 +1,4 @@
-# BUGGIT-BOUNTY
+# BUG-BOUNTY
 
 ## 活动介绍：
 
