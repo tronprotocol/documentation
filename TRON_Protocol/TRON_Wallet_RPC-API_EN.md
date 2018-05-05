@@ -182,7 +182,7 @@ NodeList: returns a list of nodes, including their IPs and ports.
 14.5 Function  
 Listing the IPs and ports of current nodes.
 
-#3 15. Query of tokens
+# 15. Query of tokens
 
 15.1 Interface statement  
 rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {};  
