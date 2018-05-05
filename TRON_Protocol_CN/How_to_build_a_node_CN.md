@@ -207,7 +207,7 @@ balance: 420
 
 </details> 
   
-然后再次运行 `FullNode::main()` 。
+然后再次运行 `FullNode::main()`。
 
 ### 运行多节点
 
@@ -226,7 +226,7 @@ balance: 420
 ./gradlew run
 ```
 
-*使用 executable JAR
+* 使用 executable JAR
 
 ```bash
 cd build/libs
