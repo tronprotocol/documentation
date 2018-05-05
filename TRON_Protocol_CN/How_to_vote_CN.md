@@ -14,7 +14,7 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
 
-3， 新账户必须存有一定数量的TRX。  为测试需要，用户可以申请测试使用的10000个TRX。请点击按钮 "Request TRX for testing"。          
+3， 新账户必须存有一定数量的TRX。  为测试需要，用户可以申请测试使用的100,0000个TRX。请点击按钮 "Request TRX for testing"。          
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)
 

@@ -1,20 +1,20 @@
 # Token Creation
 
-## The following steps serve as an introduction on how to create, send and receive toke.。
+## The following steps serve as an introduction on how to create, send and receive tokens.
 
-### Step
+### Steps
 
 1，A registered account is required in TRON blockchain explorer.   In order to use TRON blockchain explorer, you will need to register an account, please visit our website:    
 
    https://trxscan.org/#/login  
 
-   Direct visit to Tron blockchain explorer and the Web wallet can be made through
+   Direct visit to Tron blockchain explorer and the Web wallet can be made through the link above.
 
 2，Tick off the follow three items, then click the button “Create Account”. 
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
 
-3，A certain sum of TRX is required in your new account.   10000 TRX for testing will be sent to your testing acoount. Please click the button "Request TRX for testing".  
+3，A certain sum of TRX is required in your new account.   100,0000 TRX for testing will be sent to your testing acoount. Please click the button "Request TRX for testing".  
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)    
 
@@ -24,7 +24,7 @@
 
 5，Click “create” to enter token creation page. Fill in required information and then click “Issue Token” to issue your tokens.
 
-   +  It is very easy to create your own tokens in TRON’s ecosystem, you will be able to issue your own tokens. The following parameters shown as below:  
+   +  It is very easy to create your own tokens in TRON’s ecosystem, here you will be able to issue your own tokens. The following parameters are shown as below:  
    **Token name**  
    **Total Supply**:Total amount of tokens which will be in circulation.  
    **Token description**  
@@ -32,7 +32,7 @@
    **Exchange rate to TRX**: Specify the price of a single token by defining how many tokens a participant will receive for every TRX they spend.  
    **Participation**:Specify the participation period in which tokens will be issued. During the participation period users can exchange TRX for tokens.
    
-   + You will be charged 1024 TRX for your creation of tokens.
+   + You will be charged 1024 TRX fee to issue your tokens.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/Create1.png)
 
