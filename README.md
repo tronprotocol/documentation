@@ -17,7 +17,7 @@
 
 ## What is a Super Representative?
 
-Please take  [What is a Super Representative](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol/What_is_a_Super_Representative_EN.md) for reference.
+Please take  [What is a Super Representative](https://github.com/ybhgenius/Documentation/blob/master/English_Documentation/TRON_Blockchain_Explorer_Introduction/What_is_a_Super_Representative.md)
 
 ## How to become a Super Representative
 
@@ -27,19 +27,17 @@ First of all, you need to run a Super Representative. For more information about
 
 **Step2.** 
 
-Visit our blockchain explorer to apply for Super Representative, please take [Running a Super Representative](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol/Running_a_Super_Representative_EN.md) as reference.
+Visit our blockchain explorer to apply for Super Representative, please take [Running a Super Representative](https://github.com/ybhgenius/Documentation/blob/master/English_Documentation/TRON_Blockchain_Explorer_Introduction/Running_a_Super_Representative.md)
 
 **Step3.** 
 
-After approval voting, the top 15 Super Representatives by total approval are selected in the testnet stage. The voting of Super Representative is held once every 4 hours. Please take [How to vote](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol/How_to_vote_EN.md) as reference.
+After approval voting, the top 15 Super Representatives by total approval are selected in the testnet stage. The voting of Super Representative is held once every 4 hours. Please take [How to vote](https://github.com/ybhgenius/Documentation/blob/master/English_Documentation/TRON_Blockchain_Explorer_Introduction/How_to_vote.md)
 
 ## How to become a recommended Super Representative.
 
-To become a recommended Super Representative, candidates must meet nine requirements and submit application to us. We will evaluate the quality and validity of the submitted information, based on the results of which announcements of recommended Super Representatives will be made  on TRON’s official forum (tronsr.org). Please take [A Guide to Recommended Super Representative Application](https://github.com/ybhgenius/Documentation/blob/master/TRON_Protocol/A_Guide_to_Recommended_Super_Representative_Application_EN.md) as reference.
+To become a recommended Super Representative, candidates must meet nine requirements and submit application to us. We will evaluate the quality and validity of the submitted information, based on the results of which announcements of recommended Super Representatives will be made  on TRON’s official forum (tronsr.org). Please take [A Guide to Recommended Super Representative Application](https://github.com/ybhgenius/Documentation/blob/master/English_Documentation/A_Guide_to_Recommended_Super_Representative_Candidate.md)
 
-## FAQ
 
-For more information about running, application, voting of Super Representative, please visit [FAQ_about_SR](https://github.com/tronprotocol/Documentation/blob/master/FAQ_CN/FAQ_about_SR_CN.md).
 
 # 文档
 
@@ -49,15 +47,18 @@ For more information about running, application, voting of Super Representative,
 
 # 文档指引
 
-+ 如果你想了解波场的发展进程以及最新动态，请查看[TRON Development](https://github.com/ybhgenius/Documentation/tree/master/TRON_Development_CN)相关文档。  
-+ 如果你想了解波场的相关技术协议，投票流程，节点信息，社区环境等，请查看[TRON Protocol](https://github.com/ybhgenius/Documentation/tree/master/TRON_Protocol_CN)相关文档。
++ 如果你想了解波场的发展进程以及最新动态，请查看[波场介绍](https://github.com/ybhgenius/Documentation/tree/master/中文文档/波场介绍)相关文档。  
++ 如果你想了解波场的相关技术协议，请查看[波场协议](https://github.com/ybhgenius/Documentation/tree/master/中文文档/波场协议)相关文档。
++ 如果你想了解有关超级节点、投票和发行资产的相关信息，请查看[波场区块链浏览器](https://github.com/ybhgenius/Documentation/tree/master/中文文档/波场区块链浏览器介绍)。
++ 如果你想了解编程大赛，请查看[波场编程大赛](https://github.com/ybhgenius/Documentation/tree/master/中文文档/波场编程大赛)。
 + 如果你想了解波场TRX迁移，请查看[TRX](https://github.com/ybhgenius/Documentation/tree/master/TRX_CN)相关文档。
++ 对于波场发展的最新进展，请时刻关注[波场文档](https://github.com/ybhgenius/Documentation/tree/master/中文文档)。
 
 # 超级代表文档指引
 
 ## 什么是超级代表？  
 
-请参见:[What is a Super Representative](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol_CN/What_is_a_Super_Representative_CN.md) 
+请参见:[超级代表介绍](https://github.com/ybhgenius/Documentation/blob/master/中文文档/波场区块链浏览器介绍/什么是超级代表.md)
 
 ## 如何申请成为一个超级代表？
 
@@ -67,16 +68,14 @@ For more information about running, application, voting of Super Representative,
    
 **Step2.** 
 
-接下来你需要在我们的区块浏览器中申请参加超级代表投票竞选。如何申请参加超级代表请参见[Running a Super Representative](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol_CN/Running_a_Super_Representative_CN.md).
+接下来你需要在我们的区块浏览器中申请参加超级代表投票竞选。如何申请参加超级代表请参见[运行超级代表](https://github.com/ybhgenius/Documentation/blob/master/中文文档/波场区块链浏览器介绍/运行超级代表.md)。
 
 **Step3.** 
 
-最后，你需要经过网络上的超级代表投票，测试网试验阶段我们将每四小时选取票数最多的前15位为我们的超级代表。超级代表投票将每四小时进行一次。如何给超级代表投票请参见[How to vote](https://github.com/tronprotocol/Documentation/blob/master/TRON_Protocol_CN/How_to_vote_CN.md).
-
+最后，你需要经过网络上的超级代表投票，测试网试验阶段我们将每四小时选取票数最多的前15位为我们的超级代表。超级代表投票将每四小时进行一次。如何给超级代表投票请参见[如何投票](https://github.com/ybhgenius/Documentation/blob/master/中文文档/波场区块链浏览器介绍/如何投票.md)。
 ## 如何成为一个推荐超级代表候选人？
 
-成为推荐超级代表你需要满足我们列出9个标准，并向我们提交申请。对申请内容进行评审后，我们会在波场官方论坛tronsr.org上进行公示。推荐超级代表的9个标准以及推荐超级代表申请表请参见[A Guide to Recommended Super Representative Application](https://github.com/ybhgenius/Documentation/blob/master/TRON_Protocol_CN/A_Guide_to_Recommended_Super_Representative_Application_CN.md).
-
+成为推荐超级代表你需要满足我们列出9个标准，并向我们提交申请。对申请内容进行评审后，我们会在波场官方论坛tronsr.org上进行公示。推荐超级代表的9个标准以及推荐超级代表申请表请参见[申请推荐超级代表指南](https://github.com/ybhgenius/Documentation/blob/master/中文文档/申请推荐超级代表指南.md)。
 ## 常见问题
 
-有关超级代表、超级代表节点运行、申请、竞选的相关问题请查询[FAQ_about_SR_CN](https://github.com/tronprotocol/Documentation/blob/master/FAQ_CN/FAQ_about_SR_CN.md).
+有关超级代表、超级代表节点运行、申请、竞选的相关问题请查看[关于SR的常见问题解答](https://github.com/ybhgenius/Documentation/blob/master/中文文档/常见问题解答/关于SR的常见问题解答.md)。
