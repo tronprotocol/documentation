@@ -6,9 +6,12 @@
 
 # Documentation Guide
 
-+ If you want to know more about the recent progress of TRON project, please check [TRON Development](https://github.com/ybhgenius/Documentation/tree/master/TRON_Development).  
-+ If you want to know more about the protocol documentation, voting process, SP information, community and etc. Please check [TRON Protocol](https://github.com/ybhgenius/Documentation/tree/master/TRON_Protocol).  
++ If you want to know more about the recent progress of TRON project, please check [TRON Introduction](https://github.com/ybhgenius/Documentation/tree/master/English_Documentation/TRON_Introduction).  
++ If you want to know more about the protocol documentation, please check [TRON Protocol](https://github.com/ybhgenius/Documentation/tree/master/English_Documentation/TRON_Protocol).  
++ If you want to know more about the SP information,vote and token creation, please check [TRON blockchain explorer introduction](https://github.com/ybhgenius/Documentation/tree/master/English_Documentation/TRON_Blockchain_Explorer_Introduction). 
++ If you want to know more about programming contest, please check [TRON programming contest](https://github.com/ybhgenius/Documentation/tree/master/English_Documentation/TRON_Programming_Contest).
 + If you want to know more about TRX migration, please check [TRX](https://github.com/ybhgenius/Documentation/tree/master/TRX).
++ For latest process of TRON, please follow the [TRON documentation](https://github.com/ybhgenius/Documentation/tree/master/English_Documentation).
 
 # Super Representative Guide
 
