@@ -16,9 +16,9 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
 
-3, A certain sum of TRX is required in your new account.   10000 TRX for testing will be sent to your testing account. Please click the button "Request TRX for testing".  
+3, A certain sum of TRX is required in your new account.   100,0000 TRX for testing will be sent to your testing account. Please click the button "Request TRX for testing".  
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.jpg)
 
 4, You can get started to apply to be a delegate.   Click the button “ Apply_for_delegate” first.  
 
@@ -26,8 +26,7 @@
 
 5, Provide your personal website address. The type of address includes but is not limited to: website, blog, social media account, etc.  
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/personal_address.png)
-
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/personal_address.jpg)
 6, Vote for delegate  . Click the button "Votes" in account options.  
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/votes.png)
