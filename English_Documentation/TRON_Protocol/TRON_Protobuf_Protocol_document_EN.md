@@ -504,9 +504,9 @@ Input, transaction and head block all require signature.
     __`CreateTransaction`__ ：  
     `CreatTransaction` takes a parameter of TransferContract, and returns an `Transaction` object.   
     __`BroadcastTransaction`__ :  
-   `BroadcastTransaction` takes a parameter of Transaction, and returns an `Return` object. 
+   `BroadcastTransaction` takes a parameter of Transaction, and returns an `Return` object.   
     __`CreateAccount`__ :  
-    `CreateAccount` takes a parameter of AccountCreateContract, and returns an `Transaction` object. 
+    `CreateAccount` takes a parameter of AccountCreateContract, and returns an `Transaction` object.  
     __`CreatAssetIssue`__ :  
     `CreatAssetIssue` takes a parameter of AssetIssueContract, and returns an `Transaction` object.   
     __`ListAccounts`__:  
@@ -683,31 +683,31 @@ Input, transaction and head block all require signature.
     __`GetAccount`__ :  
     `GetAccount` takes a parameter of Account, and returns an `Account` object.  
     __`ListAccounts`__: 
-    `listAccounts` takes a parameter of EmptyMessage , and returns `listAccounts` object.
+    `listAccounts` takes a parameter of EmptyMessage , and returns `listAccounts` object.  
     __`ListWitness`__:  
    `LitWitness` takes a parameter of EmptyMessage, and returns `WitnessList` object.    
     __`ListNodes`__:  
-   `ListNodes` takes a parameter of EmptyMessage, and returns `NodeList` object.
+   `ListNodes` takes a parameter of EmptyMessage, and returns `NodeList` object.  
     __`GetAssetIssueList`__:  
-    `GetAssetIssueList` takes a parameter of EmptyMessage, and returns `AssetIssueList` object. 
+    `GetAssetIssueList` takes a parameter of EmptyMessage, and returns `AssetIssueList` object.  
     __`GetAssetIssueListByTimeStamp`__:  
-    `GetAssetIssueListByTimeStamp` takes a parameter of EmptyMessage, and returns `AsssetIssueList` object.
+    `GetAssetIssueListByTimeStamp` takes a parameter of EmptyMessage, and returns `AsssetIssueList` object.  
     __`GetAssetIssueByAccount`__:  
     `GetAssetIssueByAccount` takes a parameter of `Account`, and returns `AssetIssueList` object. 
     _`GetAssetIssueByName`__:  
-    `GetAssetIssueByName` takes a parameter of `BytesMessage`, and returns `AssetIssueContract` object.
+    `GetAssetIssueByName` takes a parameter of `BytesMessage`, and returns `AssetIssueContract` object.  
     __`GetNowBlock`__:  
-    `GetNowBlock` takes a parameter of `EmptyMessage`, and returns `Block` object.
+    `GetNowBlock` takes a parameter of `EmptyMessage`, and returns `Block` object.  
     __`GetBlockByNum`__:  
-    `GetBlockByNumber` takes a parameter of `NumberMessage`, and returns `Block` object.
+    `GetBlockByNumber` takes a parameter of `NumberMessage`, and returns `Block` object.  
     __`TotalTransaction`__:  
-    `TotalTransaction` takes a parameter of `EmptyMessage`, and returns `NumberMessage` object.
+    `TotalTransaction` takes a parameter of `EmptyMessage`, and returns `NumberMessage` object.  
     __`getTransactionById`__:  
-    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction` object.
+    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction` object.  
     __`getTransactionsByTimeStamp`__:  
-    `getTransactionsByTimeStamp` takes a parameter of `TimeMessage`, and returns `TransactionList` object.
+    `getTransactionsByTimeStamp` takes a parameter of `TimeMessage`, and returns `TransactionList` object.  
     __`getTransactionsFromThis`__:  
-    `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList` object. 
+    `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList` object.  
     __`getTransactionsToThis`__:  
     `getTransactionsToThis` takes a parameter of `Account`, and returns `NumberMessage` object. 
            
