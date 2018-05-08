@@ -482,26 +482,26 @@
 +	钱包服务RPC和区块链浏览器。
 
    `Wallet`钱包服务包含多个RPC。  
-   __`Getbalance`__：获取`Account`的余额。  
-   __`CreatTransaction`__：通过`TransferContract`创建交易。  
-   __`BroadcastTransaction`__：广播`Transaction`。  
-   __`CreateAccount`__：通过`AccountCreateContract`创建账户。  
-   __`CreatAssetIssue`__：通过`AssetIssueContract`发布一个资产。  
-   __`ListAccounts`__：通过`ListAccounts`查看账户列表。  
-   __`UpdateAccount`__：通过`UpdateAccountContract`发布一个资产。  
-   __`VoteWitnessAccount`__：通过`VoteWitnessContract`发布一个资产。  
-   __`WitnessList`__：通过`WitnessList`查看见证节点列表。  
-   __`UpdateWitness`__：通过`WitnessUpdateContract`发布一个资产。  
-   __`CreateWitness`__：通过`WitnessCreateContract`发布一个资产。  
-   __`TransferAsset`__：通过`TransferAssetContract`发布一个资产。  
-   __`ParticipateAssetIssue`__：通过`ParticipateAssetIssueContract`发布一个资产。  
-   __`ListNodes`__：通过`ListNodes`查看节点列表。  
-   __`GetAssetIssueList`__：通过`GetAssetIssueList`查看资产发布节点列表。  
-   __`GetAssetIssueByAccount`__：通过`Account`获取发行资产。  
-   __`GetAssetIssueByName`__：通过`Name`获取发行资产。  
-   __`GetNowBlock`__：获取区块。  
-   __`GetBlockByNum`__：根据块号获取区块。  
-   __`TotalTransaction`__：查看总交易量。  
+   __`Getbalance`__：采用参数`Account`，返回对象`Account`。  
+   __`CreatTransaction`__：采用参数`TransferContract`，返回对象`Transaction`。    
+   __`BroadcastTransaction`__：采用参数`Transaction`，返回对象`Return`。    
+   __`CreateAccount`__：采用参数`AccountCreateContract`，返回对象`Transaction`。    
+   __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。    
+   __`ListAccounts`__：采用参数`EmptyMessage`，返回对象`AccountList`。    
+   __`UpdateAccount`__：采用参数`AccountUpdateContract`，返回对象`Transaction`。    
+   __`VoteWitnessAccount`__：采用参数`VoteWitnessContract`，返回对象`Transaction`。   
+   __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
+   __`UpdateWitness`__：采用参数`WitnessUpdateContract`，返回对象`Transaction`。    
+   __`CreateWitness`__：采用参数`WitnessCreateContract`，返回对象`Transaction`。    
+   __`TransferAsset`__：采用参数`TransferAssetContract`，返回对象`Transaction`。    
+   __`ParticipateAssetIssue`__：采用参数`ParticipateAssetIssueContract`，返回对象`Transaction`。   
+   __`ListNodes`__：采用参数`EmptyMessage`，返回对象`NodeList`。   
+   __`GetAssetIssueList`__：采用参数`EmptyMessage`，返回对象`GetIssueList`。  
+   __`GetAssetIssueByAccount`__：采用参数`Account`，返回对象`AssetIssueList`。   
+   __`GetAssetIssueByName`__：采用参数`BytesMessage`，返回对象`AssetIssueContract`。    
+   __`GetNowBlock`__：采用参数`EmptyMessage`，返回对象`Block`。    
+   __`GetBlockByNum`__：采用参数`NumberMessage`，返回对象`Block`。    
+   __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。  
    
       service Wallet {
             
@@ -643,21 +643,21 @@
             };
             
    `WalletSolidity`钱包服务包含多个RPC。  
-      __`GetAccount`__：获取`Account`。    
-      __`ListAccounts`__：通过`ListAccounts`查看账户列表。    
-      __`ListWitness`__：通过`ListWitness`查看见证节点列表。  
-      __`ListNodes`__：通过`ListNodes`查看节点列表。  
-      __`GetAssetIssueList`__：通过`GetAssetIssueList`查看资产发布节点列表。  
-      __`GetAssetIssueByTimeStamp`__：通过`TimeStamp`获取发行资产。
-      __`GetAssetIssueByAccount`__：通过`Account`获取发行资产。  
-      __`GetAssetIssueByName`__：通过`Name`获取发行资产。  
-      __`GetNowBlock`__：获取区块。  
-      __`GetBlockByNum`__：根据块号获取区块。  
-      __`TotalTransaction`__：查看总交易量。 
-      __`getTransactionById`__：通过`Id`获取转账。  
-      __`getTransactionsByTimestamp`__：通过时间戳获取转账。  
-      __`getTransactionsFromThis`__：通过某一账户获取转账。  
-      __`getTransactionsToThis`__：转账至某一账户。 
+      __`GetAccount`__：采用参数`Account`，返回对象`Account`。    
+      __`ListAccounts`__：采用参数`EmptyMessage`，返回对象`AccountList`。    
+      __`ListWitness`__：采用参数`EmptyMessage`，返回对象`WitnessList`。  
+      __`ListNodes`__：采用参数`EmptyMessage`，返回对象`NodeList`。  
+      __`GetAssetIssueList`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。  
+      __`GetAssetIssueByTimeStamp`__：采用参数`NumberMessage`，返回对象`AssetIssueList`。
+      __`GetAssetIssueByAccount`__：采用参数`Account`，返回对象`AssetIssueList`获取发行资产。  
+      __`GetAssetIssueByName`__：采用参数`BytesMessage`，返回对象`AssetIssueContract`。  
+      __`GetNowBlock`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。
+      __`GetBlockByNum`__：采用参数`EmptyMessage`，返回对象`Block`。
+      __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。 
+      __`getTransactionById`__：采用参数`EmptyMessage`，返回对象`Transaction`。 
+      __`getTransactionsByTimestamp`__：采用参数`TimeMessage`，返回对象`Transactionlist`。  
+      __`getTransactionsFromThis`__：采用参数`Account`，返回对象`Transactionlist`。  
+      __`getTransactionsToThis`__：采用参数`Account`，返回对象`NumberMessage`。 
       
             service WalletSolidity {
             

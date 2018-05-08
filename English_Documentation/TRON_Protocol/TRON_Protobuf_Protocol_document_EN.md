@@ -500,49 +500,48 @@ Input, transaction and head block all require signature.
         
    `Wallet` service contains several RPCs.  
     __`GetBalance`__ :  
-    Return balance of an `Account`.  
+    `GetAccount` takes a parameter of Account, and returns an `Account` object.  
     __`CreateTransaction`__ ：  
-    Create a transaction by giving a `TransferContract`. A Transaction containing a transaction creation will be returned.  
+    `CreatTransaction` takes a parameter of TransferContract, and returns an `Transaction` object.   
     __`BroadcastTransaction`__ :  
-    Broadcast a `Transaction`. A `Return` will be returned indicating if broadcast is success of not.  
+   `BroadcastTransaction` takes a parameter of Transaction, and returns an `Return` object. 
     __`CreateAccount`__ :  
-    Create an account by giving a `AccountCreateContract`.  
+    `CreateAccount` takes a parameter of AccountCreateContract, and returns an `Transaction` object. 
     __`CreatAssetIssue`__ :  
-    Issue an asset by giving a `AssetIssueContract`.  
+    `CreatAssetIssue` takes a parameter of AssetIssueContract, and returns an `Transaction` object.   
     __`ListAccounts`__:  
-    Check out the list of accounts by giving a `ListAccounts`.  
+    `ListAccounts` takes a parameter of EmptyMessage, and returns an `AccountList` object.   
     __`UpdateAccount`__:  
-    Issue an asset by giving a `UpdateAccountContract`.  
+    `UpdateAccount` takes a parameter of AccountUpdateContract, and returns an `Transaction` object.   
     __`VoteWitnessAccount`__:  
-    Issue an asset by giving a `VoteWitnessContract`.  
+    `VoteWitnessAccount` takes a parameter of VoteWitnessContract, and returns an `Transaction` object.   
     __`WitnessList`__:  
-    Check out the list of witnesses by giving a `WitnessList`.  
+    `WitnessList` takes a parameter of WitnessUpdateContract, and returns an `WitnessList` object.   
     __`UpdateWitness`__:  
-    Issue an asset by giving a `WitnessUpdateContract`.  
+    `UpdateWitness` takes a parameter of WitnessUpdateContract, and returns an `Transaction` object.   
     __`CreateWitness`__:  
-    Issue an asset by giving a `WitnessCreateContract`.  
+    `CreateWitness` takes a parameter of WitnessCreateContract, and returns an `Transaction` object.   
     __`TransferAsset`__:  
-    Issue an asset by giving a `TransferAssetContract`.  
+    `TransferAsset` takes a parameter of TransferAssetContract, and returns an `Transaction` object.   
     __`ParticipateAssetIssue`__:  
-    Issue an asset by giving a `ParticipateAssetIssueContract`.  
+    `ParticipateAssetIssue` takes a parameter of ParticipateAssetIssueContract, and returns an `Transaction` object.   
     __`ListNodes`__:  
-    Check out the list of nodes by giving a `ListNodes`.  
+    `ListNodes` takes a parameter of EmptyMessage, and returns an `NodeList` object.   
     __`GetAssetIssueList`__:  
-    Get the list of issue asset by giving a `GetAssetIssueList`.  
+    `GetAssetIssueList` takes a parameter of EmptyMessage, and returns an `GetIssueList` object.   
     __`GetAssetIssueByAccount`__:  
-    Get issue asset by giving a `Account`.  
+    `GetAssetIssueByAccount` takes a parameter of Account, and returns an `AssetIssueList` object.   
     __`GetAssetIssueByName`__:  
-    Get issue asset by giving a`Name`.  
+    `GetAssetIssueByName` takes a parameter of BytesMessage, and returns an `AssetIssueContract` object.  
     __`GetNowBlock`__:  
-    Get block.  
+    `GetNowBlock` takes a parameter of EmptyMessage, and returns an `Block` object.   
     __`GetBlockByNum`__:  
-    Get block by block number.  
+    `GetBlockByNum` takes a parameter of NumberMessage, and returns an `Block` object.  
     __`TotalTransaction`__:  
-    Check out the total transaction.
+    `TotalTransaction` takes a parameter of EmptyMessage, and returns an `NumberMessage` object. 
    
       service Wallet {
-      
-        rpc GetAccount (Account) returns (Account) {
+      returns (Account) {
           option (google.api.http) = {
             post: "/wallet/getaccount"
             body: "*"
@@ -564,6 +563,7 @@ Input, transaction and head block all require signature.
           };
         };
       
+        rpc GetAccount (Account) 
         rpc ListAccounts (EmptyMessage) returns (AccountList) {
           option (google.api.http) = {
                 post: "/wallet/listaccount"
@@ -695,21 +695,21 @@ Input, transaction and head block all require signature.
     __`GetAssetIssueByAccount`__:  
     `GetAssetIssueByAccount` takes a parameter of `Account`, and returns `AssetIssueList` object. 
     _`GetAssetIssueByName`__:  
-    `GetAssetIssueByName` takes a parameter of `BytesMessage`, and returns `AssetIssueContract`.
+    `GetAssetIssueByName` takes a parameter of `BytesMessage`, and returns `AssetIssueContract` object.
     __`GetNowBlock`__:  
-    `GetNowBlock` takes a parameter of `EmptyMessage`, and returns `Block`.
+    `GetNowBlock` takes a parameter of `EmptyMessage`, and returns `Block` object.
     __`GetBlockByNum`__:  
-    `GetBlockByNumber` takes a parameter of `NumberMessage`, and returns `Block`.
+    `GetBlockByNumber` takes a parameter of `NumberMessage`, and returns `Block` object.
     __`TotalTransaction`__:  
-    `TotalTransaction` takes a parameter of `EmptyMessage`, and returns `NumberMessage`.
+    `TotalTransaction` takes a parameter of `EmptyMessage`, and returns `NumberMessage` object.
     __`getTransactionById`__:  
-    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction`.
+    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction` object.
     __`getTransactionsByTimeStamp`__:  
-    `getTransactionsByTimeStamp` takes a parameter of `TimeMessage`, and returns `TransactionList`.
+    `getTransactionsByTimeStamp` takes a parameter of `TimeMessage`, and returns `TransactionList` object.
     __`getTransactionsFromThis`__:  
-    `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList`. 
+    `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList` object. 
     __`getTransactionsToThis`__:  
-    `getTransactionsToThis` takes a parameter of `Account`, and returns ` NumberMessage`. 
+    `getTransactionsToThis` takes a parameter of `Account`, and returns `NumberMessage` object. 
            
       service WalletSolidity {
       

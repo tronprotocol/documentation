@@ -6,11 +6,11 @@
 
 1，A registered account is required in TRON blockchain explorer.   In order to use TRON blockchain explorer, you will need to register an account, please visit our website:    
 
-   https://trxscan.org/#/login  
+   https://tronscan.org/#/login 
 
    Direct visit to Tron blockchain explorer and the Web wallet can be made through the link above.
 
-2，Tick off the follow three items, then click the button “Create Account”. 
+2，Tick off the follow two items, then click the button “Create Account”. 
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
 

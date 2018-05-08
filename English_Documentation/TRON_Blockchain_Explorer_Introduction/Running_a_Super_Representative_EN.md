@@ -12,7 +12,7 @@
 
    https://tronscan.org
 
-2, Tick off the follow three items, then click the button “Create Account”.     
+2, Tick off the follow two items, then click the button “Create Account”.     
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
 
