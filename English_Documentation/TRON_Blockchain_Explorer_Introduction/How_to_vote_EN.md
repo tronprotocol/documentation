@@ -29,7 +29,7 @@
 Rules：
    + The maximum number of votes is no more than the user’s amount of TRX holding at a given time.
    + Each account can vote for several delegates for several times.
-   + The final votes will be tallied at 24 o'clock and the list of delegates will be updated.
+   + The votes are tallied once every 6 hours and the final election results will be updated at 0:00 AM (0:00) UTC, 6:00 AM (6:00) UTC, 12:00 PM (12:00) UTC and 6:00 PM (18:00) UTC.
    + TRX for testing will not be consumed in the voting process.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_vote.png)
