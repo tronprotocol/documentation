@@ -12,13 +12,13 @@
 
    https://tronscan.org   
 
-2, Tick off the follow three items, then click the button “Create Account”.     
+2, Tick off the follow two items, then click the button “Create Account”.     
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_account.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/create_an_account.jpg)
 
 3, A certain sum of TRX is required in your new account.   100,0000 TRX for testing will be sent to your testing acoount. Please click the button "Request TRX for testing".  
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/request_for_testing.jpg)
 
 4, Vote for delegate  . Click the button "Votes" in account options.  
 
@@ -29,7 +29,7 @@
 Rules：
    + The maximum number of votes is no more than the user’s amount of TRX holding at a given time.
    + Each account can vote for several delegates for several times.
-   + The final votes will be tallied at 24 o'clock and the list of delegates will be updated.
+   + The votes are tallied once every 6 hours and the final election results will be updated at 0:00 AM (0:00) UTC, 6:00 AM (6:00) UTC, 12:00 PM (12:00) UTC and 6:00 PM (18:00) UTC.
    + TRX for testing will not be consumed in the voting process.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/running_a_delegate/submit_vote.png)
