@@ -52,7 +52,7 @@ First-place winners for the following five applications will take home a reward 
 
 
 The developer of any product we deem to be complete will receive a $100,000 TRON LOAN. For more information please refer to  
-https://github.com/ybhgenius/Documentation/blob/master/English_Documentation/TRON_Loan.md
+https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Loan.md
 
 ## Timeline
 
