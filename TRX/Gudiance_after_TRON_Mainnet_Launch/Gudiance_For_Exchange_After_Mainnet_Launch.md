@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/波场主网上线后的指导方案/时间计划.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1.Launch Prep (Now – 5/31)
 
@@ -35,7 +35,7 @@ Please contact Tron Foundation to receive mainnet tokens.
 
 # Exchange
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/波场主网上线后的指导方案/SR指引.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_exchange.png)
 
 1.	TRX withdrawals will not be allowed:
 TRX withdrawals will not be allowed from June 21st to 24th (GMT+8). 

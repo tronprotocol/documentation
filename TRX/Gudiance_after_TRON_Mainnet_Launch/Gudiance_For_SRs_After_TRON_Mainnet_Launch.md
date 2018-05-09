@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/波场主网上线后的指导方案/时间计划.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1.Launch Prep (Now – 5/31)
 
@@ -36,7 +36,7 @@ SR:
 
 # SR
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/波场主网上线后的指导方案/SR指引.png)
+![](https://github.com/ybhgenius/Documentation/blob/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_SRs.png)
 
 1.	Campaigning 4/27-5/31 (GMT+8)
 SR election campaigning period allows SRs to attract more votes from TRX holders.
