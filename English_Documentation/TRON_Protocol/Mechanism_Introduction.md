@@ -49,8 +49,7 @@ Once unfrozen, previous votes casted will be invalid, which can be prevented by 
 + Example:
 
 ```
-freezebalance 123455 10_000_000 3 // 冻结了10TRX，获取了10单位股权 votewitness 123455 witness1 4 witness2 6 // 同时给witness1投了4票，给witness2投了6票 votewitness 123455 witness1 10 // 给witness1投了10票
-e.g. freezebalance 123455 10_000_000 3// 10 shares for 10 frozen TRX
+freezebalance 123455 10_000_000 3// 10 shares for 10 frozen TRX
 votewitness123455 witness1 4 witness2 6//4 votes for witness1 and 6 votes for witness2
 vote witness 123455 witness1 10// 10 votes for witness1
 
