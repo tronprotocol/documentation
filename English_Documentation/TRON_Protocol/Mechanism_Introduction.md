@@ -24,7 +24,7 @@ Amount: freeze balance in drops, with a minimum of 1_000_000drops, equivalent to
 Time: frozen time, the interval between freezing asset and unfreezing is at least 3 days. 
 ```
 
-+ Exapmle:
++ Example:
 
     `freezebalance 123455 10,000,000 3`
 
