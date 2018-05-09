@@ -1,5 +1,7 @@
 # 时间计划
 
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/波场主网上线后的指导方案/时间计划.png)
+
 ## 1.上线准备阶段
 
 + 主网功能开发测试完成。
@@ -31,6 +33,9 @@ SR
 3.	注意号召粉丝参加北京时间6月26日的正式投票。
 
 # SR
+
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/波场主网上线后的指导方案/SR指引.png)
+
 1.	宣传造势（北京时间4月27日-北京时间5月31日）
 SR竞选宣传，让更多的用户投票给自己。
 2.	候选人交保证金
