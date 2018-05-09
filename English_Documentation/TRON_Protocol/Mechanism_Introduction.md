@@ -67,4 +67,4 @@ All contracts consume bandwidth, including transfer, migration of asset, voting,
 
 If a new operation exceeds a given amount of time (**10s**) from the last contract, if does not consume any bandwidth.  
 
-Bandwidth is not removed for balance freezing. New bandwidths will be accumulated upon acts of balance freezing.
+Bandwith is not removed for balance freezing. New bandwidths will be accumulated upon acts of balance freezing.
