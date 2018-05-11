@@ -361,10 +361,10 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {};
 27.2 提供节点  
 fullnode。  
-27.3 参数说明  
-WithdrawBalanceContract：包含地址。
+27.3 参数说明        
+WithdrawBalanceContract：包含地址。     
 27.4 返回值 
-Transaction：返回交易，钱包签名后再请求广播交易。 
-27.5 功能说明  
+Transaction：返回交易，钱包签名后再请求广播交易。      
+27.5 功能说明     
 本接口仅提供给超级代表。超级代表记账成功后，将获得奖励，奖励不直接增加到账户余额上。而是单独保存在账户allowance字段，每24小时允许提取一次到账户余额。
 
