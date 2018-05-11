@@ -328,30 +328,30 @@ TransactionList：交易列表。
 
 ## 26. 锁定资金
 
-26.1 接口声明
-rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {};
-26.2 提供节点                                                                         
-fullnode。
-26.3 参数说明                                                               
-FreezeBalanceContract：包含地址、锁定资金、锁定时间。目前锁定时间只能是3天。
-26.4 返回值                                                        
-Transaction：返回包含资金的交易，钱包签名后再请求广播交易。 
-26.5 功能说明                                                          
+26.1 接口声明                                                                                  
+rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {};                                                                                  
+26.2 提供节点                                                                                                                                                           
+fullnode。                                                                                  
+26.3 参数说明                                                                                                                                                
+FreezeBalanceContract：包含地址、锁定资金、锁定时间。目前锁定时间只能是3天。                                                                                  
+26.4 返回值                                                                                                                                          
+Transaction：返回包含资金的交易，钱包签名后再请求广播交易。                                                                                   
+26.5 功能说明                                                                                                                                            
 锁定资金将带来两个收益：
 a.获得带宽，每次要更新区块链的交易都需要消耗带宽(如果当前交易距离上次交易超过10s，本次交易不消耗带宽)。获得带宽=drops*锁定天数。每次交易（所有会修改区块链账本的操作）消耗带宽为100000。
 b.获得投票的权利，锁定多少个trx就获得多少个投票权。
 
 ## 27. 解除资金锁定
 
-27.1 接口声明
-rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {};
-27.2 提供节点  
-fullnode。  
-27.3 参数说明  
-UnfreezeBalanceContract：包含地址。
-27.4 返回值 
-Transaction：返回交易，钱包签名后再请求广播交易。 
-27.5 功能说明  
+27.1 接口声明                                                                                  
+rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {};                                                                                  
+27.2 提供节点                                                                                    
+fullnode。                                                                                    
+27.3 参数说明                                                                                   
+UnfreezeBalanceContract：包含地址。                                                                                  
+27.4 返回值                                                                                   
+Transaction：返回交易，钱包签名后再请求广播交易。                                                                                   
+27.5 功能说明                                                                                    
 只有最后一次锁定资金，3天之后才允许解除锁定。解除锁定，将清除投票记录。解除锁定，不会清除已经获得的带宽。
 锁定资金超过3天后，不会自动解除锁定。
 
