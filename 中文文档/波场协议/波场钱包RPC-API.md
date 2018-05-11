@@ -52,7 +52,7 @@ AccountList： Account的列表。
 4.5	功能说明。  
 查询目前在区块链中保存的所有账户信息。
 
-## 5. 创建账户
+## 5. 创建账户(删除，不再提供)
 
 5.1	接口声明  
 rpc CreateAccount (AccountCreateContract) returns (Transaction){};  
@@ -65,7 +65,7 @@ Transaction：返回包含创建账户的交易，钱包签名后再请求广播
 5.5	功能说明  
 注册。钱包注册时可以创建一个账户（也可以选择不创建，）。
 
-## 6. 更新账户（暂未实现）
+## 6. 更新账户
 
 6.1	接口声明  
 rpc UpdateAccount (AccountUpdateContract) returns (Transaction){};  
@@ -130,7 +130,7 @@ Transaction：返回包含申请成为候选人的交易，钱包签名后再请
 10.5 功能说明  
 每个波场用户都可以申请成为超级代表候选人。要求账户在区块链上已经创建。
 
-## 11. 更新超级代表候选人信息（暂未实现）
+## 11. 更新超级代表候选人信息
 
 11.1 接口声明  
 rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {};  
@@ -222,7 +222,7 @@ AssetIssueContract：通证详细信息。
 17.5 功能说明  
 按照通证名称查询通证。通证名称在波场中确保唯一。
 
-## 18. 查询当前时间有效发行的通证列表（暂未实现）
+## 18. 查询当前时间有效发行的通证列表
 
 18.1 接口声明  
 rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){};  
@@ -274,7 +274,7 @@ NumberMessage：交易总数。
 21.5 功能说明  
 获取交易的总数量。
 
-## 22. 通过ID查询交易（暂未实现）
+## 22. 通过ID查询交易
 
 22.1 接口声明  
 rpc getTransactionById (BytesMessage) returns (Transaction) {};  
@@ -287,7 +287,7 @@ Transaction：被查询的交易。
 22.5 功能说明  
 通过ID查询交易的详细信息，ID就是交易数据的Hash值。
 
-## 23. 通过时间查询交易（暂未实现）
+## 23. 通过时间查询交易
 
 23.1 接口声明  
 rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {};  
@@ -300,7 +300,7 @@ TransactionList：交易列表。
 23.5 功能说明  
 通过起止时间查询所有发生的交易。
 
-## 24. 通过地址查询所有发起交易（暂未实现）
+## 24. 通过地址查询所有发起交易
 
 24.1 接口声明  
 rpc getTransactionsFromThis (Account) returns (TransactionList) {};  
@@ -313,7 +313,7 @@ TransactionList：交易列表。
 24.5 功能说明  
 通过账户地址查询所有发起的交易。
 
-## 25. 通过地址查询所有接收交易（暂未实现）
+## 25. 通过地址查询所有接收交易
 
 25.1 接口声明  
 rpc getTransactionsToThis (Account) returns (NumberMessage) {};  
