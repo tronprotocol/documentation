@@ -8,7 +8,7 @@
 
 + If you want to know more about the recent progress of the TRON project, please check out [TRON Introduction](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Introduction).  
 + If you want to know more about the protocol documentation, please check out [TRON Protocol](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Protocol).  
-+ If you want to know more about the SP information or vote and token creation, please check out [TRON blockchain explorer introduction](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Blockchain_Explorer_Introduction). 
++ If you want to know more about the SR information, vote, or token creation, please check out [TRON blockchain explorer introduction](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Blockchain_Explorer_Introduction). 
 + If you want to know more about the programming contest, please check out [TRON programming contest](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Programming_Contest).
 + If you want to know more about the TRX migration, please check out [TRX](https://github.com/tronprotocol/Documentation/tree/master/TRX).
 + For latest process of TRON, please follow the [TRON documentation](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation).
