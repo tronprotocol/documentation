@@ -89,7 +89,7 @@ VoteWitnessContract：包含投票人地址和一个投票对象列表，包含�
 7.4	返回值  
 Transaction：返回包含投票的交易，钱包签名后再请求广播交易。  
 7.5	功能说明  
-投票功能。只能对超级代表候选人进行投票，投票总数量不能大于投票人拥有的波场币数量。
+投票功能。只能对超级代表候选人进行投票，投票总数量不能大于账户锁定资金的数量，参见26 锁定资金。
 
 ## 8. 通证发行波场钱包RPC-API 
         
@@ -326,4 +326,45 @@ TransactionList：交易列表。
 25.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。
 
+## 26. 锁定资金
+
+26.1 接口声明
+rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {};
+26.2 提供节点  
+fullnode。  
+26.3 参数说明  
+FreezeBalanceContract：包含地址、锁定资金、锁定时间。目前锁定时间只能是3天。
+26.4 返回值 
+Transaction：返回包含资金的交易，钱包签名后再请求广播交易。 
+26.5 功能说明  
+锁定资金将带来两个收益：
+a.获得带宽，每次要更新区块链的交易都需要消耗带宽(如果当前交易距离上次交易超过10s，本次交易不消耗带宽)。获得带宽=drops*锁定天数。每次交易（所有会修改区块链账本的操作）消耗带宽为100000。
+b.获得投票的权利，锁定多少个trx就获得多少个投票权。
+
+## 26. 解除资金锁定
+
+26.1 接口声明
+rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {};
+26.2 提供节点  
+fullnode。  
+26.3 参数说明  
+UnfreezeBalanceContract：包含地址。
+26.4 返回值 
+Transaction：返回交易，钱包签名后再请求广播交易。 
+26.5 功能说明  
+只有最后一次锁定资金，3天之后才允许解除锁定。解除锁定，将清除投票记录。解除锁定，不会清除已经获得的带宽。
+锁定资金超过3天后，不会自动解除锁定。
+
+## 26. 赎回出块奖励
+
+26.1 接口声明
+rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {};
+26.2 提供节点  
+fullnode。  
+26.3 参数说明  
+WithdrawBalanceContract：包含地址。
+26.4 返回值 
+Transaction：返回交易，钱包签名后再请求广播交易。 
+26.5 功能说明  
+本接口仅提供给超级代表。超级代表记账成功后，将获得奖励，奖励不直接增加到账户余额上。而是单独保存在账户allowance字段，每24小时允许提取一次到账户余额。
 
