@@ -41,11 +41,11 @@ High-performance, decentralized/distributed nodes are spontaneously chosen by ho
 
 + Smart Contract with High Efficiency
 
-    It will be fulfilled in the following ways:
+It will be fulfilled in the following ways:
 
-    + TRON supports JAVA development—a programming language that has mature development communities, supports multiple scenarios and is highly effective.
-    + High-efficiency consensus mechanism 
-    + TRON embraces excellent database structure and account system to help users with the conversion from complex conceptions and models into utility applications.
+   + TRON supports JAVA development—a programming language that has mature development communities, supports multiple scenarios and is highly effective.
+   + High-efficiency consensus mechanism 
+   + TRON embraces excellent database structure and account system to help users with the conversion from complex conceptions and models into utility applications.
 
 ## The Future of TRON 
 

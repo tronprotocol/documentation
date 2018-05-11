@@ -183,25 +183,26 @@ public运行环境下的问题
 
     答：39.106.220.120在北京，其他的都在美国欧洲香港。
 
-14. Q: Can token holders hold trx on tron.network for main-net conversion. If not what other wallets may be capable, or if only exchanges.
+14.	用户可以通过将TRX存入tron.network向主网迁移吗？如果不行，还有哪些其他钱包支持迁移，还是只能由交易所经手？
 
-    A: No wallets are capable. Only exchanges.
+    答：暂无钱包支持迁移，只能通过交易所。
 
-15. Q: In regards to Tron wallets, how many wallets are currently created.
+15.	TRON现阶段有多少种钱包？
 
-    A: As far as I know, we already have a cli wallet, a web wallet and an ios wallet. And I believe after the programming contest there will be plenty well-designed wallets.
+    答：据现有统计，我们已有命令行钱包、网页钱包，以及iOS钱包。我们相信在编程大赛之后，还会有更多设计精良的钱包。
 
-16. Q:Is 25Gbps a requirement or is 10Gbps satisfactory, or what is the threshold that is acceptable.
+16.	宽带需要达到25Gbps吗，还是10Gbps就足够？或者有其他的门槛？
 
-    A: There is no hard requirement for the network bandwidth. The specification we gave is just an advice.
+    答：我们对网络宽带不做要求，给定的具体数据仅供参考。
 
-17. Q: The people outside of the top 27 but in the top 100, are they ranked in order, 28-100 or is there an algorithm to just select who would be next if someone is voted out?
+17.	对于超级代表选举中排名27名开外但是100名以内的人，在当选的超级代表出局时，是由排名决定替补顺序，还是由特定算法决定接替人选？
 
-    A: or testnet we now just simply pick top 27 nodes with most votes. For mainnet and future testnet we may chose a different algorithm to add some randomness to part of the SR election.
-    
-18. Q: Is a well formed technical plan all we need, or must we have the hardware before applying.
+    答：在测试网，我们仅是选出得票最多的27个节点。在主网及将来的测试网上，我们会使用另外的算法，增加超级代表产生的随机性。
 
-    A: The technical plan has two parts:1 before June 26 the first election & 2 after June 26 the first election. The second part just need the plan. For the first part you can only have the plan for now but only after you have hardware we can test your node and tell everyone "yes, they do have a test node."Applying to be a SR has no direct connection to qualifying a SR.
+18.	想要成为超级代表，我们只需要一个成熟的技术方案就可以，还是需要在提交申请前就搭建硬件？
+
+    答：技术方案需要包含两个部分：1. 在6月26日即第一次选举之前的技术方案。2. 在6月26日即第一次选举结束之后的技术方案。第二部分只要有一个方案就可以。而第一部分，现阶段可以只有方案，但是只有具备了硬件条件，我们才能测试你的节点，其他用户也才能确认你们确实已经搭建起了测试节点。申请超级代表，并不等于能胜任超级代表。
+
 
 
 
