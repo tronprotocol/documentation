@@ -358,7 +358,7 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 ## 28. 赎回出块奖励
 
 28.1 接口声明
-rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {};
+rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {};  
 28.2 提供节点  
 fullnode。  
 28.3 参数说明        
