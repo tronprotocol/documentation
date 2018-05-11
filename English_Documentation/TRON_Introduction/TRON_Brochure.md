@@ -78,9 +78,9 @@ Tron is home to its own virtual machin, on which Smart contract operates, allowi
 
     A wallet tracks the state of every asset, all state transaction of TRX and other users, and also allow one to send or receive transaction. (With the wallet, users can view their holding of TRX as well as other assets, or initiate or take transactions.)
 
-## Blockchain Explorer
++ Blockchain Explorer
 
-Blockchain explorer is used for the viewing of block records, list of nodes, node deploymeng and real-time operation of Tron.
+    Blockchain explorer is used for the viewing of block records, list of nodes, node deploymeng and real-time operation of Tron.
 
 ## ERC20 Token Migration
 
