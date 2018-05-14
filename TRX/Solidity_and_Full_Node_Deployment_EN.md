@@ -18,7 +18,7 @@
         cpsrc/main/resources/config.conf ../
         cd ..
 
-    `config.conf` has to be open to discover nodes deployed by TRON faster copy and paste the address list in `ip.list` under `seed.node` to `active in` the `node`,   
+    `config.conf` has to be open to discover nodes deployed by TRON faster copy and paste the address list in `ip.list` under `seed.node` to `active `in the `node`,   
      as follows：
    
             active = [  
