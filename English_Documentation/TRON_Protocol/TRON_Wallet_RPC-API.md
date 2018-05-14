@@ -16,7 +16,7 @@ Query of balance list. Display of all asset information in account return.
 ## 2. TRX transfer
 
 2.1	Interface statement  
-rpc CreateTransaction (TransferContract) returns (Transaction)　{};
+rpc CreateTransaction (TransferContract) returns (Transaction)　{};  
 2.2	Node  
 Fullnode.  
 2.3	Parameters  
