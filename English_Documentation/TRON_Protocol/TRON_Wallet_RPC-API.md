@@ -1,4 +1,4 @@
-#TRON Wallet RPC-API
+# TRON Wallet RPC-API
 
 ## 1. Getting account information
 
@@ -16,7 +16,7 @@ Query of balance list. Display of all asset information in account return.
 ## 2. TRX transfer
 
 2.1	Interface statement  
-rpc CreateTransaction (TransferContract) returns (Transaction)　{};
+rpc CreateTransaction (TransferContract) returns (Transaction)　{};  
 2.2	Node  
 Fullnode.  
 2.3	Parameters  
@@ -52,7 +52,7 @@ AccountList: Account list.
 4.5	Function  
 Query of all account information currently stored in the blockchain.
 
-## 5. Creating account  
+## 5. Creating account (deleted, no longer available)  
 
 5.1	Interface statement  
 rpc CreateAccount (AccountCreateContract) returns (Transaction){};  
@@ -89,9 +89,9 @@ VoteWitnessContract: voter address and list of votes; candidate address and numb
 7.4	Returns  
 Transaction: returns transaction of votes  
 7.5	Function  
-Vote. Coin holders can only vote for Super Representative candidates, with no more votes than the amount of holding of TRX.
+Vote. Coin holders can only vote for Super Representative candidates, with no more votes than the amount of locked balance (see also 26. Balance freeze).
 
-## 8. Token issuance
+## 8. 1	TRON wallet RPC-API for token issuance
 
 8.1	Interface statement  
 rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {};  
@@ -115,7 +115,7 @@ EmptyMessage: null.
 9.4	Returns  
 WitnessList: list of witnesses and detailed information of the candidates.  
 9.5	Function  
-Query of all candidates prior to voting. Display 
+Query of all candidates prior to voting. 
 
 ## 10. Application for Super Representative (to be realized)
 
@@ -221,7 +221,7 @@ AssetIssueContract: information on the token.
 17.5 Function  
 Query of token information with the name. The exclusiveness of token name is ensured on TRON’s network.
 
-## 18. Query of current tokens by timestamp (to be realized)
+## 18. Query of current tokens by timestamp
 
 18.1 Interface statement  
 rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){};  
@@ -274,7 +274,7 @@ NumberMessage: Total number of transactions.
 21.5 Function  
 Accessing the total number of transactions.
 
-## 22. Query of transaction by ID (to be realized)
+## 22. Query of transaction by ID 
 
 22.1 Interface statement  
 rpc getTransactionById (BytesMessage) returns (Transaction) {};  
@@ -287,7 +287,7 @@ Transaction:  Queried transaction.
 22.5 Function  
 Query of transaction details by ID which is the Hash of transaction. 
 
-## 23. Query of transaction by timestamp (to be realized)
+## 23. Query of transaction by timestamp 
 
 23.1 Interface statement  
 rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {};  
@@ -326,4 +326,42 @@ TransactionList: transaction list.
 25.5 Function  
 Query of all transactions accepted by one given account.
 
+## 26 Balance freeze  
+26.1 Interface statement  
+rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {};  
+26.2 Node  
+Full Node.  
+26.3 Parameters  
+FreezeBalanceContract: address, balance to freeze and frozen duration. Currently balance can only be frozen for 3 days.  
+26.4 Returns  
+Transaction: Return includes a transaction of balance. Request transaction broadcasting after signed by wallet.  
+26.5 Function
 
+Two things can be gained through freezing balance:
+
+a.	Bandwidth points. Each update of blockchain transaction consumes bandwidth points (if more than 10s from the previous transaction, the current transaction does not consume any points). Bandwidth points obtained=drops*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 bandwidth points.  
+b.	Votes. The amount of votes gained equals to the amount of frozen TRX.
+
+## 27 Balance unfreeze
+27.1 Interface statement  
+rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {};  
+27.2 Node  
+Full Node.  
+27.3 Parameters  
+UnfreezeBalanceContract: address.  
+27.4 Returns  
+Transaction: returns transaction. Request transaction broadcasting after signed by wallet.  
+27.5 Function  
+Balance can be unfrozen only 3 days after the latest freeze. Voting records will be cleared upon unfrozen balance, while bandwidth points won’t be. Frozen balance will not be automatically unfrozen after 3 days’ duration. 
+
+## 28 Block-production reward redemption  
+28.1 Interface statement  
+rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {};  
+28.2 Node  
+Full Node.  
+28.3 Parameters  
+WithdrawBalanceContract: address.  
+28.4 Returns  
+Transaction: returns transaction. Request transaction broadcasting after signed by wallet.  
+28.5 Function  
+This interface is only accessible to Super Representatives. Super Representative can obtain reward after successful account keeping. Instead of saved to account balance, rewards will be held independently in account allowance, with 1 permitted withdrawal to account balance every 24 hours.
