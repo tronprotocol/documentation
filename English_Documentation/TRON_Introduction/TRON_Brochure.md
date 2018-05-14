@@ -76,7 +76,7 @@ Tron is home to its own virtual machin, on which Smart contract operates, allowi
 
 + Wallet
 
-    A wallet tracks the state of every asset, all state transaction of TRX and other users, and also allow one to send or receive transaction. (With the wallet, users can view their holding of TRX as well as other assets, or initiate or take transactions.)
+    With the wallet, users can view their holding of TRX as well as other assets, or initiate or take transactions.
 
 + Blockchain Explorer
 
@@ -92,7 +92,7 @@ The community is always an integral part of any blockchain project, so it is our
 
 There are numerous ways for Tron’s community members to be a part of the project, for instance, through participation in core programming tasks or third-party development through APIs to be opened up by Tron. Furthermore, a wide variety of competitions open to all users will be held for LOGO design, essay writing, poster design, competitive programming, etc. 
 
-+ Providing Types
++ Providing Code Types
 
     + feat: A new feature
     + fix: A bug fix

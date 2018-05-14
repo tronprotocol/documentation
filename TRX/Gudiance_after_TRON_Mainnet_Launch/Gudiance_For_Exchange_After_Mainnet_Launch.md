@@ -44,7 +44,7 @@ TRX withdrawals will not be allowed from June 21st to 24th (GMT+8).
 Deposits and withdrawals are not allowed on June 25th (GMT+8). 
 
 3.	ERC20 TRX tokens will be transferred to TRON. TRON will transfer mainnet tokens to exchanges:
-Exchanges will transfer ECT20 TRX tokens to TRON and TRON will burn them and transfer mainnet tokens to exchanges. 
+Exchanges will transfer ERC20 TRX tokens to TRON and TRON will burn them and transfer mainnet tokens to exchanges. 
 
 4.	System is updated and supports deposits and withdrawals of mainnet tokens:
 Exchanges update their systems which supports the wallet function of mainnet tokens instead of the function of ERC20 TRX. 

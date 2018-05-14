@@ -109,7 +109,7 @@ Marcus Zhao: Director of Technology, Tron
     |Phone*（include country code）|
     |Project Name*|
     |Project Type*（singel option）|(  ) Wallet based on Windows; (  ) Wallet based on Mac; (  ) Wallet based on iOS/Android; (  ) Wallet embedded with Google Chrome; (  )Blockchain Explorer;|
-    |Project Description*（In the form of link,installation package，etc.）|Please send instllation package or other related forms in the attachement. |
+    |Project Description*（In the form of link,installation package，etc.）|Please send installation package or other related forms in the attachement. |
     |Github*|
     |Video Introduction|
     |Name of Attachement|
