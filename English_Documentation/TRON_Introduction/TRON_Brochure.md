@@ -70,9 +70,9 @@ TRON is home to its own virtual machine, on which Smart contract operates, allow
 
 ## Third Party Applications
 
-+ Token Deployment Platforem 
++ Token Deployment Platform 
 
-    Third party developers are granted access to TRON’s network for the development of their own platforms. With the use of Tron’s token module, users of these platforms could also customize their own tokens.
+    Third party developers are granted access to TRON’s network for the development of their own platforms. With the use of TRON’s token module, users of these platforms could also customize their own tokens.
 
 + Wallet
 
