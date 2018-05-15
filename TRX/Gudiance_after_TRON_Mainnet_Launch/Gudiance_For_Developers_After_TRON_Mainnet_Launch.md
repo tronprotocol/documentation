@@ -22,7 +22,7 @@ Official launch of the genesis block will be on June 25 00:00 (GMT+8).
 
 Token migration:
 + Exchanges: ERC20 TRX tokens will be transferred to TRON. TRON will transfer mainnet tokens to exchanges.
-+ SR: SR candidate express migration will ensure swift application processing. SRs will have a certain number of initial votes. 
++ SR: Express TRX migration channel for Super Representative candidates can ensure unimpeded application for candidacy and a certain amount of initial votes.
 
 ## 4.SR Elections & Rewards
 
@@ -38,16 +38,16 @@ Developers:
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_developer.png)
 
-1.	Completion of development: Before May 31st (GMT+8) 
+1.	Completion of development: Before May 31st (GMT+8)  
 Announce the github address of each wallet, download the links for community and users to test and experiment.
 
-2.	Wallet test iteration: June 1-June 24 (GMT+8)
+2.	Wallet test iteration: June 1-June 24 (GMT+8)  
 Promote wallets for community and users to test and experiment, get feedback and iterate wallets.
 
-3.	Select the official recommended wallet for each platform (June 15, GMT+8)
+3.	Select the official recommended wallet for each platform (June 15, GMT+8)  
 On June 15th (GMT+8), the TRON team will review and select the official recommended wallet for each platform. The official recommended wallets can be submitted at any time, and TRON can add recommendations at any time. 
 
-4.	Wallet officially launched (June 25, GMT+8)
+4.	Wallet officially launched (June 25, GMT+8)  
 TRX users vote for SR candidates using wallets.
 
 
