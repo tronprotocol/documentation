@@ -37,7 +37,7 @@ TRON is committed to building utility blockchain products with thorough research
 + Unique Consensus
 
 Under TRON’s improved POS consensus, several elected nodes, which share equal rights and deployed by global users themselves, cooperate to accomplish calculation tasks.
-High-performance, decentralized/distributed nodes are spontaneously chosen by TRON holders who prioritizes their own interest.
+High-performance, decentralized/distributed nodes are spontaneously chosen by TRX holders who prioritizes their own interest.
 
 + Smart Contract with High Efficiency
 

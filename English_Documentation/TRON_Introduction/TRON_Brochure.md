@@ -4,7 +4,7 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Architecture.png)
 
-Tron adopts a 3-layer architecture comprised of storage layer, core layer and application layer.
+TRON adopts a 3-layer architecture comprised of storage layer, core layer and application layer.
 
 + Storage Layer
 
@@ -15,7 +15,7 @@ Tron adopts a 3-layer architecture comprised of storage layer, core layer and ap
 
     Smart contract module, account management module and consensus module are three modules of the core layer. It’s TRON’s vision to base its functions on a stacked virtual machine and optimized instruction set.  
     In order to better serve the development of dAPPs, Java is designated as the language for smart contracts, which is to be further supplemented by other high-level programming languages.  
-    In addition, innovations are made to Tron’s consensus on the basis of DPOS to fulfill its special needs.
+    In addition, innovations are made to TRON’s consensus on the basis of DPOS to fulfill its special needs.
 
 + Application Layer
 
@@ -26,7 +26,7 @@ Tron adopts a 3-layer architecture comprised of storage layer, core layer and ap
 
 + Improved Consensus Mechanism based on DPOS
 
-    High energy consumption, low efficiency and low TPS are always an issue with POW consensus, which is completely opposite from Tron’s values and design. Under the guidance of our architectural philosophy, we have chosen to adopt the POS mechanism as the basis of Tron consensus. Having gained knowledge on constructive ideas in the blockchain community through research, we made improvements to the DPOS mechianism to meet up with our demands, thereby coming up with the Tron consensus.
+    High energy consumption, low efficiency and low TPS are always an issue with POW consensus, which is completely opposite from TRON’s values and design. Under the guidance of our architectural philosophy, we have chosen to adopt the POS mechanism as the basis of TRON consensus. Having gained knowledge on constructive ideas in the blockchain community through research, we made improvements to the DPOS mechanism to meet up with our demands, thereby coming up with the TRON consensus.
 
 + Basic Rules of the Consensus Mechanism
 
@@ -66,11 +66,11 @@ Tron adopts a 3-layer architecture comprised of storage layer, core layer and ap
 ## Smart Contract/ Virtual Machine
 
 The smart contract module of TRON allows users to custominze contracts to their own needs.
-TRON is home to its own virtual machin, on which Smart contract operates, allowing for developers to customize for diverse and complex functions.
+TRON is home to its own virtual machine, on which Smart contract operates, allowing for developers to customize for diverse and complex functions.
 
 ## Third Party Applications
 
-+ Token Deployment Platform 
++ Token Deployment Platforem 
 
     Third party developers are granted access to TRON’s network for the development of their own platforms. With the use of Tron’s token module, users of these platforms could also customize their own tokens.
 
