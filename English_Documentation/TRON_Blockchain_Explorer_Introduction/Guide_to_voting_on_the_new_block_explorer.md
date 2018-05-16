@@ -50,7 +50,7 @@ Only TRX can be frozen. Two things can be obtained through balance freezing: TRO
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/12.png)
 
-## Click RESET to reset the amount of votes entered for the current “representative,
+## 10. Click RESET to reset the amount of votes entered for the current “representative,
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/13.png)
 
