@@ -1,6 +1,6 @@
 ## How to create account
 
-Accounts cannot be created directly. New accounts can only be created by making transfers to inexistent accounts, with a minimum transfer of 1 TRX.
+Accounts cannot be created directly. New accounts can only be created by making transfers to inexistant accounts, with a minimum transfer of 1 TRX.
 
 ## How to create witness 
 
@@ -8,11 +8,11 @@ It takes **100,000** TRX to become establish a witness account. These TRX will b
 
 ## How to freeze/unfreeze balance
 
-Once balance is frozen, users will receive a proportionate amount of shares and bandwidth. The shares are your votes and bandwidth is used for transactions. Their usage and means of calculation will be introduced in following sections.
+Once balance is frozen, users will receive a proportionate amount of TRON Power and entropy. The TP are your votes and entropy is used for transactions. Their usage and means of calculation will be introduced in following sections.
 
 Frozen assets will transfer from account Balance to Frozen, which will be reversed once balance unfreezes. Frozen assets cannot be used for transactions.
 
-When in need of more shares or bandwidth, users can freeze more balance to obtain more shares and bandwidth. Date to unfreeze balance will be renewed to 3 days after the latest freeze.
+When in need of more TP or entropy, users can freeze more balance to obtain more TP and entropy. Date to unfreeze balance will be renewed to 3 days after the latest freeze.
 
 Assets can be unfrozen after the date to unfreeze.
 
@@ -40,7 +40,7 @@ Upon complete block production, reward will be sent to allowance in user’s acc
 
 Voting requires shares, which can be obtained through balance freezing.
 
-Calculation of shares: 1 share for 1 frozen TRX.   
+Calculation of TP: 1 share for 1 frozen TRX.   
 
 Once unfrozen, previous votes casted will be invalid, which can be prevented by refreezing balance.
 
@@ -56,14 +56,14 @@ vote witness 123455 witness1 10// 10 votes for witness1
 The final result of the above commands is 10 votes for witness1 and no vote for witness2.
 ```
 
-## How to calculate bandwidth
+## How to calculate entropy
 
-Calculation of bandwidth: frozen asset * days * constant. 
+Calculation of entropy: frozen asset * days * constant. 
 
-Suppose 1 TRX is frozen (1,000,000 DROP) for a duration of 3 days, then bandwidth=1,000,000 * 3 * 1= 3,000,000. 
+Suppose 1 TRX is frozen (1,000,000 DROP) for a duration of 3 days, then entropy=1,000,000 * 3 * 1= 3,000,000. 
 
-All contracts consume bandwidth, including transfer, migration of asset, voting, freezing balance, etc. Inquiries do not consume bandwidth while for every contract about 100,000 bandwidths is consumed.
+All contracts consume entropy, including transfer, migration of asset, voting, freezing balance, etc. Inquiries do not consume entropy while for every contract about 100,000 entropy is consumed.
 
-If a new operation exceeds a given amount of time (**10s**) from the last contract, it does not consume any bandwidth.  
+If a new operation exceeds a given amount of time (**10s**) from the last contract, it does not consume any entropy.  
 
-Bandwidth is not removed for balance freezing. New bandwidths will be accumulated upon acts of balance freezing.
+Entropy is not removed for balance freezing. New entropy will be accumulated upon acts of balance freezing.

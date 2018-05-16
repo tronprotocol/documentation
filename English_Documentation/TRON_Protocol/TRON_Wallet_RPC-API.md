@@ -339,7 +339,7 @@ Transaction: Return includes a transaction of balance. Request transaction broad
 
 Two things can be gained through freezing balance:
 
-a.	Bandwidth points. Each update of blockchain transaction consumes bandwidth points (if more than 10s from the previous transaction, the current transaction does not consume any points). Bandwidth points obtained=drops*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 bandwidth points.  
+a.	Entropy points. Each update of blockchain transaction consumes entropy points (if more than 10s from the previous transaction, the current transaction does not consume any points). Entropy points obtained=drops*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 entropy points.  
 b.	Votes. The amount of votes gained equals to the amount of frozen TRX.
 
 ## 27. Balance unfreeze
@@ -352,7 +352,7 @@ UnfreezeBalanceContract: address.
 27.4 Returns  
 Transaction: returns transaction. Request transaction broadcasting after signed by wallet.  
 27.5 Function  
-Balance can be unfrozen only 3 days after the latest freeze. Voting records will be cleared upon unfrozen balance, while bandwidth points won’t be. Frozen balance will not be automatically unfrozen after 3 days’ duration. 
+Balance can be unfrozen only 3 days after the latest freeze. Voting records will be cleared upon unfrozen balance, while entropy points won’t be. Frozen balance will not be automatically unfrozen after 3 days’ duration. 
 
 ## 28. Block-production reward redemption  
 28.1 Interface statement  
