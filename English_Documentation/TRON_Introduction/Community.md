@@ -1,6 +1,6 @@
 # Community
 
-TRON community is driven by principles of sharing, equality,freedom of speech and personal expression were community members supporting each other. The Tron community social system provides all supporters and participants with more accessible and comprehensive resources and information on the projects of Tron. All participants will have full freedom with out of any restrictions in talent expression, new ideas suggestions, providing different opinions and taking discussion about different topics, as long as they follow community regulations and being actively engaged in community development at all levels.
+TRON community is driven by principles of sharing, equality,freedom of speech and personal expression where community members supporting each other. The Tron community social system provides all supporters and participants with more accessible and comprehensive resources and information on the projects of Tron. All participants will have full freedom with out of any restrictions in talent expression, new ideas suggestions, providing different opinions and taking discussion about different topics, as long as they follow community regulations and being actively engaged in community development at all levels.
 
 ## Reddit
 
