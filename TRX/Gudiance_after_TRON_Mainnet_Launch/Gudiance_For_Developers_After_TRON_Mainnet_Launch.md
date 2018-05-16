@@ -31,7 +31,7 @@ Users vote for SR candidates using wallets. SRs are responsible for transaction 
 Developers: 
 1.	Please note that you have to finish development before May 31st (GMT+8). 
 2.	Please note that the mainnet testing will be from June 1 to June 24 (GMT+8) and please participate. 
-3.	Please submit your versions to TRON before June 15th (GMT+8). 
+3.	Please submit your wallet versions to TRON before June 15th (GMT+8). 
 
 
 # Developer

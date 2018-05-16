@@ -292,7 +292,7 @@ Query of transaction details by ID which is the Hash of transaction.
 23.1 Interface statement  
 rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {};  
 23.2 Node  
-Soliditynod.  
+Soliditynode.  
 23.3 Parameters  
 TimeMessage: starting time and ending time.  
 23.4 Returns  
