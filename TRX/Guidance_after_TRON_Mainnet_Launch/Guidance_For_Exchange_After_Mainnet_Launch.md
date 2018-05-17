@@ -28,11 +28,6 @@ Token migration:
 
 Users vote for SR candidates using wallets. SRs are responsible for transaction packaging and block generation.
 
-Exchanges:
-1.	Please take note of token migration order. 
-2.	Please note that TRX withdrawals will be suspended from June 21st to June 24th (GMT+8). Both TRX deposits and withdrawals on exchanges will be suspended on June 25th (GMT+8). Deposits and withdrawals of TRX will resume on June 26th. 
-Please contact Tron Foundation to receive mainnet tokens.
-
 # Exchange
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_exchange.png)
@@ -55,5 +50,9 @@ After confirmation of exchanges, deposits and withdrawals of TRX will resume.
 6.	Permanent token-exchange counter: 
 Permanent token-exchange counter designated by TRON will retain the deposit channel for ERC20 TRX. Users can migrate from ERC20 TRX to mainnet tokens on a regular basis. 
 
-**Note**: Exchanges don’t need snapshots and don’t need to suspend trading of TRX. 
+**Note** 
+1. Exchanges don’t need snapshots and don’t need to suspend trading of TRX.
+2. Please take note of token migration order. 
+3. Please note that TRX withdrawals will be suspended from June 21st to June 24th (GMT+8). Both TRX deposits and withdrawals on exchanges will be suspended on June 25th (GMT+8). Deposits and withdrawals of TRX will resume on June 26th. 
+4. Please contact Tron Foundation to receive mainnet tokens. 
 
