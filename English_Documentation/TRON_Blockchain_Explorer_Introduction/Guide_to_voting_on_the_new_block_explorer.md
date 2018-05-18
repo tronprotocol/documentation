@@ -1,12 +1,12 @@
 # Guide to voting on the new block explorer
 
-## 1. Open TRON block explorer or log in to your wallet.
+## 1. Open TRON block explorer and log in to your wallet.
       
    https://tronscan.org/#/
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/1.png)
 
-## 2. Enter your password and download encrypted private key. (Password will encrypt private key. Both password and private key are needed to log in to your wallet.)
+## 2. Enter your password. (Password will encrypt private key. Both password and private key are needed to log in to your wallet.)
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/2.png)
 
@@ -14,7 +14,7 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/3.png)
 
-## 4. Save your private key (by copy-paste or printing). Enter the account page upon successful log-in.
+## 4. Save your private key (by copy-paste or printing).
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/4.png)
 
@@ -30,7 +30,12 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/7.png)
 
-## 7. An amount of TRX has to be frozen in order to vote for Super Representatives. To freeze balance, click the FREEZE button in ACCOUNT, enter the amount of TRX you’d like to freeze, check the box to confirm freezing ****TRX for at least 3 days, and click FREEZE BALANCE to complete your freeze.
+## 7. An certain amount of TRX has to be frozen in order to vote for Super Representatives.
+ 
++ To freeze balance, click the FREEZE button in ACCOUNT. 
++ Enter the amount of TRX you’d like to freeze.
++ Check the box to confirm freezing ****TRX for at least 3 days.
++ Click FREEZE BALANCE to complete your freeze.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/8.png)
 
@@ -44,19 +49,21 @@ Only TRX can be frozen. Two things can be obtained through balance freezing: TRO
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/10.png)
 
-## 9. Select “Super Representative” to vote. On voting page, enter an amount of votes, click SUBMIT VOTES to submit and your will be notified if submission is successful.
+## 9. Select “Super Representative” to vote.
+ 
+On the voting page enter the amount of votes, click on "submit votes" to submit your vore. Now you will be notified if your submission was successful.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/11.png)
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/12.png)
 
-## 10. Click RESET to reset the amount of votes entered for the current “representative,
+## 10. Click on the "reset" button to reset the amount of votes entered for the current Super Representative.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/13.png)
 
 **Note**
  
-Once you have submitted the amount of votes, the vote is complete. Voting requires TRON Power, which can be obtained by freezing TRX, one TRON Power for each frozen TRX and one vote for each TRON Power. Previous votes will no longer be valid when TRX is unfrozen, which can be avoided by refreezing. Voting will be successful as long as total votes casted do not exceed total TRON Power. There is no limit to the number of votes casted for a single Super Representative. A successful vote will consume 10^5 entropy points, unless it is more than 10s from the previous contract (vote, transfer, asset migration and balance freeze). When TRON Power are insufficient, user will be alerted on insufficient frozen balance. Only the last vote will be recorded, meaning that the last vote replaces all previous voting records.
+Once you have submitted the amount of votes, the vote is complete. Voting requires TRON Power, which can be obtained by freezing TRX. You will receive 1 TRON Power for each frozen TRX. You will get 1 vote for each TRON Power. Previous votes will no longer be valid when TRX is unfrozen, which can be avoided by refreezing. Voting will be successful as long as total votes casted do not exceed total TRON Power. There is no limit to the number of votes casted for a single Super Representative. "A successful vote will consume 100000/100k entropy points, unless it is more than 10 seconds away from the previous contract (vote, transfer, asset migration and balance freeze). If your TRON Power balance is insufficient, the user will be alerted on insufficient frozen balance. Only the last vote will be recorded, meaning that the last vote replaces all previous voting records.
 
 **Voting Guidelines**
 + The maximum votes a user has must be no more than his/her holding of TRX.
