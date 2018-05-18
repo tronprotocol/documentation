@@ -8,7 +8,7 @@ By editing files in the repository on Github the Super Representative can manage
 
 ## How to use
 
-__This guide assumes that you already have an account which has Super Representative (candidate) status__
+__This guide assumes that you already have an account which has Super Representative (candidate) status.__
 
 ### Step 1: Copy/Fork the template on Github
 
@@ -16,7 +16,7 @@ __This guide assumes that you already have an account which has Super Representa
 * Fork the repository  
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/fork-repo.png)
 
-After forking the repository you will be navigated to your own `tronsr-template` version of the repository where you can make changes
+After forking the repository you will be navigated to your own `tronsr-template` version of the repository where you can make changes.
 
 ## Step 2: Fill in the template
 
@@ -24,7 +24,7 @@ The template can now be modified by editing files on Github.
 
 * Click the file you want to edit  
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/github-open-file.png)
-* Open edit modus
+* Open edit mode
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/github-edit-file.png)
 * Add some information to the file
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/edit-team-intro.png)
@@ -46,7 +46,7 @@ After you filled in the template it can now be published on https://tronscan.org
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/open-account.png)
 * Scroll to the bottom and click "Set Github Link"
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/set-github-link.png)
-* Input your Github username and then press "Link Github"  
+* Enter your Github username and then press "Link Github"  
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/input-username.png)
 * View your new Page!  
 ![](https://raw.githubusercontent.com/tronscan/docs/master/images/view-page.png)

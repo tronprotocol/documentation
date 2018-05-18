@@ -8,7 +8,7 @@ All willing users can apply to become Super Representatives. But to prevent mali
 
 ## Freezing/unfreezing balance
 
-### Why freeze our tokens?
+### Why tokens are frozen?
 
 The balance freeze mechanism is set up out of two considerations:
 + To prevent malicious spam transactions from clogging the internet and causing delayed transaction confirmation.
@@ -16,7 +16,7 @@ The balance freeze mechanism is set up out of two considerations:
 
 ### Freeze/unfreeze mechanism
 
-Once balance is frozen, users will received a proportionate amount of Tron Power (TP) and Entropy. The Tron Power is your votes and Entropies used in transactions. Their usage and means of calculation will be introduced in following sections.
+Once balance is frozen, users will received a proportionate amount of Tron Power (TP) and Entropy. Tron Power (TP) represents voting power whereas Entropy is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
 
 Frozen asset are held in your frozen account and cannot be used for trading.
 
@@ -69,7 +69,7 @@ Too many transactions will clog our network like Ethereum and slow transaction c
 
 Calculation of Entropy: amount of frozen balance*days*constant. Note that the unit of frozen balance is drop, and the current constant is 1.
 
-e.g. Suppose 1 TRX (1,000,000 drop) is frozen for a fixed duration of 3 days, Entropy=1,000,000*3*1=3,000,000
+e.g. Suppose 1 TRX (1,000,000 drop) is frozen for a fixed duration of 3 days, Entropy=1,000,000 * 3 * 1=3,000,000
 
 Aside from inquiry, all transactions, ranging from transfer, asset migration, voting to balance freeze, occurring more frequently than once every 10 seconds consumes Entropy. Every contract consumes 100,000 Entropies. 
 
