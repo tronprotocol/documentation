@@ -28,35 +28,37 @@ Token migration:
 
 Users vote for SR candidates using wallets. SRs are responsible for transaction packaging and block generation.
 
-SR: 
-1.	Please pay deposit before May 31st (GMT+8). 
-2.	Please take part in the mainnet test voting and run test nodes from June 1st to June 24th (GMT+8). 
-3.	Please call on your supporters to vote on June 26th. 
+# Developer
+
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_developer.png)
+
+1.	Completion of development: Before May 31st (GMT+8)  
+Announce the github address of each wallet, download the links for community and users to test and experiment.
+
+2.	Wallet test iteration: June 1-June 24 (GMT+8)  
+Promote wallets for community and users to test and experiment, get feedback and iterate wallets.
+
+3.	Select the official recommended wallet for each platform (June 15, GMT+8)  
+On June 15th (GMT+8), the TRON team will review and select the official recommended wallet for each platform. The official recommended wallets can be submitted at any time, and TRON can add recommendations at any time. 
+
+4.	Wallet officially launched (June 25, GMT+8)  
+TRX users vote for SR candidates using wallets.
+
+**Note** 
+1.	Please note that you have to finish development before May 31st (GMT+8). 
+2.	Please note that the mainnet testing will be from June 1 to June 24 (GMT+8) and please participate. 
+3.	Please submit your wallet versions to TRON before June 15th (GMT+8). 
 
 
-# SR
 
-![](https://github.com/ybhgenius/Documentation/blob/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_SRs.png)
 
-1.	Campaigning 4/27-5/31 (GMT+8)
-SR election campaigning period allows SRs to attract more votes from TRX holders.
 
-2.	Candidates transfer deposit:
-  Candidates will be informed on May 15th (GMT+8) to transfer 
-  200K TRX to Tron Foundation by May 31st as deposit. Deposit 
-  will be returned to designated Tron mainnet addresses at midnight 
-  June 25th (GMT+8).
 
-3.	Election test period: 6/1 - 6/24 (GMT+8)
-Supporters can do test voting. Run test nodes and generate blocks.
 
-4.	Candidates’ deposit is returned:
-Deposit will be returned to designated Tron mainnet addresses at midnight June 25th (GMT+8).
 
-5.	Apply to become an SR candidate using the wallet and call on supporters to vote.
 
-6.	Become official SRs:
 
-27 candidates who receive most votes will become official SRs. They are eligible to generate blocks and get rewards in TRX.
+
+
 
 
