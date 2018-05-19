@@ -1,6 +1,14 @@
 # Transition Manual for Exchanges and TRX
 
-## It is suggested that exchanges deploy a Full Node and a Solidity Node in Tron blockchain for improved security. The Full Node will synchronize all data in the blockain, while the Solidity Node will only synchronize data from irreversible blocks already confirmed. Transaction broadcasting can be conducted through the Full Node. With the Solidity Node, users can check their account balance.
+## It is suggested that exchanges deploy a Full Node and a Solidity Node in Tron blockchain for improved security. 
+
+### The Full Node will:
+- synchronize all data in the blockchain
+- allow transaction broadcasting to be conducted
+
+### The Solidity Node will
+- only synchronize data from irreversible blocks already confirmed
+- allow users to check their account balance
 
 1，The prerequisite of Full Node and Solidity Node deployment:  
 
@@ -82,7 +90,7 @@ GRPC interface is available on Solidity Node, providing Http interface for gRPC 
       //addressbase58=
       //27mAse8NBVPM4M7Mpp5sxZcLcYkpSqrcoHX
 
-Please note: All addresses of transactions and bock storage should be in byte[] as it has 14 bytes less than the base58check format (21 vs 35). Besides the initial address and the witness address in the configuration file, which adopt the base58check format, all other addresses in blockchain nodes should maintain their original format. Where it involves input and output for the wallet, format conversion has to be made, but what is presented to users should be in base58check format. Addresses should be validated before being converted to base58check format.
+Please note: All addresses of transactions and block storage should be in byte[] as it has 14 bytes less than the base58check format (21 vs 35). Besides the initial address and the witness address in the configuration file, which adopt the base58check format, all other addresses in blockchain nodes should maintain their original format. Where it involves input and output for the wallet, format conversion has to be made, but what is presented to users should be in base58check format. Addresses should be validated before being converted to base58check format.
 
 6，Connecting with Solidity Node or grpc-gateway to check your balance
 
