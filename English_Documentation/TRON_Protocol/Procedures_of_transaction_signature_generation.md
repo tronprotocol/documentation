@@ -13,7 +13,8 @@
     pubKey::04a5bb3b28466f578e6e93fbfd5f75cee1ae86033aa4bbea690e3312c087181eb366f9a1d1d6a437a9bf9fc65ec853b9fd60fa322be3997c47144eb20da658b3d1         
     hash:::159817a085f113d099d3d93c051410e9bfe043cc5c20e43aa9a083bf73660145         
     r:::38b7dac5ee932ac1bf2bc62c05b792cd93c3b4af61dc02dbb4b93dacb758123f         
-    s:::08bf123eabe77480787d664ca280dc1f20d9205725320658c39c6c143fd5642d         v:::0
+    s:::08bf123eabe77480787d664ca280dc1f20d9205725320658c39c6c143fd5642d         
+    v:::0 
 
    Note: the signed result should be 65 byte in size—r 32 bytes, s 32 bytes and v 1 byte.
 
@@ -22,6 +23,20 @@
 When a full node receives transaction, it will verify signature, comparing an address calculated with hash, r, s and v with the address of the contract. Signature is successfully verified if the two addresses match.
 
 # III.	Example of code
-
-    public static Transaction sign(Transaction transaction, ECKey myKey) {   Transaction.Builder transactionBuilderSigned = transaction.toBuilder();    byte[] hash = sha256(transaction.getRawData().toByteArray());   List<Contract> listContract = transaction.getRawData().getContractList();   for (int i = 0; i < listContract.size(); i++) {     ECDSASignature signature = myKey.sign(hash);     ByteString bsSign = ByteString.copyFrom(signature.toByteArray());     transactionBuilderSigned.addSignature(         bsSign);//Each contract may be signed with a different private key in the future.  }
+```java
+    public static Transaction sign(Transaction transaction, ECKey myKey) {
+    
+        Transaction.Builder transactionBuilderSigned = transaction.toBuilder();  
+        byte[] hash = sha256(transaction.getRawData().toByteArray());  
+        List<Contract> listContract = transaction.getRawData().getContractList();  
+        
+            for (int i = 0; i < listContract.size(); i++) {
+            
+                ECDSASignature signature = myKey.sign(hash);    
+                ByteString bsSign = ByteString.copyFrom(signature.toByteArray());    
+                //Each contract may be signed with a different private key in the future.
+                transactionBuilderSigned.addSignature( bsSign );
+                 
+                }
+```
 
