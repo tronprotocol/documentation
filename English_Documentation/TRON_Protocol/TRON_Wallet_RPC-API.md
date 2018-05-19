@@ -342,7 +342,7 @@ Two things can be gained through freezing balance:
 a.	Entropy points. Each update of blockchain transaction consumes entropy points (if more than 10s from the previous transaction, the current transaction does not consume any points). Entropy points obtained=drops*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 entropy points.  
 b.	Votes. The amount of votes gained equals to the amount of frozen TRX.
 
-## 27. Balance unfreeze
+## 27. Unfreeze Balance
 27.1 Interface statement  
 rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {};  
 27.2 Node  
