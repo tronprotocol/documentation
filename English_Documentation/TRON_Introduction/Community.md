@@ -1,10 +1,10 @@
 # Community
 
-TRON community is driven by principles of sharing, equality,freedom of speech and personal expression where community members supporting each other. The Tron community social system provides all supporters and participants with more accessible and comprehensive resources and information on the projects of Tron. All participants will have full freedom with out of any restrictions in talent expression, new ideas suggestions, providing different opinions and taking discussion about different topics, as long as they follow community regulations and being actively engaged in community development at all levels.
+TRON community is driven by principles of sharing, equality, freedom of speech and personal expression where community members support each other. The community social system provides all supporters and participants with more accessible and comprehensive resources and information on the projects of TRON. All participants will have full freedom without any restrictions to express their talents, suggest new ideas and opinate and discuss about different topics (subjects), as long as they follow the community rules and are actively engaged in community development at all levels.
 
 ## Reddit
 
-To its host of supporters and developers converging here,TRON [reddit](https://www.reddit.com/r/Tronix/)is the dream venue for brainstorming and the exchange of ideas. With a firm belief in the freedom of speech, Tron community as a non-profit community accommodates all perspectives, with the aim for all participants to achieve progress through sharing.  
+To host its supporters and developers, TRON [reddit](https://www.reddit.com/r/Tronix/)is the dream venue for brainstorming and the exchange of ideas. With a firm belief in the freedom of speech, As a non-profit community, TRON accommodates all perspectives, with the aim for all participants to achieve progress through sharing.  
 
 Current Official Subreddits:
 
