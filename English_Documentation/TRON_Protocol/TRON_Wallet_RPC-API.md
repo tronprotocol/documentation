@@ -167,7 +167,7 @@ ParticipateAssetIssueContract: participant address, issuer address, token name, 
 13.4 Returns  
 Transaction: returns transaction of participation in token offering.  
 13.5 Function  
-Participation in toke offering.
+Participation in token offering.
 
 ## 14. Query of nodes
 
@@ -232,7 +232,7 @@ NumberMessage: current timestamp (the number of milliseconds since 1970)
 18.4 Returns  
 AssetIssueList: AssetIssueContract list and detailed information   
 18.5 Function  
-List of all nodes. Display of current nodes for users’ reference.
+List of issued tokens by timestamp. Display of current nodes for users’ reference.
 
 ## 19. Get current block
 
@@ -326,7 +326,7 @@ TransactionList: transaction list.
 25.5 Function  
 Query of all transactions accepted by one given account.
 
-## 26. Balance freeze  
+## 26. Freeze Balance  
 26.1 Interface statement  
 rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {};  
 26.2 Node  

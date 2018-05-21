@@ -80,7 +80,7 @@
      `parentHash`: the hash of last block – e.g. “_7dacsa…3ed_.”  
      `number`: the height of this block – e.g. _13534657_.  
      `witness_id`: the id of witness which packed this block – e.g. “_0xu82h…7237_”.  
-     `witness_address`: the adesss of the witness packed this block – e.g. “_0xu82h…7237_”.
+     `witness_address`: the address of the witness packed this block – e.g. “_0xu82h…7237_”.
 
          message BlockHeader {   
            message raw {     
@@ -99,7 +99,7 @@
 
      message `ChainInventory` contains `BlockId` and `remain_num`.  
      `BlockId`: the identification of block.  
-     `remain_num`：the remain number of blocks in the synchronizing process. 
+     `remain_num`：the remaining number of blocks in the synchronizing process. 
      
      A `BlockId` contains 2 parameters:  
      `hash`: the hash of block.  
@@ -256,7 +256,7 @@
            }                       t
 
 +	Each transaction contains several TXInputs, TXOutputs and other related qualities.
-Input, transaction and head block all require signature.
+Input, transaction and block header all require signature.
 
      message `Transaction` contains `raw_data` and `signature`.  
      `raw_data`: message `raw`.  
@@ -485,11 +485,11 @@ Input, transaction and head block all require signature.
           UNKNOWN = 255;
         }
       
-     message`DisconnectMessage` contains `reason`.  
+     message `DisconnectMessage` contains `reason`:  
      `DisconnectMessage`: the message when disconnection occurs.  
      `reason`: the reason for disconnecting.
       
-     message`HelloMessage` contains 2 parameters:  
+     message `HelloMessage` contains 3 parameters:  
      `HelloMessage`: the message for building connection.  
      `from`: the nodes that request for building connection.  
      `version`: the version when connection is built.
@@ -502,13 +502,13 @@ Input, transaction and head block all require signature.
     __`GetBalance`__ :  
     `GetAccount` takes a parameter of Account, and returns an `Account` object.  
     __`CreateTransaction`__ ：  
-    `CreatTransaction` takes a parameter of TransferContract, and returns an `Transaction` object.   
+    `CreateTransaction` takes a parameter of TransferContract, and returns an `Transaction` object.   
     __`BroadcastTransaction`__ :  
    `BroadcastTransaction` takes a parameter of Transaction, and returns an `Return` object.   
     __`CreateAccount`__ :  
     `CreateAccount` takes a parameter of AccountCreateContract, and returns an `Transaction` object.  
-    __`CreatAssetIssue`__ :  
-    `CreatAssetIssue` takes a parameter of AssetIssueContract, and returns an `Transaction` object.   
+    __`CreateAssetIssue`__ :  
+    `CreateAssetIssue` takes a parameter of AssetIssueContract, and returns an `Transaction` object.   
     __`ListAccounts`__:  
     `ListAccounts` takes a parameter of EmptyMessage, and returns an `AccountList` object.   
     __`UpdateAccount`__:  
@@ -799,7 +799,7 @@ Input, transaction and head block all require signature.
          }
    
    `Address`: the address  of nodes.  
-   message`Address` contains 2 parameters:  
+   message `Address` contains 2 parameters:  
    `host`: the host of nodes.  
    `port`: the port number of nodes.
    
@@ -818,7 +818,7 @@ Input, transaction and head block all require signature.
 + The message structure of UDP.
 
   `Endpoint`: the storage structure of nodes' information.  
-  message`Endpoint` contains 3 parameters:  
+  message `Endpoint` contains 3 parameters:  
   `address`: the address of nodes.  
   `port`: the port number.  
   `nodeId`:the ID of nodes.
@@ -831,10 +831,10 @@ Input, transaction and head block all require signature.
        }
    
    `PingMessage`: the message sent from one node to another in the connecting process.  
-   message`PingMessage` contains 4 parameters:  
+   message `PingMessage` contains 4 parameters:  
    `from`: which node does the message send from.  
    `to`: which node will the message send to.  
-   `version`: the version of the Internet.  
+   `version`: version of the message sending node.  
    `timestamp`: the timestamp of message.
    
        message PingMessage {
@@ -845,7 +845,7 @@ Input, transaction and head block all require signature.
         }
    
    `PongMessage`: the message implies that nodes are connected.  
-   message`PongMessage` contains 3 parameters:  
+   message `PongMessage` contains 3 parameters:  
    `from`: which node does the message send from.  
    `echo`:  
    `timestamp`: the timestamp of message.
@@ -857,7 +857,7 @@ Input, transaction and head block all require signature.
          }
    
    `FindNeighbours`: the message sent from one node to find another one.  
-   message`FindNeighbours` contains 3 parameters:  
+   message `FindNeighbours` contains 3 parameters:  
    `from`: which node does the message send from.  
    `targetId`: the ID of targeted node.  
    `timestamp`: the timestamp of message. 
@@ -869,7 +869,7 @@ Input, transaction and head block all require signature.
          }
   
    `FindNeighbour`: the message replied by the neighbour node.  
-    message`Neighbours` contains 3 parameters:  
+    message `Neighbours` contains 3 parameters:  
     `from`: which node does the message send from.    
     `neighbours`: the neighbour node.  
     `timestamp`: the timestamp of message.

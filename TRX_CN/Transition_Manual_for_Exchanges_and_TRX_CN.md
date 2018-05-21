@@ -42,7 +42,7 @@
 
 +     go run tron_http/main.go
 
-SolidityNode对外提供gRPC接口，通过grpc-gatewa提供对应的gRPC接口的Http接口。注意：该步骤是可选，非必选步骤，主要是针对gRPC接口提供Http接口，方便用户使用。
+SolidityNode对外提供gRPC接口，通过grpc-gateway提供对应的gRPC接口的Http接口。注意：该步骤是可选，非必选步骤，主要是针对gRPC接口提供Http接口，方便用户使用。
 
 5，生成账号
 

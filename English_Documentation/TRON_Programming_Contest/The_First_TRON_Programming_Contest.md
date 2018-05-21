@@ -32,7 +32,7 @@ First-place prizes will be offered to designers of the five applications like th
 
 For files of relevant code and technological support please refer to: https://github.com/tronprotocol.
 
-5, The freedom belongs to developers to exchange ideas or team up in Tron community. The recommended platform is the official Slack of Tron, https://tronfoundation.slack.com/， and official forum of TRON, http://tronsr.org/.
+5, Developers are free to exchange ideas or team up in community. The recommended platform is the official Slack of Tron, https://tronfoundation.slack.com/， and official forum of TRON, http://tronsr.org/.
 
 6, Please submit your project from April 17-May 31, 2018. Failure to make your submission is regarded as voluntary withdrawal from the contest.
 
@@ -109,10 +109,10 @@ Marcus Zhao: Director of Technology, Tron
     |Phone*（include country code）|
     |Project Name*|
     |Project Type*（single option）|(  ) Wallet based on Windows; (  ) Wallet based on Mac; (  ) Wallet based on iOS/Android; (  ) Wallet embedded with Google Chrome; (  )Blockchain Explorer;|
-    |Project Description*（In the form of link,installation package，etc.）|Please send installation package or other related forms in the attachement. |
+    |Project Description*（In the form of link,installation package，etc.）|Please send installation package or other related forms in the attachment. |
     |Github*|
     |Video Introduction|
-    |Name of Attachement|
+    |Name of Attachment|
     
     Attention: item with * is required.
  

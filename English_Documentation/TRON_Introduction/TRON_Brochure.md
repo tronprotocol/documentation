@@ -65,7 +65,7 @@ TRON adopts a 3-layer architecture comprised of storage layer, core layer and ap
 
 ## Smart Contract/ Virtual Machine
 
-The smart contract module of TRON allows users to custominze contracts to their own needs.
+The smart contract module of TRON allows users to customize contracts to their own needs.
 TRON is home to its own virtual machine, on which Smart contract operates, allowing for developers to customize for diverse and complex functions.
 
 ## Third Party Applications
@@ -111,7 +111,7 @@ There are numerous ways for TRON’s community members to be a part of the proje
 
 Tron adheres to the Google Protobuf protocol, which covers multiple aspects such as accounts, blocks and transfers. 
 
-There are 3 types of accounts: basic account, asset release account, and contract account. Each of those three types has five properties: name, type, address, balance and related asset.
+There are 3 types of accounts: basic account, asset release account, and contract account. Each of those three types has six properties: name, type, address, balance, voting and related asset.
 
 A basic account can apply to be a witness, which possesses other attributes and parameters including voting statistics, public key, URL, history performance, etc.
 

@@ -53,7 +53,7 @@
         cpsrc/main/resources/config.conf ../
         cd ..
  
-     `config.conf` is required to be executed in order to avoid conflicts with `FullNode` interface and connect local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`. Change `listen.port` to any number other than 18888,
+     `config.conf` is required to be executed in order to avoid conflicts with `FullNode` interface and connect local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`. Set 'listen.port' to any whole number within the range of 1024-65535. It is suggested to not use the numbers from 0-1024.
      as follows:
  
             node {
