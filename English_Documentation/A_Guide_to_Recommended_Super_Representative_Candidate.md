@@ -15,7 +15,7 @@ To become a recommended Super Representative candidate, candidates must meet the
     Please provide the following information for TRON to publicize on its official forum and Reddit:
     1.	Location of the company
     2.	Arranged location of server
-    3.	Server type (cloud, bare metal, etc.; recommended computer specifications: AWS x1.16xlarge, CPU: 64 core, RAM: 1T, SSD: 1T (EBS), bandwidth: 25G; referential cost: AWS, USD$40,000)
+    3.	Server type (cloud, bare metal, etc.; recommended computer specifications: AWS x1.16xlarge, CPU: 64 core, RAM: 1T, SSD: 20T (EBS), bandwidth: 25G; referential cost: AWS, USD$40,000)
 
 + Part 3. Total expenditure and technical plan
 

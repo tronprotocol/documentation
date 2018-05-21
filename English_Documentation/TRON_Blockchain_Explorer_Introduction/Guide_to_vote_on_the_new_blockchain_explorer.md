@@ -30,7 +30,7 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/7.png)
 
-## 7. An certain amount of TRX has to be frozen in order to vote for Super Representatives.
+## 7. A certain amount of TRX has to be frozen in order to vote for Super Representatives.
  
 + To freeze balance, click the FREEZE button in ACCOUNT. 
 + Enter the amount of TRX you’d like to freeze.
@@ -49,9 +49,9 @@ Only TRX can be frozen. Two things can be obtained through balance freezing: TRO
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/10.png)
 
-## 9. Select “Super Representative” to vote.
+## 9. Select Super Representative to vote.
  
-On the voting page enter the amount of votes, click on "submit votes" to submit your vore. Now you will be notified if your submission was successful.
+On the voting page enter the amount of votes, click on "submit votes" to submit your vote. Now you will be notified if your submission was successful.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/11.png)
 
