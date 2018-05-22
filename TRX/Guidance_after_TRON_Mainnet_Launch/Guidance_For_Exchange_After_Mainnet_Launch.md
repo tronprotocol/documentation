@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1. Launch Prep (Now – 5/31)
 
@@ -30,7 +30,7 @@ Users vote for SR candidates using wallets. SRs are responsible for transaction 
 
 # Exchange
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_exchange.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Guidance_for_exchange.png)
 
 1.	TRX withdrawals will not be allowed:
 TRX withdrawals will not be allowed from June 21st to 24th (GMT+8). 
