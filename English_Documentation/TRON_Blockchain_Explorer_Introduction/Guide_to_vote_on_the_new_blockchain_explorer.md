@@ -43,7 +43,7 @@
 
 **Note**  
 
-Only TRX can be frozen. Two things can be obtained through balance freezing: TRON Power and entropy points. TRON Power are used for voting. In the event of unfrozen balance, votes previously casted will no longer be valid, which can be prevented by refreezing balance. Entropy points will not be cleared when balance unfreezes, instead, new entropy points will be accumulated at the next freeze.
+Only TRX can be frozen. Two things can be obtained through balance freezing: Justin and sun. Justin are used for voting. In the event of unfrozen balance, votes previously casted will no longer be valid, which can be prevented by refreezing balance. Sun will not be cleared when balance unfreezes, instead, new sun points will be accumulated at the next freeze.
 
 ## 8. To vote for Super Representatives, click on VOTES in the navigation bar to enter voting page and then click START VOTING.
 
@@ -63,7 +63,7 @@ On the voting page enter the amount of votes, click on "submit votes" to submit 
 
 **Note**
  
-Once you have submitted the amount of votes, the vote is complete. Voting requires TRON Power, which can be obtained by freezing TRX. You will receive 1 TRON Power for each frozen TRX. You will get 1 vote for each TRON Power. Previous votes will no longer be valid when TRX is unfrozen, which can be avoided by refreezing. Voting will be successful as long as total votes casted do not exceed total TRON Power. There is no limit to the number of votes casted for a single Super Representative. "A successful vote will consume 100000/100k entropy points, unless it is more than 10 seconds away from the previous contract (vote, transfer, asset migration and balance freeze). If your TRON Power balance is insufficient, the user will be alerted on insufficient frozen balance. Only the last vote will be recorded, meaning that the last vote replaces all previous voting records.
+Once you have submitted the amount of votes, the vote is complete. Voting requires Justin, which can be obtained by freezing TRX. You will receive 1 Justin for each frozen TRX. You will get 1 vote for each Justin. Previous votes will no longer be valid when TRX is unfrozen, which can be avoided by refreezing. Voting will be successful as long as total votes casted do not exceed total Justin. There is no limit to the number of votes casted for a single Super Representative. "A successful vote will consume 100000/100k sun points, unless it is more than 10 seconds away from the previous contract (vote, transfer, asset migration and balance freeze). If your Justin balance is insufficient, the user will be alerted on insufficient frozen balance. Only the last vote will be recorded, meaning that the last vote replaces all previous voting records.
 
 **Voting Guidelines**
 + The maximum votes a user has must be no more than his/her holding of TRX.
