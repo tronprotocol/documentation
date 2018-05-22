@@ -1,30 +1,30 @@
 ## Account creation
 
-You can generate an offline private key pair, including an address and a private key, which will not be recorded by TRON. To create an account with this private key pair, you will need to make a transfer of at least 1 TRX to this address with an existing account on TRON. Upon successful transfer, you will have created a new account at the corresponding address.
+You can generate an offline keypair, which includes an address and a private key, that will not be recorded by TRON. In order to create a wallet using this private key, you will need to make a transfer of at least 1 TRX to the new address from an existing TRON's wallet. If the transfer is successful, you will have created a new wallet with the corresponding address.
 
 ## Guidelines for Super Representative application
 
-All willing users can apply to become Super Representatives. But to prevent malicious attacks, we have set up a threshold for admittance—to run for Super Representative, 100,000 TRX in the applicants’ account will be burnt. After successful application, users can run for Super Representatives.
+All willing users can apply to become Super Representatives, but to prevent malicious attacks, we have set up a threshold for admittance—to run for Super Representative, 100,000 TRX in the applicants’ account will be burnt. After successful application, users can run for Super Representatives.
 
 ## Freezing/unfreezing balance
 
 ### Why tokens are frozen?
 
-The balance freeze mechanism is set up out of two considerations:
-+ To prevent malicious spam transactions from clogging the internet and causing delayed transaction confirmation.
+The balance freezing mechanism is set up out of two considerations:
++ To prevent malicious spam transactions from clogging the network and causing delayed transaction confirmation.
 + To prevent malicious voting.
 
 ### Freeze/unfreeze mechanism
 
-Once balance is frozen, users will receive a proportionate amount of Tron Power (TP) and Entropy. Tron Power (TP) represents voting power whereas Entropy is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
+Once the balance is frozen, the user will receive a proportionate amount of TRON Power (TP) and Entropy. Tron Power (TP) represents voting power whereas Entropy is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
 
-Frozen asset are held in your frozen account and cannot be used for trading.
+Frozen assets are held in your frozen account and cannot be used for trading.
 
-More TPs and Entropies can be obtained by freezing more balance. Date to unfreeze balance will be renewed to 3 days after the latest freeze.
+More TPs and Entropies can be obtained by freezing more balance. The balance can be unfrozen after 3 days from the latest freezing.
 
 Fixed frozen duration is 3 days, after which you can unfreeze your balance any time you like manually. The unfrozen balance will be transferred back into your current account.
 
-+ The freeze command is as follows: 
++ The freezing command is as follows: 
 
 ```
 freezebalance password amount time
@@ -36,7 +36,7 @@ time: frozen duration lasting from date of freeze and date to unfreeze is 3 days
 
     `freezebalance 123455 10_000_000 3`
 
-+ Unfreeze command:
++ Unfreezing command:
 
     `unfreezebalance password`
 

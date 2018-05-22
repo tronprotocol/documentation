@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1. Launch Prep (Now – 5/31)
 

@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1. Launch Prep (Now – 5/31)
 
@@ -30,23 +30,17 @@ Users vote for SR candidates using wallets. SRs are responsible for transaction 
 
 # Common users
 
-![](https://github.com/ybhgenius/Documentation/blob/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_user.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Guidance_for_user.png)
 
 There are three scenarios: 
 
-1, If your TRX is held on an exchange, no action is required. 
-
-2, If your TRX is held in a wallet, please follow the steps below: 
-
-1) From June 21 to June 24 (GMT+8), TRX withdrawals on exchanges will be suspended. Users must deposit TRX to an exchange before June 24, 2018 (GMT+8). 
-2) On June 25 (GMT+8), both TRX deposits and withdrawals on exchanges will be suspended.
-3) Withdraw TRX to wallets and vote. 
-     From June 26th (GMT+8), deposits and withdrawals of TRX   
-     will resume. Users need to withdraw TRX and transfer to   
-     wallets  in order to vote.
-
-3, If your TRX is held in a wallet and you were not aware of the migration notice, or see the notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.  
-  User's token migration is not perceptible. Please deposit TRX to an exchange before June 25th (GMT+8), and TRX's normal trading will not be affected.
+1. If your TRX is held on an exchange, no action is required. 
+2. If your TRX is held in a wallet, please follow the steps below: 
+    + From June 21 to June 24 (GMT+8), TRX withdrawals on exchanges will be suspended. Users must deposit TRX to an exchange before June 24, 2018 (GMT+8). 
+    + On June 25 (GMT+8), both TRX deposits and withdrawals on exchanges will be suspended.
+    + Withdraw TRX to wallets and vote. From June 26th (GMT+8), deposits and withdrawals of TRX will resume. Users need to withdraw TRX and transfer to wallets  in order to vote.  
+3. If your TRX is held in a wallet and you were not aware of the migration notice, or see the notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.  
+User's token migration is not perceptible. Please deposit TRX to an exchange before June 25th (GMT+8), and TRX's normal trading will not be affected.
 
 **Note**
 1. Please keep an eye on token migration.
