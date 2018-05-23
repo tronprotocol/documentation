@@ -54,5 +54,5 @@ Permanent token-exchange counter designated by TRON will retain the deposit chan
 1. Exchanges don’t need snapshots and don’t need to suspend trading of TRX.
 2. Please take note of token migration order. 
 3. Please note that TRX withdrawals will be suspended from June 21st to June 24th (GMT+8). Both TRX deposits and withdrawals on exchanges will be suspended on June 25th (GMT+8). Deposits and withdrawals of TRX will resume on June 26th. 
-4. Please contact Tron Foundation to receive mainnet tokens. 
+4. Please contact TRON Foundation to receive mainnet tokens. 
 

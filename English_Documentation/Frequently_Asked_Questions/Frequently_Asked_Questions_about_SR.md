@@ -146,7 +146,7 @@ Others
 
     A: No wallets are capable. Only exchanges.
 
-15. Q: In regards to Tron wallets, how many wallets are currently created.
+15. Q: In regards to TRON wallets, how many wallets are currently created.
 
     A: As far as I know, we already have a cli wallet, a web wallet and an ios wallet. And I believe after the programming contest there will be plenty well-designed wallets.
 

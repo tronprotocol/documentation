@@ -500,7 +500,7 @@ Input, transaction and block header all require signature.
         
    `Wallet` service contains several RPCs.  
     __`GetBalance`__ :  
-    `GetAccount` takes a parameter of Account, and returns an `Account` object.  
+    `GetBlance` takes a parameter of Account, and returns an `Account` object.  
     __`CreateTransaction`__ ：  
     `CreateTransaction` takes a parameter of TransferContract, and returns an `Transaction` object.   
     __`BroadcastTransaction`__ :  

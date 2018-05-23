@@ -14,10 +14,10 @@
 
 + Users can get SR information from TRON blockchain explorer, the detailed information shown as below:**
 
-   + The account address of delegate.
-   + The total votes that delegate gets.
+   + The account address of the delegate.
+   + The total votes that the delegate received.
    + The url of personal website.
-   + The total produced blocks of delegate.
+   + The total of blocks produced by the delegate.
    + The total missed blocks of delegate.
    
 ## Super Representative Recommendations  

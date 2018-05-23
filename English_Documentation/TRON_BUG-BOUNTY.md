@@ -1,9 +1,9 @@
 
 # BUG-BOUNTY
 
-## Event introduction
+## Introduction
 
-Starting now, community members can participate in the Bug Bounty by identifying bugs and reporting them to TRON. TRON Foundation will rate and reward the reports based on the importance of the bug, how hidden the bug is, estimated workload of the discovery, and subsequent workload of communication with TRON. 
+From now on, community members can participate in the Bug Bounty by identifying bugs and reporting them to TRON. TRON Foundation will rate and reward the reports based on the importance of the bug, how hidden the bug is, estimated workload of the discovery, and subsequent workload of communication with TRON. 
 
 Here are some possible ways to find bugs:
 
