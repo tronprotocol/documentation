@@ -18,7 +18,7 @@
         cpsrc/main/resources/config.conf ../
         cd ..
 
-    为了能够快速的发现由Tron部署的节点，需要打开`config.conf`。把`seed.node`里面的`ip.list`中包含的地址列表复制到`node`的`active`中，像这样：  
+    为了能够快速的发现由TRON部署的节点，需要打开`config.conf`。把`seed.node`里面的`ip.list`中包含的地址列表复制到`node`的`active`中，像这样：  
     
             active = [  
                 # Initial active peers   

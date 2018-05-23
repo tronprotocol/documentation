@@ -104,12 +104,12 @@ There are numerous ways for TRON’s community members to be a part of the proje
 
 + Reward Plan
 
-    We would like to offer reward to all those who have contributed to the progression and development of TRON’s network and community. A special committee is set up by Tron to conduct close assessment on all participants’ contribution, based on the result of which TRX tokens, gifts, and other forms of reward are offered.
+    We would like to offer reward to all those who have contributed to the progression and development of TRON’s network and community. A special committee is set up by TRON to conduct close assessment on all participants’ contribution, based on the result of which TRX tokens, gifts, and other forms of reward are offered.
 
 	
 ## Protocol
 
-Tron adheres to the Google Protobuf protocol, which covers multiple aspects such as accounts, blocks and transfers. 
+TRON adheres to the Google Protobuf protocol, which covers multiple aspects such as accounts, blocks and transfers. 
 
 There are 3 types of accounts: basic account, asset release account, and contract account. Each of those three types has six properties: name, type, address, balance, voting and related asset.
 

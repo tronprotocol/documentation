@@ -2,7 +2,7 @@
 
 Tronscan provides a way for Super Representatives to publish their information right where the voters are, on Tronscan!
 
-Super Representatives can use this template to build a static page which will be shown on Tronscan. The link will be placed in the voting overview page right next to the name of SP.
+Super Representatives can use this template to build a static page which will be shown on Tronscan. The link will be placed in the voting overview page right next to the name of SR.
 
 By editing files in the repository on Github the Super Representative can manage their own content.
 
