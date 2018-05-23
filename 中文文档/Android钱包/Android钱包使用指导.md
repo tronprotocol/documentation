@@ -62,7 +62,7 @@
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看SP候选信息.png)
 
 ## 查看节点信息
-![]()
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看节点信息.png)
 
 ## 参与其他tokens交易
    + 选择相应token。
