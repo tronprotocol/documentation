@@ -20,7 +20,7 @@ rpc CreateTransaction (TransferContract) returns (Transaction)　{};
 2.2	Node  
 Fullnode.  
 2.3	Parameters  
-TransferContract: addresses of the sender and the recipient, and amount of transfer (in drop).  
+TransferContract: addresses of the sender and the recipient, and amount of transfer (in sun).  
 2.4	Returns  
 Transaction: returns transaction of transfer contract; request transaction after acquisition of wallet signature.  
 2.5	Function  
@@ -163,7 +163,7 @@ rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction){
 13.2 Node  
 Fullnode.  
 13.3 Parameters  
-ParticipateAssetIssueContract: participant address, issuer address, token name, and amount of token (in drop).  
+ParticipateAssetIssueContract: participant address, issuer address, token name, and amount of token (in sun).  
 13.4 Returns  
 Transaction: returns transaction of participation in token offering.  
 13.5 Function  
@@ -339,7 +339,7 @@ Transaction: Return includes a transaction of balance. Request transaction broad
 
 Two things can be gained through freezing balance:
 
-a.	Sun points. Each update of blockchain transaction consumes sun points (if more than 10s from the previous transaction, the current transaction does not consume any points). Sun points obtained=drops*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 sun points.  
+a.	Bandwidth  points. Each update of blockchain transaction consumes bandwidth  points (if more than 10s from the previous transaction, the current transaction does not consume any points). Bandwidth  points obtained=suns*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 bandwidth  points.  
 b.	Votes. The amount of votes gained equals to the amount of frozen TRX.
 
 ## 27. Unfreeze Balance
@@ -352,7 +352,7 @@ UnfreezeBalanceContract: address.
 27.4 Returns  
 Transaction: returns transaction. Request transaction broadcasting after signed by wallet.  
 27.5 Function  
-Balance can be unfrozen only 3 days after the latest freeze. Voting records will be cleared upon unfrozen balance, while sun points won’t be. Frozen balance will not be automatically unfrozen after 3 days’ duration. 
+Balance can be unfrozen only 3 days after the latest freeze. Voting records will be cleared upon unfrozen balance, while bandwidth  points won’t be. Frozen balance will not be automatically unfrozen after 3 days’ duration. 
 
 ## 28. Block-production reward redemption  
 28.1 Interface statement  

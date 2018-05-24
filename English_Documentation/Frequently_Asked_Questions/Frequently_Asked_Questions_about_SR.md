@@ -152,7 +152,7 @@ Others
 
 16. Q:Is 25Gbps a requirement or is 10Gbps satisfactory, or what is the threshold that is acceptable.
 
-    A: There is no hard requirement for the network bandwidth. The specification we gave is just an advice.
+    A: There is no hard requirement for the network TRON Power(TP). The specification we gave is just an advice.
 
 17. Q: The people outside of the top 27 but in the top 100, are they ranked in order, 28-100 or is there an algorithm to just select who would be next if someone is voted out?
 

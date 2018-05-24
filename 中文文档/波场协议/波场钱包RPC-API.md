@@ -20,7 +20,7 @@ rpc CreateTransaction (TransferContract) returns (Transaction)　{};
 2.2	提供节点  
 fullnode。
 2.3	参数说明  
-TransferContract：包含提供方地址、接收方地址、金额，其中金额的单位为drop。  
+TransferContract：包含提供方地址、接收方地址、金额，其中金额的单位为sun。  
 2.4	返回值  
 Transaction：返回包含转账合约的交易，钱包签名后再请求广播交易。  
 2.5	功能说明  
@@ -167,7 +167,7 @@ rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction){
 13.2 提供节点  
 fullnode。  
 13.3 参数说明  
-ParticipateAssetIssueContract：包含参与方地址、发行方地址、通证名称、参与金额，其中金额的单位为drop。  
+ParticipateAssetIssueContract：包含参与方地址、发行方地址、通证名称、参与金额，其中金额的单位为sun。  
 13.4 返回值  
 Transaction：返回包含参与通证发行的交易，钱包签名后再请求广播交易。  
 13.5 功能说明  
@@ -338,7 +338,7 @@ TransactionList：交易列表。
 26.4 返回值 Transaction：返回包含资金的交易，钱包签名后再请求广播交易。   
 26.5 功能说明  
  锁定资金将带来两个收益：  
-a.获得sun，每次要更新区块链的交易都需要消耗sun(如果当前交易距离上次交易超过10s，本次交易不消耗sun)。获得sun=drops*锁定天数。每次交易（所有会修改区块链账本的操作）消耗sun为100000。   
+a.获得bandwidth points，每次要更新区块链的交易都需要消耗bandwidth points(如果当前交易距离上次交易超过10s，本次交易不消耗bandwidth points)。获得bandwidth points=suns*锁定天数。每次交易（所有会修改区块链账本的操作）消耗bandwidth points为100000。   
 b.获得投票的权利，锁定多少个trx就获得多少个投票权。
 
 ## 27. 解除资金锁定  
@@ -370,7 +370,7 @@ FreezeBalanceContract：包含地址、锁定资金、锁定时间。目前锁�
 Transaction：返回包含资金的交易，钱包签名后再请求广播交易。                                                                                   
 26.5 功能说明                                                                                                                                            
 锁定资金将带来两个收益：
-a.获得带宽，每次要更新区块链的交易都需要消耗带宽(如果当前交易距离上次交易超过10s，本次交易不消耗带宽)。获得带宽=drops*锁定天数。每次交易（所有会修改区块链账本的操作）消耗带宽为100000。                                                                                                                                                                    
+a.获得带宽，每次要更新区块链的交易都需要消耗带宽(如果当前交易距离上次交易超过10s，本次交易不消耗带宽)。获得带宽=suns*锁定天数。每次交易（所有会修改区块链账本的操作）消耗带宽为100000。                                                                                                                                                                    
 b.获得投票的权利，锁定多少个trx就获得多少个投票权。
 
 ## 27. 解除资金锁定
