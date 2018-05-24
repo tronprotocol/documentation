@@ -16,11 +16,11 @@ The balance freezing mechanism is set up out of two considerations:
 
 ### Freeze/unfreeze mechanism
 
-Once the balance is frozen, the user will receive a proportionate amount of Justin (J) and Sun. Justin (J) represents voting power whereas Sun is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
+Once the balance is frozen, the user will receive a proportionate amount of TRON Power(TP) and bandwidth points. TRON Power(TP) represents voting power whereas bandwidth points is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
 
 Frozen assets are held in your frozen account and cannot be used for trading.
 
-More Js and Entropies can be obtained by freezing more balance. The balance can be unfrozen after 3 days from the latest freezing.
+More TP and Entropies can be obtained by freezing more balance. The balance can be unfrozen after 3 days from the latest freezing.
 
 Fixed frozen duration is 3 days, after which you can unfreeze your balance any time you like manually. The unfrozen balance will be transferred back into your current account.
 
@@ -28,7 +28,7 @@ Fixed frozen duration is 3 days, after which you can unfreeze your balance any t
 
 ```
 freezebalance password amount time
-amount: the unit of frozen balance is drop. The minimum balance frozen is 1,000,000 drop, or 1 TRX.
+amount: the unit of frozen balance is sun. The minimum balance frozen is 1,000,000 sun, or 1 TRX.
 time: frozen duration lasting from date of freeze and date to unfreeze is 3 days.
 ```
 
@@ -46,34 +46,34 @@ Each time a Super Representative finishes block production, reward will be sent 
 
 ## Super Representative Election
 
-Every account in TRON’s network is entitled to vote for the Super Representatives they support. Voting requires Js, which is determined by users’ current amount of frozen balance.
+Every account in TRON’s network is entitled to vote for the Super Representatives they support. Voting requires TP, which is determined by users’ current amount of frozen balance.
 
-Calculation of Js: 1 J for 1 frozen TRX.
+Calculation of TP: 1 TP for 1 frozen TRX.
 
-Once you unfreeze your balance, an equivalent amount of Js is also lost, meaning that previous votes casted may no longer be valid. You can refreeze your balance to regain validity of votes.
+Once you unfreeze your balance, an equivalent amount of TP is also lost, meaning that previous votes casted may no longer be valid. You can refreeze your balance to regain validity of votes.
 
 Note: TRON network only keeps record of the latest votes, meaning that every new allocation of votes you make will replace all previous records.
 
 + e.g.
 
 ```
-freezebalance 123455 10_000_000 3// 10 Justins for 10 frozen TRX
+freezebalance 123455 10_000_000 3// 10 bandwidths for 10 frozen TRX
 votewitness123455 witness1 4 witness2 6//4 votes for witness1 and 6 votes for witness2
 vote witness 123455 witness1 10// 10 votes for witness1
 ```
 The final result of the above commands is 10 votes for witness1 and no vote for witness2.
 
-## Sun
+## Bandwidth Points
 
-Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network only allows every account to initiate a transaction for free every once every 10 seconds. To engage in transactions more frequently requires sun. Like Justin, Sun can be obtained through freezing TRX.
+Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network only allows every account to initiate a transaction for free every once every 10 seconds. To engage in transactions more frequently requires bandwidth points. Like TRON Power(TP), bandwidth points can be obtained through freezing TRX.
 
-Calculation of Sun: amount of frozen balance * days * constant. Note that the unit of frozen balance is drop, and the current constant is 1.
+Calculation of bandwidth points: amount of frozen balance * days * constant. Note that the unit of frozen balance is sun, and the current constant is 1.
 
-e.g. Suppose 1 TRX (1,000,000 drop) is frozen for a fixed duration of 3 days, Sun=1,000,000 * 3 * 1=3,000,000
+e.g. Suppose 1 TRX (1,000,000 sun) is frozen for a fixed duration of 3 days, bandwidth points=1,000,000 * 3 * 1=3,000,000
 
-Aside from inquiry, all transactions, ranging from transfer, asset migration, voting to balance freeze, occurring more frequently than once every 10 seconds consumes Sun. Every contract consumes 100,000 Entropies. 
+Aside from inquiry, all transactions, ranging from transfer, asset migration, voting to balance freeze, occurring more frequently than once every 10 seconds consumes bandwidth points. Every contract consumes 100,000 Entropies. 
 
-Note: When balance unfreezes, Sun will not be cleared. New entropies will be accumulated when more TRX is frozen.
+Note: When balance unfreezes, bandwidth points will not be cleared. New bandwidth points will be accumulated when more TRX is frozen.
 
 ## Token issuance
 
