@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1. Launch Prep (Now – 5/31)
 
@@ -30,7 +30,7 @@ Users vote for SR candidates using wallets. SRs are responsible for transaction 
 
 # Developer
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_developer.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Guidance_for_developer.png)
 
 1.	Completion of development: Before May 31st (GMT+8)  
 Announce the github address of each wallet, download the links for community and users to test and experiment.

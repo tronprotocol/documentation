@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1. Launch Prep (Now – 5/31)
 
@@ -37,15 +37,15 @@ SR election campaigning period allows SRs to attract more votes from TRX holders
 
 2.	Candidates transfer deposit:
   Candidates will be informed on May 15th (GMT+8) to transfer 
-  200K TRX to Tron Foundation by May 31st as deposit. Deposit 
-  will be returned to designated Tron mainnet addresses at midnight 
+  200K TRX to TRON Foundation by May 31st as deposit. Deposit 
+  will be returned to designated TRON mainnet addresses at midnight 
   June 25th (GMT+8).
 
 3.	Election test period: 6/1 - 6/24 (GMT+8)
 Supporters can do test voting. Run test nodes and generate blocks.
 
 4.	Candidates’ deposit is returned:
-Deposit will be returned to designated Tron mainnet addresses at midnight June 25th (GMT+8).
+Deposit will be returned to designated TRON mainnet addresses at midnight June 25th (GMT+8).
 
 5.	Apply to become an SR candidate using the wallet and call on supporters to vote.
 

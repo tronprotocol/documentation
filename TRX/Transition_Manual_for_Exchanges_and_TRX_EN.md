@@ -1,6 +1,6 @@
 # Transition Manual for Exchanges and TRX
 
-## It is suggested that exchanges deploy a Full Node and a Solidity Node in Tron blockchain for improved security. 
+## It is suggested that exchanges deploy a Full Node and a Solidity Node in TRON blockchain for improved security. 
 
 ### The Full Node will:
 - synchronize all data in the blockchain

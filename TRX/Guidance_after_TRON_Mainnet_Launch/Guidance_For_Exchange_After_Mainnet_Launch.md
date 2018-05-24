@@ -1,6 +1,6 @@
 # Timeline
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Timeline.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Timeline.png)
 
 ## 1. Launch Prep (Now – 5/31)
 
@@ -30,7 +30,7 @@ Users vote for SR candidates using wallets. SRs are responsible for transaction 
 
 # Exchange
 
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Gudiance_After_TRON_Mainnet_Launch/Gudiance_for_exchange.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Guidance_After_TRON_Mainnet_Launch/Guidance_for_exchange.png)
 
 1.	TRX withdrawals will not be allowed:
 TRX withdrawals will not be allowed from June 21st to 24th (GMT+8). 
@@ -54,5 +54,5 @@ Permanent token-exchange counter designated by TRON will retain the deposit chan
 1. Exchanges don’t need snapshots and don’t need to suspend trading of TRX.
 2. Please take note of token migration order. 
 3. Please note that TRX withdrawals will be suspended from June 21st to June 24th (GMT+8). Both TRX deposits and withdrawals on exchanges will be suspended on June 25th (GMT+8). Deposits and withdrawals of TRX will resume on June 26th. 
-4. Please contact Tron Foundation to receive mainnet tokens. 
+4. Please contact TRON Foundation to receive mainnet tokens. 
 
