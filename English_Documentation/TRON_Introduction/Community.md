@@ -1,10 +1,10 @@
 # Community
 
-TRON community is driven by principles of sharing, equality, freedom of speech and personal expression where community members support each other. The community social system provides all supporters and participants with more accessible and comprehensive resources and information on the projects of TRON. All participants will have full freedom without any restrictions to express their talents, suggest new ideas and opinate and discuss about different topics (subjects), as long as they follow the community rules and are actively engaged in community development at all levels.
+TRON community is driven by principles of sharing, equality, freedom of speech and personal expression where community members support each other. The community social system provides all supporters and participants with more accessible and comprehensive resources and information on the projects of TRON. All participants will have full freedom without any restrictions to express their talents, suggest new ideas and opinions and discuss about different topics (subjects), as long as they follow the community rules and are actively engaged in community development at all levels.
 
 ## Reddit
 
-To host its supporters and developers, TRON [reddit](https://www.reddit.com/r/Tronix/)is the dream venue for brainstorming and the exchange of ideas. With a firm belief in the freedom of speech, As a non-profit community, TRON accommodates all perspectives, with the aim for all participants to achieve progress through sharing.  
+To host its supporters and developers, TRON [reddit](https://www.reddit.com/r/Tronix/) is the dream venue for brainstorming and the exchange of ideas. With a firm belief in the freedom of speech, as a non-profit community, TRON accommodates all perspectives, with the aim for all participants to achieve progress through sharing.  
 
 Current Official Subreddits:
 
@@ -13,11 +13,11 @@ Current Official Subreddits:
 
 ## Slack
 
-Keeping in touch with outstanding contributors on Github, the tech team of Tron communicates with and finds itself deeply inspired by developers on [slack](https://tronfoundation.slack.com/messages/C6DKKSU8G/details/). The platform makes it easier for developers to discuss and solve technical problems together with the tech team of Tron in a timely fashion. Join us on Slack at our invitation or by your own request. We also welcome developers making a remarkable contribution to be a part of the Tron team.
+Keeping in touch with outstanding contributors on Github, the tech team of TRON communicates with and finds itself deeply inspired by developers on [slack](https://tronfoundation.slack.com/messages/C6DKKSU8G/details/). The platform makes it easier for developers to discuss and solve technical problems together with the tech team of TRON in a timely fashion. Join us on Slack at our invitation or by your own request. We also welcome developers making a remarkable contribution to be a part of the TRON team.
 
 ## Gitter Rooms
 
-Log in to gitter with your github account to participate in Tron’s discussions. Accessible Gitter channels revolve around the topic of a certain database. Please select a suitable channel and topic and maintain the relevance of your posts.
+Log in to gitter with your github account to participate in TRON’s discussions. Accessible Gitter channels revolve around the topic of a certain database. Please select a suitable channel and topic and maintain the relevance of your posts.
 
 [java-tron](https://github.com/tronprotocol/java-tron) – about full node, the launch of mainnet, testnet.  
 [wallet-web](https://github.com/tronprotocol/wallet-web) – blockchain explorer and web wallet developed by community.  
@@ -29,9 +29,9 @@ http://tronsr.org/
 
 ## TRON Foundation
 
-Forging ahead with the development of new technologies and applications jointly with all developers, Tron Foundation is devoted to the healthy development of Tron ecosystem.
+Forging ahead with the development of new technologies and applications jointly with all developers, TRON Foundation is devoted to the healthy development of TRON ecosystem.
 
-Tron Foundation open to the community
+TRON Foundation open to the community
 
 [Official Website](https://tron.network/en.html)  
 [Twitter](https://twitter.com/tronfoundation)  

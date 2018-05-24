@@ -21,7 +21,7 @@ First-place prizes will be offered to designers of the five applications like th
 
 3, Each team/individual participant can sign up for 5 sub-contests.
 
-4, All development must be based on Tron blockchain technology and should be one of the following five applications compatible with Tron’s main net:  
+4, All development must be based on TRON blockchain technology and should be one of the following five applications compatible with TRON’s main net:  
     
 + Wallet based on Windows (including off-line signature function and voting function)
 + Wallet based on Mac (Off-line signature function is optional but a plus and voting function is necessary.)
@@ -66,15 +66,15 @@ Reward will be delivered within 1 month to the announcement.
 
 ## Judges
 
-Justin Sun: CEO of Tron  
+Justin Sun: CEO of TRON  
 
-Lucien Chen: CTO of Tron  
+Lucien Chen: CTO of TRON  
 
-Marcus Zhao: Director of Technology, Tron
+Marcus Zhao: Director of Technology, TRON
 
 ## Application  Procedure
 
-+ Step 1. Please submit your application to program@tron.network by May 31, 2018. Please name the subject in the format of “Application_Individual/Team name_Participating project” (e.g. “Application_Tron team_blockchain explorer”), or the email will be categorized as spam, leading to an unsuccessful application.
++ Step 1. Please submit your application to program@tron.network by May 31, 2018. Please name the subject in the format of “Application_Individual/Team name_Participating project” (e.g. “Application_TRON team_blockchain explorer”), or the email will be categorized as spam, leading to an unsuccessful application.
 
     **Application Form**
         
@@ -92,11 +92,11 @@ Marcus Zhao: Director of Technology, Tron
  
 + Step 2. Applicants will receive a confirmation email upon successful application:
 
-    You have successfully signed up for Tron Programming Contest. Please submit your project to program@tron.network by 23:59 on May 31, 2018 (GMT+8). Submission after the deadline is considered as unsuccessful. Thank you for your participation!
+    You have successfully signed up for TRON Programming Contest. Please submit your project to program@tron.network by 23:59 on May 31, 2018 (GMT+8). Submission after the deadline is considered as unsuccessful. Thank you for your participation!
      
 ## Project Submission
  
-+ Step 1. Please submit your project, along with your application form, to program@tron.network by May 31, 2018 (GMT+8). Please name the subject of the email in the format of “Project submission_Individual/Team name_Participating project”(e.g. “Project submission_Tron team_Blockchain explorer”), or the email will be categorized as spam, leading to an unsuccessful submission.
++ Step 1. Please submit your project, along with your application form, to program@tron.network by May 31, 2018 (GMT+8). Please name the subject of the email in the format of “Project submission_Individual/Team name_Participating project”(e.g. “Project submission_TRON team_Blockchain explorer”), or the email will be categorized as spam, leading to an unsuccessful submission.
 
     **Submission Form**
 
@@ -118,4 +118,4 @@ Marcus Zhao: Director of Technology, Tron
  
 + Step 2. Applicants will receive a confirmation email upon successful project submission:
 
-    You have successfully submitted your project. We will evaluate the submitted project carefully. Announcement of the results of Tron Programming Contest will be made on June 5, 2018. Thank you for your participation!
+    You have successfully submitted your project. We will evaluate the submitted project carefully. Announcement of the results of TRON Programming Contest will be made on June 5, 2018. Thank you for your participation!

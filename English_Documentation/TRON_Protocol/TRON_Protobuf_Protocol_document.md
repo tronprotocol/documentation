@@ -237,7 +237,7 @@
      `owner_address`: the address for contract owner – e.g. “_0xu82h…7237_”.  
      `to_address`: the receiver address – e.g. “_0xu82h…7237_”.  
      `asset_name`: the name of target asset.  
-     `amount`: the amount of drops.
+     `amount`: the amount of suns.
      
          message ParticipateAssetIssueContract {
            bytes owner_address = 1;
@@ -500,7 +500,7 @@ Input, transaction and block header all require signature.
         
    `Wallet` service contains several RPCs.  
     __`GetBalance`__ :  
-    `GetAccount` takes a parameter of Account, and returns an `Account` object.  
+    `GetBlance` takes a parameter of Account, and returns an `Account` object.  
     __`CreateTransaction`__ ：  
     `CreateTransaction` takes a parameter of TransferContract, and returns an `Transaction` object.   
     __`BroadcastTransaction`__ :  
