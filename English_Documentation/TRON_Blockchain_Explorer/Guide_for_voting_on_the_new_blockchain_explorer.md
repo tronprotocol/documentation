@@ -1,4 +1,4 @@
-# Guide to voting on the new block explorer
+# Guide for voting on the new block explorer
 
 ## 1. Open TRON block explorer and log in to your wallet.
       
