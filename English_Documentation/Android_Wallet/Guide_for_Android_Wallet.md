@@ -80,7 +80,7 @@ Cold Wallet Setup
 ## Create account
 
 1. Cellphone screen display.
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/1.手机桌面显示.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/1桌面显示.png)
 2. Account creation page in app.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/2.点击app之后的界面.jpg)
 3. Tap CREATE WALLET.  
@@ -88,8 +88,8 @@ Cold Wallet Setup
    + Hot wallet creation: don’t toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置密码.jpg)  
 4. Tap GENERATE ADDRESS AND PRIVATE KEY and tap OK after reading the information page.
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.点击创建冷钱包选项时立即跳出的页面的界面.jpg)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.点击generate%20address%20and%20%20private%20key%20之后的页面.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.png)
 5. Make sure to save your private key and 24-word recovery phrase.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/7.钱包创建好之后的页面%20now%20we%20see%20here%20is%20a%20public%20address%20%2Cprivate%20key%20and%2024%20words%20recovery%20phrase.jpg)
 6. Tap continue and enter wallet page.
@@ -110,7 +110,7 @@ Users can vote in hot wallet setup.
 5. Enter your password and confirm the freeze.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/5冻结TRX需要输入账户密码进行确认.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/6.键入账户密码.jpg)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/7TRX冻结成功提示消息.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/7.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/8.进行100TRX冻结之后的页面显示.jpg)
 6. Return to balance page and click the vote button on the left-hand side.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/9.回到余额显示页面，然后点击余额左侧的投票按钮.jpg)
@@ -122,7 +122,7 @@ Users can vote in hot wallet setup.
 9. Tap SUBMIT, enter the amount of votes and your password and submit votes.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/13.输入希望为此节点投出的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/14.点击submit%20votes之后要求输入账户密码进行确认投票.jpg)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/16.投票成功提示页面.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/16.png)
 10. You can check your votes in the candidates tab and in the votes tab.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/17.为此候选人投过票后此候选人右侧显示你为其透过的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/18.这个时候我们可以看到在your%20votes一栏中与投票前不同的是出现了我们为其投过票的SR候选人信息.jpg)
