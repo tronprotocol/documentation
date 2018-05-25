@@ -766,7 +766,7 @@ Input, transaction and block header all require signature.
         }
       };
       
-   `AccountList`: the list of acounts in the blockchain explorer.  
+   `AccountList`: the list of accounts in the blockchain explorer.  
    message `AccountList` contains one parameter:  
    `account`:
    

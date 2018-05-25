@@ -1,142 +1,141 @@
-# Android钱包使用指导
+# Guide for Android
 
-## 简介
+## Introduction
 
-波场钱包适用于波场网络，是一款多功能安卓端钱包。使用波场钱包，用户可以快速便捷的使用账户功能，并保证TRX及账户信息在冷钱包设置下的安全性。本应用可以为您的私密信息保驾护航，让用户能更加轻松快捷的连接波场网络，壮大波场社区，提供更多可能性。
+Tron Wallet is a multifunctional android wallet for the TRON network. It gives you the possibility to interact quickly and easily with your account or to keep your TRX and other account data safe in a cold wallet setup. This app offers you one of the safest ways to protect your private data. The goal in the future is to connect the users even better and easier with the TRON network and thus form a basis for all in the TRON community to strengthen them and offer extended possibilities.
 
-### 应用特色
-创建钱包
-+ 对私密信息进行密码加密
-+ 生成公私钥对
-+ 生成24字的助记词（用户可读的私钥助记词）（BIP39）
+### Features
+Create Wallet
++ encrypts private information with a password
++ creates a private/public key pair
++ creates a 24 words recovery phrase (human readable private key recovery phrase) (BIP39)
 
-### 钱包导入
-+ 使用私钥或24字助记词进行导入
-+ 或者仅导入公共地址（只读钱包设置）
+### Import Wallet
++ import with private key or 24 words recovery phrase
++ import public address only (watch only setup)
 
-### 钱包功能
-+ 查询余额（TRX、代币）
-+ 切换查询市场价格
-+ 查询冻结金额
-+ 发起TRX及代币转账
-+ 接收TRX及代币转账
-+ 二维码收款
-+ 冻结TRX获得Tron Power（TP）和bandwith
-+ 为超级代表投票
-+ 二维码离线签名机制
-+ 参与代币发售
-+ 手动进行节点连接设置
+### Wallet Functionalities
++ check balance (TRX, tokens)
++ toggle market price view
++ check frozen amount
++ send TRX and tokens
++ receive using QR code
++ freeze TRX to get TRON Power and bandwidth
++ submit votes for representatives
++ offline signing mechanism with QR code scanning
++ participate in token distributions
++ manually set your node connection
 
-### 区块浏览器
-+ 查看最新区块
-+ 查看最新交易
-+ 查看超级代表候选人
-+ 查看已连接节点
-+ 查看代币销售情况
-+ 查看账户
-+ 检索结果筛选
+### Block Explorer
++ see latest blocks
++ see latest transactions
++ see representative candidates
++ see connected nodes
++ see token distributions
++ see accounts
++ search filter
 
-### 钱包设置
+### Wallet Setups
 
-观察钱包
-+ 仅导入公共地址
-+ 私密信息不可访问，保证安全性
-+ 账户信息一览
-+ 创建未签名交易（与冷钱包设置搭配使用）
+Watch only setup
++ import only your public address
++ completely safe because no private information is accessible
++ you have a full overview of your account
++ creates unsigned transactions (used in combination with a cold wallet setup)
 
-热钱包
-+ 包含公钥及私钥
-+ 账户信息一览
-+ 功能完备（发起转账、冻结资产、进行投票等）
+Hot Wallet Setup
++ owns public and private key
++ full overview of account
++ full access (sending, freezing, voting, ...)
 
-冷钱包
-+ 极简安全钱包
-+ 包含公钥及私钥
-+ 保持离线使用（设备永不联网才能保证安全性）
-+ 交易签名（交易来自观察钱包）
+Cold Wallet Setup
++ minimalistic and safest wallet
++ owns public and private key
++ never connects to the internet (to be completely secure you should never connect your device to the internet)
++ signs transactions (from watch only setup)
 
-## 查看区块信息和最近交易信息
+## Check information on blocks and recent transactions
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/区块和交易信息.png)
 
-## 查看SP候选者信息
+## Check SR candidate information
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看SP候选信息.png)
 
-## 查看节点信息
+## Check node information
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看节点信息.png)
 
-## 参与其他tokens交易
-   + 选择相应token。
-   + 输入购买数量
+## Participate in token offerings
+   + select the token you’d like to buy
+   + select quantity of purchase
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看token信息.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/选择购买数量.png)
 
-## 查看账户信息
+## Check account information
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看账户信息.png)
 
-## 倒入钱包
-+ 仅输入地址，可以导入观察钱包、
-+ 输入密钥或者助记词，可以导入钱包。
+## Import wallet
++ import public address only (watch-only setup)
++ or import with private key or 24-word recovery phrase
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/倒入钱包/导入钱包.png)
 
-## 创建账户
+## Create account
 
-1. 手机桌面显示
+1. Cellphone screen display.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/1.手机桌面显示.jpg)
-2. 点击进入app创建钱包页面
+2. Account creation page in app.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/2.点击app之后的界面.jpg)
-3. 点击创建钱包。  
-    + 冷钱包创建：勾选冷钱包设置选项，勾选阅读注意事项选项。
-    + 热钱包创建：无需勾选冷钱包选项，勾选阅读注意事项选项。  
+3. Tap CREATE WALLET.  
+   + Cold wallet creation: toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.
+   + Hot wallet creation: don’t toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置密码.jpg)  
-4. 点击创建地址和私钥，阅读创建钱包注意事项，点击确定按钮。
+4. Tap GENERATE ADDRESS AND PRIVATE KEY and tap OK after reading the information page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.点击创建冷钱包选项时立即跳出的页面的界面.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.点击generate%20address%20and%20%20private%20key%20之后的页面.jpg)
-5. 请保存好自己的私钥与24个助记词。
+5. Make sure to save your private key and 24-word recovery phrase.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/7.钱包创建好之后的页面%20now%20we%20see%20here%20is%20a%20public%20address%20%2Cprivate%20key%20and%2024%20words%20recovery%20phrase.jpg)
-6. 点击继续，进入钱包界面。
+6. Tap continue and enter wallet page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/8.创建号钱包之后下滑页面找到continue按钮.jpg)
 
-## 进行投票
+## Voting
 
-热钱包具备投票功能。
+Users can vote in hot wallet setup.
 
-1. 进入钱包。
+1.	Enter wallet page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/1.当前的余额显示页面.jpg)
-2. 进入转账界面。
+2. Enter transfer page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/2.点击余额右侧的转账页面.png)
-3. 选择FREEZE,进入冻结界面。
+3. Select freeze and enter freeze page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/3.点击FREEZE进入TRX冻结页面.jpg)
-4. 输入需要冻结的TRX数量。
+4. Type in freeze amount.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/4.在freeze%20amount%20输入栏中键入希望冻结的TRX数量，然后点击freeze按钮，注，拥有多少冻结TRX就拥有多少投票权.jpg)
-5. 输入密码，确认冻结。
+5. Enter your password and confirm the freeze.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/5冻结TRX需要输入账户密码进行确认.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/6.键入账户密码.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/7TRX冻结成功提示消息.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/8.进行100TRX冻结之后的页面显示.jpg)
-6. 回到余额显示界面，点击左侧投票按钮。
+6. Return to balance page and click the vote button on the left-hand side.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/9.回到余额显示页面，然后点击余额左侧的投票按钮.jpg)
-7. 进入SP候选界面。
+7. Enter SR candidate page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/10.点击投票按钮之后进入超级代表候选人list页面，candidates一栏下显示的是所有待投票竞选的SR候选人.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/11.此为your%20votes页面下的显示情况，因为我们还没有对任何一个SR候选节点进行投票，所以列表中空空如也.png)
-8. 选择相应的SP候选，输入投票数目。
+8. Select a SR candidate and enter the amount of votes.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/12.我们回到candidates一栏，任意选择一个SR候选人进行投票演示，以list中首个系节点为例，注，candidates%20list%20的排列是以票数多少为顺序.jpg)
-9. 点击submit，输入投票数目和密码，确认提交。
+9. Tap SUBMIT, enter the amount of votes and your password and submit votes.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/13.输入希望为此节点投出的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/14.点击submit%20votes之后要求输入账户密码进行确认投票.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/16.投票成功提示页面.jpg)
-10. 可以再SP候选列表和投票中查看已投票信息。
+10. You can check your votes in the candidates tab and in the votes tab.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/17.为此候选人投过票后此候选人右侧显示你为其透过的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/18.这个时候我们可以看到在your%20votes一栏中与投票前不同的是出现了我们为其投过票的SR候选人信息.jpg)
 
-## 进行转账
+## Initiate transfer
 
-1. 进入账户界面。
+1. Enter account page.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转入/1.账户中有余额时候的余额显示界面.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转入/2.点击余额数字可转换成美元的等值额度.png)
-2. 输入地址信息，或者使用二维码扫描获得地址，输入要发送的数量，点击发送按钮。
+2. Enter your address or scan QR-code to extract address. Enter the amount of TRX for transfer and tap SEND.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转入/3.点击右侧转账按钮后出现的界面（默认停留在send也就是转出TRX时的操作页面）可以通过在to一栏输入转入地址也可以点击右侧的二维码小标志，打开二维码扫描页面.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转入/4.点击receive后显示自己的钱包地址和二维码性质的地址，可供转出账户进行输入和scan，待转出账户操作完毕后，点击左上角返回箭头进行余额查看.jpg)
 ![](https://github.com/ybhgenius/Documentation/blob/master/images/Wallet_for_Android/转出和转入/转出/6.输入希望转入的额度点击send.png)
-3. 输入账户密码进行确认，显示转账成功界面。
+3. Enter account password and tap SEND, and you will see the message of SENT SUCCESSFULLY.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/7.点击send之后需要输入账户密码进行确认.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/9.转账成功.png)

@@ -12,7 +12,7 @@
 
 ### 钱包导入
 + 使用私钥或24字助记词进行导入
-+ 或者仅导入公共地址（只读钱包设置）
++ 或者仅导入公共地址（观察钱包设置）
 
 ### 钱包功能
 + 查询余额（TRX、代币）
@@ -21,7 +21,7 @@
 + 发起TRX及代币转账
 + 接收TRX及代币转账
 + 二维码收款
-+ 冻结TRX获得Tron Power（TP）和bandwith
++ 冻结TRX获得Tron Power（TP）和bandwidth
 + 为超级代表投票
 + 二维码离线签名机制
 + 参与代币发售
@@ -58,7 +58,7 @@
 ## 查看区块信息和最近交易信息
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/区块和交易信息.png)
 
-## 查看SP候选者信息
+## 查看SR候选者信息
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看SP候选信息.png)
 
 ## 查看节点信息
@@ -73,7 +73,7 @@
 ## 查看账户信息
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看账户信息.png)
 
-## 倒入钱包
+## 导入钱包
 + 仅输入地址，可以导入观察钱包、
 + 输入密钥或者助记词，可以导入钱包。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/倒入钱包/导入钱包.png)
@@ -115,16 +115,16 @@
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/8.进行100TRX冻结之后的页面显示.jpg)
 6. 回到余额显示界面，点击左侧投票按钮。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/9.回到余额显示页面，然后点击余额左侧的投票按钮.jpg)
-7. 进入SP候选界面。
+7. 进入SR候选界面。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/10.点击投票按钮之后进入超级代表候选人list页面，candidates一栏下显示的是所有待投票竞选的SR候选人.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/11.此为your%20votes页面下的显示情况，因为我们还没有对任何一个SR候选节点进行投票，所以列表中空空如也.png)
-8. 选择相应的SP候选，输入投票数目。
+8. 选择相应的SR候选，输入投票数目。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/12.我们回到candidates一栏，任意选择一个SR候选人进行投票演示，以list中首个系节点为例，注，candidates%20list%20的排列是以票数多少为顺序.jpg)
 9. 点击submit，输入投票数目和密码，确认提交。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/13.输入希望为此节点投出的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/14.点击submit%20votes之后要求输入账户密码进行确认投票.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/16.投票成功提示页面.jpg)
-10. 可以再SP候选列表和投票中查看已投票信息。
+10. 可以再SR候选列表和投票中查看已投票信息。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/17.为此候选人投过票后此候选人右侧显示你为其透过的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/18.这个时候我们可以看到在your%20votes一栏中与投票前不同的是出现了我们为其投过票的SR候选人信息.jpg)
 

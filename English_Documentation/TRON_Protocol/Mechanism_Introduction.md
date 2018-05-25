@@ -16,7 +16,7 @@ The balance freezing mechanism is set up out of two considerations:
 
 ### Freeze/unfreeze mechanism
 
-Once the balance is frozen, the user will receive a proportionate amount of TRON Power(TP) and bandwidth points. TRON Power(TP) represents voting power whereas bandwidth points is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
+Once the balance is frozen, the user will receive a proportionate amount of TRON Power(TP) and bandwidth. TRON Power(TP) represents voting power whereas bandwidth is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
 
 Frozen assets are held in your frozen account and cannot be used for trading.
 
@@ -65,15 +65,15 @@ The final result of the above commands is 10 votes for witness1 and no vote for 
 
 ## Bandwidth Points
 
-Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network only allows every account to initiate a transaction for free every once every 10 seconds. To engage in transactions more frequently requires bandwidth points. Like TRON Power(TP), bandwidth points can be obtained through freezing TRX.
+Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network only allows every account to initiate a transaction for free every once every 10 seconds. To engage in transactions more frequently requires bandwidth. Like TRON Power(TP), bandwidth can be obtained through freezing TRX.
 
-Calculation of bandwidth points: amount of frozen balance * days * constant. Note that the unit of frozen balance is sun, and the current constant is 1.
+Calculation of bandwidth: amount of frozen balance * days * constant. Note that the unit of frozen balance is sun, and the current constant is 1.
 
-e.g. Suppose 1 TRX (1,000,000 sun) is frozen for a fixed duration of 3 days, bandwidth points=1,000,000 * 3 * 1=3,000,000
+e.g. Suppose 1 TRX (1,000,000 sun) is frozen for a fixed duration of 3 days, bandwidth=1,000,000 * 3 * 1=3,000,000
 
-Aside from inquiry, all transactions, ranging from transfer, asset migration, voting to balance freeze, occurring more frequently than once every 10 seconds consumes bandwidth points. Every contract consumes 100,000 Entropies. 
+Aside from inquiry, all transactions, ranging from transfer, asset migration, voting to balance freeze, occurring more frequently than once every 10 seconds consumes bandwidth. Every contract consumes 100,000 Entropies. 
 
-Note: When balance unfreezes, bandwidth points will not be cleared. New bandwidth points will be accumulated when more TRX is frozen.
+Note: When balance unfreezes, bandwidth will not be cleared. New bandwidth will be accumulated when more TRX is frozen.
 
 ## Token issuance
 

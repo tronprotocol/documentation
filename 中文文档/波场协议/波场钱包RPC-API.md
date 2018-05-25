@@ -338,7 +338,7 @@ TransactionList：交易列表。
 26.4 返回值 Transaction：返回包含资金的交易，钱包签名后再请求广播交易。   
 26.5 功能说明  
  锁定资金将带来两个收益：  
-a.获得bandwidth points，每次要更新区块链的交易都需要消耗bandwidth points(如果当前交易距离上次交易超过10s，本次交易不消耗bandwidth points)。获得bandwidth points=suns*锁定天数。每次交易（所有会修改区块链账本的操作）消耗bandwidth points为100000。   
+a.获得bandwidth，每次要更新区块链的交易都需要消耗bandwidth(如果当前交易距离上次交易超过10s，本次交易不消耗bandwidth)。获得bandwidth=suns*锁定天数。每次交易（所有会修改区块链账本的操作）消耗bandwidth为100000。   
 b.获得投票的权利，锁定多少个trx就获得多少个投票权。
 
 ## 27. 解除资金锁定  
