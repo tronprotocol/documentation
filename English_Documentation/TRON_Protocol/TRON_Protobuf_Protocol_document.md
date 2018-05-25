@@ -747,7 +747,7 @@ Input, transaction and block header all require signature.
       
         }
        
-   Get transaction.
+        //Get transaction.
         
         rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
       
