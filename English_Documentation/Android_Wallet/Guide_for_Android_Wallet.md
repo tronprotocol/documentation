@@ -138,4 +138,4 @@ Users can vote in hot wallet setup.
 ![](https://github.com/ybhgenius/Documentation/blob/master/images/Wallet_for_Android/转出和转入/转出/6.输入希望转入的额度点击send.png)
 3. Enter account password and tap SEND, and you will see the message of SENT SUCCESSFULLY.
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/7.点击send之后需要输入账户密码进行确认.png)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/9.转账成功.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/9.png)
