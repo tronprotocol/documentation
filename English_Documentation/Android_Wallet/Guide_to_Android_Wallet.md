@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Tron Wallet is a multifunctional android wallet for the TRON network. It gives you the possibility to interact quickly and easily with your account or to keep your TRX and other account data safe in a cold wallet setup. This app offers you one of the safest ways to protect your private data. The goal in the future is to connect the users even better and easier with the TRON network and thus form a basis for all in the TRON community to strengthen them and offer extended possibilities.
+TRON Wallet is a multifunctional Android wallet for the TRON network. It gives you the possibility to interact quickly and easily with your account or to keep your TRX and other account data safe in a cold wallet setup. This app offers you one of the safest ways to protect your private data. The goal in the future is to connect the users even better and easier with the TRON network and thus form a basis for all in the TRON community to strengthen and offer extended possibilities.
 
 ### Features
 Create Wallet
@@ -54,45 +54,52 @@ Cold Wallet Setup
 + never connects to the internet (to be completely secure you should never connect your device to the internet)
 + signs transactions (from watch only setup)
 
-## Check information on blocks and recent transactions
+## Check information on blocks and recent transactions  
+
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/区块和交易信息.png)
 
-## Check SR candidate information
+## Check SR candidate information  
+
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看SP候选信息.png)
 
-## Check node information
+## Check node information  
+
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看节点信息.png)
 
 ## Participate in token offerings
    + select the token you’d like to buy
-   + select quantity of purchase
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看token信息.png)
+   + select quantity of purchase  
+
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看token信息.png)  
+
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/选择购买数量.png)
 
-## Check account information
+## Check account information  
+
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看账户信息.png)
 
 ## Import wallet
 + import public address only (watch-only setup)
 + or import with private key or 24-word recovery phrase
+
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/倒入钱包/导入钱包.png)
 
 ## Create account
 
-1. Cellphone screen display.
+1. Cellphone screen display.  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/1桌面显示.png)
-2. Account creation page in app.
+2. Account creation page in app.  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/2.点击app之后的界面.jpg)
 3. Tap CREATE WALLET.  
    + Cold wallet creation: toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.
    + Hot wallet creation: don’t toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.  
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置密码.jpg)  
-4. Tap GENERATE ADDRESS AND PRIVATE KEY and tap OK after reading the information page.
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.png)
+   ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置密码.jpg)  
+4. Tap GENERATE ADDRESS AND PRIVATE KEY and tap OK after reading the information page.  
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.png)  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.png)
-5. Make sure to save your private key and 24-word recovery phrase.
+5. Make sure to save your private key and 24-word recovery phrase.  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/7.钱包创建好之后的页面%20now%20we%20see%20here%20is%20a%20public%20address%20%2Cprivate%20key%20and%2024%20words%20recovery%20phrase.jpg)
-6. Tap continue and enter wallet page.
+6. Tap continue and enter wallet page.    
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/8.创建号钱包之后下滑页面找到continue按钮.jpg)
 
 ## Voting
