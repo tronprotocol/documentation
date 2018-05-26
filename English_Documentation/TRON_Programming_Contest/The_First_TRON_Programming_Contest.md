@@ -51,8 +51,8 @@ First-place winners for the following five applications will take home a reward 
 + Blockchain Explorer: $280,000.
 
 
-The developer of any product we deem to be complete will receive a $100,000 TRON LOAN. For more information please refer to  
-https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Loan.md
+The developer of any product we deem to be complete will receive a $100,000 TRON Accelerator. For more information please refer to  
+https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Accelerator.md
 
 ## Timeline
 
