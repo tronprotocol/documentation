@@ -106,4 +106,4 @@ We will score projects submitted for the programming contest based on the follow
 
 Notes to the evaluation form:
 1. Applicants' chances of winning are directly tied to your score for the basic criteria.
-2. There is a better chance of winning if submitted projects scores high points for the bonus criteria.
+2. There is a better chance of winning if submitted projects score high points for the bonus criteria.
