@@ -59,7 +59,7 @@ Note: TRON network only keeps record of the latest votes, meaning that every new
 + e.g.
 
 ```
-freezebalance password 10_000_000 3// 10 bandwidths for 10 frozen TRX
+freezebalance password 10_000_000 3// 10 TP for 10 frozen TRX
 votewitness password witness1 4 witness2 6//4 votes for witness1 and 6 votes for witness2
 vote witness password witness1 3 witness2 7// 3 votes for witness1 and 7 votes for witness2
 ```
