@@ -12,7 +12,7 @@
 
 ### 钱包导入
 + 使用私钥或24字助记词进行导入
-+ 或者仅导入公共地址（只读钱包设置）
++ 或者仅导入公共地址（观察钱包设置）
 
 ### 钱包功能
 + 查询余额（TRX、代币）
@@ -21,7 +21,7 @@
 + 发起TRX及代币转账
 + 接收TRX及代币转账
 + 二维码收款
-+ 冻结TRX获得Tron Power（TP）和bandwith
++ 冻结TRX获得Tron Power（TP）和bandwidth
 + 为超级代表投票
 + 二维码离线签名机制
 + 参与代币发售
@@ -58,7 +58,7 @@
 ## 查看区块信息和最近交易信息
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/区块和交易信息.png)
 
-## 查看SP候选者信息
+## 查看SR候选者信息
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看SP候选信息.png)
 
 ## 查看节点信息
@@ -73,7 +73,7 @@
 ## 查看账户信息
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/查看相关信息/查看账户信息.png)
 
-## 倒入钱包
+## 导入钱包
 + 仅输入地址，可以导入观察钱包、
 + 输入密钥或者助记词，可以导入钱包。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/倒入钱包/导入钱包.png)
@@ -81,7 +81,7 @@
 ## 创建账户
 
 1. 手机桌面显示
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/1.手机桌面显示.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/1桌面显示.png)
 2. 点击进入app创建钱包页面
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/2.点击app之后的界面.jpg)
 3. 点击创建钱包。  
@@ -89,8 +89,8 @@
     + 热钱包创建：无需勾选冷钱包选项，勾选阅读注意事项选项。  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置密码.jpg)  
 4. 点击创建地址和私钥，阅读创建钱包注意事项，点击确定按钮。
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.点击创建冷钱包选项时立即跳出的页面的界面.jpg)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.点击generate%20address%20and%20%20private%20key%20之后的页面.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.png)
 5. 请保存好自己的私钥与24个助记词。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/7.钱包创建好之后的页面%20now%20we%20see%20here%20is%20a%20public%20address%20%2Cprivate%20key%20and%2024%20words%20recovery%20phrase.jpg)
 6. 点击继续，进入钱包界面。
@@ -111,20 +111,20 @@
 5. 输入密码，确认冻结。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/5冻结TRX需要输入账户密码进行确认.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/6.键入账户密码.jpg)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/7TRX冻结成功提示消息.jpg)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/7.png)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/8.进行100TRX冻结之后的页面显示.jpg)
 6. 回到余额显示界面，点击左侧投票按钮。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/9.回到余额显示页面，然后点击余额左侧的投票按钮.jpg)
-7. 进入SP候选界面。
+7. 进入SR候选界面。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/10.点击投票按钮之后进入超级代表候选人list页面，candidates一栏下显示的是所有待投票竞选的SR候选人.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/11.此为your%20votes页面下的显示情况，因为我们还没有对任何一个SR候选节点进行投票，所以列表中空空如也.png)
-8. 选择相应的SP候选，输入投票数目。
+8. 选择相应的SR候选，输入投票数目。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/12.我们回到candidates一栏，任意选择一个SR候选人进行投票演示，以list中首个系节点为例，注，candidates%20list%20的排列是以票数多少为顺序.jpg)
 9. 点击submit，输入投票数目和密码，确认提交。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/13.输入希望为此节点投出的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/14.点击submit%20votes之后要求输入账户密码进行确认投票.jpg)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/16.投票成功提示页面.jpg)
-10. 可以再SP候选列表和投票中查看已投票信息。
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/16.png)
+10. 可以再SR候选列表和投票中查看已投票信息。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/17.为此候选人投过票后此候选人右侧显示你为其透过的票数.jpg)
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/投票/18.这个时候我们可以看到在your%20votes一栏中与投票前不同的是出现了我们为其投过票的SR候选人信息.jpg)
 
@@ -139,4 +139,4 @@
 ![](https://github.com/ybhgenius/Documentation/blob/master/images/Wallet_for_Android/转出和转入/转出/6.输入希望转入的额度点击send.png)
 3. 输入账户密码进行确认，显示转账成功界面。
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/7.点击send之后需要输入账户密码进行确认.png)
-![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/9.转账成功.png)
+![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/转出和转入/转出/9.png)
