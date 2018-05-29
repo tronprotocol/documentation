@@ -695,7 +695,7 @@
             
               }
               
-   获取交易。
+              //获取交易。
    
               rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {
             

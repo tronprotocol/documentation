@@ -1,4 +1,4 @@
-# TRON Loan
+# TRON Accelerator
 
 #### Introduction
 
@@ -10,16 +10,16 @@ Loan Amount: USD$100,000
 
 Disbursement: Within 6 – 24 hours  
 
-Disbursement Method: Once eligibility for TRON LOAN is verified, applicants will receive the equivalent of USD$100,000 in digital assets from the TRON Foundation. After funds are disbursed, TRON will publicize information on participating projects and funding flows on official TRON channels.
+Disbursement Method: Once eligibility for TRON Accelerator is verified, applicants will receive the equivalent of USD$100,000 in digital assets from the TRON Foundation. After funds are disbursed, TRON will publicize information on participating projects and funding flows on official TRON channels.
 
 #### Repayment
 
 There are currently two repayment methods:
 
 + If the developer’s project completes a new round of financing, the loan of USD$100,000 will be converted to its equivalent in equity, at 80% of the company’s new valuation amount. [USD$100,000 / (0.80 x New Valuation)]
-+ Loans provided through TRON LOAN will be interest-free for the first 18 months. The  developer shall repay the principal balance of USD$100,000 within 18 months, either in USD or mainstream digital asset equivalent at the time of repayment.
++ Loans provided through TRON Accelerator will be interest-free for the first 18 months. The  developer shall repay the principal balance of USD$100,000 within 18 months, either in USD or mainstream digital asset equivalent at the time of repayment.
 
-By setting up TRON LOAN, TRON aims to expand and strengthen its network ecosystem, instead of seeking short-term commercial gains. If projects fail due to force majeure, the developer does not need to repay the principal balance.
+By setting up TRON Accelerator, TRON aims to expand and strengthen its network ecosystem, instead of seeking short-term commercial gains. If projects fail due to force majeure, the developer does not need to repay the principal balance.
 
 #### Application Requirements
 
