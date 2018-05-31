@@ -55,7 +55,7 @@ To become a recommended Super Representative, candidates must meet nine requirem
 + 如果你想了解关于波场钱包的相关信息，请查看[Android钱包使用指导](https://github.com/ybhgenius/Documentation/tree/master/中文文档/Android钱包)。
 + 如果你想了解编程大赛，请查看[波场编程大赛](https://github.com/tronprotocol/Documentation/tree/master/中文文档/波场编程大赛)。
 + 如果你想了解波场TRX迁移，请查看[TRX](https://github.com/tronprotocol/Documentation/tree/master/TRX)相关文档。
-+ 对于波场虚拟机的更多信息，请查看[TVM相关文档](https://github.com/ybhgenius/Documentation/tree/master/中文文档/虚拟机)。
++ 对于波场虚拟机的更多信息，请查看[TVM](https://github.com/ybhgenius/Documentation/tree/master/中文文档/虚拟机)相关文档。
 + 对于波场发展的最新进展，请时刻关注[波场文档](https://github.com/tronprotocol/Documentation/tree/master/中文文档)。
 
 # 超级代表文档指引
@@ -79,4 +79,4 @@ To become a recommended Super Representative, candidates must meet nine requirem
 成为推荐超级代表你需要满足我们列出9个标准，并向我们提交申请。对申请内容进行评审后，我们会在波场官方论坛tronsr.org上进行公示。推荐超级代表的9个标准以及推荐超级代表申请表请参见[申请推荐超级代表指南](https://github.com/tronprotocol/Documentation/blob/master/中文文档/申请推荐超级代表指南.md)。
 ## 常见问题
 
-有关超级代表、超级代表节点运行、申请、竞选的相关问题请查看[关于SR的常见问题解答](https://github.com/tronprotocol/Documentation/blob/master/中文文档/常见问题解答/关于SR的常见问题解答.md。
+有关超级代表、超级代表节点运行、申请、竞选的相关问题请查看[关于SR的常见问题解答](https://github.com/tronprotocol/Documentation/blob/master/中文文档/常见问题解答/关于SR的常见问题解答.md)。
