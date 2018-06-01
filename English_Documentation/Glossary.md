@@ -7,7 +7,7 @@ Block production rewards are sent to a sub-account. SRs can claim their reward o
 ## API	
 API is mainly used for the development of client terminals. With API support, token issuance platform can be designed by developers themselves.	
 ## Application Layer	
-Developers can utilize interfaces for the realization of diverse dAPPs and customized wallets.  
+Developers can utilize interfaces for the realization of diverse DApps and customized wallets.  
 ## Asset	
 In TRON's documents, asset is the same as token.
 ## Asset Issue	
@@ -37,7 +37,7 @@ Unfrozen TRX re-enters circulation and can be traded.
 ## Google Protobuf		
 Independent from language platforms, ProtoBuf is a flexible and efficient means of data structuralization which can be used for communication protocols and data storage. It is faster, simpler and more compact. You can customize your own data structure of ProtoBuf and use a ProtoBuf compiler to generate source code in mainstream programming languages like C++, Java and Python to easily serialize or deserialize.
 ## GRPC	
-GRPC is a language-neutral, platform-neutral open-source RPC system, with which apps in the client end can directly invoke another app on a different device like local one. It facilitates the creation of Dapps and decentralized services. Like many other RPC systems, gPRC is based on the following concepts: define a service and designate a way inlcluding the parameters and return type for it to be invoked remotely; deploy such an interface on server and run a gRPC server to process client end invoke; install a stub on the client end to allow remote invoke.
+GRPC is a language-neutral, platform-neutral open-source RPC system, with which apps in the client end can directly invoke another app on a different device like local one. It facilitates the creation of DApps and decentralized services. Like many other RPC systems, gPRC is based on the following concepts: define a service and designate a way inlcluding the parameters and return type for it to be invoked remotely; deploy such an interface on server and run a gRPC server to process client end invoke; install a stub on the client end to allow remote invoke.
 ## Hot Wallet	
 Hot wallet, also known as online wallet, allows the network to access user's private key. Others can access the user's private key through the Internet, which reduces its security while increasing its convenience as compared with a cold wallet.
 ## JDK	
