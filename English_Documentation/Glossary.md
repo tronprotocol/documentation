@@ -7,7 +7,7 @@ Block production rewards are sent to a sub-account. SRs can claim their reward o
 ## API	
 API is mainly used for the development of client terminals. With API support, token issuance platform can be designed by developers themselves.	
 ## Application Layer	
-Developers can utilize interfaces for the realization of diverse DApps and customized wallets.  
+Developers are able to utilize interfaces for the realization of diverse DApps and customized wallets.  
 ## Asset	
 In TRON's documents, asset is the same as token.
 ## Asset Issue	
