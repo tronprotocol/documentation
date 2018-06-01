@@ -95,3 +95,5 @@ Please note: All addresses of transactions and block storage should be in byte[]
 6，Connecting with Solidity Node or grpc-gateway to check your balance
 
 With the address generated in step 5, connect with Solidity Node to view balance through gRPC interface GetAccount. Or you can access http://localhost:8080/Wallet/GetAccount interface for your balance through grpc-gateway.
+
+7, About the apis, please look up https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto 
