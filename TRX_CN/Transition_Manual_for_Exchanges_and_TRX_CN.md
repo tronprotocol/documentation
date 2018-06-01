@@ -87,3 +87,5 @@ SolidityNode对外提供gRPC接口，通过grpc-gateway提供对应的gRPC接口
 6，连接SolidityNode或者grpc-gateway查询余额
 
 通过步骤5生成的地址，连接SolidityNode通过gRPC接口GetAccount查询该地址的余额信息；或者连接grpc-gateway通过Http接口 htpp://localhost:8080/Wallet/GetAccount 查询该地址的余额信息。
+
+7, 目前提供的api，请参考 https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto
