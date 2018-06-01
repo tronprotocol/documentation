@@ -1,7 +1,7 @@
 # Glossary
 
 ## Address	
-An address is a public key. A public-private key pair consisting can be generated through an algorithm. The public key is accessible to network while the private key is not. The public key is usually used for session key encryption, signature verification and encrypting data which could be unencrypted with a corresponding private key.
+Account credentials on Tron's network are given by a key pair, which consists of a private key and a public key derived from the first through an algorithm. The public key is referenced as Address, and is accessible to the network, while the private key must be securely held by the account owner. The public key is usually used for session key encryption, signature verification and encrypting data which could be unencrypted with a corresponding private key.
 ## Allowance	
 Block production rewards are sent to a sub-account. SRs can claim their reward on Tronscan.
 ## API	
