@@ -1,7 +1,7 @@
 # Glossary
 
 ## Address	
-Account credentials on Tron's network are given by a key pair, which consists of a private key and a public key derived from the first through an algorithm. The public key is referenced as Address, and is accessible to the network, while the private key must be securely held by the account owner. The public key is usually used for session key encryption, signature verification and encrypting data which could be unencrypted with a corresponding private key.
+Account credentials on TRON's network are given by a key pair, which consists of a private key and a public key derived from the first through an algorithm. The public key is referenced as Address, and is accessible to the network, while the private key must be securely held by the account owner. The public key is usually used for session key encryption, signature verification and encrypting data which could be unencrypted with a corresponding private key.
 ## Allowance	
 Block production rewards are sent to a sub-account. SRs can claim their reward on Tronscan.
 ## API	
@@ -15,7 +15,7 @@ Issuing a token on the TRON Protocol can be done by anyone who has at least 1024
 ## Balance TRX
 A TRX account shows the balance of TRX and other tokens and their USD equivalent.
 ## Bandwidth 	
-To keep the network operating smoothly, TRON network only allows every account to initiate a limited number of transactions. To engage in transactions more frequently requires bandwidth points. Like TRON Power (TP), bandwidth points can be obtained through freezing TRX. Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array. The ratio of bandwidth points in an account to the bandwidth capacity of TRON’s network equals the ratio of frozen balance in an account to frozen balance on the entire network.
+To keep the network operating smoothly, TRON network only allows every account to initiate a limited number of transactions. To engage in transactions more frequently requires bandwidth points. Like TRON Power (TP), bandwidth points can be obtained through freezing TRX. Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array. The ratio of "bandwidth points in an account / bandwidth capacity of TRON’s network" equals to the ratio of "frozen balance in an account / frozen balance on the entire network
 ## Block	
 Blocks contains the digital records of your transactions. A complete block consists of the magic number, block size, blockheader, transaction counter and transactions. 
 ## Blockheader	
@@ -23,7 +23,7 @@ A blockheader is part of a block. It contains the hash of the previous block, th
 ## CDN		
 CDN is short for Content Delivery Network. It aims to achieve faster and more stable transmission through avoiding as many links which could affect its speed and stability of transmission as possible.
 ## Cold Wallet	
-Cold wallet, also known as offline wallet, keeps the private key completely disconnected from any network. Cold wallets are usually installed on "cold" devices (computers or mobile phones stayin offline) to ensure the security of TRX private key. Private keys are kept away from the network by utilizing QR codes for payment.
+Cold wallet, also known as offline wallet, keeps the private key completely disconnected from any network. Cold wallets are usually installed on "cold" devices (computers or mobile phones staying offline) to ensure the security of TRX private key. Private keys are kept away from the network by utilizing QR codes for payment.
 ## Consensus	
 The consensus mechanism verifies and confirms transactions very swiftly through voting by special nodes. If several uninterested nodes can reach consensus on a transaction, we can deduce that the entire network can also reach consensus.
 ## Core Layer	
@@ -35,7 +35,7 @@ Freezing a certain amount of TRX earns users Tron Power to vote and bandwidth po
 ## Frozen account		
 Unfrozen TRX re-enters circulation and can be traded.
 ## Google Protobuf		
-Independent from language platforms, ProtoBuf is a flexible and efficient means of data structuralization which can be used for communication protocols and data storage. It is faster, simpler and more compact. You can customize your own data structure of ProtoBuf and use a ProtoBuf compiler to generate source code in mainstream programming languages like C++, Java and Python to easily serialize or deserialize.
+Independent from language-neutral, platform-neutral mechanism, ProtoBuf is a flexible and efficient means of data structuralization which can be used for communication protocols and data storage. It is faster, simpler and more compact. You can customize your own data structure of ProtoBuf and use a ProtoBuf compiler to generate source code in mainstream programming languages like C++, Java and Python to easily serialize or deserialize.
 ## GRPC	
 GRPC is a language-neutral, platform-neutral open-source RPC system, with which apps in the client end can directly invoke another app on a different device like local one. It facilitates the creation of DApps and decentralized services. Like many other RPC systems, gPRC is based on the following concepts: define a service and designate a way inlcluding the parameters and return type for it to be invoked remotely; deploy such an interface on server and run a gRPC server to process client end invoke; install a stub on the client end to allow remote invoke.
 ## Hot Wallet	
@@ -59,10 +59,11 @@ The tech team of TRON designed a unique distributed storage protocol consisting 
 ## Sun	
 Sun, abbreviated as S, replaced drop as the smallest unit of TRX.
 ## Super Representative	
-The 27 Super Representatives are the bookkeepers on TRON network. They are responsible for the verification and packing of all transaction data broadcasted on the network. Background information of the SRs are posted on TRON network for public access, and the most convenient way to check out the list of SRs and their information is by using Tron’s Blockchain explorer.	
+The 27 Super Representatives are the bookkeepers on TRON network. They are responsible for the verification and packing of all transaction data broadcasted on the network, similar to witness in DPOS systems. Background information of the SRs are posted on TRON network for public access. The most convenient way to check out the list of SRs and their information is by using [TRON’s Blockchain explorer](https://tronscan.org/#/).	
+## Throughput
 High throughput is a feature of TRON mainnet. It is also known as TPS, namely the maximum transaction capacity in a second.
 ## Timestamp	
-The approximate of block production time is recorded as Unix timestamp, which is the number of seconds that have elapsed since 00:00:00 UTC.
+The approximate of block production time is recorded as Unix timestamp, which is the number of milliseconds that have elapsed since 00:00:00 UTC (1 Jan 1970).
 ## TKC		
 Token configuration.
 ## Token（Asset）	
