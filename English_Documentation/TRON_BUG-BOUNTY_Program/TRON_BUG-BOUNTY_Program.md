@@ -37,6 +37,15 @@ Also, please note that we have limited the scope of eligible bugs, meaning that 
 + Intermediate bugs for USD$6,000 and up: bugs which can incur Denial of Service (DoS) in java-tron through TRON Protocol.
 + Intermediate bugs for USD$6,000 and up: bugs allowing unauthorized operations on user accounts.
 
+## Out of Scope 
+
+These following locations are considered out of scope for the bug bounty rewards. If you find issues with these projects, **PLEASE** file issues on the respective repositories if possible.
+
++ tronscan.org : https://github.com/tronscan/tronscan-frontend
++ tron.network
++ tronlab.com
++ any third party partners
+
 ## How to report bug
 
 Please submit bug report to bug@tron.network with the subject line reading [Bounty-mainnet].
