@@ -18,9 +18,8 @@ Applications are given a wider variety of ways to be deployed in TRON because of
 
 Thanks to the high efficiency and infinite possibilities of the smart contract, TRON possesses great scalability, allowing for a wide variety of applications to be deployed in TRON.
 
-The marriage of an excellent database structure and the account system simplifies the actualization of complex designs and models, which brings convenience to project development and supports high TPS. Existing applications, websites and operating services can be transferred to TRON network by its large user base, which allows TRON to better rival against existing institutions.
-
-+ Highly Availability
+The marriage of an excellent database structure and the account system simplifies the actualization of complex designs and models, which brings convenience to project development and supports high TPS. Existing applications, websites and operating services can be transferred to TRON network, which allows them to better rival against existing institutions by benefiting from the large user base of the TRON network.
++ High Availability
 
 TRON is keen on building a decentralized consensus mechanism.  The network structure, user assets and intrinsic values will become more reliable with a higher degree of decentralization. Even so, the consensus mechanism of TRON is much more energy-efficient compared with the POW mode.
 

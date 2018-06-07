@@ -339,7 +339,7 @@ Transaction: Return includes a transaction of balance. Request transaction broad
 
 Two things can be gained through freezing balance:
 
-a.	Bandwidth  points. Each update of blockchain transaction consumes bandwidth  points (if more than 10s from the previous transaction, the current transaction does not consume any points). Bandwidth  points obtained=suns*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 bandwidth  points.  
+a.	Bandwidth Points  points. Each update of blockchain transaction consumes bandwidth  points (if more than 10s from the previous transaction, the current transaction does not consume any points). Bandwidth Points  points obtained=suns*frozen duration. Each transaction (all operations altering blockchain accounts) consumes 100,000 bandwidth  points.  
 b.	Votes. The amount of votes gained equals to the amount of frozen TRX.
 
 ## 27. Unfreeze Balance
