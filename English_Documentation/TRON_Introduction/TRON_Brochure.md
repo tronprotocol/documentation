@@ -14,12 +14,12 @@ TRON adopts a 3-layer architecture comprised of storage layer, core layer and ap
 + Core Layer
 
     Smart contract module, account management module and consensus module are three modules of the core layer. It’s TRON’s vision to base its functions on a stacked virtual machine and optimized instruction set.  
-    In order to better serve the development of dAPPs, Java is designated as the language for smart contracts, which is to be further supplemented by other high-level programming languages.  
+    In order to better serve the development of DApps, Java is designated as the language for smart contracts, which is to be further supplemented by other high-level programming languages.  
     In addition, innovations are made to TRON’s consensus on the basis of DPOS to fulfill its special needs.
 
 + Application Layer
 
-    Developers can utilize interfaces for the realization of diverse dAPPs and customized wallets.  
+    Developers can utilize interfaces for the realization of diverse DApps and customized wallets.  
     The protocol of TRON adheres in entirety to Google Protobuf, intrinsically supporting multi-language extension.
 
 ## Consensus

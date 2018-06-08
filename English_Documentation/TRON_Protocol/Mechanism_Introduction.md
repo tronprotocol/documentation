@@ -1,6 +1,14 @@
 ## Account creation
 
-You can generate an offline keypair, which includes an address and a private key, that will not be recorded by TRON. In order to create a wallet using this private key, you will need to make a transfer (either in TRX or any other token) to the new address from an existing TRON's wallet. If the transfer is successful, you will have created a new wallet with the corresponding address.
+You can generate an offline keypair, which includes an address and a private key, that will not be recorded by TRON. 
+
+In order to create a wallet using this private key, you will need to invoke one of the following three APIs:
+
++ directly invoke account creation API
++ transfer TRX to the address
++ transfer tokens to the address 
+
+Once the transaction is confirmed, you can find corresponding information of the account in TRON network.
 
 ## Guidelines for Super Representative application
 
@@ -16,13 +24,13 @@ The balance freezing mechanism is set up out of two considerations:
 
 ### Freeze/unfreeze mechanism
 
-Once the balance is frozen, the user will receive a proportionate amount of TRON Power(TP) and bandwidth. TRON Power(TP) represents voting power whereas bandwidth is used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
+Once the balance is frozen, the user will receive a proportionate amount of TRON Power(TP) and bandwidth. TRON Power(TP) represents voting power whereas bandwidth points are used to pay for transactions. Their usage and means of calculation will be introduced in following sections.
 
 Frozen assets are held in your frozen account and cannot be used for trading.
 
 The fixed frozen duration is 3 days, after which you can unfreeze your balance any time you like manually. Balance unfrozen will be transferred back into your current account.
 
-More TP and bandwidth can be obtained by freezing more balance. The balance can be unfrozen after 3 days from the latest freezing.
+More TP and bandwidth points can be obtained by freezing more balance. The balance can be unfrozen after 3 days from the latest freezing.
 
 The fixed frozen duration is 3 days, after which you can unfreeze your balance any time you like manually. Balance unfrozen will be transferred back into your current account.
 
@@ -59,9 +67,9 @@ Note: TRON network only keeps record of the latest votes, meaning that every new
 + e.g.
 
 ```
-freezebalance password 10_000_000 3// 10 bandwidths for 10 frozen TRX
-votewitness password witness1 4 witness2 6//4 votes for witness1 and 6 votes for witness2
-vote witness password witness1 3 witness2 7// 3 votes for witness1 and 7 votes for witness2
+freezebalance password 10_000_000 3    // 10 TP for 10 frozen TRX
+votewitness password witness1 4 witness2 6    //4 votes for witness1 and 6 votes for witness2
+vote witness password witness1 3 witness2 7    // 3 votes for witness1 and 7 votes for witness2
 ```
 The final result of the above commands is 3 votes for witness1 and 7 votes for witness2.
 
@@ -90,15 +98,20 @@ These two parameters can be configured through updateAsset interface.
 Aside from inquiries, any other type of transaction consumes bandwidth points. The bandwidth consumption procedure is as follows:
     + If the transaction isn’t a token transfer, skip to step 2. If the transaction is a token transfer, TRON will try to charge bandwidth points from the token issuer. If the issuer does not have sufficient bandwidth points or the charge is beyond the issuer’s maximal threshold, go to step 2.
     + Bandwidth points will be charged from the initiator. If insufficient, go to step 3.
-    + Complimentary bandwidth points will be charged from the initiator. If again insufficient, transaction fails.  
+    + Complimentary bandwidth points will be charged from the initiator. If again insufficient, transaction fails, go to step 4. 
+    + TRX will be charged from and the transaction initiator and burnt.
+      (1) For a normal transfer, it costs about 0.002 TRX.
+      (2) If a new account is created by the transaction, it costs about 0.1 TRX.
     Note: When balance unfreezes, bandwidth points will be cleared since there is no more frozen TRX.
 6. Account creation  
-Account creation costs transaction initiator 10,000 bandwidth points.  
-Users can create new accounts for token transfer.
+
+Complimentary bandwidth points cannot be used for account creation. Bandwidth points gained from balance freezing or 0.1 TRX is needed.
+
+Users can create account by directly invoking account creation API, TRX transfer and token transfer.
 
 ## Token issuance
 
-In TRON’s network, every account is capable of issuing tokens. Users can lock their tokens in separately.
+In TRON’s network, every account is capable of issuing tokens at the expense of 1024 TRX. Users can lock their tokens in separately.
 
 To issue token, issuer needs to set up token name, total capitalization, exchange rate to TRX, circulation duration, description, website, maximal bandwidth consumption per account, total bandwidth consumption and token freeze.
 
