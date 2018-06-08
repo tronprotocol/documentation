@@ -8,7 +8,7 @@
 
 ##Rewards
 
-1.	Candidate reward: 127 candidates updated once every 6 hours will share 230,400 TRX. The reward will be split in accordance to the votes each candidate receives. Each year, candidate reward will total 336,384,000 TRX.
+1.	Candidate reward: 127 candidates updated once every 6 hours will share 115200 TRX. The reward will be split in accordance to the votes each candidate receives. Each year, candidate reward will total 168192,000 TRX.
 2.	Super Representative reward: The TRON Protocol network will generate one block every 3 seconds, with each block awarding 32 TRX to super representatives. A total of 336,384,000 TRX will be awarded annually to twenty-seven super representatives.
 3.	There will be no inflation on the TRON network before January 1, 2021, and the TRON Foundation will award all block rewards and candidate rewards prior to that date.
 
