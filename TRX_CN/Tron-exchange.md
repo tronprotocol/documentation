@@ -4,7 +4,9 @@
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
 ## 1.2 浏览器
-https://tronscan.org，作者是Rovak，github账号https://github.com/Rovak。
+https://tronscan.org
+作者是Rovak，github账号
+https://github.com/Rovak
 ## 1.3 Tron共识算法
 Tpos, 一种改进的Dpos算法。
 ## 1.4 Tron出块速度
