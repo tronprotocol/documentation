@@ -1,17 +1,17 @@
-#Tron公链与交易所对接方案
-#1 Tron总体介绍
-##1.1项目仓库
+# Tron公链与交易所对接方案
+# 1 Tron总体介绍
+## 1.1项目仓库
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
-##1.2 浏览器
+## 1.2 浏览器
 https://tronscan.org，作者是Rovak，github账号https://github.com/Rovak。
-##1.3 Tron共识算法
+## 1.3 Tron共识算法
 Tpos, 一种改进的Dpos算法。
-##1.4 Tron出块速度
+## 1.4 Tron出块速度
 当前版本是3秒。
-##1.5 交易模型
+## 1.5 交易模型
 基于账号模型，目前不支持UTXO模型。TRX的最小单位是Drop，1TRX = 1000000Drop。目前仅支持1对1交易，尚不支持1对n或者n对1转账。
-##1.6 账号模型
+## 1.6 账号模型
 一个账号对应一个address，转账使用address。当前版本尚未支持多重签名机制。
 在主链上创建账号有三种方式：
 ```
@@ -19,18 +19,18 @@ a.	使用已经存在的账号创建新账号
 b.	给一个新address转账，会同时创建账号
 c.	给一个新address转Token，会同时创建账号
 ```
-#2 Tron网络结构
-##2.1 节点类型
+# 2 Tron网络结构
+## 2.1 节点类型
 Tron主链网络中有三种类型的节点，分别是witness、fullnode和solidity node。
 其中：witness负责生产块；fullnode 提供api，广播交易和块；solidity node 同步不可回退块，并提供查询api。
-##2.2 网络部署方式（只针对交易所）
+## 2.2 网络部署方式（只针对交易所）
 部署一个fullnode，一个solidity node，solidity node连接本地的fullnode，fullnode连接mainnet
-##2.3 关于mainnet和testnet
+## 2.3 关于mainnet和testnet
 目前只有mainnet，稍后会部署testnet。
 
-#3 节点运行
-##3.1 建议硬件配置
-##3.2 启动fullnode
+# 3 节点运行
+## 3.1 建议硬件配置
+## 3.2 启动fullnode
 下载最新release的代码后
 ```
 ./gradlew build
@@ -38,7 +38,7 @@ cd build/libs
 java -jar java-tron.jar
 ```
 
-##3.3 启动solidity
+## 3.3 启动solidity
 下载最新release的代码后
  ```
 ./gradlew build
@@ -47,13 +47,13 @@ cd build/libs
 java -jar SolidityNode.jar -c config.conf
 ```
 
-##3.4 启动witness
+## 3.4 启动witness
 交易所不需要启动witness。(witness就是Super Representatives)
-#4 Tron API说明
+# 4 Tron API说明
     目前Tron仅支持gRPC接口，不支持http接口。项目grpc-gateway仅作为调试用，强烈不建议在此接口上进行功能开发。
-##4.1 api定义
+## 4.1 api定义
     api的定义请参考：https://github.com/tronprotocol/protocol/blob/master/api/api.proto
-##4.2 api说明
+## 4.2 api说明
 以wallet前缀的api是fullnode提供；以walletSolidity为前缀的api是solidity提供；以walletExtension以前缀的api是solidity提供，且这些api比较耗时。
 Fullnode提供操作区块链的api和查询数据的api，Solidity只提供查询数据的api。Fullnode和Solidity的区别是fullnode当前的数据因为分叉的原因有可能被回退，而solidity上的数据是固化块的数据，不可能被回退。
 ```
@@ -242,26 +242,26 @@ WalletExtension/ GetTransactionsToThis
 参数：
 返回值：
 ```
-##4.3 api代码生成
+## 4.3 api代码生成
     api基于google的gRPC协议，具体请参考https://grpc.io/docs/
-##4.4 api demo
+## 4.4 api demo
 具体请参考如下两个class：
 ```
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/WalletClient.java
 
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/GrpcClient.java
 ```
-#5 相关费用
+# 5 相关费用
 请参考：https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E.md
-##5.1 bandwidth points定义
-##5.2 冻结/解冻机制
-##5.3 bandwidth point消耗规则
-##5.4 超级代表及备选超级代表奖励规则
-#6 用户地址生成过程
-##6.1 算法描述
+## 5.1 bandwidth points定义
+## 5.2 冻结/解冻机制
+## 5.3 bandwidth point消耗规则
+## 5.4 超级代表及备选超级代表奖励规则
+# 6 用户地址生成过程
+## 6.1 算法描述
 首先产生密钥对，取公钥，仅包含x，y坐标的64字节的byte数组。对公钥做sha3-256的hash运算。取其最后20字节。测试网在前面填充A0，主网地址在前面补41，得到地址的原始格式。长度为21字节。做两次sha256计算，取其前4字节得到校验码。将校验码附加在地址的原始格式后面，做base58编码，得到base58check格式的地址。测试网地址编码后以27开头，长度为35字节。主网地址编码后以T开头，长度34字节。
 `注意：sha3协议我们使用的是KECCAK-256。`
-##6.2 示例
+## 6.2 示例
 Public Key: 040defc55df809cca94abce297d432863bd8c9049fb420b1106cf53bfb4b85e0184802c495337c7a407e2b68ebd2323df2a8198d860df103de6496bd139ed24094
 sha3 = SHA3(Public Key[1, 65)):  673f5c16982796e7bff195245a523b449890854c8fc460ab602df9f31fe4293f
 TestNet: Address = A0||sha3[12,32):  A0E11973395042BA3C0B52B4CDF4E15EA77818F275
@@ -272,7 +272,7 @@ addchecksum = address || checkSum:  A0E11973395042BA3C0B52B4CDF4E15EA77818F27510
 base58Address = Base58(addchecksum):  27jbj4qgTM1hvReST6hEa8Ep8RDo2AM8TJo
 
 
-##6.3 Testnet地址，以A0为前缀
+## 6.3 Testnet地址，以A0为前缀
 
 address = a0||sha3[12,32): a05a523b449890854c8fc460ab602df9f31fe4293f
 sha256_0 = sha256(address): 5f19ee7795d5df3868e05723cd8f345324ef148e034fa3cc622753057d9a0d12
@@ -281,7 +281,7 @@ checkSum = sha256_1[0, 4): 481c8383
 addchecksum = address || checkSum: a05a523b449890854c8fc460ab602df9f31fe4293f481c8383
 base58Address = Base58(addchecksum): 27XK5sBhwa773Svn9j2Mud6rajxtauEN4tr
 
-##6.4 Mainnet地址，以41为前缀
+## 6.4 Mainnet地址，以41为前缀
 address = 41||sha3[12,32): 415a523b449890854c8fc460ab602df9f31fe4293f
 sha256_0 = sha256(address): 06672d677b33045c16d53dbfb1abda1902125cb3a7519dc2a6c202e3d38d3322
 sha256_1 = sha256(sha256_0): 9b07d5619882ac91dbe59910499b6948eb3019fafc4f5d05d9ed589bb932a1b4
@@ -289,19 +289,19 @@ checkSum = sha256_1[0, 4): 9b07d561
 addchecksum = address || checkSum: 415a523b449890854c8fc460ab602df9f31fe4293f9b07d561
 base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 
-##6.5 java代码demo
+## 6.5 java代码demo
 请参考：https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletcli/ECKeyDemo.java
-#7 交易签名过程
+# 7 交易签名过程
 请参考：
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
 
-#8 交易id计算过程
+# 8 交易id计算过程
 对交易的RawData取Hash。
 ```
 Hash.sha256(transaction.getRawData().toByteArray())
 ```
 
-#9 block id计算过程
+# 9 block id计算过程
 block id是块高度和块头raw_data的hash的混合，具体是计算出块头中raw_data的hash。用块的高度替换该hash中的前8个byte。具体代码如下：
 ```
 private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
@@ -316,12 +316,12 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
 1Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 ```
 
-#10 迁移计划
+# 10 迁移计划
 波场TRON官方Token – TRX的ERC20代币将迁移至波场TRON主网代币，时间为北京时间6月21日-25日。
 如果投资者的TRX在交易所，无需其他任何操作。
 如果投资者的TRX在钱包，需要在2018年6月24日前将TRX充值到交易所。 6月21 - 24日，交易所TRX的提现将被暂停，6月25日交易所将暂停TRX的充值和提现。从6月26日开始，TRX的充值和提现将恢复正常。在此期间，TRX的正常交易将不受影响。
 如果投资者的TRX在钱包，没看见迁移公告，或者是在6月25日之后才看到迁移公告，到永久迁移交易所兑换主网代币。
-#11 相关文档
+# 11 相关文档
 具体请参考：https://github.com/tronprotocol/Documentation#%E6%96%87%E6%A1%A3%E6%8C%87%E5%BC%95
 
 
