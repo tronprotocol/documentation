@@ -38,6 +38,15 @@
 + $6000起的中级别bug —— 通过Tron合约引起java-tron发生DOS拒绝服务的bug
 + $6000起的中级别bug —— 未经用户授权下，可对用户账户实施异常操作的bug
 
+## 奖励范围外：
+
+在以下位置发现的漏洞不在Bug Bounty的奖励范围内。如果在这些项目中发现问题，请尽可能在相应的仓库（repository）中发布事物卡片（issue）.
+
++ 波场钱包：https://github.com/tronscan/tronscan-frontend
++ 波场官网：tron.network
++ tronlab.com
++ 第三方服务
+
 ## 如何提交Bug：
 
 请将bug提交至邮箱bug@tron.network，并在邮件标题加注[Bounty-mainnet]字样。

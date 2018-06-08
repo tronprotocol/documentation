@@ -1,5 +1,25 @@
 # 波场钱包RPC-API 
 
+## API的具体定义请参考：
+
+https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto
+
+## 你可能需要经常用到的如下几个API：
+ 
+1. 如何获取账号基本信息（类比比特币 getinfo）  
+GetAccount
+2. 如何获取余额（类比比特币：getbalance）  
+GetAccount
+3. 如何生成一个地址（类比比特币：getnewaddress）  
+可以在本地生成一个地址  
+可以通过一个已经存在的账号给一个新地址转账从而在区块链上生成一个新地址，通过CreateTransaction（TransferContract）完成
+4. 如何获取一个地址的历史交易（类比比特币：listtransactions）  
+GetTransactionsFromThis  
+GetTransactionsToThis
+5. 如何校验地址具有正确的格式  
++ 本地校验：经过decode58check后，会得到一个长度是21的byte数组，第一个字节是0x41(mainnet) 或者 0xa0(testnet).  
++ 如果想要验证一个地址是否存在于区块链上，请求API GetAccount。
+
 ## 1. 获取账户信息
 
 1.1	接口声明  
@@ -399,5 +419,5 @@ WithdrawBalanceContract：包含地址。
 Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
 28.5 功能说明                                                                                       
 本接口仅提供给超级代表。超级代表记账成功后，将获得奖励，奖励不直接增加到账户余额上。而是单独保存在账户allowance字段，每24小时允许提取一次到账户余额。
->>>>>>> upstream/master
+
 
