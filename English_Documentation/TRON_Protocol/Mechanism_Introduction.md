@@ -79,17 +79,16 @@ Having too many transactions will clog our network like Ethereum and may incur d
 
 1. Definition of bandwidth points  
 Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array.  
-If the length of a byte array is 100 then the transaction consumes 100 bandwidth points.
+If the length of a byte array is 200 then the transaction consumes 200 bandwidth points.
 2. Calculation of bandwidth points  
 Bandwidth points are the number of usable bytes for an account per day.  
-Within a given period of time, the entire network could only handle a fixed amount of bandwidth. To TRON’ network, the daily capacity is approximately 54G.  
+Within a given period of time, the entire network could only handle a fixed amount of bandwidth. 
 The ratio of bandwidth points in an account to the bandwidth capacity of TRON’s network equals the ratio of frozen balance in an account to frozen balance on the entire network.  
-e.g If frozen asset on the entire network totals 1,000,000 TRX and one given account froze 1,000 TRX, or 0.1% of total TRX frozen, then the account has 0.1%*54GB=54MB bandwidth points for its transactions.  
+e.g If frozen asset on the entire network totals 1,000,000 TRX and one given account froze 1,000 TRX, or 0.1% of total TRX frozen, then the account can perform about 300 transactions per day.  
 Note: Since the amount of frozen asset on the entire network and for a certain account are subject to change, bandwidth points held by an account isn’t always fixed.
 3. Complimentary bandwidth points  
 There are 1K bandwidth points for free per account per day. When an account hasn’t frozen any balance, or when its bandwidth points have run out, complimentary bandwidth points can be used.  
 Each transaction in Tron’ network is about 200 bytes, so each account enjoys about 5 transactions for free each day.  
-Note: total complimentary bandwidth takes up 1/4 of total bandwidth on the network, amounting to 13.5 GB. When total complimentary bandwidth used exceeds that threshold (meaning too many accounts have used complimentary bandwidth points), even if there are sufficient complimentary bandwidth points in an account, they cannot be used for transaction.
 4. Token transfer  
 For transactions of token transfer, bandwidth points will first be charged from the token issuer.  
 When issuing tokens, the issuer can configure a limit to maximum bandwidth consumption, namely the maximal bandwidth points which can be charged from him/her for a token holder’s token transfers within 24 hours and the maximal total of bandwidth points.  
