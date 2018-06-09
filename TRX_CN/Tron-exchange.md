@@ -1,6 +1,6 @@
 # Tron公链与交易所对接方案
 交易所与tron公链对接，建议遵循如下方案：
-```
+
 1. 用tron最新release的代码部署节点fullnode和solidity node，solidity node连接本地的fullnode。fullnode提供区块链操作api和数据查询api，solidity node提供数据查询api。fullnode上的数据可能存在分叉，故数据可能会回退，solidity node上的数据是不可回退块，数据不会被回退。如果需要对数据进行最终的确认，请查询solidity node。
 
 2.（可选步骤）部署grpc-gateway项目，连接本地的fullnode和solidity node，从而可以使用http查看区块链的数据，方便调试。grpc-gateway仅仅为方便查看区块链的数据，方便调试。
