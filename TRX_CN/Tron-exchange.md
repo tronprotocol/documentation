@@ -1,7 +1,7 @@
 # Tron公链与交易所对接方案
 交易所与tron公链对接，建议遵循如下方案：
 
-#1. 部署节点。 
+# 1. 部署节点。 
 
 1.1 下载最新release代码 https://github.com/tronprotocol/java-tron/releases
 
@@ -13,7 +13,7 @@
 
 2.2 请使用gRPC的的api，强烈不建议直接基于grpc-gateway进行功能开发，grpc-gateway可以作为调试程序用，方便查看区块链数据。gRPC部署方式请参照：https://github.com/tronprotocol/grpc-gateway/blob/master/README.md
 
-#3. 测试
+# 3. 测试
   建议6月18号之前完成与tron公链的对接测试，可以直接在mainnet上进行测试。
 
 #4. 相关技术文档，可以参阅https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md
