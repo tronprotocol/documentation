@@ -3,7 +3,7 @@
 
 1. 用tron最新release的代码部署节点fullnode和solidity node，solidity node连接本地的fullnode。fullnode提供区块链操作api和数据查询api，solidity node提供数据查询api。fullnode上的数据可能存在分叉，故数据可能会回退，solidity node上的数据是不可回退块，数据不会被回退。如果需要对数据进行最终的确认，请查询solidity node。
 
-2.（可选步骤）部署grpc-gateway项目，连接本地的fullnode和solidity node，从而可以使用http查看区块链的数据，方便调试。grpc-gateway仅仅为方便查看区块链的数据，方便调试。
+2. (可选步骤）部署grpc-gateway项目，连接本地的fullnode和solidity node，从而可以使用http查看区块链的数据，方便调试。grpc-gateway仅仅为方便查看区块链的数据，方便调试。
 
 3. 根据交易所的具体业务需求，使用tron提供的api，连接本地的fullnode和solidity node实现对接过程。建议6月15号之前完成所有的功能开发。请使用gRPC的的api，强烈不建议直接基于grpc-gateway进行功能开发。
 
