@@ -2,12 +2,16 @@
 交易所与tron公链对接，建议遵循如下方案：
 
 #1. 部署节点。 
-## 1.1 下载最新release代码 https://github.com/tronprotocol/java-tron/releases
-## 1.2 部署fullnode和solidity node，solidity node连接本地的fullnode。请参考 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md#3-%E8%8A%82%E7%82%B9%E8%BF%90%E8%A1%8C
+
+1.1 下载最新release代码 https://github.com/tronprotocol/java-tron/releases
+
+1.2 部署fullnode和solidity node，solidity node连接本地的fullnode。请参考 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md#3-%E8%8A%82%E7%82%B9%E8%BF%90%E8%A1%8C
 
 # 2. 对接需求开发
-## 2.1 根据交易所的具体业务需求，使用tron提供的api，连接本地的fullnode和solidity node实现对接过程。api说明请参考https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md#4-tron-api%E8%AF%B4%E6%98%8E
-## 2.2 请使用gRPC的的api，强烈不建议直接基于grpc-gateway进行功能开发，grpc-gateway可以作为调试程序用，方便查看区块链数据。gRPC部署方式请参照：https://github.com/tronprotocol/grpc-gateway/blob/master/README.md
+
+2.1 根据交易所的具体业务需求，使用tron提供的api，连接本地的fullnode和solidity node实现对接过程。api说明请参考https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md#4-tron-api%E8%AF%B4%E6%98%8E
+
+2.2 请使用gRPC的的api，强烈不建议直接基于grpc-gateway进行功能开发，grpc-gateway可以作为调试程序用，方便查看区块链数据。gRPC部署方式请参照：https://github.com/tronprotocol/grpc-gateway/blob/master/README.md
 
 #3. 测试
   建议6月18号之前完成与tron公链的对接测试，可以直接在mainnet上进行测试。
