@@ -1,7 +1,7 @@
 # Tron公链与交易所对接方案
 交易所与tron公链对接，建议遵循如下方案：
 
-# 1. 部署节点 
+# 1. 节点部署 
 
 1.1 下载最新release代码 https://github.com/tronprotocol/java-tron/releases
 
