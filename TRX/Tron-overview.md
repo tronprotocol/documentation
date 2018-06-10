@@ -265,7 +265,7 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/GrpcClient.java
 ```
 # 5. Relevant expenses:
-See also: https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E.md
+See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
 ## 5.1 Definition of bandwidth points
 ## 5.2 Freeze/unfreeze mechanism
 ## 5.3 Bandwidth consumption rules
@@ -308,7 +308,7 @@ base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 See also: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletcli/ECKeyDemo.java
 
 # 7. Transaction signing
-See also: https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
+See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
 # 8. Calculation of transaction ID
 Hash the Raw data of the transaction.
@@ -335,5 +335,5 @@ Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 Token migration from ERC20 TRX to Mainnet TRX will occur between June 21st – June 25th (GMT+8). If your TRX is held on an exchange, no action is required. If your TRX is held in a wallet, you must deposit your TRX to an exchange before June 24, 2018 to avoid any losses. From June 21st– 25th, TRX withdrawals on exchanges will be suspended. On June 25th, both TRX deposits and withdraws on exchanges will be suspended. Deposits and withdraws will resume on June 26th. During this period, TRX trading will not be affected. If your TRX is held in a wallet and you were not aware of the migration notice, or saw the migration notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.
 
 # 11. Relevant files
-See also: https://github.com/tronprotocol/Documentation#%E6%96%87%E6%A1%A3%E6%8C%87%E5%BC%95
+See also: https://github.com/tronprotocol/Documentation#documentation-guide
 
