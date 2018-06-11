@@ -15,7 +15,7 @@ Issuing a token on the TRON Protocol can be done by anyone who has at least 1024
 ## Balance TRX
 A TRX account shows the balance of TRX and other tokens and their USD equivalent.
 ## Bandwidth 	
-To keep the network operating smoothly, TRON network only allows every account to initiate a limited number of transactions. To engage in transactions more frequently requires bandwidth points. Like TRON Power (TP), bandwidth points can be obtained through freezing TRX. Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array. The ratio of "bandwidth points in an account / bandwidth capacity of TRON’s network" equals to the ratio of "frozen balance in an account / frozen balance on the entire network
+To keep the network operating smoothly, TRON network only allows every account to initiate a limited number of transactions. To engage in transactions more frequently requires bandwidth points. Like TRON Power (TP), bandwidth points can be obtained through freezing TRX. Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array. The ratio of "bandwidth points in an account / bandwidth capacity of TRON’s network" equals to the ratio of "frozen balance in an account / frozen balance on the entire network."
 ## Block	
 Blocks contains the digital records of your transactions. A complete block consists of the magic number, block size, blockheader, transaction counter and transactions. 
 ## Blockheader	
@@ -35,11 +35,11 @@ Freezing a certain amount of TRX earns users Tron Power to vote and bandwidth po
 ## Frozen account		
 Unfrozen TRX re-enters circulation and can be traded.
 ## Google Protobuf		
-Independent from language-neutral, platform-neutral mechanism, ProtoBuf is a flexible and efficient means of data structuralization which can be used for communication protocols and data storage. It is faster, simpler and more compact. You can customize your own data structure of ProtoBuf and use a ProtoBuf compiler to generate source code in mainstream programming languages like C++, Java and Python to easily serialize or deserialize.
+Independent from language-neutral, platform-neutral mechanism, ProtoBuf is a flexible and efficient means of data structuralization which can be used for communication protocols and data storage. It is faster, simpler and more compact. You can customize your own data structure of ProtoBuf and use a ProtoBuf compiler to generate source code in mainstream programming languages like C++, Java and Python to easily easily converted between object and code.
 ## GRPC	
-GRPC is a language-neutral, platform-neutral open-source RPC system, with which apps in the client end can directly invoke another app on a different device like local one. It facilitates the creation of DApps and decentralized services. Like many other RPC systems, gPRC is based on the following concepts: define a service and designate a way inlcluding the parameters and return type for it to be invoked remotely; deploy such an interface on server and run a gRPC server to process client end invoke; install a stub on the client end to allow remote invoke.
+GRPC is a language-neutral, platform-neutral open-source RPC system, with which apps in the client end can directly invoke another app on a different device like local one. It facilitates the creation of DApps and decentralized services. Like many other RPC systems, gPRC is based on the following concepts: define a service and designate a way including the parameters and return type for it to be invoked remotely; deploy such an interface on server and run a gRPC server to process client end invoke; install a stub on the client end to allow remote invoke.
 ## Hot Wallet	
-Hot wallet, also known as online wallet, allows the network to access user's private key. Others can access the user's private key through the Internet, which reduces its security while increasing its convenience as compared with a cold wallet.
+Hot wallet, also known as online wallet, allows user's private key to be used while online, thus it could be susceptible to potential vulnerabilities or interception by malicious actors.
 ## JDK	
 JDK is the Java SDK used for Java applications on mobile devices and embedded systems. It is the core of Java development, comprising the Java application environment (JVM+Java class library) and Java tools.
 ## KhaosDB	
@@ -59,7 +59,7 @@ The tech team of TRON designed a unique distributed storage protocol consisting 
 ## Sun	
 Sun, abbreviated as S, replaced drop as the smallest unit of TRX.
 ## Super Representative	
-The 27 Super Representatives are the bookkeepers on TRON network. They are responsible for the verification and packing of all transaction data broadcasted on the network, similar to witness in DPOS systems. Background information of the SRs are posted on TRON network for public access. The most convenient way to check out the list of SRs and their information is by using [TRON’s Blockchain explorer](https://tronscan.org/#/).	
+The 27 Super Representatives are the bookkeepers on TRON network. They are responsible for the verification and packing of all transaction data broadcasted on the network, similar to witness in DPOS systems. Information of the SRs are posted on TRON network for public access. The most convenient way to check out the list of SRs and their information is by using [TRON’s Blockchain explorer](https://tronscan.org/#/).	
 ## Throughput
 High throughput is a feature of TRON mainnet. It is also known as TPS, namely the maximum transaction capacity in a second.
 ## Timestamp	
@@ -73,7 +73,7 @@ Transaction refers to the process of token transfer between different accounts.
 ## Transaction Broadcasting	
 Transaction information is verified by nodes and broadcasted in the blockchain network.
 ## TRON Power	
-TRON Power (TP) can be obtained from balance freezing. All users in TRON's network are entitled to vote for Super Representatives they approve of. To vote, TP is needed, the amount of which is determined by the amount of frozen asset. Calculation of TP: 1 frozen TRX equals to 1 TP. When users unfreeze all balance, they also loose their TPs, which invalidates their votes. To prevent invalid votes, users can refreeze balance.
+TRON Power (TP) can be obtained from balance freezing. All users in TRON's network are entitled to vote for Super Representatives they approve of. To vote, TP is needed, the amount of which is determined by the amount of frozen asset. Calculation of TP: 1 frozen TRX equals to 1 TP. When users unfreeze all frozen balance, they also lose their TPs, which invalidates their votes for the current voting round. To prevent invalid votes, users can refreeze balance.
 ##TVM（TRON Virtual Machine）
 TRON Virtual Machine (TVM), is a lightweight, Turing complete virtual machine developed for Tron’s ecosystem, aimed at providing millions of global developers with custom-built blockchain system which is efficient, convenient, stable, secure and scalable.
 	
