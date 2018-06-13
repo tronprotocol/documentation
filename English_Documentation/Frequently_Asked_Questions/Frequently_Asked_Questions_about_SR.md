@@ -55,8 +55,8 @@ Questions on block generation by Super Node
 
 9.	Do we get to know whether our node has produced any block?
 
-10.	Q: Is the block production speed 1 block every 5 seconds shortly after the main net launches? When does TRON expect the speed to become 1 block per second?
-    A: Block production speed will be 1 block per second as soon as the mainnet launches.
+10.	Q: Is the block production speed 1 block every 5 seconds shortly after the main net launches? When does TRON expect the speed to become 1 block every 3 seconds?
+    A: Block production speed will be 1 block every 3 seconds as soon as the mainnet launches.
 
 11.	Q: Is it within TRON’s plan to reduce the reward of TRX for block production by half? If yes, when?
     A: There is no such plan.
@@ -86,7 +86,7 @@ Questions on the Super Representative election
 7.	Q: If large mining operations run for the election, is hashrate exceeding 50% a possibility?
     A: No.
 
-8.	At the speed of one block per second, 32 TRX per block will be rewarded to the corresponding node, right? Based on the number of transactions on TRON’s public blockchain, will blocks be produced every second?
+8.	At the speed of one block every 3 seconds, 32 TRX per block will be rewarded to the corresponding node, right? Based on the number of transactions on TRON’s public blockchain, will blocks be produced every second?
 
 9.	Q: What does the community support plan in the guidelines refer to?
     A: it can be understood as the budget and attention to community development.
