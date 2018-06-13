@@ -258,7 +258,7 @@ Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 
 ## 4 demo
 本地构造交易、签名的demo请参考
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransacitonSignDemo.java
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
 
 # 12 迁移计划
 波场TRON官方Token – TRX的ERC20代币将迁移至波场TRON主网代币，时间为北京时间6月21日-25日。
