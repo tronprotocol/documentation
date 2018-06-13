@@ -61,191 +61,117 @@ Fullnode提供操作区块链的api和查询数据的api，Solidity只提供查�
 ```
 wallet/GetAccount
 作用：返回一个账号的信息
-参数：Account，需要设置address
-返回值：Account, 该账号在区块链上的所有信息
 
 wallet/CreateTransaction
 作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链   上创建该账号
-参数：
-返回值：
 
 wallet/ BroadcastTransaction
 作用： 广播交易，广播之前需要做签名
-参数：
-返回值：
 
 wallet/ UpdateAccount
 作用： 更新账号名称，一个账号只能更新一次账号名称
-参数：
-返回值：
 
 wallet/ VoteWitnessAccount
 作用：普通用户对witness进行投票
-参数：
-返回值：
 
 wallet/ CreateAssetIssue
 作用： 发行Token，用户可以再Tron公链上发行Token，Token可以被相互转账，可以用Trx参与。用户在发行Token的时候，可以选择冻结部分Token。
-参数：
-返回值：
 
 wallet/ UpdateWitness
 作用： 修改wieness的信息
-参数：
-返回值：
 
 wallet/ CreateAccount
 作用： 创建账号，目前之后已经存在的账号，可以调用该api创建一个新账号，需要制定新账号的Address
-参数：
-返回值：
 
 wallet/ CreateWitness
 作用： 普通用户申请成为超级代表，需要花费9999个trx
-参数：
-返回值：
 
 wallet/ TransferAsset
 作用： Token转账
-参数：
-返回值：
 
 wallet/ ParticipateAssetIssue
 作用： 参与Token发行，用户可以花费一定的Trx参与别人发行的Token
-参数：
-返回值：
 
 wallet/ FreezeBalance
 作用： 冻结部分Trx，冻结Trx可以获得bandwidth points和Trow power，用户要发起交易需要消耗bandwidth points，要对witness投票，需要有Trow power
-参数：
-返回值：
 
 wallet/ UnfreezeBalance
 作用： 解冻冻结的trx，trx被冻结后，至少需要3天才可以解冻，解冻trx后会失去部分bandwidth points和Trow power，以及由该Trow power产生的投票
-参数：
-返回值：
 
 wallet/ UnfreezeAsset
 作用： 对Token进行解冻
-参数：
-返回值：
 
 wallet/ WithdrawBalance
 作用： 超级代表以及备选超级代表可以通过该api把产块的奖励以及成为top127排名witness的奖励体现到账号余额。用户每隔24个小时可以提现一次
-参数：
-返回值：
 
 wallet/ UpdateAsset
 作用： 修改发行Token的信息
-参数：
-返回值：
 
 wallet/ ListNodes
 作用： 返回当前所有的节点
-参数：
-返回值：
 
 wallet/ GetAssetIssueByAccount
 作用： 获取某个账号发行的Token
-参数：
-返回值：
 
 wallet/ GetAccountNet
 作用： 获取账号的bandwidth points信息，包含免费的bandwidth points和通过冻结trx获取的bandwidth points。
-参数：
-返回值：
 
 wallet/ GetAssetIssueByName
 作用： 通过Token名字，查询制定的Token
-参数：
-返回值：
 
 wallet/ GetNowBlock
 作用： 返回当前最新块
-参数：
-返回值：
 
 wallet/ GetBlockByNum
 作用： 通过块的高度查询块
-参数：
-返回值：
 
 wallet/ GetBlockById
 作用： 通过块的ID查询块，块的ID是块头Raw data的Hash
-参数：
-返回值：
 
 wallet/ GetBlockByLimitNext
 作用： 返回从下标从startNum（包含）到endNum（包含）之间的块，
-参数：
-返回值：
 
 wallet/ GetBlockByLatestNum
 作用： 获取最新的N个块，N通过参数指定
-参数：
-返回值：
 
 wallet/ GetTransactionById
 作用： 通过交易的ID获取交易，ID是交易Raw data 的hash
-参数：
-返回值：
 
 wallet/ ListWitnesses
 作用： 获取当前所有的witness
-参数：
-返回值：
 
 wallet/ GetAssetIssueList
 作用： 获取当前所有发行的Token
-参数：
-返回值：
 
 wallet/ TotalTransaction
 作用： 获取当前区块链中所有的交易数量
-参数：
-返回值：
 
 wallet/ GetNextMaintenanceTime
 作用： 获取下次维护期的时间，即下次重新根据投票计算witness的时间
-参数：
-返回值：
 
 WalletSolidity/ GetAccount
 作用：
-参数：
-返回值：
 
 WalletSolidity/ ListWitnesses
 作用：
-参数：
-返回值：
 
 WalletSolidity/ GetAssetIssueList
 作用：
-参数：
-返回值：
 
 WalletSolidity/ GetNowBlock
 作用：
-参数：
-返回值：
 
 WalletSolidity/ GetBlockByNum
 作用：
-参数：
-返回值：
 
 WalletExtension/ GetTransactionsFromThis
 作用： 获取某个账号的转出交易记录
-参数：
-返回值：
 
 WalletExtension/ GetTransactionsToThis
 作用： 获取某个账号的转入交易记录
-参数：
-返回值：
 ```
 ## 4.3 api代码生成
-    api基于google的gRPC协议，具体请参考https://grpc.io/docs/
+    api基于google的gRPC协议，具体请参考 https://grpc.io/docs/
 ## 4.4 api demo
 具体请参考如下两个class：
 ```
@@ -254,6 +180,8 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/GrpcClient.java
 ```
 # 5 相关费用
+在带宽足够的情况下，免除手续费。交易如果扣费，会在交易结果中的fee字段中记录。如果交易不扣费，也就是扣除带宽
+，对应fee字段为0。只有交易被写入区块链之后才会有手续费。
 请参考：https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E.md
 ## 5.1 bandwidth points定义
 ## 5.2 冻结/解冻机制
@@ -318,8 +246,20 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
 ```
 Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 ```
+# 10 交易的构造、签名
+构造交易有两种方式：
+## 1 调用fullnode上的api
+根据需要，本地构造相应的Contract，然后对应的api构造交易。具体的合约请参照 https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto
+## 2 本地构造
+根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 
+## 3 签名
+交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。
 
-# 10 迁移计划
+## 4 demo
+本地构造交易、签名的demo请参考
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransacitonSignDemo.java
+
+# 12 迁移计划
 波场TRON官方Token – TRX的ERC20代币将迁移至波场TRON主网代币，时间为北京时间6月21日-25日。
 如果投资者的TRX在交易所，无需其他任何操作。
 如果投资者的TRX在钱包，需要在2018年6月24日前将TRX充值到交易所。 6月21 - 24日，交易所TRX的提现将被暂停，6月25日交易所将暂停TRX的充值和提现。从6月26日开始，TRX的充值和提现将恢复正常。在此期间，TRX的正常交易将不受影响。
