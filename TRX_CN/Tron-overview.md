@@ -181,7 +181,8 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 ```
 # 5 相关费用
 在带宽足够的情况下，免除手续费。交易如果扣费，会在交易结果中的fee字段中记录。如果交易不扣费，也就是扣除带宽
-，对应fee字段为0。只有交易被写入区块链之后才会有手续费。
+，对应fee字段为0。只有交易被写入区块链之后才会有手续费。fee字段请参考Transaction.Result.fee字段，对应的proto文件是： https://github.com/tronprotocol/protocol/blob/master/core/Tron.proto
+
 请参考：https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%9C%BA%E5%88%B6%E8%AF%B4%E6%98%8E.md
 ## 5.1 bandwidth points定义
 ## 5.2 冻结/解冻机制
