@@ -220,7 +220,7 @@ addchecksum = address || checkSum: 415a523b449890854c8fc460ab602df9f31fe4293f9b0
 base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 
 ## 6.5 java代码demo
-请参考：https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletcli/ECKeyDemo.java
+请参考：https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
 # 7 交易签名过程
 请参考：
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
