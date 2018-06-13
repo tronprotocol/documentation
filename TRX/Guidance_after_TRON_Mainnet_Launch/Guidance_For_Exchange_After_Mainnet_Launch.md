@@ -14,11 +14,11 @@
 + Users get test tokens from designated links and test on mainnet’s TRON wallet. Community developers test mainnet functions.
 
     Mainnet testing period: June 1, 2018 00:00 (GMT+8) – June 24, 2018 23:59 (GMT+8).  
-    Mainnet will launch after the mainnet testing period. Genesis block will launch on June 25, 2018 00:00 (GMT+8).
+    Mainnet will launch after the mainnet testing period. Genesis block will launch on June 25, 2018 10:00 (GMT+8).
 
 ## 3. Genesis Block launch & Token Migration
 
-Official launch of the genesis block will be on June 25 00:00 (GMT+8).  
+Official launch of the genesis block will be on June 25 10:00 (GMT+8).  
 
 Token migration:
 + Exchanges: ERC20 TRX tokens will be transferred to TRON. TRON will transfer mainnet tokens to exchanges.

@@ -1,5 +1,5 @@
-# Tron公链概览
-# 1 Tron总体介绍
+# TRON公链概览
+# 1 TRON总体介绍
 ## 1.1项目仓库
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
@@ -7,9 +7,9 @@
 https://tronscan.org
 作者是Rovak，github账号
 https://github.com/Rovak
-## 1.3 Tron共识算法
+## 1.3 TRON共识算法
 Tpos, 一种改进的Dpos算法。
-## 1.4 Tron出块速度
+## 1.4 TRON出块速度
 当前版本是3秒。
 ## 1.5 交易模型
 基于账号模型，目前不支持UTXO模型。TRX的最小单位是Drop，1TRX = 1000000Drop。目前仅支持1对1交易，尚不支持1对n或者n对1转账。
@@ -21,7 +21,7 @@ a.	使用已经存在的账号创建新账号
 b.	给一个新address转账，会同时创建账号
 c.	给一个新address转Token，会同时创建账号
 ```
-# 2 Tron网络结构
+# 2 TRON网络结构
 ## 2.1 节点类型
 Tron主链网络中有三种类型的节点，分别是witness、fullnode和solidity node。
 其中：witness负责生产块；fullnode 提供api，广播交易和块；solidity node 同步不可回退块，并提供查询api。
