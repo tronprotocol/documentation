@@ -8,7 +8,7 @@ By editing files in the repository on Github the Super Representative can manage
 
 ## How to use
 
-__This guide assumes that you already have an account which has Super Representative (candidate) status.__
+__This guide assumes that you already have an account with Super Representative (candidate) status.__
 
 ### Step 1: Copy/Fork the template on Github
 
