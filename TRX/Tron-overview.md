@@ -260,16 +260,16 @@ Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 ```
 # 10. Construction and signature of transaction
 There are two ways to construct a transaction:
-## 1 Invoke APIs on the full node
+## 10.1 Invoke APIs on the full node
 Based on your own needs, construct a corresponding local Contract and construct transactions with corresponding APIs. For the contract, please refer to https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto.
 
-## 2 Local construction
+## 10.2 Local construction
 Based on the definition of a transaction, you will need to fill in all fields of a transaction to construct a transaction at your local. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is (Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours). If the condition is fulfilled, then the transaction is legit, if not, and if not, the transaction is expired and will not be received by the mainnet.
 
-## 3 Signature
+## 10.3 Signature
 After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures.
 
-## 4 Demo
+## 10.4 Demo
 The demo for local transaction construction and signing can be found at:
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java.
 
