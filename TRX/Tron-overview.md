@@ -70,188 +70,114 @@ APIs under wallet service are provided by the full node. APIs under walletSolidi
 ```
 wallet/GetAccount
 Function:Returns account information.
-Parameter:Account; need to configure address.
-Return:Account; all information of a blockchain account.
 
 wallet/CreateTransaction
 Function: Creates a transaction of transfer. If the recipient address does not exist, a corresponding account will be created on the blockchain.
-Parameter:
-Return:
 
 wallet/ BroadcastTransaction
 Function: Broadcasts transaction. Transaction has to be signed before being broadcasted.
-Parameter:
-Return:
 
 wallet/ UpdateAccount
 Function: Updates account name. Account name can only be updated once for each account.
-Parameter:
-Return:
 
 wallet/ VoteWitnessAccount
 Function:Users can vote for witnesses.
-Parameter:
-Return:
 
 wallet/ CreateAssetIssue
 Function: Creates token. Users can issue their own token on Tron’s public blockchain, which can be used for reciprocal transfers and be bought with TRX. Users can chose to freeze a certain portion of the token supply during token issuance.
-Parameter:
-Return:
 
 wallet/ UpdateWitness
 Function: Updates witness information.
-Parameter:
-Return:
 
 wallet/ CreateAccount
 Function: Created account. Existent accounts can revoke this API to create a new account with an address.
-Parameter:
-Return:
 
 wallet/ CreateWitness
 Function: Users can apply to become Super Representatives, which costs 9,999 TRX.
-Parameter:
-Return:
 
 wallet/ TransferAsset
 Function: Token transfer.
-Parameter:
-Return:
 
 wallet/ ParticipateAssetIssue
 Function: Token participation. Users can participate in token offerings with their TRX.
-Parameter:
-Return:
 
 wallet/ FreezeBalance
 Function: Freeze TRX. Freezing TRX gives users bandwidth points and Tron Power, which are used for transactions and voting for witnesses respectively.
-Parameter:
-Return:
 
 wallet/ UnfreezeBalance
 Function: Unfreezes TRX. Frozen TRX can only be unfrozen 3 days afterwards. Unfreezing TRX also takes away corresponding bandwidth points, Tron power and the votes.
-Parameter:
-Return:
 
 wallet/ UnfreezeAsset
 Function: Unfreezes tokens.
-Parameter:
-Return:
 
 wallet/ WithdrawBalance
 Function: SRs and SR candidates can withdraw block reward and witness reward for the top 127 candidates to their account balance. One withdrawal can be made by each account every 24 hours.
-Parameter:
-Return:
 
 wallet/ UpdateAsset
 Function: Updates information of an issued token.
-Parameter:
-Return:
 
 wallet/ ListNodes
 Function: Returns a list of all nodes.
-Parameter:
-Return:
 
 wallet/ GetAssetIssueByAccount
 Function: Get information on a token by account.
-Parameter:
-Return:
 
 wallet/ GetAccountNet
 Function: Get bandwidth information on an account, including complimentary bandwidth points and bandwidth points obtained from balance freeze.
-Parameter:
-Return:
 
 wallet/ GetAssetIssueByName
 Function: Inquire token by token name.
-Parameter:
-Return:
 
 wallet/ GetNowBlock
 Function: Returns the latest block.
-Parameter:
-Return:
 
 wallet/ GetBlockByNum
 Function: Inquire block by block height.
-Parameter:
-Return:
 
 wallet/ GetBlockById
 Function: Inquire block by block ID. The ID of a block is the hash of the blockheader’s Raw data. 
-Parameter:
-Return:
 
 wallet/ GetBlockByLimitNext index
 Function: Returns blocks indexed between the startNum and the endNum (including both ends).
-Parameter:
-Return:
 
 wallet/ GetBlockByLatestNum
 Function: Get the latest N blocks. N is defined in the parameter.
-Parameter:
-Return:
 
 wallet/ GetTransactionById
 Function: Get transaction by ID, which is the hash of the Raw data of the transaction.
-Parameter:
-Return:
 
 wallet/ ListWitnesses
 Function: Get a list of all witnesses.
-Parameter:
-Return:
 
 wallet/ GetAssetIssueList
 Function: Get a list of all issued tokens.
-Parameter:
-Return:
 
 wallet/ TotalTransaction
 Function: Get the total amount of transactions on the blockchain.
-Parameter:
-Return:
 
 wallet/ GetNextMaintenanceTime
 Function: Get the next maintenance time, namely the next update of witness votes count.
-Parameter:
-Return:
 
 WalletSolidity/ GetAccount
 Function:
-Parameter:
-Return:
 
 WalletSolidity/ ListWitnesses
 Function:
-Parameter:
-Return:
 
 WalletSolidity/ GetAssetIssueList
 Function:
-Parameter:
-Return:
 
 WalletSolidity/ GetNowBlock
 Function:
-Parameter:
-Return:
 
 WalletSolidity/ GetBlockByNum
 Function:
-Parameter:
-Return:
 
 WalletExtension/ GetTransactionsFromThis
 Function: Get the record of all outbound transactions from a certain account.
-Parameter:
-Return:
 
 WalletExtension/ GetTransactionsToThis
 Function: Get the record of all incoming transactions of a certain account.
-Parameter:
-Return:
 ```
 
 ## 4.3 API code generation
@@ -265,6 +191,8 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/GrpcClient.java
 ```
 # 5. Relevant expenses:
+When there are sufficient bandwidth points, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also Transaction.Result.fee, with the corresponding proto file at https://github.com/tronprotocol/protocol/blob/master/core/Tron.proto.
+
 See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
 ## 5.1 Definition of bandwidth points
 ## 5.2 Freeze/unfreeze mechanism
@@ -305,7 +233,7 @@ Please note that the sha3 protocol we adopt is KECCAK-256.
     base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 
 ## 6.5 Java code demo
-See also: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletcli/ECKeyDemo.java
+See also: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
 
 # 7. Transaction signing
 See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
@@ -330,10 +258,24 @@ BlockHash is the hash of the raw data of the blockheader, which can be calculate
 ```
 Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 ```
+# 10. Construction and signature of transaction
+There are two ways to construct a transaction:
+## 10.1 Invoke APIs on the full node
+Based on your own needs, construct a corresponding local Contract and construct transactions with corresponding APIs. For the contract, please refer to https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto.
 
-# 10. Migration plan
+## 10.2 Local construction
+Based on the definition of a transaction, you will need to fill in all fields of a transaction to construct a transaction at your local. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is (Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours). If the condition is fulfilled, then the transaction is legit, if not, and if not, the transaction is expired and will not be received by the mainnet.
+
+## 10.3 Signature
+After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures.
+
+## 10.4 Demo
+The demo for local transaction construction and signing can be found at:
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java.
+
+# 11. Migration plan
 Token migration from ERC20 TRX to Mainnet TRX will occur between June 21st – June 25th (GMT+8). If your TRX is held on an exchange, no action is required. If your TRX is held in a wallet, you must deposit your TRX to an exchange before June 24, 2018 to avoid any losses. From June 21st– 25th, TRX withdrawals on exchanges will be suspended. On June 25th, both TRX deposits and withdraws on exchanges will be suspended. Deposits and withdraws will resume on June 26th. During this period, TRX trading will not be affected. If your TRX is held in a wallet and you were not aware of the migration notice, or saw the migration notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.
 
-# 11. Relevant files
+# 12. Relevant files
 See also: https://github.com/tronprotocol/Documentation#documentation-guide
 
