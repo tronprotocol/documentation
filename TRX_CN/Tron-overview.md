@@ -32,6 +32,33 @@ Tron主链网络中有三种类型的节点，分别是witness、fullnode和soli
 
 # 3 节点运行
 ## 3.1 建议硬件配置
+```
+运行FullNode最低配置要求：
+CPU：16核
+RAM：16G
+带宽：100M
+DISK：10T
+运行FullNode推荐配置要求：
+CPU：64核及以上
+RAM：64G及以上
+带宽：500M及以上
+DISK：20T及以上
+
+运行SolidityNode最低配置要求：
+CPU：16核
+RAM：16G
+带宽：100M
+DISK：10T
+运行SolidityNode推荐配置要求：
+CPU：64核及以上
+RAM：64G及以上
+带宽：500M及以上
+DISK：20T及以上
+
+DISK视实际上线后交易量而定，可以预留的大一些
+
+```
+
 ## 3.2 启动fullnode
 下载最新release的代码后
 ```
@@ -253,6 +280,49 @@ Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 根据需要，本地构造相应的Contract，然后对应的api构造交易。具体的合约请参照 https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto
 ## 2 本地构造
 根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 
+refference block 的设置方法：设置RefBlockHash为最新块的hash的第8到16(不包含)之间的字节，设置BlockBytes为最新块高度的第6到8（不包含）之间的字节，代码如下：
+```
+ public static Transaction setReference(Transaction transaction, Block newestBlock) {
+    long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
+    byte[] blockHash = getBlockHash(newestBlock).getBytes();
+    byte[] refBlockNum = ByteArray.fromLong(blockHeight);
+    Transaction.raw rawData = transaction.getRawData().toBuilder()
+        .setRefBlockHash(ByteString.copyFrom(ByteArray.subArray(blockHash, 8, 16)))
+        .setRefBlockBytes(ByteString.copyFrom(ByteArray.subArray(refBlockNum, 6, 8)))
+        .build();
+    return transaction.toBuilder().setRawData(rawData).build();
+  }
+```
+Expiration 和交易时间戳的设置方法：
+```
+  public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
+    Transaction.Builder transactionBuilder = Transaction.newBuilder();
+    Block newestBlock = WalletClient.getBlock(-1);
+
+    Transaction.Contract.Builder contractBuilder = Transaction.Contract.newBuilder();
+    Contract.TransferContract.Builder transferContractBuilder = Contract.TransferContract
+        .newBuilder();
+    transferContractBuilder.setAmount(amount);
+    ByteString bsTo = ByteString.copyFrom(to);
+    ByteString bsOwner = ByteString.copyFrom(from);
+    transferContractBuilder.setToAddress(bsTo);
+    transferContractBuilder.setOwnerAddress(bsOwner);
+    try {
+      Any any = Any.pack(transferContractBuilder.build());
+      contractBuilder.setParameter(any);
+    } catch (Exception e) {
+      return null;
+    }
+    contractBuilder.setType(Transaction.Contract.ContractType.TransferContract);
+    transactionBuilder.getRawDataBuilder().addContract(contractBuilder)
+        .setTimestamp(System.currentTimeMillis())//交易时间戳设置毫秒形式
+        .setExpiration(newestBlock.getBlockHeader().getRawData().getTimestamp() + 10 * 60 * 60 * 1000);//交易所可以根据实际情况设置超时时间
+    Transaction transaction = transactionBuilder.build();
+    Transaction refTransaction = setReference(transaction, newestBlock);
+    return refTransaction;
+  }
+```
+
 ## 3 签名
 交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。
 

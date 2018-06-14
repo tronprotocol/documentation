@@ -38,6 +38,31 @@ Currently there is only the mainnet and we will later deploy the testnet.
 # 3. Operation of node
 
 ## 3.1 Recommended hardware specifications
+```
+Minimum specifications for full node deployment
+CPU：16-core
+RAM：16G
+Bandwidth：100M
+DISK：10T
+Recommended specifications for full node deployment
+CPU：64-core or more 
+RAM：64G or more 
+Bandwidth：500M and more
+DISK：20T or more
+
+Minimum specifications for solidity node deployment
+CPU：16-core
+RAM：16G
+Bandwidth：100M
+DISK：10T
+Recommended specifications for solidity node deployment
+CPU：64-core or more
+RAM：64G or more
+Bandwidth：500M and more
+DISK：20T or more
+
+DISK capacity depends on the actual transaction volume after deployment, but it’s always better to leave some excess capacity.
+```
 
 ## 3.2 Start the full node
 After downloading the latest code release:
@@ -264,8 +289,49 @@ There are two ways to construct a transaction:
 Based on your own needs, construct a corresponding local Contract and construct transactions with corresponding APIs. For the contract, please refer to https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto.
 
 ## 10.2 Local construction
-Based on the definition of a transaction, you will need to fill in all fields of a transaction to construct a transaction at your local. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is (Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours). If the condition is fulfilled, then the transaction is legit, if not, and if not, the transaction is expired and will not be received by the mainnet.
+Based on the definition of a transaction, you will need to fill in all fields of a transaction to construct a transaction at your local. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is (Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours). If the condition is fulfilled, then the transaction is legit, and if not, the transaction is expired and will not be received by the mainnet.
+method of setting refference block: set RefBlockHash as subarray of newest block's hash from 8 to 16, set BlockBytes as subarray of newest block's height from 6 to 8. The code is as follows:  
+```
+ public static Transaction setReference(Transaction transaction, Block newestBlock) {
+    long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
+    byte[] blockHash = getBlockHash(newestBlock).getBytes();
+    byte[] refBlockNum = ByteArray.fromLong(blockHeight);
+    Transaction.raw rawData = transaction.getRawData().toBuilder()
+        .setRefBlockHash(ByteString.copyFrom(ByteArray.subArray(blockHash, 8, 16)))
+        .setRefBlockBytes(ByteString.copyFrom(ByteArray.subArray(refBlockNum, 6, 8)))
+        .build();
+    return transaction.toBuilder().setRawData(rawData).build();
+  }
+```
+method of setting Expiration and transaction timestamp
+```
+  public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
+    Transaction.Builder transactionBuilder = Transaction.newBuilder();
+    Block newestBlock = WalletClient.getBlock(-1);
 
+    Transaction.Contract.Builder contractBuilder = Transaction.Contract.newBuilder();
+    Contract.TransferContract.Builder transferContractBuilder = Contract.TransferContract
+        .newBuilder();
+    transferContractBuilder.setAmount(amount);
+    ByteString bsTo = ByteString.copyFrom(to);
+    ByteString bsOwner = ByteString.copyFrom(from);
+    transferContractBuilder.setToAddress(bsTo);
+    transferContractBuilder.setOwnerAddress(bsOwner);
+    try {
+      Any any = Any.pack(transferContractBuilder.build());
+      contractBuilder.setParameter(any);
+    } catch (Exception e) {
+      return null;
+    }
+    contractBuilder.setType(Transaction.Contract.ContractType.TransferContract);
+    transactionBuilder.getRawDataBuilder().addContract(contractBuilder)
+        .setTimestamp(System.currentTimeMillis())//timestamp should be in millisecond format
+        .setExpiration(newestBlock.getBlockHeader().getRawData().getTimestamp() + 10 * 60 * 60 * 1000);//exchange can set Expiration by needs
+    Transaction transaction = transactionBuilder.build();
+    Transaction refTransaction = setReference(transaction, newestBlock);
+    return refTransaction;
+  }
+```
 ## 10.3 Signature
 After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures.
 
