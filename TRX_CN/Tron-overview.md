@@ -23,7 +23,7 @@ c.	给一个新address转Token，会同时创建账号
 ```
 # 2 TRON网络结构
 ## 2.1 节点类型
-Tron主链网络中有三种类型的节点，分别是witness、fullnode和solidity node。
+TRON主链网络中有三种类型的节点，分别是witness、fullnode和solidity node。
 其中：witness负责生产块；fullnode 提供api，广播交易和块；solidity node 同步不可回退块，并提供查询api。
 ## 2.2 网络部署方式（只针对交易所）
 部署一个fullnode，一个solidity node，solidity node连接本地的fullnode，fullnode连接mainnet

@@ -1,4 +1,4 @@
-# Tron Bug Bounty Program
+# Tron Bug Bounty Program for Mainnet
 
 On May 31, 2018, day of the mainnet launch, TRON Foundation launched Tron Bug Bounty Program with a highest reward of USD$10 million. It is aimed at discovering potential technical vulnerabilities in the mainnet with the help of TRON’s community members, especially those who specialize in global network security, to sustain TRON mainnet as the most secure public blockchain in the industry and to provide secure and stable infrastructure and services to DApps deployed on the mainnet. We take the security of TRON mainnet very seriously. If you have made an important discovery of potential bugs, please contact us and join the TRON Bug Bounty Program as soon as possible and we will surely offer generous rewards!
 
