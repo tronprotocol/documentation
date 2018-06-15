@@ -70,10 +70,18 @@ java -jar java-tron.jar
 ## 3.3 启动solidity
 下载最新release的代码后
  ```
-./gradlew build
-修改配置文件config.conf, 把trustNode的ip和端口设置为已经启动的fullnode的地址。
-cd build/libs
-java -jar SolidityNode.jar -c config.conf
+1. 修改配置文件src/main/resources/config.conf, 把trustNode的ip和端口设置为上面已经启动的fullnode的地址和端口。
+2. 如果SolidityNode和FullNode部署在同一台机器，则还需要修改port为非50051端口，防止与FullNode冲突，该端口作为SolidityNode对外提供api服务的端口，如果部署在不同机器，则忽略该步骤。
+3. ./gradlew build
+4. cd build/libs
+5. 如果SolidityNode和FullNode部署在不同机器，则直接跳到步骤8
+6. mkdir solidity && cd solidity
+7. cp ../SolidityNode.jar .
+8. cp src/main/resources/config.conf . 
+9. java -jar SolidityNode.jar -c config.conf
+
+需要注意：SolidityNode和fullnode不建议部署在同一台机器，如果一定要部署在同一台机器，则还需要修改config.conf中的
+
 ```
 
 ## 3.4 启动witness
