@@ -24,7 +24,10 @@
       
    +     ./gradlew clean shadowJar
      
-   +     ./gradlew run  
+   +     cd build/libs
+   
+   +     java -jar java-tron.jar
+
    
 With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync Block Completed!!!”.
 
@@ -36,7 +39,11 @@ With these, the Full Node is set up and ready for the synchronization of blockch
    
    +     ./gradlew clean shadowJar  
    
-   +     ./gradlew run -PmainClass=org.tron.program.SolidityNode
+   +     Edit the configuration file, config.conf, to change the ip and port of trustNode to the address of the fullnode.
+   
+   +     cd build/libs
+   
+   +     java -jar SolidityNode.jar -c config.conf
 
 With these, the Full Node is set up and ready for the synchronization of blockchain data, which is complete upon the alert of “Sync with trust node Completed!!!”.
 
@@ -70,9 +77,12 @@ GRPC interface is available on Solidity Node, providing Http interface for gRPC 
 
       End20Bytes = f25675b364b0e45e2668c1cdd59370136ad8ec2f
 
-+ Add a0(testNet) or b0(mainNet) before End20Bytes 
++ Add a0(testNet) or 41(mainNet) before End20Bytes 
 
-      address = a0f25675b364b0e45e2668c1cdd59370136ad8ec2f
+      address = a0f25675b364b0e45e2668c1cdd59370136ad8ec2f - testnet
+      
+      
+      address = 41f25675b364b0e45e2668c1cdd59370136ad8ec2f - mainnet
 
 + Convert address to base58check format：(bip-13)
 
