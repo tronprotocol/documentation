@@ -184,47 +184,6 @@ WalletExtension/ GetTransactionsToThis
 ```
 ### 4.2.2 http接口说明
 
-使用http接口，确保已经搭建好了grpc-gateway服务，假设已经在123.45.67.89:18890已经部署了http_proxy服务，你可以通过`curl -X POST -k http://localhost:18890/wallet/listwitnesses`是否有数据返回，来判断是否已经成功启动了http_proxy服务，http_proxy服务的启动方式具体可见
-
-参数传递方式，
-
-base64 -> bytes -> 具体格式
-
-
-
-下面demo中使用到的数据
-
-asset_name
-string：MyAsset
-base64:TXlBc3NldA==
-
-
-
-witness_address1
-
-base58:TYGBoE4UycJnjoYEufSVCwedPEEXiaXyuD
-base64:QfSI1WI/szR9S3ZL5f7Mewb18Rd7
-
-wintess_address2
-base58:TYGBoE4UycJnjoYEufSVCwedPEEXiaXyuD
-base64:QfSI1WI/szR9S3ZL5f7Mewb18Rd7
-
-asset_name
-string:
-base64:
-
-
-
-
-
-update_url
-string:www.newurl.com
-base64:d3d3Lm5ld3VybC5jb20=
-
-
-
-
-
 ```shell
 wallet/createtransaction
 demo: curl -X POST  http://54.200.48.177:18890/wallet/createtransaction -d {"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount": 1000 }
