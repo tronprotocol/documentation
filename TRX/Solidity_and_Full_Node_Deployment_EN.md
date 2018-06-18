@@ -6,9 +6,9 @@ Create separate directories for fullnode and soliditynode
       /deploy/fullnode
       /deploy/soliditynode
 
-Create two folders for fullnode and soliditynode respectively and execute the following operations:
+Create two folders for fullnode and soliditynode and follow the guide for each node.
  
-    **FullNode**：
+## FullNode deployment guide
 
         cd /deploy/fullnode
         git clone https://github.com/tronprotocol/java-tron
@@ -43,7 +43,8 @@ You can now run your Fullnode using the following command：
             
             java -jar FullNode.jar -c config.conf
             
-    **SolidityNode**
+           
+## SolidityNode deployment guide
  
         cd /deploy/SolidityNode
         git clone https://github.com/tronprotocol/java-tron
@@ -72,5 +73,19 @@ You can now run your SolidityNode using the following command：
         
             java -jar SolidityNode.jar -c config.conf
 
+## Logging and network connection verification
 
 Logs for both nodes are located in `/deploy/\*/logs/tron.log`. Use `tail -f /logs/tron.log/` to follow along with the block syncing.
+
+You should see something similar to this in your logs:
+
+# FullNode
+
+      12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
+
+# SolidityNode
+
+      12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
+
+
+
