@@ -228,7 +228,7 @@ demo： curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"acco
 说明：owner_address，account_name为base64格式.  `ewbmV3X25hbWU=` 为 `new_name` 的 base64格式
 
 wallet/votewitnessaccount
-demo：url -X POST http://127.0.0.1:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
+demo：curl -X POST http://127.0.0.1:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
 作用：普通用户对witness进行投票
 参数说明：
 owner_address, 投票人的地址，格式base64;votes, 投票列表，为一个数组,vote_address, witness地址，格式base64
@@ -244,7 +244,7 @@ owner_address，创建人地址，格式base64;name，资产名称，格式base6
 wallet/updatewitness
 作用： 修改wieness的url
 demo：
-url -X POST http://127.0.0.1:18890/wallet/updatewitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "update_url": "d3d3Lm5ld3VybC5jb20="}'
+curl -X POST http://127.0.0.1:18890/wallet/updatewitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "update_url": "d3d3Lm5ld3VybC5jb20="}'
 参数说明：
 owner_address,创建人地址，格式base64;update_url,更新的url，格式base64
 
@@ -252,7 +252,7 @@ owner_address,创建人地址，格式base64;update_url,更新的url，格式bas
 wallet/createaccount
 作用： 创建账号，目前之后已经存在的账号，可以调用该api创建一个新账号，需要指定新账号的Address
 demo：
-url -X POST http://127.0.0.1:18890/wallet/createaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "account_address": ""}'
+curl -X POST http://127.0.0.1:18890/wallet/createaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "account_address": ""}'
 参数说明：owner_address,创建人的账号地址，base64；account_address,新账号地址，base64
 
 
