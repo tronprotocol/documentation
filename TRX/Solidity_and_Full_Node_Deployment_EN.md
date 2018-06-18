@@ -1,12 +1,12 @@
 # Deployment of SolidityNode and FullNode on the same host
 
-+ Create separate directories for fullnode and soliditynode
+Create separate directories for fullnode and soliditynode
 
       /deploy
       /deploy/fullnode
       /deploy/soliditynode
 
-+ Create two folders for fullnode and soliditynode respectively and execute the following operations:
+Create two folders for fullnode and soliditynode respectively and execute the following operations:
  
     **FullNode**：
 
@@ -18,7 +18,7 @@
         cp src/main/resources/config.conf ../
         cd ..
 
-    In order to quickly sync to the TRON network, please edit `config.conf`. Copy the list of addresses contained in `ip.list` in `seed.node` to `active` of `node`.
+In order to quickly sync to the TRON network, please edit `config.conf`. Copy the list of addresses contained in `ip.list` in `seed.node` to `active` of `node`.
        
      Example：
    
@@ -39,7 +39,7 @@
             "47.91.216.69:18888",  
             "39.106.220.120:18888"  
             ]  
-    You can now run your Fullnode using the following command：
+You can now run your Fullnode using the following command：
             
             java -jar FullNode.jar -c config.conf
             
@@ -68,7 +68,7 @@ You'll need to edit `config.conf` to connect to your local `FullNode`. Change  `
                   port = 50052
                   }
  
-    You can now run your SolidityNode using the following command：
+You can now run your SolidityNode using the following command：
         
             java -jar SolidityNode.jar -c config.conf
 
