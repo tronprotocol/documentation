@@ -22,6 +22,7 @@ Download our latest release https://github.com/tronprotocol/java-tron/releases a
 * On Linux Ubuntu system (e.g. Ubuntu 16.04.4 LTS), ensure that the machine has [__Oracle JDK 8__](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04), instead of having __Open JDK 8__ in the system. If you are building the source code by using __Open JDK 8__, you will get [__Build Failed__](https://github.com/tronprotocol/java-tron/issues/337) result.
 
 
+
   2. Build the java-tron project
 ```
     cd /deploy/java-tron 
