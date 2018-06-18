@@ -65,13 +65,13 @@ DISK capacity depends on the actual transaction volume after deployment, but itâ
 ```
 
 ## 3.2 Start the full node and solidity node
-    Please follow the guide here to configure and deploy both nodes: https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
+Please follow the guide here to configure and deploy both nodes: https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
 
 # 4. Tron API
-    Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-gateway is for the use of debugging only and we strongly suggest that developers do not use it for development.
+Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-gateway is for the use of debugging only and we strongly suggest that developers do not use it for development.
 
 ## 4.1 Definition of API
-    For the definition of API, see also: https://github.com/tronprotocol/protocol/blob/master/api/api.proto
+For the definition of API, see also: https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 
 ## 4.2 Explanation of APIs
 APIs under wallet service are provided by the full node. APIs under walletSolidity and walletExtension services are provided by the solidity node. APIs under the walletExtension service, whose processing time is long, are provided by the solidity node. The full node provides APIs for operations on the blockchain and for data inquiry, while the solidity node only provides APIs for the latter. The difference between these two nodes is that data of the full node could be revoked due to forking, whereas the solidified data of the solidity one is irrevocable.
@@ -189,10 +189,10 @@ Function: Get the record of all incoming transactions of a certain account.
 ```
 
 ## 4.3 API code generation
-    APIs are based on the gRPC protocol of Googleâ€™s, for which see also https://grpc.io/docs/.
+APIs are based on the gRPC protocol, see https://grpc.io/docs/ for more information.
 
 ## 4.4 API demo
-Please refer to the following two classes:
+Please refer to the following two classes for a GRPC example in Java.
 ```
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/WalletClient.java
 
@@ -209,12 +209,12 @@ See also: https://github.com/tronprotocol/Documentation/blob/master/English_Docu
 
 # 6. User address generation
 ## 6.1 Algorithm description
-First generate a key pair and extract the public key (a 64-byte byte array representing its x,y coordinates). Hash the public key using sha3-256 function and extract the last 20 bytes of the result. For a testnet address, add A0 to the beginning of the byte array. For a mainnet address, add 41 to the beginning of the byte array. Length of the initial address should be 21 bytes. Hash the address twice using sha256 function and take the first 4 bytes as verification code. Add the verification code to the end of the initial address and get an address in base58check format through base58 encoding. An encoded testnet address begins with 27 and is 35 bytes in length. An encoded mainnet address begins with T and is 34 bytes in length.
+First generate a key pair and extract the public key (a 64-byte byte array representing its x,y coordinates). Hash the public key using sha3-256 function and extract the last 20 bytes of the result. For a testnet address, add `A0` to the beginning of the byte array. For a mainnet address, add `41` to the beginning of the byte array. Length of the initial address should be 21 bytes. Hash the address twice using sha256 function and take the first 4 bytes as verification code. Add the verification code to the end of the initial address and get an address in base58check format through base58 encoding. An encoded testnet address begins with 27 and is 35 bytes in length. An encoded mainnet address begins with T and is 34 bytes in length.
 ```
 Please note that the sha3 protocol we adopt is KECCAK-256.
 ```
 
-## 6.2 Exemplification
+## 6.2 Example
     Public Key: 040defc55df809cca94abce297d432863bd8c9049fb420b1106cf53bfb4b85e0184802c495337c7a407e2b68ebd2323df2a8198d860df103de6496bd139ed24094 
     sha3 = SHA3(Public Key[1, 65)): 673f5c16982796e7bff195245a523b449890854c8fc460ab602df9f31fe4293f 
     TestNet: Address = A0||sha3[12,32): A0E11973395042BA3C0B52B4CDF4E15EA77818F275 
@@ -241,10 +241,10 @@ Please note that the sha3 protocol we adopt is KECCAK-256.
     base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 
 ## 6.5 Java code demo
-See also: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
+See: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
 
 # 7. Transaction signing
-See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
+See: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
 # 8. Calculation of transaction ID
 Hash the Raw data of the transaction.
