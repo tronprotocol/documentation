@@ -30,10 +30,10 @@ Make sure you have the proper dependencies.
   2. Copy the FullNode.jar and SolidityNode.jar along with config files into the respective directories.
 ```
     cp build/libs/FullNode.jar ../fullnode
-    cp src/main/resources/config.conf ../
+    cp src/main/resources/config.conf ../fullnode
 
     cp build/libs/SolidityNode.jar ../soliditynode
-    cp src/main/resources/config.conf ../fullnode
+    cp src/main/resources/config.conf ../soliditynode
 ```
 
   3. Configure the FullNode configuration file. Please edit `config.conf` and copy the list of addresses contained in `ip.list` in `seed.node` to `active` of `node`.
