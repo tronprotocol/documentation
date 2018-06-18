@@ -59,33 +59,9 @@ DISK视实际上线后交易量而定，可以预留的大一些
 
 ```
 
-## 3.2 启动fullnode
-下载最新release的代码后
-```
-./gradlew build
-cd build/libs
-java -jar java-tron.jar
-```
+## 3.2 启动fullnode和soliditynode
+具体请参考：https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Solidity_and_Full_Node_Deployment_CN.md
 
-## 3.3 启动solidity
-下载最新release的代码后
- ```
-1. 修改配置文件src/main/resources/config.conf, 把trustNode的ip和端口设置为上面已经启动的fullnode的地址和端口。
-2. 如果SolidityNode和FullNode部署在同一台机器，则还需要修改port为非50051端口，防止与FullNode冲突，该端口作为SolidityNode对外提供api服务的端口，如果部署在不同机器，则忽略该步骤。
-3. ./gradlew build
-4. cd build/libs
-5. 如果SolidityNode和FullNode部署在不同机器，则直接跳到步骤8
-6. mkdir solidity && cd solidity
-7. cp ../SolidityNode.jar .
-8. cp src/main/resources/config.conf . 
-9. java -jar SolidityNode.jar -c config.conf
-
-需要注意：SolidityNode和fullnode不建议部署在同一台机器，如果一定要部署在同一台机器，则还需要修改config.conf中的
-
-```
-
-## 3.4 启动witness
-交易所不需要启动witness。(witness就是Super Representatives)
 # 4 Tron API说明
     目前Tron仅支持gRPC接口，不支持http接口。项目grpc-gateway仅作为调试用，强烈不建议在此接口上进行功能开发。
 ## 4.1 api定义
@@ -332,7 +308,7 @@ Expiration 和交易时间戳的设置方法：
 ```
 
 ## 3 签名
-交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。
+交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。签名的说明请参考https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
 ## 4 demo
 本地构造交易、签名的demo请参考
