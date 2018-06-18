@@ -64,25 +64,8 @@ DISK：20T or more
 DISK capacity depends on the actual transaction volume after deployment, but it’s always better to leave some excess capacity.
 ```
 
-## 3.2 Start the full node
-After downloading the latest code release:
-```
-./gradlew build
-cd build/libs
-java -jar java-tron.jar
-```
-
-## 3.3 Start the solidity node
-After downloading the latest code release:
-```
-./gradlew build
-Edit the configuration file, config.conf, to change the ip and port of trustNode to the address of the fullnode.
-cd build/libs
-java -jar SolidityNode.jar -c config.conf
-```
-
-## 3.4 Start witness node
-Exchanges do not need to start a witness node, aka the Super Representative.
+## 3.2 Start the full node and solidity node
+    Please follow the guide here to configure and deploy both nodes: https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
 
 # 4. Tron API
     Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-gateway is for the use of debugging only and we strongly suggest that developers do not use it for development.
@@ -333,7 +316,7 @@ method of setting Expiration and transaction timestamp
   }
 ```
 ## 10.3 Signature
-After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures.
+After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures. The signing process is described here: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
 ## 10.4 Demo
 The demo for local transaction construction and signing can be found at:
