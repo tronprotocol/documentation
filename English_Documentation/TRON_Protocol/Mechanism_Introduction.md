@@ -50,7 +50,7 @@ time: frozen duration lasting from date of freeze and date to unfreeze is 3 days
 
     `unfreezebalance password`
 
-##Block-production reward for Super Representatives`
+## Block-production reward for Super Representatives
 
 Each time a Super Representative finishes block production, reward will be sent to the subaccount in the superledger. Super Representatives can check but not directly make use of this asset. A withdrawal can be made once every 24 hours, transferring the reward from the subaccount to the Super Representative’s account.
 

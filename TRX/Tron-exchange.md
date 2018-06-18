@@ -1,20 +1,21 @@
-# Transition plan for Tron public blockchain and exchanges
-We propose the following plan for the transition between exchanges and Tron’s public blockchain.
+# Transition plan for migrating exchanges to the TRON mainnet
 
 # 1.	Node deployment
 
-1.1	Download the latest code release at https://github.com/tronprotocol/java-tron/releases.
-
-1.2	Deploy a full node and a solidity node which connects to the local full node. See also https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#3-operation-of-node.
+Deploy a full node and a linked solidity node by following this guide:
+https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md.
 
 # 2.	Demand-based development
 
-2.1	Based on the exchange services, connect the solidity node to the local full node by invoking Tron’s APIs. A guide to Tron’s APIs can be found at https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#4-tron-api.
+Depending on the needs of your system, build a GRPC implementation to connect to the full node and solidity nodes.
+A guide to Tron’s APIs can be found at https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#4-tron-api.
 
-Please note that when using grpc APIs, do not use the grpc-gateway for function development. It is only intended for debugging and for checking blockchain data. For further information on the deployment of grpc-gateway, see also https://github.com/tronprotocol/grpc-gateway/blob/master/README.md.
+A starter guide to GRPC is available here: https://grpc.io/
+
+We also have a fork of https://github.com/tronprotocol/grpc-gateway which provides a HTTP interface to GRPC. We do not recommend using this for exchanges.
 
 # 3.	Testing
 
-We suggest that exchanges run a test on the transition to Tron’s public blockchain on Tron’s mainnet by June 18.
+We highly recommend that exchanges run a test to Tron’s mainnet as soon as possible.
 
-For relevant technical files, please refer to https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md.
+For any other information, please refer to: https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md
