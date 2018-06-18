@@ -18,7 +18,7 @@
         cp src/main/resources/config.conf ../
         cd ..
 
-    In order to quickly discover the nodes deployed by TRON, please edit`config.conf`. Copy the list of addresses contained in `ip.list` in `seed.node` to `active` of `node`.
+    In order to quickly sync to the TRON network, please edit `config.conf`. Copy the list of addresses contained in `ip.list` in `seed.node` to `active` of `node`.
        
      Example：
    
