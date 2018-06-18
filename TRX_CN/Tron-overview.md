@@ -67,6 +67,7 @@ DISK视实际上线后交易量而定，可以预留的大一些
 ## 4.1 api定义
     api的定义请参考：https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 ## 4.2 api说明
+### 4.2.1 grpc接口说明
 以wallet前缀的api是fullnode提供；以walletSolidity为前缀的api是solidity提供；以walletExtension以前缀的api是solidity提供，且这些api比较耗时。
 Fullnode提供操作区块链的api和查询数据的api，Solidity只提供查询数据的api。Fullnode和Solidity的区别是fullnode当前的数据因为分叉的原因有可能被回退，而solidity上的数据是固化块的数据，不可能被回退。
 ```
@@ -181,6 +182,8 @@ WalletExtension/ GetTransactionsFromThis
 WalletExtension/ GetTransactionsToThis
 作用： 获取某个账号的转入交易记录
 ```
+### 4.2.2 http接口说明
+
 ## 4.3 api代码生成
     api基于google的gRPC协议，具体请参考 https://grpc.io/docs/
 ## 4.4 api demo
