@@ -184,6 +184,8 @@ WalletExtension/ GetTransactionsToThis
 ```
 ### 4.2.2 http接口说明
 
+如果需要使用http接口服务，需要部署grpc-gateway，详情请见：[grpc-gateway文档](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
+
 ```shell
 wallet/getaccount
 作用：返回一个账号的信息
