@@ -185,14 +185,20 @@ WalletExtension/ GetTransactionsToThis
 ### 4.2.2 http接口说明
 
 ```shell
+wallet/getaccount
+作用：返回一个账号的信息
+demo: curl -X POST  http://127.0.0.1:18890/wallet/getaccount -d '{"address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
+参数说明：to_address, owner_address 需要转为base64
+
+
 wallet/createtransaction
-demo: curl -X POST  http://54.200.48.177:18890/wallet/createtransaction -d {"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount": 1000 }
+demo: curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount": 1000 }'
 作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
 说明：to_address, owner_address 需要转为base64
 
 wallet/broadcasttransaction
 demo：
-crul -X POST http://54.200.48.177:18890/wallet/broadcasttransaction -d '{
+curl -X POST http://127.0.0.1:18890/wallet/broadcasttransaction -d '{
     "raw_data": {
         "ref_block_bytes": "dyA=",
         "ref_block_hash": "X70qJj+97nQ=",
@@ -217,19 +223,19 @@ crul -X POST http://54.200.48.177:18890/wallet/broadcasttransaction -d '{
 说明：将已经签名完成的交易作为传入参数
 
 wallet/updateaccount
-demo： curl -X POST  http://54.200.48.177:18890/wallet/createtransaction -d '{"account_name": "newbmV3X25hbWU=" ,"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
+demo： curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"account_name": "newbmV3X25hbWU=" ,"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
 作用： 更新账号名称，一个账号只能更新一次账号名称
 说明：owner_address，account_name为base64格式.  `ewbmV3X25hbWU=` 为 `new_name` 的 base64格式
 
 wallet/votewitnessaccount
-demo：url -X POST http://54.200.48.177:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
+demo：url -X POST http://127.0.0.1:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
 作用：普通用户对witness进行投票
 参数说明：
 owner_address, 投票人的地址，格式base64;votes, 投票列表，为一个数组,vote_address, witness地址，格式base64
 
 wallet/createassetissue
 demo：发行一个名为MyToken的资产
-curl -X POST http://54.200.48.177:18890/wallet/createassetissue -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
+curl -X POST http://127.0.0.1:18890/wallet/createassetissue -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
 作用： 发行Token，用户可以再Tron公链上发行Token，Token可以被相互转账，可以用Trx参与。用户在发行Token的时候，可以选择冻结部分Token。
 参数说明：
 owner_address，创建人地址，格式base64;name，资产名称，格式base64
@@ -238,7 +244,7 @@ owner_address，创建人地址，格式base64;name，资产名称，格式base6
 wallet/updatewitness
 作用： 修改wieness的url
 demo：
-url -X POST http://54.200.48.177:18890/wallet/updatewitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "update_url": "d3d3Lm5ld3VybC5jb20="}'
+url -X POST http://127.0.0.1:18890/wallet/updatewitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "update_url": "d3d3Lm5ld3VybC5jb20="}'
 参数说明：
 owner_address,创建人地址，格式base64;update_url,更新的url，格式base64
 
@@ -246,26 +252,26 @@ owner_address,创建人地址，格式base64;update_url,更新的url，格式bas
 wallet/createaccount
 作用： 创建账号，目前之后已经存在的账号，可以调用该api创建一个新账号，需要指定新账号的Address
 demo：
-url -X POST http://54.200.48.177:18890/wallet/createaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "account_address": ""}'
+url -X POST http://127.0.0.1:18890/wallet/createaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "account_address": ""}'
 参数说明：owner_address,创建人的账号地址，base64；account_address,新账号地址，base64
 
 
 /wallet/createwitness
 作用： 普通用户申请成为超级代表，需要花费9999个trx
 demo：
-curl -X POST http://54.200.48.177:18890/wallet/createwitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "url": "d3d3Lm5ld3VybC5jb20="}'
+curl -X POST http://127.0.0.1:18890/wallet/createwitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "url": "d3d3Lm5ld3VybC5jb20="}'
 参数说明：owner_address，创建这的账号地址，base64；url,创建的url，base64
 
 wallet/transferasset
 作用： Token转账
 demo：
-curl -X POST http://54.200.48.177:18890/wallet/transferasset -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "to_address": "d3d3Lm5ld3VybC5jb20=", "asset_name": "TXlBc3NldA==", "amount": 1000}'
+curl -X POST http://127.0.0.1:18890/wallet/transferasset -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "to_address": "d3d3Lm5ld3VybC5jb20=", "asset_name": "TXlBc3NldA==", "amount": 1000}'
 参数说明：asset_name，资产名称，格式base64；owner_address，发送者账户地址，格式base64；to_address，接收账户地址，格式base64；amount，交易量，格式数字
 
 wallet/participateassetissue
 作用： 参与Token发行，用户可以花费一定的Trx参与别人发行的Token
 demo:
-curl -X POST http://54.200.48.177:18890/wallet/participateassetissue -d '{"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount":1000, "asset_name":"TXlBc3NldA=="}'
+curl -X POST http://127.0.0.1:18890/wallet/participateassetissue -d '{"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount":1000, "asset_name":"TXlBc3NldA=="}'
 参数说明: owner_address，创建者的账号地址，格式base64；to_address，目标地址，格式base64；asset_name，资产名称，格式base64；amount，交易量，格式数字
 
 冻结trx：/wallet/freezebalance
