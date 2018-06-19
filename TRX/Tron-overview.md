@@ -189,14 +189,13 @@ Function: Get the record of all incoming transactions of a certain account.
 ```
 
 ### 4.2.2 HTTP Interface
-If you require an http interface, you will need to additionally deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
+If you require an http interface, you will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
 ```shell
 wallet/getaccount
 Function: returns account info
 Parameters: convert to_address and owner_address to base64 format
 Demo: curl -X POST  http://127.0.0.1:18890/wallet/getaccount -d '{"address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
-
 
 Wallet/createtransaction
 Function: create the transaction of a transfer. If the recipient address does not exist, then a corresponding account will be created on the blockchain.
@@ -231,14 +230,14 @@ curl -X POST http://127.0.0.1:18890/wallet/broadcasttransaction -d '{
  }'
 
 Wallet/updateaccount
-Demo: curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"account_name": "newbmV3X25hbWU=" ,"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
 Function: updates account name. Only one update is allowed for each account.
 Parameters: owner_address and account_name should be in base64 format; `ewbmV3X25hbWU=` is `new_name` in base64 format.
+Demo: curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"account_name": "newbmV3X25hbWU=" ,"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
 
 Wallet/votewitnessaccount
-Demo: curl -X POST http://127.0.0.1:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
 Function: users can vote for witnesses.
 Parameters: owner_address, voter’s address, should be in base64 format; votes, the votes list, should be a byte array; vote_address, address of the witness, should be in base64 format.
+Demo: curl -X POST http://127.0.0.1:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
 
 Wallet/createassetissue
 Function: creates token; on Tron’s public blockchain, users can issue tokens which can be transferred reciprocally or participate in token offerings with their TRX. During token creation, an issuer can chose to freeze a certain amount of tokens.
@@ -250,7 +249,6 @@ Wallet/updatewitness
 Function: edit the url of the witness’ official website
 Parameters: owner_address, creator’s address, should be in base64 format; update_url, updated url, should be in base64 format
 Demo: curl -X POST http://127.0.0.1:18890/wallet/updatewitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "update_url": "d3d3Lm5ld3VybC5jb20="}'
-
 
 Wallet/createaccount
 Function: creates account. An existent account can call the api to create a new account at a ready address.
@@ -273,59 +271,73 @@ Function: to participate in token offerings, users can exchange for issued token
 Parameters: owner_address, issuer’s address, should be in base64 format; to_address, recipient’s address, should be in base64 format; asset_name, name of the token, should be in base64 format; amount, the amount of tokens, should include only numbers.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/participateassetissue -d '{"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount":1000, "asset_name":"TXlBc3NldA=="}'
 
-Freeze TRX: /wallet/freezebalance
+Wallet/freezebalance
+Function: Freezes TRX for the account
 Parameters: owner_address should be in base64 format; frozen_balance is the amount of frozen TRX in sun; frozen_duration is the frozen period.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/freezebalance -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69", "frozen_balance" : 100000, "frozen_duration" : 3}'
 
-Unfreeze token: /wallet/unfreezeasset
+Wallet/unfreezeasset
+Function:  Unfreezes TRX for the account
 Parameters: owner_address should be in base64 format.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/unfreezeasset -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69"}'
 
-Withdraw reward: wallet/withdrawbalance
+Wallet/withdrawbalance
+Function: Withdraws rewards for an SR
 Parameters: owner_address should be converted to base64 format.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/withdrawbalance -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69"}'
 
-Update token: wallet/updateasset
+Wallet/updateasset
+Function: Updates a token asset
 Parameters: owner_address should be in base64 format; description should be in base64 format and the original description is ‘just test’; url should be in base64 format and the original website is www.baidu.com.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/updateasset -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69", "description" : "anVzdCB0ZXN0", "url" : "d3d3LnRlc3R1cmwuY29t", "new_limit" : 1000, "new_public_limit" : 1000}'
 
-Inquire all nodes: wallet/listnodes
+Wallet/listnodes
+Function: Lists all connected nodes
 Parameters: none.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/listnodes
 
-Inquire issued tokens by account: wallet/getassetissuebyaccount
+Wallet/getassetissuebyaccount
+Function: Lists issued tokens by account:
 Parameters: address should be converted to base64 format.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyaccount -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
 
-Inquire bandwidth: wallet/getaccountnet
+Wallet/getaccountnet
+Function: Query bandwidth for an account
 Parameters: address should be converted to base64 format.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getaccountnet -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
 
-Inquire tokens by name: wallet/getassetissuebyname
+Wallet/getassetissuebyname
+Function: Query tokens by name
 Parameters: value is the token name and the original text reads TWX.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyname -d {"value" : "VFdY"}
 
 Inquire the latest block: wallet/getnowblock
+Function: Query the network for the latest block
 Parameters: none.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getnowblock
 
-Inquire block by height: wallet/getblockbynum
+Wallet/getblockbynum
+Function: Query a block by height
 Parameters: num is the blockheight.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbynum -d {"num" : 1}
 
-Inquire block by ID: wallet/getblockbyid
+Wallet/getblockbyid
+Function: Query block by ID
 Parameters: value shows the block ID 0000000000079080a30e7326c924457cde710b001ecf1a0b66b67df497c60c39 in base64 format.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk="}
 
-Inquire block by a range of blockheight: /wallet/getblockbylimitnext
+Wallet/getblockbylimitnext
+Function: Query block by a range of blockheight
 Parameters: startNum is the starting blockheight and the endNum is the end blockheight. The return with include the starNum block and the endNum block.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
 
-Inquire topN blocks by height: /wallet/getblockbylatestnum
+Wallet/getblockbylatestnum
+Function: Query topN blocks by height
 Parameter: num is the latest number of blocks.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num" : 10}'
 
-Inquire transactions by transaction ID: /wallet/gettransactionbyid
+Wallet/gettransactionbyid
+Function: Query transactions by transaction ID
 Parameters: value is the transaction ID, which can be obtained through hashing the raw_data of the transaction; value should be in base64 format.
 Demo: curl -X GET http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
 ```
