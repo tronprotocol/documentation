@@ -2,7 +2,7 @@
 
 ## Code version
 
-[Odyssey-v2.0.3](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v2.0.3)
+[Odyssey-v2.0.3](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v2.0.3) or the latest release.
 
 p2p version：619
 
