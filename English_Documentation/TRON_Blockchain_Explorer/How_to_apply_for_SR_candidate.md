@@ -1,4 +1,4 @@
-# 如何申请成为超级代表候选
+# How to apply for SR candidate.
 
 + Open TRON Blockchain explorer:  https://tronscan.org
 
