@@ -160,3 +160,4 @@ Enter an amount of votes to vote for an SR candidate. Voting requires TPs, which
 + The SR list is updated once every 6 hours.
 + Voting does not cost any TRX.
 
+

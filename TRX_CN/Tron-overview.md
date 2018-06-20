@@ -362,27 +362,8 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 ## 6.1 算法描述
 首先产生密钥对，取公钥，仅包含x，y坐标的64字节的byte数组。对公钥做sha3-256的hash运算。取其最后20字节。测试网在前面填充A0，主网地址在前面补41，得到地址的原始格式。长度为21字节。做两次sha256计算，取其前4字节得到校验码。将校验码附加在地址的原始格式后面，做base58编码，得到base58check格式的地址。测试网地址编码后以27开头，长度为35字节。主网地址编码后以T开头，长度34字节。
 `注意：sha3协议我们使用的是KECCAK-256。`
-## 6.2 示例
-    Public Key: 040defc55df809cca94abce297d432863bd8c9049fb420b1106cf53bfb4b85e0184802c495337c7a407e2b68ebd2323df2a8198d860df103de6496bd139ed24094
-    sha3 = SHA3(Public Key[1, 65)):  673f5c16982796e7bff195245a523b449890854c8fc460ab602df9f31fe4293f
-    TestNet: Address = A0||sha3[12,32):  A0E11973395042BA3C0B52B4CDF4E15EA77818F275
-    sha256_0 = SHA256(Address):  CD5D4A7E8BE869C00E17F8F7712F41DBE2DDBD4D8EC36A7280CD578863717084
-    sha256_1 = SHA256(sha256_0):  10AE21E887E8FE30C591A22A5F8BB20EB32B2A739486DC5F3810E00BBDB58C5C
-    checkSum = sha256_1[0, 4):  10AE21E8
-    addchecksum = address || checkSum:  A0E11973395042BA3C0B52B4CDF4E15EA77818F27510AE21E8
-    base58Address = Base58(addchecksum):  27jbj4qgTM1hvReST6hEa8Ep8RDo2AM8TJo
 
-
-## 6.3 Testnet地址，以A0为前缀
-
-    address = a0||sha3[12,32): a05a523b449890854c8fc460ab602df9f31fe4293f
-    sha256_0 = sha256(address): 5f19ee7795d5df3868e05723cd8f345324ef148e034fa3cc622753057d9a0d12
-    sha256_1 = sha256(sha256_0): 481c8383f47f2e940b926867ba9dd237e5c03ccfa942ab39f8ab69aebd5f9ce8
-    checkSum = sha256_1[0, 4): 481c8383
-    addchecksum = address || checkSum: a05a523b449890854c8fc460ab602df9f31fe4293f481c8383
-    base58Address = Base58(addchecksum): 27XK5sBhwa773Svn9j2Mud6rajxtauEN4tr
-
-## 6.4 Mainnet地址，以41为前缀
+## 6.2 Mainnet地址，以41为前缀
     address = 41||sha3[12,32): 415a523b449890854c8fc460ab602df9f31fe4293f
     sha256_0 = sha256(address): 06672d677b33045c16d53dbfb1abda1902125cb3a7519dc2a6c202e3d38d3322
     sha256_1 = sha256(sha256_0): 9b07d5619882ac91dbe59910499b6948eb3019fafc4f5d05d9ed589bb932a1b4
@@ -390,7 +371,7 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
     addchecksum = address || checkSum: 415a523b449890854c8fc460ab602df9f31fe4293f9b07d561
     base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 
-## 6.5 java代码demo
+## 6.3 java代码demo
 请参考：https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
 # 7 交易签名过程
 请参考：
