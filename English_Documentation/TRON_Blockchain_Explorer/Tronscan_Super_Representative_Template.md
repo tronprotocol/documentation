@@ -4,7 +4,7 @@ Tronscan provides a way for Super Representatives to publish their information r
 
 Super Representatives can use this template to build a static page which will be shown on Tronscan. The link will be placed in the voting overview page right next to the name of SR.
 
-By editing files in the repository on Github the Super Representative can manage their own content.
+The Super Representatives can manage their own content by editing files in the Github repository.
 
 ## How to use
 
@@ -60,6 +60,6 @@ The example shows which files are presented where. Whenever the files on Github 
 ## FAQ
 
 * __I've modified a file but the changes aren't visible on tronscan.org?__  
-  Contents from the repository are served using the Github CDN which uses aggressive caching. It may take a few minutes before the changes are reflected on tronscan.org.
+  Contents from the repository are served using the Github CDN which uses aggressive caching, therefore, it may take a few minutes before the changes are reflected on tronscan.org.
 * __Why are HTML elements visible on Github but not on tronscan.org?__  
   Tronscan.org will sanitize all HTML tags for security reasons, only standard markdown tags are allowed.
