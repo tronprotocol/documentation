@@ -59,30 +59,15 @@ DISK视实际上线后交易量而定，可以预留的大一些
 
 ```
 
-## 3.2 启动fullnode
-下载最新release的代码后
-```
-./gradlew build
-cd build/libs
-java -jar java-tron.jar
-```
+## 3.2 启动fullnode和soliditynode
+具体请参考：https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Solidity_and_Full_Node_Deployment_CN.md
 
-## 3.3 启动solidity
-下载最新release的代码后
- ```
-./gradlew build
-修改配置文件config.conf, 把trustNode的ip和端口设置为已经启动的fullnode的地址。
-cd build/libs
-java -jar SolidityNode.jar -c config.conf
-```
-
-## 3.4 启动witness
-交易所不需要启动witness。(witness就是Super Representatives)
 # 4 Tron API说明
     目前Tron仅支持gRPC接口，不支持http接口。项目grpc-gateway仅作为调试用，强烈不建议在此接口上进行功能开发。
 ## 4.1 api定义
     api的定义请参考：https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 ## 4.2 api说明
+### 4.2.1 grpc接口说明
 以wallet前缀的api是fullnode提供；以walletSolidity为前缀的api是solidity提供；以walletExtension以前缀的api是solidity提供，且这些api比较耗时。
 Fullnode提供操作区块链的api和查询数据的api，Solidity只提供查询数据的api。Fullnode和Solidity的区别是fullnode当前的数据因为分叉的原因有可能被回退，而solidity上的数据是固化块的数据，不可能被回退。
 ```
@@ -197,6 +182,164 @@ WalletExtension/ GetTransactionsFromThis
 WalletExtension/ GetTransactionsToThis
 作用： 获取某个账号的转入交易记录
 ```
+### 4.2.2 http接口说明
+
+如果需要使用http接口服务，需要部署grpc-gateway，详情请见：[grpc-gateway文档](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
+
+```shell
+wallet/getaccount
+作用：返回一个账号的信息
+demo: curl -X POST  http://127.0.0.1:18890/wallet/getaccount -d '{"address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
+参数说明：to_address, owner_address 需要转为base64
+
+
+wallet/createtransaction
+demo: curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount": 1000 }'
+作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
+说明：to_address, owner_address 需要转为base64
+
+wallet/broadcasttransaction
+demo：
+curl -X POST http://127.0.0.1:18890/wallet/broadcasttransaction -d '{
+    "raw_data": {
+        "ref_block_bytes": "dyA=",
+        "ref_block_hash": "X70qJj+97nQ=",
+        "expiration": "1529305956000",
+        "contract": [
+            {
+                "type": "TransferContract",
+                "parameter": {
+                    "@type": "type.googleapis.com/protocol.TransferContract",
+                    "owner_address": "QVHyqChqzKYaik1etWXHerLDoP69",
+                    "to_address": "Qc0ipGHFhxlCL42QGmC+ems/HYip",
+                    "amount": "987000000"
+                }
+            }
+        ]
+    },
+    "signature": [
+     "V+C1KAq2arK7hf7VG9+4CBq96BRYRm3r5ep7TL0P8d1PE4lRfAUvAbfRRCiGmiriKUaOivcno2XN0/udPVj47AE="
+    ]
+}'
+作用： 广播交易，广播之前需要做签名
+说明：将已经签名完成的交易作为传入参数
+
+wallet/updateaccount
+demo： curl -X POST  http://127.0.0.1:18890/wallet/createtransaction -d '{"account_name": "newbmV3X25hbWU=" ,"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
+作用： 更新账号名称，一个账号只能更新一次账号名称
+说明：owner_address，account_name为base64格式.  `ewbmV3X25hbWU=` 为 `new_name` 的 base64格式
+
+wallet/votewitnessaccount
+demo：curl -X POST http://127.0.0.1:18890/wallet/votewitnessaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
+作用：普通用户对witness进行投票
+参数说明：
+owner_address, 投票人的地址，格式base64;votes, 投票列表，为一个数组,vote_address, witness地址，格式base64
+
+wallet/createassetissue
+demo：发行一个名为MyToken的资产
+curl -X POST http://127.0.0.1:18890/wallet/createassetissue -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "votes": [{"vote_address": "QfSI1WI/szR9S3ZL5f7Mewb18Rd7", "vote_count": 11}]}'
+作用： 发行Token，用户可以再Tron公链上发行Token，Token可以被相互转账，可以用Trx参与。用户在发行Token的时候，可以选择冻结部分Token。
+参数说明：
+owner_address，创建人地址，格式base64;name，资产名称，格式base64
+
+
+wallet/updatewitness
+作用： 修改wieness的url
+demo：
+curl -X POST http://127.0.0.1:18890/wallet/updatewitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "update_url": "d3d3Lm5ld3VybC5jb20="}'
+参数说明：
+owner_address,创建人地址，格式base64;update_url,更新的url，格式base64
+
+
+wallet/createaccount
+作用： 创建账号，目前之后已经存在的账号，可以调用该api创建一个新账号，需要指定新账号的Address
+demo：
+curl -X POST http://127.0.0.1:18890/wallet/createaccount -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "account_address": ""}'
+参数说明：owner_address,创建人的账号地址，base64；account_address,新账号地址，base64
+
+
+/wallet/createwitness
+作用： 普通用户申请成为超级代表，需要花费9999个trx
+demo：
+curl -X POST http://127.0.0.1:18890/wallet/createwitness -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "url": "d3d3Lm5ld3VybC5jb20="}'
+参数说明：owner_address，创建这的账号地址，base64；url,创建的url，base64
+
+wallet/transferasset
+作用： Token转账
+demo：
+curl -X POST http://127.0.0.1:18890/wallet/transferasset -d '{"owner_address":"QYgZmb8EtAG27PTQy5E3TXNTYCcy", "to_address": "d3d3Lm5ld3VybC5jb20=", "asset_name": "TXlBc3NldA==", "amount": 1000}'
+参数说明：asset_name，资产名称，格式base64；owner_address，发送者账户地址，格式base64；to_address，接收账户地址，格式base64；amount，交易量，格式数字
+
+wallet/participateassetissue
+作用： 参与Token发行，用户可以花费一定的Trx参与别人发行的Token
+demo:
+curl -X POST http://127.0.0.1:18890/wallet/participateassetissue -d '{"to_address": "QYgZmb8EtAG27PTQy5E3TXNTYCcy" ,"owner_address":"QfoWCvbA5qqphqTcvTU0D1+xZMHu", "amount":1000, "asset_name":"TXlBc3NldA=="}'
+参数说明: owner_address，创建者的账号地址，格式base64；to_address，目标地址，格式base64；asset_name，资产名称，格式base64；amount，交易量，格式数字
+
+冻结trx：/wallet/freezebalance
+demo：curl -X POST http://127.0.0.1:18890/wallet/freezebalance -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69", "frozen_balance" : 100000, "frozen_duration" : 3}'
+参数说明：owner_address需要是base64格式，frozen_balance是drop形式的冻结trx金额，frozen_duration是冻结天数
+
+解冻trx：/wallet/unfreezebalance
+demo：curl -X POST http://127.0.0.1:18890/wallet/unfreezebalance -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69"}'
+参数说明：owner_address需要是base64格式
+
+解冻Token：/wallet/unfreezeasset
+demo：curl -X POST http://127.0.0.1:18890/wallet/unfreezeasset -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69"}'
+参数说明：owner_address需要是base64格式
+
+提现奖励：wallet/withdrawbalance
+demo：curl -X POST http://127.0.0.1:18890/wallet/withdrawbalance -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69"}'
+参数说明：owner_address需要转成base64格式
+
+更新通证：wallet/updateasset
+demo：curl -X POST http://127.0.0.1:18890/wallet/updateasset -d '{"owner_address" : "QVHyqChqzKYaik1etWXHerLDoP69", "description" : "anVzdCB0ZXN0", "url" : "d3d3LnRlc3R1cmwuY29t", "new_limit" : 1000, "new_public_limit" : 1000}'
+参数说明：owner_address需要转成base64格式，description是base64编码，原文是just test，url是base64编码，原文是www.baidu.com
+
+查询所有节点：wallet/listnodes
+demo：curl -X GET http://127.0.0.1:18890/wallet/listnodes
+参数说明：无
+
+查询账户发行的通证：wallet/getassetissuebyaccount
+demo：curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyaccount -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
+参数说明：address需要转成base64格式
+
+查询带宽：wallet/getaccountnet
+demo：curl -X GET http://127.0.0.1:18890/wallet/getaccountnet -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
+参数说明：address需要转成base64格式
+
+通过名称查询通证：wallet/getassetissuebyname
+demo：curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyname -d {"value" : "VFdY"}
+参数说明：value是通证名称，原文是TWX
+
+查询最新区块：wallet/getnowblock
+demo：curl -X GET http://127.0.0.1:18890/wallet/getnowblock
+参数说明：无
+
+通过高度查区块：wallet/getblockbynum
+demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbynum -d {"num" : 1}
+参数说明：num是要查询的区块高度
+
+通过ID查区块：wallet/getblockbyid
+demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk="}
+参数说明：value是blockId的base64编码，原文是0000000000079080a30e7326c924457cde710b001ecf1a0b66b67df497c60c39
+
+按照高度区间查询块：/wallet/getblockbylimitnext
+demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
+参数说明：startNum是起始块高度，endNum是结束块高度。返回结果中会同时包含startNum块和endNum块
+
+按照高度查询TopN的块：/wallet/getblockbylatestnum
+demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num" : 10}'
+参数说明：num是最近块的个数
+
+按照交易ID查询交易：/wallet/gettransactionbyid
+demo：curl -X GET http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
+参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+```
+
+
+
+
 ## 4.3 api代码生成
     api基于google的gRPC协议，具体请参考 https://grpc.io/docs/
 ## 4.4 api demo
@@ -219,27 +362,8 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 ## 6.1 算法描述
 首先产生密钥对，取公钥，仅包含x，y坐标的64字节的byte数组。对公钥做sha3-256的hash运算。取其最后20字节。测试网在前面填充A0，主网地址在前面补41，得到地址的原始格式。长度为21字节。做两次sha256计算，取其前4字节得到校验码。将校验码附加在地址的原始格式后面，做base58编码，得到base58check格式的地址。测试网地址编码后以27开头，长度为35字节。主网地址编码后以T开头，长度34字节。
 `注意：sha3协议我们使用的是KECCAK-256。`
-## 6.2 示例
-    Public Key: 040defc55df809cca94abce297d432863bd8c9049fb420b1106cf53bfb4b85e0184802c495337c7a407e2b68ebd2323df2a8198d860df103de6496bd139ed24094
-    sha3 = SHA3(Public Key[1, 65)):  673f5c16982796e7bff195245a523b449890854c8fc460ab602df9f31fe4293f
-    TestNet: Address = A0||sha3[12,32):  A0E11973395042BA3C0B52B4CDF4E15EA77818F275
-    sha256_0 = SHA256(Address):  CD5D4A7E8BE869C00E17F8F7712F41DBE2DDBD4D8EC36A7280CD578863717084
-    sha256_1 = SHA256(sha256_0):  10AE21E887E8FE30C591A22A5F8BB20EB32B2A739486DC5F3810E00BBDB58C5C
-    checkSum = sha256_1[0, 4):  10AE21E8
-    addchecksum = address || checkSum:  A0E11973395042BA3C0B52B4CDF4E15EA77818F27510AE21E8
-    base58Address = Base58(addchecksum):  27jbj4qgTM1hvReST6hEa8Ep8RDo2AM8TJo
 
-
-## 6.3 Testnet地址，以A0为前缀
-    
-    address = a0||sha3[12,32): a05a523b449890854c8fc460ab602df9f31fe4293f
-    sha256_0 = sha256(address): 5f19ee7795d5df3868e05723cd8f345324ef148e034fa3cc622753057d9a0d12
-    sha256_1 = sha256(sha256_0): 481c8383f47f2e940b926867ba9dd237e5c03ccfa942ab39f8ab69aebd5f9ce8
-    checkSum = sha256_1[0, 4): 481c8383
-    addchecksum = address || checkSum: a05a523b449890854c8fc460ab602df9f31fe4293f481c8383
-    base58Address = Base58(addchecksum): 27XK5sBhwa773Svn9j2Mud6rajxtauEN4tr
-
-## 6.4 Mainnet地址，以41为前缀
+## 6.2 Mainnet地址，以41为前缀
     address = 41||sha3[12,32): 415a523b449890854c8fc460ab602df9f31fe4293f
     sha256_0 = sha256(address): 06672d677b33045c16d53dbfb1abda1902125cb3a7519dc2a6c202e3d38d3322
     sha256_1 = sha256(sha256_0): 9b07d5619882ac91dbe59910499b6948eb3019fafc4f5d05d9ed589bb932a1b4
@@ -247,7 +371,7 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
     addchecksum = address || checkSum: 415a523b449890854c8fc460ab602df9f31fe4293f9b07d561
     base58Address = Base58(addchecksum): TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW
 
-## 6.5 java代码demo
+## 6.3 java代码demo
 请参考：https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
 # 7 交易签名过程
 请参考：
@@ -324,7 +448,7 @@ Expiration 和交易时间戳的设置方法：
 ```
 
 ## 3 签名
-交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。
+交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。签名的说明请参考https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
 ## 4 demo
 本地构造交易、签名的demo请参考
@@ -339,3 +463,7 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/de
 具体请参考：https://github.com/tronprotocol/Documentation#%E6%96%87%E6%A1%A3%E6%8C%87%E5%BC%95
 
 
+
+```
+
+```
