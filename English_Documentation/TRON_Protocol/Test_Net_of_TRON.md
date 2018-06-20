@@ -27,7 +27,6 @@ test.tronscan.org
 ```
 net {
   type = mainnet
-  # type = testnet
 }
  
 storage {
