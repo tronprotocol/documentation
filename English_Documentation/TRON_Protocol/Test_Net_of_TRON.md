@@ -6,6 +6,7 @@
 
 p2p version：619
 
+test.tronscan.org
 
 ## How to connect to the test net
 1. Modify `.conf` file for both FullNode and SolidityNode
