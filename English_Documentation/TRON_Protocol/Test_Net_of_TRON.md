@@ -7,8 +7,17 @@
 p2p version：619
 
 
+## How to connect to the test net
+1. Modify `.conf` file for both FullNode and SolidityNode
+2. update p2p version to:
+```
+ 
+  p2p {
+    version = 619
+  }
+```
 
-## Startup Configuration File
+## Sample Startup Configuration File
 
 ```
 net {
