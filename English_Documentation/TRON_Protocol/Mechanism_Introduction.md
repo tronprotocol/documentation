@@ -50,7 +50,7 @@ time: frozen duration lasting from date of freeze and date to unfreeze is 3 days
 
     `unfreezebalance password`
 
-##Block-production reward for Super Representatives`
+## Block-production reward for Super Representatives
 
 Each time a Super Representative finishes block production, reward will be sent to the subaccount in the superledger. Super Representatives can check but not directly make use of this asset. A withdrawal can be made once every 24 hours, transferring the reward from the subaccount to the Super Representative’s account.
 
@@ -87,8 +87,8 @@ The ratio of bandwidth points in an account to the bandwidth capacity of TRON’
 e.g If frozen asset on the entire network totals 1,000,000 TRX and one given account froze 1,000 TRX, or 0.1% of total TRX frozen, then the account can perform about 300 transactions per day.  
 Note: Since the amount of frozen asset on the entire network and for a certain account are subject to change, bandwidth points held by an account isn’t always fixed.
 3. Complimentary bandwidth points  
-There are 1K bandwidth points for free per account per day. When an account hasn’t frozen any balance, or when its bandwidth points have run out, complimentary bandwidth points can be used.  
-Each transaction in Tron’ network is about 200 bytes, so each account enjoys about 5 transactions for free each day.  
+There are 5K bandwidth points for free per account per day. When an account hasn’t frozen any balance, or when its bandwidth points have run out, complimentary bandwidth points can be used.  
+Each transaction in Tron’ network is about 200 bytes, so each account enjoys about 25 transactions for free each day.  
 4. Token transfer  
 For transactions of token transfer, bandwidth points will first be charged from the token issuer.  
 When issuing tokens, the issuer can configure a limit to maximum bandwidth consumption, namely the maximal bandwidth points which can be charged from him/her for a token holder’s token transfers within 24 hours and the maximal total of bandwidth points.  

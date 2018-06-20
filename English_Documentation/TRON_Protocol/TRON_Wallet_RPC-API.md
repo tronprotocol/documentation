@@ -70,7 +70,7 @@ AccountList: Account list.
 4.5	Function  
 Query of all account information currently stored in the blockchain.
 
-## 5. Creating account (deleted, no longer available)  
+## 5. Creating account
 
 5.1	Interface statement  
 rpc CreateAccount (AccountCreateContract) returns (Transaction){};  
@@ -83,7 +83,7 @@ Transaction: returns transaction of account creation. Request broadcasting after
 5.5	Function  
 Account creation. Creating an account (or opting otherwise) when registering a wallet.
 
-## 6. Account update (to be realized)
+## 6. Account update
 
 6.1	Interface statement  
 rpc UpdateAccount (AccountUpdateContract) returns (Transaction){};  
@@ -135,7 +135,7 @@ WitnessList: list of witnesses and detailed information of the candidates.
 9.5	Function  
 Query of all candidates prior to voting. 
 
-## 10. Application for Super Representative (to be realized)
+## 10. Application for Super Representative
 
 10.1 Interface statement  
 rpc CreateWitness (WitnessCreateContract) returns (Transaction) {};  
@@ -148,7 +148,7 @@ Transaction: Returns
 10.5 function  
 All users with an account created on the blockchain can apply to become TRON’s Super Representative candidate.
 
-## 11. Information update of Super Representative candidate (to be realized)
+## 11. Information update of Super Representative candidate 
 
 11.1 Interface statement  
 rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {};  
@@ -318,7 +318,7 @@ TransactionList: transaction list.
 23.5 Function  
 Query of transactions by starting and ending time.
 
-## 24. Query of transaction initiations by address (to be realized)
+## 24. Query of transaction initiations by address
 
 24.1 Interface statement  
 rpc getTransactionsFromThis (Account) returns (TransactionList) {};  
@@ -331,7 +331,7 @@ TransactionList: transaction list.
 24.5 Function  
 Query of transaction initiations by account address.
 
-## 25. Query of transaction receptions by address (to be realized)
+## 25. Query of transaction receptions by address
 
 25.1 Interface statement  
 rpc getTransactionsToThis (Account) returns (NumberMessage) {};  
