@@ -19,5 +19,5 @@ https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.p
    GetTransactionsToThis
 
 5. 如何校验地址具有正确的格式
-   本地校验：经过decode58check后，会得到一个长度是21的byte数组，第一个字节是0x41(mainnet) 或者 0xa0(testnet).  
+   本地校验：经过decode58check后，会得到一个长度是21的byte数组，第一个字节是0x41。
    如果想要验证一个地址是否存在于区块链上，请求API GetAccount。
