@@ -2,13 +2,22 @@
 
 ## Code version
 
-[Odyssey-v2.0.3](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v2.0.3)
+[Odyssey-v2.0.3](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v2.0.3) or the latest release.
 
 p2p version：619
 
 
+## How to connect to the test net
+1. Modify `.conf` file for both FullNode and SolidityNode
+2. update p2p version to:
+```
+ 
+  p2p {
+    version = 619
+  }
+```
 
-## Startup Configuration File
+## Sample Startup Configuration File
 
 ```
 net {
