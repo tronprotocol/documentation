@@ -1,17 +1,17 @@
 # 如何申请成为超级代表候选
 
-+ 登陆 https://tronscan.org 使用区块链浏览器。
++ Open TRON Blockchain explorer:  https://tronscan.org
 
-+ 点击"账户"。
++ Click "Account" button. 
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/竞选超级代表/点击账户.jpg)
 
-+ 点击"申请成为超级代表候选"。
++ Click "APPLY TO BE A SUPER REPRESENTATIVE CANDIDATE" button.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/竞选超级代表/申请成为超级代表候选.jpg)
 
-+ 填写个人网站地址并勾选注意事项。
++ Write your personal website address and check information below website address.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/竞选超级代表/填写网站地址并勾选.jpg)
 
-注意：申请成为超级代表候选需要支付9999个TRX作为手续费。
+Note：9999 TRX will be paid when users apply to be a SR candidate.
