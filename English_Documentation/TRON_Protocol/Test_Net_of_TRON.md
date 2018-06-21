@@ -14,7 +14,8 @@ test.tronscan.org
 
 ## How to connect to the test net
 1. Modify `.conf` file for both FullNode and SolidityNode
-2. update p2p version to:
+2. delete db directory output-directory for both FullNode and SolidityNode
+3. update p2p version to:
 ```
  
   p2p {
