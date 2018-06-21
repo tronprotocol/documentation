@@ -13,5 +13,5 @@ And you can create a new address on blockchain by calling rpc api createAccount,
 GetTransactionsFromThis  
 GetTransactionsToThis
 5. check address is valid or not (regex or API command)  
-+ Local check--- After decode58check at local, you can get a 21-byte byte array starting with 0x41 (mainnet) or 0xa0 (testnet).   
++ Local check--- After decode58check at local, you can get a 21-byte byte array starting with 0x41.   
 + If you want to verify whether an address exists on the blockchain, you can call GetAccount.

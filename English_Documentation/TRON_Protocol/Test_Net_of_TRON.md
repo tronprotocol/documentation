@@ -1,11 +1,16 @@
 # TRON Testnet
 
+## Tronscan
+
+https://test.tronscan.org
+
 ## Code version
 
 [Odyssey-v2.0.3](https://github.com/tronprotocol/java-tron/releases/tag/Odyssey-v2.0.3) or the latest release.
 
 p2p version：619
 
+test.tronscan.org
 
 ## How to connect to the test net
 1. Modify `.conf` file for both FullNode and SolidityNode
@@ -22,7 +27,6 @@ p2p version：619
 ```
 net {
   type = mainnet
-  # type = testnet
 }
  
 storage {

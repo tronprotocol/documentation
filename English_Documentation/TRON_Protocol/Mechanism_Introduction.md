@@ -87,7 +87,7 @@ The ratio of bandwidth points in an account to the bandwidth capacity of TRON’
 e.g If frozen asset on the entire network totals 1,000,000 TRX and one given account froze 1,000 TRX, or 0.1% of total TRX frozen, then the account can perform about 300 transactions per day.  
 Note: Since the amount of frozen asset on the entire network and for a certain account are subject to change, bandwidth points held by an account isn’t always fixed.
 3. Complimentary bandwidth points  
-There are 5K bandwidth points for free per account per day. When an account hasn’t frozen any balance, or when its bandwidth points have run out, complimentary bandwidth points can be used.  
+There are 5000 bandwidth points for free per account per day. When an account hasn’t frozen any balance, or when its bandwidth points have run out, complimentary bandwidth points can be used.  
 Each transaction in Tron’ network is about 200 bytes, so each account enjoys about 25 transactions for free each day.  
 4. Token transfer  
 For transactions of token transfer, bandwidth points will first be charged from the token issuer.  
@@ -112,7 +112,7 @@ Users can create account by directly invoking account creation API, TRX transfer
 
 In TRON’s network, every account is capable of issuing tokens at the expense of 1024 TRX. Users can lock their tokens in separately.
 
-To issue token, issuer needs to set up token name, total capitalization, exchange rate to TRX, circulation duration, description, website, maximal bandwidth consumption per account, total bandwidth consumption and token freeze.
+To issue token, issuer needs to set up token name, total capitalization, exchange rate to TRX, circulation duration, description, website, maximum bandwidth consumption per account, total bandwidth consumption and token freeze.
 
 + e.g. 
 
