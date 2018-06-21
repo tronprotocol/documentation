@@ -33,7 +33,8 @@ There are three types of nodes on Tron’s network, namely witness, full node an
 Exchanges need to deploy a full node and a solidity node. The solidity node connects to the local full node which connects to the mainnet.
 
 ## 2.3 Mainnet and testnet
-Currently there is only the mainnet and we will later deploy the testnet.
+the explorer of mainnet is https://tronscan.org and testnet is https://test.tronscan.org.
+exchanges should test their code in testnet. About how to config testnet, please refer https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E6%B5%8B%E8%AF%95%E7%BD%91.md
 
 # 3. Operation of node
 
@@ -294,52 +295,52 @@ Demo: curl -X POST http://127.0.0.1:18890/wallet/updateasset -d '{"owner_address
 Wallet/listnodes
 Function: Lists all connected nodes
 Parameters: none.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/listnodes
+Demo: curl -X POST http://127.0.0.1:18890/wallet/listnodes
 
 Wallet/getassetissuebyaccount
 Function: Lists issued tokens by account:
 Parameters: address should be converted to base64 format.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyaccount -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getassetissuebyaccount -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
 
 Wallet/getaccountnet
 Function: Query bandwidth for an account
 Parameters: address should be converted to base64 format.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getaccountnet -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getaccountnet -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
 
 Wallet/getassetissuebyname
 Function: Query tokens by name
 Parameters: value is the token name and the original text reads TWX.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyname -d {"value" : "VFdY"}
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getassetissuebyname -d {"value" : "VFdY"}
 
 Inquire the latest block: wallet/getnowblock
 Function: Query the network for the latest block
 Parameters: none.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getnowblock
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getnowblock
 
 Wallet/getblockbynum
 Function: Query a block by height
 Parameters: num is the blockheight.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbynum -d {"num" : 1}
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getblockbynum -d {"num" : 1}
 
 Wallet/getblockbyid
 Function: Query block by ID
 Parameters: value shows the block ID 0000000000079080a30e7326c924457cde710b001ecf1a0b66b67df497c60c39 in base64 format.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk="}
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk="}
 
 Wallet/getblockbylimitnext
 Function: Query block by a range of blockheight
 Parameters: startNum is the starting blockheight and the endNum is the end blockheight. The return with include the starNum block and the endNum block.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
 
 Wallet/getblockbylatestnum
 Function: Query topN blocks by height
 Parameter: num is the latest number of blocks.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num" : 10}'
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num" : 10}'
 
 Wallet/gettransactionbyid
 Function: Query transactions by transaction ID
 Parameters: value is the transaction ID, which can be obtained through hashing the raw_data of the transaction; value should be in base64 format.
-Demo: curl -X GET http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
+Demo: curl -X POST http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
 ```
 
 ## 4.3 API code generation
@@ -363,7 +364,12 @@ See also: https://github.com/tronprotocol/Documentation/blob/master/English_Docu
 
 # 6. User address generation
 ## 6.1 Algorithm description
-First generate a key pair and extract the public key (a 64-byte byte array representing its x,y coordinates). Hash the public key using sha3-256 function and extract the last 20 bytes of the result. For a testnet address, add `A0` to the beginning of the byte array. For a mainnet address, add `41` to the beginning of the byte array. Length of the initial address should be 21 bytes. Hash the address twice using sha256 function and take the first 4 bytes as verification code. Add the verification code to the end of the initial address and get an address in base58check format through base58 encoding. An encoded testnet address begins with 27 and is 35 bytes in length. An encoded mainnet address begins with T and is 34 bytes in length.
+1. First generate a key pair and extract the public key (a 64-byte byte array representing its x,y coordinates). 
+2. Hash the public key using sha3-256 function and extract the last 20 bytes of the result. 
+3. Add `41` to the beginning of the byte array. Length of the initial address should be 21 bytes. 
+4. Hash the address twice using sha256 function and take the first 4 bytes as verification code. 
+5. Add the verification code to the end of the initial address and get an address in base58check format through base58 encoding. 
+6. An encoded mainnet address begins with T and is 34 bytes in length.
 ```
 Please note that the sha3 protocol we adopt is KECCAK-256.
 ```

@@ -28,7 +28,7 @@ TRON主链网络中有三种类型的节点，分别是witness、fullnode和soli
 ## 2.2 网络部署方式（只针对交易所）
 部署一个fullnode，一个solidity node，solidity node连接本地的fullnode，fullnode连接mainnet
 ## 2.3 关于mainnet和testnet
-目前只有mainnet，稍后会部署testnet。
+mainnet浏览器https://tronscan.org，testnet浏览器https://test.tronscan.org。请交易所在testnet上进行测试，testnet的配置请参照https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E6%B5%8B%E8%AF%95%E7%BD%91.md
 
 # 3 节点运行
 ## 3.1 建议硬件配置
@@ -297,43 +297,43 @@ demo：curl -X POST http://127.0.0.1:18890/wallet/updateasset -d '{"owner_addres
 参数说明：owner_address需要转成base64格式，description是base64编码，原文是just test，url是base64编码，原文是www.baidu.com
 
 查询所有节点：wallet/listnodes
-demo：curl -X GET http://127.0.0.1:18890/wallet/listnodes
+demo：curl -X POST http://127.0.0.1:18890/wallet/listnodes
 参数说明：无
 
 查询账户发行的通证：wallet/getassetissuebyaccount
-demo：curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyaccount -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
+demo：curl -X POST http://127.0.0.1:18890/wallet/getassetissuebyaccount -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
 参数说明：address需要转成base64格式
 
 查询带宽：wallet/getaccountnet
-demo：curl -X GET http://127.0.0.1:18890/wallet/getaccountnet -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
+demo：curl -X POST http://127.0.0.1:18890/wallet/getaccountnet -d {"address" : "QVHyqChqzKYaik1etWXHerLDoP69"}
 参数说明：address需要转成base64格式
 
 通过名称查询通证：wallet/getassetissuebyname
-demo：curl -X GET http://127.0.0.1:18890/wallet/getassetissuebyname -d {"value" : "VFdY"}
+demo：curl -X POST http://127.0.0.1:18890/wallet/getassetissuebyname -d {"value" : "VFdY"}
 参数说明：value是通证名称，原文是TWX
 
 查询最新区块：wallet/getnowblock
-demo：curl -X GET http://127.0.0.1:18890/wallet/getnowblock
+demo：curl -X POST http://127.0.0.1:18890/wallet/getnowblock
 参数说明：无
 
 通过高度查区块：wallet/getblockbynum
-demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbynum -d {"num" : 1}
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbynum -d {"num" : 1}
 参数说明：num是要查询的区块高度
 
 通过ID查区块：wallet/getblockbyid
-demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk="}
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk="}
 参数说明：value是blockId的base64编码，原文是0000000000079080a30e7326c924457cde710b001ecf1a0b66b67df497c60c39
 
 按照高度区间查询块：/wallet/getblockbylimitnext
-demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
 参数说明：startNum是起始块高度，endNum是结束块高度。返回结果中会同时包含startNum块和endNum块
 
 按照高度查询TopN的块：/wallet/getblockbylatestnum
-demo：curl -X GET http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num" : 10}'
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num" : 10}'
 参数说明：num是最近块的个数
 
 按照交易ID查询交易：/wallet/gettransactionbyid
-demo：curl -X GET http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
+demo：curl -X POST http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
 参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
 ```
 
@@ -360,6 +360,7 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 ## 5.4 超级代表及备选超级代表奖励规则
 # 6 用户地址生成过程
 ## 6.1 算法描述
+
 + 首先产生密钥对，取公钥，仅包含x，y坐标的64字节的byte数组。
 + 对公钥做sha3-256的hash运算。取其最后20字节。测试网在前面填充A0。
 + 主网地址在前面补41，得到地址的原始格式。长度为21字节。
