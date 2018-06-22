@@ -55,3 +55,27 @@
      12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
  ### SolidityNode
      12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823 
+
+# 正确的停止节点
+新建stop.sh，用kill -15关闭java-tron.jar（或者FullNode.jar、SolidityNode.jar）相关进程进程。
+你需要修改下面的pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`来找到正确的进程号。
+```
+#!/bin/bash
+count=1
+while [ $count -le 60 ]; do
+  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
+  if [ -n "$pid" ]; then
+    kill -15 $pid
+    echo "kill -15 java-tron, counter $count"
+    sleep 1
+  else
+    echo "java-tron killed"
+    break
+  fi
+  count=$[$count+1]
+  if [ $count -ge 60 ]; then
+    kill -9 $pid
+  fi
+done
+```
+
