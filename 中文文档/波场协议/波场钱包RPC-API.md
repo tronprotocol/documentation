@@ -431,3 +431,15 @@ BytesMessage：区块ID
 Block：区块
 31.5 功能说明
 根据输入的区块的ID查询区块
+
+## 32.更新通证
+32.1 接口声明
+rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {};
+32.2 提供节点
+fullnode。
+32.3 参数说明
+UpdateAssetContract：包括通证发行者的地址、通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
+32.4 返回值
+Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
+32.5 功能说明
+只能由通证发行者发起，更新通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
