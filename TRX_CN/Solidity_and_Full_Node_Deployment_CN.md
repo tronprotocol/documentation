@@ -14,32 +14,13 @@
         git clone https://github.com/tronprotocol/java-tron
         cd java-tron/
         ./gradlew build
-        cp build/libs/java-tron.jar ../
+        cp build/libs/FullNode.jar ../
         cp src/main/resources/config.conf ../
         cd ..
 
-    为了能够快速的发现由TRON部署的节点，需要打开`config.conf`。把`seed.node`里面的`ip.list`中包含的地址列表复制到`node`的`active`中，像这样：  
-    
-            active = [  
-                # Initial active peers   
-               # Sample entries:   
-               # "ip:port",   
-               # "ip:port" 
-            "47.254.16.55:18888", 
-            "47.254.18.49:18888", 
-            "18.188.111.53:18888",
-            "54.219.41.56:18888", 
-            "35.169.113.187:18888", 
-            "34.214.241.188:18888", 
-            "47.254.146.147:18888", 
-            "47.254.144.25:18888", 
-            "47.91.246.252:18888", 
-            "47.91.216.69:18888",  
-            "39.106.220.120:18888"   
-            ]  
     然后就可以启动FullNode了：  
             
-            nohupjava -jar java-tron.jar -c config.conf&
+            nohup java -jar FullNode.jar -c config.conf &
             
   ## SolidityNode部署方案
  
@@ -61,7 +42,7 @@
  
     然后就可以启动SolidityNode了：
         
-            nohup java -jar SolidityNode.jar -c config.conf&
+            nohup java -jar SolidityNode.jar -c config.conf &
     
  ## 日志和网络连接的验证
     fullnode和soliditynode对应的日志在目录`/deploy/\*/logs/tron.log`，可以通过命令`tail -f /logs/tron.log/`去查看bolck同步的情况。日志大致如下：

@@ -36,41 +36,20 @@ Make sure you have the proper dependencies.
     cp src/main/resources/config.conf ../soliditynode
 ```
 
-  3. Configure the FullNode configuration file. Please edit `config.conf` and copy the list of addresses contained in `ip.list` in `seed.node` to `active` of `node`.
-```       
-    active = [  
-        "47.254.16.55:18888",
-        "47.254.18.49:18888",
-        "18.188.111.53:18888",
-        "54.219.41.56:18888",
-        "35.169.113.187:18888",
-        "34.214.241.188:18888",
-        "47.254.146.147:18888",
-        "47.254.144.25:18888",
-        "47.91.246.252:18888",
-        "47.91.216.69:18888",  
-        "39.106.220.120:18888"  
-        ]  
-```  
-
-  4. You can now run your Fullnode using the following command：
+  3. You can now run your Fullnode using the following command：
 ```
       java -jar FullNode.jar -c config.conf
 ```
 
-  5. Configure the SolidityNode configuration file. You'll need to edit `config.conf` to connect to your local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Also change the `rpc port` to something other than `50051`. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services.
+  4. Configure the SolidityNode configuration file. You'll need to edit `config.conf` to connect to your local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services.
 ```
     node {
         trustNode = "127.0.0.1:50051"
         listen.port = 18889 // This needs to be changed.
         }
-    
-    rpc {
-        port = 50052
-        }
 ```
 
-  6. You can now run your SolidityNode using the following command：
+  5. You can now run your SolidityNode using the following command：
 ```        
     java -jar SolidityNode.jar -c config.conf
 ```
