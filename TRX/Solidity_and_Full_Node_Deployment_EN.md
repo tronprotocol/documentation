@@ -9,7 +9,7 @@ Create separate directories for fullnode and soliditynode
 
 Create two folders for fullnode and soliditynode.
 
-Download our latest release https://github.com/tronprotocol/java-tron/releases and extract it to
+Clone our latest master branch of https://github.com/tronprotocol/java-tron and extract it to
 ```      
     /deploy/java-tron 
 ```
