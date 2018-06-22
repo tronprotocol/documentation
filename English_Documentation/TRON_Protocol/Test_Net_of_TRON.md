@@ -8,19 +8,23 @@ https://test.tronscan.org
 
 latest master branch
 
-p2p version：20180621
+commit ec226ba3ea5125a548597d3faee621f0507c84bb
 
-test.tronscan.org
+https://test.tronscan.org
+
+
 
 ## How to connect to the test net
 1. Modify `.conf` file for both FullNode and SolidityNode
 2. delete db directory output-directory for both FullNode and SolidityNode
-3. update p2p version to:
+3. Key modifications:
 ```
  
   p2p {
-    version = 20180621
+    version = 20180622
   }
+  
+  parentHash = "0x9e524e0d6bfbbd25a9bd9cf5c5389f122e2bc2e66a29569d532739a1aa4376ae"
 ```
 
 ## Sample Startup Configuration File
@@ -117,10 +121,12 @@ node {
 
   maxActiveNodes = 30
 
-  minParticipationRate = 15
+  maxActiveNodesWithSameIp = 5
+
+  minParticipationRate = 0
 
   p2p {
-    version = 20180621
+    version = 20180622
   }
 
   rpc {
@@ -344,7 +350,7 @@ genesis.block = {
 
   timestamp = "0" #2017-8-26 12:00:00
 
-  parentHash = "0x000000000000190af3afad9e574750ac24a4a7cb91172566b06df9faab51f4e8"
+  parentHash = "0x9e524e0d6bfbbd25a9bd9cf5c5389f122e2bc2e66a29569d532739a1aa4376ae"
 }
 
 localwitness = [
