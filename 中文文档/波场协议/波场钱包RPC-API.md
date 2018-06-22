@@ -393,3 +393,16 @@ UnfreezeAssetContract：包含地址。
 Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
 28.5 功能说明
 通证发行者解冻发行时冻结的通证。
+
+## 29. 分页查询通证列表
+
+29.1 接口声明
+rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {};
+29.2 提供节点
+fullnode、soliditynode。
+29.3 参数说明
+PaginatedMessage：起始查询下标 （从下标0开始计算）， 一页所取得的通证个数
+29.4 返回值
+AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息。
+29.5 功能说明
+分页通证列表。分页展示通证，供用户选择参与。

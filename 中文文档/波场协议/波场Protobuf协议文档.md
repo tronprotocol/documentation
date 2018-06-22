@@ -610,6 +610,12 @@
                   body: "*"
                 };
               }
+              rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+                  option (google.api.http) = {
+                      post: "/wallet/getpaginatedassetissuelist"
+                      body: "*"
+                  };
+              }
               rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
                 option (google.api.http) = {
                   post: "/wallet/getassetissuebyaccount"
@@ -678,6 +684,9 @@
               }
               rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
             
+              }
+              rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+
               }
               rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList) {
             
