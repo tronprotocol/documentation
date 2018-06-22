@@ -394,7 +394,7 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 28.5 功能说明
 通证发行者解冻发行时冻结的通证。
 
-## 29. 获取下次维护时刻
+## 29. 查询下次维护时刻
 
 29.1 接口声明
 rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {};
@@ -406,4 +406,18 @@ EmptyMessage：无需参数
 NumberMessage：下次维护时刻
 29.5 功能说明
 获取下次维护时刻
+
+## 30. 查询交易信息
+
+30.1 接口声明
+rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {};
+30.2 提供节点
+soliditynode。
+30.3 参数说明
+BytesMessage：交易ID
+30.4 返回值
+TransactionInfo：交易信息
+30.5 功能说明
+查询交易的费用、所在区块、所在区块时间戳
+
 
