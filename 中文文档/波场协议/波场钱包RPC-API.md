@@ -420,4 +420,14 @@ TransactionInfo：交易信息
 30.5 功能说明
 查询交易的费用、所在区块、所在区块时间戳
 
-
+## 31.根据ID查询区块 
+31.1 接口声明
+rpc GetBlockById (BytesMessage) returns (Block) {};
+31.2 提供节点
+fullnode。
+31.3 参数说明
+BytesMessage：区块ID
+31.4 返回值
+Block：区块
+31.5 功能说明
+根据输入的区块的ID查询区块
