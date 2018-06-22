@@ -393,3 +393,17 @@ UnfreezeAssetContract：包含地址。
 Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
 28.5 功能说明
 通证发行者解冻发行时冻结的通证。
+
+## 29. 获取下次维护时刻
+
+29.1 接口声明
+rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {};
+29.2 提供节点
+fullnode。
+29.3 参数说明
+EmptyMessage：无需参数
+29.4 返回值
+NumberMessage：下次维护时刻
+29.5 功能说明
+获取下次维护时刻
+
