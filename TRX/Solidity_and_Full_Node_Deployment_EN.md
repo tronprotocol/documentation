@@ -89,5 +89,25 @@ You should see something similar to this in your logs for block synchronization:
 
       12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
 
-
+# Stop node gracefully
+Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
+You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
+```
+#!/bin/bash
+count=1
+while [ $count -le 60 ]; do
+  pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
+  if [ -n "$pid" ]; then
+    kill -15 $pid
+    echo "kill -15 java-tron, counter $count"
+    sleep 1
+  else
+    echo "java-tron killed"
+    break
+  fi
+  count=$[$count+1]
+  if [ $count -ge 60 ]; then
+    kill -9 $pid
+  fi
+done
 
