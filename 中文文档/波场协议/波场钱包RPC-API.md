@@ -394,15 +394,64 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 28.5 功能说明
 通证发行者解冻发行时冻结的通证。
 
-## 29. 分页查询通证列表
+## 29. 查询下次维护时刻
 
 29.1 接口声明
-rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {};
+rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {};
 29.2 提供节点
-fullnode、soliditynode。
+fullnode。
 29.3 参数说明
-PaginatedMessage：起始查询下标 （从下标0开始计算）， 一页所取得的通证个数
+EmptyMessage：无需参数
 29.4 返回值
-AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息。
+NumberMessage：下次维护时刻
 29.5 功能说明
+获取下次维护时刻
+
+## 30. 查询交易信息
+
+30.1 接口声明
+rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {};
+30.2 提供节点
+soliditynode。
+30.3 参数说明
+BytesMessage：交易ID
+30.4 返回值
+TransactionInfo：交易信息
+30.5 功能说明
+查询交易的费用、所在区块、所在区块时间戳
+
+## 31.根据ID查询区块 
+31.1 接口声明
+rpc GetBlockById (BytesMessage) returns (Block) {};
+31.2 提供节点
+fullnode。
+31.3 参数说明
+BytesMessage：区块ID
+31.4 返回值
+Block：区块
+31.5 功能说明
+根据输入的区块的ID查询区块
+
+## 32.更新通证
+32.1 接口声明
+rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {};
+32.2 提供节点
+fullnode。
+32.3 参数说明
+UpdateAssetContract：包括通证发行者的地址、通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
+32.4 返回值
+Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
+32.5 功能说明
+只能由通证发行者发起，更新通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
+
+## 33. 分页查询通证列表
+33.1 接口声明
+rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {};
+33.2 提供节点
+fullnode、soliditynode。
+33.3 参数说明
+PaginatedMessage：起始查询下标 （从下标0开始计算）， 一页所取得的通证个数
+33.4 返回值
+AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息。
+33.5 功能说明
 分页通证列表。分页展示通证，供用户选择参与。
