@@ -8,8 +8,6 @@ https://test.tronscan.org
 
 latest master branch
 
-commit ec226ba3ea5125a548597d3faee621f0507c84bb
-
 https://test.tronscan.org
 
 
