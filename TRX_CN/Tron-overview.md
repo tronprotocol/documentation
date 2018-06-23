@@ -335,6 +335,16 @@ demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num"
 按照交易ID查询交易：/wallet/gettransactionbyid
 demo：curl -X POST http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
 参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+
+按照交易hash查询交易fee，交易所在块：/walletsolidity/gettransactioninfobyid
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactioninfobyid -d '{"value" : "4ebiUlBCZ5vI1JtBMFXjiH/HSaVeIaUO8PN9l5E1kXU="}'
+参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+
+按照交易hash查询交易(通过这个接口确认最终确认交易)：/walletsolidity/gettransactionbyid
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactionbyid -d '{"value" : "9PeN9FHPDHr1qpILy3U+iMcLAKvwojUek9jYx1EESXA="}'
+参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+
+
 ```
 
 
