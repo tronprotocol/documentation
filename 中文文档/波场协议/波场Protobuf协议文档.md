@@ -486,8 +486,7 @@
    __`CreatTransaction`__：采用参数`TransferContract`，返回对象`Transaction`。    
    __`BroadcastTransaction`__：采用参数`Transaction`，返回对象`Return`。    
    __`CreateAccount`__：采用参数`AccountCreateContract`，返回对象`Transaction`。    
-   __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。    
-   __`ListAccounts`__：采用参数`EmptyMessage`，返回对象`AccountList`。    
+   __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。  
    __`UpdateAccount`__：采用参数`AccountUpdateContract`，返回对象`Transaction`。    
    __`VoteWitnessAccount`__：采用参数`VoteWitnessContract`，返回对象`Transaction`。   
    __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
@@ -610,6 +609,12 @@
                   body: "*"
                 };
               }
+              rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+                  option (google.api.http) = {
+                      post: "/wallet/getpaginatedassetissuelist"
+                      body: "*"
+                  };
+              }
               rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
                 option (google.api.http) = {
                   post: "/wallet/getassetissuebyaccount"
@@ -640,11 +645,16 @@
                   body: "*"
                 };
               }
+              rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {
+                option (google.api.http) = {
+                  post: "/wallet/getnextmaintenancetime"
+                  body: "*"
+                };
+              }
             };
             
    `WalletSolidity`钱包服务包含多个RPC。  
       __`GetAccount`__：采用参数`Account`，返回对象`Account`。    
-      __`ListAccounts`__：采用参数`EmptyMessage`，返回对象`AccountList`。    
       __`ListWitness`__：采用参数`EmptyMessage`，返回对象`WitnessList`。  
       __`ListNodes`__：采用参数`EmptyMessage`，返回对象`NodeList`。  
       __`GetAssetIssueList`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。  
@@ -665,10 +675,6 @@
             
               };
             
-              rpc ListAccounts (EmptyMessage) returns (AccountList) {
-            
-              };
-            
               rpc ListWitnesses (EmptyMessage) returns (WitnessList) {
             
               };
@@ -678,6 +684,9 @@
               }
               rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
             
+              }
+              rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+
               }
               rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList) {
             
@@ -712,6 +721,9 @@
               rpc getTransactionsToThis (Account) returns (NumberMessage) {
             
               }
+              rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {
+              
+              }     
             };
       
    `Address`: 节点地址。  
