@@ -349,15 +349,15 @@ demo：curl -X POST http://127.0.0.1:18890/wallet/getpaginatedassetissuelist -d 
 参数说明：offset为分页起始token的id，limit为最多返回的token数量
 
 查询所有交易数量：/wallet/totaltransaction
-demo: curl -X POST http://127.0.0.1:18890/walletsolidity/totaltransaction
+demo: curl -X POST http://127.0.0.1:18890/wallet/totaltransaction
 参数说明：
 
 查询超级代表下次轮值时间：/wallet/getnextmaintenancetime
-demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getnextmaintenancetime
+demo：curl -X POST http://127.0.0.1:18890/wallet/getnextmaintenancetime
 参数说明
 
 签名：/wallet/gettransactionsign
-demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getaccount -d '{
+demo：curl -X POST http://127.0.0.1:18890/wallet/gettransactionsign -d '{
 "transaction" : {
     "raw_data": {
         "ref_block_bytes": "gfA=",
