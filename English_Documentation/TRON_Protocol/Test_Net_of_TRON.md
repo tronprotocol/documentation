@@ -1,17 +1,5 @@
 # TRON Testnet
 
-## Tronscan
-
-https://test.tronscan.org
-
-## Code version
-
-latest master branch
-
-p2p version：20180621
-
-test.tronscan.org
-
 ## How to connect to the test net
 1. Modify `.conf` file for both FullNode and SolidityNode
 2. delete db directory output-directory for both FullNode and SolidityNode
