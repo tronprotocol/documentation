@@ -354,14 +354,13 @@
        bytes signature = 4; }
         
    消息体 `TransactionInfo`包括`id`、`fee`、`blockNumber`和`blockTimeStamp`。 
+   
    `id`：交易ID。  
    `fee`：本次交易费用。  
    `blockNumber`:交易所在块高度。
    `blockTimeStamp`:交易所在块时间。
 
-    message TransactionInfo {    
-       raw raw_data = 1;  
-       bytes signature = 4; 
+    message TransactionInfo {     
        bytes id = 1;
        int64 fee = 2;
        int64 blockNumber = 3;
