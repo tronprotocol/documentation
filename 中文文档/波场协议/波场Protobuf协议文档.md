@@ -807,5 +807,33 @@
       repeated Endpoint neighbours = 2;
       int64 timestamp = 3;
      }
-     
+
+
+    `EasyTransferMessage`: TRX快捷转账消息
+    `passPhrase`: 密码
+    `toAddress`: trx接收地址
+    `amount`: 转账数量
+
+    message EasyTransferMessage{
+      bytes passPhrase = 1;
+      bytes toAddress = 2;
+      int64 amount = 3;
+    }
+
+    `EasyTransferResponse`: TRX快捷转账结果消息
+    `transaction`: 转账创建的交易
+    `result`: 广播交易的结果
+    message EasyTransferResponse{
+     Transaction transaction = 1;
+     Return result = 2;
+    }
+
+
+    `TransactionSign`：签名参数
+    `transaction`: 待签名的交易
+    `privateKey`: 签名用的私钥
+    message TransactionSign {
+     Transaction transaction = 1;
+     bytes privateKey = 2;
+    }     
 # 详细的协议见附属文件。详细协议随着程序的迭代随时都可能发生变化，请以最新的版本为准。

@@ -455,3 +455,33 @@ PaginatedMessage：起始查询下标 （从下标0开始计算）， 一页所�
 AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息。
 33.5 功能说明
 分页通证列表。分页展示通证，供用户选择参与。
+
+## 34. 创建秘钥地址
+34.1 接口说明
+rpc GetTransactionSign (TransactionSign) returns (Transaction) {};
+34.2 提供节点
+fullnode
+34.3 参数说明
+TransactionSign：待签名Transaction对象和签名用的private key
+34.4 返回值
+Transaction：签名的Transaction对象
+
+## 35. 创建地址和秘钥
+35.1 接口说明
+rpc CreateAdresss (BytesMessage) returns (BytesMessage) {};
+35.2 提供节点
+fullnode
+35.3 参数说明
+BytesMessage：Passphrase
+35.4 返回值
+BytesMessage：地址
+
+## 36. TRX快捷转账
+36.1 接口说明
+rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {};
+36.2 提供节点
+fullnode
+36.3 参数说明
+EasyTransferMessage：转账用的密码，toAddress，转账的数量
+36.4 返回值
+EasyTransferResponse：转账创建的transaction，以及广播的结果result
