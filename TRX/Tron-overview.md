@@ -450,8 +450,8 @@ Parameter description: value is the id of the transaction, which is obtained fro
 Demo:curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactioninfobyid -d '{"value" : "4ebiUlBCZ5vI1JtBMFXjiH/HSaVeIaUO8PN9l5E1kXU="}'
 
 Wallet/createadresss
-Function: creates the address for a privatekey
-Parameter Description: value is the user's private key, returns base64 format address which needs to be converted to base58 before using.
+Function: creates the address for a password
+Parameter Description: value is the user's password, returns base64 format address which needs to be converted to base58 before using.
 Demo:curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
 
 Wallet/easytransfer
