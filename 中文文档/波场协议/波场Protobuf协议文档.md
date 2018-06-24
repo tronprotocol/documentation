@@ -249,7 +249,7 @@
 
    消息体 `Result` 包含 `fee` and `ret`2个参数.   
    `ret`: 交易结果。  
-   `fee`: 交易扣除的费用。
+   `fee`: 交易扣除的费用。(已弃用)
    
    `code`是`ret`的类型定义，有`SUCCESS`和`FAILED`两种类型。
     
