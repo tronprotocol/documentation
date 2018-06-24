@@ -348,21 +348,35 @@ Input, transaction and block header all require signature.
          raw raw_data = 1;   
          bytes signature = 4;
           }
-       
-     message `Result` contains `fee` and `ret`.  
-     `ret`: the state of transaction.  
-     `fee`: the fee for transaction.
-    
-     `code` is the enumerator that defines `ret` property and can be  2 types：`SUCCESS` and `FAILED`.
+    message `Result` contains `fee` and `ret`.  
+         `ret`: the state of transaction.  
+         `fee`: the fee for transaction.（Not used）
+        
+         `code` is the enumerator that defines `ret` property and can be  2 types：`SUCCESS` and `FAILED`.
+         
+            message Result {
+              enum code {
+                SUCESS = 0;
+                FAILED = 1;
+              }
+              int64 fee = 1;
+              code ret = 2;
+            }   
+            
+    message `TransactionInfo`contains`id`、`fee`、`blockNumber` and `blockTimeStamp`。 
+        
+        `id`：transaction ID.   
+        `fee`： transaction fee
+        `blockNumber`:the height of the block where the transaction is located.
+        `blockTimeStamp`:the timestamp of block.
      
-        message Result {
-          enum code {
-            SUCESS = 0;
-            FAILED = 1;
-          }
-          int64 fee = 1;
-          code ret = 2;
-        }
+         message TransactionInfo {     
+            bytes id = 1;
+            int64 fee = 2;
+            int64 blockNumber = 3;
+            int64 blockTimeStamp = 4; 
+            }
+     
      
 +	Inventory is mainly used to inform peer nodes the list of items.  
 
@@ -703,7 +717,9 @@ Input, transaction and block header all require signature.
     __`TotalTransaction`__:  
     `TotalTransaction` takes a parameter of `EmptyMessage`, and returns `NumberMessage` object.  
     __`getTransactionById`__:  
-    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction` object.  
+    `getTransactionById` takes a parameter of `BytesMessage`, and returns `Transaction` object.    
+    __`getTransactionInfoById`__:  
+    `getTransactionInfoById` takes a parameter of `BytesMessage`, and returns `TransactionInfo` object.  
     __`getTransactionsByTimeStamp`__:  
     `getTransactionsByTimeStamp` takes a parameter of `TimeMessage`, and returns `TransactionList` object.  
     __`getTransactionsFromThis`__:  
@@ -764,6 +780,9 @@ Input, transaction and block header all require signature.
         rpc getTransactionsToThis (Account) returns (NumberMessage) {
       
         }
+        rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {
+        
+        } 
       };
       
    `AccountList`: the list of accounts in the blockchain explorer.  
