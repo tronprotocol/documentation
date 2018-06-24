@@ -1,7 +1,7 @@
 # Glossary
 
 ## Address	
-Account credentials on TRON's network are given by a key pair, which consists of a private key and a public key derived from the first through an algorithm. The public key is referenced as Address, and is accessible to the network, while the private key must be securely held by the account owner. The public key is usually used for session key encryption, signature verification and encrypting data which could be unencrypted with a corresponding private key.
+Account credentials on TRON's network are given by a key pair, which consists of a private key and a public key, the latter being derived from the former through an algorithm. The public key is usually used for session key encryption, signature verification and encrypting data that could be decrypted by a corresponding private key.
 ## Allowance	
 Block production rewards are sent to a sub-account. SRs can claim their reward on Tronscan.
 ## API	
@@ -21,7 +21,7 @@ Blocks contains the digital records of your transactions. A complete block consi
 ## Blockheader	
 A blockheader is part of a block. It contains the hash of the previous block, the Merkle root, the timestamp, the difficulty and the nonce.
 ## CDN		
-CDN is short for Content Delivery Network. It aims to achieve faster and more stable transmission through avoiding as many links which could affect its speed and stability of transmission as possible.
+CDN is short for Content Delivery Network. The main purpose of CDNs is to achieve faster and more stable transmission by serving content to end users through the nearest (geographical) server for their location. 
 ## Cold Wallet	
 Cold wallet, also known as offline wallet, keeps the private key completely disconnected from any network. Cold wallets are usually installed on "cold" devices (computers or mobile phones staying offline) to ensure the security of TRX private key. Private keys are kept away from the network by utilizing QR codes for payment.
 ## Consensus	

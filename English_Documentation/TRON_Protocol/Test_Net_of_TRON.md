@@ -1,5 +1,7 @@
 # TRON Testnet
 
+<<<<<<< HEAD
+=======
 ## Tronscan
 
 https://test.tronscan.org
@@ -12,6 +14,7 @@ https://test.tronscan.org
 
 
 
+>>>>>>> upstream/master
 ## How to connect to the test net
 1. Modify `.conf` file for both FullNode and SolidityNode
 2. delete db directory output-directory for both FullNode and SolidityNode
