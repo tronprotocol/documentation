@@ -341,6 +341,32 @@ Wallet/gettransactionbyid
 Function: Query transactions by transaction ID
 Parameters: value is the transaction ID, which can be obtained through hashing the raw_data of the transaction; value should be in base64 format.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
+
+Walletextension/gettransactionsfromthis
+Function: Query an account's account transaction
+Parameter description: address is base64 format, offset is the start index, limit is the maximum number of transactions returned
+Demo:curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+
+Walletextension/gettransactionstothis
+Function: Inquire account transactions
+Parameter description: address is base64 format, offset is the start index, limit is the maximum number of transactions returned
+Demo:curl -X POST http://127.0.0.1:18890/walletextension/gettransactionstothis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+
+Walletsolidity/gettransactioninfobyid
+Function: In accordance with the transaction hash query transaction fee, the transaction block
+Parameter description: value is the id of the transaction, which is obtained from the raw_data of the hash transaction. The value needs to be in base64 format.
+Demo:curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactioninfobyid -d '{"value" : "4ebiUlBCZ5vI1JtBMFXjiH/HSaVeIaUO8PN9l5E1kXU="}'
+
+Wallet/createadresss
+Function: creates the address for a privatekey
+Parameter Description: value is the user's private key, returns base64 format address which needs to be converted to base58 before using.
+Demo:curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
+
+Wallet/easytransfer
+Function: An easy way to quickly transfer TRX. Wraps the create transaction, sign and broadcast
+Parameter Description: passPhrase is the user password, toAddress is the address of the transfer recipient, amount is the number of transfer trx
+Demo:curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
+
 ```
 
 ## 4.3 API code generation
