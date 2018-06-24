@@ -341,6 +341,98 @@ Wallet/gettransactionbyid
 Function: Query transactions by transaction ID
 Parameters: value is the transaction ID, which can be obtained through hashing the raw_data of the transaction; value should be in base64 format.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
+
+Inquire list of all Super Representatives: /wallet/listwitnesses
+Demo: curl -X POST http://127.0.0.1:18890/wallet/listwitnesses
+Parameters:
+
+Inquire list of all issued tokens: /wallet/getassetissuelist
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getassetissuelist
+Parameters:
+
+Paginated inquiry of list of issued tokens: /wallet/getpaginatedassetissuelist
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getpaginatedassetissuelist -d '{"offset" : 0, "limit" : 10}'
+Parameters: offset is the ID of the first token on each page, while limit is the maximum amount of returned tokens on each page.
+
+Inquire total amount of transactions: /wallet/totaltransaction
+Demo: curl -X POST http://127.0.0.1:18890/wallet/totaltransaction
+Parameters:
+
+Inquire the next maintenance time of a Super Representative: /wallet/getnextmaintenancetime
+Demo: curl -X POST http://127.0.0.1:18890/wallet/getnextmaintenancetime
+Parameters:
+
+Signing: /wallet/gettransactionsign
+Demo: curl -X POST http://127.0.0.1:18890/wallet/gettransactionsign -d '{
+  "transaction" : {
+      "raw_data": {
+          "ref_block_bytes": "gfA=",
+          "ref_block_hash": "5YSAo+xJYGU=",
+          "expiration": "1529325009000",
+          "contract": [
+              {
+                  "type": "TransferContract",
+                  "parameter": {
+                      "@type": "type.googleapis.com/protocol.TransferContract",
+                      "owner_address": "QVHyqChqzKYaik1etWXHerLDoP69",
+                      "to_address": "Qc0ipGHFhxlCL42QGmC+ems/HYip",
+                      "amount": "987000000"
+                  }
+              }
+          ]
+      }
+  },
+  "privateKey" : "j5vLuYaQ4w8yolHZWY+CGY1i+p7CYXovSUgzvyYPOPk="
+  }'
+Parameters: transaction refers to a specific transaction and privateKey is the user’s private key in base64 format. If one needs to invoke this API, please make sure deploy the node(s) in a LAN or an offline environment for offline signatures.
+
+Inquire account info: /walletsolidity/getaccount
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/getaccount -d '{"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
+Parameters: address should be in base64 format.
+
+Inquire list of all Super Representatives: /walletsolidity/listwitnesses
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/listwitnesses
+Parameters:
+
+Inquire list of all tokens: /walletsolidity/getassetissuelist
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/getassetissuelist
+Parameters:
+
+Paginated inquiry of list of all tokens: /walletsolidity/getpaginatedassetissuelist
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/getpaginatedassetissuelist -d '{"offset" : 0, "limit" : 10}'
+Parameters: offset is the ID of the first token on each page, while limit is the maximum amount of tokens returned on each page.
+
+Inquire current block: /walletsolidity/getnowblock
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/getnowblock
+Parameters:
+
+Inquire block by height: /walletsolidity/getblockbynum
+Demo: curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"num" : 10000}'
+Parameters: num is blockheight.
+
+Inquire transactions taken by an account: /walletextension/gettransactionsfromthis
+Demo: curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+Parameters: address is in base64 format; offset is the starting index; limit is the maximum amount of transactions to be returned.
+
+Inquire transactions initiated by an account: /walletextension/gettransactionstothis
+Demo: curl -X POST http://127.0.0.1:18890/walletextension/gettransactionstothis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+Parameters: address is in base64 format; offset is the starting index; limit is the maximum amount of transactions to be returned.
+
+Inquire transaction fee and it block location by transaction hash: /walletsolidity/gettransactioninfobyid
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactioninfobyid -d '{"value" : "4ebiUlBCZ5vI1JtBMFXjiH/HSaVeIaUO8PN9l5E1kXU="}'
+Parameters: value is the transaction ID, hash of the raw_data of the transaction, and should be in base64 format.
+
+Inquire transaction by transaction hash (and confirm the transaction through this API): /walletsolidity/gettransactionbyid
+Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactionbyid -d '{"value" : "9PeN9FHPDHr1qpILy3U+iMcLAKvwojUek9jYx1EESXA="}'
+Parameters: value is the transaction ID, hash of the raw_data of the transaction, and should be in base64 format.
+
+Create address: /wallet/createadresss
+Demo: curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
+Parameters: value is the password; the address returned in base64 format needs to be converted into base58 for later use.
+
+TRX easy transfer: /wallet/easytransfer
+Demo: curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
+Parameters: passPhrase is the password; toAddress is the recipient address; amount is the amount of TRX to transfer.
 ```
 
 ## 4.3 API code generation

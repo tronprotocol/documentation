@@ -352,6 +352,21 @@
        }   
        raw raw_data = 1;  
        bytes signature = 4; }
+        
+   消息体 `TransactionInfo`包括`id`、`fee`、`blockNumber`和`blockTimeStamp`。 
+   
+   `id`：交易ID。  
+   `fee`：本次交易费用。  
+   `blockNumber`:交易所在块高度。
+   `blockTimeStamp`:交易所在块时间。
+
+    message TransactionInfo {     
+       bytes id = 1;
+       int64 fee = 2;
+       int64 blockNumber = 3;
+       int64 blockTimeStamp = 4; 
+       }
+
 
 +	传输涉及的协议Inventory主要用于传输中告知接收方传输数据的清单。
 
@@ -486,8 +501,7 @@
    __`CreatTransaction`__：采用参数`TransferContract`，返回对象`Transaction`。    
    __`BroadcastTransaction`__：采用参数`Transaction`，返回对象`Return`。    
    __`CreateAccount`__：采用参数`AccountCreateContract`，返回对象`Transaction`。    
-   __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。    
-   __`ListAccounts`__：采用参数`EmptyMessage`，返回对象`AccountList`。    
+   __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。  
    __`UpdateAccount`__：采用参数`AccountUpdateContract`，返回对象`Transaction`。    
    __`VoteWitnessAccount`__：采用参数`VoteWitnessContract`，返回对象`Transaction`。   
    __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
@@ -610,6 +624,12 @@
                   body: "*"
                 };
               }
+              rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+                  option (google.api.http) = {
+                      post: "/wallet/getpaginatedassetissuelist"
+                      body: "*"
+                  };
+              }
               rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
                 option (google.api.http) = {
                   post: "/wallet/getassetissuebyaccount"
@@ -640,32 +660,36 @@
                   body: "*"
                 };
               }
+              rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {
+                option (google.api.http) = {
+                  post: "/wallet/getnextmaintenancetime"
+                  body: "*"
+                };
+              }
             };
             
    `WalletSolidity`钱包服务包含多个RPC。  
       __`GetAccount`__：采用参数`Account`，返回对象`Account`。    
-      __`ListAccounts`__：采用参数`EmptyMessage`，返回对象`AccountList`。    
       __`ListWitness`__：采用参数`EmptyMessage`，返回对象`WitnessList`。  
       __`ListNodes`__：采用参数`EmptyMessage`，返回对象`NodeList`。  
       __`GetAssetIssueList`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。  
+      __`GetPaginatedAssetIssueList`__：采用参数 `PaginatedMessage`返回对象`AssetIssueList`。
       __`GetAssetIssueByTimeStamp`__：采用参数`NumberMessage`，返回对象`AssetIssueList`。  
       __`GetAssetIssueByAccount`__：采用参数`Account`，返回对象`AssetIssueList`获取发行资产。  
       __`GetAssetIssueByName`__：采用参数`BytesMessage`，返回对象`AssetIssueContract`。  
       __`GetNowBlock`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。  
       __`GetBlockByNum`__：采用参数`EmptyMessage`，返回对象`Block`。  
       __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。   
-      __`getTransactionById`__：采用参数`EmptyMessage`，返回对象`Transaction`。  
+      __`getTransactionById`__：采用参数`BytesMessage`，返回对象`Transaction`。 
+      __`getTransactionsInfoById`__：采用参数`BytesMessage`，返回对象`TransactionInfo`。  
       __`getTransactionsByTimestamp`__：采用参数`TimeMessage`，返回对象`Transactionlist`。  
       __`getTransactionsFromThis`__：采用参数`Account`，返回对象`Transactionlist`。  
       __`getTransactionsToThis`__：采用参数`Account`，返回对象`NumberMessage`。 
-      
+       __`GetTransactionInfoById`__: 采用参数`BytesMessage`，返回对象 `TransactionInfo`。     
+
             service WalletSolidity {
             
               rpc GetAccount (Account) returns (Account) {
-            
-              };
-            
-              rpc ListAccounts (EmptyMessage) returns (AccountList) {
             
               };
             
@@ -678,6 +702,9 @@
               }
               rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {
             
+              }
+              rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+
               }
               rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList) {
             
@@ -712,6 +739,9 @@
               rpc getTransactionsToThis (Account) returns (NumberMessage) {
             
               }
+              rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {
+              
+              }     
             };
       
    `Address`: 节点地址。  
@@ -795,5 +825,36 @@
       repeated Endpoint neighbours = 2;
       int64 timestamp = 3;
      }
-     
+
+
+   `EasyTransferMessage`: TRX快捷转账消息。  
+   `passPhrase`: 密码。  
+   `toAddress`: trx接收地址。  
+   `amount`: 转账数量。
+
+    message EasyTransferMessage{
+      bytes passPhrase = 1;
+      bytes toAddress = 2;
+      int64 amount = 3;
+    }
+
+   `EasyTransferResponse`: TRX快捷转账结果消息。  
+   `transaction`: 转账创建的交易。  
+   `result`: 广播交易的结果。
+    
+    message EasyTransferResponse{
+     Transaction transaction = 1;
+     Return result = 2;
+    }
+
+
+   `TransactionSign`：签名参数。  
+   `transaction`: 待签名的交易。  
+   `privateKey`: 签名用的私钥。
+    
+    message TransactionSign {
+     Transaction transaction = 1;
+     bytes privateKey = 2;
+    }     
+
 # 详细的协议见附属文件。详细协议随着程序的迭代随时都可能发生变化，请以最新的版本为准。

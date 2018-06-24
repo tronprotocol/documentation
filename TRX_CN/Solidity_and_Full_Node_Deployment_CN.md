@@ -33,12 +33,17 @@
         cd ..
  
      为了避免和`FullNode`端口冲突，和连接本地的`FullNode`，需要打开`config.conf`。把`node`里面的`trustNode`修改为本地`127.0.0.1:50051`。把`listen.port`修改为18888以外的数字，需要主要的是端口的设置范围是1024-65525，端口0-0124是禁用的，像这样：
- 
-            node {
-             # trust node for solidity node
-             # trustNode = "ip:port"
-            trustNode = "127.0.0.1:50051"
-            listen.port = 18889 //需要设置的端口
+```
+        node {
+         # trust node for solidity node
+         # trustNode = "ip:port"
+        trustNode = "127.0.0.1:50051"
+        listen.port = 18889 //需要设置的端口
+
+        rpc {
+          port = 50052
+        }
+```
  
     然后就可以启动SolidityNode了：
         
