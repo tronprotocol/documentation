@@ -62,27 +62,27 @@ SolidityNode对外提供gRPC接口，通过grpc-gateway提供对应的gRPC接口
 
       End20Bytes = f25675b364b0e45e2668c1cdd59370136ad8ec2f
 
-+ 在End20Bytes前面填充a0(testNet) 或 b0(mainNet)
++ 在End20Bytes前面填充41
 
-      address = a0f25675b364b0e45e2668c1cdd59370136ad8ec2f
+      address = 41f25675b364b0e45e2668c1cdd59370136ad8ec2f
 
 + 地址转base58check格式：(bip-13)
 
       hash0 = sha256(address);
-      //hash0=cd398dae4f5294804c83093ee043c13fa3037603a4e7d76ed895bb3aa316e93
+      //hash0=a8a465b2b3c83e65760f3dbe20d5349f5fa3e9128edf9ab5e2088111a3f52dbb
       hash1 = sha256(hash0);
-      //hash1=7e5ff07e733c2bb52e56cef8cfb5af6f61e50d515eb3a57e38b5889a1f653ac8
+      //hash1=b3eb5440c0fbc7cc0858efedaec5bc5f0463027911fe2500d2105b8a4b6d2a51
 
 + checkSum = hash0的前4字节
 
-      //checkSum = 7e5ff07e
+      //checkSum = b3eb5440
       addressCheckSum = address || checksum
-      //addressCheckSum = //a0f25675b364b0e45e2668c1cdd59370136ad8ec2f7e5ff07e
+      //addressCheckSum = //41f25675b364b0e45e2668c1cdd59370136ad8ec2fb3eb5440
       addressbase58 = base58Encode(addressCheckSum)
       //addressbase58=
-      //27mAse8NBVPM4M7Mpp5sxZcLcYkpSqrcoHX
+      //TY4a6p3p3FKpew7bVEEgVhUskqLqKyaphm
 
-注意：所有交易、区块存储的地址应该还是byte[]，这样比base58chcek 少14字节（21 vs 35）。区块链节点上，除了配置文件里设置的初始化地址及witness节点地址，采用base58check格式，其它地方都用原有格式。钱包这一边，涉及到输入、输出的地方要做格式转换，展示给用户的都是base58check格式。其中输入base58check的地址，需要校验正确性。
+注意：所有交易、区块存储的地址应该还是byte[]，这样比base58chcek 少13字节（21 vs 34）。区块链节点上，除了配置文件里设置的初始化地址及witness节点地址，采用base58check格式，其它地方都用原有格式。钱包这一边，涉及到输入、输出的地方要做格式转换，展示给用户的都是base58check格式。其中输入base58check的地址，需要校验正确性。
 
 6，连接SolidityNode或者grpc-gateway查询余额
 

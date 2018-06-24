@@ -63,7 +63,7 @@ DISK视实际上线后交易量而定，可以预留的大一些
 具体请参考：https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Solidity_and_Full_Node_Deployment_CN.md
 
 # 4 Tron API说明
-    目前Tron仅支持gRPC接口，不支持http接口。项目grpc-gateway仅作为调试用，强烈不建议在此接口上进行功能开发。
+    目前Tron推荐使用gRPC接口，同时也支持http接口。
 ## 4.1 api定义
     api的定义请参考：https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 ## 4.2 api说明
