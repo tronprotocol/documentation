@@ -405,6 +405,21 @@ demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getnowblock
 demo：curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"num" : 10000}'
 参数说明：num是块高度
 
+钱包/ getblockbyid
+功能：按ID查询块
+参数说明：value以base64格式显示块ID 0000000000079080a30e7326c924457cde710b001ecf1a0b66b67df497c60c39。
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbyid -d {“value”：“AAAAAAAHkICjDnMmySRFfN5xCwAezxoLZrZ99JfGDDk =”}
+
+钱包/ getblockbylimitnext
+功能：通过一系列blockheight查询块
+参数说明：startNum是起始块高度，endNum是结束块高度。 返回包含starNum块和endNum块。
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbylimitnext -d'{“startNum”：10，“endNum”：10}'
+
+钱包/ getblockbylatestnum
+功能：按高度查询topN块
+参数说明：num是块的最新数量。
+demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbylatestnum -d'{“num”：10}'
+
 查询某个账号的出账交易：/walletextension/gettransactionsfromthis
 demo：curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
 参数说明：address是base64格式，offset是起始index，limit是返回的最大交易数量
