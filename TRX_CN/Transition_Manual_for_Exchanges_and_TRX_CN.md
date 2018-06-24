@@ -54,7 +54,7 @@ SolidityNode对外提供gRPC接口，通过grpc-gateway提供对应的gRPC接口
 
       P = 5ed0ec89eaec33d359b0632624b299d1174ee2aec5a625a3ce9145dd2ba4e48e049327d454fbf7ec700a9464f87dc4b73a592e27fd0d6d1fe7faf302e9f63306
 
-+ 公钥计算地址：sha3-256(P) 
++ 公钥计算地址：sha3-256(P) (KECCAK-256)
 
       Hash = c7bcfe2713a76a15afa7ed84f25675b364b0e45e2668c1cdd59370136ad8ec2f
 
