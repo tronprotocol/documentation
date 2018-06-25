@@ -329,7 +329,7 @@ Demo: curl -X POST http://127.0.0.1:18890/wallet/getblockbyid -d {"value" : "AAA
 
 Wallet/getblockbylimitnext
 Function: Query block by a range of blockheight
-Parameters: startNum is the starting blockheight and the endNum is the end blockheight. The return with include the starNum block and the endNum block.
+Parameters: startNum is the starting blockheight and the endNum is the end blockheight. The return with include the startNum block and the endNum block.
 Demo: curl -X POST http://127.0.0.1:18890/wallet/getblockbylimitnext -d '{"startNum" : 10, "endNum" : 10}'
 
 Wallet/getblockbylatestnum
