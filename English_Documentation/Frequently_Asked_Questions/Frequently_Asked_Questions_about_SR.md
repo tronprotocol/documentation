@@ -64,7 +64,7 @@ Questions on block generation by Super Node
 12.	Q: When one of the 27 nodes malfunctions, will it be automatically detected and disqualified for polling? Under such circumstances, will its eligibility for Super Representative be maintained? If suspended, when will it be able to regain qualification?
     A: A record of its incompetency will be kept permanently, based on which people will make the rational judgement to not vote for it.
 
-Questions on the Super Representative election
+Questions on the Super Representatives election
 -----
 
 1.	Q: Why is there still no vote for my node at https://tronscan.org/#/network when I’ve just made 2 million votes for myself?
@@ -150,7 +150,7 @@ Others
 
     A: As far as I know, we already have a cli wallet, a web wallet and an ios wallet. And I believe after the programming contest there will be plenty well-designed wallets.
 
-16. Q:Is 25Gbps a requirement or is 10Gbps satisfactory, or what is the threshold that is acceptable.
+16. Q:Is 25Gbps a requirement or is 10Gbps satisfactory, or what is the threshold that is acceptable?
 
     A: There is no hard requirement for the network TRON Power(TP). The specification we gave is just an advice.
 
