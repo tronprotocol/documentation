@@ -263,7 +263,7 @@
      }
    
    消息体 `TransactionInfo`包含`id`，`fee`，`blockNumber` 和 `blockTimeStamp`。  
-   `id`：交易 ID。  
+   `id`：交易ID。  
    `fee`：交易费用。  
    `blockNumber`：交易所在的区块高度。  
    `blockTimeStamp`：区块的时间戳。
