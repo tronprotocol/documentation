@@ -249,7 +249,7 @@
 
    消息体 `Result` 包含 `fee` and `ret`2个参数.   
    `ret`: 交易结果。  
-   `fee`: 交易扣除的费用。
+   `fee`: 交易扣除的费用。(已弃用)
    
    `code`是`ret`的类型定义，有`SUCCESS`和`FAILED`两种类型。
     
@@ -352,6 +352,21 @@
        }   
        raw raw_data = 1;  
        bytes signature = 4; }
+        
+   消息体 `TransactionInfo`包括`id`、`fee`、`blockNumber`和`blockTimeStamp`。 
+   
+   `id`：交易ID。  
+   `fee`：本次交易费用。  
+   `blockNumber`:交易所在块高度。
+   `blockTimeStamp`:交易所在块时间。
+
+    message TransactionInfo {     
+       bytes id = 1;
+       int64 fee = 2;
+       int64 blockNumber = 3;
+       int64 blockTimeStamp = 4; 
+       }
+
 
 +	传输涉及的协议Inventory主要用于传输中告知接收方传输数据的清单。
 
@@ -664,7 +679,8 @@
       __`GetNowBlock`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。  
       __`GetBlockByNum`__：采用参数`EmptyMessage`，返回对象`Block`。  
       __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。   
-      __`getTransactionById`__：采用参数`EmptyMessage`，返回对象`Transaction`。  
+      __`getTransactionById`__：采用参数`BytesMessage`，返回对象`Transaction`。 
+      __`getTransactionsInfoById`__：采用参数`BytesMessage`，返回对象`TransactionInfo`。  
       __`getTransactionsByTimestamp`__：采用参数`TimeMessage`，返回对象`Transactionlist`。  
       __`getTransactionsFromThis`__：采用参数`Account`，返回对象`Transactionlist`。  
       __`getTransactionsToThis`__：采用参数`Account`，返回对象`NumberMessage`。 
