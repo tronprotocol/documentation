@@ -673,6 +673,7 @@
       __`ListWitness`__：采用参数`EmptyMessage`，返回对象`WitnessList`。  
       __`ListNodes`__：采用参数`EmptyMessage`，返回对象`NodeList`。  
       __`GetAssetIssueList`__：采用参数`EmptyMessage`，返回对象`AssetIssueList`。  
+      __`GetPaginatedAssetIssueList`__：采用参数 `PaginatedMessage`返回对象`AssetIssueList`。
       __`GetAssetIssueByTimeStamp`__：采用参数`NumberMessage`，返回对象`AssetIssueList`。  
       __`GetAssetIssueByAccount`__：采用参数`Account`，返回对象`AssetIssueList`获取发行资产。  
       __`GetAssetIssueByName`__：采用参数`BytesMessage`，返回对象`AssetIssueContract`。  
@@ -684,7 +685,8 @@
       __`getTransactionsByTimestamp`__：采用参数`TimeMessage`，返回对象`Transactionlist`。  
       __`getTransactionsFromThis`__：采用参数`Account`，返回对象`Transactionlist`。  
       __`getTransactionsToThis`__：采用参数`Account`，返回对象`NumberMessage`。 
-      
+       __`GetTransactionInfoById`__: 采用参数`BytesMessage`，返回对象 `TransactionInfo`。     
+
             service WalletSolidity {
             
               rpc GetAccount (Account) returns (Account) {
@@ -825,10 +827,10 @@
      }
 
 
-    `EasyTransferMessage`: TRX快捷转账消息
-    `passPhrase`: 密码
-    `toAddress`: trx接收地址
-    `amount`: 转账数量
+   `EasyTransferMessage`: TRX快捷转账消息。  
+   `passPhrase`: 密码。  
+   `toAddress`: trx接收地址。  
+   `amount`: 转账数量。
 
     message EasyTransferMessage{
       bytes passPhrase = 1;
@@ -836,20 +838,23 @@
       int64 amount = 3;
     }
 
-    `EasyTransferResponse`: TRX快捷转账结果消息
-    `transaction`: 转账创建的交易
-    `result`: 广播交易的结果
+   `EasyTransferResponse`: TRX快捷转账结果消息。  
+   `transaction`: 转账创建的交易。  
+   `result`: 广播交易的结果。
+    
     message EasyTransferResponse{
      Transaction transaction = 1;
      Return result = 2;
     }
 
 
-    `TransactionSign`：签名参数
-    `transaction`: 待签名的交易
-    `privateKey`: 签名用的私钥
+   `TransactionSign`：签名参数。  
+   `transaction`: 待签名的交易。  
+   `privateKey`: 签名用的私钥。
+    
     message TransactionSign {
      Transaction transaction = 1;
      bytes privateKey = 2;
     }     
+
 # 详细的协议见附属文件。详细协议随着程序的迭代随时都可能发生变化，请以最新的版本为准。

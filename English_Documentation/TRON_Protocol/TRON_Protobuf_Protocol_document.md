@@ -522,9 +522,7 @@ Input, transaction and block header all require signature.
     __`CreateAccount`__ :  
     `CreateAccount` takes a parameter of AccountCreateContract, and returns an `Transaction` object.  
     __`CreateAssetIssue`__ :  
-    `CreateAssetIssue` takes a parameter of AssetIssueContract, and returns an `Transaction` object.   
-    __`ListAccounts`__:  
-    `ListAccounts` takes a parameter of EmptyMessage, and returns an `AccountList` object.   
+    `CreateAssetIssue` takes a parameter of AssetIssueContract, and returns an `Transaction` object.     
     __`UpdateAccount`__:  
     `UpdateAccount` takes a parameter of AccountUpdateContract, and returns an `Transaction` object.   
     __`VoteWitnessAccount`__:  
@@ -661,6 +659,12 @@ Input, transaction and block header all require signature.
             body: "*"
           };
         }
+        rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {
+          option (google.api.http) = {
+            post: "/wallet/getpaginatedassetissuelist"
+            body: "*"
+           };
+        }
         rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {
           option (google.api.http) = {
             post: "/wallet/getassetissuebyaccount"
@@ -692,18 +696,24 @@ Input, transaction and block header all require signature.
           };
         }
       };
-    
+        rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {
+          option (google.api.http) = {
+            post: "/wallet/getnextmaintenancetime"
+            body: "*"
+          };
+        }
+      };
    `WalletSolidity` service contains several RPCs.  
     __`GetAccount`__ :  
-    `GetAccount` takes a parameter of Account, and returns an `Account` object.  
-    __`ListAccounts`__: 
-    `listAccounts` takes a parameter of EmptyMessage , and returns `listAccounts` object.  
+    `GetAccount` takes a parameter of Account, and returns an `Account` object.   
     __`ListWitness`__:  
    `LitWitness` takes a parameter of EmptyMessage, and returns `WitnessList` object.    
     __`ListNodes`__:  
    `ListNodes` takes a parameter of EmptyMessage, and returns `NodeList` object.  
     __`GetAssetIssueList`__:  
     `GetAssetIssueList` takes a parameter of EmptyMessage, and returns `AssetIssueList` object.  
+    __`GetPaginatedAssetIssueList`__:  
+    `GetPaginatedAssetIssueList` takes a parameter of PaginatedMessage, and returns `AssetIssueList` object.
     __`GetAssetIssueListByTimeStamp`__:  
     `GetAssetIssueListByTimeStamp` takes a parameter of EmptyMessage, and returns `AsssetIssueList` object.  
     __`GetAssetIssueByAccount`__:  
@@ -725,8 +735,10 @@ Input, transaction and block header all require signature.
     __`getTransactionsFromThis`__:  
     `getTransactionsFromThis` takes a parameter of `Account`, and returns `TransactionList` object.  
     __`getTransactionsToThis`__:  
-    `getTransactionsToThis` takes a parameter of `Account`, and returns `NumberMessage` object. 
-           
+    `getTransactionsToThis` takes a parameter of `Account`, and returns `NumberMessage` object.  
+    __`GetTransactionInfoById`__:
+    `GetTransactionInfoById` takes a parameter of `BytesMessage` and returns `TransactionInfo` object.      
+      
       service WalletSolidity {
       
         rpc GetAccount (Account) returns (Account) {
@@ -781,7 +793,7 @@ Input, transaction and block header all require signature.
       
         }
         rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {
-        
+
         } 
       };
       
@@ -899,6 +911,35 @@ Input, transaction and block header all require signature.
           int64 timestamp = 3;
          }
 
+   `EasyTransferMessage`: TRX easy transfer message.  
+   `passPhrase`: password.  
+   `toAddress`: recipient address.  
+   `amount`: amount of trx to transfer. 
+ 
+       message EasyTransferMessage{
+         bytes passPhrase = 1;
+         bytes toAddress = 2;
+         int64 amount = 3;
+       }
+  
+   `EasyTransferResponse`: TRX easy transfer response message.  
+   `transaction`: transaction created by transfer.  
+   `result`: result of transaction broadcasting.
+       
+       message EasyTransferResponse{
+         Transaction transaction = 1;
+         Return result = 2;
+       }
+  
+  
+   `TransactionSign`：the parameter of signature. 
+   `transaction`: transaction to be signed.  
+   `privateKey`: private key for signing.
+      
+      message TransactionSign {
+         Transaction transaction = 1;
+         bytes privateKey = 2;
+       }    
 
 
 # Please check detailed protocol document that may change with the iteration of the program at any time. Please refer to the latest version.
