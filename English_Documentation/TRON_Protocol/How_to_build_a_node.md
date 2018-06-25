@@ -69,7 +69,7 @@ java -jar java-tron.jar
   1. After the building finishes, locate `FullNode` in the project structure view panel, which is on the path `java-tron/src/main/java/org.tron/program/FullNode`.
   2. Select `FullNode`, right click on it, and select `Run 'FullNode.main()'`, then `FullNode` starts running.
 
-### How to run a Super Node
+### How to run a SR Node
 * use master branch
 * You should modify the config.conf
   1. genesis.block.witnesses replace to yourself address
@@ -77,7 +77,7 @@ java -jar java-tron.jar
   3. the first Super Node start, needSyncCheck should be set false
   4. set p2pversion to 61 
 
-* Use the executable JAR(Recommend the way)
+* Use the executable JAR(Recommended way)
 
 ```bash
 cd build/libs
@@ -236,9 +236,9 @@ java -jar java-tron.jar
 
 It is almost the same as that does in the private testnet, except that the IPs in the `config.conf` are officially declared by TRON.
 
-### Running a Super Node
+### Running a SR Node
 
-* Use the executable JAR(Recommend the way)
+* Use the executable JAR(Recommended way)
 
 ```bash
 cd build/libs

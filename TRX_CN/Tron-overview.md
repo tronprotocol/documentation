@@ -63,7 +63,7 @@ DISK视实际上线后交易量而定，可以预留的大一些
 具体请参考：https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Solidity_and_Full_Node_Deployment_CN.md
 
 # 4 Tron API说明
-    目前Tron仅支持gRPC接口，不支持http接口。项目grpc-gateway仅作为调试用，强烈不建议在此接口上进行功能开发。
+    目前Tron推荐使用gRPC接口，同时也支持http接口。
 ## 4.1 api定义
     api的定义请参考：https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 ## 4.2 api说明
@@ -335,6 +335,100 @@ demo：curl -X POST http://127.0.0.1:18890/wallet/getblockbylatestnum -d '{"num"
 按照交易ID查询交易：/wallet/gettransactionbyid
 demo：curl -X POST http://127.0.0.1:18890/wallet/gettransactionbyid -d '{"value" : "JTqX9taV7RNDyZbwGsN4BsMthBqoBaqnROvCQtHYOyg="}'
 参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+
+查询超级代表列表：/wallet/listwitnesses
+demo：curl -X POST http://127.0.0.1:18890/wallet/listwitnesses
+参数说明：
+
+查询所有发行Token列表：/wallet/getassetissuelist
+demo：curl -X POST http://127.0.0.1:18890/wallet/getassetissuelist
+参数说明
+
+分页查询发行Token列表：/wallet/getpaginatedassetissuelist
+demo：curl -X POST http://127.0.0.1:18890/wallet/getpaginatedassetissuelist -d '{"offset" : 0, "limit" : 10}'
+参数说明：offset为分页起始token的id，limit为最多返回的token数量
+
+查询所有交易数量：/wallet/totaltransaction
+demo: curl -X POST http://127.0.0.1:18890/wallet/totaltransaction
+参数说明：
+
+查询超级代表下次轮值时间：/wallet/getnextmaintenancetime
+demo：curl -X POST http://127.0.0.1:18890/wallet/getnextmaintenancetime
+参数说明
+
+签名：/wallet/gettransactionsign
+demo：curl -X POST http://127.0.0.1:18890/wallet/gettransactionsign -d '{
+"transaction" : {
+    "raw_data": {
+        "ref_block_bytes": "gfA=",
+        "ref_block_hash": "5YSAo+xJYGU=",
+        "expiration": "1529325009000",
+        "contract": [
+            {
+                "type": "TransferContract",
+                "parameter": {
+                    "@type": "type.googleapis.com/protocol.TransferContract",
+                    "owner_address": "QVHyqChqzKYaik1etWXHerLDoP69",
+                    "to_address": "Qc0ipGHFhxlCL42QGmC+ems/HYip",
+                    "amount": "987000000"
+                }
+            }
+        ]
+    }
+},
+"privateKey" : "j5vLuYaQ4w8yolHZWY+CGY1i+p7CYXovSUgzvyYPOPk="
+}'
+参数说明：transaction是一个具体的交易，privateKey是用户私钥，需要是base64格式。如要确定要调用该api，请一定把节点部署在内
+网或者离线环境，做离线签名使用。
+
+查询账号信息：/walletsolidity/getaccount
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getaccount -d '{"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
+参数说明:address是base64格式
+
+查询所有超级代表列表：/walletsolidity/listwitnesses
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/listwitnesses
+参数说明:
+
+查询所有Token列表：/walletsolidity/getassetissuelist
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getassetissuelist
+参数说明:
+
+分页查询Token列表：/walletsolidity/getpaginatedassetissuelist
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getpaginatedassetissuelist -d '{"offset" : 0, "limit" : 10}'
+参数说明: offset是分页起始ID，limit是返回token的最大个数
+
+按照高度查询块：/walletsolidity/getnowblock
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getnowblock
+参数说明:
+
+按照高度查询块：/walletsolidity/getblockbynum
+demo：curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"num" : 10000}'
+参数说明：num是块高度
+
+查询某个账号的出账交易：/walletextension/gettransactionsfromthis
+demo：curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+参数说明：address是base64格式，offset是起始index，limit是返回的最大交易数量
+
+查询某个账号的入账交易：/walletextension/gettransactionstothis
+demo：curl -X POST http://127.0.0.1:18890/walletextension/gettransactionstothis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+参数说明：address是base64格式，offset是起始index，limit是返回的最大交易数量
+
+按照交易hash查询交易fee，交易所在块：/walletsolidity/gettransactioninfobyid
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactioninfobyid -d '{"value" : "4ebiUlBCZ5vI1JtBMFXjiH/HSaVeIaUO8PN9l5E1kXU="}'
+参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+
+按照交易hash查询交易(通过这个接口确认最终确认交易)：/walletsolidity/gettransactionbyid
+demo：curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactionbyid -d '{"value" : "9PeN9FHPDHr1qpILy3U+iMcLAKvwojUek9jYx1EESXA="}'
+参数说明：value是交易的id，通过hash交易的raw_data得到，value需要是base64格式
+
+创建地址：/wallet/createadresss
+demo：curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
+参数说明：value是用户的密码，返回时base64格式的地址，需要转换成base58后才能使用
+
+TRX快捷转账：/wallet/easytransfer
+demo：curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
+参数说明：passPhrase是用户密码，toAddress是转账接收地址，amount是转账trx数量
+
 ```
 
 
