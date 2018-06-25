@@ -261,8 +261,21 @@
        int64 fee = 1;
        code ret = 2;
      }
-      
-+	每一个交易还包含多个输入与多个输出，以及其他一些相关属性。其中交易内的输入，交易本身，区块头均需签名。
+   
+   消息体 `TransactionInfo`包含`id`，`fee`，`blockNumber` 和 `blockTimeStamp`。  
+   `id`：交易 ID。  
+   `fee`：交易费用。  
+   `blockNumber`：交易所在的区块高度。  
+   `blockTimeStamp`：区块的时间戳。
+    
+    message TransactionInfo {     
+       bytes id = 1;
+       int64 fee = 2;
+       int64 blockNumber = 3;
+       int64 blockTimeStamp = 4; 
+     } 
+
++ 每一个交易还包含多个输入与多个输出，以及其他一些相关属性。其中交易内的输入，交易本身，区块头均需签名。
 
    消息体 `Transaction`包括`raw_data`和`signature`。  
    `raw_data`: 消息体`raw`。  
