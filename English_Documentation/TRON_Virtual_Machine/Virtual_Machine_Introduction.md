@@ -1,6 +1,6 @@
 # TRON Virtual Machine (TVM)
 
-TRON Virtual Machine (TVM), is a lightweight, Turing complete virtual machine developed for Tron’s ecosystem, aimed at providing millions of global developers with custom-built blockchain system which is efficient, convenient, stable, secure and scalable.
+TRON Virtual Machine (TVM) is a lightweight, Turing complete virtual machine developed for the TRON's ecosystem. Its goal is to provide millions of global developers with a custom-built blockchain system that is efficient, convenient, stable, secure and scalable.
 
 TVM can connect seamlessly with existing development ecosystem and supports DPOS. TVM is able to be compatible with EVM environment in the beginning, so that instead of learning a new programming language, developers can develop, debug and compile smart contracts in a Remix environment with Solidity and other languages. Once you’ve built and uploaded your smart contract to TRON’s mainnet, it will be executed on the TVM of the SR node to be isolated from external connections.
 
