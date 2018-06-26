@@ -44,11 +44,11 @@ Questions on block generation by Super Node
 4.	Q: Are the test version or the source code of Super Node server accessible now?
     A: Yes, they are open-source and can be found at https://github.com/tronprotocol/java-tron.
 
-5.	How do I know if my test Super Node is running?
+5.	Q: How do I know if my test Super Node is running?
 
-6.	Based on this command: java -jar java-tron.jar -p yourself private key --witness -c yourself config.conf(Example：/data/java-tron/config.conf, how do I know that I am running a Super Node?
+6.	Q: Based on this command: java -jar java-tron.jar -p yourself private key --witness -c yourself config.conf(Example：/data/java-tron/config.conf, how do I know that I am running a Super Node?
 
-7.	What are some command-line commands that can generate an address to be sent to TRON? Is web wallet the only way?
+7.	Q: What are some command-line commands that can generate an address to be sent to TRON? Is web wallet the only way?
 
 8.	Q: If we want to test block production and other functions of the Super Node, do we need your votes to first become elected?
     A: We will vote for you during your test trial.

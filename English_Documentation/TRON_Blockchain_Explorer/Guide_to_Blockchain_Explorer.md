@@ -18,7 +18,7 @@ You can search for transaction records on this page. Information on the sender a
 
 ### Check address/transaction statistics
 
-On the statistics page, we can see figures of the top 25 TRX holders, TRX transferred in the past hour, transactions in the past hour and the trend of average block size. Tronscan will continue to visualize more data for users’ convenience.
+On the statistics page, we can see figures of the top 25 TRX holders, TRX transferred in the past hour, transactions in the past hour and the trend of average block size. 'The Tronscan will continue to create more data visualizations for the users' convenience.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/blockchain模块/查询账户.png)
 
