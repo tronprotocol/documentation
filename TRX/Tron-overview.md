@@ -34,7 +34,7 @@ Exchanges need to deploy a full node and a solidity node. The solidity node conn
 
 ## 2.3 Mainnet and testnet
 the explorer of mainnet is https://tronscan.org and testnet is https://test.tronscan.org.
-exchanges should test their code in testnet. About how to config testnet, please refer https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E6%B5%8B%E8%AF%95%E7%BD%91.md
+exchanges should test their code in testnet. About how to config testnet, please refer https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf. About how to config mainnet, please refer https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf.
 
 # 3. Operation of node
 
@@ -191,6 +191,8 @@ Function: Get the record of all incoming transactions of a certain account.
 
 ### 4.2.2 HTTP Interface
 If you require an http interface, you will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
+
+grpc-gateway will encode the bytes fields defined in proto into base64 format. So about a input parameter in bytes format, you should encode in into base64 format, and about a output parameter in bytes format, you should decode it with base64 for subsequent processing. We provide a encoding/decoding tool, so you can download it from https://github.com/tronprotocol/TronTools/blob/master/TronConvertTool.zip.
 
 ```shell
 wallet/getaccount
