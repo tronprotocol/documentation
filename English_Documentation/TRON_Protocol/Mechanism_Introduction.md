@@ -32,8 +32,6 @@ The fixed frozen duration is 3 days, after which you can unfreeze your balance a
 
 More TP and bandwidth points can be obtained by freezing more balance. The balance can be unfrozen after 3 days from the latest freezing.
 
-The fixed frozen duration is 3 days, after which you can unfreeze your balance any time you like manually. Balance unfrozen will be transferred back into your current account.
-
 + The freezing command is as follows: 
 
 ```
