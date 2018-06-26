@@ -529,6 +529,7 @@
    __`GetNowBlock`__：采用参数`EmptyMessage`，返回对象`Block`。    
    __`GetBlockByNum`__：采用参数`NumberMessage`，返回对象`Block`。    
    __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。  
+   __`GenerateAddress`__: 采用参数`EmptyMessage`，返回对象 `AddressPrKeyPairMessage`。
    
       service Wallet {
             
@@ -679,6 +680,15 @@
                   body: "*"
                 };
               }
+              rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage){
+                option (google.api.http) = {
+                  post: "/wallet/generateaddress"
+                  body: "*"
+                  additional_bindings {
+                    get: "/wallet/generateaddress"
+                  }
+                };
+              }
             };
             
    `WalletSolidity`钱包服务包含多个RPC。  
@@ -698,7 +708,8 @@
       __`getTransactionsByTimestamp`__：采用参数`TimeMessage`，返回对象`Transactionlist`。  
       __`getTransactionsFromThis`__：采用参数`Account`，返回对象`Transactionlist`。  
       __`getTransactionsToThis`__：采用参数`Account`，返回对象`NumberMessage`。 
-       __`GetTransactionInfoById`__: 采用参数`BytesMessage`，返回对象 `TransactionInfo`。     
+      __`GetTransactionInfoById`__: 采用参数`BytesMessage`，返回对象 `TransactionInfo`。 
+      __`GenerateAddress`__: 采用参数`EmptyMessage`，返回对象 `AddressPrKeyPairMessage`。 
 
             service WalletSolidity {
             
@@ -734,6 +745,9 @@
               rpc GetBlockByNum (NumberMessage) returns (Block) {
             
               }
+              rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage){
+
+              }  
               
               //获取交易。
    
@@ -754,7 +768,7 @@
               }
               rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {
               
-              }     
+              }   
             };
       
    `Address`: 节点地址。  
@@ -868,6 +882,16 @@
     message TransactionSign {
      Transaction transaction = 1;
      bytes privateKey = 2;
-    }     
+    }
+    
+
+   `AddressPrKeyPairMessage`: 地址和私钥消息。
+   `address`: 账户地址。
+   `privateKey`: 账户私钥。
+    
+    message AddressPrKeyPairMessage {
+      string address = 1;
+      string privateKey = 2;
+    }
 
 # 详细的协议见附属文件。详细协议随着程序的迭代随时都可能发生变化，请以最新的版本为准。
