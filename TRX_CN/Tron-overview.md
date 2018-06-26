@@ -1,6 +1,6 @@
 # TRON公链概览
 # 1 TRON总体介绍
-## 1.1项目仓库
+# 1.1项目仓库
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
 ## 1.2 浏览器
@@ -28,7 +28,7 @@ TRON主链网络中有三种类型的节点，分别是witness、fullnode和soli
 ## 2.2 网络部署方式（只针对交易所）
 部署一个fullnode，一个solidity node，solidity node连接本地的fullnode，fullnode连接mainnet
 ## 2.3 关于mainnet和testnet
-mainnet浏览器https://tronscan.org，testnet浏览器https://test.tronscan.org。请交易所在testnet上进行测试，testnet的配置请参照https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E6%B5%8B%E8%AF%95%E7%BD%91.md
+mainnet浏览器https://tronscan.org，testnet浏览器https://test.tronscan.org。请交易所在testnet上进行测试，testnet的配置请参照https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf, mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
 
 # 3 节点运行
 ## 3.1 建议硬件配置
@@ -185,6 +185,8 @@ WalletExtension/ GetTransactionsToThis
 ### 4.2.2 http接口说明
 
 如果需要使用http接口服务，需要部署grpc-gateway，详情请见：[grpc-gateway文档](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
+
+grpc-gateway会自动把proto中的bytes字段转换为base64编码。所以如果输入参数是bytes类型，需要首先转化为base64编码，再发送请求；如果输出参数是bytes类型，请用base64解码该参数，再做后续处理。 Tron提供了一个编解码的工具，下载地址是：https://github.com/tronprotocol/TronTools/blob/master/TronConvertTool.zip
 
 ```shell
 wallet/getaccount
