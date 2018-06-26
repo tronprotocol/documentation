@@ -485,3 +485,15 @@ fullnode
 EasyTransferMessage：转账用的密码，toAddress，转账的数量
 36.4 返回值
 EasyTransferResponse：转账创建的transaction，以及广播的结果result
+
+## 37. 生成地址和私钥
+37.1 接口说明
+rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage) {};
+37.2 提供节点
+fullnode, soliditynode
+37.3 参数说明
+EmptyMessage：空
+37.4 返回值
+AddressPrKeyPairMessage：生成地址，生成私钥
+37.5 功能说明
+可用于生成地址和私钥，请务必仅在受信断网节点调用，以免私钥外泄
