@@ -1,6 +1,6 @@
 Questions on the Full Node in private networks
 -----
-1.	When replacing genesis.block.witnesses under config.conf with the address string given upon registration on https://trxscan.org/, do I need to delete other addresses? And do I need to delete the fields of url and voteCount?
+1.	Do I need to delete other addresses when replacing genesis.block.witnesses under config.conf with the address string given upon registration on https://trxscan.org/?
 
 2.	After seed.node ip.list has been replaced with the ip address of my own public network and the initiation command java -jar java-tron.jar is given, how can I test if the deployment is successful? For instance, are there testing interfaces or commands such as the redis command (sending PING to server and be returned with PONG) for successful deployment?
 
@@ -91,7 +91,7 @@ Questions on the Super Representatives election
 9.	Q: What does the community support plan in the guidelines refer to?
     A: it can be understood as the budget and attention to community development.
 
-10.	Q: Who does the TRX I vote with belong to?
+10.	Q: Does voting consume TRX?
     A: Voting does not consume your TRX.
 
 11.	Q: Does the status of Super Representatives only last for 24 hours?
@@ -114,7 +114,7 @@ Others
     A: Currently we can’t specify data storage directory yet. This function will be made possible in the upcoming version.
 
 4.	Q: Can nodes serve as wallets?
-    A: There is a RPC interface for wallet on nodes, but no command can call the wallet directly. Wallets on full nodes can be used through the commandline wallet on another repo.
+    A: There is a RPC interface for wallet on nodes, but no command can call the wallet directly. Wallets on full nodes can be used through the wallet-cli(commandline wallet) on another repo.
 
 5.	Q: I don’t need to calculate my own address with the private key generated according to the file, do I?
     A: You don’t have to worry about private key generation once you’ve successfully registered for an account. All you need to do is log in with you pin-code to access your address.
