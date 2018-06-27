@@ -192,7 +192,7 @@ Function: Get the record of all incoming transactions of a certain account.
 ### 4.2.2 HTTP Interface
 If you require an http interface, you will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
-grpc-gateway will encode the bytes fields defined in proto into base64 format. So about a input parameter in bytes format, you should encode in into base64 format, and about a output parameter in bytes format, you should decode it with base64 for subsequent processing. We provide a encoding/decoding tool, so you can download it from https://github.com/tronprotocol/TronTools/blob/master/TronConvertTool.zip.
+grpc-gateway will encode the bytes fields defined in proto into base64 format. So about a input parameter in bytes format, you should encode in into base64 format, and about a output parameter in bytes format, you should decode it with base64 for subsequent processing. We provide a encoding/decoding tool, so you can download it from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
 
 ```shell
 wallet/getaccount
@@ -585,9 +585,12 @@ After a transaction is constructed, it can be signed using the ECDSA algorithm. 
 The demo for local transaction construction and signing can be found at:
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java.
 
-# 11. Migration plan
+# 11. demo
+we have provided nodejs demo, please refer https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
+
+# 12. Migration plan
 Token migration from ERC20 TRX to Mainnet TRX will occur between June 21st – June 25th (GMT+8). If your TRX is held on an exchange, no action is required. If your TRX is held in a wallet, you must deposit your TRX to an exchange before June 24, 2018 to avoid any losses. From June 21st– 25th, TRX withdrawals on exchanges will be suspended. On June 25th, both TRX deposits and withdraws on exchanges will be suspended. Deposits and withdraws will resume on June 26th. During this period, TRX trading will not be affected. If your TRX is held in a wallet and you were not aware of the migration notice, or saw the migration notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.
 
-# 12. Relevant files
+# 13. Relevant files
 See also: https://github.com/tronprotocol/Documentation#documentation-guide
 
