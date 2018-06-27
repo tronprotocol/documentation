@@ -28,7 +28,9 @@ TRON主链网络中有三种类型的节点，分别是witness、fullnode和soli
 ## 2.2 网络部署方式（只针对交易所）
 部署一个fullnode，一个solidity node，solidity node连接本地的fullnode，fullnode连接mainnet
 ## 2.3 关于mainnet和testnet
-mainnet浏览器https://tronscan.org，testnet浏览器https://test.tronscan.org。请交易所在testnet上进行测试。
+mainnet浏览器https://tronscan.org
+testnet浏览器https://test.tronscan.org
+请交易所在testnet上进行测试。
 testnet的配置请参照https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
 mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
 
