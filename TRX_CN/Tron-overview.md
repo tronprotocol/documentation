@@ -65,6 +65,7 @@ DISK视实际上线后交易量而定，可以预留的大一些
 
 ## 3.2 启动fullnode和soliditynode
 具体请参考：https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Solidity_and_Full_Node_Deployment_CN.md
+同时我们也提供了一键部署的脚本，可以通过该脚本一键部署fullnode和soliditynode，具体请参考https://github.com/tronprotocol/TronDeployment/blob/master/README_CN.md
 
 # 4 Tron API说明
     目前Tron推荐使用gRPC接口，同时也支持http接口。
@@ -79,7 +80,7 @@ wallet/GetAccount
 作用：返回一个账号的信息
 
 wallet/CreateTransaction
-作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链   上创建该账号
+作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
 
 wallet/ BroadcastTransaction
 作用： 广播交易，广播之前需要做签名
@@ -190,7 +191,7 @@ WalletExtension/ GetTransactionsToThis
 
 如果需要使用http接口服务，需要部署grpc-gateway，详情请见：[grpc-gateway文档](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
-grpc-gateway会自动把proto中的bytes字段转换为base64编码。所以如果输入参数是bytes类型，需要首先转化为base64编码，再发送请求；如果输出参数是bytes类型，请用base64解码该参数，再做后续处理。 Tron提供了一个编解码的工具，下载地址是：https://github.com/tronprotocol/TronTools/blob/master/TronConvertTool.zip
+grpc-gateway会自动把proto中的bytes字段转换为base64编码。所以如果输入参数是bytes类型，需要首先转化为base64编码，再发送请求；如果输出参数是bytes类型，请用base64解码该参数，再做后续处理。 Tron提供了一个编解码的工具，下载地址是：https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip
 
 ```shell
 wallet/getaccount
@@ -561,12 +562,15 @@ Expiration 和交易时间戳的设置方法：
 本地构造交易、签名的demo请参考
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
 
-# 11 迁移计划
+# 11 demo
+当前有nodejs的demo，具体请参考https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
+
+# 12 迁移计划
 波场TRON官方Token – TRX的ERC20代币将迁移至波场TRON主网代币，时间为北京时间6月21日-25日。
 如果投资者的TRX在交易所，无需其他任何操作。
 如果投资者的TRX在钱包，需要在2018年6月24日前将TRX充值到交易所。 6月21 - 24日，交易所TRX的提现将被暂停，6月25日交易所将暂停TRX的充值和提现。从6月26日开始，TRX的充值和提现将恢复正常。在此期间，TRX的正常交易将不受影响。
 如果投资者的TRX在钱包，没看见迁移公告，或者是在6月25日之后才看到迁移公告，到永久迁移交易所兑换主网代币。
-# 12 相关文档
+# 13 相关文档
 具体请参考：https://github.com/tronprotocol/Documentation#%E6%96%87%E6%A1%A3%E6%8C%87%E5%BC%95
 
 
