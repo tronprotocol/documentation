@@ -29,16 +29,17 @@ Make sure you have the proper dependencies.
 
   2. Copy the FullNode.jar and SolidityNode.jar along with config files into the respective directories.
 ```
-    cp build/libs/FullNode.jar ../fullnode
-    cp src/main/resources/config.conf ../fullnode
+    download your needed config file from https://github.com/tronprotocol/TronDeployment.
+    main_net_config.conf is the config for mainnet, and test_net_config.conf is the config for testnet.
+    please rename the config file to config.conf and use this config.conf to start fullnode and soliditynode.
 
+    cp build/libs/FullNode.jar ../fullnode
     cp build/libs/SolidityNode.jar ../soliditynode
-    cp src/main/resources/config.conf ../soliditynode
 ```
 
   3. You can now run your Fullnode using the following command：
 ```
-      java -jar FullNode.jar -c config.conf
+      java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
   4. Configure the SolidityNode configuration file. You'll need to edit `config.conf` to connect to your local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change `rpc port` to `50052` or something to avoid conflicts.
@@ -54,7 +55,7 @@ Make sure you have the proper dependencies.
 
   5. You can now run your SolidityNode using the following command：
 ```        
-    java -jar SolidityNode.jar -c config.conf
+    java -jar SolidityNode.jar -c config.conf //make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
 # Logging and network connection verification
