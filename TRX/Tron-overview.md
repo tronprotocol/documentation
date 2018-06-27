@@ -67,6 +67,7 @@ DISK capacity depends on the actual transaction volume after deployment, but itâ
 
 ## 3.2 Start the full node and solidity node
 Please follow the guide here to configure and deploy both nodes: https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
+we also provide a script to deploy fullnode and soliditynode, please refer https://github.com/tronprotocol/TronDeployment/blob/master/README.md
 
 # 4. Tron API
 Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-gateway is for the use of debugging only and we strongly suggest that developers do not use it for development.
