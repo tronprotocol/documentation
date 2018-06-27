@@ -2,7 +2,6 @@
 
 Create separate directories for fullnode and soliditynode
 ```
-    /deploy
     /deploy/fullnode
     /deploy/soliditynode
 ```
@@ -31,7 +30,7 @@ Make sure you have the proper dependencies.
 ```
     download your needed config file from https://github.com/tronprotocol/TronDeployment.
     main_net_config.conf is the config for mainnet, and test_net_config.conf is the config for testnet.
-    please rename the config file to config.conf and use this config.conf to start fullnode and soliditynode.
+    please rename the config file to `config.conf` and use this config.conf to start fullnode and soliditynode.
 
     cp build/libs/FullNode.jar ../fullnode
     cp build/libs/SolidityNode.jar ../soliditynode

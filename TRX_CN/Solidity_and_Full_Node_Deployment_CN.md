@@ -2,8 +2,7 @@
 
 + 对于fullnode和soliditynode，分别创建两个目录
 
-      /deploy
-      /fullnode
+      /deploy/fullnode
       /deploy/soliditynode
 
 + 对fullnode和soliditynode分别进入两个文件夹，然后执行以下操作：
@@ -11,12 +10,12 @@
   ## FullNode 部署方案：
 
         cd /deploy/fullnode
-        git clone https://github.com/tronprotocol/java-tron
+        从https://github.com/tronprotocol/java-tron/releases下载最新的release的代码,并解压
         cd java-tron/
         ./gradlew build
         cp build/libs/FullNode.jar ../
-        cp src/main/resources/config.conf ../
         cd ..
+        从https://github.com/tronprotocol/TronDeployment处下载最新的配置文件，main_net_config.conf是主网配置，test_net_config.conf是测试网配置，下载之后文件重命名为<font color="red">config.conf</font>config.conf
 
     然后就可以启动FullNode了：  
             
@@ -24,12 +23,12 @@
             
   ## SolidityNode部署方案
  
-        cd /Users/huzhenyuan/deploy/SolidityNode
-        git clone https://github.com/tronprotocol/java-tron
+        cd /deploy/SolidityNode
+        从https://github.com/tronprotocol/java-tron/releases下载最新的release的代码,并解压
         cd java-tron/
         ./gradlew build
         cp build/libs/SolidityNode.jar ../
-        cp src/main/resources/config.conf ../
+        从https://github.com/tronprotocol/TronDeployment处下载最新的配置文件，main_net_config.conf是主网配置，test_net_config.conf是测试网配置，下载之后文件重命名为<font color="red">config.conf</font>config.conf
         cd ..
  
      为了避免和`FullNode`端口冲突，和连接本地的`FullNode`，需要打开`config.conf`。把`node`里面的`trustNode`修改为本地`127.0.0.1:50051`。把`listen.port`修改为18888以外的数字，需要主要的是端口的设置范围是1024-65525，端口0-0124是禁用的，像这样：
