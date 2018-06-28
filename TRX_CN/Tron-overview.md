@@ -166,6 +166,9 @@ wallet/ TotalTransaction
 wallet/ GetNextMaintenanceTime
 作用： 获取下次维护期的时间，即下次重新根据投票计算witness的时间
 
+Wallet/ GenerateAddress
+作用：生成地址以及私钥
+
 WalletSolidity/ GetAccount
 作用：
 
@@ -180,6 +183,9 @@ WalletSolidity/ GetNowBlock
 
 WalletSolidity/ GetBlockByNum
 作用：
+
+WalletSolidity/ GenerateAddress
+作用：生成地址以及私钥
 
 WalletExtension/ GetTransactionsFromThis
 作用： 获取某个账号的转出交易记录
@@ -436,6 +442,10 @@ TRX快捷转账：/wallet/easytransfer
 demo：curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
 参数说明：passPhrase是用户密码，toAddress是转账接收地址，amount是转账trx数量
 
+生成地址和私钥：/wallet/generateaddress
+             /walletsolidity/generateaddress
+demo：curl -X POST -k http://127.0.0.1:18890/wallet/generateaddress
+参数说明：无需参数
 ```
 
 
