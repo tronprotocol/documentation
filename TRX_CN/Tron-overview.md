@@ -391,8 +391,8 @@ demo：curl -X POST http://127.0.0.1:18890/wallet/gettransactionsign -d '{
 },
 "privateKey" : "j5vLuYaQ4w8yolHZWY+CGY1i+p7CYXovSUgzvyYPOPk="
 }'
-参数说明：transaction是一个具体的交易，privateKey是用户私钥，需要是base64格式。如要确定要调用该api，请一定把节点部署在内
-网或者离线环境，做离线签名使用。
+参数说明：transaction是一个具体的交易，privateKey是用户私钥，需要是base64格式。
+警告：使用本接口请控制风险。保证环境的安全，不要调用他人提供的API，不要在公共网路上调用本接口。
 
 查询账号信息：/walletsolidity/getaccount
 demo：curl -X POST http://127.0.0.1:18890/walletsolidity/getaccount -d '{"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
@@ -437,14 +437,18 @@ demo：curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactionbyid -d 
 创建地址：/wallet/createadresss
 demo：curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
 参数说明：value是用户的密码，返回时base64格式的地址，需要转换成base58后才能使用
+警告：使用本接口请控制风险。保证环境的安全，不要调用他人提供的API，不要在公共网路上调用本接口。
 
 TRX快捷转账：/wallet/easytransfer
 demo：curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
 参数说明：passPhrase是用户密码，toAddress是转账接收地址，amount是转账trx数量
+警告：使用本接口请控制风险。保证环境的安全，不要调用他人提供的API，不要在公共网路上调用本接口。
 
 生成地址和私钥：/wallet/generateaddress
              /walletsolidity/generateaddress
 demo：curl -X POST -k http://127.0.0.1:18890/wallet/generateaddress
+警告：使用本接口请控制风险。保证环境的安全，不要调用他人提供的API，不要在公共网路上调用本接口。
+
 参数说明：无需参数
 ```
 
