@@ -387,7 +387,8 @@ Demo: curl -X POST http://127.0.0.1:18890/wallet/gettransactionsign -d '{
   },
   "privateKey" : "j5vLuYaQ4w8yolHZWY+CGY1i+p7CYXovSUgzvyYPOPk="
   }'
-Parameters: transaction refers to a specific transaction and privateKey is the user’s private key in base64 format. If one needs to invoke this API, please make sure deploy the node(s) in a LAN or an offline environment for offline signatures.
+Parameters: transaction refers to a specific transaction and privateKey is the user’s private key in base64 format. 
+Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
 
 Inquire account info: /walletsolidity/getaccount
 Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/getaccount -d '{"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
@@ -448,11 +449,20 @@ Wallet/createadresss
 Function: creates the address for a password, password is in base64
 Parameter Description: value is the user's password, returns base64 format address which needs to be converted to base58 before using.
 Demo:curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
+Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
 
 Wallet/easytransfer
 Function: An easy way to quickly transfer TRX. Wraps the create transaction, sign and broadcast
 Parameter Description: passPhrase is the user password in base64, toAddress is the address of the transfer recipient in base64, amount is the number of transfer trx
 Demo:curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
+Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
+
+wallet/generateaddress
+Function:generate private key and address.
+demo：curl -X POST -k http://127.0.0.1:18890/wallet/generateaddress
+Parameter Description:
+Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
+
 ```
 
 ## 4.3 API code generation
