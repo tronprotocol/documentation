@@ -447,11 +447,10 @@ demo：curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase"
 生成地址和私钥：/wallet/generateaddress
              /walletsolidity/generateaddress
 demo：curl -X POST -k http://127.0.0.1:18890/wallet/generateaddress
+参数说明：无需参数
 警告：使用本接口请控制风险。保证环境的安全，不要调用他人提供的API，不要在公共网路上调用本接口。
 
-参数说明：无需参数
 ```
-
 
 
 
