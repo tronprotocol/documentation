@@ -94,8 +94,10 @@ These two parameters can be configured through updateAsset interface.
 5. Consumption of bandwidth points  
 Aside from inquiries, any other type of transaction consumes bandwidth points. The bandwidth consumption procedure is as follows:
     + If the transaction isn’t a token transfer, skip to step 2. If the transaction is a token transfer, TRON will try to charge bandwidth points from the token issuer. If the issuer does not have sufficient bandwidth points or the charge is beyond the issuer’s maximal threshold, go to step 2.
-    + If the transaction creates a new account, go to step 4; If the transaction will not create a new account, then bandwidth points will be charged from the initiator. If insufficient, go to step 3.
-    + Complimentary bandwidth points will be charged from the initiator. If again insufficient, transaction fails, go to step 4. 
+    + Charge bandwidth points from the initiator. If bandwidth points are insufficient:
+      (1) If the transaction creates a new account, skip to step 4.
+      (2) If the transaction does not create a new account, go to step 3.
+    + Charge free bandwidth points from the initiator. If there is insufficient free bandwidth points, go to step 4.
     + TRX will be charged from and the transaction initiator and burnt.
       (1) For a normal transfer, it costs about 0.002 TRX.
       (2) If a new account is created by the transaction, it costs about 0.1 TRX.
