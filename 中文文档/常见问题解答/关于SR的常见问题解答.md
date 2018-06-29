@@ -139,8 +139,6 @@ public运行环境下的问题
 
    答：https://github.com/tronprotocol/Documentation/tree/master/TRX
 
-2. 咱们币安能否开一下USDT和BNB的交易对?
-
 3. 启动节点的时候怎么制定数据存储目录？
 
    答：现在还不能制定数据目录，下一个版本会加。
