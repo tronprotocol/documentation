@@ -1,4 +1,4 @@
-# Tron Programming Contest
+# TRON Programming Contest
 
 **April 17-June 5, 2018**
 
