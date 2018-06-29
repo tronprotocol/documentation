@@ -38,7 +38,7 @@ Account：返回账户所有的详细信息。
 2.1	接口声明  
 rpc CreateTransaction (TransferContract) returns (Transaction)　{};  
 2.2	提供节点  
-fullnode。
+fullnode。  
 2.3	参数说明  
 TransferContract：包含提供方地址、接收方地址、金额，其中金额的单位为sun。  
 2.4	返回值  
@@ -134,7 +134,7 @@ WitnessList： Witness的列表。所有超级代表的候选人详细信息。
 ## 9. 申请成为超级代表候选人
 
 9.1 接口声明
-rpc CreateWitness (WitnessCreateContract) returns (Transaction) {};
+rpc CreateWitness (WitnessCreateContract) returns (Transaction) {};  
 9.2 提供节点  
 fullnode。  
 9.3 参数说明  
@@ -149,7 +149,7 @@ Transaction：返回包含申请成为候选人的交易，钱包签名后再请
 10.1 接口声明  
 rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {};  
 10.2 提供节点  
-fullnode。
+fullnode。  
 10.3 参数说明  
 WitnessUpdateContract：包含账户地址、Url。  
 10.4 返回值  
@@ -279,7 +279,7 @@ Block：区块信息。
 
 20.1 接口声明  
 rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {};  
-20.2 提供节点
+20.2 提供节点  
 fullnode、soliditynode。  
 20.3 参数说明  
 EmptyMessage：空。  
@@ -383,117 +383,117 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 
 ## 28. 解冻通证
 
-28.1 接口声明
-rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {};
-28.2 提供节点
-fullnode。
-28.3 参数说明
-UnfreezeAssetContract：包含地址。
-28.4 返回值
+28.1 接口声明  
+rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {};  
+28.2 提供节点  
+fullnode。  
+28.3 参数说明                                                                                  
+UnfreezeAssetContract：包含地址。  
+28.4 返回值                                                                                  
 Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
-28.5 功能说明
+28.5 功能说明                                                                                  
 通证发行者解冻发行时冻结的通证。
 
 ## 29. 查询下次维护时刻
 
-29.1 接口声明
-rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {};
-29.2 提供节点
-fullnode。
-29.3 参数说明
-EmptyMessage：无需参数
-29.4 返回值
-NumberMessage：下次维护时刻
-29.5 功能说明
+29.1 接口声明                                                                                  
+rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {};  
+29.2 提供节点                                                                                  
+fullnode。  
+29.3 参数说明                                                                                  
+EmptyMessage：无需参数  
+29.4 返回值                                                                                  
+NumberMessage：下次维护时刻  
+29.5 功能说明                                                                                  
 获取下次维护时刻
 
 ## 30. 查询交易信息
 
-30.1 接口声明
-rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {};
-30.2 提供节点
-soliditynode。
-30.3 参数说明
-BytesMessage：交易ID
-30.4 返回值
-TransactionInfo：交易信息
-30.5 功能说明
+30.1 接口声明                                                                                  
+rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {};  
+30.2 提供节点                                                                                  
+soliditynode。  
+30.3 参数说明                                                                                  
+BytesMessage：交易ID  
+30.4 返回值                                                                                  
+TransactionInfo：交易信息  
+30.5 功能说明                                                                                  
 查询交易的费用、所在区块、所在区块时间戳
 
 ## 31.根据ID查询区块 
-31.1 接口声明
-rpc GetBlockById (BytesMessage) returns (Block) {};
-31.2 提供节点
-fullnode。
-31.3 参数说明
-BytesMessage：区块ID
-31.4 返回值
-Block：区块
-31.5 功能说明
+31.1 接口声明                                                                                  
+rpc GetBlockById (BytesMessage) returns (Block) {};  
+31.2 提供节点                                                                                  
+fullnode。  
+31.3 参数说明                                                                                  
+BytesMessage：区块ID  
+31.4 返回值                                                                                  
+Block：区块  
+31.5 功能说明                                                                                  
 根据输入的区块的ID查询区块
 
 ## 32.更新通证
-32.1 接口声明
-rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {};
-32.2 提供节点
-fullnode。
-32.3 参数说明
-UpdateAssetContract：包括通证发行者的地址、通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
-32.4 返回值
-Transaction：返回交易，钱包签名后再请求广播交易。                                                                                       
-32.5 功能说明
+32.1 接口声明                                                                                  
+rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {};  
+32.2 提供节点                                                                                  
+fullnode。  
+32.3 参数说明                                                                                  
+UpdateAssetContract：包括通证发行者的地址、通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值  
+32.4 返回值                                                                                  
+Transaction：返回交易，钱包签名后再请求广播交易。                                                                                         
+32.5 功能说明                                                                                  
 只能由通证发行者发起，更新通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
 
 ## 33. 分页查询通证列表
-33.1 接口声明
-rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {};
-33.2 提供节点
-fullnode、soliditynode。
-33.3 参数说明
-PaginatedMessage：起始查询下标 （从下标0开始计算）， 一页所取得的通证个数
-33.4 返回值
-AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息。
-33.5 功能说明
+33.1 接口声明                                                                                  
+rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {};  
+33.2 提供节点                                                                                  
+fullnode、soliditynode。  
+33.3 参数说明                                                                                  
+PaginatedMessage：起始查询下标 （从下标0开始计算）， 一页所取得的通证个数  
+33.4 返回值                                                                                  
+AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息。  
+33.5 功能说明                                                                                  
 分页通证列表。分页展示通证，供用户选择参与。
 
 ## 34. 对交易进行签名
-34.1 接口说明
-rpc GetTransactionSign (TransactionSign) returns (Transaction) {};
-34.2 提供节点
-fullnode
-34.3 参数说明
-TransactionSign：待签名Transaction对象和签名用的private key
-34.4 返回值
+34.1 接口说明                                                                                  
+rpc GetTransactionSign (TransactionSign) returns (Transaction) {};  
+34.2 提供节点                                                                                  
+fullnode  
+34.3 参数说明                                                                                  
+TransactionSign：待签名Transaction对象和签名用的private key  
+34.4 返回值                                                                                  
 Transaction：签名的Transaction对象
 
 ## 35. 创建地址和秘钥
-35.1 接口说明
-rpc CreateAdresss (BytesMessage) returns (BytesMessage) {};
-35.2 提供节点
-fullnode
-35.3 参数说明
-BytesMessage：Passphrase
-35.4 返回值
+35.1 接口说明                                                                                  
+rpc CreateAdresss (BytesMessage) returns (BytesMessage) {};  
+35.2 提供节点                                                                                  
+fullnode  
+35.3 参数说明                                                                                  
+BytesMessage：Passphrase  
+35.4 返回值                                                                                  
 BytesMessage：地址
 
 ## 36. TRX快捷转账
-36.1 接口说明
-rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {};
-36.2 提供节点
-fullnode
-36.3 参数说明
-EasyTransferMessage：转账用的密码，toAddress，转账的数量
-36.4 返回值
+36.1 接口说明                                                                                  
+rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {};  
+36.2 提供节点                                                                                  
+fullnode  
+36.3 参数说明                                                                                  
+EasyTransferMessage：转账用的密码，toAddress，转账的数量  
+36.4 返回值                                                                                  
 EasyTransferResponse：转账创建的transaction，以及广播的结果result
 
 ## 37. 生成地址和私钥
-37.1 接口说明
-rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage) {};
-37.2 提供节点
-fullnode, soliditynode
-37.3 参数说明
-EmptyMessage：空
-37.4 返回值
-AddressPrKeyPairMessage：生成地址，生成私钥
-37.5 功能说明
+37.1 接口说明                                                                                  
+rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage) {};  
+37.2 提供节点                                                                                  
+fullnode, soliditynode  
+37.3 参数说明                                                                                  
+EmptyMessage：空  
+37.4 返回值                                                                                  
+AddressPrKeyPairMessage：生成地址，生成私钥  
+37.5 功能说明                                                                                  
 可用于生成地址和私钥，请务必仅在受信断网节点调用，以免私钥外泄
