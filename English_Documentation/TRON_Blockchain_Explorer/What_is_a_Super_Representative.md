@@ -3,8 +3,8 @@
 ## Token holders in the TRON community fall into the following categories:
 
 1. Token holder: Individual holding any amount of TRX.
-2. Super Representative candidates: 127 individuals elected through voting by the entire token holder community. Votes are updated once every 24 hours.
-3. Super Representatives: top 27 individuals among the 127 candidates, voted once every 24 hours. Super Representatives play a key role in governing the TRON community by ensuring basic functions, e.g. block generation and bookkeeping, and obtain corresponding earnings.
+2. Super Representative candidates: 127 individuals elected through voting by the entire token holder community. Votes are updated once every 6 hours.
+3. Super Representatives: top 27 individuals among the 127 candidates, voted once every 6 hours. Super Representatives play a key role in governing the TRON community by ensuring basic functions, e.g. block generation and bookkeeping, and obtain corresponding earnings.
  
 ## Rewards
 
