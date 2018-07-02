@@ -97,7 +97,7 @@ Aside from inquiries, any other type of transaction consumes bandwidth points. T
     + Charge bandwidth points from the initiator. If bandwidth points are insufficient:
       (1) If the transaction creates a new account, skip to step 4.
       (2) If the transaction does not create a new account, go to step 3.
-    + Charge free bandwidth points from the initiator. If there is insufficient free bandwidth points, go to step 4.
+    + Charge free bandwidth points from the initiator. If there is insufficient free bandwidth points, go to step 4.D
     + TRX will be charged from and the transaction initiator and burnt.
       (1) For a normal transfer, it costs about 0.002 TRX.
       (2) If a new account is created by the transaction, it costs about 0.1 TRX.
