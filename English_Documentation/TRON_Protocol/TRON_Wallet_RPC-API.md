@@ -328,3 +328,15 @@ Fullnode.
 EasyTransferMessage: password for transfer, toAddress and the amount of tokens to transfer.  
 36.4 Returns  
 EasyTransferResponse: the transaction of a transfer and the result of broadcasting.
+
+## 37. Generate address and private key  
+37.1 Interface statement  
+rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage) {};  
+37.2 Nodes  
+Fullnode and soliditynode.  
+37.3 Parameters  
+EmptyMessage: null.  
+37.4 Returns  
+AddressPrKeyPairMessage: generate address and private key.  
+37.5 Function  
+Address and private key generation. Please invoke this API only on a trusted offline node to prevent private key leakage.
