@@ -33,8 +33,7 @@ There are three types of nodes on Tron’s network, namely witness, full node an
 Exchanges need to deploy a full node and a solidity node. The solidity node connects to the local full node which connects to the mainnet.
 
 ## 2.3 Mainnet and testnet
-the explorer of mainnet is https://tronscan.org and testnet is https://test.tronscan.org.
-exchanges should test their code in testnet. About how to config testnet, please refer https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf. About how to config mainnet, please refer https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf.
+The blockchain explorer of the mainnet is https://tronscan.org and the testnet https://test.tronscan.org. Exchanges should test their code on the testnet. About how to config on the testnet, please refer to https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf. About how to config on the mainnet, please refer to https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf.
 
 # 3. Operation of node
 
@@ -67,7 +66,7 @@ DISK capacity depends on the actual transaction volume after deployment, but it�
 
 ## 3.2 Start the full node and solidity node
 Please follow the guide here to configure and deploy both nodes: https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
-we also provide a script to deploy fullnode and soliditynode, please refer https://github.com/tronprotocol/TronDeployment/blob/master/README.md
+We also provide a script to deploy fullnode and soliditynode, please refer https://github.com/tronprotocol/TronDeployment/blob/master/README.md
 
 # 4. Tron API
 Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-gateway is for the use of debugging only and we strongly suggest that developers do not use it for development.
@@ -193,7 +192,7 @@ Function: Get the record of all incoming transactions of a certain account.
 ### 4.2.2 HTTP Interface
 If you require an http interface, you will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
-grpc-gateway will encode the bytes fields defined in proto into base64 format. So about a input parameter in bytes format, you should encode in into base64 format, and about a output parameter in bytes format, you should decode it with base64 for subsequent processing. We provide a encoding/decoding tool, so you can download it from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
+The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
 
 ```shell
 wallet/getaccount
@@ -388,7 +387,7 @@ Demo: curl -X POST http://127.0.0.1:18890/wallet/gettransactionsign -d '{
   "privateKey" : "j5vLuYaQ4w8yolHZWY+CGY1i+p7CYXovSUgzvyYPOPk="
   }'
 Parameters: transaction refers to a specific transaction and privateKey is the user’s private key in base64 format. 
-Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
 
 Inquire account info: /walletsolidity/getaccount
 Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/getaccount -d '{"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}'
@@ -430,38 +429,21 @@ Inquire transaction by transaction hash (and confirm the transaction through thi
 Demo: curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactionbyid -d '{"value" : "9PeN9FHPDHr1qpILy3U+iMcLAKvwojUek9jYx1EESXA="}'
 Parameters: value is the transaction ID, hash of the raw_data of the transaction, and should be in base64 format.
 
-Walletextension/gettransactionsfromthis
-Function: Query an account's account transaction
-Parameter description: address is base64 format, offset is the start index, limit is the maximum number of transactions returned
-Demo:curl -X POST http://127.0.0.1:18890/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+Create address: /wallet/createadresss
+Demo: curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
+Parameters: value is the password; the address returned in base64 format needs to be converted into base58 for later use.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
 
-Walletextension/gettransactionstothis
-Function: Inquire account transactions
-Parameter description: address is base64 format, offset is the start index, limit is the maximum number of transactions returned
-Demo:curl -X POST http://127.0.0.1:18890/walletextension/gettransactionstothis -d '{"account" : {"address" : "QYgZmb8EtAG27PTQy5E3TXNTYCcy"}, "offset" : 0, "limit" : 5}'
+TRX easy transfer: /wallet/easytransfer
+Demo: curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
+Parameters: passPhrase is the password; toAddress is the recipient address; amount is the amount of TRX to transfer.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
 
-Walletsolidity/gettransactioninfobyid
-Function: In accordance with the transaction hash query transaction fee, the transaction block
-Parameter description: value is the id of the transaction, which is obtained from the raw_data of the hash transaction. The value needs to be in base64 format.
-Demo:curl -X POST http://127.0.0.1:18890/walletsolidity/gettransactioninfobyid -d '{"value" : "4ebiUlBCZ5vI1JtBMFXjiH/HSaVeIaUO8PN9l5E1kXU="}'
-
-Wallet/createadresss
-Function: creates the address for a password, password is in base64
-Parameter Description: value is the user's password, returns base64 format address which needs to be converted to base58 before using.
-Demo:curl -X POST http://127.0.0.1:18890/wallet/createadresss -d '{"value": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ" }'
-Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
-
-Wallet/easytransfer
-Function: An easy way to quickly transfer TRX. Wraps the create transaction, sign and broadcast
-Parameter Description: passPhrase is the user password in base64, toAddress is the address of the transfer recipient in base64, amount is the number of transfer trx
-Demo:curl -X POST http://127.0.0.1:18890/wallet/easytransfer -d '{"passPhrase": "QeVS9kh1hcK1i8LJu0SSvB8XEyzQ","toAddress": "QYkTnLE4evhePSTiEqAIrJdJZ+Vh", "amount":10}'
-Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
-
-wallet/generateaddress
-Function:generate private key and address.
+Generate private key and address: wallet/generateaddress
+Wallet/solidity/generateaddress
 demo：curl -X POST -k http://127.0.0.1:18890/wallet/generateaddress
-Parameter Description:
-Warning: use this API to control risks. Ensure the security of the environment, do not invoke this API provided by others, do not invoke this API on the public network.
+Parameters: no parameters.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
 
 ```
 
@@ -589,7 +571,7 @@ The demo for local transaction construction and signing can be found at:
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java.
 
 # 11. demo
-we have provided nodejs demo, please refer https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
+For our nodejs demo, please refer https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
 
 # 12. Migration plan
 Token migration from ERC20 TRX to Mainnet TRX will occur between June 21st – June 25th (GMT+8). If your TRX is held on an exchange, no action is required. If your TRX is held in a wallet, you must deposit your TRX to an exchange before June 24, 2018 to avoid any losses. From June 21st– 25th, TRX withdrawals on exchanges will be suspended. On June 25th, both TRX deposits and withdraws on exchanges will be suspended. Deposits and withdraws will resume on June 26th. During this period, TRX trading will not be affected. If your TRX is held in a wallet and you were not aware of the migration notice, or saw the migration notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.
