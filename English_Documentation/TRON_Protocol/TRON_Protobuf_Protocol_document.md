@@ -550,7 +550,9 @@ Input, transaction and block header all require signature.
     __`GetBlockByNum`__:  
     `GetBlockByNum` takes a parameter of NumberMessage, and returns an `Block` object.  
     __`TotalTransaction`__:  
-    `TotalTransaction` takes a parameter of EmptyMessage, and returns an `NumberMessage` object. 
+    `TotalTransaction` takes a parameter of EmptyMessage, and returns an `NumberMessage` object.
+    __`GenerateAddress`__
+    `GenerateAddress` takes a parameter of EmptyMessage and returns an `AddressPrKeyPairMessage` object. 
    
       service Wallet {
       returns (Account) {
@@ -703,6 +705,19 @@ Input, transaction and block header all require signature.
           };
         }
       };
+       rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage){
+         option (google.api.http) = {
+           post: "/wallet/generateaddress"
+           body: "*"
+           additional_bindings {
+           get: "/wallet/generateaddress"
+             }
+          };
+         }
+         };
+         
+         
+              
    `WalletSolidity` service contains several RPCs.  
     __`GetAccount`__ :  
     `GetAccount` takes a parameter of Account, and returns an `Account` object.   
@@ -941,5 +956,13 @@ Input, transaction and block header all require signature.
          bytes privateKey = 2;
        }    
 
+   `AddressPrKeyPairMessage`: address and private key message.
+   `Address`: account address.
+   `privateKey`: account private key.
+    
+        message AddressPrKeyPairMessage {
+            string address = 1;
+            string privateKey = 2;
+        }
 
 # Please check detailed protocol document that may change with the iteration of the program at any time. Please refer to the latest version.
