@@ -753,7 +753,9 @@ Input, transaction and block header all require signature.
     `getTransactionsToThis` takes a parameter of `Account`, and returns `NumberMessage` object.  
     __`GetTransactionInfoById`__:
     `GetTransactionInfoById` takes a parameter of `BytesMessage` and returns `TransactionInfo` object.      
-      
+    __`GenerateAddress`__:  
+    `GenerateAddress` takes a parameter of EmptyMessage and returns `AddressPrKeyPairMessage` object.
+  
       service WalletSolidity {
       
         rpc GetAccount (Account) returns (Account) {
@@ -788,6 +790,9 @@ Input, transaction and block header all require signature.
         }
         rpc GetBlockByNum (NumberMessage) returns (Block) {
       
+        }
+        Rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage){
+        
         }
        
         //Get transaction.
