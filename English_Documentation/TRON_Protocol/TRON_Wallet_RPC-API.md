@@ -333,7 +333,7 @@ EasyTransferResponse: the transaction of a transfer and the result of broadcasti
 37.1 Interface statement  
 rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage) {};  
 37.2 Nodes  
-Fullnode and soliditynode.  
+FullNode and SolidityNode.  
 37.3 Parameters  
 EmptyMessage: null.  
 37.4 Returns  
