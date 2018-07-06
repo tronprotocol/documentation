@@ -111,23 +111,57 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d '{
 wallet/createassetissue
 作用：发行Token
 demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
-"owner_address":"",
-"name":"{{assetIssueName}}",
-"abbr": "{{abbrName}}",
+"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
+"name":"0x6173736574497373756531353330383934333132313538",
+"abbr": "0x6162627231353330383934333132313538",
 "total_supply" :4321,
 "trx_num":1,
 "num":1,
-"start_time" :{{startTime}},
-"end_time":{{endTime}},
-"vote_score":2,
+"start_time" : 1530894315158,
+"end_time":1533894312158,
 "description":"007570646174654e616d6531353330363038383733343633",
 "url":"007570646174654e616d6531353330363038383733343633",
 "free_asset_net_limit":10000,
 "public_free_asset_net_limit":10000,
 "frozen_supply":{"frozen_amount":1, "frozen_days":2}
 }'
+参数说明：
+owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
+返回值：发行Token的Transaction
 
+wallet/createaccount
+作用：创建账号，一个已经激活的账号创建一个新账号，需要花费0.1trx
+demo：curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "account_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0"}'
+参数说明：owner_address是已经激活的账号，需要是hexString格式；account_address是新账号的地址，需要是hexString格式，这个地址需要事先创建好
+返回值：创建账号的Transaction
 
+wallet/createwitness
+作用：申请成为超级代表
+demo：curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "url": "007570646174654e616d6531353330363038383733343633"}'
+参数说明：owner_address是申请成为超级代表的账号地址，需要是hexString格式；url是官网地址，需要是hexString格式
+返回值：申请超级代表的Transaction
+
+wallet/transferasset
+作用：转账Token
+demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "0x6173736574497373756531353330383934333132313538", "amount": 100}'
+参数说明：owner_address是token转出地址，需要是hexString格式；to_address是token转入地址，需要是hexString格式；asset_name是token名称，需要是hexString格式；amount是token转账数量
+返回值：token转账的Transaction
+
+wallet/easytransfer
+作用：快捷转账，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。调用该api前请先调用createAddress生成地址。
+demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
+"passPhrase": "your password",
+"toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
+"amount":100
+}'
+参数说明：passPhrase是用户密码，需要是hexString格式；toAddress是转入地址，需要是hexString格式；amount是转账trx数量
+返回值：对应的Transaction和广播是否成功的状态
+
+wallet/createaddress
+作用：通过密码创建地址
+demo：curl -X POST http://127.0.0.1:8090/wallet/createaddress -d '{"value": "3230313271756265696a696e67"}'
+参数说明：value是用户密码，需要是hexString格式
+返回值：一个地址
 
 
 
