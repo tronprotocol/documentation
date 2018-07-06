@@ -20,7 +20,7 @@
 
 
 # 4. 一般部署
-一般节点部署图.png
+![Aaron Swartz](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/%E5%9B%BE/%E4%B8%80%E8%88%AC%E8%8A%82%E7%82%B9%E9%83%A8%E7%BD%B2%E5%9B%BE.png)
 
 # 5. 安全部署
 对于安全性要求较高的情况下， 如使用easyTransfer等接口（传输敏感信息），建议采用安全部署方式。
