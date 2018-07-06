@@ -18,3 +18,23 @@
 
 相关技术文档，可以参阅https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md
 
+
+# 4. 一般部署
+
+![一般部署](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/General_node_deployment_diagram.png)
+
+# 5. 安全部署
+对于安全性要求较高的情况下， 如使用easyTransfer等接口（传输敏感信息），建议采用安全部署方式。
+
+![安全部署](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/Secure_node_deployment_diagram.png)
+
+
+# 6. 充值流程
+
+![充值流程](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/Recharge_process.png)
+
+
+# 7. 提现流程
+
+![提现流程](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/Withdrawal_process.png)
+
