@@ -26,7 +26,7 @@
 # 5. 安全部署
 对于安全性要求较高的情况下， 如使用easyTransfer等接口（传输敏感信息），建议采用安全部署方式。
 
-![安全部署](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/Secure_%20node_deployment_diagram.png)
+![安全部署](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/Secure_node_deployment_diagram.png)
 
 
 # 6. 充值流程
