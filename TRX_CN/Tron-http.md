@@ -28,7 +28,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 
 /walletsolidity/getnowblock
 作用：查询最新block
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
 参数说明：
 返回值：solidityNode上的最新block
 
