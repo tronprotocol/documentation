@@ -24,7 +24,7 @@
 ![一般部署](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/General_node_deployment_diagram.png)
 
 # 5. 安全部署
-对于安全性要求较高的情况下， 如使用easyTransfer等接口（传输敏感信息），建议采用安全部署方式。
+需要提供生成公私钥地址、交易签名等方法时，建议采用安全部署方式。
 
 ![安全部署](https://github.com/tronprotocol/Documentation/blob/feature/add_node_deployment_diagram/TRX_CN/figures/Secure_node_deployment_diagram.png)
 
