@@ -18,3 +18,11 @@
 
 相关技术文档，可以参阅https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md
 
+
+# 4. 一般部署
+一般节点部署图.png
+
+# 5. 安全部署
+对于安全性要求较高的情况下， 如使用easyTransfer等接口（传输敏感信息），建议采用安全部署方式。
+
+安全节点部署图.png
