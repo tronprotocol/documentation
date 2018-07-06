@@ -39,7 +39,7 @@ Return value：List of Tokens
 
 /walletsolidity/getnowblock
 Function：Query the latest block
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuelist
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
 Parameters：
 Return value：Latest block on solidityNode
 
