@@ -64,7 +64,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis 
 
 ```
 
-FullNode接口说明
+# FullNode接口说明
 
 ```
 wallet/getaccount
