@@ -141,6 +141,27 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 
 
 
+wallet/createaddress
+Function: Create address from a specified password string (NOT PRIVATE KEY)
+Demo: curl -X POST http://127.0.0.1:8090/wallet/createaddress -d '{"value": "7465737470617373776f7264" }'
+Parameters: value is the password, converted from ascii to hex
+Return value：value is the corresponding address for the password, encoded in hex. Convert it to base58 to use as the address.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
+
+wallet/easytransfer
+Function: Easily transfer from an address using the password string. Only works with accounts created from createAddress
+Demo: curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{"passPhrase": "7465737470617373776f7264","toAddress": "41D1E7A6BC354106CB410E65FF8B181C600FF14292", "amount":10}'
+Parameters: passPhrase is the password, converted from ascii to hex. toAddress is the recipient address, converted into a hex string; amount is the amount of TRX to transfer in SUN.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
+
+wallet/generateaddress
+Function: Generates a random private key and address pair
+demo：curl -X POST -k http://127.0.0.1:8090/wallet/generateaddress
+Parameters: no parameters.
+Return value：value is the corresponding address for the password, encoded in hex. Convert it to base58 to use as the address.
+Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
+
+
 
 
 ```
