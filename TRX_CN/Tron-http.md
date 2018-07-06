@@ -158,7 +158,7 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
 返回值：对应的Transaction和广播是否成功的状态
 
 wallet/createaddress
-作用：通过密码创建地址
+作用：通过密码创建地址，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。
 demo：curl -X POST http://127.0.0.1:8090/wallet/createaddress -d '{"value": "3230313271756265696a696e67"}'
 参数说明：value是用户密码，需要是hexString格式
 返回值：一个地址
