@@ -67,11 +67,6 @@ demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis 
 # FullNode接口说明
 
 ```
-wallet/getaccount
-作用：返回一个账号的信息
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
-参数说明：address 需要转为hexString
-返回值：Account对象
 
 wallet/createtransaction
 作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
