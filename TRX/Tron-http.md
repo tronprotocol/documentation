@@ -78,11 +78,6 @@ Return value：Transactions list
 FullNode interface
 
 ```
-wallet/getaccount
-Function：Query information about an account
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
-Parameters：address should be converted to hexString
-Return value：Account Object
 
 wallet/createtransaction
 Function：Creates a transaction of transfer. If the recipient address does not exist, a corresponding account will be created on the blockchain.
