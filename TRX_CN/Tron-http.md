@@ -164,6 +164,189 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/createaddress -d '{"value": "32
 返回值：一个地址
 
 
+wallet/participateassetissue
+作用：参与token发行
+demo：curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
+"to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
+"amount":100, 
+"asset_name":"3230313271756265696a696e67"
+}'
+参数说明：
+to_address是Token发行人的地址，需要是hexString格式
+owner_address是参与token人的地址，需要是hexString格式
+amount是参与token的数量
+asset_name是token的名称，需要是hexString格式
+返回值：参与token发行的transaction
+
+wallet/freezebalance
+作用：冻结trx，获取带宽，获取投票权
+demo：curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d '{
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
+"frozen_balance": 10000,
+"frozen_duration": 3
+}'
+参数说明：
+owner_address是冻结trx账号的地址，需要是hexString格式
+frozen_balance是冻结trx的数量
+frozen_duration是冻结天数，最少是3天
+返回值：冻结trx的transaction
+
+wallet/unfreezebalance
+作用：解冻已经结束冻结期的trx，会同时失去这部分trx带来的带宽和投票权
+demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+}'
+参数说明：
+owner_address是解冻trx账号的地址，需要是hexString格式
+返回值：解冻trx的transaction
+
+walle/unfreezeasset
+作用：解冻已经结束冻结期的Token
+demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d '{
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+}'
+参数说明：
+owner_address是解冻token账号的地址，需要是hexString格式
+返回值：解冻token的transaction
+
+wallet/withdrawbalance
+作用：超级代表体现奖励到balance，每24个小时可以提现一次
+demo：curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d '{
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+}'
+参数说明：
+owner_address是提现账号的地址，需要是hexString格式
+返回值：提现Trx的transaction
+
+wallet/updateasset
+作用：修改token信息
+demo：curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+"description": ""，
+"url": "",
+"new_limit" : 1000000,
+"new_public_limit" : 100
+}'
+参数说明：
+owner_address是token发行人的地址，需要是hexString格式
+description是token的描述，需要是hexString格式
+url是token发行人的官网地址，需要是hexString格式
+new_limit是该token全部的免费带宽
+new_public_limit是token每个持有人能够使用的免费带宽
+返回值：修改Token信息的transaction
+
+
+wallet/listnodes
+作用：查询账户发行的token。
+demo: curl -X POST  http://192.168.2.121:8090/wallet/listnodes
+参数说明：无
+返回值：节点列表。
+
+wallet/getassetissuebyaccount
+作用：查询账户发行的token。
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
+参数说明：发行者账户地址，格式为hexString。
+返回值：带宽信息。
+
+wallet/getaccountnet
+作用：查询带宽信息。
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getaccountnet -d '{"address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"}'
+参数说明：账户地址，格式为hexString。
+返回值：带宽信息。
+
+wallet/getassetissuebyname
+作用：根据名称查询token。
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token。
+
+wallet/getblockbynum
+作用：通过高度查询块
+demo: curl -X POST  http://192.168.2.121:8090/wallet/updateasset -d '{"num": 1}'
+参数说明：块高度。
+返回值：块。
+
+
+wallet/getnowblock
+作用：查询最新块。
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getnowblock
+参数说明：无
+返回值：当前块。
+
+wallet/getblockbynum
+作用：通过高度查询块
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbynum -d '{"num": 1}'
+参数说明：块高度。
+返回值：块。
+
+wallet/getblockbyid
+作用：通过ID查询块
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbyid -d '{"value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
+参数说明：块ID。
+返回值：块。
+
+wallet/getblockbylimitnext
+作用：按照范围查询块
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
+参数说明：
+   startNum：起始块高度，包含此块
+   endNum：截止块高度，不包含此此块
+返回值：块的列表。
+
+wallet/getblockbylatestnum
+作用：查询最新的几个块
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbylatestnum -d '{"num": 5}'
+参数说明：块的数量。
+返回值：块的列表。
+
+wallet/gettransactionbyid
+作用：通过ID查询交易
+demo: curl -X POST  http://192.168.2.121:8090/wallet/gettransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
+参数说明：交易ID。
+返回值：交易信息。
+
+wallet/listwitnesses
+作用：查询所有witness列表
+demo: curl -X POST  http://192.168.2.121:8090/wallet/listwitnesses
+参数说明：无
+返回值：witness列表。
+
+wallet/getassetissuelist
+作用：查询所有token列表
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuelist
+参数说明：无
+返回值：token列表。
+
+wallet/getpaginatedassetissuelist
+作用：分页查询token列表
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getpaginatedassetissuelist -d '{"offset": 0, "limit": 10}'
+参数说明：无
+返回值：token列表。
+
+wallet/totaltransaction
+作用：统计所有交易总数
+demo: curl -X POST  http://192.168.2.121:8090/wallet/totaltransaction
+参数说明：无
+返回值：交易总数。
+
+wallet/getnextmaintenancetime
+作用：获取下次统计投票的时间
+demo: curl -X POST  http://192.168.2.121:8090/wallet/getnextmaintenancetime
+参数说明：无
+返回值：下次统计投票时间的毫秒数。
+
+
+wallet/easytransferbyprivate
+作用：快捷转账
+demo: curl -X POST  http://192.168.2.121:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
+参数说明：
+   passPhrase：密码，createaddress里设置的字符串。
+   toAddress：转入账户地址，hexString格式。
+   amount：转账的drop数量。
+返回值：交易，含执行结果。
+警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
+
 
 
 ```
