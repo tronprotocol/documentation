@@ -256,13 +256,6 @@ demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuebyname -d '{"v
 参数说明：通证名称，格式为hexString。
 返回值：token。
 
-wallet/getblockbynum
-作用：通过高度查询块
-demo: curl -X POST  http://192.168.2.121:8090/wallet/updateasset -d '{"num": 1}'
-参数说明：块高度。
-返回值：块。
-
-
 wallet/getnowblock
 作用：查询最新块。
 demo: curl -X POST  http://192.168.2.121:8090/wallet/getnowblock
