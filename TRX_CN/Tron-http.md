@@ -331,7 +331,6 @@ demo: curl -X POST  http://192.168.2.121:8090/wallet/getnextmaintenancetime
 参数说明：无
 返回值：下次统计投票时间的毫秒数。
 
-
 wallet/easytransferbyprivate
 作用：快捷转账
 demo: curl -X POST  http://192.168.2.121:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
@@ -342,6 +341,12 @@ demo: curl -X POST  http://192.168.2.121:8090/wallet/easytransferbyprivate -d '{
 返回值：交易，含执行结果。
 警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
 
+wallet/generateaddress
+作用：生成私钥和地址
+demo: curl -X POST  http://192.168.2.121:8090/wallet/generateaddress
+参数说明：无
+返回值：地址和私钥
+警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
 
 
 ```
