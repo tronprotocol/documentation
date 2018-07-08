@@ -309,7 +309,7 @@ demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuelist
 wallet/getpaginatedassetissuelist
 作用：分页查询token列表
 demo: curl -X POST  http://192.168.2.121:8090/wallet/getpaginatedassetissuelist -d '{"offset": 0, "limit": 10}'
-参数说明：无
+参数说明：offset是起始Token的index，limit是期望返回的Token数量
 返回值：token列表。
 
 wallet/totaltransaction
