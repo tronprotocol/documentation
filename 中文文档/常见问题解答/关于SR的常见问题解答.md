@@ -9,7 +9,10 @@ Private运行环境下full node模式的问题
 
    答： Java-tron没有默认的接口。一旦服务器开始运行，就能够发送grpc命令，基于这一点，有几种检验部署是否成功的方法。首先，需要您确认grpc端口已处于开启状态：
               
+             
              - netstat -tulnp| grep 50051 
+      
+      ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/FAQ/查询节点.png)
       
       如果端口已开启，需要您使用tronscan.org测试节点，确保端口和IP对网络开放。如果使用的是私网IP，则需要其他gRPC软件。
       

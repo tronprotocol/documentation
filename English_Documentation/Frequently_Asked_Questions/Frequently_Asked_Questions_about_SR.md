@@ -6,10 +6,13 @@ Questions on the Full Node in private networks
 2.	Q: After replacing the seed.node.ip.list with the IP-address of my own public network and entering the command "java -jar java-tron.jar", how can I test if the deployment has been successful? Are there any testing interfaces or commands such as the "redis" command (which sends a ping to a server and gets a png back from the server) for a successfull deployment?
     A: There is no default interface with java-tron. There are several ways to check if you have a successful deployment, as once your server is running you can send gRPC commands. First thing you will need to check is if the gRPC port is open:
 
+
        - netstat -tulnp| grep 50051
 
        If the port is open, you can test your node using tronscan.org. Make sure your port and IP is open on internet. If you are using a private IP only, you will need to use other gRPC software
-    ![]()
+
+    ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/FAQ/查询节点.png)
+
     You can also check if your node is running using the following terminal command:
 
         - tail -f logs/tron.log |grep "MyheadBlockNumber"
