@@ -1,6 +1,6 @@
 Questions on the Full Node in private networks
 -----
-1.	Q: Do I need to delete other addresses when replacing genesis.block.witnesses under config.conf with the address string given upon registration on https://trxscan.org/?
+1.	Q: Do I need to delete other addresses when replacing genesis.block.witnesses under config.conf with the address string given upon registration on https://tronscan.org/?
     A: There is no need to delete. However, those address will be part of your network too, and useless if you don’ t have their private key. Att: Zion, Sun and Blackhole Accounts can not be deleted from genesis block config file, however you can change their addresses.
 
 2.	Q: After replacing the seed.node.ip.list with the IP-address of my own public network and entering the command "java -jar java-tron.jar", how can I test if the deployment has been successful? Are there any testing interfaces or commands such as the "redis" command (which sends a ping to a server and gets a png back from the server) for a successfull deployment?
@@ -155,7 +155,7 @@ Others
     A: You don’t have to worry about private key generation once you’ve successfully registered for an account. All you need to do is log in with you pin-code to access your address.
 
 5.	Q: Is there a specific file to the calling of API like Bitcoin and Ethereum do?
-    A:
+    A: Yes. It can be found in our Github documentation, please check https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 
 6.	Q: Can Solidity Node and Full Node be employed on the same machine? Since we can’t specify data directory, will there be consequences to the two nodes’ sharing data?
     A: You actually can specify data directory, config file paramter: db.directory = "database", and index.directory = "index". But you can also have FullNode.jar and SolidityNode.jar running in difefrent directories, and have the data and log fiels totally separated. Remember to change the ports on config.conf, as two applications cant run on the same port.
