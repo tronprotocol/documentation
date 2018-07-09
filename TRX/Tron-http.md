@@ -160,7 +160,7 @@ Warning: Please control risks when using this API. To ensure environmental secur
 
 wallet/easytransferbyprivate
 Function：Easily transfer from an address using the private key. 
-demo: curl -X POST  http://192.168.2.121:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
 Parameters：passPhrase is the private key, converted from ascii to hex. toAddress is the recipient address, converted into a hex string; amount is the amount of TRX to transfer in SUN.
 Return value： transaction, including execution results.
 Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
@@ -254,26 +254,26 @@ Return value: Token update transaction raw data
 
 
 wallet/listnodes
-Function：List the nodes on the network
-demo: curl -X POST  http://192.168.2.121:8090/wallet/listnodes
+Function：List the nodes which the api fullnode is connectting on the network
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listnodes
 Parameters：None
 Return value：List of nodes
 
 wallet/getassetissuebyaccount
 Function：List the tokens issued by an account.
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
 Parameters：Token issuer account address，converted to a hex string
 Return value：List of tokens issued by the account
 
 wallet/getaccountnet
 Function：Query bandwidth information.
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getaccountnet -d '{"address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d '{"address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"}'
 Parameters：Account address，converted to a hex string
 Return value：Bandwidth information.
 
 wallet/getassetissuebyname
 Function：Query token by name.
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 Parameters：The name of the token, converted to a hex string
 Return value：token.
 
@@ -291,13 +291,13 @@ Return value：specified Block object
 
 wallet/getblockbyid
 Function：Query block by ID
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbyid -d '{"value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbyid -d '{"value": "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
 Parameters：Block ID.
 Return value：Block Object
 
 wallet/getblockbylimitnext
 Function：Query a range of blocks by block height
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
 Parameters：
    startNum：Starting block height, including this block
    endNum：Ending block height, excluding that block
@@ -305,48 +305,44 @@ Return value：A list of Block Objects
 
 wallet/getblockbylatestnum
 Function：Query the latest blocks
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getblockbylatestnum -d '{"num": 5}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getblockbylatestnum -d '{"num": 5}'
 Parameters：The number of blocks to query
 Return value：A list of Block Objects
 
 wallet/gettransactionbyid
 Function：Query transaction by ID
-demo: curl -X POST  http://192.168.2.121:8090/wallet/gettransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
 Parameters：Transaction ID.
 Return value：Transaction information.
 
 wallet/listwitnesses
 Function：Query the list of super representatives
-demo: curl -X POST  http://192.168.2.121:8090/wallet/listwitnesses
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
 Parameters：None
 Return value：List of all super representatives
 
 wallet/getassetissuelist
 Function：Query the list of Tokens
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getassetissuelist
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelist
 Parameters：None
 Return value：List of all Tokens
 
 wallet/getpaginatedassetissuelist
 Function：Query the list of Tokens with pagination
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getpaginatedassetissuelist -d '{"offset": 0, "limit": 10}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d '{"offset": 0, "limit": 10}'
 Parameters：Offset is the index of the starting Token, and limit is the number of Tokens expected to be returned.
 Return value：List of Tokens
 
 wallet/totaltransaction
 Function：Count all transactions on the network
-demo: curl -X POST  http://192.168.2.121:8090/wallet/totaltransaction
+demo: curl -X POST  http://127.0.0.1:8090/wallet/totaltransaction
 Parameters：None
 Return value：Total number of transactions.
 
 wallet/getnextmaintenancetime
 Function：Get the time of the next Super Representative vote
-demo: curl -X POST  http://192.168.2.121:8090/wallet/getnextmaintenancetime
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getnextmaintenancetime
 Parameters：None
 Return value: number of milliseconds until the next voting time.
-
-
-
-
 
 ```
