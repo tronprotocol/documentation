@@ -1,6 +1,6 @@
-#  Tron内置http接口说明
+#  TRON内置http接口说明
 
-# solidityNode接口说明
+# SolidityNode接口说明
 ```
 /walletsolidity/getaccount
 作用：查询一个账号的信息

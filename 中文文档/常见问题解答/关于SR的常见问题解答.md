@@ -11,6 +11,8 @@ Private运行环境下full node模式的问题
               
              - netstat -tulnp| grep 50051 
       
+      ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/FAQ/查询节点.png)
+      
       如果端口已开启，需要您使用tronscan.org测试节点，确保端口和IP对网络开放。如果使用的是私网IP，则需要其他gRPC软件。
       
       也可以使用下面的终端指令，检查节点是否正常运行：

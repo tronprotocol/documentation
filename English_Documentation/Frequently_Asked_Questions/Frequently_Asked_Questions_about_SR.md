@@ -9,7 +9,9 @@ Questions on the Full Node in private networks
        - netstat -tulnp| grep 50051
 
        If the port is open, you can test your node using tronscan.org. Make sure your port and IP is open on internet. If you are using a private IP only, you will need to use other gRPC software
-    ![]()
+
+    ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/FAQ/查询节点.png)
+
     You can also check if your node is running using the following terminal command:
 
         - tail -f logs/tron.log |grep "MyheadBlockNumber"
