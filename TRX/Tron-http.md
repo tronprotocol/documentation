@@ -11,7 +11,7 @@ Please add to the configuration files for both nodes:
   }
 ```
 
-# solidityNode interface
+# SolidityNode Interface
 ```
 /walletsolidity/getaccount
 Function：Query information about an account
@@ -75,7 +75,7 @@ Return value：Transactions list
 
 ```
 
-FullNode interface
+# FullNode Interface
 
 ```
 
