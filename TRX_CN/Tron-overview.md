@@ -83,10 +83,12 @@ https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%
 ### 4.2.2 http接口说明
 
 http 接口我们用两种实现方案
-```
-a. fullNode和solidityNode内置的http实现，文档请参考https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
-b. 基于grpc-gateway实现，文档请参考https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/grpc-gateway-http.md
-```
+a. fullNode和solidityNode内置的http实现，文档请参考
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
+
+b. 基于grpc-gateway实现，文档请参考
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/grpc-gateway-http.md
+
 我们推荐交易所使用方案a，我们在上面做了很多的优化，比方案b使用起来更加方便。
 
 内置http会自动把proto中的bytes字段转换为hexString编码。所以如果输入参数是bytes类型，需要首先转化为hexString编码，再发送请求；如果输出参数是bytes类型，请用hexString解码该参数，再做后续处理。
