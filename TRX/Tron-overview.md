@@ -75,6 +75,7 @@ Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-g
 For the definition of API, see also: https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 
 ## 4.2 Explanation of APIs
+### 4.2.1 grpc interface
 APIs under wallet service are provided by the full node. APIs under walletSolidity and walletExtension services are provided by the solidity node. APIs under the walletExtension service, whose processing time is long, are provided by the solidity node. The full node provides APIs for operations on the blockchain and for data inquiry, while the solidity node only provides APIs for the latter. The difference between these two nodes is that data of the full node could be revoked due to forking, whereas the solidified data of the solidity one is irrevocable.
 
 please refer:
@@ -82,10 +83,12 @@ https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/
 
 ### 4.2.2 HTTP Interface
 we implement http interfaces by two ways.
-```
-a. the inner http on FullNode and SolidityNode. Please refer https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
-b. grpc-gateway. Please refer https://github.com/tronprotocol/Documentation/blob/master/TRX/grpc-gateway-http.md
-```
+a. the inner http on FullNode and SolidityNode. Please refer 
+https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
+
+b. grpc-gateway. Please refer 
+https://github.com/tronprotocol/Documentation/blob/master/TRX/grpc-gateway-http.md
+
 we recommend exchanges to choose a. It is more convenient than b. 
 
 The inner http will encode the bytes fields defined in proto into hexString format.For input parameters in bytes format, you should encode in into hexString format, and for output parameters in bytes format, you should decode it into hexString format for subsequent processing. 
