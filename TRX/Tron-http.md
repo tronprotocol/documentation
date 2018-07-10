@@ -12,6 +12,7 @@ Please add to the configuration files for both nodes:
 ```
 
 # SolidityNode Interface
+The default http port on solidityNode is 8091.
 ```
 /walletsolidity/getaccount
 Function：Query information about an account
@@ -76,6 +77,7 @@ Return value：Transactions list
 ```
 
 # FullNode Interface
+The default http port on FullNode is 8090.
 
 ```
 
