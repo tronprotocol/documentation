@@ -76,124 +76,14 @@ For the definition of API, see also: https://github.com/tronprotocol/protocol/bl
 
 ## 4.2 Explanation of APIs
 APIs under wallet service are provided by the full node. APIs under walletSolidity and walletExtension services are provided by the solidity node. APIs under the walletExtension service, whose processing time is long, are provided by the solidity node. The full node provides APIs for operations on the blockchain and for data inquiry, while the solidity node only provides APIs for the latter. The difference between these two nodes is that data of the full node could be revoked due to forking, whereas the solidified data of the solidity one is irrevocable.
-```
-wallet/GetAccount
-Function:Returns account information.
 
-wallet/CreateTransaction
-Function: Creates a transaction of transfer. If the recipient address does not exist, a corresponding account will be created on the blockchain.
-
-wallet/ BroadcastTransaction
-Function: Broadcasts transaction. Transaction has to be signed before being broadcasted.
-
-wallet/ UpdateAccount
-Function: Updates account name. Account name can only be updated once for each account.
-
-wallet/ VoteWitnessAccount
-Function:Users can vote for witnesses.
-
-wallet/ CreateAssetIssue
-Function: Creates token. Users can issue their own token on Tron’s public blockchain, which can be used for reciprocal transfers and be bought with TRX. Users can chose to freeze a certain portion of the token supply during token issuance.
-
-wallet/ UpdateWitness
-Function: Updates witness information.
-
-wallet/ CreateAccount
-Function: Created account. Existent accounts can revoke this API to create a new account with an address.
-
-wallet/ CreateWitness
-Function: Users can apply to become Super Representatives, which costs 9,999 TRX.
-
-wallet/ TransferAsset
-Function: Token transfer.
-
-wallet/ ParticipateAssetIssue
-Function: Token participation. Users can participate in token offerings with their TRX.
-
-wallet/ FreezeBalance
-Function: Freeze TRX. Freezing TRX gives users bandwidth points and Tron Power, which are used for transactions and voting for witnesses respectively.
-
-wallet/ UnfreezeBalance
-Function: Unfreezes TRX. Frozen TRX can only be unfrozen 3 days afterwards. Unfreezing TRX also takes away corresponding bandwidth points, Tron power and the votes.
-
-wallet/ UnfreezeAsset
-Function: Unfreezes tokens.
-
-wallet/ WithdrawBalance
-Function: SRs and SR candidates can withdraw block reward and witness reward for the top 127 candidates to their account balance. One withdrawal can be made by each account every 24 hours.
-
-wallet/ UpdateAsset
-Function: Updates information of an issued token.
-
-wallet/ ListNodes
-Function: Returns a list of all nodes.
-
-wallet/ GetAssetIssueByAccount
-Function: Get information on a token by account.
-
-wallet/ GetAccountNet
-Function: Get bandwidth information on an account, including complimentary bandwidth points and bandwidth points obtained from balance freeze.
-
-wallet/ GetAssetIssueByName
-Function: Inquire token by token name.
-
-wallet/ GetNowBlock
-Function: Returns the latest block.
-
-wallet/ GetBlockByNum
-Function: Inquire block by block height.
-
-wallet/ GetBlockById
-Function: Inquire block by block ID. The ID of a block is the hash of the blockheader’s Raw data. 
-
-wallet/ GetBlockByLimitNext index
-Function: Returns blocks indexed between the startNum and the endNum (including both ends).
-
-wallet/ GetBlockByLatestNum
-Function: Get the latest N blocks. N is defined in the parameter.
-
-wallet/ GetTransactionById
-Function: Get transaction by ID, which is the hash of the Raw data of the transaction.
-
-wallet/ ListWitnesses
-Function: Get a list of all witnesses.
-
-wallet/ GetAssetIssueList
-Function: Get a list of all issued tokens.
-
-wallet/ TotalTransaction
-Function: Get the total amount of transactions on the blockchain.
-
-wallet/ GetNextMaintenanceTime
-Function: Get the next maintenance time, namely the next update of witness votes count.
-
-WalletSolidity/ GetAccount
-Function:
-
-WalletSolidity/ ListWitnesses
-Function:
-
-WalletSolidity/ GetAssetIssueList
-Function:
-
-WalletSolidity/ GetNowBlock
-Function:
-
-WalletSolidity/ GetBlockByNum
-Function:
-
-WalletExtension/ GetTransactionsFromThis
-Function: Get the record of all outbound transactions from a certain account.
-
-WalletExtension/ GetTransactionsToThis
-Function: Get the record of all incoming transactions of a certain account.
-```
+please refer:
+https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 
 ### 4.2.2 HTTP Interface
 we implement http interfaces by two ways.
 ```
-a. the inner http on FullNode and SolidityNode. Please refer 
-https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
+a. the inner http on FullNode and SolidityNode. Please refer https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
 b. grpc-gateway
 ```
 we recommend exchanges to choose a. It is more convenient than b. 
