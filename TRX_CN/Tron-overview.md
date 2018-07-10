@@ -76,130 +76,15 @@ https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 ### 4.2.1 grpc接口说明
 以wallet前缀的api是fullnode提供；以walletSolidity为前缀的api是solidity提供；以walletExtension以前缀的api是solidity提供，且这些api比较耗时。
 Fullnode提供操作区块链的api和查询数据的api，Solidity只提供查询数据的api。Fullnode和Solidity的区别是fullnode当前的数据因为分叉的原因有可能被回退，而solidity上的数据是固化块的数据，不可能被回退。
-```
-wallet/GetAccount
-作用：返回一个账号的信息
+具体请参考：
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
 
-wallet/CreateTransaction
-作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
 
-wallet/ BroadcastTransaction
-作用： 广播交易，广播之前需要做签名
-
-wallet/ UpdateAccount
-作用： 更新账号名称，一个账号只能更新一次账号名称
-
-wallet/ VoteWitnessAccount
-作用：普通用户对witness进行投票
-
-wallet/ CreateAssetIssue
-作用： 发行Token，用户可以再Tron公链上发行Token，Token可以被相互转账，可以用Trx参与。用户在发行Token的时候，可以选择冻结部分Token。
-
-wallet/ UpdateWitness
-作用： 修改wieness的信息
-
-wallet/ CreateAccount
-作用： 创建账号，目前之后已经存在的账号，可以调用该api创建一个新账号，需要制定新账号的Address
-
-wallet/ CreateWitness
-作用： 普通用户申请成为超级代表，需要花费9999个trx
-
-wallet/ TransferAsset
-作用： Token转账
-
-wallet/ ParticipateAssetIssue
-作用： 参与Token发行，用户可以花费一定的Trx参与别人发行的Token
-
-wallet/ FreezeBalance
-作用： 冻结部分Trx，冻结Trx可以获得bandwidth points和Trow power，用户要发起交易需要消耗bandwidth points，要对witness投票，需要有Trow power
-
-wallet/ UnfreezeBalance
-作用： 解冻冻结的trx，trx被冻结后，至少需要3天才可以解冻，解冻trx后会失去部分bandwidth points和Trow power，以及由该Trow power产生的投票
-
-wallet/ UnfreezeAsset
-作用： 对Token进行解冻
-
-wallet/ WithdrawBalance
-作用： 超级代表以及备选超级代表可以通过该api把产块的奖励以及成为top127排名witness的奖励体现到账号余额。用户每隔24个小时可以提现一次
-
-wallet/ UpdateAsset
-作用： 修改发行Token的信息
-
-wallet/ ListNodes
-作用： 返回当前所有的节点
-
-wallet/ GetAssetIssueByAccount
-作用： 获取某个账号发行的Token
-
-wallet/ GetAccountNet
-作用： 获取账号的bandwidth points信息，包含免费的bandwidth points和通过冻结trx获取的bandwidth points。
-
-wallet/ GetAssetIssueByName
-作用： 通过Token名字，查询制定的Token
-
-wallet/ GetNowBlock
-作用： 返回当前最新块
-
-wallet/ GetBlockByNum
-作用： 通过块的高度查询块
-
-wallet/ GetBlockById
-作用： 通过块的ID查询块，块的ID是块头Raw data的Hash
-
-wallet/ GetBlockByLimitNext
-作用： 返回从下标从startNum（包含）到endNum（包含）之间的块，
-
-wallet/ GetBlockByLatestNum
-作用： 获取最新的N个块，N通过参数指定
-
-wallet/ GetTransactionById
-作用： 通过交易的ID获取交易，ID是交易Raw data 的hash
-
-wallet/ ListWitnesses
-作用： 获取当前所有的witness
-
-wallet/ GetAssetIssueList
-作用： 获取当前所有发行的Token
-
-wallet/ TotalTransaction
-作用： 获取当前区块链中所有的交易数量
-
-wallet/ GetNextMaintenanceTime
-作用： 获取下次维护期的时间，即下次重新根据投票计算witness的时间
-
-Wallet/ GenerateAddress
-作用：生成地址以及私钥
-
-WalletSolidity/ GetAccount
-作用：
-
-WalletSolidity/ ListWitnesses
-作用：
-
-WalletSolidity/ GetAssetIssueList
-作用：
-
-WalletSolidity/ GetNowBlock
-作用：
-
-WalletSolidity/ GetBlockByNum
-作用：
-
-WalletSolidity/ GenerateAddress
-作用：生成地址以及私钥
-
-WalletExtension/ GetTransactionsFromThis
-作用： 获取某个账号的转出交易记录
-
-WalletExtension/ GetTransactionsToThis
-作用： 获取某个账号的转入交易记录
-```
 ### 4.2.2 http接口说明
 
 http 接口我们用两种实现方案
 ```
-a. fullNode和solidityNode内置的http实现，文档请参考
-https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
+a. fullNode和solidityNode内置的http实现，文档请参考https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 b. 基于grpc-gateway实现
 ```
 我们推荐交易所使用方案a，我们在上面做了很多的优化，比方案b使用起来更加方便。
