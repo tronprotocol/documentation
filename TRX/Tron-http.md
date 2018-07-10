@@ -269,7 +269,7 @@ wallet/getaccountnet
 Function：Query bandwidth information.
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d '{"address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"}'
 Parameters：Account address，converted to a hex string
-Return value：Bandwidth information.
+Return value：Bandwidth information for the account. If a field doesn't appear, then the corresponding value is 0. {"freeNetUsed": 557,"freeNetLimit": 5000,"NetUsed": 353,"NetLimit": 5239157853,"TotalNetLimit": 43200000000,"TotalNetWeight": 41228}
 
 wallet/getassetissuebyname
 Function：Query token by name.
