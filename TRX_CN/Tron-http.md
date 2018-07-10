@@ -1,6 +1,8 @@
 #  TRON内置http接口说明
 
 # SolidityNode接口说明
+
+solidityNode默认的http端口是8091，启动solidityNode的时候会同时启动http服务。
 ```
 /walletsolidity/getaccount
 作用：查询一个账号的信息
@@ -65,6 +67,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis 
 ```
 
 # FullNode接口说明
+FullNode默认的http端口是8090，启动FullNode的时候会同时启动http服务。
 
 ```
 
