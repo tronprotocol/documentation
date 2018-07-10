@@ -246,6 +246,36 @@
       bytes owner_address = 1;   
       bytes script = 2; 
      }
+     
+   `ProposalCreateContract`包含2种参数： 
+   `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+   `parameters`：修改的网络参数。
+   
+    message ProposalCreateContract {
+      bytes owner_address = 1;
+      map<int64, int64> parameters = 2;
+    }
+    
+   `ProposalApproveContract`包含3种参数：  
+   `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+   `proposal_id`：提议id。
+   `is_add_approval`：赞成或取消赞成票。
+   
+    message ProposalApproveContract {
+     bytes owner_address = 1;
+     int64 proposal_id = 2;
+     bool is_add_approval = 3; // add or remove approval
+    }
+    
+   `ProposalDeleteContract`包含2种参数：
+   `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+   `proposal_id`：提议id。
+   
+    message ProposalDeleteContract {
+      bytes owner_address = 1;
+      int64 proposal_id = 2;
+    }
+    
 
    消息体 `Result` 包含 `fee` and `ret`2个参数.   
    `ret`: 交易结果。  
@@ -295,77 +325,56 @@
    `type`：合约的类型。  
    `parameter`：任意参数。
 
-   有八种账户类型合约：`AccountCreateContract`，`TransferContract`，`TransferAssetContract`，`VoteAssetContract`，`VoteWitnessContract`，`WitnessCreateContract`，`AssetIssueContract` 和`DeployContract`。
-
-   `TransactionType`包括`UtxoType`和`ContractType`。
+   有21种账户类型合约。
 
     message Transaction {   
-      enum TranscationType {     
-        UtxoType = 0;     
-        ContractType = 1;   
-       }   
        message Contract {    
          enum ContractType {       
-           AccountCreateContract = 0;       
-           TransferContract = 1;       
-           TransferAssetContract = 2;       
-           VoteAssetContract = 3;       
-           VoteWitnessContract = 4;      
-           WitnessCreateContract = 5;       
-           AssetIssueContract = 6;       
-           DeployContract = 7;     
+            AccountCreateContract = 0;
+            TransferContract = 1;
+            TransferAssetContract = 2;
+            VoteAssetContract = 3;
+            VoteWitnessContract = 4;
+            WitnessCreateContract = 5;
+            AssetIssueContract = 6;
+            DeployContract = 7;
+            WitnessUpdateContract = 8;
+            ParticipateAssetIssueContract = 9;
+            AccountUpdateContract = 10;
+            FreezeBalanceContract = 11;
+            UnfreezeBalanceContract = 12;
+            WithdrawBalanceContract = 13;
+            UnfreezeAssetContract = 14;
+            UpdateAssetContract = 15;
+            ProposalCreateContract = 16;
+            ProposalApproveContract = 17;
+            ProposalDeleteContract = 18;
+            CustomContract = 20;    
           }     
           ContractType type = 1;     
-          google.protobuf.Any parameter = 2;  
+          google.protobuf.Any parameter = 2; 
+          bytes provider = 3;
+          bytes ContractName = 4; 
         }   
-        message raw {     
-          TranscationType type = 2;     
-          repeated TXInput vin = 5;     
-          repeated TXOutput vout = 7;     
-          int64 expiration = 8;     
-          bytes data = 10;     
-          repeated Contract contract = 11;     
-          bytes scripts = 16; 
-          in64 timestamp = 17; 
-         }   
+        message raw {
+            bytes ref_block_bytes = 1;
+            int64 ref_block_num = 3;
+            bytes ref_block_hash = 4;
+            int64 expiration = 8;
+            repeated authority auths = 9;
+            // data not used
+            bytes data = 10;
+            //only support size = 1,  repeated list here for extension
+            repeated Contract contract = 11;
+            // scripts not used
+            bytes scripts = 12;
+            int64 timestamp = 14;
+          } 
          raw raw_data = 1;   
-         repeated bytes signature = 5; 
+         repeated bytes signature = 2; 
+         repeated Result ret = 5;
      }
-
-   消息体 `TXOutputs`由`outputs`构成。  
-   `outputs`: 元素为`TXOutput`的数组。
-
-    message TXOutputs {   
-      repeated TXOutput outputs = 1;
-      }
-
-   消息体 `TXOutput`包括`value`和`pubKeyHash`。  
-   `value`：输出值。  
-   `pubKeyhash`：公钥的哈希。
-
-    message TXOutput {   
-      int64 value = 1;   
-      bytes pubKeyHash = 2;
-      }
-
-   消息体 `TXIutput`包括`raw_data`和`signature`。  
-   `raw_data`：消息体`raw`。  
-   `signature`：`TXInput`的签名。
-
-   消息体 `raw`包含`txID`，`vout`和 `pubKey`。  
-   `txID`：交易ID。  
-   `Vout`：上一个输出的值。  
-   `pubkey`:公钥。
-
-    message TXInput {   
-      message raw {     
-        bytes txID = 1;     
-        int64 vout = 2;     
-        bytes pubKey = 3;   
-       }   
-       raw raw_data = 1;  
-       bytes signature = 4; }
-        
+  
    消息体 `TransactionInfo`包括`id`、`fee`、`blockNumber`和`blockTimeStamp`。 
    
    `id`：交易ID。  
