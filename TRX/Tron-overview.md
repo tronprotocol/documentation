@@ -191,10 +191,11 @@ Function: Get the record of all incoming transactions of a certain account.
 
 ### 4.2.2 HTTP Interface
 we implement http interfaces by two ways.
+```
 a. the inner http on FullNode and SolidityNode. Please refer 
 https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
 b. grpc-gateway
-
+```
 we recommend exchanges to choose a. It is more convenient than b. 
 
 If you want to choose b, please follow as:
