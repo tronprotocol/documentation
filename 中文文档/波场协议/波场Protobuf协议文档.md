@@ -247,6 +247,35 @@
       bytes script = 2; 
      }
      
+   `FreezeBalanceContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+       `frozen_balance`：冻结余额。
+       `frozen_duration`：冻结时间，只允许3天。
+       
+    message FreezeBalanceContract {
+      bytes owner_address = 1;
+      int64 frozen_balance = 2;
+      int64 frozen_duration = 3;
+    }
+    
+   `UnfreezeBalanceContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+    message UnfreezeBalanceContract {
+      bytes owner_address = 1;
+    }
+    
+   `UnfreezeAssetContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+    message UnfreezeAssetContract {
+      bytes owner_address = 1;
+    }
+    
+   `WithdrawBalanceContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+    message WithdrawBalanceContract {
+      bytes owner_address = 1;
+    }
+     
    `ProposalCreateContract`包含2种参数： 
    `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
    `parameters`：修改的网络参数。
@@ -526,6 +555,15 @@
    __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。  
    __`UpdateAccount`__：采用参数`AccountUpdateContract`，返回对象`Transaction`。    
    __`VoteWitnessAccount`__：采用参数`VoteWitnessContract`，返回对象`Transaction`。   
+   __`FreezeBalance`__：采用参数`FreezeBalanceContract`，返回对象`Transaction`。   
+   __`UnFreezeBalance`__：采用参数`UnfreezeBalanceContract`，返回对象`Transaction`。   
+   __`UnfreezeAsset`__：采用参数`UnfreezeAssetContract`，返回对象`Transaction`。   
+   __`WithdrawBalance`__：采用参数`WithdrawBalanceContract`，返回对象`Transaction`。   
+   __`ProposalCreate`__：采用参数`ProposalCreateContract`，返回对象`Transaction`。   
+   __`ProposalApprove`__：采用参数`ProposalApproveContract`，返回对象`Transaction`。   
+   __`ProposalDelete`__：采用参数`ProposalDeleteContract`，返回对象`Transaction`。   
+   __`ListProposals`__：采用参数`EmptyMessage`，返回对象`ProposalList`。   
+   __`getProposals`__：采用参数`ProposalApproveContract`，返回对象`Transaction`。   
    __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
    __`UpdateWitness`__：采用参数`WitnessUpdateContract`，返回对象`Transaction`。    
    __`CreateWitness`__：采用参数`WitnessCreateContract`，返回对象`Transaction`。    
@@ -592,6 +630,47 @@
                   body: "*"
                 };
               };
+                         
+              rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/freezebalance"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/freezebalance"
+                  }
+                };
+              }
+
+              rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/unfreezebalance"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/unfreezebalance"
+                 };
+              }
+
+              rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/unfreezeasset"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/unfreezeasset"
+                  }
+                };
+              }
+
+              rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/withdrawbalance"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/withdrawbalance"
+                  }
+                };
+              }
+                 
+              
             
               rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {
                 option (google.api.http) = {
