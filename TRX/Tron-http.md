@@ -5,10 +5,13 @@ Available in the lastest build of java-tron master.
 Please add to the configuration files for both nodes:
 
 ```
-  http {
-    fullNodePort = 8090
-    solidityPort = 8091
-  }
+
+  node {
+  ...
+    http {
+      fullNodePort = 8090
+      solidityPort = 8091
+    }
 ```
 
 # SolidityNode Interface
