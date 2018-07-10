@@ -70,7 +70,8 @@ DISK视实际上线后交易量而定，可以预留的大一些
 # 4 Tron API说明
     目前Tron推荐使用gRPC接口，同时也支持http接口。
 ## 4.1 api定义
-    api的定义请参考：https://github.com/tronprotocol/protocol/blob/master/api/api.proto
+    api的定义请参考：
+https://github.com/tronprotocol/protocol/blob/master/api/api.proto
 ## 4.2 api说明
 ### 4.2.1 grpc接口说明
 以wallet前缀的api是fullnode提供；以walletSolidity为前缀的api是solidity提供；以walletExtension以前缀的api是solidity提供，且这些api比较耗时。
