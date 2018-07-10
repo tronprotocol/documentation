@@ -496,8 +496,26 @@ See: https://github.com/tronprotocol/Documentation/blob/master/English_Documenta
 
 # 8. Calculation of transaction ID
 Hash the Raw data of the transaction.
+in java
 ```
 Hash.sha256(transaction.getRawData().toByteArray())
+```
+in php  by William
+```
+try {
+      $request = new \Protocol\NumberMessage(); 
+      $request->setNum(319139);
+      list($reply, $status) = $fullnode->GetBlockByNum($request)->wait();
+      $i=0;
+      foreach($reply->getTransactions() as $trans){
+        echo $i++;
+        echo ": ";
+        echo hash("sha256", $trans->getRawData()->serializeToString());
+        echo "\n";
+      }
+    } catch (Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+    }
 ```
 
 # 9. Calculation of block ID

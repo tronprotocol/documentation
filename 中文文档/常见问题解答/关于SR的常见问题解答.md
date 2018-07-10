@@ -1,7 +1,7 @@
 
 Private运行环境下full node模式的问题
 -----
-1. 问： config.conf中的genesis.block.witnesses替换成在https://trxscan.org/ 注册时给出的address字符串：是否需要删除其他address？url和voteCount字段是否需要删除？  
+1. 问： config.conf中的genesis.block.witnesses替换成在https://tronscan.org/ 注册时给出的address字符串：是否需要删除其他address？url和voteCount字段是否需要删除？  
    
    答： 不需要删除其他地址，但是这些地址也会成为您网络的一部分，而如果您不持有其私钥，这些相当于是废地址。注意：Zion、Sun以及Blackhole账户不能从创世块的配置文件中删除，但是可以对它们的地址进行更改。 
     
@@ -9,7 +9,10 @@ Private运行环境下full node模式的问题
 
    答： Java-tron没有默认的接口。一旦服务器开始运行，就能够发送grpc命令，基于这一点，有几种检验部署是否成功的方法。首先，需要您确认grpc端口已处于开启状态：
               
+             
              - netstat -tulnp| grep 50051 
+      
+      ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/FAQ/查询节点.png)
       
       如果端口已开启，需要您使用tronscan.org测试节点，确保端口和IP对网络开放。如果使用的是私网IP，则需要其他gRPC软件。
       
@@ -20,9 +23,9 @@ Private运行环境下full node模式的问题
 
 Private运行环境下super node模式的问题
 -----
-1. 问： 在部署private 环境时，Super Node和Full Node 关系是什么样子？是否需要先部署Super Node ,然后部署Full Node ？
+1. 问： 在部署private 环境时，SuperNode和FullNode 关系是什么样子？是否需要先部署SuperNode ,然后部署FullNode ？
 
-   答： 在private环境中，至少需要部署一个Super Node，但对Full Node的数量没有最低要求。
+   答： 在private环境中，至少需要部署一个SuperNode，但对FullNode的数量没有最低要求。
 
 2. 问： Private环境，因为我看官网是通过手动投票产生的SuperNode节点，是否还需要提交TRON资料审核注册成为Super Node节点？
 
@@ -152,7 +155,7 @@ public运行环境下的问题
 
 7. 问：按照每3秒出一个块的速度，出块的32TRX的奖励给对应出块的节点是吗？TRON公链网络是否能保证每秒都有交易数量？
 
-   答：32个TRX全部奖励给处快的节点。TRON公链网络能够保证。
+   答：32个TRX全部奖励给出块的节点。TRON公链网络能够保证。
 
 8. 问：细则里的社区支持方案具体是指什么？
    
@@ -195,7 +198,7 @@ public运行环境下的问题
 
 5. 问：API调用有没有更具体的文档，类似比特币或者以太坊的？
 
-   答：我们的文档还在补充中，目前还不是很完善。我们刚补充了一份有关钱包rpc-api的文档在名为Documentation的repo里。
+   答：请查看链接https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 
 6. 问：SolidityNode 和 FullNode可以装在同一台机器上吗？数据目录不能指定，两个节点会共用数据吗？有没有问题？
 
