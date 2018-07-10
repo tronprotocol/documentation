@@ -190,7 +190,15 @@ Function: Get the record of all incoming transactions of a certain account.
 ```
 
 ### 4.2.2 HTTP Interface
-If you require an http interface, you will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
+we implement http interfaces by two ways.
+a. the inner http on FullNode and SolidityNode. Please refer 
+https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
+b. grpc-gateway
+
+we recommend exchanges to choose a. It is more convenient than b. 
+
+If you want to choose b, please follow as:
+you will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
 The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
 
