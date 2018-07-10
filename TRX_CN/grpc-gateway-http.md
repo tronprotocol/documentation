@@ -1,3 +1,5 @@
+# TRON GRPC-Gateway-HTTP
+
 需要部署grpc-gateway，详情请见：[grpc-gateway文档](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
 grpc-gateway会自动把proto中的bytes字段转换为base64编码。所以如果输入参数是bytes类型，需要首先转化为base64编码，再发送请求；如果输出参数是bytes类型，请用base64解码该参数，再做后续处理。 Tron提供了一个编解码的工具，下载地址是：https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip

@@ -24,7 +24,7 @@
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/Guide_for_voting_on_Blockchain_Explorer/6.png)
 
-## 6. Only users with TRX are allowed to vote. 10,000TRX can be claimed at the bottom of the account page to vote and only one claim can be made by every account. Once TRX is successfully claimed, account balance can be viewed in WALLET.
+## 6. Only users with TRX are allowed to vote. Request of free testing TRX is only supported on the testnest at https://test.tronscan.org/#/. 10,000TRX can be claimed at the bottom of the account page to vote and only one claim can be made by every account. Once TRX is successfully claimed, account balance can be viewed in WALLET.
 
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Blockchain-Explorer/Guide_for_voting_on_Blockchain_Explorer/testnet.png)
 
