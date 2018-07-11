@@ -344,5 +344,10 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/generateaddress
 返回值：地址和私钥
 警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
 
+wallet/validateaddress
+作用：检查地址是否正确
+demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
+参数说明：地址，可以是base58checksum、hexString、base64格式
+返回值：地址正确或者错误
 
 ```
