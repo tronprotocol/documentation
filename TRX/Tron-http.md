@@ -5,10 +5,13 @@ Available in the lastest build of java-tron master.
 Please add to the configuration files for both nodes:
 
 ```
-  http {
-    fullNodePort = 8090
-    solidityPort = 8091
-  }
+
+  node {
+  ...
+    http {
+      fullNodePort = 8090
+      solidityPort = 8091
+    }
 ```
 
 # SolidityNode Interface
@@ -346,5 +349,12 @@ Function：Get the time of the next Super Representative vote
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getnextmaintenancetime
 Parameters：None
 Return value: number of milliseconds until the next voting time.
+
+wallet/validateaddress
+Function：validate address
+demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
+Parameters：The address, should be in base58checksum, hexString or base64 format.
+Return value: ture or false
+
 
 ```
