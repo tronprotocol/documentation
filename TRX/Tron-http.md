@@ -1,4 +1,4 @@
-#  TRON HTPP RPC interface
+#  TRON HTTP RPC interface
 
 Available in the lastest build of java-tron master.
 
