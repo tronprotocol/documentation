@@ -58,7 +58,7 @@ Questions regarding error occurrences/messages for Super Nodes
 
        17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block        17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync 
 
-    A: A: This message means your node is not in sync with the network. To start produce blocks, you need to be in sync. Check your clock height with the command:
+    A: This message means your node is not in sync with the network. To start produce blocks, you need to be in sync. Check your block height with the command:
 
         - tail -f logs/tron.log |grep "MyheadBlockNumber"
 
