@@ -230,8 +230,8 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{
 owner_address是token发行人的地址，需要是hexString格式
 description是token的描述，需要是hexString格式
 url是token发行人的官网地址，需要是hexString格式
-new_limit是该token全部的免费带宽
-new_public_limit是token每个持有人能够使用的免费带宽
+new_limit是token每个持有人能够使用的免费带宽
+new_public_limit是该token全部的免费带宽
 返回值：修改Token信息的transaction
 
 
@@ -331,7 +331,7 @@ wallet/easytransferbyprivate
 作用：快捷转账
 demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
 参数说明：
-   passPhrase：密码，createaddress里设置的字符串。
+   privateKey：秘钥
    toAddress：转入账户地址，hexString格式。
    amount：转账的drop数量。
 返回值：交易，含执行结果。

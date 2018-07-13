@@ -166,7 +166,7 @@ Warning: Please control risks when using this API. To ensure environmental secur
 wallet/easytransferbyprivate
 Function：Easily transfer from an address using the private key. 
 demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
-Parameters：passPhrase is the private key, converted from ascii to hex. toAddress is the recipient address, converted into a hex string; amount is the amount of TRX to transfer in SUN.
+Parameters：passPhrase is the private key in hex string format. toAddress is the recipient address, converted into a hex string; amount is the amount of TRX to transfer in SUN.
 Return value： transaction, including execution results.
 Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
 
@@ -253,8 +253,8 @@ Parameters：
 Owner_address is the address of the token issuer, converted to a hex string
 Description is a description of the token, converted to a hex string
 Url is the official website address of the token issuer, converted to a hex string
-New_limit is the free bandwidth of the token
-New_public_limit is the free bandwidth that each token can use for each holder.
+New_limit is the free bandwidth that each token can use for each holder.
+New_public_limit is the free bandwidth of the token
 Return value: Token update transaction raw data
 
 
