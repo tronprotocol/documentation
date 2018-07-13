@@ -331,7 +331,7 @@ wallet/easytransferbyprivate
 作用：快捷转账
 demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
 参数说明：
-   privateKey：秘钥
+   privateKey：私钥，hexString格式
    toAddress：转入账户地址，hexString格式。
    amount：转账的drop数量。
 返回值：交易，含执行结果。
