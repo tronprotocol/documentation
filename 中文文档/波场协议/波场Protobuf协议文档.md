@@ -305,6 +305,11 @@
       int64 proposal_id = 2;
     }
     
+   `GetChainParameters`
+      message ChainParameters {
+        map<int64, int64> parameters = 1;
+      }
+      
 
    消息体 `Result` 包含 `fee` and `ret`2个参数.   
    `ret`: 交易结果。  
@@ -562,6 +567,7 @@
    __`ProposalCreate`__：采用参数`ProposalCreateContract`，返回对象`Transaction`。   
    __`ProposalApprove`__：采用参数`ProposalApproveContract`，返回对象`Transaction`。   
    __`ProposalDelete`__：采用参数`ProposalDeleteContract`，返回对象`Transaction`。   
+   __`GetChainParameters`__：采用参数`EmptyMessage`，返回对象`ChainParameters`。   
    __`ListProposals`__：采用参数`EmptyMessage`，返回对象`ProposalList`。   
    __`getProposals`__：采用参数`ProposalApproveContract`，返回对象`Transaction`。   
    __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
