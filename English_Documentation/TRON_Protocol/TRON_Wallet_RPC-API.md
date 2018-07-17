@@ -77,7 +77,7 @@ rpc CreateAccount (AccountCreateContract) returns (Transaction){}; 4.2 Node 
  6.2 Node Fullnode.  
  6.3 Parameters VoteWitnessContract: voter address and list of candidates which includes candidate address and number of votes received.  
  6.4 Returns Transaction: returns transaction of votes. Request broadcasting after the transaction is signed by wallet.   
-6.5 Function Vote. Coin holders can only vote for Super Representative candidates, with no more votes than the amount of locked balance (see also 25. Balance freeze).
+6.5 Function Vote. Coin holders can only vote for Super Representative candidates, with no more votes than the amount of frozen balance (see also 25. Balance freeze).
 
 ## 7. Token issuance
 7.1 Interface statement rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {};  
