@@ -1,18 +1,16 @@
-# Overview of Tron
-
-# Overall Tron
+# Full Overview of TRON
 
 ## 1.1 Project repositories
-Address of project repositories: https://github.com/tronprotocol. Java-tron repository contains code of the mainnet. The protocol repository contains documents on API and data structure. Wallet-cli repository contains documents on the official command-line wallet.
+Address of project repositories: https://github.com/TRONprotocol. Java-TRON repository contains code of the mainnet. The protocol repository contains documents on API and data structure. Wallet-cli repository contains documents on the official command-line wallet.
 
 ## 1.2 Block explorer
-The address of the block explorer is: https://tronscan.org. Its creator is Rovak, whose GitHub page can be found at: https://github.com/Rovak.
+The address of the block explorer is: https://TRONscan.org. Its creator is Rovak, whose GitHub page can be found at: https://github.com/Rovak.
 
-## 1.3 Tron consensus algorithm
-Tron adopts TPoS, an improved DPoS algorithm.
+## 1.3 TRON consensus algorithm
+TRON adopts TPoS, an improved DPoS algorithm.
 
-## 1.4 Block Producing Speed of Tron
-For current version Odyssey-v2.0.1, 3 sec per block.
+## 1.4 Block Producing Speed of TRON
+The network currently produces 1 block per 3 seconds.
 
 ## 1.5 Transaction model
 The adopted transaction model is the account model instead of the UTXO model. The smallest unit of TRX is sun, 1 TRX=1,000,000 sun. Currently, only one-to-one transaction services are available, meaning that one-to-many or many-to-one transactions are not supported.
@@ -24,16 +22,20 @@ a.  Create account with an existing account.
 b.  Send TRX to a new address to create account.
 c.  Send tokens to a new address to create account.
 ```
-# 2. Tron’s network structure
+# 2. TRON’s network structure
 
 ## 2.1 Node types
-There are three types of nodes on Tron’s network, namely witness, full node and solidity node. A witness is responsible for block production; a full node provides APIs, and broadcasts transactions and blocks; a solidity node synchronizes irrevocable blocks and provides inquiry APIs.
+There are three types of nodes on TRON’s network: Witnesses(Super Representatives), Full Nodes and Solidity Nodes. A witness is responsible for block production; a full node provides APIs, and broadcasts transactions and blocks; a solidity node synchronizes irrevocable blocks and provides inquiry APIs.
 
-## 2.2 Network deployment (of exchanges)
-Exchanges need to deploy a full node and a solidity node. The solidity node connects to the local full node which connects to the mainnet.
+## 2.2 Mainnet and testnet
 
-## 2.3 Mainnet and testnet
-The blockchain explorer of the mainnet is https://tronscan.org and the testnet https://test.tronscan.org. Exchanges should test their code on the testnet. About how to config on the testnet, please refer to https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf. About how to config on the mainnet, please refer to https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf.
+### Mainnet
+- Block Explorer: https://TRONscan.org
+- Config: https://github.com/TRONprotocol/TRONDeployment/blob/master/main_net_config.conf
+
+### Testnet
+- Block Explorer: https://test.TRONscan.org
+- Config: https://github.com/TRONprotocol/TRONDeployment/blob/master/test_net_config.conf
 
 # 3. Operation of node
 
@@ -65,30 +67,35 @@ DISK capacity depends on the actual transaction volume after deployment, but it�
 ```
 
 ## 3.2 Start the full node and solidity node
-Please follow the guide here to configure and deploy both nodes: https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
-We also provide a script to deploy fullnode and soliditynode, please refer https://github.com/tronprotocol/TronDeployment/blob/master/README.md
+Please follow the guide here to configure and deploy both nodes: 
+- https://github.com/TRONprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md
 
-# 4. Tron API
-Currently Tron only supports gRPC interfaces and not http interfaces. The grpc-gateway is for the use of debugging only and we strongly suggest that developers do not use it for development.
+We also provide a script to deploy fullnode and soliditynode
+- https://github.com/TRONprotocol/TRONDeployment/blob/master/README.md
 
-## 4.1 Definition of API
-For the definition of API, see also: https://github.com/tronprotocol/protocol/blob/master/api/api.proto
+# 4. TRON API
+The TRON Nodes support both a gRPC Service and a HTTP Gateway
+
+## 4.1 API Definition
+Please see the protobuf protocol for the raw API.
+- [Protobuf API](https://github.com/TRONprotocol/protocol/blob/master/api/api.proto)
+- [Protobuf Structures](https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Protobuf_Protocol_document.md)
 
 ## 4.2 Explanation of APIs
 ### 4.2.1 grpc interface
 APIs under wallet service are provided by the full node. APIs under walletSolidity and walletExtension services are provided by the solidity node. APIs under the walletExtension service, whose processing time is long, are provided by the solidity node. The full node provides APIs for operations on the blockchain and for data inquiry, while the solidity node only provides APIs for the latter. The difference between these two nodes is that data of the full node could be revoked due to forking, whereas the solidified data of the solidity one is irrevocable.
 
 please refer:
-https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
+https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 
 ### 4.2.2 HTTP Interface
 we implement http interfaces by two ways.
 
 a. the inner http on FullNode and SolidityNode. Please refer 
-https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
+https://github.com/TRONprotocol/Documentation/blob/master/TRX/TRON-http.md
 
 b. grpc-gateway. Please refer 
-https://github.com/tronprotocol/Documentation/blob/master/TRX/grpc-gateway-http.md
+https://github.com/TRONprotocol/Documentation/blob/master/TRX/grpc-gateway-http.md
 
 we recommend exchanges to choose a. It is more convenient than b. 
 
@@ -96,7 +103,7 @@ The inner http will encode the bytes fields defined in proto into hexString form
 
 The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. 
 
-We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
+We provide a encoding/decoding tool which you can download from https://github.com/TRONprotocol/TRON-demo/blob/master/TRONConvertTool.zip.
 
 ## 4.3 API code generation
 APIs are based on the gRPC protocol, see https://grpc.io/docs/ for more information.
@@ -104,14 +111,14 @@ APIs are based on the gRPC protocol, see https://grpc.io/docs/ for more informat
 ## 4.4 API demo
 Please refer to the following two classes for a GRPC example in Java.
 ```
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/WalletClient.java
+https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/WalletClient.java
 
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/GrpcClient.java
+https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/GrpcClient.java
 ```
 # 5. Relevant expenses:
-When there are sufficient bandwidth points, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also Transaction.Result.fee, with the corresponding proto file at https://github.com/tronprotocol/protocol/blob/master/core/Tron.proto.
+When there are sufficient bandwidth points, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also Transaction.Result.fee, with the corresponding proto file at https://github.com/TRONprotocol/protocol/blob/master/core/TRON.proto.
 
-See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
+See also: https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
 ## 5.1 Definition of bandwidth points
 ## 5.2 Freeze/unfreeze mechanism
 ## 5.3 Bandwidth consumption rules
@@ -140,10 +147,10 @@ Please note that the sha3 protocol we adopt is KECCAK-256.
 ```
 
 ## 6.3 Java code demo
-See: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
+See: https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/demo/ECKeyDemo.java
 
 # 7. Transaction signing
-See: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
+See: https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
 # 8. Calculation of transaction ID
 Hash the Raw data of the transaction.
@@ -186,7 +193,7 @@ Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 # 10. Construction and signature of transaction
 There are two ways to construct a transaction:
 ## 10.1 Invoke APIs on the full node
-Based on your own needs, construct a corresponding local Contract and construct transactions with corresponding APIs. For the contract, please refer to https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto.
+Based on your own needs, construct a corresponding local Contract and construct transactions with corresponding APIs. For the contract, please refer to https://github.com/TRONprotocol/protocol/blob/master/core/Contract.proto.
 
 ## 10.2 Local construction
 Based on the definition of a transaction, you will need to fill in all fields of a transaction to construct a transaction at your local. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is (Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours). If the condition is fulfilled, then the transaction is legit, and if not, the transaction is expired and will not be received by the mainnet.
@@ -233,18 +240,24 @@ method of setting Expiration and transaction timestamp
   }
 ```
 ## 10.3 Signature
-After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures. The signing process is described here: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
+After a transaction is constructed, it can be signed using the ECDSA algorithm. For security reasons, we suggest all exchanges to adopt offline signatures. 
+
+https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
+
 
 ## 10.4 Demo
 The demo for local transaction construction and signing can be found at:
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java.
+https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/demo/TransactionSignDemo.java.
 
 # 11. demo
-For our nodejs demo, please refer https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
+For our nodejs demo, please refer https://github.com/TRONprotocol/TRON-demo/tree/master/demo/nodejs
 
-# 12. Migration plan
-Token migration from ERC20 TRX to Mainnet TRX will occur between June 21st – June 25th (GMT+8). If your TRX is held on an exchange, no action is required. If your TRX is held in a wallet, you must deposit your TRX to an exchange before June 24, 2018 to avoid any losses. From June 21st– 25th, TRX withdrawals on exchanges will be suspended. On June 25th, both TRX deposits and withdraws on exchanges will be suspended. Deposits and withdraws will resume on June 26th. During this period, TRX trading will not be affected. If your TRX is held in a wallet and you were not aware of the migration notice, or saw the migration notice after June 25th, please visit our permanent token-exchange counter to exchange your tokens for mainnet TRX.
+# 12. ERC20 TRX to Mainnet TRX Swap
+TRON will always support swapping ERC20 TRX to TRON Mainnet TRX.
+
+- For users: Please deposit your ERC20 in an exchange that supports the swap.
+- For Exhanges: Please contact TRON to swap your ERC20 TRX to Mainnet TRX
 
 # 13. Relevant files
-See also: https://github.com/tronprotocol/Documentation#documentation-guide
+See also: https://github.com/TRONprotocol/Documentation#documentation-guide
 
