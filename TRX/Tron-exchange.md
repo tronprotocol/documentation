@@ -4,7 +4,7 @@ Connecting to the TRON network is extremely easy and only requires running 1-2 n
 
 - [Full TRON Documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md)
 
-# 1.  Deploy TRON Nodes
+# 1. Deploy TRON Nodes
 
 You'll need to deploy nodes that connect to the network and offer both the ability to read the blockchain state and also to broadcast transactions onto the network.
 
@@ -15,7 +15,7 @@ Deploying a linked Solidity Node allows you to interact with blocks that are gua
 Follow this guide to deploy a Full Node and a linked Solidity Node on the same machine.
 - [Node Deployment Guide](https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md)
 
-# 2.  Integrate with the TRON nodes
+# 2. Integrate with the TRON nodes
 
 The nodes support both a gRPC Service and a HTTP Gateway on the ports specified in the configuration files. You can use either method to communicate with the nodes. 
 - [Full API documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#4-tron-api.)
@@ -29,8 +29,11 @@ The nodes support both a gRPC Service and a HTTP Gateway on the ports specified 
 The nodes also offer an alternate RESTful HTTP Gateway.
 Read the [HTTP Documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md) for examples.
 
+## Build your custom integration. 
 
-# 3.  Testing
+Take a look at the [Common Patterns](https://github.com/tronprotocol/Documentation/blob/master/TRX/Common-Patterns.md) guide for some basic assistance.
+
+# 3. Testing
 
 Once you've fully integrated with the network, please test on both the test network and the main network.
 
