@@ -12,19 +12,19 @@ TRON's network uses a FullNode to read and broadcast to the network. The FullNod
 
 Deploying a linked SolidityNode allows you to interact with blocks that are guaranteed confirmed and irreversible.
 
-Follow this (Guide)[https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md] to deploy a FullNode and a linked SolidityNode on the same machine.
-- .
+Follow this guide to deploy a FullNode and a linked SolidityNode on the same machine.
+- [Node Deployment Guide](https://github.com/tronprotocol/Documentation/blob/master/TRX/Solidity_and_Full_Node_Deployment_EN.md)
 
 # 2.  Integrate with the TRON Nodes
 
 The TRON Nodes each run both GRPC Service and HTTP Gateway on the ports specified in the configuration files. You can use either method to communicate with the nodes. 
 - [API documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#4-tron-api.)
 
-## GRPC 
+### GRPC 
 
 [GRPC](https://grpc.io/) uses Protobuf and the [TRON protocol](https://github.com/tronprotocol/protocol).
 
-## HTTP Gateway
+### HTTP Gateway
 
 The nodes also offer an alternate RESTful HTTP Gateway.
 Read the [HTTP Documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md) for examples.
