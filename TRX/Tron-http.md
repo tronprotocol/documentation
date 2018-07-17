@@ -1,8 +1,8 @@
-#  TRON HTTP RPC interface
+#  TRON HTTP Gateway interface
 
-Available in the lastest build of java-tron master.
+Available in the latest release of java-tron. 
 
-Please add to the configuration files for both nodes:
+Configure the ports for the nodes by modifying these ports in both configuration files.
 
 ```
 
