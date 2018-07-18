@@ -1,10 +1,13 @@
 # Full Overview of TRON
 
 ## 1.1 Project repositories
-Address of project repositories: https://github.com/TRONprotocol. Java-TRON repository contains code of the mainnet. The protocol repository contains documents on API and data structure. Wallet-cli repository contains documents on the official command-line wallet.
+#### https://github.com/TRONprotocol
+- [Java-TRON](https://github.com/tronprotocol/java-tron) - main repository for TRON nodes
+- [Documentation](https://github.com/tronprotocol/Documentation) - all documentation
+- [TronDeployment](https://github.com/tronprotocol/TronDeployment) - deployment scripts for java-tron
 
 ## 1.2 Block explorer
-The address of the block explorer is: https://TRONscan.org. Its creator is Rovak, whose GitHub page can be found at: https://github.com/Rovak.
+- https://TRONscan.org - Created by [Rovak](https://github.com/Rovak)
 
 ## 1.3 TRON consensus algorithm
 TRON adopts TPoS, an improved DPoS algorithm.
@@ -22,6 +25,7 @@ a.  Create account with an existing account.
 b.  Send TRX to a new address to create account.
 c.  Send tokens to a new address to create account.
 ```
+
 # 2. TRON’s network structure
 
 ## 2.1 Node types
