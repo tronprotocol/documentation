@@ -23,9 +23,9 @@ TRX transfers require access to the private key or password for the account.
 #### - Manually Create, Sign and Broadcast the transfer transaction
 
 1. Use the `/wallet/createtransaction` RPC Call to create a transaction and get the transaction data.
-2A. Sign the transaction data using `/wallet/gettransactionsign` with a `Private Key`.
-2B. Or manually sign the transaction data following this [Guide](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#103-signature).
-3. Broadcast the signed transaction and transaction data onto the network using `/wallet/broadcasttransaction`.
+2. Sign the transaction data using `/wallet/gettransactionsign` with a `Private Key`.
+3. Or manually sign the transaction data following this [Guide](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#103-signature).
+4. Broadcast the signed transaction and transaction data onto the network using `/wallet/broadcasttransaction`.
 
 #### - Use an RPC call 
 `/wallet/easytransfer` with a `Password String` to transfer TRX to a destination address.
