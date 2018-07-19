@@ -43,7 +43,7 @@ Return value：List of Tokens
 
 /walletsolidity/getnowblock
 Function：Query the latest block
-demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
+demo: curl -X POST http://127.0.0.1:8091/walletsolidity/getnowblock
 Parameters：None
 Return value：Latest block on solidityNode
 
@@ -241,13 +241,7 @@ Return value：Withdraw TRX transaction raw data
 
 /wallet/updateasset
 Function：Update a Token's information
-demo：curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{
-"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
-"description": ""，
-"url": "",
-"new_limit" : 1000000,
-"new_public_limit" : 100
-}'
+demo：curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{"owner_address":"4116440834509C59DE4EE6BA4933678626F451BEFE", "url":"687474", "description":"57732e", "new_limit":1000000, "new_public_limit":1000}'
 Parameters：
 Owner_address is the address of the token issuer, converted to a hex string
 Description is a description of the token, converted to a hex string
@@ -353,7 +347,7 @@ Return value: number of milliseconds until the next voting time.
 Function：validate address
 demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
 Parameters：The address, should be in base58checksum, hexString or base64 format.
-Return value: ture or false
+Return value: True or false
 
 
 ```
