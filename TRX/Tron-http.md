@@ -153,7 +153,7 @@ Return value：Super Representative application Transaction raw data
 
 /wallet/transferasset
 Function：Transfer Token
-demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "0x6173736574497373756531353330383934333132313538", "amount": 100}'
+demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "6173736574497373756531353330383934333132313538", "amount": 100}'
 Parameters：Owner_address is the address of the withdrawal account, converted to a hex string；To_address is the recipient address，converted to a hex string；asset_name is the token contract address，converted to a hex string；Amount is the amount of token to transfer
 Return value：Token transfer Transaction raw data
 
@@ -184,9 +184,8 @@ Parameters: no parameters.
 Return value：value is the corresponding address for the password, encoded in hex. Convert it to base58 to use as the address.
 Warning: Please control risks when using this API. To ensure environmental security, please do not invoke APIs provided by other or invoke this very API on a public network.
 
-
 /wallet/participateassetissue
-Function：Create a new Token
+Function：Purchase a Token
 demo：curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
 "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
