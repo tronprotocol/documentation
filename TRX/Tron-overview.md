@@ -107,7 +107,7 @@ The inner http will encode the bytes fields defined in proto into hexString form
 
 The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. 
 
-We provide a encoding/decoding tool which you can download from https://github.com/TRONprotocol/TRON-demo/blob/master/TRONConvertTool.zip.
+We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
 
 ## 4.3 API code generation
 APIs are based on the gRPC protocol, see https://grpc.io/docs/ for more information.
