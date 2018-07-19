@@ -34,7 +34,7 @@ TRX transfers require access to the private key or password for the account.
 
 ---
 
-## Interacting with Transactions
+## Reading Transaction from the network
 
 Transactions are confirmed once they're available through the Solidity Node. The Full Node allows you to query 
 
