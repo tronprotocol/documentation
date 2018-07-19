@@ -10,9 +10,9 @@ Follow these steps to create a private key, then calculate out the resulting
 - https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#6-user-address-generation
 
 #### - Use an RPC call 
-`/wallet/generateaddress` to create a `Private Key` and `TRON Address` pair
+- `/wallet/generateaddress` to create a `Private Key` and `TRON Address` pair
 
-`/wallet/createaddress` to pass a `Password String` to generate the matching `TRON Address`. These strings are hashed into private keys so treat them as such.
+- `/wallet/createaddress` to pass a `Password String` to generate the matching `TRON Address`. These strings are hashed into private keys so treat them as such.
 
 ---
 
@@ -28,9 +28,9 @@ TRX transfers require access to the private key or password for the account.
 4. Broadcast the signed transaction and transaction data onto the network using `/wallet/broadcasttransaction`.
 
 #### - Use an RPC call 
-`/wallet/easytransfer` with a `Password String` to transfer TRX to a destination address.
+- `/wallet/easytransfer` with a `Password String` to transfer TRX to a destination address.
 
-`/wallet/easytransferbyprivate` with a `Private Key` to transfer TRX to a destination address.
+- `/wallet/easytransferbyprivate` with a `Private Key` to transfer TRX to a destination address.
 
 ---
 
@@ -39,21 +39,17 @@ TRX transfers require access to the private key or password for the account.
 Transactions are confirmed once they're available through the Solidity Node. The Full Node allows you to query 
 
 #### - Use an RPC call for a transaction/transaction list directly
-`/walletsolidity/gettransactionbyid` to retrieve **Confirmed** transactions by ID.
-`/wallet/gettransactionbyid` to retrieve **ALL** transactions by ID, including **Unconfirmed** transactions.
-
-`/walletextension/gettransactionsfromthis` to retrieve transactions from an address.
-
-`/walletextension/gettransactionstothis` to retrieve transactions to an address.
+- `/walletsolidity/gettransactionbyid` to retrieve **Confirmed** transactions by ID.
+- `/wallet/gettransactionbyid` to retrieve **ALL** transactions by ID, including **Unconfirmed** transactions.
+- `/walletextension/gettransactionsfromthis` to retrieve transactions from an address.
+- `/walletextension/gettransactionstothis` to retrieve transactions to an address.
 
 #### - Use an RPC call for the block
 If the block has transactions, it will be listed in the trasactions array. You can parse this to find all the transactions included on that block.
 
-`/walletsolidity/getblockbynum` to retrieve block by block height/number from the Solidity Node. These blocks are guaranteed confirmed and irreversable. 
-
-`/wallet/getblockbynum` to retrieve a block by block height/number from the Full Node. These blocks are **NOT** confirmed. 
-
-`/wallet/getblockbyid` to retrieve by block hash.
+- `/walletsolidity/getblockbynum` to retrieve block by block height/number from the Solidity Node. These blocks are guaranteed confirmed and irreversable. 
+- `/wallet/getblockbynum` to retrieve a block by block height/number from the Full Node. These blocks are **NOT** confirmed. 
+- `/wallet/getblockbyid` to retrieve by block hash.
 
 
 ---
