@@ -54,3 +54,18 @@ If the block has transactions, it will be listed in the trasactions array. You c
 
 ---
 
+## Calculating Bandwidth for an Account
+
+Bandwidth is used for all transactions and cost around 200~ for a TRX transfer. Every active account with an age greater than 24 hours starts with 5000 free bandwidth. Used bandwidth replenishes over a 24 hour period. If there isn't enough bandwidth for a transaction, then a fee of 0.002TRX will be charged.
+
+#### - Use an RPC call to query an account's available bandwidth.
+- `/wallet/getaccountnet` will retrieve the bandwidth information for an account. If a key isn't present, then the value is 0.
+
+```
+{“freeNetUsed”: 557,“freeNetLimit”: 5000,“NetUsed”: 353,“NetLimit”: 5239157853,“TotalNetLimit”: 43200000000,“TotalNetWeight”: 41228}
+```
+
+
+
+
+---
