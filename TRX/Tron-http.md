@@ -246,8 +246,8 @@ Parameters：
 Owner_address is the address of the token issuer, converted to a hex string
 Description is a description of the token, converted to a hex string
 Url is the official website address of the token issuer, converted to a hex string
-New_limit is the free bandwidth that each token can use for each holder.
-New_public_limit is the free bandwidth of the token for all users.
+New_limit is the Token Creator's bandwidth avaible for use by holders of the token.
+New_public_limit is the free bandwidth that each holder of the token can use for free. This will subtract from the Token Creator's available bandwidth.
 Return value: Token update transaction raw data
 
 /wallet/listnodes
