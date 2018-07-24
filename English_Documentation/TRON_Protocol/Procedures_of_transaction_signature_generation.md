@@ -1,6 +1,6 @@
-# I.	Procedures
-1.	Convert the format of the transaction’s raw data to byte[].
-2.	Conduct sha256 calculation on raw data.
+# I.	Signing Steps
+1.	Convert the transaction’s raw data to byte[].
+2.	Hash the raw data using sha256.
 3.	Sign the results of sha256 with the private key in correspondence with the address of each contract (1 contract and 1 private key for now).
 4.	Add the signed result to transaction.
 
@@ -21,7 +21,7 @@
 
 3.	Signature verification
 
-When a full node receives transaction, it will verify signature, comparing an address calculated with hash, r, s and v with the address of the contract. Signature is successfully verified if the two addresses match.
+When a full node receives the transaction, it will verify the signature, comparing an address calculated with hash, r, s and v with the address of the contract. Signature is successfully verified if the two addresses match.
 
 # III.	Example of code
 ```java
