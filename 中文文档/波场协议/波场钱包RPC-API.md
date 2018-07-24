@@ -92,7 +92,7 @@ rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction){};
 6.2	提供节点  
 fullnode。  
 6.3	参数说明  
-VoteWitnessContract：包含投票人地址和一个投票对象列表，包含候选人地址和投票数。  
+VoteWitnessContract：包含投票人地址和一个投票对象列表(最多不能超过30个投票对象)，包含候选人地址和投票数。  
 6.4	返回值  
 Transaction：返回包含投票的交易，钱包签名后再请求广播交易。  
 6.5	功能说明  
