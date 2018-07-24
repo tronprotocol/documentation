@@ -565,6 +565,14 @@
                 };
             
               };
+              
+              rpc GetAccountById (Account) returns (Account) {
+                option (google.api.http) = {
+                  post: "/wallet/getaccount"
+                  body: "*"
+                };
+            
+              };             
             
               rpc CreateTransaction (TransferContract) returns (Transaction) {
                 option (google.api.http) = {
