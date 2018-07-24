@@ -18,7 +18,7 @@
    `type`:该账户的类型——比如：  _0_ 代表的账户类型是`Normal`。  
    `balance`:该账户的TRX余额——比如：_4213312_。  
    `votes`:账户所得投票数——比如：_{(“0x1b7w…9xj3”,323),(“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_。  
-   `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。
+   `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。注：当资产的order为0时，key为assert_name.当资产的order不为0时，key为assert_name+"_"+assert_order.
    `latest_operation_time`: 该账户的最新活跃时间。
    
     // Account 
@@ -205,7 +205,7 @@
       bytes update_url = 12;
      }
    
-   `AssetIssueContract`包含11种参数：  
+   `AssetIssueContract`包含以下参数：  
    `name`：合约名称——比如：_“SiCongcontract”_。  
    `total_supply`：合约的赞成总票数——比如：_100000000_。  
    `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。  
@@ -213,29 +213,43 @@
    `num`： 对应的自定义资产数目。  
    `start_time`：开始时间——比如：_20170312_。  
    `end_time`：结束时间——比如：_20170512_。  
+   `order`：相同asset_name时，order递增，默认初始值为0。  
    `decav_ratio`：衰减速率。  
    `vote_score`：合约的评分——比如：_12343_。  
    `description`：合约的描述——比如：_”trondada”_。  
    `url`：合约的url地址链接。
-
-    message AssetIssueContract {   
-      bytes owner_address = 1;   
-      bytes name = 2;   
-      int64 total_supply = 4;   
-      int32 trx_num = 6;   
-      int32 num = 8;   
-      int64 start_time = 9;   
-      int64 end_time = 10;   
-      int32 decay_ratio = 15;  
-      int32 vote_score = 16;  
-      bytes description = 20;   
-      bytes url = 21; 
-     }
+   `free_asset_net_limit`：每个账户拥有的免费带宽（转移该资产时使用）。
+   `public_free_asset_net_usage`：所有账户拥有的免费带宽（转移该资产时使用）。
+   `public_latest_free_net_time`：最近一次转移该资产并使用该资产的免费带宽的时间。
+   
+    message AssetIssueContract {
+      message FrozenSupply {
+        int64 frozen_amount = 1;
+        int64 frozen_days = 2;
+      }
+      bytes owner_address = 1;
+      bytes name = 2;
+      bytes abbr = 3;
+      int64 total_supply = 4;
+      repeated FrozenSupply frozen_supply = 5;
+      int32 trx_num = 6;
+      int32 num = 8;
+      int64 start_time = 9;
+      int64 end_time = 10;
+      int64 order = 11; // the order of tokens of the same name
+      int32 vote_score = 16;
+      bytes description = 20;
+      bytes url = 21;
+      int64 free_asset_net_limit = 22;
+      int64 public_free_asset_net_limit = 23;
+      int64 public_free_asset_net_usage = 24;
+      int64 public_latest_free_net_time = 25;
+    }
      
    `ParticipateAssetIssueContract`包含4种参数：  
    `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。  
    `to_address`：接收方地址——比如：_“0xu82h…7237”_。  
-   `asset_name`: 目标资产的名称。  
+   `asset_name`: 目标资产的名称，当order为0时，为asset_name。当order大于0时，为asset_name+ "_" + order。  
    `amount`： 小部分数量。
    
    `DeployContract`包含2种参数：  

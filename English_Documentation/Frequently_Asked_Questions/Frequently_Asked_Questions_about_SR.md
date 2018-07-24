@@ -7,7 +7,7 @@ Questions on the Full Node in private networks
     A: There is no default interface with java-tron. There are several ways to check if you have a successful deployment, as once your server is running you can send gRPC commands. First thing you will need to check is if the gRPC port is open:
 
 
-       - netstat -tulnp| grep 50051
+        netstat -tulnp| grep 50051
 
        If the port is open, you can test your node using tronscan.org. Make sure your port and IP is open on internet. If you are using a private IP only, you will need to use other gRPC software
 
@@ -15,7 +15,7 @@ Questions on the Full Node in private networks
 
     You can also check if your node is running using the following terminal command:
 
-        - tail -f logs/tron.log |grep "MyheadBlockNumber"
+         tail -f logs/tron.log |grep "MyheadBlockNumber"
 
 
 
@@ -25,7 +25,7 @@ Questions on the Super Node in private networks
     A:  A: On a private deployment, you will need at least one Super Node, no minimum requirements for FullNode.
 
 2.	Q: As user voting determines Super Node selection in private networks, do I need to submit any application materials to the TRON foundation to be approved as a Super Node?
-    A: You don’ t need to submit material to TRON foundation.
+    A: You don’ t need to submit material to TRON Foundation.
 
 3.	Q: Why is data in private environments continuously synchronized and why is the journal still continuously updated to all other nodes? What is the difference between a private and a public environment then?
     A: If this is related to the IP list-> A: On config.conf you need to update the seed.ip, if you use the same of the public network, and your computer is connected to the internet, it will attempt to connect to those nodes and the IP list will be saved in the DB, even if the connection fails.
@@ -39,10 +39,10 @@ Questions regarding operation in public networks
        Is a good practice to limit JVM heap size to fit inside one NUMA region (Around 1 TB on the bigger machines). If its JVM spans NUMA regions, GC will take much longer.
 
 2.	Q: What performance does a processor need to have in order to run the node software?
-    A: You will need at least 2 CPU cores to run a full node badly. On a private environment, with lower number of transactions, you can will be fine running on 4 CPU cores. So, the CPU performance will depends on the network request. You will need to monitor your machine to decide the best requirements. In the PUBLIC NETWORK, TRON recommend at least 64CPU cores machine for a Super Representative to be approved.
+    A: At least 2 core CPUs are required to run a full node, at the minimum performance. If you are running on a private environment, with fewer transactions, then you will be fine with 4 CPU cores. So, the amount of network requests determines the CPU performance required to run the nodes. You will need to monitor your machine to decide the best requirements. In the PUBLIC NETWORK, TRON recommend at least 64CPU cores machine for a Super Representative to be approved.
 
 
-3.	Q: What ports should be open to public network?
+3.	Q: What ports should be opened to be externally accessible?
     A: 18888 and 50051 are the two default ports.
 
 4.  Q: What amount of data traffic can I expect? Will the data to be spread out to many hosts or will it be enough to just provide several nodes myself?
@@ -58,9 +58,9 @@ Questions regarding error occurrences/messages for Super Nodes
 
        17:02:42.699 INFO [o.t.c.s.WitnessService] Try Produce Block        17:02:42.699 INFO [o.t.c.s.WitnessService] Not sync 
 
-    A: A: This message means your node is not in sync with the network. To start produce blocks, you need to be in sync. Check your clock height with the command:
+    A: This message means your node is not in sync with the network. To start produce blocks, you need to be in sync. Check your block height with the command:
 
-        - tail -f logs/tron.log |grep "MyheadBlockNumber"
+        tail -f logs/tron.log |grep "MyheadBlockNumber"
 
 Questions regarding block generation by Super Nodes
 -----
@@ -68,7 +68,7 @@ Questions regarding block generation by Super Nodes
     A: Yes, Super Nodes produce blocks in rotation. Within current testing environment, one block is produced every 3 seconds.
 
 2.	Q: If a Super Node cannot connect to the TRON network, how long will it take to be able to connect to the network again?
-    A: An SR’s reconnection speed depends only on its recovery and has nothing to do with the network.
+    A: An SR's recovery depends only on it's connection speeds and it has nothing to do with the TRON network.
 
 3.	Q: What’s the formula of the miss rate of Super Nodes’ block production?
     A: “The number of blocks which supposedly should have been produced but aren't” will be taken into account. The number will keep accumulating and not be cleared.
@@ -79,12 +79,12 @@ Questions regarding block generation by Super Nodes
 5.	Q: How do I know if my test Super Node is running?
     A: A: Run the following command:
 
-        - tail -f logs/tron.log |grep "Try Produce Block"
+         tail -f logs/tron.log |grep "Try Produce Block"
 
 6.	Q: Based on this command: java -jar java-tron.jar -p yourself private key --witness -c yourself config.conf(Example：/data/java-tron/config.conf, how do I know that I am running a Super Node?
     A: Run the following command:
 
-        - tail -f logs/tron.log |grep "Try Produce Block"
+         tail -f logs/tron.log |grep "Try Produce Block"
 
 7.	Q: What are some command-line commands that can generate an address to be sent to TRON? Is web wallet the only way?
     A: You can use Wallet CLI: https://github.com/tronprotocol/wallet-cli
@@ -114,7 +114,7 @@ Questions on the Super Representatives election
     A: A: Every TRX equals one vote can only be casted for one candidate. However, if you have more then one TP( or frozen TRX), you can spread the votes among all the candidates you want to.
 
 3.	Q: Since TRX is required to obtain the right to vote, do we need to deposit a certain amount of TRX into Tronscan wallet? 
-    A: Yes, TRX deposit is needed for application for witness node and for voting.But you don’t necessarily have to use the Tronscan wallet. The ledger is kept on the blockchain and wallets are only used for viewing.
+    A:Yes, you need to have TRX in order to be able to freeze them. But no, since your balance is held on the blockchain and not on Tronscan you can use any other wallet or means to freeze your TRX.
 
 4.	Q: Is there a threshold for the daily election of 27 Super Representatives? Or is it encouraged to compete freely?
     A: Free competition. Solicit the votes if you want them. Due to the existence of the GR system, an SR needs at least 100 million votes to replace a GR. There is no reward for GRs’ work.
@@ -158,7 +158,7 @@ Others
     A: Yes. It can be found in our Github documentation, please check https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 
 6.	Q: Can Solidity Node and Full Node be employed on the same machine? Since we can’t specify data directory, will there be consequences to the two nodes’ sharing data?
-    A: You actually can specify data directory, config file paramter: db.directory = "database", and index.directory = "index". But you can also have FullNode.jar and SolidityNode.jar running in difefrent directories, and have the data and log fiels totally separated. Remember to change the ports on config.conf, as two applications cant run on the same port.
+    A: You actually can specify data directory, config file parameter: db.directory = "database", and index.directory = "index". But you can also run FullNode.jar and SolidityNode.jar in different directories, and totally separate the data and log files. Remember to change the ports on config.conf, as two applications cant run on the same port.
 
 7.	Q: Without Txid, how can we tell the users to inquire the transaction after our transfer?
     A: You can use transaction hash as TXID.
@@ -170,9 +170,9 @@ Others
     A: Solidity Nodes are set up for the storage of irrevocable blocks, a few blocks behind Full Nodes, so they are more suitable for the confirmation of transfer. You can connect to both Solidity Node and Full Node through gateway.
 
 10.	Q: Listaccounts is a list of all addresses in the network?
-    A: For now, yes. But we are uncertain if that’s going to change, because we need to further think it through as the address base if enormous.
+    A: For now, yes. But that may change, as it requires further discussion if the address base becomes enormous.
 
-11.	Q:  How many decimal places is there for the balance?
+11.	Q:  How many decimal places are there for the balance?
     A: Six.
 
 12.	Q: Is the machines of the nodes in Beijing? Is the wall an issue?

@@ -15,12 +15,13 @@ Create Wallet
 + import public address only (watch only setup)
 
 ### Wallet Functionalities
++ individual connection (connect to any node, e.g. private net)
 + check balance (TRX, tokens)
 + toggle market price view
 + check frozen amount
 + send TRX and tokens
 + receive using QR code
-+ freeze TRX to get TRON Power and bandwidth
++ freeze TRX to get votes and bandwidth
 + submit votes for representatives
 + offline signing mechanism with QR code scanning
 + participate in token distributions
@@ -45,7 +46,7 @@ Watch only setup
 
 Hot Wallet Setup
 + owns public and private key
-+ full overview of account
++ a full overview of account
 + full access (sending, freezing, voting, ...)
 
 Cold Wallet Setup
@@ -87,13 +88,13 @@ Cold Wallet Setup
 ## Create account
 
 1. Cellphone screen display.  
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/创建钱包账户/1桌面显示.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/创建钱包账户/1.桌面显示.png)
 2. Account creation page in app.  
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/创建钱包账户/2.点击app之后的界面.jpg)
 3. Tap CREATE WALLET.  
-   + Cold wallet creation: toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.
-   + Hot wallet creation: don’t toggle COLD WALLET SETUP and tick I AM AWARE OF THE RISKS.  
-   ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置密码.jpg)  
+   + Cold wallet creation: toggle COLD WALLET SETUP, tick I AM AWARE OF THE RISKS and set the name and password.
+   + Hot wallet creation: don’t toggle COLD WALLET SETUP, tick I AM AWARE OF THE RISKS and set the name and password.
+   ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/创建钱包账户/3.设置用户名和密码.png)  
 4. Tap GENERATE ADDRESS AND PRIVATE KEY and tap OK after reading the information page.  
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/创建钱包账户/4.png)  
 ![](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Wallet_for_Android/创建钱包账户/6.png)
@@ -106,21 +107,21 @@ Cold Wallet Setup
 
 Users can vote in hot wallet setup.
 
-1.	Enter wallet page.
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/1.当前的余额显示页面.jpg)
+1. Enter wallet page.
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/1.余额TP带宽显示界面.png)
 2. Enter transfer page.
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/2.点击余额右侧的转账页面.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/2.点击右侧的转账界面.png)
 3. Select freeze and enter freeze page.
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/3.点击FREEZE进入TRX冻结页面.jpg)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/3.freeze页面.png)
 4. Type in freeze amount.
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/4.在freeze%20amount%20输入栏中键入希望冻结的TRX数量，然后点击freeze按钮，注，拥有多少冻结TRX就拥有多少投票权.jpg)
-5. Enter your password and confirm the freeze.
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/5冻结TRX需要输入账户密码进行确认.jpg
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/6.键入账户密码.jpg)
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/7.png)
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/8.进行100TRX冻结之后的页面显示.jpg)
+5. Enter your password，click send button and confirm the freeze.
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/5.确认合约.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/6输入密码点击发送.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/7.发送成功.png)
+
 6. Return to balance page and click the vote button on the left-hand side.
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/9.回到余额显示页面，然后点击余额左侧的投票按钮.jpg)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/9.点击投票按钮.png)
 7. Enter SR candidate page.
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/10.点击投票按钮之后进入超级代表候选人list页面，candidates一栏下显示的是所有待投票竞选的SR候选人.jpg)
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/投票/11.此为your%20votes页面下的显示情况，因为我们还没有对任何一个SR候选节点进行投票，所以列表中空空如也.png)
@@ -137,8 +138,8 @@ Users can vote in hot wallet setup.
 ## Initiate transfer
 
 1. Enter account page.
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转入/1.账户中有余额时候的余额显示界面.png)
-![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转入/2.点击余额数字可转换成美元的等值额度.png)
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转入/1.显示余额界面.png)
+
 2. Enter your address or scan QR-code to extract address. Enter the amount of TRX for transfer and tap SEND.
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转入/3.点击右侧转账按钮后出现的界面（默认停留在send也就是转出TRX时的操作页面）可以通过在to一栏输入转入地址也可以点击右侧的二维码小标志，打开二维码扫描页面.png)
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转入/4.点击receive后显示自己的钱包地址和二维码性质的地址，可供转出账户进行输入和scan，待转出账户操作完毕后，点击左上角返回箭头进行余额查看.jpg)
@@ -146,3 +147,14 @@ Users can vote in hot wallet setup.
 3. Enter account password and tap SEND, and you will see the message of SENT SUCCESSFULLY.
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转出/7.点击send之后需要输入账户密码进行确认.png)
 ![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/转出和转入/转出/9.png)
+
+## Check history.
+
+1. Enter history page.
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/历史记录/1.进入历史记录界面.png)
+
+2. Check each transaction information.
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/历史记录/2.查看单笔交易信息.png)
+
+3. Check transaction information on Tronscan.
+![](https://raw.githubusercontent.com/tronprotocol/Documentation/master/images/Wallet_for_Android/历史记录/3.tronscan上查看记录.png)
