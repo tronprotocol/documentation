@@ -134,6 +134,16 @@
       bytes account_name = 1;
       bytes owner_address = 2;
      }
+      
+      
+   `SetAccountIdContract`包含2种参数：  
+   `account_id`： 账户id——比如： _"SiCongsaccount”_。大小写不敏感，如SiCongsaccount==sicongsaccount,在网络中具有唯一性，不允许两个账户具有相同id。  
+   `owner_address`：合约持有人地址——比如： _“0xu82h…7237”_。
+   
+    message SetAccountIdContract {
+      bytes account_id = 1;
+      bytes owner_address = 2;
+     }
      
    `TransferContract`包含3种参数：  
    `amount`：TRX数量——比如：_12534_。  
@@ -530,6 +540,7 @@
    __`CreateAccount`__：采用参数`AccountCreateContract`，返回对象`Transaction`。    
    __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。  
    __`UpdateAccount`__：采用参数`AccountUpdateContract`，返回对象`Transaction`。    
+   __`SetAccountId`__：采用参数`SetAccountIdContract`，返回对象`Transaction`。    
    __`VoteWitnessAccount`__：采用参数`VoteWitnessContract`，返回对象`Transaction`。   
    __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
    __`UpdateWitness`__：采用参数`WitnessUpdateContract`，返回对象`Transaction`。    
@@ -583,6 +594,14 @@
                   body: "*"
                 };
               };
+              
+              rpc SetAccountId (SetAccountIdContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/setaccountid"
+                  body: "*"
+                };
+              };
+                    
             
               rpc CreateAccount (AccountCreateContract) returns (Transaction) {
                 option (google.api.http) = {
