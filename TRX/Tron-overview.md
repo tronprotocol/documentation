@@ -86,11 +86,18 @@ Please see the protobuf protocol for the raw API.
 - [Protobuf Structures](https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Protobuf_Protocol_document.md)
 
 ## 4.2 Explanation of APIs
-### 4.2.1 grpc interface
-APIs under wallet service are provided by the full node. APIs under walletSolidity and walletExtension services are provided by the solidity node. APIs under the walletExtension service, whose processing time is long, are provided by the solidity node. The full node provides APIs for operations on the blockchain and for data inquiry, while the solidity node only provides APIs for the latter. The difference between these two nodes is that data of the full node could be revoked due to forking, whereas the solidified data of the solidity one is irrevocable.
+### 4.2.1 gRPC interface
+The Full Node and Solidity Nodes each run a gRPC service that you can connect to.
 
-please refer:
-https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
+- [gRPC Tutorial](https://grpc.io/docs/)
+- [gRPC API](https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md)
+
+Please refer to the following two classes for a GRPC example in Java.
+```
+https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/WalletClient.java
+
+https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/GrpcClient.java
+```
 
 ### 4.2.2 HTTP Interface
 we implement http interfaces by two ways.
@@ -109,17 +116,7 @@ The grpc-gateway will encode the bytes fields defined in proto into base64 forma
 
 We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
 
-## 4.3 API code generation
-APIs are based on the gRPC protocol, see https://grpc.io/docs/ for more information.
-
-## 4.4 API demo
-Please refer to the following two classes for a GRPC example in Java.
-```
-https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/WalletClient.java
-
-https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/GrpcClient.java
-```
-# 5. Relevant expenses:
+# 5. Fee Calculation:
 When there are sufficient bandwidth points, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also Transaction.Result.fee, with the corresponding proto file at https://github.com/TRONprotocol/protocol/blob/master/core/TRON.proto.
 
 See also: https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
