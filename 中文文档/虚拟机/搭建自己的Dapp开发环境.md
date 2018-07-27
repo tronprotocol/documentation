@@ -12,7 +12,7 @@ Version 0.1
 
 ## 部署智能合约
 编写智能合约，我们暂时推荐使用[Remix](http://remix.ethereum.org/)进行编译、调试等前期的开发工作。
-当合约开发完成之后，可以把合约复制到SmartContractTools/SimpleWebCompiler中进行编译，获取ABI和ByteCode。
+当合约开发完成之后，可以把合约复制到[SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler)中进行编译，获取ABI和ByteCode。
 我们提供一个简单的数据存取的合约代码示例，以这个示例来说明编译、部署、调用的步骤。
 ```
 pragma solidity ^0.4.0;
