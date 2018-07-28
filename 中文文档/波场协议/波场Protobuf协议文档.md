@@ -13,27 +13,98 @@
       Contract = 2; 
      }
 
-   一个`Account`包含7种参数：  
-   `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。  
+   一个`Account`包含以下参数：  
+   `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。字符长度<200。  
    `type`:该账户的类型——比如：  _0_ 代表的账户类型是`Normal`。  
+   `address`:地址  
    `balance`:该账户的TRX余额——比如：_4213312_。  
    `votes`:账户所得投票数——比如：_{(“0x1b7w…9xj3”,323),(“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_。  
    `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。注：当资产的order为0时，key为assert_name.当资产的order不为0时，key为assert_name+"_"+assert_order.
+   `frozen`: 冻结Trx，用于获得bandwidth，包含冻结量与解冻时间。
+   `net_usage`: 冻结获得的bandwidth使用量。
+   `create_time`: 该账户创建时间。
    `latest_operation_time`: 该账户的最新活跃时间。
-   
+   `allowance`: 当该账户是witness时有效，记录witness获得的奖励，可提取到balance中。
+   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间，每次提取间隔需要大于24h。
+   `is_witness`: 是否是witness。
+   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间。
+   `frozen_supply`: 当该账户是是asset发行者时有效，用于设定asset锁定时间。
+   `asset_issued_name`: 当该账户是是asset发行者时有效，发行的asset名称。
+   `latest_asset_operation_time`: 当该账户是是asset发行者时有效，最近一次操作asset时间。
+   `free_net_usage`: 免费bandwidth使用量。
+   `free_asset_net_usage`:消耗asset发行者的bandwidth量。
+   `latest_consume_time`: 最近消耗bandwidth时间。
+   `latest_consume_time`: 最近消耗免费bandwidth时间。
+   `account_id`: 账户唯一id，大小写不敏感。可作为getaccountbyid接口的参数。
+   `AccountResource`: 账户CPU、storage资源。
+   `cpu_usage`: cpu使用量
+   `frozen_balance_for_cpu`:为了获得cpu，冻结的TRX量
+   `latest_consume_time_for_cpu`:最近一次消耗cpu时间。
+   `storage_limit`:拥有的storage，通过购买获得。
+   `storage_usage`:storage 使用量
+   `latest_exchange_storage_time`:最近一次storage交易时间。
+          
     // Account 
     message Account {   
-      message Vote {     
-        bytes vote_address = 1;     
-        int64 vote_count = 2;   
-       }   
-       bytes accout_name = 1;   
-       AccountType type = 2;   
-       bytes address = 3;   
-       int64 balance = 4;   
-       repeated Vote votes = 5;   
-       map<string, int64> asset = 6; 
-       int64 latest_operation_time = 10;
+      /* frozen balance */
+        message Frozen {
+          int64 frozen_balance = 1; // the frozen trx balance
+          int64 expire_time = 2; // the expire time
+        }
+        bytes account_name = 1;
+        AccountType type = 2;
+        // the create address
+        bytes address = 3;
+        // the trx balance
+        int64 balance = 4;
+        // the votes
+        repeated Vote votes = 5;
+        // the other asset owned by this account
+        map<string, int64> asset = 6;
+        // latest asset operation time
+      
+        // the frozen balance
+        repeated Frozen frozen = 7;
+        // bandwidth, get from frozen
+        int64 net_usage = 8;
+      
+        // this account create time
+        int64 create_time = 0x09;
+        // this last operation time, including transfer, voting and so on. //FIXME fix grammar
+        int64 latest_opration_time = 10;
+        // witness block producing allowance
+        int64 allowance = 0x0B;
+        // last withdraw time
+        int64 latest_withdraw_time = 0x0C;
+        // not used so far
+        bytes code = 13;
+        bool is_witness = 14; 
+        // frozen asset(for asset issuer)
+        repeated Frozen frozen_supply = 16;
+        // asset_issued_name
+        bytes asset_issued_name = 17;
+        map<string, int64> latest_asset_operation_time = 18;
+      
+        int64 free_net_usage = 19;
+        map<string, int64> free_asset_net_usage = 20;
+        int64 latest_consume_time = 21;
+        int64 latest_consume_free_time = 22;
+      
+        bytes account_id = 23;
+      
+        message AccountResource{
+          // cpu resource, get from frozen
+          int64 cpu_usage = 1;
+          // the frozen balance for cpu
+          Frozen frozen_balance_for_cpu = 2;
+          int64 latest_consume_time_for_cpu = 3;
+      
+          // storage resource, get from market
+          int64 storage_limit = 6;
+          int64 storage_usage = 7;
+          int64 latest_exchange_storage_time = 8;
+        }
+        AccountResource account_resource = 26;
      }
 
    一个`Witness`包含8种参数：  
