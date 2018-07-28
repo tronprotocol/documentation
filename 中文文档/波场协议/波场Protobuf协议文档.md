@@ -407,7 +407,25 @@
         map<int64, int64> parameters = 1;
       }
       
-
+   `BuyStorageContract`包含2种参数：
+     `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+     `quant`：购买 storage ，花费的balance (单位sun)
+     
+      message BuyStorageContract {
+        bytes owner_address = 1;
+        int64 quant = 2;
+      }
+      
+   `SellStorageContract`包含2种参数：
+     `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+     `storage_bytes`：卖出的storage数量
+     
+      message SellStorageContract {
+        bytes owner_address = 1;
+        int64 storage_bytes = 2;
+      }
+      
+      
    消息体 `Result` 包含 `fee` and `ret`2个参数.   
    `ret`: 交易结果。  
    `fee`: 交易扣除的费用。(已弃用)
@@ -681,6 +699,8 @@
    __`GetBlockByNum`__：采用参数`NumberMessage`，返回对象`Block`。    
    __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。  
    __`GenerateAddress`__: 采用参数`EmptyMessage`，返回对象 `AddressPrKeyPairMessage`。
+   __`BuyStorage`__：采用参数`BuyStorageContract`，返回对象`Transaction`。  
+   __`SellStorage`__: 采用参数`SellStorageContract`，返回对象 `Transaction`。
    
       service Wallet {
             
@@ -897,6 +917,10 @@
                   }
                 };
               }
+              rpc BuyStorage (BuyStorageContract) returns (Transaction) {
+                }
+              rpc SellStorage (SellStorageContract) returns (Transaction) {
+                }                            
             };
             
    `WalletSolidity`钱包服务包含多个RPC。  
