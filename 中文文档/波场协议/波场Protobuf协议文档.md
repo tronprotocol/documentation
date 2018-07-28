@@ -14,7 +14,7 @@
      }
 
    一个`Account`包含以下参数：  
-   `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。字符长度<200。  
+   `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。编码后字节长度=<200。  
    `type`:该账户的类型——比如：  _0_ 代表的账户类型是`Normal`。  
    `address`:地址  
    `balance`:该账户的TRX余额——比如：_4213312_。  
@@ -208,8 +208,10 @@
       
       
    `SetAccountIdContract`包含2种参数：  
-   `account_id`： 账户id——比如： _"SiCongsaccount”_。大小写不敏感，如SiCongsaccount==sicongsaccount,在网络中具有唯一性，不允许两个账户具有相同id。  
+   `account_id`： 账户id——比如： _"SiCongsaccount”_。注意，该字段大小写不敏感，SiCongsaccount == sicongsaccount,在网络中具有唯一性，不允许两个账户具有相同id。  
    `owner_address`：合约持有人地址——比如： _“0xu82h…7237”_。
+   
+   与getAccountById接口对应。
    
     message SetAccountIdContract {
       bytes account_id = 1;
