@@ -17,32 +17,32 @@
    `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。编码后字节长度=<200。  
    `type`:该账户的类型——比如：  _0_ 代表的账户类型是`Normal`。  
    `address`:地址  
-   `balance`:该账户的TRX余额——比如：_4213312_。  
-   `votes`:账户所得投票数——比如：_{(“0x1b7w…9xj3”,323),(“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_。  
-   `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。注：当资产的order为0时，key为assert_name.当资产的order不为0时，key为assert_name+"_"+assert_order.
-   `frozen`: 冻结Trx，用于获得bandwidth，包含冻结量与解冻时间。
-   `net_usage`: 冻结获得的bandwidth使用量。
-   `create_time`: 该账户创建时间。
-   `latest_operation_time`: 该账户的最新活跃时间。
-   `allowance`: 当该账户是witness时有效，记录witness获得的奖励，可提取到balance中。
-   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间，每次提取间隔需要大于24h。
-   `is_witness`: 是否是witness。
-   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间。
-   `frozen_supply`: 当该账户是是asset发行者时有效，用于设定asset锁定时间。
-   `asset_issued_name`: 当该账户是是asset发行者时有效，发行的asset名称。
-   `latest_asset_operation_time`: 当该账户是是asset发行者时有效，最近一次操作asset时间。
-   `free_net_usage`: 免费bandwidth使用量。
-   `free_asset_net_usage`:消耗asset发行者的bandwidth量。
-   `latest_consume_time`: 最近消耗bandwidth时间。
-   `latest_consume_time`: 最近消耗免费bandwidth时间。
-   `account_id`: 账户唯一id，大小写不敏感。可作为getaccountbyid接口的参数。
-   `AccountResource`: 账户CPU、storage资源。
-   `cpu_usage`: cpu使用量
-   `frozen_balance_for_cpu`:为了获得cpu，冻结的TRX量
-   `latest_consume_time_for_cpu`:最近一次消耗cpu时间。
-   `storage_limit`:拥有的storage，通过购买获得。
-   `storage_usage`:storage 使用量
-   `latest_exchange_storage_time`:最近一次storage交易时间。
+   `balance`:该账户的TRX余额——比如：_4213312_。    
+   `votes`:账户所得投票数——比如：_{(“0x1b7w…9xj3”,323),(“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_。     
+   `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。注：当资产的order为0时，key为assert_name.当资产的order不为0时，key为assert_name+"_"+assert_order.  
+   `frozen`: 冻结Trx，用于获得bandwidth，包含冻结量与解冻时间。  
+   `net_usage`: 冻结获得的bandwidth使用量。  
+   `create_time`: 该账户创建时间。  
+   `latest_operation_time`: 该账户的最新活跃时间。    
+   `allowance`: 当该账户是witness时有效，记录witness获得的奖励，可提取到balance中。    
+   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间，每次提取间隔需要大于24h。    
+   `is_witness`: 是否是witness。    
+   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间。    
+   `frozen_supply`: 当该账户是是asset发行者时有效，用于设定asset锁定时间。    
+   `asset_issued_name`: 当该账户是是asset发行者时有效，发行的asset名称。    
+   `latest_asset_operation_time`: 当该账户是是asset发行者时有效，最近一次操作asset时间。    
+   `free_net_usage`: 免费bandwidth使用量。    
+   `free_asset_net_usage`:消耗asset发行者的bandwidth量。    
+   `latest_consume_time`: 最近消耗bandwidth时间。    
+   `latest_consume_time`: 最近消耗免费bandwidth时间。    
+   `account_id`: 账户唯一id，大小写不敏感。可作为getaccountbyid接口的参数。    
+   `AccountResource`: 账户CPU、storage资源。    
+   `cpu_usage`: cpu使用量    
+   `frozen_balance_for_cpu`:为了获得cpu，冻结的TRX量    
+   `latest_consume_time_for_cpu`:最近一次消耗cpu时间。    
+   `storage_limit`:拥有的storage，通过购买获得。    
+   `storage_usage`:storage 使用量    
+   `latest_exchange_storage_time`:最近一次storage交易时间。    
           
     // Account 
     message Account {   
