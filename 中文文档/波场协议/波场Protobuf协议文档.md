@@ -208,7 +208,7 @@
       
       
    `SetAccountIdContract`包含2种参数：  
-   `account_id`： 账户id——比如： _"SiCongsaccount”_。注意，该字段大小写不敏感，SiCongsaccount == sicongsaccount,在网络中具有唯一性，不允许两个账户具有相同id。  
+   `account_id`： 账户id——比如： _"SiCongsaccount”_。注意，该字段大小写不敏感，'SiCongsaccount' == 'sicongsaccount',在网络中具有唯一性，不允许两个账户具有相同id。  
    `owner_address`：合约持有人地址——比如： _“0xu82h…7237”_。
    
    与getAccountById接口对应。
@@ -409,7 +409,7 @@
       
    `BuyStorageContract`包含2种参数：
      `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
-     `quant`：购买 storage ，花费的balance (单位sun)
+     `quant`：购买 storage ，花费的balance (单位drop)
      
       message BuyStorageContract {
         bytes owner_address = 1;
@@ -418,7 +418,7 @@
       
    `SellStorageContract`包含2种参数：
      `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
-     `storage_bytes`：卖出的storage数量
+     `storage_bytes`：卖出的storage数量(单位是字节)
      
       message SellStorageContract {
         bytes owner_address = 1;
