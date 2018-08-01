@@ -350,4 +350,33 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address":
 参数说明：地址，可以是base58checksum、hexString、base64格式
 返回值：地址正确或者错误
 
+wallet/deploycontract
+作用：部署合约
+demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"contract_name":"SomeContract","bandwidth_limit":1000000,"call_value":100,"cpu_limit":1000000,"drop_limit":10,"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","storage_limit":1000000}'
+参数说明：
+address，hexString格式
+abi：abi
+bytecode:bytecode
+bandwidth_limit：最大带宽消耗，字节数
+cpu_limit：最大cpu消耗，微秒
+storage_limit：最大存储消耗，字节数
+drop_limit：最大消耗的Drop（1TRX=1000000drop）
+call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
+返回值：合约调用的交易是否发送成功
+
+
+wallet/triggercontract
+作用：调用合约
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":[1,2],"bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100}'
+参数说明：
+address，hexString格式
+function_selector，函数签名，不能有空格
+parameter：调用参数，数组类型
+bandwidth_limit：最大带宽消耗，字节数
+cpu_limit：最大cpu消耗，微秒
+storage_limit：最大存储消耗，字节数
+drop_limit：最大消耗的Drop（1TRX=1000000drop）
+call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
+返回值：合约调用的交易是否发送成功
+
 ```
