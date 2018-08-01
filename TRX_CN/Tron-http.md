@@ -362,7 +362,7 @@ cpu_limit：最大cpu消耗，微秒
 storage_limit：最大存储消耗，字节数
 drop_limit：最大消耗的Drop（1TRX=1000000drop）
 call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
-返回值：合约调用的交易是否发送成功
+返回值：合约部署的交易是否发送成功
 
 
 wallet/triggercontract
