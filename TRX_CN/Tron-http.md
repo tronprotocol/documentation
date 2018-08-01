@@ -363,19 +363,19 @@ drop_limit：最大消耗的Drop（1TRX=1000000drop）
 call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
 返回值：合约部署的交易是否发送成功
 
-
 wallet/triggercontract
 作用：调用合约
-demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":[1,2],"bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100}'
 参数说明：
 address，hexString格式
 function_selector，函数签名，不能有空格
-parameter：调用参数，数组类型
+parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
 bandwidth_limit：最大带宽消耗，字节数
 cpu_limit：最大cpu消耗，微秒
 storage_limit：最大存储消耗，字节数
 drop_limit：最大消耗的Drop（1TRX=1000000drop）
 call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
 返回值：合约调用的交易是否发送成功
+
 
 ```
