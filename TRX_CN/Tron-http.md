@@ -359,8 +359,8 @@ bytecode:bytecode
 bandwidth_limit：最大带宽消耗，字节数
 cpu_limit：最大cpu消耗，微秒
 storage_limit：最大存储消耗，字节数
-drop_limit：最大消耗的Drop（1TRX=1000000drop）
-call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
+drop_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
+call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起deploycontract的账户地址
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
@@ -374,8 +374,8 @@ parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具�
 bandwidth_limit：最大带宽消耗，字节数
 cpu_limit：最大cpu消耗，微秒
 storage_limit：最大存储消耗，字节数
-drop_limit：最大消耗的Drop（1TRX=1000000drop）
-call_value：本次调用往合约转账的Drop（1TRX=1000000drop）
+drop_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
+call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
