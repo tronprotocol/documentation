@@ -111,12 +111,12 @@ Having too many transactions will clog our network like Ethereum and may incur d
 
 See also: https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
 
-## 5.1 Definition of bandwidth points
-Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array.
-If the length of a byte array is 200 then the transaction consumes 200 bandwidth points.
+## 5.1 Definition of Bandwidth
+Transactions are transmitted and stored in the network in byte arrays. Bandwidth consumed in a transaction equals the size of its byte array.
+If the length of a byte array is 200 then the transaction consumes 200 bandwidth.
 
 ## 5.2 Freeze/unfreeze mechanism 
-TRX can be frozen for a minimum of 3 days to gain both `TRON Power` for voting and network `Bandwidth Points`. `TRON Power` is gained at a 1:1 ratio with the amount of frozen TRX.
+TRX can be frozen for a minimum of 3 days to gain both `TRON Power` for voting and network `Bandwidth`. `TRON Power` is gained at a 1:1 ratio with the amount of frozen TRX.
 
 The amount of bandwidth granted follows a formula:
 ```
