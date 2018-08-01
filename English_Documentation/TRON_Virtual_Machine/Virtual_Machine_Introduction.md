@@ -76,7 +76,7 @@ Password: password of client-end wallet
 ContractAddress: customized contract address (in Tron’s required format)  
 ABI: interface description  
 Data: parameters of the initial function  
-Value: reserve  
+Value: reserved field  
 deploycontract(Password, ContractAddress, ABI, Code, Data, Value)  
 4. Invoke contract  
 Selector: function selector  
