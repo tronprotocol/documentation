@@ -348,5 +348,34 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address":
 Parameters：The address, should be in base58checksum, hexString or base64 format.
 Return value: True or false
 
+wallet/deploycontract
+Function：deploys a contract
+demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bandwidth_limit":1000000,"bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","call_value":100,"contract_name":"SomeContract","cpu_limit":1000000,"drop_limit":10,"storage_limit":1000000,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+Parameters：
+  abi：abi
+  bytecode:bytecode
+  bandwidth_limit：Maximum bandwidth consumption, measured in bytes
+  cpu_limit：Maximum cpu consumption, microseconds
+  storage_limit：Maximum storage consumption, number of bytes
+  drop_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
+  call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
+  owner_address：contract owner address, converted to a hex string
+Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
+
+wallet/triggercontract
+Function：Calls a function on a contract
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+Parameters：
+  address: contract address, converted to a hex string
+  function_selector: Function signature, no spaces
+  parameter：Call the virtual machine format of the parameter [1, 2], use the js tool provided by remix, convert the parameter array [1, 2] called by the contract caller into the parameter format required by the virtual machine.
+  bandwidth_limit：Maximum bandwidth consumption, measured in bytes
+  cpu_limit：Maximum cpu consumption, microseconds
+  storage_limit：Maximum storage consumption, number of bytes
+  drop_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
+  call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
+  owner_address：address that is trigger the contract, converted to a hex string
+Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
+
 
 ```
