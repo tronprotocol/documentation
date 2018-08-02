@@ -49,7 +49,7 @@ Integrating WASM, TVM will be able to provide high performance and high throughp
 1. Compile contract
 Contract compilation address: https://remix.ethereum.org
 2. Get ABI and bytecode  
-
+```
         pragma solidity^0.4.11;
 
         contract Tron {
@@ -68,7 +68,7 @@ Contract compilation address: https://remix.ethereum.org
 
 
         ByteCode：608060405234801561001057600080fd5b5060c48061001f6000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806360fe47b1146044575b600080fd5b348015604f57600080fd5b50606c600480360381019080803590602001909291905050506086565b604051808215151515815260200191505060405180910390f35b600081600081905550600190509190505600a165627a7a723058209791df3f67e9af451c35d7ae55bda5e352764f6a38ea23fa850b1c1fe1bc72e90029
-
+```
 3. Deploy contract  
 Wallet-cli-vm branch: https://github.com/tronprotocol/wallet-cli/tree/wallet-cli-vm    
 Java-tron-vm branch: https://github.com/tronprotocol/java-tron/tree/develop_vm  
@@ -83,7 +83,8 @@ Selector: function selector
 Data: parameters  
 triggercontract(Password, ContractAddress, Selector, Data, Value)  
 5. Check contract
-
-        getcontract(ContractAddress)
+```
+    getcontract(ContractAddress)
+```
 
 The above is an introduction of Tron Virtual Machine and a guide to deployment. We welcome everyone to check out TVM and give us your thoughts and suggestions. We will continue to perfect and update TVM for optimal performance on TRON mainnet.
