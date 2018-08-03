@@ -30,7 +30,7 @@ Compilation of Tron smart contract→execution and computing engines of VM→Int
 
 Put simply, the flow is as follows:
 + Currently, TVM is compatible mainly with Solidity. The compiler translates Solidity smart contract into bytecode readable and executable on TVM.
-+ A virtual machine processes data through opcode, which is equivalent to operating a logic of a stack-based finite sate machine.
++ A virtual machine processes data through opcode, which is equivalent to operating a logic of a stack-based finite state machine.
 + TVM accesses blockchain data and invoke External Data Interface through the Interoperation layer.
 
 ## Future development of TVM
