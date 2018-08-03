@@ -41,7 +41,7 @@ Different from gas consumption mechanism for every transaction on EVM, there is 
 3. Improvement of Just-In-Time (JIT) compilation speed and integration of WebAssembly
 
 Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code.  
-Meanwhile, Tron is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozzila, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages.  
+Meanwhile, Tron is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages.  
 Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.
 
 ## The following is a guide to TVM (smart contract deployment)

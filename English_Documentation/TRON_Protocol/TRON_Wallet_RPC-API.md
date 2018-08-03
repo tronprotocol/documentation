@@ -181,7 +181,7 @@ NodeList: returns a list of nodes, including their IPs and ports.
 13.5 Function
 Listing the IPs and ports of current nodes.
 
-## 14. Query of list of all tokens
+## 14. Query list of all tokens
 14.1 Interface statement
 rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {};  
 14.2 Node
@@ -191,7 +191,7 @@ EmptyMessage: null.
 14.4 Returns
 AssetIssueList: AssetIssueContract list containing information on all issued tokens.  
 14.5 Function
-Query of list of all issued tokens. Display of all issued tokens for user’s reference.
+Query list of all issued tokens. Display of all issued tokens for user’s reference.
 
 ## 15. Query of tokens issued by a given account
 15.1 Interface statement
@@ -227,7 +227,7 @@ NumberMessage: current timestamp (the number of milliseconds since 1970).
 17.4 Returns
 AssetIssueList: AssetIssueContract list including detailed information of the tokens.
 17.5 Function
-Query of list of issued tokens by timestamList of issued tokens by timestamp. Display of current nodes for users’ reference.
+Query list of issued tokens by timestamList of issued tokens by timestamp. Display of current nodes for users’ reference.
 
 ## 18. Get current block
 18.1 Interface statement
