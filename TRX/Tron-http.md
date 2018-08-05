@@ -361,11 +361,11 @@ Parameters：
   owner_address：contract owner address, converted to a hex string
 Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
 
-wallet/triggercontract
+wallet/triggersmartcontract
 Function：Calls a function on a contract
-demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 Parameters：
-  address: contract address, converted to a hex string
+  contract_address: contract address, converted to a hex string
   function_selector: Function signature, no spaces
   parameter：Call the virtual machine format of the parameter [1, 2], use the js tool provided by remix, convert the parameter array [1, 2] called by the contract caller into the parameter format required by the virtual machine.
   bandwidth_limit：Maximum bandwidth consumption, measured in bytes
