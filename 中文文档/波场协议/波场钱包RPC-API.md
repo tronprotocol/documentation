@@ -71,6 +71,7 @@ AccountCreateContract：包含账户类型、账户地址。
 Transaction：返回包含创建账户的交易，钱包签名后再请求广播交易。  
 4.5	功能说明  
 创建账号并写入区块链。应该先离线生成一个地址，再通过该API激活该地址。
+
 ## 5. 更新账户
 
 5.1	接口声明  
@@ -300,7 +301,7 @@ Transaction：被查询的交易。
 21.5 功能说明  
 通过ID查询交易的详细信息，ID就是交易数据的Hash值。
 
-## 22. 通过时间查询交易
+## 22. 通过时间查询交易（已删除）
 
 22.1 接口声明  
 rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {};  
@@ -483,7 +484,7 @@ fullnode
 36.3 参数说明                                                                                  
 EasyTransferMessage：转账用的密码，toAddress，转账的数量  
 36.4 返回值                                                                                  
-EasyTransferResponse：转账创建的transaction，以及广播的结果result
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
 
 ## 37. 生成地址和私钥
 37.1 接口说明                                                                                  
@@ -496,3 +497,297 @@ EmptyMessage：空
 AddressPrKeyPairMessage：生成地址，生成私钥  
 37.5 功能说明                                                                                  
 可用于生成地址和私钥，请务必仅在受信断网节点调用，以免私钥外泄
+
+## 38. 转让波场币2
+38.1	接口声明  
+rpc CreateTransaction2 (TransferContract) returns (TransactionExtention)　{};  
+38.2	提供节点  
+fullnode。  
+38.3	参数说明  
+TransferContract：包含提供方地址、接收方地址、金额，其中金额的单位为sun。  
+38.4	返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+38.5	功能说明  
+转账。创建一个转账的交易。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 39. 更新账户2
+
+39.1	接口声明  
+rpc UpdateAccount2 (AccountUpdateContract) returns (TransactionExtention){};  
+39.2	提供节点  
+fullnode。  
+39.3	参数说明  
+AccountUpdateContract：包含账户名称、账户地址。  
+39.4	返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+39.5	功能说明  
+更新账户名称。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 40. 投票2
+
+40.1	接口声明  
+rpc VoteWitnessAccount2 (VoteWitnessContract) returns (TransactionExtention){};  
+40.2	提供节点  
+fullnode。  
+40.3	参数说明  
+VoteWitnessContract：包含投票人地址和一个投票对象列表(最多不能超过30个投票对象)，包含候选人地址和投票数。  
+40.4	返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。   
+40.5	功能说明  
+投票功能。只能对超级代表候选人进行投票，投票总数量不能大于账户锁定资金的数量，参见25 锁定资金。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 41. 通证发行2
+        
+41.1	接口声明  
+rpc CreateAssetIssue2 (AssetIssueContract) returns (TransactionExtention) {};  
+41.2	提供节点  
+fullnode。  
+41.3	参数说明  
+AssetIssueContract：包含发行人地址、通证名称、总发行量、波场币vs通证汇兑比例、开始时间、结束时间、衰减率、投票分数、详细描述、url、每账户最多消耗带宽值，总带宽消耗值以及token冻结资产。 
+41.4	返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。 
+41.5	功能说明  
+发行通证。所有人都可以发行通证，发行通证会消耗1024个trx。发行通证后，在有效期内任何人都可以参与通证发行，用trx按照比例兑换通证。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
++ 示例：
+
+`assetissue password abc 1000000 1 1 2018-5-31 2018-6-30 abcdef a.com 1000 1000000 200000 180 300000 365` 
+
+以上命令的发行了名为abc的资产，发行总量为100万，abc与TRX的兑换比例为1:1，发行日期为2018-5-31至2018-6-30，描述为abcdef，网址为a.com，
+每个账户每天的token转账最多消耗自己1000 bandwidth points，整个网络每天最多消耗自己1000000 bandwidth points。其中20万锁仓180天，30万锁仓365天。
+
+## 42. 更新超级代表候选人信息2
+
+42.1 接口声明  
+rpc UpdateWitness2 (WitnessUpdateContract) returns (TransactionExtention) {};  
+42.2 提供节点  
+fullnode。  
+42.3 参数说明  
+WitnessUpdateContract：包含账户地址、Url。  
+42.4 返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+42.5 功能说明  
+更新超级代表的url。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 43. 创建账户2
+
+43.1	接口声明  
+rpc CreateAccount2 (AccountCreateContract) returns (TransactionExtention){};  
+43.2	提供节点  
+fullnode。  
+43.3	参数说明  
+AccountCreateContract：包含账户类型、账户地址。  
+43.4	返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+43.5	功能说明  
+创建账号并写入区块链。应该先离线生成一个地址，再通过该API激活该地址。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 44. 申请成为超级代表候选人2
+
+44.1 接口声明
+rpc CreateWitness2 (WitnessCreateContract) returns (TransactionExtention) {};  
+44.2 提供节点  
+fullnode。  
+44.3 参数说明  
+WitnessCreateContract：包含账户地址、Url。  
+44.4 返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+44.5 功能说明  
+每个波场用户都可以申请成为超级代表候选人。要求账户在区块链上已经创建。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 45. 转让通证2
+
+45.1 接口声明  
+rpc TransferAsset2 (TransferAssetContract) returns (TransactionExtention){};  
+45.2 提供节点  
+fullnode。  
+45.3 参数说明  
+TransferAssetContract：包含通证名称、提供方地址、接收方地址、通证数量。  
+45.4 返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+45.5 功能说明  
+转让通证。创建一个转让通证的交易。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 46. 参与通证发行2
+
+46.1 接口声明  
+rpc ParticipateAssetIssue2 (ParticipateAssetIssueContract) returns (TransactionExtention){};  
+46.2 提供节点  
+fullnode。  
+46.3 参数说明  
+ParticipateAssetIssueContract：包含参与方地址、发行方地址、通证名称、参与金额，其中金额的单位为sun。  
+46.4 返回值  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+46.5 功能说明  
+参与通证发行。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 47. 锁定资金2
+
+47.1 接口声明                                                                                  
+rpc FreezeBalance2 (FreezeBalanceContract) returns (TransactionExtention) {};                                                                                  
+47.2 提供节点                                                                                                                                                           
+fullnode。                                                                                  
+47.3 参数说明                                                                                                                                                
+FreezeBalanceContract：包含地址、锁定资金、锁定时间。目前锁定时间只能是3天。                                                                                  
+47.4 返回值                                                                                                                                          
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。                                                                                   
+47.5 功能说明                                                                                                                                            
+锁定资金将带来两个收益：
+a.获得带宽。                                                                                                                                                                    
+b.获得投票的权利。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 48. 解除资金锁定2
+
+48.1 接口声明                                                                                  
+rpc UnfreezeBalance2 (UnfreezeBalanceContract) returns (TransactionExtention) {};                                                                                  
+48.2 提供节点                                                                                    
+fullnode。                                                                                    
+48.3 参数说明                                                                                   
+UnfreezeBalanceContract：包含地址。                                                                                  
+48.4 返回值                                                                                   
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。                                                                                   
+48.5 功能说明                                                                                    
+锁定资金3天之后才允许解除锁定。解除锁定，将清除投票记录和带宽。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 49. 解冻通证2
+
+49.1 接口声明  
+rpc UnfreezeAsset2 (UnfreezeAssetContract) returns (TransactionExtention) {};  
+49.2 提供节点  
+fullnode。  
+49.3 参数说明                                                                                  
+UnfreezeAssetContract：包含地址。  
+49.4 返回值                                                                                  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。                                                                                       
+49.5 功能说明                                                                                  
+通证发行者解冻发行时冻结的通证。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 50. 赎回出块奖励2
+
+50.1 接口声明                                                                                  
+rpc WithdrawBalance2 (WithdrawBalanceContract) returns (TransactionExtention) {};                                                                                    
+50.2 提供节点                                                                                    
+fullnode。                                                                                    
+50.3 参数说明                                                                                          
+WithdrawBalanceContract：包含地址。                                                                                       
+50.4 返回值                                                                                   
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。                                                                                       
+50.5 功能说明                                                                                       
+本接口仅提供给超级代表。超级代表记账成功后，将获得奖励，奖励不直接增加到账户余额上。每24小时允许提取一次到账户余额。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 51.更新通证2
+51.1 接口声明                                                                                  
+rpc UpdateAsset2 (UpdateAssetContract) returns (TransactionExtention) {};  
+51.2 提供节点                                                                                  
+fullnode。  
+51.3 参数说明                                                                                  
+UpdateAssetContract：包括通证发行者的地址、通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值  
+51.4 返回值                                                                                  
+TransactionExtention：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。                                                                                         
+51.5 功能说明                                                                                  
+只能由通证发行者发起，更新通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 52. 获取当前区块2
+
+52.1 接口声明  
+rpc GetNowBlock2 (EmptyMessage) returns (BlockExtention) {};  
+52.2 提供节点  
+fullnode、soliditynode。  
+52.3 参数说明  
+EmptyMessage：空。  
+52.4 返回值  
+BlockExtention：当前区块信息，包含区块id。  
+52.5 功能说明  
+获取当前最新的区块。
+
+## 53. 按照高度获取区块2
+
+53.1 接口声明  
+rpc GetBlockByNum2 (NumberMessage) returns (BlockExtention) {};  
+53.2 提供节点  
+fullnode、soliditynode。  
+53.3 参数说明  
+NumberMessage：区块高度。  
+53.4 返回值  
+BlockExtention：区块信息，包含区块id。  
+53.5 功能说明  
+获取指定高度的区块，如果找不到则返回创世区块。
+
+## 54. 分页获取区块2
+
+54.1 接口声明  
+rpc GetBlockByLimitNext2 (BlockLimit) returns (BlockListExtention) {};  
+54.2 提供节点  
+fullnode  
+54.3 参数说明  
+BlockLimit：区块起止范围。  
+54.4 返回值  
+BlockListExtention：区块列表。  
+54.5 功能说明  
+根据范围查询区块，用与分页查询所有区块。
+
+## 55. 查询最后区块2
+
+55.1 接口声明  
+rpc GetBlockByLatestNum2 (NumberMessage) returns (BlockListExtention) {};  
+55.2 提供节点  
+fullnode  
+55.3 参数说明  
+NumberMessage：需要查询的区块数量。  
+55.4 返回值  
+BlockListExtention：区块列表。  
+55.5 功能说明  
+查询最后的一定数量的区块。
+
+## 56. 对交易进行签名2
+56.1 接口说明                                                                                  
+rpc GetTransactionSign2 (TransactionSign) returns (TransactionExtention) {};  
+56.2 提供节点                                                                                  
+fullnode  
+56.3 参数说明                                                                                  
+TransactionSign：待签名Transaction对象和签名用的private key  
+56.4 返回值                                                                                  
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+56.5	功能说明  
+使用API对交易进行签名。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 57. 通过地址查询所有发起交易2
+
+57.1 接口声明  
+GetTransactionsFromThis2 (AccountPaginated) returns (TransactionListExtention) {};  
+57.2 提供节点  
+soliditynode。  
+57.3 参数说明  
+AccountPaginated：发起方账户地址及查询范围。  
+57.4 返回值  
+TransactionListExtention：交易列表。  
+57.5 功能说明  
+通过账户地址查询所有发起的交易。
+
+## 58. 通过地址查询所有接收交易2
+
+58.1 接口声明  
+rpc GetTransactionsFromThis2 (AccountPaginated) returns (TransactionListExtention) {};  
+58.2 提供节点  
+soliditynode。  
+58.3 参数说明  
+AccountPaginated：发起方账户地址及查询范围。  
+58.4 返回值  
+TransactionListExtention：交易列表。  
+58.5 功能说明  
+通过账户地址查询所有其它账户发起和本账户有关的交易。
