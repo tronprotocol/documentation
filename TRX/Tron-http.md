@@ -108,7 +108,7 @@ Return value：broadcast success or failure
 Function：Modify account name
 demo：curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d '{"account_name": "0x7570646174654e616d6531353330383933343635353139" ,"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"}'
 Parameters：account_name is the name of the account, converted into a hex string；owner_address is the account address of the name to be modified, converted to a hex string.
-Return value：modification Transaction Object
+Return value：modified Transaction Object
 
 /wallet/votewitnessaccount
 Function：Vote on the super representative
