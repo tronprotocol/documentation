@@ -71,6 +71,7 @@ AccountCreateContract：包含账户类型、账户地址。
 Transaction：返回包含创建账户的交易，钱包签名后再请求广播交易。  
 4.5	功能说明  
 创建账号并写入区块链。应该先离线生成一个地址，再通过该API激活该地址。
+
 ## 5. 更新账户
 
 5.1	接口声明  
@@ -300,7 +301,7 @@ Transaction：被查询的交易。
 21.5 功能说明  
 通过ID查询交易的详细信息，ID就是交易数据的Hash值。
 
-## 22. 通过时间查询交易
+## 22. 通过时间查询交易（已删除）
 
 22.1 接口声明  
 rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {};  
@@ -496,3 +497,69 @@ EmptyMessage：空
 AddressPrKeyPairMessage：生成地址，生成私钥  
 37.5 功能说明                                                                                  
 可用于生成地址和私钥，请务必仅在受信断网节点调用，以免私钥外泄
+
+## 38. 转让波场币2
+38.1	接口声明  
+rpc CreateTransaction2 (TransferContract) returns (TransactionExtention)　{};  
+38.2	提供节点  
+fullnode。  
+38.3	参数说明  
+TransferContract：包含提供方地址、接收方地址、金额，其中金额的单位为sun。  
+38.4	返回值  
+TransactionExtention：返回包含转账合约的交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+38.5	功能说明  
+转账。创建一个转账的交易。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错
+误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 39. 更新账户2
+
+39.1	接口声明  
+rpc UpdateAccount2 (AccountUpdateContract) returns (TransactionExtention){};  
+39.2	提供节点  
+fullnode。  
+39.3	参数说明  
+AccountUpdateContract：包含账户名称、账户地址。  
+39.4	返回值  
+TransactionExtention：返回包含转账合约的交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+39.5	功能说明  
+更新账户名称。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错
+误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 40. 投票2
+
+40.1	接口声明  
+rpc VoteWitnessAccount2 (VoteWitnessContract) returns (TransactionExtention){};  
+40.2	提供节点  
+fullnode。  
+40.3	参数说明  
+VoteWitnessContract：包含投票人地址和一个投票对象列表(最多不能超过30个投票对象)，包含候选人地址和投票数。  
+40.4	返回值  
+TransactionExtention：返回包含转账合约的交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。   
+40.5	功能说明  
+投票功能。只能对超级代表候选人进行投票，投票总数量不能大于账户锁定资金的数量，参见25 锁定资金。
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错
+误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
+
+## 41. 通证发行2
+        
+41.1	接口声明  
+rpc CreateAssetIssue2 (AssetIssueContract) returns (TransactionExtention) {};  
+41.2	提供节点  
+fullnode。  
+41.3	参数说明  
+AssetIssueContract：包含发行人地址、通证名称、总发行量、波场币vs通证汇兑比例、开始时间、结束时间、衰减率、投票分数、详细描述、url、每账户最多消耗带宽值，总带宽消耗值以及token冻结资产。 
+41.4	返回值  
+TransactionExtention：返回包含转账合约的交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
+41.5	功能说明  
+发行通证。所有人都可以发行通证，发行通证会消耗1024个trx。发行通证后，在有效期内任何人都可以参与通证发行，用trx按照比例兑换通证。
++ 示例：
+
+`assetissue password abc 1000000 1 1 2018-5-31 2018-6-30 abcdef a.com 1000 1000000 200000 180 300000 365` 
+
+以上命令的发行了名为abc的资产，发行总量为100万，abc与TRX的兑换比例为1:1，发行日期为2018-5-31至2018-6-30，描述为abcdef，网址为a.com，
+每个账户每天的token转账最多消耗自己1000 bandwidth points，整个网络每天最多消耗自己1000000 bandwidth points。其中20万锁仓180天，30万锁仓365天。
+
+注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错
+误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
