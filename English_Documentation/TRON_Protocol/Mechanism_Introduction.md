@@ -73,7 +73,7 @@ The final result of the above commands is 3 votes for witness1 and 7 votes for w
 
 ## Bandwidth Points
 
-Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network only allows every account to initiate a limited number of transactions for free every once every 10 seconds. To engage in transactions more frequently requires bandwidth. Like TRON Power(TP), bandwidth can be obtained through freezing TRX.
+Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network grants every account a free pool of `Bandwidth` for free transactions every 24 hours. To engage in transactions more frequently requires freezing TRX for additional bandwidth, or paying the fee in TRX.
 
 1. Definition of bandwidth points  
 Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array.  

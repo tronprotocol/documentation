@@ -13,27 +13,98 @@
       Contract = 2; 
      }
 
-   一个`Account`包含7种参数：  
-   `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。  
+   一个`Account`包含以下参数：  
+   `account_name`：该账户的名称——比如： ”_SicCongsAccount_”。编码后字节长度=<200。  
    `type`:该账户的类型——比如：  _0_ 代表的账户类型是`Normal`。  
-   `balance`:该账户的TRX余额——比如：_4213312_。  
-   `votes`:账户所得投票数——比如：_{(“0x1b7w…9xj3”,323),(“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_。  
-   `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。
-   `latest_operation_time`: 该账户的最新活跃时间。
-   
+   `address`:地址  
+   `balance`:该账户的TRX余额——比如：_4213312_。    
+   `votes`:账户所得投票数——比如：_{(“0x1b7w…9xj3”,323),(“0x8djq…j12m”,88),…,(“0x82nd…mx6i”,10001)}_。     
+   `asset`：除TRX以外账户上的其他资产——比如：_{<”WishToken”,66666>,<”Dogie”,233>}_。注：当资产的order为0时，key为assert_name.当资产的order不为0时，key为assert_name+"_"+assert_order.  
+   `frozen`: 冻结Trx，用于获得bandwidth，包含冻结量与解冻时间。  
+   `net_usage`: 冻结获得的bandwidth使用量。  
+   `create_time`: 该账户创建时间。  
+   `latest_operation_time`: 该账户的最新活跃时间。    
+   `allowance`: 当该账户是witness时有效，记录witness获得的奖励，可提取到balance中。    
+   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间，每次提取间隔需要大于24h。    
+   `is_witness`: 是否是witness。    
+   `latest_withdraw_time`: 当该账户是witness时有效，最近一次提取奖励时间。    
+   `frozen_supply`: 当该账户是是asset发行者时有效，用于设定asset锁定时间。    
+   `asset_issued_name`: 当该账户是是asset发行者时有效，发行的asset名称。    
+   `latest_asset_operation_time`: 当该账户是是asset发行者时有效，最近一次操作asset时间。    
+   `free_net_usage`: 免费bandwidth使用量。    
+   `free_asset_net_usage`:消耗asset发行者的bandwidth量。    
+   `latest_consume_time`: 最近消耗bandwidth时间。    
+   `latest_consume_time`: 最近消耗免费bandwidth时间。    
+   `account_id`: 账户唯一id，大小写不敏感。可作为getaccountbyid接口的参数。    
+   `AccountResource`: 账户CPU、storage资源。    
+   `cpu_usage`: cpu使用量    
+   `frozen_balance_for_cpu`:为了获得cpu，冻结的TRX量    
+   `latest_consume_time_for_cpu`:最近一次消耗cpu时间。    
+   `storage_limit`:拥有的storage，通过购买获得。    
+   `storage_usage`:storage 使用量    
+   `latest_exchange_storage_time`:最近一次storage交易时间。    
+          
     // Account 
     message Account {   
-      message Vote {     
-        bytes vote_address = 1;     
-        int64 vote_count = 2;   
-       }   
-       bytes accout_name = 1;   
-       AccountType type = 2;   
-       bytes address = 3;   
-       int64 balance = 4;   
-       repeated Vote votes = 5;   
-       map<string, int64> asset = 6; 
-       int64 latest_operation_time = 10;
+      /* frozen balance */
+        message Frozen {
+          int64 frozen_balance = 1; // the frozen trx balance
+          int64 expire_time = 2; // the expire time
+        }
+        bytes account_name = 1;
+        AccountType type = 2;
+        // the create address
+        bytes address = 3;
+        // the trx balance
+        int64 balance = 4;
+        // the votes
+        repeated Vote votes = 5;
+        // the other asset owned by this account
+        map<string, int64> asset = 6;
+        // latest asset operation time
+      
+        // the frozen balance
+        repeated Frozen frozen = 7;
+        // bandwidth, get from frozen
+        int64 net_usage = 8;
+      
+        // this account create time
+        int64 create_time = 0x09;
+        // this last operation time, including transfer, voting and so on. //FIXME fix grammar
+        int64 latest_opration_time = 10;
+        // witness block producing allowance
+        int64 allowance = 0x0B;
+        // last withdraw time
+        int64 latest_withdraw_time = 0x0C;
+        // not used so far
+        bytes code = 13;
+        bool is_witness = 14; 
+        // frozen asset(for asset issuer)
+        repeated Frozen frozen_supply = 16;
+        // asset_issued_name
+        bytes asset_issued_name = 17;
+        map<string, int64> latest_asset_operation_time = 18;
+      
+        int64 free_net_usage = 19;
+        map<string, int64> free_asset_net_usage = 20;
+        int64 latest_consume_time = 21;
+        int64 latest_consume_free_time = 22;
+      
+        bytes account_id = 23;
+      
+        message AccountResource{
+          // cpu resource, get from frozen
+          int64 cpu_usage = 1;
+          // the frozen balance for cpu
+          Frozen frozen_balance_for_cpu = 2;
+          int64 latest_consume_time_for_cpu = 3;
+      
+          // storage resource, get from market
+          int64 storage_limit = 6;
+          int64 storage_usage = 7;
+          int64 latest_exchange_storage_time = 8;
+        }
+        AccountResource account_resource = 26;
      }
 
    一个`Witness`包含8种参数：  
@@ -134,6 +205,18 @@
       bytes account_name = 1;
       bytes owner_address = 2;
      }
+      
+      
+   `SetAccountIdContract`包含2种参数：  
+   `account_id`： 账户id——比如： _"SiCongsaccount”_。注意，该字段大小写不敏感，'SiCongsaccount' == 'sicongsaccount',在网络中具有唯一性，不允许两个账户具有相同id。  
+   `owner_address`：合约持有人地址——比如： _“0xu82h…7237”_。
+   
+   与getAccountById接口对应。
+   
+    message SetAccountIdContract {
+      bytes account_id = 1;
+      bytes owner_address = 2;
+     }
      
    `TransferContract`包含3种参数：  
    `amount`：TRX数量——比如：_12534_。  
@@ -205,7 +288,7 @@
       bytes update_url = 12;
      }
    
-   `AssetIssueContract`包含11种参数：  
+   `AssetIssueContract`包含以下参数：  
    `name`：合约名称——比如：_“SiCongcontract”_。  
    `total_supply`：合约的赞成总票数——比如：_100000000_。  
    `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。  
@@ -213,29 +296,43 @@
    `num`： 对应的自定义资产数目。  
    `start_time`：开始时间——比如：_20170312_。  
    `end_time`：结束时间——比如：_20170512_。  
+   `order`：相同asset_name时，order递增，默认初始值为0。  
    `decav_ratio`：衰减速率。  
    `vote_score`：合约的评分——比如：_12343_。  
    `description`：合约的描述——比如：_”trondada”_。  
    `url`：合约的url地址链接。
-
-    message AssetIssueContract {   
-      bytes owner_address = 1;   
-      bytes name = 2;   
-      int64 total_supply = 4;   
-      int32 trx_num = 6;   
-      int32 num = 8;   
-      int64 start_time = 9;   
-      int64 end_time = 10;   
-      int32 decay_ratio = 15;  
-      int32 vote_score = 16;  
-      bytes description = 20;   
-      bytes url = 21; 
-     }
+   `free_asset_net_limit`：每个账户拥有的免费带宽（转移该资产时使用）。
+   `public_free_asset_net_usage`：所有账户拥有的免费带宽（转移该资产时使用）。
+   `public_latest_free_net_time`：最近一次转移该资产并使用该资产的免费带宽的时间。
+   
+    message AssetIssueContract {
+      message FrozenSupply {
+        int64 frozen_amount = 1;
+        int64 frozen_days = 2;
+      }
+      bytes owner_address = 1;
+      bytes name = 2;
+      bytes abbr = 3;
+      int64 total_supply = 4;
+      repeated FrozenSupply frozen_supply = 5;
+      int32 trx_num = 6;
+      int32 num = 8;
+      int64 start_time = 9;
+      int64 end_time = 10;
+      int64 order = 11; // the order of tokens of the same name
+      int32 vote_score = 16;
+      bytes description = 20;
+      bytes url = 21;
+      int64 free_asset_net_limit = 22;
+      int64 public_free_asset_net_limit = 23;
+      int64 public_free_asset_net_usage = 24;
+      int64 public_latest_free_net_time = 25;
+    }
      
    `ParticipateAssetIssueContract`包含4种参数：  
    `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。  
    `to_address`：接收方地址——比如：_“0xu82h…7237”_。  
-   `asset_name`: 目标资产的名称。  
+   `asset_name`: 目标资产的名称，当order为0时，为asset_name。当order大于0时，为asset_name+ "_" + order。  
    `amount`： 小部分数量。
    
    `DeployContract`包含2种参数：  
@@ -246,7 +343,89 @@
       bytes owner_address = 1;   
       bytes script = 2; 
      }
-
+     
+   `FreezeBalanceContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+       `frozen_balance`：冻结余额。
+       `frozen_duration`：冻结时间，只允许3天。
+       
+    message FreezeBalanceContract {
+      bytes owner_address = 1;
+      int64 frozen_balance = 2;
+      int64 frozen_duration = 3;
+    }
+    
+   `UnfreezeBalanceContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+    message UnfreezeBalanceContract {
+      bytes owner_address = 1;
+    }
+    
+   `UnfreezeAssetContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+    message UnfreezeAssetContract {
+      bytes owner_address = 1;
+    }
+    
+   `WithdrawBalanceContract`包含2种参数：  
+       `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+    message WithdrawBalanceContract {
+      bytes owner_address = 1;
+    }
+     
+   `ProposalCreateContract`包含2种参数： 
+   `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+   `parameters`：修改的网络参数。
+   
+    message ProposalCreateContract {
+      bytes owner_address = 1;
+      map<int64, int64> parameters = 2;
+    }
+    
+   `ProposalApproveContract`包含3种参数：  
+   `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+   `proposal_id`：提议id。
+   `is_add_approval`：赞成或取消赞成票。
+   
+    message ProposalApproveContract {
+     bytes owner_address = 1;
+     int64 proposal_id = 2;
+     bool is_add_approval = 3; // add or remove approval
+    }
+    
+   `ProposalDeleteContract`包含2种参数：
+   `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+   `proposal_id`：提议id。
+   
+    message ProposalDeleteContract {
+      bytes owner_address = 1;
+      int64 proposal_id = 2;
+    }
+    
+   `GetChainParameters`
+      message ChainParameters {
+        map<int64, int64> parameters = 1;
+      }
+      
+   `BuyStorageContract`包含2种参数：
+     `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+     `quant`：购买 storage ，花费的balance (单位drop)
+     
+      message BuyStorageContract {
+        bytes owner_address = 1;
+        int64 quant = 2;
+      }
+      
+   `SellStorageContract`包含2种参数：
+     `owner_address`：合约持有人地址——比如：_“0xu82h…7237”_。
+     `storage_bytes`：卖出的storage数量(单位是字节)
+     
+      message SellStorageContract {
+        bytes owner_address = 1;
+        int64 storage_bytes = 2;
+      }
+      
+      
    消息体 `Result` 包含 `fee` and `ret`2个参数.   
    `ret`: 交易结果。  
    `fee`: 交易扣除的费用。(已弃用)
@@ -295,77 +474,56 @@
    `type`：合约的类型。  
    `parameter`：任意参数。
 
-   有八种账户类型合约：`AccountCreateContract`，`TransferContract`，`TransferAssetContract`，`VoteAssetContract`，`VoteWitnessContract`，`WitnessCreateContract`，`AssetIssueContract` 和`DeployContract`。
-
-   `TransactionType`包括`UtxoType`和`ContractType`。
+   有21种账户类型合约。
 
     message Transaction {   
-      enum TranscationType {     
-        UtxoType = 0;     
-        ContractType = 1;   
-       }   
        message Contract {    
          enum ContractType {       
-           AccountCreateContract = 0;       
-           TransferContract = 1;       
-           TransferAssetContract = 2;       
-           VoteAssetContract = 3;       
-           VoteWitnessContract = 4;      
-           WitnessCreateContract = 5;       
-           AssetIssueContract = 6;       
-           DeployContract = 7;     
+            AccountCreateContract = 0;
+            TransferContract = 1;
+            TransferAssetContract = 2;
+            VoteAssetContract = 3;
+            VoteWitnessContract = 4;
+            WitnessCreateContract = 5;
+            AssetIssueContract = 6;
+            DeployContract = 7;
+            WitnessUpdateContract = 8;
+            ParticipateAssetIssueContract = 9;
+            AccountUpdateContract = 10;
+            FreezeBalanceContract = 11;
+            UnfreezeBalanceContract = 12;
+            WithdrawBalanceContract = 13;
+            UnfreezeAssetContract = 14;
+            UpdateAssetContract = 15;
+            ProposalCreateContract = 16;
+            ProposalApproveContract = 17;
+            ProposalDeleteContract = 18;
+            CustomContract = 20;    
           }     
           ContractType type = 1;     
-          google.protobuf.Any parameter = 2;  
+          google.protobuf.Any parameter = 2; 
+          bytes provider = 3;
+          bytes ContractName = 4; 
         }   
-        message raw {     
-          TranscationType type = 2;     
-          repeated TXInput vin = 5;     
-          repeated TXOutput vout = 7;     
-          int64 expiration = 8;     
-          bytes data = 10;     
-          repeated Contract contract = 11;     
-          bytes scripts = 16; 
-          in64 timestamp = 17; 
-         }   
+        message raw {
+            bytes ref_block_bytes = 1;
+            int64 ref_block_num = 3;
+            bytes ref_block_hash = 4;
+            int64 expiration = 8;
+            repeated authority auths = 9;
+            // data not used
+            bytes data = 10;
+            //only support size = 1,  repeated list here for extension
+            repeated Contract contract = 11;
+            // scripts not used
+            bytes scripts = 12;
+            int64 timestamp = 14;
+          } 
          raw raw_data = 1;   
-         repeated bytes signature = 5; 
+         repeated bytes signature = 2; 
+         repeated Result ret = 5;
      }
-
-   消息体 `TXOutputs`由`outputs`构成。  
-   `outputs`: 元素为`TXOutput`的数组。
-
-    message TXOutputs {   
-      repeated TXOutput outputs = 1;
-      }
-
-   消息体 `TXOutput`包括`value`和`pubKeyHash`。  
-   `value`：输出值。  
-   `pubKeyhash`：公钥的哈希。
-
-    message TXOutput {   
-      int64 value = 1;   
-      bytes pubKeyHash = 2;
-      }
-
-   消息体 `TXIutput`包括`raw_data`和`signature`。  
-   `raw_data`：消息体`raw`。  
-   `signature`：`TXInput`的签名。
-
-   消息体 `raw`包含`txID`，`vout`和 `pubKey`。  
-   `txID`：交易ID。  
-   `Vout`：上一个输出的值。  
-   `pubkey`:公钥。
-
-    message TXInput {   
-      message raw {     
-        bytes txID = 1;     
-        int64 vout = 2;     
-        bytes pubKey = 3;   
-       }   
-       raw raw_data = 1;  
-       bytes signature = 4; }
-        
+  
    消息体 `TransactionInfo`包括`id`、`fee`、`blockNumber`和`blockTimeStamp`。 
    
    `id`：交易ID。  
@@ -516,7 +674,18 @@
    __`CreateAccount`__：采用参数`AccountCreateContract`，返回对象`Transaction`。    
    __`CreatAssetIssue`__：采用参数`AssetIssueContract`，返回对象`Transaction`。  
    __`UpdateAccount`__：采用参数`AccountUpdateContract`，返回对象`Transaction`。    
+   __`SetAccountId`__：采用参数`SetAccountIdContract`，返回对象`Transaction`。    
    __`VoteWitnessAccount`__：采用参数`VoteWitnessContract`，返回对象`Transaction`。   
+   __`FreezeBalance`__：采用参数`FreezeBalanceContract`，返回对象`Transaction`。   
+   __`UnFreezeBalance`__：采用参数`UnfreezeBalanceContract`，返回对象`Transaction`。   
+   __`UnfreezeAsset`__：采用参数`UnfreezeAssetContract`，返回对象`Transaction`。   
+   __`WithdrawBalance`__：采用参数`WithdrawBalanceContract`，返回对象`Transaction`。   
+   __`ProposalCreate`__：采用参数`ProposalCreateContract`，返回对象`Transaction`。   
+   __`ProposalApprove`__：采用参数`ProposalApproveContract`，返回对象`Transaction`。   
+   __`ProposalDelete`__：采用参数`ProposalDeleteContract`，返回对象`Transaction`。   
+   __`GetChainParameters`__：采用参数`EmptyMessage`，返回对象`ChainParameters`。   
+   __`ListProposals`__：采用参数`EmptyMessage`，返回对象`ProposalList`。   
+   __`getProposals`__：采用参数`ProposalApproveContract`，返回对象`Transaction`。   
    __`WitnessList`__：采用参数`EmptyMessage`，返回对象`WitnessList`。    
    __`UpdateWitness`__：采用参数`WitnessUpdateContract`，返回对象`Transaction`。    
    __`CreateWitness`__：采用参数`WitnessCreateContract`，返回对象`Transaction`。    
@@ -530,6 +699,8 @@
    __`GetBlockByNum`__：采用参数`NumberMessage`，返回对象`Block`。    
    __`TotalTransaction`__：采用参数`EmptyMessage`，返回对象`NumberMessage`。  
    __`GenerateAddress`__: 采用参数`EmptyMessage`，返回对象 `AddressPrKeyPairMessage`。
+   __`BuyStorage`__：采用参数`BuyStorageContract`，返回对象`Transaction`。  
+   __`SellStorage`__: 采用参数`SellStorageContract`，返回对象 `Transaction`。
    
       service Wallet {
             
@@ -540,6 +711,14 @@
                 };
             
               };
+              
+              rpc GetAccountById (Account) returns (Account) {
+                option (google.api.http) = {
+                  post: "/wallet/getaccount"
+                  body: "*"
+                };
+            
+              };             
             
               rpc CreateTransaction (TransferContract) returns (Transaction) {
                 option (google.api.http) = {
@@ -569,6 +748,14 @@
                   body: "*"
                 };
               };
+              
+              rpc SetAccountId (SetAccountIdContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/setaccountid"
+                  body: "*"
+                };
+              };
+                    
             
               rpc CreateAccount (AccountCreateContract) returns (Transaction) {
                 option (google.api.http) = {
@@ -583,6 +770,47 @@
                   body: "*"
                 };
               };
+                         
+              rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/freezebalance"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/freezebalance"
+                  }
+                };
+              }
+
+              rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/unfreezebalance"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/unfreezebalance"
+                 };
+              }
+
+              rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/unfreezeasset"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/unfreezeasset"
+                  }
+                };
+              }
+
+              rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {
+                option (google.api.http) = {
+                  post: "/wallet/withdrawbalance"
+                  body: "*"
+                  additional_bindings {
+                  get: "/wallet/withdrawbalance"
+                  }
+                };
+              }
+                 
+              
             
               rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {
                 option (google.api.http) = {
@@ -689,6 +917,10 @@
                   }
                 };
               }
+              rpc BuyStorage (BuyStorageContract) returns (Transaction) {
+                }
+              rpc SellStorage (SellStorageContract) returns (Transaction) {
+                }                            
             };
             
    `WalletSolidity`钱包服务包含多个RPC。  

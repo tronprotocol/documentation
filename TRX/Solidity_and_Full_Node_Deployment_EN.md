@@ -17,6 +17,8 @@ Make sure you have the proper dependencies.
 
 * JDK 1.8 (JDK 1.9+ is not supported yet)
 * On Linux Ubuntu system (e.g. Ubuntu 16.04.4 LTS), ensure that the machine has [__Oracle JDK 8__](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-get-on-ubuntu-16-04), instead of having __Open JDK 8__ in the system. If you are building the source code by using __Open JDK 8__, you will get [__Build Failed__](https://github.com/tronprotocol/java-tron/issues/337) result.
+* Open **UDP** ports for connection to the network
+* **MINIMUM** 2 CPU Cores
 
 ## Deployment guide
 
@@ -41,7 +43,7 @@ Make sure you have the proper dependencies.
       java -jar FullNode.jar -c config.conf // make sure that your config.conf is downloaded from https://github.com/tronprotocol/TronDeployment
 ```
 
-  4. Configure the SolidityNode configuration file. You'll need to edit `config.conf` to connect to your local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change `rpc port` to `50052` or something to avoid conflicts.
+  4. Configure the SolidityNode configuration file. You'll need to edit `config.conf` to connect to your local `FullNode`. Change  `trustNode` in `node` to local `127.0.0.1:50051`, which is the default rpc port. Set `listen.port` to any number within the range of 1024-65535. Please don't use any ports between 0-1024 since you'll most likely hit conflicts with other system services. Also change `rpc port` to `50052` or something to avoid conflicts. **Please forward the UDP port for FullNode.**
 ```
     node {
         trustNode = "127.0.0.1:50051"
@@ -92,4 +94,4 @@ while [ $count -le 60 ]; do
     kill -9 $pid
   fi
 done
-
+```

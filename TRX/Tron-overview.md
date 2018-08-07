@@ -86,48 +86,48 @@ Please see the protobuf protocol for the raw API.
 - [Protobuf Structures](https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Protobuf_Protocol_document.md)
 
 ## 4.2 Explanation of APIs
-### 4.2.1 grpc interface
-APIs under wallet service are provided by the full node. APIs under walletSolidity and walletExtension services are provided by the solidity node. APIs under the walletExtension service, whose processing time is long, are provided by the solidity node. The full node provides APIs for operations on the blockchain and for data inquiry, while the solidity node only provides APIs for the latter. The difference between these two nodes is that data of the full node could be revoked due to forking, whereas the solidified data of the solidity one is irrevocable.
+### 4.2.1 gRPC interface
+The Full Node and Solidity Nodes each run a gRPC service that you can connect to.
 
-please refer:
-https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
+- [gRPC Tutorial](https://grpc.io/docs/)
+- [gRPC API](https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md)
 
-### 4.2.2 HTTP Interface
-we implement http interfaces by two ways.
-
-a. the inner http on FullNode and SolidityNode. Please refer 
-https://github.com/TRONprotocol/Documentation/blob/master/TRX/TRON-http.md
-
-b. grpc-gateway. Please refer 
-https://github.com/TRONprotocol/Documentation/blob/master/TRX/grpc-gateway-http.md
-
-we recommend exchanges to choose a. It is more convenient than b. 
-
-The inner http will encode the bytes fields defined in proto into hexString format.For input parameters in bytes format, you should encode in into hexString format, and for output parameters in bytes format, you should decode it into hexString format for subsequent processing. 
-
-The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. 
-
-We provide a encoding/decoding tool which you can download from https://github.com/TRONprotocol/TRON-demo/blob/master/TRONConvertTool.zip.
-
-## 4.3 API code generation
-APIs are based on the gRPC protocol, see https://grpc.io/docs/ for more information.
-
-## 4.4 API demo
 Please refer to the following two classes for a GRPC example in Java.
 ```
 https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/WalletClient.java
 
 https://github.com/TRONprotocol/wallet-cli/blob/master/src/main/java/org/TRON/walletserver/GrpcClient.java
 ```
-# 5. Relevant expenses:
-When there are sufficient bandwidth points, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also Transaction.Result.fee, with the corresponding proto file at https://github.com/TRONprotocol/protocol/blob/master/core/TRON.proto.
+
+### 4.2.2 HTTP Interface
+The FullNode and SolidityNode both have an HTTP Service running on them. All parameters are encoded as `HEX` and returned as Hex or `base58check`. If you're trying to pass an address in, please decode from `base58check` and conver it to `HEX`.
+
+- [HTTP Service API](https://github.com/TRONprotocol/Documentation/blob/master/TRX/TRON-http.md)
+
+- [Address DEBUG Tool](https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip)
+
+# 5. Transaction Fees
+Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network grants every account a free pool of `Bandwidth` for free transactions every 24 hours. To engage in transactions more frequently requires freezing TRX for additional bandwidth, or paying the fee in TRX.
 
 See also: https://github.com/TRONprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
-## 5.1 Definition of bandwidth points
-## 5.2 Freeze/unfreeze mechanism
-## 5.3 Bandwidth consumption rules
-## 5.4 Reward mechanism for Super Representative and Super Representative candidates
 
+## 5.1 Definition of Bandwidth
+Transactions are transmitted and stored in the network in byte arrays. Bandwidth consumed in a transaction equals the size of its byte array.
+If the length of a byte array is 200 then the transaction consumes 200 bandwidth.
+
+## 5.2 Freeze/unfreeze mechanism 
+TRX can be frozen for a minimum of 3 days to gain both `TRON Power` for voting and network `Bandwidth`. `TRON Power` is gained at a 1:1 ratio with the amount of frozen TRX.
+
+The amount of bandwidth granted follows a formula:
+```
+Your Frozen TRX
+---------------- * 54Gb of network bandwidth available = Your available share of bandwidth
+Total Frozen TRX
+```
+
+## 5.3 Bandwidth consumption rules
+When there are available `Bandwidth`, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also Transaction.Result.fee, with the corresponding proto file at https://github.com/TRONprotocol/protocol/blob/master/core/TRON.proto.
+ 
 # 6. User address generation
 ## 6.1 Algorithm description
 1. First generate a key pair and extract the public key (a 64-byte byte array representing its x,y coordinates). 
@@ -262,6 +262,9 @@ TRON will always support swapping ERC20 TRX to TRON Mainnet TRX.
 - For users: Please deposit your ERC20 in an exchange that supports the swap.
 - For Exhanges: Please contact TRON to swap your ERC20 TRX to Mainnet TRX
 
-# 13. Relevant files
+# 13. Super Representatives and Voting
+
+
+# 14. Relevant files
 See also: https://github.com/TRONprotocol/Documentation#documentation-guide
 
