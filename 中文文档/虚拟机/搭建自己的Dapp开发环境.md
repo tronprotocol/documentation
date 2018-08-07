@@ -38,19 +38,20 @@ contract DataStore {
 }
 ```
 
-### 1、启动私有链
+### 启动私有链
 确保前提条件中，私有链已经在本地部署完成。可以检查FullNode/logs/tron.log中，是否有持续产块的log信息出现：“Produce block successfully”
 
-### 2、开发智能合约
+### 开发智能合约
 把上述代码复制到remix中编译，调试，确保代码的逻辑是自己需要的，编译通过，没有错误
 
-### 3、在SimpleWebCompiler编译得到ABI和ByteCode
+### 在SimpleWebCompiler编译得到ABI和ByteCode
 因为波场的编译器与以太坊的编译略有差异，正在与Remix集成中，所以临时采用改方案获取ABI和ByteCode，而不是通过Remix直接获取ABI和ByteCode。  
 把上述代码复制到SimpleWebCompiler中，点击Compile按钮，获取ABI和ByteCode。
 
-### 4、通过Wallet-cli部署智能合约
+### 通过Wallet-cli部署智能合约
 下载Wallet-Cli，文件然后编译。
-```shell
+```
+shell
 # 下载源代码
 git clone https://github.com/tronprotocol/wallet-cli
 cd  wallet-cli
@@ -77,20 +78,22 @@ getbalance
 部署合约
 
 
-``` Shell
+```
+Shell
 # 合约部署指令
-deploycontract <contract_name> <ABI> <code><max_cpu_usage>  <max_net_usage>  <max_storage_useage> <value>
+deploycontract <contract_name> <ABI> <bytecode> <fee_limit> <consume_user_resource_percent> <value> <library:address,library:address,...>
 
 # 参数说明
-ABI:从SimpleWebCompiler中获取到的 ABI json数据
-code:二进制代码
-max_cpu_usage:cpu资源可用量
-max_net_usage:网络资源可用量
-max_storage_useage:storage 资源可用量
+contract_name:自己制定的合约名
+ABI:从SimpleWebCompiler中获取到的 ABI json 数据
+bytecode:从SimpleWebCompiler中获取到的二进制代码
+fee_limit:本次部署合约消耗的TRX的上限，单位是SUN(1 SUN = 10^-6 TRX)，包括CPU资源、STORAGE资源和可用余额的消耗
+consume_user_resource_percent:指定的使用该合约用户的资源占比，是[0, 100]之间的整数。如果是0，则表示用户不会消耗资源。如果开发者资源消耗完了，才会完全使用用户的资源。
 value:在部署合约时，给该合约转账金额，使用十六进制32位表示
+library:address,library:address,...:如果合约包含library，则需要在部署合约的时候指定library的地址，具体见下文；没有library的话则不需要填写。
 
 # 运行例子
-deploycontract DataStore [{"constant":false,"inputs":[{"name":"key","type":"uint256"},{"name":"value","type":"uint256"}],"name":"set","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"get","outputs":[{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}] 608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029 1000000 1000000 10000000 0000000000000000000000000000000000000000000000000000000000000000
+deploycontract DataStore [{"constant":false,"inputs":[{"name":"key","type":"uint256"},{"name":"value","type":"uint256"}],"name":"set","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"get","outputs":[{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}] 608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029 1000000 30 0000000000000000000000000000000000000000000000000000000000000000
 ```
 部署成功会显示Deploy the contract successfully
 
@@ -103,25 +106,33 @@ Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
 ```
 
 调用合约存储数据、查询数据
-```Shell
+```
+Shell
 # 调用合约指令
-triggercontract <合约地址> <函数签名> <输入参数> <十六进制> <max_cpu_usage>  <max_net_usage>  <max_storage_useage> <value>
+triggercontract <contract_address> <method> <args> <is_hex> <fee_limit> <value>
 
 # 参数说明
-合约地址:即之前部署过合约的地址，格式 base58，如：TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
-函数签名:调用的函数签名，如set(uint256,uint256)或者 fool()，参数使用','分割且不能有空格
-输入参数:如果非十六进制，则自然输入使用','分割且不能有空格，如果是十六进制，直接填入即可
-十六进制：输入参数是否为十六进制，false 或者 true
-max_net_usage:网络资源可用量
-max_storage_useage:storage 资源可用量
+contract_address:即之前部署过合约的地址，格式 base58，如：TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
+method:调用的函数签名，如set(uint256,uint256)或者 fool()，参数使用','分割且不能有空格
+args:如果非十六进制，则自然输入使用','分割且不能有空格，如果是十六进制，直接填入即可
+is_hex：输入参数是否为十六进制，false 或者 true
+fee_limit:和deploycontract的时候类似，表示本次部署合约消耗的TRX的上限，单位是SUN(1 SUN = 10^-6 TRX)，包括CPU资源、STORAGE资源和可用余额的消耗。
 value:在部署合约时，给该合约转账金额，使用十六进制32位表示
 
 # 调用的例子
 ## 设置 mapping 1->1
-triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 false 1000000 1000000 10000000 0000000000000000000000000000000000000000000000000000000000000000
+triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
 
 ## 取出 mapping key = 1的 value
-triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000 1000000 10000000 0000000000000000000000000000000000000000000000000000000000000000
+triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
 ```
 
 如果调用的函数是 constant 或 view，wallet-cli 将会直接返回结果
+
+如果包含library，则需要在部署合约之前先部署library，部署完library之后，知道了library地址，将地址填进<library:address,library:address,...>。  
+```
+# 比如使用remix生成的合约，bytecode是
+608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
+```
+之前部署的library地址是：TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54  
+那么部署的时候，需要将 browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 作为deploycontract的参数。
