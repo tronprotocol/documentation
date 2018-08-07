@@ -80,8 +80,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_addr
 /wallet/gettransactionsign
 作用：对交易签名，该api有泄漏private key的风险，请确保在安全的环境中调用该api
 demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d '{
-"transation" : {"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}
-"privateKey" : "your private key"}
+"transaction" : {"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}, "privateKey": "your private key"}
 }'
 参数说明：transaction是通过http api创建的合约，privateKey是用户private key
 返回值：签名之后的transaction
@@ -349,5 +348,35 @@ wallet/validateaddress
 demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
 参数说明：地址，可以是base58checksum、hexString、base64格式
 返回值：地址正确或者错误
+
+wallet/deploycontract
+作用：部署合约
+demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bandwidth_limit":1000000,"bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","call_value":100,"name":"SomeContract","cpu_limit":1000000,"drop_limit":10,"storage_limit":1000000,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+参数说明：
+abi：abi
+bytecode:bytecode
+bandwidth_limit：最大带宽消耗，字节数
+cpu_limit：最大cpu消耗，微秒
+storage_limit：最大存储消耗，字节数
+drop_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
+call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
+owner_address：发起deploycontract的账户地址
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
+wallet/triggercontract
+作用：调用合约
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","bandwidth_limit":1000000,"cpu_limit":1000000,"storage_limit":1000000,"drop_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+参数说明：
+contract_address，hexString格式
+function_selector，函数签名，不能有空格
+parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
+bandwidth_limit：最大带宽消耗，字节数
+cpu_limit：最大cpu消耗，微秒
+storage_limit：最大存储消耗，字节数
+drop_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
+call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
+owner_address：发起triggercontract的账户地址
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
 
 ```

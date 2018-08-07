@@ -16,9 +16,9 @@ git clone https://github.com/tronprotocol/java-tron.git
 git checkout -t origin/master
 ```
 
-* For Mac, you can also install **[GitHub for Mac](https://mac.github.com/)** then **[fork and clone our repository](https://guides.github.com/activities/forking/)**. 
+* For Mac, you can also install **[GitHub for Mac](https://desktop.github.com/)** then **[fork and clone our repository](https://guides.github.com/activities/forking/)**. 
 
-* If you'd rather not use Git, [Download the ZIP](https://github.com/tronprotocol/java-tron/archive/develop.zip)
+* If you'd rather not use Git, [Download the lastest source code file on our release page](https://github.com/tronprotocol/java-tron/releases)
 
 ## Building from source code
 
