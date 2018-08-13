@@ -1,5 +1,12 @@
 #  TRON HTTP Gateway interface
 
+# demo of The tansaction between base58check and hexString
+java:
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92
+
+php:
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php
+
 Available in the latest release of java-tron. 
 
 Configure the ports for the nodes by modifying these ports in both configuration files.
