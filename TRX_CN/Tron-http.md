@@ -1,4 +1,10 @@
 #  TRON内置http接口说明
+# hexString和base58check转码demo
+java: 
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92
+
+php:
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php 
 
 # SolidityNode接口说明
 
