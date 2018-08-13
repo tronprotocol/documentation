@@ -360,10 +360,9 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"
 Parameters：
   abi：abi
   bytecode:bytecode
+  consume_user_resource_percent：The percentage of resources specified for users who use this contract, is an integer between [0, 100]. If it is 0, it means the user does not consume resources until the developer resources are exhausted.
   bandwidth_limit：Maximum bandwidth consumption, measured in bytes
-  cpu_limit：Maximum cpu consumption, microseconds
-  storage_limit：Maximum storage consumption, number of bytes
-  drop_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
+  fee_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
   call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
   owner_address：contract owner address, converted to a hex string
 Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
@@ -375,10 +374,7 @@ Parameters：
   contract_address: contract address, converted to a hex string
   function_selector: Function signature, no spaces
   parameter：Call the virtual machine format of the parameter [1, 2], use the js tool provided by remix, convert the parameter array [1, 2] called by the contract caller into the parameter format required by the virtual machine.
-  bandwidth_limit：Maximum bandwidth consumption, measured in bytes
-  cpu_limit：Maximum cpu consumption, microseconds
-  storage_limit：Maximum storage consumption, number of bytes
-  drop_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
+  fee_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
   call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
   owner_address：address that is trigger the contract, converted to a hex string
 Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
