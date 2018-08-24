@@ -1,7 +1,8 @@
-##ENERGY 消耗机制
+
+## ENERGY 消耗机制
 
 
-###Energy消耗
+### Energy消耗
 顺序如下：
 
 1. 按照合约中设置的比例消耗合约创建者冻结的Energy，若不足优先扣除合约创建者剩余所有Energy,剩余消耗需调用者提供
@@ -9,9 +10,9 @@
 1. 若创建者无冻结Energy资源，则所有消耗需调用者提供
 
 
-###相关接口
+### 相关接口
 
-#####getTransactionInfoById
+##### getTransactionInfoById
 ```
 getTransactionInfoById needs 1 parameter, transaction id
 ```
@@ -31,12 +32,12 @@ net_usage: //本次合约消耗的Bandwidth(不包含NetFee对应的)
 net_fee: //本次合约因Bandwidth不足消耗的TRX
 0
 ```
-#####FreezeBalance
+##### FreezeBalance
 ```
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-###使用说明
+### 使用说明
 
 部署合约和调用合约的过程中需传入参数 "fee_limit"
 
@@ -49,7 +50,7 @@ freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 销毁TRX获得Energy部分：按照比例消耗的TRX数量
 ```
 
-####注意事项：
+#### 注意事项：
 
 通过销毁TRX获得CPU：1 Energy = n SUN （系数n有委员会投票确定）
 
@@ -57,7 +58,7 @@ fee_limit或余额限制不足n时，不会销毁SUN来兑换Energy
 
 执行合约过程中出现异常会消耗全部fee_limit对应的资源
 
-#####下列情况将会产生一个 assert 式异常：(消耗几乎所有energy)
+##### 下列情况将会产生一个 assert 式异常：(消耗几乎所有energy)
 
   1.  如果你访问数组的索引太大或为负数（例如 x[i] 其中 i >= x.length 或 i < 0）。
   1.  如果你访问固定长度 bytesN 的索引太大或为负数。
@@ -68,7 +69,7 @@ fee_limit或余额限制不足n时，不会销毁SUN来兑换Energy
   1.  如果你调用 assert 的参数（表达式）最终结算为 false。
 
 
-#####下列情况将会产生一个 require 式异常：(消耗实际使用的energy)
+##### 下列情况将会产生一个 require 式异常：(消耗实际使用的energy)
 
   1.  调用 throw 。
   1.  如果你调用 require 的参数（表达式）最终结算为 false 。
@@ -84,7 +85,7 @@ fee_limit或余额限制不足n时，不会销毁SUN来兑换Energy
 在内部， Solidity 对一个 require 式的异常执行回退操作（指令 0xfd ）并执行一个无效操作（指令 0xfe ）来引发 assert 式异常。 在这两种情况下，都会导致 EVM 回退对状态所做的所有更改。回退的原因是不能继续安全地执行，因为没有实现预期的效果。 因为我们想保留交易的原子性，所以最安全的做法是回退所有更改并使整个交易（或至少是调用）不产生效果。 请注意， assert 式异常消耗了所有可用的调用 Energy 。
 
 
-####相关名词：
+#### 相关名词：
 
 合约创建者：即创建合约的账户
 
