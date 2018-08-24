@@ -30,10 +30,6 @@ net_usage: //本次合约消耗的Bandwidth(不包含NetFee对应的)
 0
 net_fee: //本次合约因Bandwidth不足消耗的TRX
 0
-OriginCpuUsage: //本次合约有合约创建者提供的CPU
-120
-OriginStorageDelta: //本次合约有合约创建者提供的Storage
-0
 ```
 #####FreezeBalance
 ```
