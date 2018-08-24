@@ -1,4 +1,4 @@
-##CPU,Storage 消耗机制
+##ENERGY 消耗机制
 
 
 ###Energy消耗
