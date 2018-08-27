@@ -3,7 +3,67 @@
 Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚拟机的特性，但基于tron自身属性也有部分的区别。
 
 ## I 智能合约
-波场虚拟机运行的智能合约兼容以太坊智能合约特性，以deploycontract和triggercontract两种protobuf形式和定义。由合约abi说明合约接口，合约bytecode定义运行的具体指令集，并传入构造函数及调用函数的列表以及参数，扣费上限，开发者/使用者扣费百分比，所传入的trx金额。
+波场虚拟机运行的智能合约兼容以太坊智能合约特性，以protobuf的形式定义合约内容：
+
+    message SmartContract {
+      message ABI {
+        message Entry {
+          enum EntryType {
+            UnknownEntryType = 0;
+            Constructor = 1;
+            Function = 2;
+            Event = 3;
+            Fallback = 4;
+          }
+          message Param {
+            bool indexed = 1;
+            string name = 2;
+            string type = 3;
+            // SolidityType type = 3;
+          }
+          enum StateMutabilityType {
+            UnknownMutabilityType = 0;
+            Pure = 1;
+            View = 2;
+            Nonpayable = 3;
+            Payable = 4;
+          }
+
+          bool anonymous = 1;
+          bool constant = 2;
+          string name = 3;
+          repeated Param inputs = 4;
+          repeated Param outputs = 5;
+          EntryType type = 6;
+          bool payable = 7;
+          StateMutabilityType stateMutability = 8;
+        }
+        repeated Entry entrys = 1;
+      }
+      bytes origin_address = 1;
+      bytes contract_address = 2;
+      ABI abi = 3;
+      bytes bytecode = 4;
+      int64 call_value = 5;
+      int64 consume_user_resource_percent = 6;
+      string name = 7；
+    }
+    
+origin_address: 合约创建者地址
+
+contract_address: 合约地址
+
+abi:合约所有函数的接口信息
+
+bytecode：合约字节码
+
+call_value：随合约调用传入的trx金额
+
+consume_user_resource_percent：程序开发人员与调用程序者的资源扣费百分比
+
+name：合约名称（token名称）
+
+通过另外两个grpc message类型 CreateSmartContract 和 TriggerSmartContract 来创建和使用smart contract
 
 
 ## II 合约函数的使用
