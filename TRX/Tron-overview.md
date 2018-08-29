@@ -198,7 +198,7 @@ Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 Based on your own needs, there are two ways to construct the transaction: invoking API on the full node or filling in every fields of a transaction manually at local.
 
 ## 10.1 Invoke APIs on the full node
-Based on your own needs, you could construct transactions with corresponding APIs.
+You could construct transactions with corresponding APIs.
 
 - gRPC API: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 - HTTP API: https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
