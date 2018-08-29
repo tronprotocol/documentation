@@ -266,7 +266,7 @@ Return value：List of nodes
 Function：List the tokens issued by an account.
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
 Parameters：Token issuer account address，converted to a hex string
-Return value：List of tokens issued by the account
+Return value：The token issued by the account. An account can issue only one token.
 
 /wallet/getaccountnet
 Function：Query bandwidth information.
