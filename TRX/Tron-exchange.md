@@ -18,7 +18,7 @@ Follow this guide to deploy a Full Node and a linked Solidity Node on the same m
 # 2. Integrate with the TRON nodes
 
 The nodes support both a gRPC Service and a HTTP Gateway on the ports specified in the configuration files. You can use either method to communicate with the nodes. 
-- [Full API documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#4-tron-api.)
+- [Full API documentation](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-overview.md#4-tron-api)
 
 ### gRPC 
 
