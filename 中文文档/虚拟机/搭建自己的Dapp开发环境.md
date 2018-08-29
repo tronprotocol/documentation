@@ -14,6 +14,16 @@ Version 0.1
 
 Witness私钥：da146374a75310b9666e834ee4ad0866d6f4035967bfc76217c5a495fff9f0d0
 
+注意：如果要支持constant的请求，需要在配置文件config.conf中填写：supportConstant = true，默认是false。
+```
+vm = {
+  supportConstant = true
+  minTimeRatio = 0.6
+  maxTimeRatio = 5.0
+}
+```
+另外两项，minTimeRatio是指接受到超时的智能合约交易时，验证合约时设定的超时时间；maxTimeRatio是指接受到未超时的智能合约交易时，验证合约时设定的超时时间。
+
 ### 钱包客户端
 
 wallet-cli是波场网络的命令行钱包，开发者可以使用wallet-cli在主网上进行合约的部署和发布，以及其他相关的操作。
