@@ -250,7 +250,7 @@ wallet/getassetissuebyaccount
 作用：查询账户发行的token。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
 参数说明：发行者账户地址，格式为hexString。
-返回值：带宽信息。
+返回值：用户发行的token（一个用户只能发行一个token）。
 
 wallet/getaccountnet
 作用：查询带宽信息。
