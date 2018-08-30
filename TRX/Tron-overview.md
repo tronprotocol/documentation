@@ -100,33 +100,33 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/wa
 ```
 
 ### 4.2.2 HTTP Interface
-The FullNode and SolidityNode both have an HTTP Service running on them. All parameters are encoded as `HEX` and returned as Hex or `base58check`. If you're trying to pass an address in, please decode from `base58check` and conver it to `HEX`.
+The FullNode and SolidityNode both have an HTTP Service running on them. All parameters are encoded as `HEX` and returned as Hex or `base58check`. If you're trying to pass an address in, please decode from `base58check` and convert it to `HEX`.
 
 - [HTTP Service API](https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md)
 
 - [Address DEBUG Tool](https://github.com/tronprotocol/tron-demo/raw/master/TronConvertTool.zip)
 
 # 5. Transaction Fees
-Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network grants every account a free pool of `Bandwidth` for free transactions every 24 hours. To engage in transactions more frequently requires freezing TRX for additional bandwidth, or paying the fee in TRX.
+Having too many transactions will clog our network like Ethereum and may incur delays on transaction confirmation. To keep the network operating smoothly, TRON network grants every account a free pool of `Bandwidth points` for free transactions every 24 hours. To engage in transactions more frequently requires freezing TRX for additional bandwidth points, or paying the fee in TRX.
 
 See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Mechanism_Introduction.md
 
-## 5.1 Definition of Bandwidth
-Transactions are transmitted and stored in the network in byte arrays. Bandwidth consumed in a transaction equals the size of its byte array.
-If the length of a byte array is 200 then the transaction consumes 200 bandwidth.
+## 5.1 Definition of Bandwidth Points
+Transactions are transmitted and stored in the network in byte arrays. Bandwidth points consumed in a transaction equals the size of its byte array.
+If the length of a byte array is 200 then the transaction consumes 200 bandwidth points.
 
 ## 5.2 Freeze/unfreeze mechanism 
-TRX can be frozen for a minimum of 3 days to gain both `TRON Power(TP)` for voting and `Bandwidth` for network. `TRON Power` is gained at a 1:1 ratio with the amount of frozen TRX.
+TRX can be frozen for a minimum of 3 days to gain both `TRON Power (TP)` for voting and `Bandwidth points` for covering network fees. `TRON Power` is gained at a 1:1 ratio with the amount of frozen TRX.
 
-The amount of bandwidth granted follows a formula:
+The amount of bandwidth points granted follows a formula:
 ```
 Your Frozen TRX
----------------- * 54Gb of network bandwidth available = Your available share of bandwidth
+---------------- * 54Gb of network bandwidth points available = Your available share of bandwidth points
 Total Frozen TRX
 ```
 
-## 5.3 Bandwidth consumption rules
-When there are available `Bandwidth`, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also `Transaction.Result.fee`, with the corresponding proto file at https://github.com/tronprotocol/protocol/blob/master/core/Tron.proto.
+## 5.3 Bandwidth points consumption rules
+When there is available `Bandwidth points`, no TRX is charged. If a transaction fee is charged, it will be recorded in the fee field in the transaction results. If no transaction fee is charged, meaning that corresponding bandwidth points have been deducted, the fee field will read “0”. There will only be a service charge after a transaction has been written into the blockchain. For more information on the fee field, please see also `Transaction.Result.fee`, with the corresponding proto file at https://github.com/tronprotocol/protocol/blob/master/core/Tron.proto.
  
 # 6. User address generation
 ## 6.1 Algorithm description
@@ -195,16 +195,18 @@ BlockHash is the hash of the raw data of the blockheader, which can be calculate
 Sha256Hash.of(this.block.getBlockHeader().getRawData().toByteArray())
 ```
 # 10. Construction and signature of transaction
-Based on your own needs, there are two ways to construct the transaction: invoking API on the full node or filling in every fields of a transaction manually at local.
+Based on your own needs there are two methods to construct a transaction. You can either invoke the gRPC / HTTP API through a full node to build the transaction externally, or create the transaction locally.
 
 ## 10.1 Invoke APIs on the full node
-You could construct transactions with corresponding APIs.
+You can construct transactions with corresponding APIs.
 
 - gRPC API: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/TRON_Wallet_RPC-API.md
 - HTTP API: https://github.com/tronprotocol/Documentation/blob/master/TRX/Tron-http.md
 
+Individual Contract protocol file is available here: https://github.com/tronprotocol/protocol/blob/master/core/Contract.proto
+
 ## 10.2 Local construction
-Based on the definition of a transaction, you will need to fill in all fields of a transaction to construct a transaction at your local. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is `Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours`. If the condition is fulfilled, then the transaction is legit, and if not, the transaction is expired and will not be received by the mainnet.
+Based on your method of constructing a transaction you are required to populate all fields of a transaction to construct it locally. Please note that you will need to configure the details of reference block and expiration, so you will need to connect to the mainnet during transaction construction. We advise that you set the latest block on the full node as your reference block and production time of the latest block+N minutes as your expiration time. N could be any number you find fit. The backstage condition is `Expiration > production time of the latest block and Expiration < production time of the latest block + 24 hours`. If the condition is fulfilled, then the transaction is legitimate, and if not, the transaction is expired and will not be acknowledged by the network.
 A method of setting reference block: set RefBlockHash as subarray of newest block's hash from 8 to 16, set BlockBytes as subarray of newest block's height from 6 to 8. [The demo code](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java) is as follows:  
 ```
  public static Transaction setReference(Transaction transaction, Block newestBlock) {
@@ -267,9 +269,9 @@ TRON will always support swapping ERC20 TRX to TRON Mainnet TRX.
 - For Exhanges: Please contact TRON to swap your ERC20 TRX to Mainnet TRX
 
 # 13. Super Representatives and Voting
-The Super Representatives(SR) take important roles to build and operate on TRON network such as block generation and transaction packing. They receive some TRX as rewards. Currently, for the 27 SRs, one block is generated every 3 seconds, with each block awarding 32 TRX to the 27 SRs in sequence; for the 127 SR candidates (including the 27 SRs), there would be 16 additional TRX every 3 seconds to be distributed among the 127 SR candidates in proportion to the votes they have received.
+The Super Representatives(SR) take important roles to build and operate on TRON network such as block generation and transaction packing. They receive some TRX as rewards. Every 3 seconds a new block is generated. The top 27 SRs receive 32 TRX per block in sequence, and the top 127 SRs share 32 TRX proportional to the amount of votes they hold. This means that the top 27 SRs will be rewarded over 32 TRX per block.
 
-Every TRX holders can vote for SR but it is required to have Tron Power which can gain from freezing TRX. You can vote SR candidates and see info about SR candidates on `votes` menu on https://tronscan.org
+All TRX holders can vote for SRs as long as they have Tron Power available. Tron Power can be gained by freezing TRX. To vote for SR candidates you can use your favorite wallet or [TronScan, the official Web wallet](https://tronscan.org).
 
 See also: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Blockchain_Explorer/Guide_to_voting_on_the_new_blockchain_explorer.md
 
