@@ -63,10 +63,10 @@ On the voting page enter the amount of votes, click on "submit votes" to submit 
 
 **Note**
  
-Once you have submitted the amount of votes, the vote is complete. Voting requires TRON Power(TP), which can be obtained by freezing TRX. You will receive 1 TRON Power(TP) for each frozen TRX. You will get 1 vote for each TRON Power(TP). Previous votes will no longer be valid when TRX is unfrozen, which can be avoided by refreezing. Voting will be successful as long as total votes casted do not exceed total TRON Power(TP). There is no limit to the number of votes casted for a single Super Representative. "A successful vote will consume 100000/100k bandwidth points, unless it is more than 10 seconds away from the previous contract (vote, transfer, asset migration and balance freeze). If your TRON Power(TP) balance is insufficient, the user will be alerted on insufficient frozen balance. Only the last vote will be recorded, meaning that the last vote replaces all previous voting records.
+Once you have submitted the amount of votes, the vote is complete. Voting requires TRON Power(TP), which can be obtained by freezing TRX. You will receive 1 TRON Power(TP) for each frozen TRX. You will get 1 vote for each TRON Power(TP). Previous votes will no longer be valid when TRX is unfrozen. Voting will be successful as long as total votes casted do not exceed total TRON Power(TP). There is no limit to the number of votes casted for a single Super Representative.  If your TRON Power(TP) balance is insufficient, the user will be alerted on insufficient frozen balance. Only the last vote will be recorded, meaning that the last vote replaces all previous voting records.
 
 **Voting Guidelines**
-+ The maximum votes a user has must be no more than his/her holding of TRX.
++ The maximum votes a user has must be no more than his/her holding of frozen TRX.
 + Every user can vote for multiple candidates for multiple times.
 + The Super Representative list is updated every 6 hours.
 + No TRX will be consumed for voting.
