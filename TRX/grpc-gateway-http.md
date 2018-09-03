@@ -2,7 +2,7 @@
 
 You will need to deploy a [grpc-gateway](https://github.com/tronprotocol/grpc-gateway/blob/master/README.md)
 
-The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/blob/master/TronConvertTool.zip.
+The grpc-gateway will encode the bytes fields defined in proto into base64 format. For input parameters in bytes format, you should encode in into base64 format, and for output parameters in bytes format, you should decode it into base64 format for subsequent processing. We provide a encoding/decoding tool which you can download from https://github.com/tronprotocol/tron-demo/raw/master/TronConvertTool.zip.
 
 ```shell
 wallet/getaccount
