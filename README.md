@@ -1,9 +1,5 @@
 # Documentation
 
-# Translation Guide
-
-+ If you want to help out with documentation translations, you can do so by clicking the following link: https://crowdin.com/project/trondocs
-
 # Documentation Guide
 
 + If you want to know more about the recent progress of the TRON project, please check out [TRON Introduction](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Introduction).  
@@ -42,10 +38,6 @@ To become a recommended Super Representative, candidates must meet nine requirem
 
 
 # 文档
-
-# 翻译指引
-
-+ 如果你想参与从事波场文档的翻译工作，请访问如下链接：https://crowdin.com/project/trondocs
 
 # 文档指引
 

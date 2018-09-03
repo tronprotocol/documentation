@@ -1,6 +1,7 @@
 # Full Node
-GRPC port: 50051
-P2P network port: 18888
+* GRPC port: 50051
+* P2P network port: 18888
+* HTTP port : 8090
 ```
 54.236.37.243
 52.53.189.99
@@ -34,7 +35,8 @@ P2P network port: 18888
 ```
 
 # Solidity Node
-GRPC port: 50051
+* GRPC port: 50051
+* HTTP port : 8091
 ```
 39.105.66.80
 47.254.39.153
@@ -45,6 +47,4 @@ GRPC port: 50051
 18.221.34.0
 35.178.11.0
 35.180.18.107
-52.63.152.13
-18.231.123.107
 ```

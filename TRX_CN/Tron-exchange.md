@@ -14,7 +14,8 @@
 请注意：使用gRPC的的api，禁止使用grpc-gateway进行功能开发。grpc-gateway可以作为调试程序用，方便查看区块链数据。grpc-gateway部署方式请参照：https://github.com/tronprotocol/grpc-gateway/blob/master/README.md
 
 # 3. 测试
-  建议6月18号之前完成与tron公链的对接测试，可以直接在mainnet上进行测试。
+
+建议6月18号之前完成与tron公链的对接测试，可以直接在mainnet上进行测试。
 
 相关技术文档，可以参阅https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-overview.md
 
