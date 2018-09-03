@@ -212,10 +212,10 @@ Expiration 和交易时间戳的设置方法：
   }
 ```
 
-## 3 签名
+## 10.3 签名
 交易构造好以后，便可以对交易进行签名，签名算法是ECDSA，为了安全起见，建议交易所进行离线签名。签名的说明请参考https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
 
-## 4 demo
+## 10.4 demo
 本地构造交易、签名的demo请参考
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
 

@@ -1,5 +1,12 @@
 #  TRON HTTP Gateway interface
 
+# demo of The tansaction between base58check and hexString
+java:
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92
+
+php:
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php
+
 Available in the latest release of java-tron. 
 
 Configure the ports for the nodes by modifying these ports in both configuration files.
@@ -93,8 +100,7 @@ Return value：Transaction contract data
 /wallet/gettransactionsign
 Function：Sign the transaction, the api has the risk of leaking the private key, please make sure to call the api in a secure environment
 demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionsign -d '{
-"transaction" : {"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}
-"privateKey" : "your private key"}
+"transaction" : {"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}},"privateKey": "your private key"}
 }'
 Parameters：Transaction is a contract created by http api, privateKey is the user private key
 Return value：Signed Transaction contract data
@@ -109,7 +115,7 @@ Return value：broadcast success or failure
 Function：Modify account name
 demo：curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d '{"account_name": "0x7570646174654e616d6531353330383933343635353139" ,"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"}'
 Parameters：account_name is the name of the account, converted into a hex string；owner_address is the account address of the name to be modified, converted to a hex string.
-Return value：modification Transaction Object
+Return value：modified Transaction Object
 
 /wallet/votewitnessaccount
 Function：Vote on the super representative
@@ -260,7 +266,7 @@ Return value：List of nodes
 Function：List the tokens issued by an account.
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
 Parameters：Token issuer account address，converted to a hex string
-Return value：List of tokens issued by the account
+Return value：The token issued by the account. An account can issue only one token.
 
 /wallet/getaccountnet
 Function：Query bandwidth information.
@@ -347,6 +353,31 @@ Function：validate address
 demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address": "4189139CB1387AF85E3D24E212A008AC974967E561"}'
 Parameters：The address, should be in base58checksum, hexString or base64 format.
 Return value: True or false
+
+wallet/deploycontract
+Function：deploys a contract
+demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bandwidth_limit":1000000,"bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","call_value":100,"contract_name":"SomeContract","fee_limit":1000000,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+Parameters：
+  abi：abi
+  bytecode:bytecode
+  consume_user_resource_percent：The percentage of resources specified for users who use this contract, is an integer between [0, 100]. If it is 0, it means the user does not consume resources until the developer resources are exhausted.
+  bandwidth_limit：Maximum bandwidth consumption, measured in bytes
+  fee_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
+  call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
+  owner_address：contract owner address, converted to a hex string
+Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
+
+wallet/triggersmartcontract
+Function：Calls a function on a contract
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":1000000,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+Parameters：
+  contract_address: contract address, converted to a hex string
+  function_selector: Function signature, no spaces
+  parameter：Call the virtual machine format of the parameter [1, 2], use the js tool provided by remix, convert the parameter array [1, 2] called by the contract caller into the parameter format required by the virtual machine.
+  fee_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
+  call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
+  owner_address：address that is trigger the contract, converted to a hex string
+Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
 
 
 ```
