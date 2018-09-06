@@ -385,5 +385,48 @@ call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
+wallet/proposalcreate
+作用：创建提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9","parameters":[{"key": 0,"value": 100000},{"key": 1,"value": 2}] }
+参数说明：
+owner_address：创建人地址
+parameters：提案参数
+返回值：创建提案的交易
 
+wallet/getproposalbyid
+作用：根据id查询提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {"id":1}
+参数说明：
+id：提案id
+返回值：提案详细信息
+
+wallet/listproposals
+作用：查询所有提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
+参数说明：无
+返回值：提案列表信息
+
+wallet/proposalapprove
+作用：提案批准
+demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1, "is_add_approval":true}
+参数说明：
+owner_address：批准人地址
+proposal_id：提案id
+is_add_approval：是否批准
+返回值：批准提案的交易
+
+wallet/proposaldelete
+作用：删除提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1}
+参数说明：
+owner_address：删除人的地址，只有提案所有人允许删除提案
+proposal_id：提案id
+返回值：删除提案的交易
+
+wallet/getaccountresource
+作用：查询账户的资源信息
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address" : "419844f7600e018fd0d710e2145351d607b3316ce9"}
+参数说明：
+address：查询账户的地址
+返回值：账户的资源信息
 ```
