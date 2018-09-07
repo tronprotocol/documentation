@@ -43,6 +43,7 @@ Transactions are confirmed once they're available through the Solidity Node. The
 - `/wallet/gettransactionbyid` to retrieve **ALL** transactions by ID, including **Unconfirmed** transactions.
 - `/walletextension/gettransactionsfromthis` to retrieve transactions from an address.
 - `/walletextension/gettransactionstothis` to retrieve transactions to an address.
+- `/walletsolidity/gettransactioninfobyid` to retrieve metadata about a transaction, including fees, block number and block production time.
 
 #### - Use an RPC call for the block
 If the block has transactions, it will be listed in the trasactions array. You can parse this to find all the transactions included on that block.
