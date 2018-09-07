@@ -429,4 +429,57 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address
 参数说明：
 address：查询账户的地址
 返回值：账户的资源信息
+
+wallet/exchangeinject
+作用：给交易对注资，注资后可以防止交易对价格波动太大
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+参数说明：
+owner_address：交易对创建者的地址，hexString格式
+exchange_id：交易对id
+token_id： token的id，一般情况是token的name，需要是hexString格式
+quant：注资token的数量
+返回值：注资的transaction。
+
+wallet/exchangewithdraw
+作用：对交易对撤资，撤资后容易引起交易对价格波动太大。
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+exchange_id：交易对id
+token_id： token的id，一般情况是token的name，需要是hexString格式
+quant：撤资token的数量
+返回值：撤资的transaction
+
+wallet/exchangetransaction
+作用：参与交易对交易。
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+exchange_id：交易对id
+token_id： 卖出的token的id，一般情况是token的name，需要是hexString格式
+quant：卖出token的数量
+expected：期望买入token的数量
+返回值：token交易的transaction
+
+wallet/getexchangebyid
+作用：根据id查询交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
+参数说明：
+id：交易对id
+返回值：交易对
+
+wallet/listexchanges
+作用：查询所有交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
+参数说明：
+返回值：所有交易对
+
+wallet/getchainparameters
+作用：查询所有交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters 
+参数说明：
+返回值：区块链委员会可以设置的所有参数
+
+
 ```
+
