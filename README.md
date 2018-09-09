@@ -31,9 +31,6 @@ Visit our blockchain explorer to apply for Super Representative, please take [Ru
 
 After approval voting, the top 27 Super Representatives by total approval will be selected. The voting of Super Representatives is held once every 6 hours. Please read [How to vote](https://github.com/ybhgenius/Documentation/blob/master/English_Documentation/TRON_Blockchain_Explorer/Guide_to_voting_on_the_new_blockchain_explorer.md).
 
-## How to become a recommended Super Representative.
-
-To become a recommended Super Representative, candidates must meet nine requirements and submit application to us. We will evaluate the quality and validity of the submitted information, based on the results of which announcements of recommended Super Representatives will be made  on TRON’s official forum (tronsr.org). Please read [A Guide to Recommended Super Representative Application](https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/A_Guide_to_Recommended_Super_Representative_Candidate.md).
 
 
 
@@ -66,9 +63,6 @@ To become a recommended Super Representative, candidates must meet nine requirem
 
 对于如何使用波场区块链浏览器，请参见[波场区块链浏览器使用指南](https://github.com/tronprotocol/Documentation/blob/master/中文文档/波场区块链浏览器介绍/区块链浏览器使用指南.md)。
 
-## 如何成为一个推荐超级代表候选人？
-
-成为推荐超级代表你需要满足我们列出9个标准，并向我们提交申请。对申请内容进行评审后，我们会在波场官方论坛tronsr.org上进行公示。推荐超级代表的9个标准以及推荐超级代表申请表请参见[申请推荐超级代表指南](https://github.com/tronprotocol/Documentation/blob/master/中文文档/申请推荐超级代表指南.md)。
 ## 常见问题
 
 有关超级代表、超级代表节点运行、申请、竞选的相关问题请查看[关于SR的常见问题解答](https://github.com/tronprotocol/Documentation/blob/master/中文文档/常见问题解答/关于SR的常见问题解答.md)。
