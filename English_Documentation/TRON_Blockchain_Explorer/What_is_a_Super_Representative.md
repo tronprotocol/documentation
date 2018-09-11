@@ -21,8 +21,4 @@
    + The url of personal website.
    + The total of blocks produced by the delegate.
    + The total missed blocks of delegate.
-   
-## Super Representative Recommendations  
 
-Every token holder has the opportunity to become a TRON Super Representative. However, for the network and community to operate more smoothly and effectively, we have created a set of standards and regulations for eligible candidates to become recommended Super Representatives. We will promote recommended SRs to increase their chances of being elected.
-New recommended Super Representatives are updated and posted once a week.
