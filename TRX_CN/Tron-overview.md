@@ -101,12 +101,9 @@ Tron提供了一个编解码的工具，下载地址是：https://github.com/tro
 ## 4.3 api代码生成
     api基于google的gRPC协议，具体请参考 https://grpc.io/docs/
 ## 4.4 api demo
-具体请参考如下两个class：
-```
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/WalletClient.java
+具体请参考如下class：
 
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/walletserver/GrpcClient.java
-```
 # 5 相关费用
 在带宽足够的情况下，免除手续费。交易如果扣费，会在交易结果中的fee字段中记录。如果交易不扣费，也就是扣除带宽
 ，对应fee字段为0。只有交易被写入区块链之后才会有手续费。fee字段请参考Transaction.Result.fee字段，对应的proto文件是： https://github.com/tronprotocol/protocol/blob/master/core/Tron.proto
