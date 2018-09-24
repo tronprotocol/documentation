@@ -1,8 +1,14 @@
-# I.	Signing Steps
+# I.a	Signing Steps for GRPC
 1.	Convert the transaction’s raw data to byte[].
-2.	Hash the raw data using sha256.
-3.	Sign the results of sha256 with the private key in correspondence with the address of each contract (1 contract and 1 private key for now).
+2.	Hash the raw data using sha256.  This gives you the Transaction ID. 
+3.	Sign the results of sha256 with the private key.
 4.	Add the signed result to transaction.
+
+# I.b	Signing Steps
+1.  Use the transaction ID included in the return data of an http request.
+3.	Sign the transaction ID with the private key.
+4.	Add the signed result to transaction.
+
 
 # II.	Signature algorithm
 1.	ECDSA algorithm, SECP256K.
