@@ -187,12 +187,14 @@ wallet/freezebalance
 demo：curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
 "frozen_balance": 10000,
-"frozen_duration": 3
+"frozen_duration": 3,
+"resource" : "BANDWIDTH"
 }'
 参数说明：
 owner_address是冻结trx账号的地址，需要是hexString格式
 frozen_balance是冻结trx的数量
 frozen_duration是冻结天数，最少是3天
+resource: 冻结trx获取资源的类型(可以是BANDWIDTH或者ENERGY，BANDWIDTH为带宽，ENERGY为虚拟机消耗资源)
 返回值：冻结trx的transaction
 
 wallet/unfreezebalance
