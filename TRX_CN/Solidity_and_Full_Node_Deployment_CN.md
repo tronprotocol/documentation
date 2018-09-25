@@ -49,20 +49,15 @@
 新建stop.sh，用kill -15关闭java-tron.jar（或者FullNode.jar、SolidityNode.jar）相关进程。 你需要修改下面的pid=ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'来找到正确的进程号。
 
     #!/bin/bash
-    count=1
-    while [ $count -le 60 ]; do
+    while true; do
       pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'`
       if [ -n "$pid" ]; then
         kill -15 $pid
-        echo "kill -15 java-tron, counter $count"
+        echo "The java-tron process is exiting, it may take some time, forcing the exit may cause damage to the database, please wait patiently..."
         sleep 1
       else
-        echo "java-tron killed"
+        echo "java-tron killed successfully!"
         break
-      fi
-      count=$[$count+1]
-      if [ $count -ge 60 ]; then
-        kill -9 $pid
       fi
     done
 

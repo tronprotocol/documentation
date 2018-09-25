@@ -1,6 +1,6 @@
 #  TRON HTTP Gateway interface
 
-# demo of The tansaction between base58check and hexString
+# Demo of the conversion between base58check and hexString
 java:
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92
 
@@ -206,16 +206,18 @@ asset_name is the name of the token，converted to a hex string
 Return value：Token creation Transaction raw data
 
 /wallet/freezebalance
-Function：Freezes an amount of TRX. Will give bandwidth and TRON Power(voting rights) to the owner of the frozen tokens.
+Function：Freezes an amount of TRX. Will give bandwidth OR Energy and TRON Power(voting rights) to the owner of the frozen tokens.
 demo：curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d '{
 "owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14294", 
 "frozen_balance": 10000,
-"frozen_duration": 3
+"frozen_duration": 3,
+"resource":"ENERGY"
 }'
 Parameters：
 owner_address is the address that is freezing trx account，converted to a hex string
 frozen_balance is the number of frozen trx
 frozen_duration is the duration in days to be frozen
+resource is the type of resource you're freezing for. must be either "ENERGY" or "BANDWIDTH"
 Return value：Freeze trx transaction raw data
 
 /wallet/unfreezebalance
