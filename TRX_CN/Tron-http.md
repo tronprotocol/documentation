@@ -410,6 +410,12 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 参数说明：无
 返回值：提案列表信息
 
+wallet/listproposalspaginated
+作用：分页查询提案列表
+demo: curl -X POST  http://127.0.0.1:8091/wallet/listproposalspaginated -d '{"offset": 0, "limit":10}'
+参数说明：offset是起始提案的index，limit是期望返回的提案数量
+返回值：提案列表
+
 wallet/proposalapprove
 作用：提案批准
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1, "is_add_approval":true}
@@ -433,6 +439,17 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address
 参数说明：
 address：查询账户的地址
 返回值：账户的资源信息
+
+wallet/exchangecreate
+作用：创建交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
+"first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}
+参数说明：
+first_token_id  ：第1种token的id
+first_token_balance：第1种token的balance
+second_token_id ： 第2种token的id
+second_token_balance：第2种token的balance
+返回值：创建交易对的transaction。
 
 wallet/exchangeinject
 作用：给交易对注资，注资后可以防止交易对价格波动太大
@@ -484,6 +501,12 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 参数说明：
 返回值：区块链委员会可以设置的所有参数
 
-
+wallet/listexchangespaginated
+作用：分页查询交易对列表
+demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
+参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
+返回值：提案列表
+ 
+ 
 ```
 
