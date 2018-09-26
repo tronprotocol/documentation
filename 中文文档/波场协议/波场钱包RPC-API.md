@@ -791,3 +791,109 @@ AccountPaginated：发起方账户地址及查询范围。
 TransactionListExtention：交易列表。  
 58.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。
+
+## 59. 创建交易对
+
+59.1 接口声明  
+rpc ExchangeCreate (ExchangeCreateContract) returns (TransactionExtention) {};  
+59.2 提供节点  
+fullnode。  
+59.3 参数说明   
+first_token_id，第1种token的id
+first_token_balance，第1种token的balance
+second_token_id，第2种token的id
+second_token_balance，第2种token的balance  
+59.4 返回值                                          
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+59.5 功能说明  
+创建交易对
+
+
+## 60. 交易所注资
+
+60.1 接口声明  
+rpc ExchangeInject (ExchangeInjectContract) returns (TransactionExtention) {};  
+60.2 提供节点  
+fullnode。  
+60.3 参数说明   
+exchange_id：交易对id
+token_id：注资的token的id
+quant：注资数量
+60.4 返回值                                          
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+60.5 功能说明 
+对交易对进行注资
+
+
+## 61. 交易所撤资
+
+61.1 接口声明  
+rpc ExchangeWithdraw (ExchangeWithdrawContract) returns (TransactionExtention) {};  
+61.2 提供节点  
+fullnode。  
+61.3 参数说明   
+exchange_id：交易对id
+token_id：撤资的token的id
+quant：撤资数量
+61.4 返回值                                          
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+61.5 功能说明 
+对交易对进行撤资
+
+
+
+## 62. 交易所交易
+
+62.1 接口声明  
+rpc ExchangeTransaction (ExchangeTransactionContract) returns (TransactionExtention) {};  
+62.2 提供节点  
+fullnode。  
+62.3 参数说明    
+exchange_id：交易对id
+token_id：撤资的token的id
+quant：撤资数量
+expected：期望得到的另一个token的最小金额
+62.4 返回值                                          
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+62.5 功能说明 
+交易
+
+
+## 63. 查询所有交易对
+
+63.1 接口声明  
+rpc ListExchanges (EmptyMessage) returns (ExchangeList) {};  
+63.2 提供节点  
+fullnode。  
+63.3 参数说明    
+无
+63.4 返回值                                          
+ExchangeList：所有交易对。
+63.5 功能说明 
+
+
+## 64. 查询指定交易对
+
+64.1 接口声明  
+rpc GetExchangeById (BytesMessage) returns (Exchange) {};  
+64.2 提供节点  
+fullnode。  
+64.3 参数说明 
+value：交易对id
+64.4 返回值                                          
+Exchange：交易对。
+64.5 功能说明 
+
+
+## 65. 分页查询交易对
+
+65.1 接口声明  
+rpc GetPaginatedExchangeList (PaginatedMessage) returns (ExchangeList) {};  
+65.2 提供节点  
+fullnode。  
+65.3 参数说明 
+offset：偏移量
+limit：个数限制
+65.4 返回值                                          
+Exchange：交易对。
+65.5 功能说明 
