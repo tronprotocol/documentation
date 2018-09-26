@@ -897,3 +897,83 @@ limit：个数限制
 65.4 返回值                                          
 Exchange：交易对。
 65.5 功能说明 
+ 
+
+## 66. 创建提议
+
+66.1 接口声明  
+rpc ProposalCreate (ProposalCreateContract) returns (TransactionExtention) {};  
+66.2 提供节点  
+fullnode。  
+66.3 参数说明 
+parameters：提议参数
+66.4 返回值                                             
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+66.5 功能说明 
+
+
+## 67. 赞成提议
+
+67.1 接口声明  
+rpc ProposalApprove (ProposalApproveContract) returns (TransactionExtention) {};  
+67.2 提供节点  
+fullnode。  
+67.3 参数说明 
+proposal_id ：提议id
+is_add_approval ：赞成或取消赞成
+67.4 返回值                                             
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+67.5 功能说明 
+
+
+## 68. 删除提议
+
+68.1 接口声明  
+rpc ProposalDelete (ProposalDeleteContract) returns (TransactionExtention) {};  
+68.2 提供节点  
+fullnode。  
+68.3 参数说明 
+proposal_id ：提议id 
+68.4 返回值                                             
+TransactionExtention：返回签名后的交易、交易ID、操作结果等。
+68.5 功能说明 
+
+
+## 69. 查询所有提议
+
+69.1 接口声明  
+rpc ListProposals (EmptyMessage) returns (ProposalList) {};  
+69.2 提供节点  
+fullnode。  
+69.3 参数说明 
+无
+69.4 返回值                                             
+ProposalList：提议列表
+69.5 功能说明 
+
+
+## 70. 分页查询提议
+
+70.1 接口声明  
+rpc GetPaginatedProposalList (PaginatedMessage) returns (ProposalList) {};  
+70.2 提供节点  
+fullnode。  
+70.3 参数说明 
+offset：偏移量
+limit：个数限制
+70.4 返回值                                             
+ProposalList：提议列表
+70.5 功能说明 
+
+
+## 71. 查询指定提议
+
+71.1 接口声明  
+rpc GetProposalById (BytesMessage) returns (Proposal) {};  
+71.2 提供节点  
+fullnode。  
+71.3 参数说明 
+proposal_id ：提议id 
+71.4 返回值                                             
+ProposalList：提议列表
+71.5 功能说明 
