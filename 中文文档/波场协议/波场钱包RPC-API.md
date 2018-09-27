@@ -885,7 +885,7 @@ Exchange：交易对。
 64.5 功能说明 
 
 
-## 65. 分页查询交易对
+## 65. 分页查询交易对(Odyssey-v3.1.1暂不支持)
 
 65.1 接口声明  
 rpc GetPaginatedExchangeList (PaginatedMessage) returns (ExchangeList) {};  
@@ -952,7 +952,7 @@ ProposalList：提议列表
 69.5 功能说明 
 
 
-## 70. 分页查询提议
+## 70. 分页查询提议(Odyssey-v3.1.1暂不支持)
 
 70.1 接口声明  
 rpc GetPaginatedProposalList (PaginatedMessage) returns (ProposalList) {};  
