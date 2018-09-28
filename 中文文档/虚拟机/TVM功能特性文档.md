@@ -125,9 +125,11 @@ transfer/send/call/callcode/delegatecall函数调用转账
 
 >以太坊 RIPEMD160 函数不推荐使用，波场返回的是一个自己的基于sha256的hash结果，并不是准确的以太坊RIPEMD160。以后会考虑删除这个函数。
  
-## III 合约地址等在solidity语言的使用
+## III 合约地址在solidity语言的使用
 
-以太坊虚拟机地址为是20字节，而波场虚拟机解析地址为21字节。在solidity中使用的时候需要对波场地址做如下处理 （推荐）：
+以太坊虚拟机地址为是20字节，而波场虚拟机解析地址为21字节。
+### 1. 地址转换
+在solidity中使用的时候需要对波场地址做如下处理 （推荐）：
     
     /**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
@@ -135,16 +137,43 @@ transfer/send/call/callcode/delegatecall函数调用转账
      *  @return Solidity address type
      */
     function convertFromTronInt(uint256 tronAddress) public view returns(address){
-        return address(tronAddress-0x410000000000000000000000000000000000000000);
+        return address(tronAddress);
     }
-
-如果想直接使用string 类型的波场地址（如TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm）请参考内置函数的两种地址转换方式 （见II-4-7,II-4-8）
+这个和在以太坊中其他类型转换成address类型语法相同。
+### 2. 地址判等
+solidity中有地址常量判断，如果写的是21字节地址编译器会报错，只用写20字节地址即可，如：
+```
+    function compareAddress(address tronAddress) public view returns (uint256){
+        // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
+        if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+```
+tronAddress传入是0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c这个21字节地址，即正常的波场地址时，是会返回1的，判断正确。
+### 3. 地址赋值
+solidity中有地址常量的赋值，如果写的是21字节地址编译器会报错，只用写20字节地址即可，solidity中后续操作直接利用这个20位地址，波场虚拟机内部做了补位操作。如：
+```
+    function assignAddress() public view {
+        // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
+        address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
+        // do something
+    }
+```
+如果想直接使用string 类型的波场地址（如TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm）请参考内置函数的两种地址转换方式 （见II-4-7,II-4-8）。
 
 ## IV 与以太坊有区别的特殊常量
 
 1 货币
 
-类似于solidity对ether的支持，波场虚拟机的代码支持的货币单位有trx和sun，其中1trx = 1000000sun，大小写敏感，只支持小写。
+类似于solidity对ether的支持，波场虚拟机的代码支持的货币单位有trx和sun，其中1trx = 1000000sun，大小写敏感，只支持小写。目前tron-studio支持trx和sun，在remix中，不支持trx和sun，如果使用ether、finney等单位时，注意换算(可能会发生溢出错误)。如：
+```
+    function trxUnits() public {
+        msg.sender.transfer(1000 ether); // = 1000 * (10 ^ 18) sun，overflow！！
+    }
+```
 
 2 区块相关
 
