@@ -152,7 +152,7 @@ solidity中有地址常量判断，如果写的是21字节地址编译器会报�
         }
     }
 ```
-tronAddress传入是0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c这个21字节地址，即正常的波场地址时，是会返回1的，判断正确。
+tronAddress从wallet-cli传入是0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c这个21字节地址，即正常的波场地址时，是会返回1的，判断正确。
 ### 3. 地址赋值
 solidity中有地址常量的赋值，如果写的是21字节地址编译器会报错，只用写20字节地址即可，solidity中后续操作直接利用这个20位地址，波场虚拟机内部做了补位操作。如：
 ```
@@ -168,12 +168,8 @@ solidity中有地址常量的赋值，如果写的是21字节地址编译器会�
 
 1 货币
 
-类似于solidity对ether的支持，波场虚拟机的代码支持的货币单位有trx和sun，其中1trx = 1000000sun，大小写敏感，只支持小写。目前tron-studio支持trx和sun，在remix中，不支持trx和sun，如果使用ether、finney等单位时，注意换算(可能会发生溢出错误)。如：
-```
-    function trxUnits() public {
-        msg.sender.transfer(1000 ether); // = 1000 * (10 ^ 18) sun，overflow！！
-    }
-```
+类似于solidity对ether的支持，波场虚拟机的代码支持的货币单位有trx和sun，其中1trx = 1000000sun，大小写敏感，只支持小写。目前tron-studio支持trx和sun，在remix中，不支持trx和sun，如果使用ether、finney等单位时，注意换算(可能会发生溢出错误)。
+我们推荐使用tron-studio代替remix进行tron智能合约的编写。
 
 2 区块相关
 
