@@ -154,7 +154,7 @@ Please note that the sha3 protocol we adopt is KECCAK-256.
 See: https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/ECKeyDemo.java
 
 # 7. Transaction signing
-See: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Protocol/Procedures_of_transaction_signature_generation.md
+See: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/Procedures_of_transaction_signature_generation.md
 
 # 8. Calculation of transaction ID
 Hash the Raw data of the transaction.
