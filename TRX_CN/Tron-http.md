@@ -410,7 +410,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 参数说明：无
 返回值：提案列表信息
 
-wallet/listproposalspaginated
+wallet/listproposalspaginated(Odyssey-v3.1.1暂不支持)
 作用：分页查询提案列表
 demo: curl -X POST  http://127.0.0.1:8091/wallet/listproposalspaginated -d '{"offset": 0, "limit":10}'
 参数说明：offset是起始提案的index，limit是期望返回的提案数量
@@ -501,7 +501,7 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 参数说明：
 返回值：区块链委员会可以设置的所有参数
 
-wallet/listexchangespaginated
+wallet/listexchangespaginated(Odyssey-v3.1.1暂不支持)
 作用：分页查询交易对列表
 demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
 参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
