@@ -1,5 +1,7 @@
 # Documentation
 
+#### Please visit the new [TRON Developers Hub](https://developers.tron.network/) for detailed guides, interactive APIs, and much more!
+
 # Documentation Guide
 
 + If you want to know more about the recent progress of the TRON project, please check out [TRON Introduction](https://github.com/tronprotocol/Documentation/tree/master/English_Documentation/TRON_Introduction).  
