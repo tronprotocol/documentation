@@ -382,4 +382,125 @@ Parameters：
 Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
 
 
+
+wallet/proposalcreate
+作用：创建提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9","parameters":[{"key": 0,"value": 100000},{"key": 1,"value": 2}] }
+参数说明：
+owner_address：创建人地址
+parameters：提案参数
+返回值：创建提案的交易
+
+wallet/getproposalbyid
+作用：根据id查询提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {"id":1}
+参数说明：
+id：提案id
+返回值：提案详细信息
+
+wallet/listproposals
+作用：查询所有提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
+参数说明：无
+返回值：提案列表信息
+
+wallet/listproposalspaginated(Odyssey-v3.1.1暂不支持)
+作用：分页查询提案列表
+demo: curl -X POST  http://127.0.0.1:8091/wallet/listproposalspaginated -d '{"offset": 0, "limit":10}'
+参数说明：offset是起始提案的index，limit是期望返回的提案数量
+返回值：提案列表
+
+wallet/proposalapprove
+作用：提案批准
+demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1, "is_add_approval":true}
+参数说明：
+owner_address：批准人地址
+proposal_id：提案id
+is_add_approval：是否批准
+返回值：批准提案的交易
+
+wallet/proposaldelete
+作用：删除提案
+demo: curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1}
+参数说明：
+owner_address：删除人的地址，只有提案所有人允许删除提案
+proposal_id：提案id
+返回值：删除提案的交易
+
+wallet/getaccountresource
+作用：查询账户的资源信息
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address" : "419844f7600e018fd0d710e2145351d607b3316ce9"}
+参数说明：
+address：查询账户的地址
+返回值：账户的资源信息
+
+wallet/exchangecreate
+作用：创建交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
+"first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}
+参数说明：
+first_token_id  ：第1种token的id
+first_token_balance：第1种token的balance
+second_token_id ： 第2种token的id
+second_token_balance：第2种token的balance
+返回值：创建交易对的transaction。
+
+wallet/exchangeinject
+作用：给交易对注资，注资后可以防止交易对价格波动太大
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+参数说明：
+owner_address：交易对创建者的地址，hexString格式
+exchange_id：交易对id
+token_id： token的id，一般情况是token的name，需要是hexString格式
+quant：注资token的数量
+返回值：注资的transaction。
+
+wallet/exchangewithdraw
+作用：对交易对撤资，撤资后容易引起交易对价格波动太大。
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+exchange_id：交易对id
+token_id： token的id，一般情况是token的name，需要是hexString格式
+quant：撤资token的数量
+返回值：撤资的transaction
+
+wallet/exchangetransaction
+作用：参与交易对交易。
+demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+exchange_id：交易对id
+token_id： 卖出的token的id，一般情况是token的name，需要是hexString格式
+quant：卖出token的数量
+expected：期望买入token的数量
+返回值：token交易的transaction
+
+wallet/getexchangebyid
+作用：根据id查询交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
+参数说明：
+id：交易对id
+返回值：交易对
+
+wallet/listexchanges
+作用：查询所有交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
+参数说明：
+返回值：所有交易对
+
+wallet/getchainparameters
+作用：查询所有交易对
+demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters 
+参数说明：
+返回值：区块链委员会可以设置的所有参数
+
+wallet/listexchangespaginated(Odyssey-v3.1.1暂不支持)
+作用：分页查询交易对列表
+demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
+参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
+返回值：提案列表
+ 
+
+
 ```
