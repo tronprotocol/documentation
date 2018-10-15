@@ -39,9 +39,9 @@ mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/mas
 ```
 运行FullNode最低配置要求：
 CPU：16核
-RAM：16G
+RAM：32G
 带宽：100M
-DISK：10T
+DISK：1T
 运行FullNode推荐配置要求：
 CPU：64核及以上
 RAM：64G及以上
@@ -50,9 +50,9 @@ DISK：20T及以上
 
 运行SolidityNode最低配置要求：
 CPU：16核
-RAM：16G
+RAM：32G
 带宽：100M
-DISK：10T
+DISK：1T
 运行SolidityNode推荐配置要求：
 CPU：64核及以上
 RAM：64G及以上
