@@ -5,84 +5,7 @@
 
 getTransactionById接口用于获取交易上链后的状态。对于智能合约而言，ret字段为此合约是否执行成功的记录，失败结果有多种情况。
 
-此说明用于对ret字段和contractResult字段结果的解释和分析。
-
-# getTransactionById结果实例
-
-```shell
-gettransactionbyid acf1815ceef75bb1c9ccce5bc8439aee8a34ca7bc2b4649d34ed1f3bc6a7de74
-
-hash:f6134b6dd5d3e7cffc62c52bff9deae19c92973b0a8ae7904d8d4472a87ef0e3
-txid:acf1815ceef75bb1c9ccce5bc8439aee8a34ca7bc2b4649d34ed1f3bc6a7de74
-raw_data: 
-{
-ref_block_bytes: 9002
-ref_block_hash: ca65eb0f6f0764a7
-contract: 
-{
-contract 0 :::
-[
-contract_type: TriggerSmartContract
-owner_address: TRxSunZ8cjJRZdub5dsDjSgGeCqq5ycAXR
-contract_address: TEV3mQuXubrbTzc2MApZvvH6btKJ4eZh41
-call_value:0
-data:67e0badb
-]
-
-}
-timestamp: Tue Oct 16 20:13:24 CST 2018
-fee_limit: 10000000
-}
-signature: 
-{
-signature 0 :5d8d6c366ee9335a211e9a5c3cac6b4ad904d6b9a8aa7f098f7b2165f7df54a74c4c846de709d654a71ef17090e3a1461541f99190ce58e0fb2c6f14ae0a788c00
-}
-ret: 
-{
-result: 0 ::: 
-[
-code ::: SUCESS
-fee ::: 0
-]
-}
-
-```
-
-hash:交易的HASH值
-
-txid:本交易的交易id
-
-raw_data:交易内容的具体内容
-
-signature:交易签名信息
-
-ret:交易执行基本结果（是否成功及扣费情况）
-
-#ret详解
-
-ret字段记录该交易执行的节本结果信息。
-
-```
-code ::: SUCESS
-fee ::: 0
-```
-
-code: 交易执行是否成功，除标识成功的SUCESS外还有以下几种表示失败的结果
-
-```
-REVERT //合约中执行回退操作
-BAD_JUMP_DESTINATION //合约中指令跳转异常
-OUT_OF_MEMORY //合约中使用TVM虚拟机的memory超过3M
-STACK_TOO_SMALL //合约中指令STACK存储参数异常
-STACK_TOO_LARGE //合约中指令STACK存储参数异常
-ILLEGAL_OPERATION //合约中执行到非法指令
-STACK_OVERFLOW //合约过程中TVM堆栈使用超过1024
-OUT_OF_ENERGY //合约执行过程中fee_limit提供的ENERGY不足
-OUT_OF_TIME //合约执行时间超过50ms
-JVM_STACK_OVER_FLOW //合约过程中发生JVM栈溢出
-```
-
-fee: 本次合约中包含带宽和Energy不足而消耗的Trx
+此说明用于对getTransactionById的ret字段和getTransactionInfoById的contractResult字段结果的解释和分析。
 
 # getTransactionInfoById结果实例
 
@@ -192,7 +115,82 @@ B. 不定长变量
     0000000000000000000000000000000000000000000000000000000000000004     第三个非定长变量的长度（4）
     74726f6e00000000000000000000000000000000000000000000000000000000     16进制的ascii码，对应"tron"
 
+# getTransactionById结果实例
 
+```shell
+gettransactionbyid acf1815ceef75bb1c9ccce5bc8439aee8a34ca7bc2b4649d34ed1f3bc6a7de74
+
+hash:f6134b6dd5d3e7cffc62c52bff9deae19c92973b0a8ae7904d8d4472a87ef0e3
+txid:acf1815ceef75bb1c9ccce5bc8439aee8a34ca7bc2b4649d34ed1f3bc6a7de74
+raw_data: 
+{
+ref_block_bytes: 9002
+ref_block_hash: ca65eb0f6f0764a7
+contract: 
+{
+contract 0 :::
+[
+contract_type: TriggerSmartContract
+owner_address: TRxSunZ8cjJRZdub5dsDjSgGeCqq5ycAXR
+contract_address: TEV3mQuXubrbTzc2MApZvvH6btKJ4eZh41
+call_value:0
+data:67e0badb
+]
+
+}
+timestamp: Tue Oct 16 20:13:24 CST 2018
+fee_limit: 10000000
+}
+signature: 
+{
+signature 0 :5d8d6c366ee9335a211e9a5c3cac6b4ad904d6b9a8aa7f098f7b2165f7df54a74c4c846de709d654a71ef17090e3a1461541f99190ce58e0fb2c6f14ae0a788c00
+}
+ret: 
+{
+result: 0 ::: 
+[
+code ::: SUCESS
+fee ::: 0
+]
+}
+
+```
+
+hash:交易的HASH值
+
+txid:本交易的交易id
+
+raw_data:交易内容的具体内容
+
+signature:交易签名信息
+
+ret:交易执行基本结果（是否成功及扣费情况）
+
+# ret详解
+
+ret字段记录该交易执行的节本结果信息。
+
+```
+code ::: SUCESS
+fee ::: 0
+```
+
+code: 交易执行是否成功，除标识成功的SUCESS外还有以下几种表示失败的结果
+
+```
+REVERT //合约中执行回退操作
+BAD_JUMP_DESTINATION //合约中指令跳转异常
+OUT_OF_MEMORY //合约中使用TVM虚拟机的memory超过3M
+STACK_TOO_SMALL //合约中指令STACK存储参数异常
+STACK_TOO_LARGE //合约中指令STACK存储参数异常
+ILLEGAL_OPERATION //合约中执行到非法指令
+STACK_OVERFLOW //合约过程中TVM堆栈使用超过1024
+OUT_OF_ENERGY //合约执行过程中fee_limit提供的ENERGY不足
+OUT_OF_TIME //合约执行时间超过50ms
+JVM_STACK_OVER_FLOW //合约过程中发生JVM栈溢出
+```
+
+fee: 本次合约中包含带宽和Energy不足而消耗的Trx
 
 
 
