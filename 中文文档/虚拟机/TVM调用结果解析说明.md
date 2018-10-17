@@ -1,9 +1,9 @@
 # Tron virtual machine 调用结果说明
 
 # 概述
-当调用getTransactionById接口得到交易上链后的状态。对于智能合约而言，ret字段为此合约是否执行成功的记录返回值。
-
 当调用getTransactionInfoById接口得到contractResult后，需要开发者自行解析结果。
+
+getTransactionById接口用于获取交易上链后的状态。对于智能合约而言，ret字段为此合约是否执行成功的记录，失败结果有多种情况。
 
 此说明用于对ret字段和contractResult字段结果的解释和分析。
 
@@ -67,7 +67,7 @@ code ::: SUCESS
 fee ::: 0
 ```
 
-code:交易执行是否成功，除标识成功的SUCESS外还有以下几种表示失败的结果
+code: 交易执行是否成功，除标识成功的SUCESS外还有以下几种表示失败的结果
 
 ```
 REVERT //合约中执行回退操作
@@ -82,7 +82,7 @@ OUT_OF_TIME //合约执行时间超过50ms
 JVM_STACK_OVER_FLOW //合约过程中发生JVM栈溢出
 ```
 
-fee:本次合约中包含带宽和Energy不足而消耗的Trx
+fee: 本次合约中包含带宽和Energy不足而消耗的Trx
 
 # getTransactionInfoById结果实例
 
