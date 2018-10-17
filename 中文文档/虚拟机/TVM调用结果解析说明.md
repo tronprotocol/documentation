@@ -155,7 +155,6 @@ ret:
 result: 0 ::: 
 [
 code ::: SUCESS
-fee ::: 0
 ]
 }
 
@@ -177,7 +176,6 @@ ret字段记录该交易执行的节本结果信息。
 
 ```
 code ::: SUCESS
-fee ::: 0
 ```
 
 code: 交易执行是否成功，除标识成功的SUCESS外还有以下几种表示失败的结果
@@ -194,8 +192,6 @@ OUT_OF_ENERGY //合约执行过程中fee_limit提供的ENERGY不足
 OUT_OF_TIME //合约执行时间超过50ms
 JVM_STACK_OVER_FLOW //合约过程中发生JVM栈溢出
 ```
-
-fee: 本次合约中包含带宽和Energy不足而消耗的Trx
 
 
 
