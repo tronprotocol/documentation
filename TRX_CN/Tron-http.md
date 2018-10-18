@@ -201,9 +201,11 @@ wallet/unfreezebalance
 作用：解冻已经结束冻结期的trx，会同时失去这部分trx带来的带宽和投票权
 demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
+"resource": "BANDWIDTH"
 }'
 参数说明：
 owner_address是解冻trx账号的地址，需要是hexString格式
+resource可以是BANDWIDTH或者ENERGY
 返回值：解冻trx的transaction
 
 walle/unfreezeasset
