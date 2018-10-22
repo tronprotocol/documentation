@@ -54,7 +54,7 @@ mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/mas
 ## 5.3 Energy介绍
 ### 5.3.1 Energy的获取
 ### 5.3.2 Energy的消耗
-## 5.4 智能开发工具介绍
+## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
 
 # 6 内置合约以及API说明（任成常）
