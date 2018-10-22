@@ -62,7 +62,7 @@ mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/mas
 ## 6.2 gRPC 接口说明
 ## 6.3 http 接口说明
 
-# 7 Tron交易费用（刘邵华）
+# 7 Tron交易费用（刘绍华）
 ## 7.1 带宽介绍
 ## 7.2 用户如何获取带宽
 ## 7.3 交易费用说明
