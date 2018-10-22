@@ -41,6 +41,13 @@ mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/mas
 
 ## 4.5 一键部署full node和solidity node
 
+## 4.6 如何连接主网
+
+## 4.7 如何连接测试网
+
+## 4.8 如何搭建私有链
+
+
 # 5 智能合约（振远）
 ## 5.1 Tron智能合约介绍
 ## 5.2 Tron智能合约特性（地址等）
