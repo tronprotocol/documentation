@@ -1,11 +1,17 @@
 # TRON公链文档
 
 # 1 项目仓库
-仓库地址：https://github.com/tronprotocol
+仓库地址：
+
+https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
 配置文件：
-testnet的配置请参照https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
-mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
+testnet的配置请参照
+
+https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
+mainnet的配置请参考
+
+https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
 
 # 2 Tron超级代表与委员会
 
@@ -148,7 +154,7 @@ id: 提议Id，根据提议创建时间递增
 ## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
 
-# 6 内置合约以及API说明（任成常）
+# 6 内置合约以及API说明
 ## 6.1 内置合约说明
 请参考:
 
@@ -346,7 +352,7 @@ buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / suppl
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 10 钱包介绍（任成常）
+# 10 钱包介绍
 ## 10.1 wallet-cli功能介绍
 请参考:
 
