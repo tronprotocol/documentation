@@ -122,7 +122,7 @@ Tron采用账户模型。账号的唯一标识为地址address，对账户操作
 由已有老账户调用转账TRX(CreateTransaction2)、转让Token(TransferAsset2)或者创建账户(CreateAccount2)合约，并广播到网络
 后将完成账户创建的流程。
 ## 3.3 生成密钥对算法
-tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随机数，公钥为椭圆曲线上一个点。生成过程为，首先生成一个随机数d作为
+Tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随机数，公钥为椭圆曲线上一个点。生成过程为，首先生成一个随机数d作为
 私钥，再计算P=d*G作为公钥；其中G为椭圆曲线的基点。
 ## 3.4 地址格式说明
 用公钥P作为输入，计算SHA3得到结果H；这里公钥长度为64字节，SHA3选用Keccak256。
@@ -130,7 +130,8 @@ tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随�
 对address进行basecheck计算得到最终地址，所有地址的第一个字符为T。
 其中basecheck的计算过程为：首先对address计算sha256得到h1，再对h1计算sha256得到h2，取其前4字节作为check填充到address之后
 得到address||check，对其进行base58编码得到最终结果。
-我们用的字符映射表为：ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+我们用的字符映射表为：
+ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 ## 3.5 签名说明
 签名说明请参照
 https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
