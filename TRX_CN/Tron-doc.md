@@ -4,11 +4,13 @@
 仓库地址：
 
 https://github.com/tronprotocol
+
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
 配置文件：
 testnet的配置请参照
 
 https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
+
 mainnet的配置请参考
 
 https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
