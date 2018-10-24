@@ -67,13 +67,12 @@ mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/mas
 ## 7.2 如何参与token
 
 # 8 Tron交易费用（刘绍华）
-## 8.1 带宽介绍
-## 8.2 用户如何获取带宽
-## 8.3 交易费用说明
-### 8.3.1 费用总体说明
-### 8.3.2 创建账号手续费
-### 8.3.3 Token转账费用
-## 8.4 手续费明细（以表格形式提供，包括创建token，申请witness，创建交易对，创建账号等）
+## 8.1 [带宽介绍](https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E8%B4%B9%E7%94%A8%E6%A8%A1%E5%9E%8B.md)
+## 8.2 交易费用说明
+### 8.2.1 费用总体说明
+### 8.2.2 创建账号手续费
+### 8.2.3 Token转账费用
+## 8.3 [交易费明细]
 
 # 9 去中心化交易对说明（刘声）
 ## 9.1 协议说明
