@@ -158,14 +158,85 @@ id: 提议Id，根据提议创建时间递增
 ## 7.1 如何发行token
 ## 7.2 如何参与token
 
-# 8 Tron交易费用（刘绍华）
-## 8.1 [带宽介绍](https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E8%B4%B9%E7%94%A8%E6%A8%A1%E5%9E%8B.md)
+# 8 Tron交易费用
+## 8.1 费用模型介绍
+
+TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的内存模型，TRON网络中的存储资源几乎是无限的。
+但是过多无关紧要的交易仍然会消耗过多的带宽和CPU资源时，导致导致系统阻塞，影响正常交易的处理确认。
+为了保持交易的相对公平，波场网络引入了Bandwidth point 和 Energy 两种资源。
+其中带宽消耗的是Bandwidth Point，而CPU消耗的是Energy。   
+**注意** 
+- 普通交易仅消耗Bandwidth points
+- 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
+
+#### 8.1.1 Bandwidth Points
+ 
+
+交易以字节数组的形式在网络中传输及存储，一条交易消耗的Bandwidth Points = 交易字节数 * Bandwidth Points费率。当前Bandwidth Points费率 = 1。
+
+如一条交易的字节数组长度为200，那么该交易需要消耗200 Bandwidth Points。
+
+**注意** 由于网络中总冻结资金以及账户的冻结资金随时可能发生变化，因此账户拥有的Bandwidth Points不是固定值。
+
+#### 8.1.2 Bandwidth PointsBandwidth Points的来源
+
+Bandwidth Points的获取分两种：
+
+- 一种是通过冻结TRX获取的Bandwidth Points， 额度 = 为获取Bandwidth Points冻结的TRX / 整个网络为获取Bandwidth Points冻结的TRX 总额 * 43_200_000_000。
+也就是所有用户按冻结TRX平分固定额度的Bandwidth Points。
+
+- 还有一种是每个账户固定免费额度的TRX，为5000。
+
+#### 8.1.3 Bandwith Points的消耗
+
+除了查询操作，任何交易都需要消耗bandwidth points。
+
+还有一种情况，如果是转账，包括普通转账或发行Token转账，如果目标账户不存在，转账操作则会创建账户并转账，只会扣除创建账户消耗的Bandwidth Points，转账不会再消耗额外的Bandwidth Points。
+
+#### 8.1.4 Bandwidth Points的计算规则
+
+Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间内，整个网络能够处理的Bandwidth为确定值。
+
+如果交易需要创建新账户，Bandwidth Points消耗如下：
+
+    1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
+
+    2、尝试消耗交易发起者的TRX，这部分烧掉0.1TRX。
+
+如果交易是发行Token转账，Bandwidth Points消耗如下：
+
+    1、依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
+    Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。
+
+    2、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
+
+    3、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
+    
+    4、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
+
+如果交易普通交易，Bandwidth Points消耗如下：
+
+    1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
+
+    2、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
+    
+    3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
+
+
+
 ## 8.2 交易费用说明
 ### 8.2.1 费用总体说明
 ### 8.2.2 创建账号手续费
 ### 8.2.3 Token转账费用
-## 8.3 [交易费明细]
+## 8.3 交易费明细
 
+ |交易类型|费用|
+| :------ |: ------: |  
+ |创建witness|9999TRX|
+ |发行token|1024TRX|
+ |创建account|0.1TRX|
+ |创建exchange|1024TRX|
+ 
 # 9 去中心化交易对说明
 
 ## 9.1 什么是交易对
