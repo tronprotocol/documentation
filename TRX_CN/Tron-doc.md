@@ -112,12 +112,25 @@ id: 提议Id，根据提议创建时间递增
 查询所有提议信息（ListProposals）、分页查询提议信息（GetPaginatedProposalList），查询指定提议信息（GetProposalById）。     
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 3 Tron账号（安文）
-## 3.1 账号模型介绍
+# 3 Tron账号
+## 3.1 账户模型介绍
+Tron采用账户模型。账户的唯一标识为地址address，对账户操作需要验证私钥签名。每个账户拥有TRX、Token余额及智能合约、带宽、能量等各种资源。通过发送交易可以增减TRX或者Token余额，需要消耗带宽；可以发布并拥有智能合约，也可以调用他人发布的智能合约，需要消耗能量。可以申请成为超级代表并被投票，也可以对超级代表进行投票。等等。Tron所有的活动都围绕账户进行。
 ## 3.2 创建账号的方式
-## 3.3 生成秘钥对算法
+首先用钱包或者浏览器生成私钥和地址，生成方法见3.3和3.4，公钥可以丢弃。
+由已有老账户调用转账TRX(CreateTransaction2)、转让Token(TransferAsset2)或者创建账户(CreateAccount2)合约，并广播到网络后将完成账户创建的流程。
+## 3.3 生成密钥对算法
+Tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随机数，公钥为椭圆曲线上一个点。生成过程为，首先生成一个随机数d作为私钥，再计算P=d*G作为公钥；其中G为椭圆曲线的基点。
 ## 3.4 地址格式说明
+用公钥P作为输入，计算SHA3得到结果H；这里公钥长度为64字节，SHA3选用Keccak256。
+取H的最后20字节，在前面填充一个字节0x41得到address。
+对address进行basecheck计算得到最终地址，所有地址的第一个字符为T。
+其中basecheck的计算过程为：首先对address计算sha256得到h1，再对h1计算sha256得到h2，取其前4字节作为check填充到address之后
+得到address||check，对其进行base58编码得到最终结果。
+我们用的字符映射表为：
+ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 ## 3.5 签名说明
+签名说明请参照
+https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
 
 # 4 Tron节点类型（思聪）
 ## 4.1 SR
@@ -181,10 +194,21 @@ freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
 
-# 6 内置合约以及API说明（任成常）
+# 6 内置合约以及API说明
 ## 6.1 内置合约说明
+请参考:
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md
+
 ## 6.2 gRPC 接口说明
+请参考:
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
+
 ## 6.3 http 接口说明
+请参考:
+
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
 # 7 Tron Token说明
 用户在Tron公链发行token，有两种方式，一种是通过智能合约实现TRC20协议，一种是通过Tron公链内置的AssetIssueContract
@@ -417,9 +441,81 @@ buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / suppl
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 10 钱包介绍（任成常）
+# 10 钱包介绍
 ## 10.1 wallet-cli功能介绍
+请参考:
+
+  https://github.com/tronprotocol/wallet-cli/blob/master/README.md
+
 ## 10.2 计算交易ID
+
+对交易的RawData取Hash。
+```
+Hash.sha256(transaction.getRawData().toByteArray())
+
+```
 ## 10.3 计算blockID
+block id是块高度和块头raw_data的hash的混合，具体是计算出块头中raw_data的hash。用
+ 块的高度替换该hash中的前8个byte。具体代码如下：
+```
+private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
+  byte[] numBytes = Longs.toByteArray(blockNum); 
+  byte[] hash = blockHash; 
+  System.arraycopy(numBytes, 0, hash, 0, 8); 
+  return hash;
+  }
+```
+
 ## 10.4 如何本地构造交易
+根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 refference block 的设置方法：设置RefBlockHash为最新块的hash的第8到16(不包含)之间的字节，设置BlockBytes为最新块高度的第6到8（不包含）之间的字节，代码如下：
+```
+public static Transaction setReference(Transaction transaction, Block newestBlock) {
+     long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
+     byte[] blockHash = getBlockHash(newestBlock).getBytes();
+     byte[] refBlockNum = ByteArray.fromLong(blockHeight);
+     Transaction.raw rawData = transaction.getRawData().toBuilder()
+         .setRefBlockHash(ByteString.copyFrom(ByteArray.subArray(blockHash, 8, 16)))
+         .setRefBlockBytes(ByteString.copyFrom(ByteArray.subArray(refBlockNum, 6, 8)))
+         .build();
+     return transaction.toBuilder().setRawData(rawData).build();
+   }
+```
+Expiration 和交易时间戳的设置方法：
+```
+public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
+     Transaction.Builder transactionBuilder = Transaction.newBuilder();
+     Block newestBlock = WalletClient.getBlock(-1);
+ 
+     Transaction.Contract.Builder contractBuilder = Transaction.Contract.newBuilder();
+     Contract.TransferContract.Builder transferContractBuilder = Contract.TransferContract
+         .newBuilder();
+     transferContractBuilder.setAmount(amount);
+     ByteString bsTo = ByteString.copyFrom(to);
+     ByteString bsOwner = ByteString.copyFrom(from);
+     transferContractBuilder.setToAddress(bsTo);
+     transferContractBuilder.setOwnerAddress(bsOwner);
+     try {
+       Any any = Any.pack(transferContractBuilder.build());
+       contractBuilder.setParameter(any);
+     } catch (Exception e) {
+       return null;
+     }
+     contractBuilder.setType(Transaction.Contract.ContractType.TransferContract);
+     transactionBuilder.getRawDataBuilder().addContract(contractBuilder)
+         .setTimestamp(System.currentTimeMillis())//交易时间戳设置毫秒形式
+         .setExpiration(newestBlock.getBlockHeader().getRawData().getTimestamp() + 10 * 60 * 60 * 1000);//交易所可以根据实际情况设置超时时间
+     Transaction transaction = transactionBuilder.build();
+     Transaction refTransaction = setReference(transaction, newestBlock);
+     return refTransaction;
+   }
+```
 ## 10.5 相关demo
+
+本地构造交易、签名的demo请参考 
+
+
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
+
+nodejs的demo，具体请参考
+
+https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
