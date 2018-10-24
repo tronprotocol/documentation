@@ -6,6 +6,7 @@
 https://github.com/tronprotocol
 
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
+
 配置文件：
 testnet的配置请参照
 
