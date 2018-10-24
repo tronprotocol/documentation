@@ -25,7 +25,7 @@ https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
 ## 2.2 选举超级代表
 
  投票需要TRON Power(TP)，你的TRON Power(TP)的多少由当前冻结资金决定。TRON Power(TP)的计算方法：每冻结1TRX，就可以获得1单位TRON Power(TP)。
- 
+
  TRON网络中的每一个账户都具有选举权，可以通过投票选出自己认同的超级代表了。
 
  在解冻后，你没有了冻结的资产，相应地失去了所有的TRON Power(TP)，因此以前的投票会失效。你可以通过重新冻结并投票来避免投票失效。
@@ -164,8 +164,20 @@ CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T�
 ## 5.1 Tron智能合约介绍
 ## 5.2 Tron智能合约特性（地址等）
 ## 5.3 Energy介绍
+智能合约运行时执行每一条指令都需要消耗一定的系统资源，资源的多少用Energy的值来衡量。
+
 ### 5.3.1 Energy的获取
+
+冻结获取Energy，即将持有的trx锁定，无法进行交易，作为抵押，并以此获得免费使用Energy的权利。具体计算与全网所有账户冻结有关，可参考相关部分计算。
+
+##### FreezeBalance 冻结获得带宽或能量
+
+```
+freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+```
+
 ### 5.3.2 Energy的消耗
+
 ## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
 
@@ -239,7 +251,7 @@ TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的
 - 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
 
 #### 8.1.1 Bandwidth Points
- 
+
 
 交易以字节数组的形式在网络中传输及存储，一条交易消耗的Bandwidth Points = 交易字节数 * Bandwidth Points费率。当前Bandwidth Points费率 = 1。
 
@@ -269,16 +281,16 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 如果交易需要创建新账户，Bandwidth Points消耗如下：
 
     1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-
+    
     2、尝试消耗交易发起者的TRX，这部分烧掉0.1TRX。
 
 如果交易是发行Token转账，Bandwidth Points消耗如下：
 
     1、依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
     Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。
-
+    
     2、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-
+    
     3、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
     
     4、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
@@ -286,7 +298,7 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 如果交易普通交易，Bandwidth Points消耗如下：
 
     1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-
+    
     2、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
     
     3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
@@ -299,13 +311,13 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 ### 8.2.3 Token转账费用
 ## 8.3 交易费明细
 
- |交易类型|费用|
-| :------|:------:|  
- |创建witness|9999TRX|
- |发行token|1024TRX|
- |创建account|0.1TRX|
- |创建exchange|1024TRX|
- 
+|交易类型|费用|
+| :------|:------:|
+|创建witness|9999TRX|
+|发行token|1024TRX|
+|创建account|0.1TRX|
+|创建exchange|1024TRX|
+
 # 9 去中心化交易对说明
 
 ## 9.1 什么是交易对
@@ -354,7 +366,7 @@ ExchangeTransaction 1 _ 100 990
 注资需要指定一种token以及注资金额，TRON网络会自动根据当前交易对中两种token的比例，计算出另一个token所需的金额，从而保证注资前后，交易对中两个token的比例相同，价格没有变化。    
 与创建交易对相同，注资要求创建者拥有足够多的两种token的balance。    
 注资的合约是ExchangeInjectContract，该合约有3个参数： 
-   
+
  - exchange_id，交易对的id
  - token_id，要注资的token的id
  - quant，要注资的token的金额
@@ -396,11 +408,11 @@ first_token的价格可有"first_token&&TRX"交易对计算获得。
 ### 9.6.3 计算交易获得token量
 交易中花费first_token置换获得的second_token的数量的计算过程：\
 假设 sellTokenQuant是要卖出的first_token的金额，buyTokenQuant是要买入的second_token的金额。
- 
+
 supply = 1_000_000_000_000_000_000L；\
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant）, 0.0005)); \
 buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0)；
- 
+
 注意：由于网络其他账户发生交易，价格可能发生变化。    
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
