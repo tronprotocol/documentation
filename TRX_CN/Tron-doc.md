@@ -7,7 +7,7 @@
 testnet的配置请参照https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
 mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
 
-# 2 Tron共识算法（刘声）
+# 2 Tron超级代表与委员会
 
 ## 2.1 申请成为超级代表候选人规则
 
@@ -103,7 +103,7 @@ id: 提议Id，根据提议创建时间递增
 ### 2.4.5 查询提议
 
 以下接口可以查询提议，包括：
-查询所有提议信息（ListProposals）、分页查询提议信息（GetPaginatedProposalList），查询指定提议信息（GetProposalById）。
+查询所有提议信息（ListProposals）、分页查询提议信息（GetPaginatedProposalList），查询指定提议信息（GetProposalById）。     
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
 # 3 Tron账号（安文）
@@ -167,14 +167,9 @@ id: 提议Id，根据提议创建时间递增
 ### 8.3.3 Token转账费用
 ## 8.4 手续费明细（以表格形式提供，包括创建token，申请witness，创建交易对，创建账号等）
 
-# 9 去中心化交易对说明（刘声）
-## 9.1 协议说明
-## 9.2 创建交易对(文字说明含义后，再链接到相应的api说明)
-## 9.3 注资(文字说明含义后，再链接到相应的api说明)
-## 9.4 撤资(文字说明含义后，再链接到相应的api说明)
-## 9.5 交易(文字说明含义后，再链接到相应的api说明)
+# 9 去中心化交易对说明
 
-## 9.1 什么是交易对（Exchange）
+## 9.1 什么是交易对
 TRON网络原生支持去中心化交易所。去中心化交易所由多个交易对构成。一个交易对（Exchange）是token与token之间，或者token与TRX之间的交易市场（Exchange Market）。
 任何账户都可以创建任何token之间的交易对，即使TRON网络中已经存在相同的交易对。交易对的买卖与价格波动遵循Bancor协议。
 TRON网络规定，所有交易对中的两个token的权重相等，因此它们数量（balance）的比率即是它们之间的价格。
@@ -267,7 +262,7 @@ supply = 1_000_000_000_000_000_000L；\
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant）, 0.0005)); \
 buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0)；
  
-注意：由于网络其他账户发生交易，价格可能发生变化。
+注意：由于网络其他账户发生交易，价格可能发生变化。    
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
