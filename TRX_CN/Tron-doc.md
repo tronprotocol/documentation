@@ -124,8 +124,7 @@ Tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随�
 用公钥P作为输入，计算SHA3得到结果H；这里公钥长度为64字节，SHA3选用Keccak256。
 取H的最后20字节，在前面填充一个字节0x41得到address。
 对address进行basecheck计算得到最终地址，所有地址的第一个字符为T。
-其中basecheck的计算过程为：首先对address计算sha256得到h1，再对h1计算sha256得到h2，取其前4字节作为check填充到address之后
-得到address||check，对其进行base58编码得到最终结果。
+其中basecheck的计算过程为：首先对address计算sha256得到h1，再对h1计算sha256得到h2，取其前4字节作为check填充到address之后得到address||check，对其进行base58编码得到最终结果。
 我们用的字符映射表为：
 ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 ## 3.5 签名说明
