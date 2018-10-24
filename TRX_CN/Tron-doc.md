@@ -1,12 +1,8 @@
 # TRON公链文档
 
 # 1 项目仓库
-仓库地址：
-
-https://github.com/tronprotocol
-
+仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
-
 配置文件：
 
 testnet的配置请参照
@@ -129,24 +125,39 @@ id: 提议Id，根据提议创建时间递增
 ### 4.1.2 SR部署方式
 ### 4.1.3 建议硬件配置
 
-## 4.2 full node
-### 4.2.1 full node介绍
-### 4.2.2 full node部署方式
+## 4.2 FullNode
+### 4.2.1 FullNode介绍
+### 4.2.2 FullNode部署方式
 ### 4.2.3 建议硬件配置
+最低配置要求：  
+CPU：16核 内存：32G 带宽：100M 硬盘：1T
+推荐配置要求：  
+CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
-## 4.3 solidity node
-### 4.3.1 solidity node介绍
-### 4.3.2 solidity node部署方式
+## 4.3 SolidityNode
+### 4.3.1 SolidityNode介绍
+SolidityNode是只从自己信任的FullNode同步固化块的节点，并提供区块、交易查询等服务。
+### 4.3.2 SolidityNode部署方式
+[部署solidityNode](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
 ### 4.3.3 建议硬件配置
+最低配置要求：  
+CPU：16核 内存：32G 带宽：100M 硬盘：1T
+推荐配置要求：  
+CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
 ## 4.4 Tron网络结构（以图形加文字说明）
 
-## 4.5 一键部署full node和solidity node
-
+## 4.5 一键部署FullNode和SolidityNode
+下载一键部署脚本，根据不同的节点类型附加相应的参数来运行脚本。  
+详见[一键部署节点](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
 ## 4.6 主网、测试网、私有网络
+加入主网或测试网或私有网络的节点在部署时运行的是同一份代码，区别仅仅在于节点启动时加载的配置文件不同。
 ### 4.6.1
+[主网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
 ### 4.6.2
+[测试网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
 ### 4.6.3
+
 
 
 # 5 智能合约（振远）
@@ -158,21 +169,10 @@ id: 提议Id，根据提议创建时间递增
 ## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
 
-# 6 内置合约以及API说明
+# 6 内置合约以及API说明（任成常）
 ## 6.1 内置合约说明
-请参考:
-
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md
-
 ## 6.2 gRPC 接口说明
-请参考:
-
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
-
 ## 6.3 http 接口说明
-请参考:
-
-https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
 # 7 Tron Token说明
 用户在Tron公链发行token，有两种方式，一种是通过智能合约实现TRC20协议，一种是通过Tron公链内置的AssetIssueContract
@@ -405,81 +405,9 @@ buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / suppl
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 10 钱包介绍
+# 10 钱包介绍（任成常）
 ## 10.1 wallet-cli功能介绍
-请参考:
-
-https://github.com/tronprotocol/wallet-cli/blob/master/README.md
-
 ## 10.2 计算交易ID
-对交易的RawData取Hash。
-```
-Hash.sha256(transaction.getRawData().toByteArray())
-```
-
 ## 10.3 计算blockID
-
-block id是块高度和块头raw_data的hash的混合，具体是计算出块头中raw_data的hash。用
-块的高度替换该hash中的前8个byte。具体代码如下：
-```
-private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
- byte[] numBytes = Longs.toByteArray(blockNum); 
- byte[] hash = blockHash; 
- System.arraycopy(numBytes, 0, hash, 0, 8); 
- return hash;
- }
-```
-
 ## 10.4 如何本地构造交易
-根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 refference block 的设置方法：设置RefBlockHash为最新块的hash的第8到16(不包含)之间的字节，设置BlockBytes为最新块高度的第6到8（不包含）之间的字节，代码如下：
-```
- public static Transaction setReference(Transaction transaction, Block newestBlock) {
-    long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
-    byte[] blockHash = getBlockHash(newestBlock).getBytes();
-    byte[] refBlockNum = ByteArray.fromLong(blockHeight);
-    Transaction.raw rawData = transaction.getRawData().toBuilder()
-        .setRefBlockHash(ByteString.copyFrom(ByteArray.subArray(blockHash, 8, 16)))
-        .setRefBlockBytes(ByteString.copyFrom(ByteArray.subArray(refBlockNum, 6, 8)))
-        .build();
-    return transaction.toBuilder().setRawData(rawData).build();
-  }
-
-```
-Expiration 和交易时间戳的设置方法：
-```
-public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
-    Transaction.Builder transactionBuilder = Transaction.newBuilder();
-    Block newestBlock = WalletClient.getBlock(-1);
-
-    Transaction.Contract.Builder contractBuilder = Transaction.Contract.newBuilder();
-    Contract.TransferContract.Builder transferContractBuilder = Contract.TransferContract
-        .newBuilder();
-    transferContractBuilder.setAmount(amount);
-    ByteString bsTo = ByteString.copyFrom(to);
-    ByteString bsOwner = ByteString.copyFrom(from);
-    transferContractBuilder.setToAddress(bsTo);
-    transferContractBuilder.setOwnerAddress(bsOwner);
-    try {
-      Any any = Any.pack(transferContractBuilder.build());
-      contractBuilder.setParameter(any);
-    } catch (Exception e) {
-      return null;
-    }
-    contractBuilder.setType(Transaction.Contract.ContractType.TransferContract);
-    transactionBuilder.getRawDataBuilder().addContract(contractBuilder)
-        .setTimestamp(System.currentTimeMillis())//交易时间戳设置毫秒形式
-        .setExpiration(newestBlock.getBlockHeader().getRawData().getTimestamp() + 10 * 60 * 60 * 1000);//交易所可以根据实际情况设置超时时间
-    Transaction transaction = transactionBuilder.build();
-    Transaction refTransaction = setReference(transaction, newestBlock);
-    return refTransaction;
-  }
-```
-
 ## 10.5 相关demo
-本地构造交易、签名的demo请参考 
-
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
-
-nodejs的demo，具体请参考
-
-https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
