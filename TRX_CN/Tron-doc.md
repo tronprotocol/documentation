@@ -251,9 +251,8 @@ B: 10_000_000_000 且energy_limit 为10_000_000_000
 ##### 怎么填写feeLimit
 建议填写的feeLimit要略大于当前环境下，获得此次合约执行所需Energy要冻结的SUN的值。例如：
 1. 估算此次合约执行需要的Energy，比如是20000 Energy
-2. 计算当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是1 TRX = 100 Energy
-   实时计算方法：冻结1TRX所能获得的Energy = TotalEnergyLimit / TotalEnergyWeight
-3. feeLimit填写为200 TRX = 200 * 10^6 SUN = 200000000 SUN
+2. 计算当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是1 TRX = 100 Energy。实时计算方法：冻结1TRX所能获得的Energy = TotalEnergyLimit / TotalEnergyWeight
+3. feeLimit填写为200 TRX = 20000 / 100。即200000000 SUN。
 ##### 注意事项
 1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。consume_user_resource_percent建议值是1-100。
 2. feeLimit必须在0-1000TRX之间
