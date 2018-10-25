@@ -131,22 +131,27 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 签名说明请参照
 https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
 
-# 4 Tron节点类型（思聪）
-## 4.1 SR
-### 4.1.1 SR介绍
-### 4.1.2 SR部署方式
+# 4 Tron网络中的节点和部署
+## 4.1 SuperNode
+### 4.1.1 SuperNode介绍
+[超级代表](https://github.com/tronprotocol/Documentation/blob/master/中文文档/波场区块链浏览器介绍/什么是超级代表.md)(简称SR)是TRON网络上的记账人，一共27个，负责对网络上广播出来的交易数据进行验证，并将交易打包进区块中，他们是轮流的方式打包区块。超级代表的信息是在TRON网络上公开的，所有人都可以获取这些信息，最便捷的方式是在TRON的[区块链浏览器](https://tronscan.org/#/representatives)查看超级代表列表及其信息。
+### 4.1.2 SuperNode部署方式
+[部署SuperNode](https://github.com/tronprotocol/java-tron#running-a-super-representative-node-for-mainnet)
 ### 4.1.3 建议硬件配置
 最低配置要求：  
-CPU：16核 内存：32G 带宽：100M 硬盘：1T
+CPU：16核 内存：32G 带宽：100M 硬盘：1T  
 推荐配置要求：  
 CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
 ## 4.2 FullNode
 ### 4.2.1 FullNode介绍
+FullNode是拥有完整区块链数据的节点，能够实时更新数据，负责交易的广播和验证，提供操作区块链的api和查询数据的api。
 ### 4.2.2 FullNode部署方式
+详细说明请参考[tron-deployment](https://github.com/tronprotocol/tron-deployment)
+[部署FullNode](https://github.com/tronprotocol/tron-deployment#deployment-of-fullnode-on-the-one-host)
 ### 4.2.3 建议硬件配置
 最低配置要求：  
-CPU：16核 内存：32G 带宽：100M 硬盘：1T
+CPU：16核 内存：32G 带宽：100M 硬盘：1T  
 推荐配置要求：  
 CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
@@ -154,14 +159,15 @@ CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T�
 ### 4.3.1 SolidityNode介绍
 SolidityNode是只从自己信任的FullNode同步固化块的节点，并提供区块、交易查询等服务。
 ### 4.3.2 SolidityNode部署方式
+详细说明请参考[tron-deployment](https://github.com/tronprotocol/tron-deployment)
 [部署solidityNode](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
 ### 4.3.3 建议硬件配置
 最低配置要求：  
-CPU：16核 内存：32G 带宽：100M 硬盘：1T
+CPU：16核 内存：32G 带宽：100M 硬盘：1T   
 推荐配置要求：  
 CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
-## 4.4 Tron网络结构（以图形加文字说明）
+## 4.4 Tron网络结构
 Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对等。网络中的节点有SuperNode、FullNode、SolidityNode三种类型，SuperNode主要用于生成区块，FullNode用于同步区块、广播交易，SolidityNode用于同步固化的区块。任何部署运行Tron代码的设备都可以加入Tron网络并作为一个节点，和Tron网络中的其他节点有相同的地位，他们可以创建交易，广播交易，同步区块等，也可以作为SuperNode的候选人参与选举。
 ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/network.png)
 ## 4.5 一键部署FullNode和SolidityNode
@@ -169,13 +175,57 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
 详见[一键部署节点](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
 ## 4.6 主网、测试网、私有网络
 加入主网或测试网或私有网络的节点在部署时运行的是同一份代码，区别仅仅在于节点启动时加载的配置文件不同。
-### 4.6.1
+### 4.6.1 主网
 [主网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
-### 4.6.2
+### 4.6.2 测试网
 [测试网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
-### 4.6.3
-
-
+### 4.6.3 搭建私有网络
+#### 4.6.3.1 前提
+  1、具备至少两个钱包账户的私钥与地址。 [如何生成钱包账户](https://tronscan.org/#/wallet/new)  
+  2、至少部署一个SuperNode用于出块；  
+  3、部署任意数量的FullNode节点用于同步区块、广播交易；  
+  4、SuperNode与FullNode组成了私有网络，可以进行网络发现、区块同步、广播交易。  
+#### 4.6.3.2 部署
+##### 4.6.3.2.1 步骤一:部署超级节点
+ 1、下载private_net_config.conf  
+ ```
+ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
+ ```
+ 2、在localwitness中添加自己的私钥  
+ 3、设置genesis.block.witnesses为私钥对应的地址  
+ 4、设置p2p.version为除了11111之外的任意正整数  
+ 5、第1个SR设置needSyncCheck为false，其他可以设置为true
+ 6、设置node.discovery.enable为true  
+ 7、运行部署脚本  
+ ```
+ nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+ ```
+ 配置文件中需要修改的参数：  
+ localwitness: ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)
+ witnesses:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/witness.png) 
+ version:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
+ enable:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
+##### 4.6.3.2.2 步骤二:部署FullNode节点	
+ 1、下载private_net_config.conf  
+ ```
+ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
+ ```
+ 2、设置seed.node ip.list 为SR的ip地址和端口。
+ 3、设置p2p.version与超级节点的p2p.version一致。
+ 4、设置genesis.block 与SR中的genesis.block配置一致
+ 5、设置needSyncCheck为true
+ 6、设置node.discovery.enable 为true
+ 7、运行部署脚本
+ ```
+ nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
+ ```
+ 配置文件中需要修改的参数：  
+ ip.list:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)
+ p2p.version:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)
+ genesis.block:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/genesis_block.png)
+ needSyncCheck:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/need_sync_check.png)
+ node.discovery.enable:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
+ 
 
 # 5 智能合约（振远）
 ## 5.1 Tron智能合约介绍
