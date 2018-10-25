@@ -227,7 +227,7 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  node.discovery.enable:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
  
 
-# 5 智能合约（振远）
+# 5 智能合约
 ## 5.1 Tron智能合约介绍
 ## 5.2 Tron智能合约特性（地址等）
 Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚拟机的特性，但基于tron自身属性也有部分的区别。
