@@ -218,6 +218,20 @@ B: 10_000_000_000 且energy_limit 为10_000_000_000
 
 所消耗的能量会在24小时内平滑减少至0。
 
+示例：
+
+```
+在某一时刻A的Energy已使用量为72_000_000 Energy
+
+在没有其他消耗或冻结的操作下：
+
+一小时后A的Energy已使用量为 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
+
+24小时后A的Energy已使用量为 0 Energy。
+```
+
+
+
 
 
 ### 5.3.2 Energy的消耗
@@ -248,13 +262,19 @@ B: 10_000_000_000 且energy_limit 为10_000_000_000
 
 同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60%=300000 Energy。 
 一般实际消耗Energy都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+
 ##### 怎么填写feeLimit
 建议填写的feeLimit要略大于当前环境下，获得此次合约执行所需Energy要冻结的SUN的值。例如：
 1. 此次合约执行大概需要的Energy，比如是20000 Energy
 2. 当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是1 TRX = 100 Energy
 3. feeLimit填写为200 TRX = 200 * 10^6 SUN = 200000000 SUN
 ##### 注意事项
-1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。consume_user_resource_percent建议值是1-100。
+1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。
+
+   * 开发者自己承担所有资源消耗，意味着当发生了Assert-style异常时，会消耗开发者冻结的所有Energy(Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md) )。
+
+     为避免造成不必要的损失consume_user_resource_percent建议值是1-100。
+
 2. feeLimit必须在0-1000TRX之间
 ## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
