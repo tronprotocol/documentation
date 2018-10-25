@@ -494,52 +494,108 @@ B: 10_000_000_000 且energy_limit 为10_000_000_000
 24小时后A的Energy已使用量为 0 Energy。
 ```
 
+### 5.3.2 如何填写feeLimit(用户必读)
+***
+*在本节范围内，将合约的开发和部署人员，简称为“开发者”；将调用合约的用户或者其他合约，简称为“调用者”。*
+
+*合约调用需要消耗Energy，能以一定比例折合成trx（或者sun），所以在本节范围内，指代合约消耗的资源时，并不严格区分Energy和 trx；仅在作为 数值的单位时，才严格区分Energy、trx和sun。*
+
+***
+
+合理设置feeLimit，一方面能尽量保证正常执行；另外一方面，如果消耗Energy过大，又不会过多消耗调用者的trx（或冻结的energy）。在设置feeLimit之前，需要了解几个概念：
+
+1). 合法的feeLimit为0 - 10^9 之间的整数值，单位是sun，也即0 - 1000 trx；
+
+2). 不同复杂度的合约，每次消耗不同的Energy；相同合约每次消耗基本相同的Energy[1]；执行合约的每条指令时，计算并扣除Energy，如果超过feeLimit的限制，则合约执行失败，已扣除的Energy不再退还；
+
+3). 目前feeLimit仅指调用者愿意承担的Energy折合的trx[2]；执行合约允许的最大Energy还包括开发者承担的部分；
+
+4). 一个恶意合约，如果最终执行超时，或者因为bug合约崩溃，则会扣除根该合约允许的所有energy；
+
+5). 开发者可能会承担一定比例的Energy消耗（比如承担90%）。但是，当开发者剩余Energy不足以支付按比例应承担的Energy时，剩余部分完全由调用者承担。剩余部分，在feeLimit限制范围内，如调用者的Energy不足，则会燃烧调用者等价值的trx。[2]
+
+开发者通常会有充足的Energy，以鼓励低成本调用；调用者在估算feeLimit时，可以假设开发者能够承担其承诺比例的Energy，如果一次调用因为feeLimit不足而失败，可以再适当扩大。
+
+##### 示例5.1.1
+下面将以一个合约C的执行，来具体举例，如何估算feeLimit：
+
+ * 假设合约C上一次成功执行时，消耗了18000 Energy，那么预估本次执行消耗的Energy上限为20000 Energy；[3]
+ * 冻结trx时，当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是冻结1 trx，可以获得400 Energy；
+ * 燃烧trx时，1 trx固定可以兑换10000 Energy；[4]
+ * 假设开发者承诺承担90%的Energy，假设开发者账户的Energy充足；
+ 
+则，feeLimit的预估方法为： 
+
+1). A = 20000 energy * (1 trx / 400 energy) = 50 trx = 50_000_000 sun, 
+
+2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun，
+
+3).  取A和B的最大值，为50_000_000 sun，
+
+4).  开发者承诺承担90%，用户需要承担10%，
+
+那么，建议用户填写的feeLimit为 50_000_000 sun * 10% = 5_000_000 sun。
+
+附录：
+
+[1] 根据tron各节点的情况，每次执行消耗的Energy可能会有小幅度的浮动。
+
+[2] tron可能会视后续公链的情况，调整这一策略。
+
+[3] 预估的下一次执行所需Energy上限，应该略大于上一次实际消耗的Energy。
+
+[4] 1 trx = 10^4 energy 为目前的燃烧trx的比例，后续Tron可能会根据全网拥塞情况调整，调整后，将通知到全网的节点。
 
 
+### 5.3.3 Energy的计算(开发者必读)
 
+在讨论本章节前，需要了解：
 
-### 5.3.2 Energy的消耗
-##### 示例1
+1). tron为了惩罚恶意开发者，对于异常合约，如果执行超时（超过50ms），或因bug异常退出（不包含revert），会扣除本次的最大可用Energy。若合约正常执行，或revert，则仅扣除执行相关指令所需的Energy；
+
+2). 开发者可以设置执行合约时，消耗Energy中自己承担的比例，该比例后续可修改。一次合约调用消耗的Energy，若开发者的Energy不足以支付其承担的部分，剩余部分全由调用者支付；
+
+3). 目前执行一个合约，可用的Energy总数由 调用者调用时设置的feeLimit 和 开发者承担部分共同决定；
+
+	注意：
+	1.若开发者不确定合约是否正常，请勿将承担比例设置为100%，否则在被判为恶意执行时，会扣除开发者的所有Energy。[1]
+	2.因此建议开发者设置的用户承担的比例为10%~100%。[2]
+
+下面具体举例，详细描述合约可用Energy的计算方法。
+
+##### 示例5.3.1
 如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是100%，也就是完全由调用者支付所需资源。
 此时A调用了合约C，填写的feeLimit是 30000000(单位是SUN, 30 TRX)。那么A此次调用能够使用的Energy是由两部分计算出来的：
-1. A冻结剩余的Energy
-这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
-2. 按照固定比例换算出来的Energy
-如果feeLimit大于冻结剩余Energy价值的TRX，那么需要使用balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(30 - 10) TRX = 20 TRX，获得的Energy是 20 TRX / 100 SUN = 200000 Energy
-所以，A此次调用能够使用的Energy是 (100000 + 200000) = 300000 Energy
 
+* A冻结剩余的Energy
+这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
+* 按照固定比例换算出来的Energy
+如果feeLimit大于冻结剩余Energy价值的TRX，那么需要使用balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(30 - 10) TRX = 20 TRX，获得的Energy是 20 TRX / 100 SUN = 200000 Energy
+
+所以，A此次调用能够使用的Energy是 (100000 + 200000) = 300000 Energy
 如果合约执行成功，没有发生任何异常，则会扣除合约运行实际消耗的Energy，一般都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
-##### 示例2
+##### 示例5.3.2
 如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是40%，也就是由合约开发者支付所需资源的60%，开发者是D，冻结 50 TRX 获得了500000 Energy。
 此时A调用了合约C，填写的feeLimit是 200000000(单位是SUN, 200 TRX)。
 那么A此次调用能够使用的Energy是于以下三部分相关：
-1. 调用者A冻结剩余的Energy（X Energy）
+
+* 调用者A冻结剩余的Energy（X Energy）
 这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于剩下的feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
-2. 从调用者A的balance中，按照固定比例换算出来的Energy （Y Energy）
+* 从调用者A的balance中，按照固定比例换算出来的Energy （Y Energy）
 如果feeLimit大于1和2的和，那么需要使用A的balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(200 - 10)TRX = 190 TRX，但是A的balance只有90 TRX，按照min(190 TRX, 90 TRX) = 90 TRX来计算获得的Energy，即为 90 TRX / 100 SUN = 900000 Energy
-3. 开发者D冻结剩余的Energy (Z Energy)
+* 开发者D冻结剩余的Energy (Z Energy)
 开发者D冻结剩余500000 Energy。
 会出现以下两种情况：
-当(X+Y)/(40%) >= Z/(60%) ，A此次调用能够使用的Energy是 X+Y+Z Energy。
-当(X+Y)/(40%) < Z/(60%) ，A此次调用能够使用的Energy是 (X+Y)/(40%) Energy。
+当(X + Y) / 40% >= Z / 60%，A此次调用能够使用的Energy是 X + Y + Z Energy。
+当(X + Y) / 40% < Z / 60%，A此次调用能够使用的Energy是 (X + Y) / 40% Energy。
+
 若A此次调用能够使用的Energy是 Q Energy
-
-同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60%=300000 Energy。 
+同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60% = 300000 Energy。 
 一般实际消耗Energy都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
-
-##### 怎么填写feeLimit
-建议填写的feeLimit要略大于当前环境下，获得此次合约执行所需Energy要冻结的SUN的值。例如：
-1. 此次合约执行大概需要的Energy，比如是20000 Energy
-2. 当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是1 TRX = 100 Energy
-3. feeLimit填写为200 TRX = 200 * 10^6 SUN = 200000000 SUN
 ##### 注意事项
 1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。
+开发者自己承担所有资源消耗，意味着当发生了Assert-style异常时，会消耗开发者冻结的所有Energy(Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md) )。为避免造成不必要的损失consume_user_resource_percent建议值是10-100。
 
-   * 开发者自己承担所有资源消耗，意味着当发生了Assert-style异常时，会消耗开发者冻结的所有Energy(Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md) )。
-
-     为避免造成不必要的损失consume_user_resource_percent建议值是1-100。
-
-2. feeLimit必须在0-1000TRX之间
 ## 5.4 智能合约开发工具介绍
 ### 5.4.1 TronStudio
 波场智能合约开发工具。提供可视化界面，支持开发者对solidity语言智能合约进行编译，调试，运行等功能。
