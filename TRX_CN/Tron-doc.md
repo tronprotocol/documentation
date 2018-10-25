@@ -183,11 +183,43 @@ CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T�
 
 冻结获取Energy，即将持有的trx锁定，无法进行交易，作为抵押，并以此获得免费使用Energy的权利。具体计算与全网所有账户冻结有关，可参考相关部分计算。
 
-##### FreezeBalance 冻结获得带宽或能量
+##### FreezeBalance 冻结获得能量
 
 ```
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
+
+通过冻结TRX获取的Energy， 额度 = 为获取Energy冻结的TRX / 整个网络为获取Energy冻结的TRX 总额 * 50_000_000_000。
+也就是所有用户按冻结TRX平分固定额度的Energy。
+
+示例：
+
+```
+如全网只有两个人A，B分别冻结2TRX，2TRX。
+
+二人冻结获得的可用Energy分别是
+
+A: 25_000_000_000 且energy_limit 为25_000_000_000
+
+B: 25_000_000_000 且energy_limit 为25_000_000_000
+
+当第三人C冻结1TRX时。
+
+三人冻结获得的可用Energy调整为
+
+A: 20_000_000_000 且energy_limit调整为20_000_000_000
+
+B: 20_000_000_000 且energy_limit调整为20_000_000_000
+
+B: 10_000_000_000 且energy_limit 为10_000_000_000
+
+```
+
+##### FreezeBalance 恢复能量
+
+所消耗的能量会在24小时内平滑减少至0。
+
+
 
 ### 5.3.2 Energy的消耗
 
