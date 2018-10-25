@@ -400,7 +400,7 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 #### 8.1.4 带宽的自动恢复
 在网络总锁定资金以及账户锁定资金不变的情况向，账户的带宽的已使用量随着时间增加而按比例衰减，24h衰减到0。如时间T1时刻，账户带宽已使用量为U，到T1+12h，账户再次使用带宽u,此时账户已使用带宽为 U/2 + u。具体公式如下：
 
-
+![image](https://github.com/tronprotocol/Documentation/blob/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
 
 即可以理解为每24h，用户已使用的带宽值重置为0。
 
