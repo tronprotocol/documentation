@@ -4,8 +4,14 @@
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
 配置文件：
-testnet的配置请参照https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
-mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
+
+testnet的配置请参照
+
+https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
+
+mainnet的配置请参照
+
+https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
 
 # 2 Tron超级代表与委员会
 
@@ -19,7 +25,7 @@ mainnet的配置请参考https://github.com/tronprotocol/TronDeployment/blob/mas
 ## 2.2 选举超级代表
 
  投票需要TRON Power(TP)，你的TRON Power(TP)的多少由当前冻结资金决定。TRON Power(TP)的计算方法：每冻结1TRX，就可以获得1单位TRON Power(TP)。
- 
+
  TRON网络中的每一个账户都具有选举权，可以通过投票选出自己认同的超级代表了。
 
  在解冻后，你没有了冻结的资产，相应地失去了所有的TRON Power(TP)，因此以前的投票会失效。你可以通过重新冻结并投票来避免投票失效。
@@ -106,57 +112,226 @@ id: 提议Id，根据提议创建时间递增
 查询所有提议信息（ListProposals）、分页查询提议信息（GetPaginatedProposalList），查询指定提议信息（GetProposalById）。     
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 3 Tron账号（安文）
-## 3.1 账号模型介绍
+# 3 Tron账号
+## 3.1 账户模型介绍
+Tron采用账户模型。账户的唯一标识为地址address，对账户操作需要验证私钥签名。每个账户拥有TRX、Token余额及智能合约、带宽、能量等各种资源。通过发送交易可以增减TRX或者Token余额，需要消耗带宽；可以发布并拥有智能合约，也可以调用他人发布的智能合约，需要消耗能量。可以申请成为超级代表并被投票，也可以对超级代表进行投票。等等。Tron所有的活动都围绕账户进行。
 ## 3.2 创建账号的方式
-## 3.3 生成秘钥对算法
+首先用钱包或者浏览器生成私钥和地址，生成方法见3.3和3.4，公钥可以丢弃。
+由已有老账户调用转账TRX(CreateTransaction2)、转让Token(TransferAsset2)或者创建账户(CreateAccount2)合约，并广播到网络后将完成账户创建的流程。
+## 3.3 生成密钥对算法
+Tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随机数，公钥为椭圆曲线上一个点。生成过程为，首先生成一个随机数d作为私钥，再计算P=d*G作为公钥；其中G为椭圆曲线的基点。
 ## 3.4 地址格式说明
+用公钥P作为输入，计算SHA3得到结果H；这里公钥长度为64字节，SHA3选用Keccak256。
+取H的最后20字节，在前面填充一个字节0x41得到address。
+对address进行basecheck计算得到最终地址，所有地址的第一个字符为T。
+其中basecheck的计算过程为：首先对address计算sha256得到h1，再对h1计算sha256得到h2，取其前4字节作为check填充到address之后得到address||check，对其进行base58编码得到最终结果。
+我们用的字符映射表为：
+ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 ## 3.5 签名说明
+签名说明请参照
+https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
 
 # 4 Tron节点类型（思聪）
 ## 4.1 SR
 ### 4.1.1 SR介绍
 ### 4.1.2 SR部署方式
 ### 4.1.3 建议硬件配置
+最低配置要求：  
+CPU：16核 内存：32G 带宽：100M 硬盘：1T
+推荐配置要求：  
+CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
-## 4.2 full node
-### 4.2.1 full node介绍
-### 4.2.2 full node部署方式
+## 4.2 FullNode
+### 4.2.1 FullNode介绍
+### 4.2.2 FullNode部署方式
 ### 4.2.3 建议硬件配置
+最低配置要求：  
+CPU：16核 内存：32G 带宽：100M 硬盘：1T
+推荐配置要求：  
+CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
-## 4.3 solidity node
-### 4.3.1 solidity node介绍
-### 4.3.2 solidity node部署方式
+## 4.3 SolidityNode
+### 4.3.1 SolidityNode介绍
+SolidityNode是只从自己信任的FullNode同步固化块的节点，并提供区块、交易查询等服务。
+### 4.3.2 SolidityNode部署方式
+[部署solidityNode](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
 ### 4.3.3 建议硬件配置
+最低配置要求：  
+CPU：16核 内存：32G 带宽：100M 硬盘：1T
+推荐配置要求：  
+CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
 ## 4.4 Tron网络结构（以图形加文字说明）
+Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对等。网络中的节点有SuperNode、FullNode、SolidityNode三种类型，SuperNode主要用于生成区块，FullNode用于同步区块、广播交易，SolidityNode用于同步固化的区块。任何加入Tron网络的终端都可以作为一个节点，并和Tron网络中的其他节点有相同的地位，他们可以创建交易，广播交易，同步区块等，也可以作为SuperNode的候选人参与选举。
+![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/network.png)
+## 4.5 一键部署FullNode和SolidityNode
+下载一键部署脚本，根据不同的节点类型附加相应的参数来运行脚本。  
+详见[一键部署节点](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
+## 4.6 主网、测试网、私有网络
+加入主网或测试网或私有网络的节点在部署时运行的是同一份代码，区别仅仅在于节点启动时加载的配置文件不同。
+### 4.6.1
+[主网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
+### 4.6.2
+[测试网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
+### 4.6.3
 
-## 4.5 一键部署full node和solidity node
-
-## 4.6 如何连接主网
-
-## 4.7 如何连接测试网
-
-## 4.8 如何搭建私有链
 
 
 # 5 智能合约（振远）
 ## 5.1 Tron智能合约介绍
 ## 5.2 Tron智能合约特性（地址等）
 ## 5.3 Energy介绍
+智能合约运行时执行每一条指令都需要消耗一定的系统资源，资源的多少用Energy的值来衡量。
+
 ### 5.3.1 Energy的获取
+
+冻结获取Energy，即将持有的trx锁定，无法进行交易，作为抵押，并以此获得免费使用Energy的权利。具体计算与全网所有账户冻结有关，可参考相关部分计算。
+
+##### FreezeBalance 冻结获得能量
+
+```
+freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
+```
+
+通过冻结TRX获取的Energy， 额度 = 为获取Energy冻结的TRX / 整个网络为获取Energy冻结的TRX 总额 * 50_000_000_000。
+也就是所有用户按冻结TRX平分固定额度的Energy。
+
+示例：
+
+```
+如全网只有两个人A，B分别冻结2TRX，2TRX。
+
+二人冻结获得的可用Energy分别是
+
+A: 25_000_000_000 且energy_limit 为25_000_000_000
+
+B: 25_000_000_000 且energy_limit 为25_000_000_000
+
+当第三人C冻结1TRX时。
+
+三人冻结获得的可用Energy调整为
+
+A: 20_000_000_000 且energy_limit调整为20_000_000_000
+
+B: 20_000_000_000 且energy_limit调整为20_000_000_000
+
+B: 10_000_000_000 且energy_limit 为10_000_000_000
+
+```
+
+##### FreezeBalance 恢复能量
+
+所消耗的能量会在24小时内平滑减少至0。
+
+
+
 ### 5.3.2 Energy的消耗
+##### 示例1
+如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是100%，也就是完全由调用者支付所需资源。
+此时A调用了合约C，填写的feeLimit是 30000000(单位是SUN, 30 TRX)。那么A此次调用能够使用的Energy是由两部分计算出来的：
+1. A冻结剩余的Energy
+这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
+2. 按照固定比例换算出来的Energy
+如果feeLimit大于冻结剩余Energy价值的TRX，那么需要使用balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(30 - 10) TRX = 20 TRX，获得的Energy是 20 TRX / 100 SUN = 200000 Energy
+所以，A此次调用能够使用的Energy是 (100000 + 200000) = 300000 Energy
+
+如果合约执行成功，没有发生任何异常，则会扣除合约运行实际消耗的Energy，一般都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+##### 示例2
+如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是40%，也就是由合约开发者支付所需资源的60%，开发者是D，冻结 50 TRX 获得了500000 Energy。
+此时A调用了合约C，填写的feeLimit是 200000000(单位是SUN, 200 TRX)。
+那么A此次调用能够使用的Energy是于以下三部分相关：
+1. 调用者A冻结剩余的Energy（X Energy）
+这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于剩下的feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
+2. 从调用者A的balance中，按照固定比例换算出来的Energy （Y Energy）
+如果feeLimit大于1和2的和，那么需要使用A的balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(200 - 10)TRX = 190 TRX，但是A的balance只有90 TRX，按照min(190 TRX, 90 TRX) = 90 TRX来计算获得的Energy，即为 90 TRX / 100 SUN = 900000 Energy
+3. 开发者D冻结剩余的Energy (Z Energy)
+开发者D冻结剩余500000 Energy。
+会出现以下两种情况：
+当(X+Y)/(40%) >= Z/(60%) ，A此次调用能够使用的Energy是 X+Y+Z Energy。
+当(X+Y)/(40%) < Z/(60%) ，A此次调用能够使用的Energy是 (X+Y)/(40%) Energy。
+若A此次调用能够使用的Energy是 Q Energy
+
+同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60%=300000 Energy。 
+一般实际消耗Energy都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+##### 怎么填写feeLimit
+建议填写的feeLimit要略大于当前环境下，获得此次合约执行所需Energy要冻结的SUN的值。例如：
+1. 此次合约执行大概需要的Energy，比如是20000 Energy
+2. 当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是1 TRX = 100 Energy
+3. feeLimit填写为200 TRX = 200 * 10^6 SUN = 200000000 SUN
+##### 注意事项
+1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。consume_user_resource_percent建议值是1-100。
+2. feeLimit必须在0-1000TRX之间
 ## 5.4 智能合约开发工具介绍
 ## 5.5 智能合约的开发，编译，部署方法
 
-# 6 内置合约以及API说明（任成常）
+# 6 内置合约以及API说明
 ## 6.1 内置合约说明
+请参考:
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md
+
 ## 6.2 gRPC 接口说明
+请参考:
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
+
 ## 6.3 http 接口说明
+请参考:
+
+https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
 # 7 Tron Token说明
+用户在Tron公链发行token，有两种方式，一种是通过智能合约实现TRC20协议，一种是通过Tron公链内置的AssetIssueContract
+合约。下面对AssetIssueContract合约发行token进行说明。
 ## 7.1 如何发行token
+grpc接口
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
+
+http接口
+
+wallet/createassetissue
+作用：发行Token
+demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
+"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
+"name":"0x6173736574497373756531353330383934333132313538",
+"abbr": "0x6162627231353330383934333132313538",
+"total_supply" :4321,
+"trx_num":1,
+"num":1,
+"start_time" : 1530894315158,
+"end_time":1533894312158,
+"description":"007570646174654e616d6531353330363038383733343633",
+"url":"007570646174654e616d6531353330363038383733343633",
+"free_asset_net_limit":10000,
+"public_free_asset_net_limit":10000,
+"frozen_supply":{"frozen_amount":1, "frozen_days":2}
+}'
+参数说明：
+owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
+返回值：发行Token的Transaction
+
 ## 7.2 如何参与token
+grpc接口：
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
+
+http接口：
+
+wallet/participateassetissue
+作用：参与token发行
+demo：curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
+"to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
+"owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
+"amount":100, 
+"asset_name":"3230313271756265696a696e67"
+}'
+参数说明：
+to_address是Token发行人的地址，需要是hexString格式
+owner_address是参与token人的地址，需要是hexString格式
+amount是参与token的数量
+asset_name是token的名称，需要是hexString格式
+返回值：参与token发行的transaction
 
 # 8 Tron交易费用
 ## 8.1 费用模型介绍
@@ -170,7 +345,7 @@ TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的
 - 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
 
 #### 8.1.1 Bandwidth Points
- 
+
 
 交易以字节数组的形式在网络中传输及存储，一条交易消耗的Bandwidth Points = 交易字节数 * Bandwidth Points费率。当前Bandwidth Points费率 = 1。
 
@@ -200,16 +375,16 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 如果交易需要创建新账户，Bandwidth Points消耗如下：
 
     1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-
+    
     2、尝试消耗交易发起者的TRX，这部分烧掉0.1TRX。
 
 如果交易是发行Token转账，Bandwidth Points消耗如下：
 
     1、依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
     Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。
-
+    
     2、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-
+    
     3、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
     
     4、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
@@ -217,7 +392,7 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 如果交易普通交易，Bandwidth Points消耗如下：
 
     1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-
+    
     2、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
     
     3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
@@ -235,13 +410,13 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 ### 8.2.3 Token转账费用
 ## 8.3 交易费明细
 
- |交易类型|费用|
-| :------ |: ------: |  
- |创建witness|9999TRX|
- |发行token|1024TRX|
- |创建account|0.1TRX|
- |创建exchange|1024TRX|
- 
+|交易类型|费用|
+| :------|:------:|
+|创建witness|9999TRX|
+|发行token|1024TRX|
+|创建account|0.1TRX|
+|创建exchange|1024TRX|
+
 # 9 去中心化交易对说明
 
 ## 9.1 什么是交易对
@@ -290,7 +465,7 @@ ExchangeTransaction 1 _ 100 990
 注资需要指定一种token以及注资金额，TRON网络会自动根据当前交易对中两种token的比例，计算出另一个token所需的金额，从而保证注资前后，交易对中两个token的比例相同，价格没有变化。    
 与创建交易对相同，注资要求创建者拥有足够多的两种token的balance。    
 注资的合约是ExchangeInjectContract，该合约有3个参数： 
-   
+
  - exchange_id，交易对的id
  - token_id，要注资的token的id
  - quant，要注资的token的金额
@@ -332,18 +507,90 @@ first_token的价格可有"first_token&&TRX"交易对计算获得。
 ### 9.6.3 计算交易获得token量
 交易中花费first_token置换获得的second_token的数量的计算过程：\
 假设 sellTokenQuant是要卖出的first_token的金额，buyTokenQuant是要买入的second_token的金额。
- 
+
 supply = 1_000_000_000_000_000_000L；\
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant）, 0.0005)); \
 buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0)；
- 
+
 注意：由于网络其他账户发生交易，价格可能发生变化。    
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 10 钱包介绍（任成常）
+# 10 钱包介绍
 ## 10.1 wallet-cli功能介绍
+请参考:
+
+  https://github.com/tronprotocol/wallet-cli/blob/master/README.md
+
 ## 10.2 计算交易ID
+
+对交易的RawData取Hash。
+```
+Hash.sha256(transaction.getRawData().toByteArray())
+
+```
 ## 10.3 计算blockID
+block id是块高度和块头raw_data的hash的混合，具体是计算出块头中raw_data的hash。用
+ 块的高度替换该hash中的前8个byte。具体代码如下：
+```
+private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
+  byte[] numBytes = Longs.toByteArray(blockNum); 
+  byte[] hash = blockHash; 
+  System.arraycopy(numBytes, 0, hash, 0, 8); 
+  return hash;
+  }
+```
+
 ## 10.4 如何本地构造交易
+根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 refference block 的设置方法：设置RefBlockHash为最新块的hash的第8到16(不包含)之间的字节，设置BlockBytes为最新块高度的第6到8（不包含）之间的字节，代码如下：
+```
+public static Transaction setReference(Transaction transaction, Block newestBlock) {
+     long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
+     byte[] blockHash = getBlockHash(newestBlock).getBytes();
+     byte[] refBlockNum = ByteArray.fromLong(blockHeight);
+     Transaction.raw rawData = transaction.getRawData().toBuilder()
+         .setRefBlockHash(ByteString.copyFrom(ByteArray.subArray(blockHash, 8, 16)))
+         .setRefBlockBytes(ByteString.copyFrom(ByteArray.subArray(refBlockNum, 6, 8)))
+         .build();
+     return transaction.toBuilder().setRawData(rawData).build();
+   }
+```
+Expiration 和交易时间戳的设置方法：
+```
+public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
+     Transaction.Builder transactionBuilder = Transaction.newBuilder();
+     Block newestBlock = WalletClient.getBlock(-1);
+ 
+     Transaction.Contract.Builder contractBuilder = Transaction.Contract.newBuilder();
+     Contract.TransferContract.Builder transferContractBuilder = Contract.TransferContract
+         .newBuilder();
+     transferContractBuilder.setAmount(amount);
+     ByteString bsTo = ByteString.copyFrom(to);
+     ByteString bsOwner = ByteString.copyFrom(from);
+     transferContractBuilder.setToAddress(bsTo);
+     transferContractBuilder.setOwnerAddress(bsOwner);
+     try {
+       Any any = Any.pack(transferContractBuilder.build());
+       contractBuilder.setParameter(any);
+     } catch (Exception e) {
+       return null;
+     }
+     contractBuilder.setType(Transaction.Contract.ContractType.TransferContract);
+     transactionBuilder.getRawDataBuilder().addContract(contractBuilder)
+         .setTimestamp(System.currentTimeMillis())//交易时间戳设置毫秒形式
+         .setExpiration(newestBlock.getBlockHeader().getRawData().getTimestamp() + 10 * 60 * 60 * 1000);//交易所可以根据实际情况设置超时时间
+     Transaction transaction = transactionBuilder.build();
+     Transaction refTransaction = setReference(transaction, newestBlock);
+     return refTransaction;
+   }
+```
 ## 10.5 相关demo
+
+本地构造交易、签名的demo请参考 
+
+
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
+
+nodejs的demo，具体请参考
+
+https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
