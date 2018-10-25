@@ -162,7 +162,7 @@ CPU：16核 内存：32G 带宽：100M 硬盘：1T
 CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
 ## 4.4 Tron网络结构（以图形加文字说明）
-Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对等。网络中的节点有SuperNode、FullNode、SolidityNode三种类型，SuperNode主要用于生成区块，FullNode用于同步区块、广播交易，SolidityNode用于同步固化的区块。任何加入Tron网络的终端都可以作为一个节点，并和Tron网络中的其他节点有相同的地位，他们可以创建交易，广播交易，同步区块等，也可以作为SuperNode的候选人参与选举。
+Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对等。网络中的节点有SuperNode、FullNode、SolidityNode三种类型，SuperNode主要用于生成区块，FullNode用于同步区块、广播交易，SolidityNode用于同步固化的区块。任何部署运行Tron代码的设备都可以加入Tron网络并作为一个节点，和Tron网络中的其他节点有相同的地位，他们可以创建交易，广播交易，同步区块等，也可以作为SuperNode的候选人参与选举。
 ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/network.png)
 ## 4.5 一键部署FullNode和SolidityNode
 下载一键部署脚本，根据不同的节点类型附加相应的参数来运行脚本。  
