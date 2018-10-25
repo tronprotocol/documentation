@@ -136,6 +136,10 @@ https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E
 ### 4.1.1 SR介绍
 ### 4.1.2 SR部署方式
 ### 4.1.3 建议硬件配置
+最低配置要求：  
+CPU：16核 内存：32G 带宽：100M 硬盘：1T
+推荐配置要求：  
+CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
 ## 4.2 FullNode
 ### 4.2.1 FullNode介绍
@@ -158,7 +162,8 @@ CPU：16核 内存：32G 带宽：100M 硬盘：1T
 CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
 
 ## 4.4 Tron网络结构（以图形加文字说明）
-
+Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对等。网络中的节点有SuperNode、FullNode、SolidityNode三种类型，SuperNode主要用于生成区块，FullNode用于同步区块、广播交易，SolidityNode用于同步固化的区块。任何加入Tron网络的终端都可以作为一个节点，并和Tron网络中的其他节点有相同的地位，他们可以创建交易，广播交易，同步区块等，也可以作为SuperNode的候选人参与选举。
+![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/network.png)
 ## 4.5 一键部署FullNode和SolidityNode
 下载一键部署脚本，根据不同的节点类型附加相应的参数来运行脚本。  
 详见[一键部署节点](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
@@ -412,7 +417,12 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
     
     3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
 
+#### 8.1.4 带宽的自动恢复
+在网络总锁定资金以及账户锁定资金不变的情况向，账户的带宽的已使用量随着时间增加而按比例衰减，24h衰减到0。如时间T1时刻，账户带宽已使用量为U，到T1+12h，账户再次使用带宽u,此时账户已使用带宽为 U/2 + u。具体公式如下：
 
+
+
+即可以理解为每24h，用户已使用的带宽值重置为0。
 
 ## 8.2 交易费用说明
 ### 8.2.1 费用总体说明
