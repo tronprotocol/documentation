@@ -1,10 +1,72 @@
 # 波场钱包RPC-API 
 
-## API的具体定义请参考：
+[API的具体定义请参考](#API的具体定义请参考)\
+[你可能需要经常用到的如下几个API](#你可能需要经常用到的如下几个API)\
+
+[1. 获取账户信息](#1)\
+[2. 转让波场币](#2)\
+[3. 广播交易](#3)\
+[4. 创建账户](#4)\
+[5. 更新账户](#5)\
+[6. 投票](#6)\
+[7. 通证发行](#7)\
+[8. 查询超级代表候选人列表](#8)\
+[9. 申请成为超级代表候选人](#9)\
+[10. 更新超级代表候选人信息](#10)\
+[11. 转让通证](#11)\
+[12. 参与通证发行](#12)\
+[14. 查询所有通证列表](#14)\
+[13. 查询所有节点](#13)\
+[15. 查询某个账户发行的通证列表](#15)\
+[16. 按通证名称查询通证信息](#16)\
+[17. 查询当前时间有效发行的通证列表](#17)\
+[18. 获取当前区块](#18)\
+[19. 按照高度获取区块](#19)\
+[20. 获取交易总数](#20)\
+[21. 通过ID查询交易](#21)\
+[22. 通过时间查询交易（已删除）](#22)\
+[23. 通过地址查询所有发起交易](#23)\
+[24. 通过地址查询所有接收交易](#24)\
+[25. 锁定资金](#25)\
+[26. 解除资金锁定](#26)\
+[27. 赎回出块奖励](#27)\
+[28. 解冻通证](#28)\
+[29. 查询下次维护时刻](#29)\
+[30. 查询交易信息](#30)\
+[31. 根据ID查询区块](#31)\
+[32. 更新通证](#32)\
+[33. 分页查询通证列表](#33)\
+[34. 对交易进行签名](#34)\
+[35. 创建地址和秘钥](#35)\
+[36. TRX快捷转账](#36)\
+[37. 生成地址和私钥](#37)\
+[38. 转让波场币2](#38)\
+[39. 更新账户2](#39)\
+[40. 投票2](#40)\
+[41. 通证发行2](#41)\
+[42. 更新超级代表候选人信息2](#42)\
+[43. 创建账户2](#43)\
+[44. 申请成为超级代表候选人2](#44)\
+[45. 转让通证2](#45)\
+[46. 参与通证发行2](#46)\
+[47. 锁定资金2](#47)\
+[48. 解除资金锁定2](#48)\
+[49. 解冻通证2](#49)\
+[50. 赎回出块奖励2](#50)\
+[51. 更新通证2](#51)\
+[52. 获取当前区块2](#52)\
+[53. 按照高度获取区块2](#53)\
+[54. 分页获取区块2](#54)\
+[55. 查询最后区块2](#55)\
+[57. 通过地址查询所有发起交易2](#57)\
+[58. 通过地址查询所有接收交易2](#58)
+     
+     
+## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
 
 https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto
 
-## 你可能需要经常用到的如下几个API：
+## <h2 id="你可能需要经常用到的如下几个API">你可能需要经常用到的如下几个API</h2>
  
 1. 如何获取账号基本信息（类比比特币 getinfo）  
 GetAccount
@@ -20,7 +82,7 @@ GetTransactionsToThis
 + 本地校验：经过decode58check后，会得到一个长度是21的byte数组，第一个字节是0x41(mainnet) 或者 0xa0(testnet).  
 + 如果想要验证一个地址是否存在于区块链上，请求API GetAccount。
 
-## 1. 获取账户信息
+## <h2 id="1">1. 获取账户信息</h2>
 
 1.1	接口声明  
 rpc GetAccount (Account) returns (Account) {};  
@@ -33,7 +95,7 @@ Account：返回账户所有的详细信息。
 1.5	功能说明  
 查询余额列表。从返回的Account中可以展示所有的资产信息。
 
-## 2. 转让波场币
+## <h2 id="2">2. 转让波场币</h2>
 
 2.1	接口声明  
 rpc CreateTransaction (TransferContract) returns (Transaction)　{};  
@@ -46,7 +108,7 @@ Transaction：返回包含转账合约的交易，钱包签名后再请求广播
 2.5	功能说明  
 转账。创建一个转账的交易。
 
-## 3. 广播交易  
+## <h2 id="3">3. 广播交易</h2>
 
 3.1	接口声明  
 rpc BroadcastTransaction (Transaction) returns (Return) {};  
@@ -59,7 +121,7 @@ Return：成功或失败。广播交易前会预执行交易，返回其结果�
 3.5	功能说明  
 转账、投票、发行通证、参与通证发行等。将已签名的交易信息，发送到节点，由节点验证后广播到网络中。
 
-## 4. 创建账户
+## <h2 id="4">4. 创建账户</h2>
 
 4.1	接口声明  
 rpc CreateAccount (AccountCreateContract) returns (Transaction){};  
@@ -72,7 +134,7 @@ Transaction：返回包含创建账户的交易，钱包签名后再请求广播
 4.5	功能说明  
 创建账号并写入区块链。应该先离线生成一个地址，再通过该API激活该地址。
 
-## 5. 更新账户
+## <h2 id="5">5. 更新账户</h2>
 
 5.1	接口声明  
 rpc UpdateAccount (AccountUpdateContract) returns (Transaction){};  
@@ -85,7 +147,7 @@ Transaction：返回包含更新账户的交易，钱包签名后再请求广播
 5.5	功能说明  
 更新账户名称。
 
-## 6. 投票
+## <h2 id="6">6. 投票</h2>
 
 6.1	接口声明  
 rpc VoteWitnessAccount (VoteWitnessContract) returns (Transaction){};  
@@ -98,7 +160,7 @@ Transaction：返回包含投票的交易，钱包签名后再请求广播交易
 6.5	功能说明  
 投票功能。只能对超级代表候选人进行投票，投票总数量不能大于账户锁定资金的数量，参见25 锁定资金。
 
-## 7. 通证发行
+## <h2 id="7">7. 通证发行</h2>
         
 7.1	接口声明  
 rpc CreateAssetIssue (AssetIssueContract) returns (Transaction) {};  
@@ -118,7 +180,7 @@ Transaction：返回通证发行的交易，钱包签名后再请求广播交易
 每个账户每天的token转账最多消耗自己1000 bandwidth points，整个网络每天最多消耗自己1000000 bandwidth points。其中20万锁仓180天，30万锁仓365天。
 
 
-## 8. 查询超级代表候选人列表
+## <h2 id="8">8. 查询超级代表候选人列表</h2>
 
 8.1	接口声明  
 rpc ListWitnesses (EmptyMessage) returns (WitnessList) {};  
@@ -131,7 +193,7 @@ WitnessList： Witness的列表。所有超级代表的候选人详细信息。
 8.5	功能说明  
 投票前要查询所有候选人，并且展示出详细信息，供用户选择投票。
 
-## 9. 申请成为超级代表候选人
+## <h2 id="9">9. 申请成为超级代表候选人</h2>
 
 9.1 接口声明
 rpc CreateWitness (WitnessCreateContract) returns (Transaction) {};  
@@ -144,7 +206,7 @@ Transaction：返回包含申请成为候选人的交易，钱包签名后再请
 9.5 功能说明  
 每个波场用户都可以申请成为超级代表候选人。要求账户在区块链上已经创建。
 
-## 10. 更新超级代表候选人信息
+## <h2 id="10">10. 更新超级代表候选人信息</h2>
 
 10.1 接口声明  
 rpc UpdateWitness (WitnessUpdateContract) returns (Transaction) {};  
@@ -157,7 +219,7 @@ Transaction：返回包含更新候选人信息的交易，钱包签名后再请
 10.5 功能说明  
 更新超级代表的url。
 
-## 11. 转让通证
+## <h2 id="11">11. 转让通证</h2>
 
 11.1 接口声明  
 rpc TransferAsset (TransferAssetContract) returns (Transaction){};  
@@ -170,7 +232,7 @@ Transaction：返回包含转让通证的交易，钱包签名后再请求广播
 11.5 功能说明  
 转让通证。创建一个转让通证的交易。
 
-## 12. 参与通证发行
+## <h2 id="12">12. 参与通证发行</h2>
 
 12.1 接口声明  
 rpc ParticipateAssetIssue (ParticipateAssetIssueContract) returns (Transaction){};  
@@ -184,7 +246,7 @@ Transaction：返回包含参与通证发行的交易，钱包签名后再请求
 参与通证发行。
 
 
-## 13 查询所有节点
+## <h2 id="13">13.  查询所有节点</h2>
 
 13.1 接口声明  
 rpc ListNodes (EmptyMessage) returns (NodeList) {};  
@@ -197,7 +259,7 @@ NodeList：Node的列表，包含ip和端口。
 13.5 功能说明  
 列举所有在线的节点ip和端口。
 
-## 14. 查询所有通证列表
+## <h2 id="14">14. 查询所有通证列表</h2>
 
 14.1 接口声明  
 rpc GetAssetIssueList (EmptyMessage) returns (AssetIssueList) {};  
@@ -210,7 +272,7 @@ AssetIssueList： AssetIssueContract的列表。所有已发行通证详细信�
 14.5 功能说明  
 全部通证列表。展示所有通证，供用户选择参与。
 
-## 15. 查询某个账户发行的通证列表
+## <h2 id="15">15. 查询某个账户发行的通证列表</h2>
 
 15.1 接口声明  
 rpc GetAssetIssueByAccount (Account) returns (AssetIssueList) {};  
@@ -223,7 +285,7 @@ AssetIssueList： AssetIssueContract的列表。
 15.5 功能说明  
 查询某个账户发行的所有通证。
 
-## 16. 按通证名称查询通证信息
+## <h2 id="16">16. 按通证名称查询通证信息</h2>
 
 16.1 接口声明  
 rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {};  
@@ -236,7 +298,7 @@ AssetIssueContract：通证详细信息。
 16.5 功能说明  
 按照通证名称查询通证。通证名称在波场中确保唯一。
 
-## 17. 查询当前时间有效发行的通证列表
+## <h2 id="17">17. 查询当前时间有效发行的通证列表</h2>
 
 17.1 接口声明  
 rpc GetAssetIssueListByTimestamp (NumberMessage) returns (AssetIssueList){};  
@@ -249,7 +311,7 @@ AssetIssueList： AssetIssueContract的列表。所有正在发行的通证详�
 17.5 功能说明  
 全部通证列表。展示当前发行通证，供用户选择参与。
 
-## 18. 获取当前区块
+## <h2 id="18">18. 获取当前区块</h2>
 
 18.1 接口声明  
 rpc GetNowBlock (EmptyMessage) returns (Block) {};  
@@ -262,7 +324,7 @@ Block：当前区块信息。
 18.5 功能说明  
 获取当前最新的区块。
 
-## 19. 按照高度获取区块
+## <h2 id="19">19. 按照高度获取区块</h2>
 
 19.1 接口声明  
 rpc GetBlockByNum (NumberMessage) returns (Block) {};  
@@ -275,7 +337,7 @@ Block：区块信息。
 19.5 功能说明  
 获取指定高度的区块，如果找不到则返回创世区块。
 
-## 20. 获取交易总数
+## <h2 id="20">20. 获取交易总数</h2>
 
 20.1 接口声明  
 rpc TotalTransaction (EmptyMessage) returns (NumberMessage) {};  
@@ -288,7 +350,7 @@ NumberMessage：交易总数。
 20.5 功能说明  
 获取交易的总数量。
 
-## 21. 通过ID查询交易
+## <h2 id="21">21. 通过ID查询交易</h2>
 
 21.1 接口声明  
 rpc getTransactionById (BytesMessage) returns (Transaction) {};  
@@ -301,7 +363,7 @@ Transaction：被查询的交易。
 21.5 功能说明  
 通过ID查询交易的详细信息，ID就是交易数据的Hash值。
 
-## 22. 通过时间查询交易（已删除）
+## <h2 id="22">22. 通过时间查询交易（已删除）</h2>
 
 22.1 接口声明  
 rpc getTransactionsByTimestamp (TimeMessage) returns (TransactionList) {};  
@@ -314,7 +376,7 @@ TransactionList：交易列表。
 22.5 功能说明  
 通过起止时间查询所有发生的交易。
 
-## 23. 通过地址查询所有发起交易
+## <h2 id="23">23. 通过地址查询所有发起交易</h2>
 
 23.1 接口声明  
 rpc getTransactionsFromThis (Account) returns (TransactionList) {};  
@@ -327,7 +389,7 @@ TransactionList：交易列表。
 23.5 功能说明  
 通过账户地址查询所有发起的交易。
 
-## 24. 通过地址查询所有接收交易
+## <h2 id="24">24. 通过地址查询所有接收交易</h2>
 
 24.1 接口声明  
 rpc getTransactionsToThis (Account) returns (NumberMessage) {};  
@@ -340,7 +402,7 @@ TransactionList：交易列表。
 24.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。
 
-## 25. 锁定资金
+## <h2 id="25">25. 锁定资金</h2>
 
 25.1 接口声明                                                                                  
 rpc FreezeBalance (FreezeBalanceContract) returns (Transaction) {};                                                                                  
@@ -355,7 +417,7 @@ Transaction：返回包含资金的交易，钱包签名后再请求广播交易
 a.获得带宽。                                                                                                                                                                    
 b.获得投票的权利。
 
-## 26. 解除资金锁定
+## <h2 id="26">26. 解除资金锁定</h2>
 
 26.1 接口声明                                                                                  
 rpc UnfreezeBalance (UnfreezeBalanceContract) returns (Transaction) {};                                                                                  
@@ -368,7 +430,7 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 26.5 功能说明                                                                                    
 锁定资金3天之后才允许解除锁定。解除锁定，将清除投票记录和带宽。
 
-## 27. 赎回出块奖励
+## <h2 id="27">27. 赎回出块奖励</h2>
 
 27.1 接口声明                                                                                  
 rpc WithdrawBalance (WithdrawBalanceContract) returns (Transaction) {};                                                                                    
@@ -381,7 +443,7 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 27.5 功能说明                                                                                       
 本接口仅提供给超级代表。超级代表记账成功后，将获得奖励，奖励不直接增加到账户余额上。每24小时允许提取一次到账户余额。
 
-## 28. 解冻通证
+## <h2 id="28">28. 解冻通证</h2>
 
 28.1 接口声明  
 rpc UnfreezeAsset (UnfreezeAssetContract) returns (Transaction) {};  
@@ -394,7 +456,7 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 28.5 功能说明                                                                                  
 通证发行者解冻发行时冻结的通证。
 
-## 29. 查询下次维护时刻
+## <h2 id="29">29. 查询下次维护时刻</h2>
 
 29.1 接口声明                                                                                  
 rpc GetNextMaintenanceTime (EmptyMessage) returns (NumberMessage) {};  
@@ -407,7 +469,7 @@ NumberMessage：下次维护时刻
 29.5 功能说明                                                                                  
 获取下次维护时刻
 
-## 30. 查询交易信息
+## <h2 id="30">30. 查询交易信息</h2>
 
 30.1 接口声明                                                                                  
 rpc GetTransactionInfoById (BytesMessage) returns (TransactionInfo) {};  
@@ -420,7 +482,7 @@ TransactionInfo：交易信息
 30.5 功能说明                                                                                  
 查询交易的费用、所在区块、所在区块时间戳
 
-## 31.根据ID查询区块 
+## <h2 id="31">31.  根据ID查询区块</h2>
 31.1 接口声明                                                                                  
 rpc GetBlockById (BytesMessage) returns (Block) {};  
 31.2 提供节点                                                                                  
@@ -432,7 +494,7 @@ Block：区块
 31.5 功能说明                                                                                  
 根据输入的区块的ID查询区块
 
-## 32.更新通证
+## <h2 id="32">32.  更新通证</h2>
 32.1 接口声明                                                                                  
 rpc UpdateAsset (UpdateAssetContract) returns (Transaction) {};  
 32.2 提供节点                                                                                  
@@ -444,7 +506,7 @@ Transaction：返回交易，钱包签名后再请求广播交易。
 32.5 功能说明                                                                                  
 只能由通证发行者发起，更新通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
 
-## 33. 分页查询通证列表
+## <h2 id="33">33. 分页查询通证列表</h2>
 33.1 接口声明                                                                                  
 rpc GetPaginatedAssetIssueList (PaginatedMessage) returns (AssetIssueList) {};  
 33.2 提供节点                                                                                  
@@ -456,7 +518,7 @@ AssetIssueList： AssetIssueContract的分页列表，发行通证详细信息�
 33.5 功能说明                                                                                  
 分页通证列表。分页展示通证，供用户选择参与。
 
-## 34. 对交易进行签名
+## <h2 id="34">34. 对交易进行签名</h2>
 34.1 接口说明                                                                                  
 rpc GetTransactionSign (TransactionSign) returns (Transaction) {};  
 34.2 提供节点                                                                                  
@@ -466,7 +528,7 @@ TransactionSign：待签名Transaction对象和签名用的private key
 34.4 返回值                                                                                  
 Transaction：签名的Transaction对象
 
-## 35. 创建地址和秘钥
+## <h2 id="35">35. 创建地址和秘钥</h2>
 35.1 接口说明                                                                                  
 rpc CreateAdresss (BytesMessage) returns (BytesMessage) {};  
 35.2 提供节点                                                                                  
@@ -476,7 +538,7 @@ BytesMessage：Passphrase
 35.4 返回值                                                                                  
 BytesMessage：地址
 
-## 36. TRX快捷转账
+## <h2 id="36">36. TRX快捷转账</h2>
 36.1 接口说明                                                                                  
 rpc EasyTransfer (EasyTransferMessage) returns (EasyTransferResponse) {};  
 36.2 提供节点                                                                                  
@@ -486,7 +548,7 @@ EasyTransferMessage：转账用的密码，toAddress，转账的数量
 36.4 返回值                                                                                  
 EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
 
-## 37. 生成地址和私钥
+## <h2 id="37">37. 生成地址和私钥</h2>
 37.1 接口说明                                                                                  
 rpc GenerateAddress (EmptyMessage) returns (AddressPrKeyPairMessage) {};  
 37.2 提供节点                                                                                  
@@ -498,7 +560,7 @@ AddressPrKeyPairMessage：生成地址，生成私钥
 37.5 功能说明                                                                                  
 可用于生成地址和私钥，请务必仅在受信断网节点调用，以免私钥外泄
 
-## 38. 转让波场币2
+## <h2 id="38">38. 转让波场币2</h2>
 38.1	接口声明  
 rpc CreateTransaction2 (TransferContract) returns (TransactionExtention)　{};  
 38.2	提供节点  
@@ -511,7 +573,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 转账。创建一个转账的交易。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 39. 更新账户2
+## <h2 id="39">39. 更新账户2</h2>
 
 39.1	接口声明  
 rpc UpdateAccount2 (AccountUpdateContract) returns (TransactionExtention){};  
@@ -525,7 +587,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 更新账户名称。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 40. 投票2
+## <h2 id="40">40. 投票2</h2>
 
 40.1	接口声明  
 rpc VoteWitnessAccount2 (VoteWitnessContract) returns (TransactionExtention){};  
@@ -539,7 +601,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 投票功能。只能对超级代表候选人进行投票，投票总数量不能大于账户锁定资金的数量，参见25 锁定资金。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 41. 通证发行2
+## <h2 id="41">41. 通证发行2</h2>
         
 41.1	接口声明  
 rpc CreateAssetIssue2 (AssetIssueContract) returns (TransactionExtention) {};  
@@ -560,7 +622,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 以上命令的发行了名为abc的资产，发行总量为100万，abc与TRX的兑换比例为1:1，发行日期为2018-5-31至2018-6-30，描述为abcdef，网址为a.com，
 每个账户每天的token转账最多消耗自己1000 bandwidth points，整个网络每天最多消耗自己1000000 bandwidth points。其中20万锁仓180天，30万锁仓365天。
 
-## 42. 更新超级代表候选人信息2
+## <h2 id="42">42. 更新超级代表候选人信息2</h2>
 
 42.1 接口声明  
 rpc UpdateWitness2 (WitnessUpdateContract) returns (TransactionExtention) {};  
@@ -574,7 +636,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 更新超级代表的url。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 43. 创建账户2
+## <h2 id="43">43. 创建账户2</h2>
 
 43.1	接口声明  
 rpc CreateAccount2 (AccountCreateContract) returns (TransactionExtention){};  
@@ -588,7 +650,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 创建账号并写入区块链。应该先离线生成一个地址，再通过该API激活该地址。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 44. 申请成为超级代表候选人2
+## <h2 id="44">44. 申请成为超级代表候选人2</h2>
 
 44.1 接口声明
 rpc CreateWitness2 (WitnessCreateContract) returns (TransactionExtention) {};  
@@ -602,7 +664,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 每个波场用户都可以申请成为超级代表候选人。要求账户在区块链上已经创建。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 45. 转让通证2
+## <h2 id="45">45. 转让通证2</h2>
 
 45.1 接口声明  
 rpc TransferAsset2 (TransferAssetContract) returns (TransactionExtention){};  
@@ -616,7 +678,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 转让通证。创建一个转让通证的交易。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 46. 参与通证发行2
+## <h2 id="46">46. 参与通证发行2</h2>
 
 46.1 接口声明  
 rpc ParticipateAssetIssue2 (ParticipateAssetIssueContract) returns (TransactionExtention){};  
@@ -630,7 +692,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 参与通证发行。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 47. 锁定资金2
+## <h2 id="47">47. 锁定资金2</h2>
 
 47.1 接口声明                                                                                  
 rpc FreezeBalance2 (FreezeBalanceContract) returns (TransactionExtention) {};                                                                                  
@@ -646,7 +708,7 @@ a.获得带宽。
 b.获得投票的权利。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 48. 解除资金锁定2
+## <h2 id="48">48. 解除资金锁定2</h2>
 
 48.1 接口声明                                                                                  
 rpc UnfreezeBalance2 (UnfreezeBalanceContract) returns (TransactionExtention) {};                                                                                  
@@ -660,7 +722,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 锁定资金3天之后才允许解除锁定。解除锁定，将清除投票记录和带宽。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 49. 解冻通证2
+## <h2 id="49">49. 解冻通证2</h2>
 
 49.1 接口声明  
 rpc UnfreezeAsset2 (UnfreezeAssetContract) returns (TransactionExtention) {};  
@@ -674,7 +736,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 通证发行者解冻发行时冻结的通证。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 50. 赎回出块奖励2
+## <h2 id="50">50. 赎回出块奖励2</h2>
 
 50.1 接口声明                                                                                  
 rpc WithdrawBalance2 (WithdrawBalanceContract) returns (TransactionExtention) {};                                                                                    
@@ -688,7 +750,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 本接口仅提供给超级代表。超级代表记账成功后，将获得奖励，奖励不直接增加到账户余额上。每24小时允许提取一次到账户余额。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 51.更新通证2
+## <h2 id="51">51.  更新通证2</h2>
 51.1 接口声明                                                                                  
 rpc UpdateAsset2 (UpdateAssetContract) returns (TransactionExtention) {};  
 51.2 提供节点                                                                                  
@@ -701,7 +763,7 @@ TransactionExtention：返回交易、交易ID、操作结果等。钱包对交�
 只能由通证发行者发起，更新通证的描述、通证的url、每账户最多消耗带宽值、总带宽消耗值
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 52. 获取当前区块2
+## <h2 id="52">52. 获取当前区块2</h2>
 
 52.1 接口声明  
 rpc GetNowBlock2 (EmptyMessage) returns (BlockExtention) {};  
@@ -714,7 +776,7 @@ BlockExtention：当前区块信息，包含区块id。
 52.5 功能说明  
 获取当前最新的区块。
 
-## 53. 按照高度获取区块2
+## <h2 id="53">53. 按照高度获取区块2</h2>
 
 53.1 接口声明  
 rpc GetBlockByNum2 (NumberMessage) returns (BlockExtention) {};  
@@ -727,7 +789,7 @@ BlockExtention：区块信息，包含区块id。
 53.5 功能说明  
 获取指定高度的区块，如果找不到则返回创世区块。
 
-## 54. 分页获取区块2
+## <h2 id="54">54. 分页获取区块2</h2>
 
 54.1 接口声明  
 rpc GetBlockByLimitNext2 (BlockLimit) returns (BlockListExtention) {};  
@@ -740,7 +802,7 @@ BlockListExtention：区块列表。
 54.5 功能说明  
 根据范围查询区块，用与分页查询所有区块。
 
-## 55. 查询最后区块2
+## <h2 id="55">55. 查询最后区块2</h2>
 
 55.1 接口声明  
 rpc GetBlockByLatestNum2 (NumberMessage) returns (BlockListExtention) {};  
@@ -753,7 +815,7 @@ BlockListExtention：区块列表。
 55.5 功能说明  
 查询最后的一定数量的区块。
 
-## 56. 对交易进行签名2
+## <h2 id="56">56. 对交易进行签名2</h2>
 56.1 接口说明                                                                                  
 rpc GetTransactionSign2 (TransactionSign) returns (TransactionExtention) {};  
 56.2 提供节点                                                                                  
@@ -766,7 +828,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 使用API对交易进行签名。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
-## 57. 通过地址查询所有发起交易2
+## <h2 id="57">57. 通过地址查询所有发起交易2</h2>
 
 57.1 接口声明  
 GetTransactionsFromThis2 (AccountPaginated) returns (TransactionListExtention) {};  
@@ -779,7 +841,7 @@ TransactionListExtention：交易列表。
 57.5 功能说明  
 通过账户地址查询所有发起的交易。
 
-## 58. 通过地址查询所有接收交易2
+## <h2 id="58">58. 通过地址查询所有接收交易2</h2>
 
 58.1 接口声明  
 rpc GetTransactionsFromThis2 (AccountPaginated) returns (TransactionListExtention) {};  
