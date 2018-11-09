@@ -985,7 +985,9 @@ ExchangeWithdraw 1 abc 1000000
 ## 9.6 查询
 ### 9.6.1 查询交易
 有三个查询交易对的接口，包括：查询所有交易对信息（ListExchanges）、分页查询交易对信息（GetPaginatedExchangeList）(Odyssey-v3.1.1暂不支持)，查询指定交易对信息（GetExchangeById）。
-相关api详情，请查询[波场RPC-API说明](波场钱包RPC-API.md)。
+相关api详情，请查询[波场RPC-API说明]。
+
+https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#64-%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E4%BA%A4%E6%98%93%E5%AF%B9
 
 ### 9.6.2 计算当前价格
 交易中token的当前价格信息的计算过程：\
