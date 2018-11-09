@@ -194,37 +194,46 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  2、在localwitness中添加自己的私钥  
  3、设置genesis.block.witnesses为私钥对应的地址  
  4、设置p2p.version为除了11111之外的任意正整数  
- 5、第1个SR设置needSyncCheck为false，其他可以设置为true
+ 5、第1个SR设置needSyncCheck为false，其他可以设置为true  
  6、设置node.discovery.enable为true  
  7、运行部署脚本  
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
  配置文件中需要修改的参数：  
- localwitness: ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)
- witnesses:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/witness.png) 
- version:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
- enable:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
+ localwitness:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)
+ witnesses:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/witness.png) 
+ version:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
+ enable:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
 ##### 4.6.3.2.2 步骤二:部署FullNode节点	
  1、下载private_net_config.conf  
  ```
  wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
  ```
- 2、设置seed.node ip.list 为SR的ip地址和端口。
- 3、设置p2p.version与超级节点的p2p.version一致。
- 4、设置genesis.block 与SR中的genesis.block配置一致
- 5、设置needSyncCheck为true
- 6、设置node.discovery.enable 为true
- 7、运行部署脚本
+ 2、设置seed.node ip.list 为SR的ip地址和端口。  
+ 3、设置p2p.version与超级节点的p2p.version一致。  
+ 4、设置genesis.block 与SR中的genesis.block配置一致。   
+ 5、设置needSyncCheck为true  
+ 6、设置node.discovery.enable 为true  
+ 7、运行部署脚本  
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
  配置文件中需要修改的参数：  
- ip.list:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)
- p2p.version:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)
- genesis.block:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/genesis_block.png)
- needSyncCheck:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/need_sync_check.png)
- node.discovery.enable:![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
+ ip.list:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)
+ p2p.version:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)
+ genesis.block:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/genesis_block.png)
+ needSyncCheck:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/need_sync_check.png)
+ node.discovery.enable:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
  
 
 # 5 智能合约
