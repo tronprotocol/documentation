@@ -74,6 +74,9 @@ votewitness witness1 3 witness2 7 // 同时给witness1投了3票，给witness2�
 - 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms
 - 14: ALLOW_UPDATE_ACCOUNT_NAME, // 用于允许用户更改昵称以及昵称同名，目前为0，表示不允许
 - 15: ALLOW_SAME_TOKEN_NAME, // 用于允许创建相同名称的token，目前为0，表示不允许
+- 16: ALLOW_DELEGATE_RESOURCE, // 用于控制资源代理功能的开启
+- 17: ALLOW_ADAPTIVE_ENERGY, // 用于控制资源上限动态调整的开启
+- 18: TOTAL_ENERGY_LIMIT, // 用于调整Energy上限
 
 
 + API：
