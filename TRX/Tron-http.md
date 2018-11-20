@@ -72,6 +72,18 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid 
 Parameters：value is the transaction id，converted to a hex string
 Return value：Transaction fee，block height and block creation time
 
+/walletsolidity/getexchangebyid(will not be supported until Odyssey-v3.2)
+Function：Query exchange based on id
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+Parameters: id is the exchange id, a long
+Return value：exchange
+
+/walletsolidity/listexchanges(will not be supported until Odyssey-v3.2)
+Function：Query all exchanges
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+Parameters: None
+Return value：List of all exchanges
+
 /walletextension/gettransactionsfromthis
 Function：Query the list of transactions sent by an address
 demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
@@ -280,6 +292,18 @@ Return value：Bandwidth information for the account. If a field doesn't appear,
 Function：Query token by name.
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 Parameters：The name of the token, converted to a hex string
+Return value：token.
+
+/wallet/getassetissuelistbyname(will not be supported until Odyssey-v3.2)
+Function：Query token list by name.
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value": "44756354616E"}'
+Parameters：The name of the token, converted to a hex string
+Return value：List of tokens.
+
+/wallet/getassetissuebyid(will not be supported until Odyssey-v3.2)
+Function：Query token by id.
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000001"}'
+Parameters：The id of the token, it's a string
 Return value：token.
 
 /wallet/getnowblock
