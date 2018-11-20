@@ -58,6 +58,19 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid 
 参数说明：value是交易id，需要是hexString
 返回值：Transaction的交易fee，所在block的高度，创建时间
 
+/walletsolidity/getexchangebyid(Odyssey-v3.2开始支持)
+作用：根据id查询交易对
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+参数说明：
+id：交易对id
+返回值：交易对
+
+/walletsolidity/listexchanges(Odyssey-v3.2开始支持)
+作用：查询所有交易对
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+参数说明：
+返回值：所有交易对
+
 /walletextension/gettransactionsfromthis
 作用：查询某个账号的出账交易记录
 demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
@@ -266,6 +279,18 @@ wallet/getassetissuebyname
 作用：根据名称查询token。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 参数说明：通证名称，格式为hexString。
+返回值：token。
+
+wallet/getassetissuelistbyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token list。
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token列表。
+
+wallet/getassetissuebyid(Odyssey-v3.2开始支持)
+作用：根据id查询token。
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000001"}'
+参数说明：通证id，格式为String。
 返回值：token。
 
 wallet/getnowblock
