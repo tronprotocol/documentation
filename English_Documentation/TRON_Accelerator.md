@@ -1,4 +1,6 @@
-# TRON Accelerator
+# TRON Accelerator(Deprecated)
+
+## Please note this project does not interact with current TRON Accelerator online DApp competition starts from Dec 1st to Jan 5th.
 
 #### Introduction
 
