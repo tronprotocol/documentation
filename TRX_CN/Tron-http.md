@@ -58,6 +58,19 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid 
 参数说明：value是交易id，需要是hexString
 返回值：Transaction的交易fee，所在block的高度，创建时间
 
+/walletsolidity/getexchangebyid(Odyssey-v3.2开始支持)
+作用：根据id查询交易对
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+参数说明：
+id：交易对id
+返回值：交易对
+
+/walletsolidity/listexchanges(Odyssey-v3.2开始支持)
+作用：查询所有交易对
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+参数说明：
+返回值：所有交易对
+
 /walletextension/gettransactionsfromthis
 作用：查询某个账号的出账交易记录
 demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
@@ -268,6 +281,18 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value
 参数说明：通证名称，格式为hexString。
 返回值：token。
 
+wallet/getassetissuelistbyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token list。
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token列表。
+
+wallet/getassetissuebyid(Odyssey-v3.2开始支持)
+作用：根据id查询token。
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000001"}'
+参数说明：通证id，格式为String。
+返回值：token。
+
 wallet/getnowblock
 作用：查询最新块。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getnowblock
@@ -367,7 +392,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/validateaddress -d '{"address":
 
 wallet/deploycontract
 作用：部署合约
-demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","parameter":"","call_value":100,"name":"SomeContract","consume_user_resource_percent":30,"fee_limit":10,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","parameter":"","call_value":100,"name":"SomeContract","consume_user_resource_percent":30,"fee_limit":10,"origin_energy_limit": 10,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 参数说明：
 abi：abi
 bytecode：bytecode，需要是hexString格式
@@ -377,6 +402,7 @@ fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起deploycontract的账户地址
 name：合约名
+origin_energy_limit: 创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy，是大于0的整数
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 wallet/triggersmartcontract
@@ -510,5 +536,23 @@ demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"of
 返回值：提案列表
  
  
+wallet/updatesetting
+作用：更新合约的consume_user_resource_percent
+demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+contract_address：要修改的合约的地址
+consume_user_resource_percent：指定的使用该合约用户的资源占比
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
+wallet/updateenergylimit
+作用：更新合约的origin_energy_limit
+demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+contract_address：要修改的合约的地址
+origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
 ```
 

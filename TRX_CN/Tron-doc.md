@@ -77,6 +77,7 @@ votewitness witness1 3 witness2 7 // 同时给witness1投了3票，给witness2�
 - 16: ALLOW_DELEGATE_RESOURCE, // 用于控制资源代理功能的开启
 - 17: ALLOW_ADAPTIVE_ENERGY, // 用于控制资源上限动态调整的开启
 - 18: TOTAL_ENERGY_LIMIT, // 用于调整Energy上限
+- 19: ALLOW_MULTI_SIGN, //允许多重签名，目前为0，表示不允许。设置为1表示允许
 
 
 + API：
@@ -241,6 +242,11 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
 
 # 5 智能合约
 ## 5.1 Tron智能合约介绍
+
+智能合约是一种能自动执行其条款的计算化交易协议。智能合约和普通合约一样，定义了参与者相关的条款和奖惩机制。一旦合约被启动，便能按照设定的条款执行，并自动检查所承诺的条款实施情形。
+
+Tron兼容以太坊（Ethereum）上采用Solidity编写的智能合约。当前建议的Solidity语言版本为0.4.24~0.4.25。合约编写、编译完成后，部署到Tron公链上。部署后的合约，被触发时，就会在公链的各个节点上自动执行。
+
 ## 5.2 Tron智能合约特性（地址等）
 Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚拟机的特性，但基于tron自身属性也有部分的区别。
 

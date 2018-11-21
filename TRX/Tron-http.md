@@ -72,6 +72,18 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid 
 Parameters：value is the transaction id，converted to a hex string
 Return value：Transaction fee，block height and block creation time
 
+/walletsolidity/getexchangebyid(will not be supported until Odyssey-v3.2)
+Function：Query exchange based on id
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+Parameters: id is the exchange id, a long
+Return value：exchange
+
+/walletsolidity/listexchanges(will not be supported until Odyssey-v3.2)
+Function：Query all exchanges
+demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+Parameters: None
+Return value：List of all exchanges
+
 /walletextension/gettransactionsfromthis
 Function：Query the list of transactions sent by an address
 demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
@@ -282,6 +294,18 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value
 Parameters：The name of the token, converted to a hex string
 Return value：token.
 
+/wallet/getassetissuelistbyname(will not be supported until Odyssey-v3.2)
+Function：Query token list by name.
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value": "44756354616E"}'
+Parameters：The name of the token, converted to a hex string
+Return value：List of tokens.
+
+/wallet/getassetissuebyid(will not be supported until Odyssey-v3.2)
+Function：Query token by id.
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000001"}'
+Parameters：The id of the token, it's a string
+Return value：token.
+
 /wallet/getnowblock
 Function：Query the latest block
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getnowblock
@@ -358,7 +382,7 @@ Return value: True or false
 
 wallet/deploycontract
 Function：deploys a contract
-demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bandwidth_limit":1000000,"bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","call_value":100,"contract_name":"SomeContract","fee_limit":1000000,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/deploycontract -d '{"abi":"[{\"constant\":false,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"},{\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"key\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"name\":\"value\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}]","bandwidth_limit":1000000,"bytecode":"608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029","call_value":100,"contract_name":"SomeContract","fee_limit":1000000,"origin_energy_limit":10,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 Parameters：
   abi：abi
   bytecode:bytecode
@@ -367,6 +391,8 @@ Parameters：
   fee_limit：Maximum TRX consumption, measured in SUN（1TRX = 1,000,000SUN）
   call_value：Amount of TRX transferred with this transaction, measured in SUN（1TRX = 1,000,000SUN）
   owner_address：contract owner address, converted to a hex string
+  name: The name of contract
+  origin_energy_limit: The max energy which will be consumed by the owner in the process of excution or creation of the contract, is an integer which should be greater than 0.
 Return Value：TransactionExtention, TransactionExtention contains unsigned Transaction
 
 wallet/triggersmartcontract
@@ -501,6 +527,22 @@ demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"of
 参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
 返回值：提案列表
  
+wallet/updatesetting
+作用：更新合约的consume_user_resource_percent
+demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+contract_address：要修改的合约的地址
+consume_user_resource_percent：指定的使用该合约用户的资源占比
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
+wallet/updateenergylimit
+作用：更新合约的origin_energy_limit
+demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
+参数说明：
+owner_address：是交易对创建者的地址，hexString格式
+contract_address：要修改的合约的地址
+origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 ```
