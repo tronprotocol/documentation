@@ -280,6 +280,7 @@ wallet/getassetissuebyname
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 参数说明：通证名称，格式为hexString。
 返回值：token。
+注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
 
 wallet/getassetissuelistbyname(Odyssey-v3.2开始支持)
 作用：根据名称查询token list。
