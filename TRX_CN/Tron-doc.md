@@ -76,7 +76,7 @@ votewitness witness1 3 witness2 7 // 同时给witness1投了3票，给witness2�
 - 15: ALLOW_SAME_TOKEN_NAME, // 用于允许创建相同名称的token，目前为0，表示不允许
 - 16: ALLOW_DELEGATE_RESOURCE, // 用于控制资源代理功能的开启
 - 17: TOTAL_ENERGY_LIMIT, // 用于调整Energy上限
-- 18: ALLOW_MULTI_SIGN, //允许多重签名，目前为0，表示不允许。设置为1表示允许
+- 18: ALLOW_TVM_TRANSFER_TRC10, // 允许智能合约调用TRC10 token的接口，目前为0，表示不允许。设置为1表示允许
 
 
 + API：
