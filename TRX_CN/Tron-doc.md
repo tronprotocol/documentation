@@ -292,6 +292,7 @@ Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚�
       int64 call_value = 5;
       int64 consume_user_resource_percent = 6;
       string name = 7；
+      int64 origin_energy_limit = 8;
     }
     
 origin_address: 合约创建者地址
@@ -304,9 +305,12 @@ bytecode：合约字节码
 
 call_value：随合约调用传入的trx金额
 
-consume_user_resource_percent：程序开发人员与调用程序者的资源扣费百分比
+consume_user_resource_percent：开发者设置的调用者的资源扣费百分比
 
-name：合约名称（token名称）
+name：合约名称
+
+origin_energy_limit: 开发者设置的在一次合约调用过程中自己消耗的energy的上限，必须大于0。对于之前老的合约，deploy的时候没有提供设置该值的参数，会存成0，但是会按照1000万energy上限计算，开发者可以通过updateEnergyLimit接口重新设置该值，设置新值时也必须大于0
+
 
 通过另外两个grpc message类型 CreateSmartContract 和 TriggerSmartContract 来创建和使用smart contract
 
