@@ -777,10 +777,11 @@ https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%
 
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
-# 7 Tron Token说明
-用户在Tron公链发行token，有两种方式，一种是通过智能合约实现TRC20协议，一种是通过Tron公链内置的AssetIssueContract
-合约。下面对AssetIssueContract合约发行token进行说明。
-## 7.1 如何发行token
+# 7 Tron TRC10 token说明
+TRON网络支持2种token，一种是通过智能合约发行的TRC20协议的token，一种是通过Tron公链内置的TRC10 token。   
+
+下面对TRC10 token进行说明。
+## 7.1 如何发行TRC10 token
 grpc接口
 
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
@@ -796,6 +797,7 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "total_supply" :4321,
 "trx_num":1,
 "num":1,
+"precision":1,
 "start_time" : 1530894315158,
 "end_time":1533894312158,
 "description":"007570646174654e616d6531353330363038383733343633",
@@ -805,7 +807,7 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "frozen_supply":{"frozen_amount":1, "frozen_days":2}
 }'
 参数说明：
-owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
+owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；precision是精度，也就是小数点个数；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
 返回值：发行Token的Transaction
 
 ## 7.2 如何参与token
