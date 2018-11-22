@@ -293,6 +293,7 @@ Function：Query token by name.
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 Parameters：The name of the token, converted to a hex string
 Return value：token.
+Note: From Odyssey-v3.2, it is recommended to use getassetissuebyid or getassetissuelistbyname instead of this api, because it will support the same token name from 3.2, this api will return error msg if there are two or more assets with the same name.
 
 /wallet/getassetissuelistbyname(will not be supported until Odyssey-v3.2)
 Function：Query token list by name.
