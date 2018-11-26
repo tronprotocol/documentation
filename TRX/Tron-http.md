@@ -48,6 +48,25 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 Parameters：Offset is the index of the starting Token, and limit is the number of Tokens expected to be returned.
 Return value：List of Tokens
 
+/walletsolidity/getassetissuebyname(will not be supported until Odyssey-v3.2)
+Function：Query token by name.
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
+Parameters：The name of the token, converted to a hex string
+Return value：token.
+Note: From Odyssey-v3.2, it is recommended to use getassetissuebyid or getassetissuelistbyname instead of this api, because it will support the same token name from 3.2, this api will return error msg if there are two or more assets with the same name.
+
+/walletsolidity/getassetissuelistbyname(will not be supported until Odyssey-v3.2)
+Function：Query token list by name.
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
+Parameters：The name of the token, converted to a hex string
+Return value：List of tokens.
+
+/walletsolidity/getassetissuebyid(will not be supported until Odyssey-v3.2)
+Function：Query token by id.
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
+Parameters：The id of the token, it's a string
+Return value：token.
+
 /walletsolidity/getnowblock
 Function：Query the latest block
 demo: curl -X POST http://127.0.0.1:8091/walletsolidity/getnowblock
