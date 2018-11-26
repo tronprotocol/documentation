@@ -34,6 +34,25 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 参数说明：offset是起始Token的index，limit是期望返回的Token数量
 返回值：Token列表
 
+/walletsolidity/getassetissuebyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token。
+注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
+
+/walletsolidity/getassetissuelistbyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token list。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token列表。
+
+/walletsolidity/getassetissuebyid(Odyssey-v3.2开始支持)
+作用：根据id查询token。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
+参数说明：通证id，格式为String。
+返回值：token。
+
 /walletsolidity/getnowblock
 作用：查询最新block
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
