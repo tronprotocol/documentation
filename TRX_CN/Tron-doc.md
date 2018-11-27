@@ -784,11 +784,9 @@ TRON网络支持2种token，一种是通过智能合约发行的TRC20协议的to
 
 下面对TRC10 token进行说明。
 ## 7.1 如何发行TRC10 token
-grpc接口
+[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
 
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
-
-http接口
+http接口：
 
 wallet/createassetissue
 作用：发行Token
@@ -811,11 +809,12 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 参数说明：
 owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；precision是精度，也就是小数点个数；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
 返回值：发行Token的Transaction
+【注意】
+- 当前不支持precision，也就是说，目前的precision默认为0。只有当委员会通过AllowSameTokenName提议后，才允许设置精度。
+- 当前不支持token重名。只有当委员会通过AllowSameTokenName提议后，才允许发行相同名字的token。
 
-## 7.2 如何参与token
-grpc接口：
-
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
+## 7.2 参与TRC10 token
+[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
 
 http接口：
 
@@ -833,6 +832,31 @@ owner_address是参与token人的地址，需要是hexString格式
 amount是参与token的数量
 asset_name是token的名称，需要是hexString格式
 返回值：参与token发行的transaction
+
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
+
+## 7.3 TRC10 token转账
+[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#11)
+
+http接口：
+
+wallet/transferasset
+作用：转账Token
+demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{
+  "owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", 
+  "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
+  "asset_name": "0x6173736574497373756531353330383934333132313538", 
+  "amount": 100
+}'
+参数说明：
+  owner_address是token转出地址，需要是hexString格式；
+  to_address是token转入地址，需要是hexString格式；
+  asset_name是token名称，需要是hexString格式；
+  amount是token转账数量
+返回值：token转账的Transaction
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 # 8 Tron资源（Resource）模型
 ## 8.1 资源模型介绍
