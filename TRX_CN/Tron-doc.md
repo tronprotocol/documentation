@@ -1,5 +1,7 @@
 # TRON公链文档
 
+[TOC]
+
 # 1 项目仓库
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
@@ -832,8 +834,8 @@ amount是参与token的数量
 asset_name是token的名称，需要是hexString格式
 返回值：参与token发行的transaction
 
-# 8 Tron交易费用
-## 8.1 费用模型介绍
+# 8 Tron资源（Resource）模型
+## 8.1 资源模型介绍
 
 TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的内存模型，TRON网络中的存储资源几乎是无限的。
 但是过多无关紧要的交易仍然会消耗过多的带宽和CPU资源时，导致导致系统阻塞，影响正常交易的处理确认。
@@ -843,7 +845,7 @@ TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的
 - 普通交易仅消耗Bandwidth points
 - 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
 
-#### 8.1.1 Bandwidth Points
+## 8.2 Bandwidth Points
 
 
 交易以字节数组的形式在网络中传输及存储，一条交易消耗的Bandwidth Points = 交易字节数 * Bandwidth Points费率。当前Bandwidth Points费率 = 1。
@@ -852,7 +854,7 @@ TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的
 
 **注意** 由于网络中总冻结资金以及账户的冻结资金随时可能发生变化，因此账户拥有的Bandwidth Points不是固定值。
 
-#### 8.1.2 Bandwidth PointsBandwidth Points的来源
+### 8.2.1 Bandwidth PointsBandwidth Points的来源
 
 Bandwidth Points的获取分两种：
 
@@ -861,13 +863,13 @@ Bandwidth Points的获取分两种：
 
 - 还有一种是每个账户固定免费额度的TRX，为5000。
 
-#### 8.1.3 Bandwith Points的消耗
+### 8.2.2 Bandwith Points的消耗
 
 除了查询操作，任何交易都需要消耗bandwidth points。
 
 还有一种情况，如果是转账，包括普通转账或发行Token转账，如果目标账户不存在，转账操作则会创建账户并转账，只会扣除创建账户消耗的Bandwidth Points，转账不会再消耗额外的Bandwidth Points。
 
-#### 8.1.4 Bandwidth Points的计算规则
+### 8.2.3 Bandwidth Points的计算规则
 
 Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间内，整个网络能够处理的Bandwidth为确定值。
 
@@ -896,18 +898,29 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
     
     3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
 
-#### 8.1.4 带宽的自动恢复
+### 8.2.4 带宽的自动恢复
 在网络总锁定资金以及账户锁定资金不变的情况向，账户的带宽的已使用量随着时间增加而按比例衰减，24h衰减到0。如时间T1时刻，账户带宽已使用量为U，到T1+12h，账户再次使用带宽u,此时账户已使用带宽为 U/2 + u。具体公式如下：
 
 ![image](https://github.com/tronprotocol/Documentation/blob/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
 
 即可以理解为每24h，用户已使用的带宽值重置为0。
 
-## 8.2 交易费用说明
-### 8.2.1 费用总体说明
-### 8.2.2 创建账号手续费
-### 8.2.3 Token转账费用
-## 8.3 交易费明细
+## 8.3 Energy
+[5.3 Energy介绍](#5.3 Energy介绍)
+
+## 8.4 资源委托（resource delegate）
+在TRON中，一个账户可以通过冻结TRX来获取带宽和能量。同时，也可以把冻结TRX获取的带宽或者能量委托（delegate）给其他地址。
+此时，主账号拥有冻结的TRX以及相应的投票权，受委托账户拥有冻结获取的资源（带宽或者能量）。
+和普通冻结一样，委托资源也至少冻结3天。
+资源委托的命令如下：
+`
+  freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
+`
+其中frozen_balance是冻结的TRX数量（单位为sun），frozen_duration为冻结的天数（目前固定为3天），
+ResourceCode表示要获取的资源是带宽还是能量，receiverAddress表示受委托账户的地址
+
+
+## 8.5 其他交易费
 
 |交易类型|费用|
 | :------|:------:|
@@ -916,10 +929,10 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 |创建account|0.1TRX|
 |创建exchange|1024TRX|
 
-# 9 去中心化交易对说明
+# 9 去中心化交易所(DEX)说明
 
 ## 9.1 什么是交易对
-TRON网络原生支持去中心化交易所。去中心化交易所由多个交易对构成。一个交易对（Exchange）是token与token之间，或者token与TRX之间的交易市场（Exchange Market）。
+TRON网络原生支持去中心化交易所(DEX)。去中心化交易所由多个交易对构成。一个交易对（Exchange）是token与token之间，或者token与TRX之间的交易市场（Exchange Market）。
 任何账户都可以创建任何token之间的交易对，即使TRON网络中已经存在相同的交易对。交易对的买卖与价格波动遵循Bancor协议。
 TRON网络规定，所有交易对中的两个token的权重相等，因此它们数量（balance）的比率即是它们之间的价格。
 举一个简单的例子，假设一个交易对包含ABC和DEF两种token，ABC的balance为1000万，DEF的balance为100万，由于权重相等，因此10 ABC = 1 DEF，也就是说，当前ABC对于DEF的价格为10ABC/DEF。
