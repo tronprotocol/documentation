@@ -187,6 +187,8 @@ wallet/transferasset
 demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "0x6173736574497373756531353330383934333132313538", "amount": 100}'
 参数说明：owner_address是token转出地址，需要是hexString格式；to_address是token转入地址，需要是hexString格式；asset_name是token名称，需要是hexString格式；amount是token转账数量
 返回值：token转账的Transaction
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 wallet/easytransfer
 作用：快捷转账，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。调用该api前请先调用createAddress生成地址。
@@ -219,6 +221,8 @@ owner_address是参与token人的地址，需要是hexString格式
 amount是参与token的数量
 asset_name是token的名称，需要是hexString格式
 返回值：参与token发行的transaction
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 wallet/freezebalance
 作用：冻结trx，获取带宽，获取投票权
@@ -226,25 +230,31 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
 "frozen_balance": 10000,
 "frozen_duration": 3,
-"resource" : "BANDWIDTH"
+"resource" : "BANDWIDTH",
+"receiveraddress":"414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 参数说明：
 owner_address是冻结trx账号的地址，需要是hexString格式
 frozen_balance是冻结trx的数量
 frozen_duration是冻结天数，最少是3天
 resource: 冻结trx获取资源的类型(可以是BANDWIDTH或者ENERGY，BANDWIDTH为带宽，ENERGY为虚拟机消耗资源)
+receiverAddress表示受委托账户的地址
 返回值：冻结trx的transaction
+【注意】资源委托功能需要委员会开启
 
 wallet/unfreezebalance
 作用：解冻已经结束冻结期的trx，会同时失去这部分trx带来的带宽和投票权
 demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
-"resource": "BANDWIDTH"
+"resource": "BANDWIDTH",
+"receiveraddress":"414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 参数说明：
 owner_address是解冻trx账号的地址，需要是hexString格式
 resource可以是BANDWIDTH或者ENERGY
+receiverAddress表示受委托账户的地址
 返回值：解冻trx的transaction
+【注意】资源委托功能需要委员会开启
 
 walle/unfreezeasset
 作用：解冻已经结束冻结期的Token
