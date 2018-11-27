@@ -34,6 +34,25 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 参数说明：offset是起始Token的index，limit是期望返回的Token数量
 返回值：Token列表
 
+/walletsolidity/getassetissuebyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token。
+注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
+
+/walletsolidity/getassetissuelistbyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token list。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token列表。
+
+/walletsolidity/getassetissuebyid(Odyssey-v3.2开始支持)
+作用：根据id查询token。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
+参数说明：通证id，格式为String。
+返回值：token。
+
 /walletsolidity/getnowblock
 作用：查询最新block
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
@@ -52,6 +71,12 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d '
 参数说明：value是交易id，需要是hexString
 返回值：指定ID的Transaction
 
+/walletsolidity/gettransactioncountbyblocknum(Odyssey-v3.2开始支持)
+作用：查询特定block上transaction的个数
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d '{"num" : 100}' 
+参数说明：num是块的高度.
+返回值e：transaction的个数.
+
 /walletsolidity/gettransactioninfobyid
 作用：根据id查询交易的fee，所在的block
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
@@ -60,14 +85,14 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid 
 
 /walletsolidity/getexchangebyid(Odyssey-v3.2开始支持)
 作用：根据id查询交易对
-demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {"id":1}
 参数说明：
 id：交易对id
 返回值：交易对
 
 /walletsolidity/listexchanges(Odyssey-v3.2开始支持)
 作用：查询所有交易对
-demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 参数说明：
 返回值：所有交易对
 
@@ -332,6 +357,12 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value"
 参数说明：交易ID。
 返回值：交易信息。
 
+/wallet/gettransactioncountbyblocknum(Odyssey-v3.2开始支持)
+作用：查询特定block上transaction的个数
+demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d '{"num" : 100}' 
+参数说明：num是块的高度.
+返回值e：transaction的个数.
+
 wallet/getaccount
 作用：查询一个账号的信息
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
@@ -441,7 +472,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 
 wallet/listproposalspaginated(Odyssey-v3.1.1暂不支持)
 作用：分页查询提案列表
-demo: curl -X POST  http://127.0.0.1:8091/wallet/listproposalspaginated -d '{"offset": 0, "limit":10}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposalspaginated -d '{"offset": 0, "limit":10}'
 参数说明：offset是起始提案的index，limit是期望返回的提案数量
 返回值：提案列表
 
@@ -532,14 +563,14 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 
 wallet/listexchangespaginated(Odyssey-v3.1.1暂不支持)
 作用：分页查询交易对列表
-demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
 参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
 返回值：提案列表
  
  
 wallet/updatesetting
 作用：更新合约的consume_user_resource_percent
-demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
 参数说明：
 owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址
@@ -548,7 +579,7 @@ consume_user_resource_percent：指定的使用该合约用户的资源占比
 
 wallet/updateenergylimit
 作用：更新合约的origin_energy_limit
-demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
 参数说明：
 owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址

@@ -48,6 +48,25 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 Parameters：Offset is the index of the starting Token, and limit is the number of Tokens expected to be returned.
 Return value：List of Tokens
 
+/walletsolidity/getassetissuebyname(will not be supported until Odyssey-v3.2)
+Function：Query token by name.
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
+Parameters：The name of the token, converted to a hex string
+Return value：token.
+Note: From Odyssey-v3.2, it is recommended to use getassetissuebyid or getassetissuelistbyname instead of this api, because it will support the same token name from 3.2, this api will return error msg if there are two or more assets with the same name.
+
+/walletsolidity/getassetissuelistbyname(will not be supported until Odyssey-v3.2)
+Function：Query token list by name.
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
+Parameters：The name of the token, converted to a hex string
+Return value：List of tokens.
+
+/walletsolidity/getassetissuebyid(will not be supported until Odyssey-v3.2)
+Function：Query token by id.
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
+Parameters：The id of the token, it's a string
+Return value：token.
+
 /walletsolidity/getnowblock
 Function：Query the latest block
 demo: curl -X POST http://127.0.0.1:8091/walletsolidity/getnowblock
@@ -66,6 +85,12 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d '
 Parameters：value is the transaction id，converted to a hex string
 Return value：specified Transaction object
 
+/walletsolidity/gettransactioncountbyblocknum(will not be supported until Odyssey-v3.2)
+Function：Query transaction's count on a specified block by height
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d '{"num" : 100}' 
+Parameters：Num is the height of the block.
+Return value：Transaction count.
+
 /walletsolidity/gettransactioninfobyid
 Function：Query transaction fee based on id
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
@@ -74,13 +99,13 @@ Return value：Transaction fee，block height and block creation time
 
 /walletsolidity/getexchangebyid(will not be supported until Odyssey-v3.2)
 Function：Query exchange based on id
-demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {"id":1}
 Parameters: id is the exchange id, a long
 Return value：exchange
 
 /walletsolidity/listexchanges(will not be supported until Odyssey-v3.2)
 Function：Query all exchanges
-demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 Parameters: None
 Return value：List of all exchanges
 
@@ -345,6 +370,12 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value"
 Parameters：Transaction ID.
 Return value：Transaction information.
 
+/wallet/gettransactioncountbyblocknum(will not be supported until Odyssey-v3.2)
+Function：Query transaction's count on a specified block by height
+demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d '{"num" : 100}' 
+Parameters：Num is the height of the block.
+Return value：Transaction count.
+
 wallet/listwitnesses
 Function：Query the list of Super Representatives
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
@@ -524,13 +555,13 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 
 wallet/listexchangespaginated(Odyssey-v3.1.1暂不支持)
 作用：分页查询交易对列表
-demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
 参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
 返回值：提案列表
  
 wallet/updatesetting
 作用：更新合约的consume_user_resource_percent
-demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
 参数说明：
 owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址
@@ -539,7 +570,7 @@ consume_user_resource_percent：指定的使用该合约用户的资源占比
 
 wallet/updateenergylimit
 作用：更新合约的origin_energy_limit
-demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
 参数说明：
 owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址
