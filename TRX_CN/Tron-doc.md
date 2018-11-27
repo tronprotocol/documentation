@@ -942,6 +942,7 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 `
 其中frozen_balance是冻结的TRX数量（单位为sun），frozen_duration为冻结的天数（目前固定为3天），
 ResourceCode表示要获取的资源是带宽还是能量，receiverAddress表示受委托账户的地址
+【注意】资源委托功能需要委员会开启
 
 
 ## 8.5 其他交易费
