@@ -861,10 +861,8 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{
 # 8 Tron资源（Resource）模型
 ## 8.1 资源模型介绍
 
-TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的内存模型，TRON网络中的存储资源几乎是无限的。
-但是过多无关紧要的交易仍然会消耗过多的带宽和CPU资源时，导致导致系统阻塞，影响正常交易的处理确认。
-为了保持交易的相对公平，波场网络引入了Bandwidth point 和 Energy 两种资源。
-其中带宽消耗的是Bandwidth Point，而CPU消耗的是Energy。   
+TRON网络中的资源有4种：带宽，CPU，存储和内存。得益于波场独有的内存模型，TRON网络中的内存资源几乎是无限的。   
+TRON网络引入了Bandwidth point 和 Energy 两种资源概念。其中Bandwidth Point表示带宽资源，Energy表示CPU和存储资源。   
 **注意** 
 - 普通交易仅消耗Bandwidth points
 - 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
