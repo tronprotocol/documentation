@@ -266,7 +266,7 @@ owner_address是解冻token账号的地址，需要是hexString格式
 返回值：解冻token的transaction
 
 wallet/withdrawbalance
-作用：超级代表体现奖励到balance，每24个小时可以提现一次
+作用：超级代表提现奖励到balance，每24个小时可以提现一次
 demo：curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
 }'
