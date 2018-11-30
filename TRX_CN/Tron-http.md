@@ -554,5 +554,9 @@ contract_address：要修改的合约的地址
 origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
-```
+wallet/getnodeinfo
+作用：查看节点的信息
+demo: curl  http://127.0.0.1:8090/wallet/getnodeinfo
+返回值：节点当前状态的相关信息(省略)
 
+```
