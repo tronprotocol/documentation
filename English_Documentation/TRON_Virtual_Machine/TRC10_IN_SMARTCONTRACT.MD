@@ -1,4 +1,4 @@
-Note: Please read this instruction carefully before you use all trc10 functions. 
+Note: Please read this instruction carefully before you use trc10 related functions. 
 
 # 1.BackGround
 
@@ -80,7 +80,7 @@ contract transferTokenContract {
 
 - TransferToken function share very similar mechanism as the transfer(uint256) function. Please be attention that only 2300 energy will be send to this function and also its related fallback function.
 
-- **IMPORTANT**: tokenId must > 1000000, or you will fail the transaction!!!. 
+- **IMPORTANT**: tokenId must > 1000000, or you will fail the transaction!!!. So, the best-practice would be use a require function to guarantee its correctness.
              
 - **IMPORTANT**: tokenId = 0 (Only in this function) is preserved here, which is presented TRX. But don't recommend to use this logic to transfer trx.
 
