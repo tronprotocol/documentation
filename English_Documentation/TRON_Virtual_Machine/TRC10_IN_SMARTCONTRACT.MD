@@ -92,12 +92,15 @@ contract transferTokenContract {
 
 - An address type variable can invoke this native function which returns the amount of target token owned by the account with the address.
 
+- **IMPORTANT**: Query tokenBalance(0) doesn't represent trx balance, instead it will return 0. 
 
 ## 3.5 msg.tokenvalue & msg.tokenid
 
 - msg.tokenvalue, represent the tokenvalue in current msg call, default 0.
 
 - msg.tokenid, represent the token id in current msg call, default 0.
+
+- **IMPORTANT**: msg.tokenid = 0 doesn't represent trx in current version.
 
 # 4 solidity compiler
 
