@@ -51,6 +51,7 @@ contract transferTokenContract {
     constructor() payable public{}
     function() payable public{}
     function transferTokenTest(address toAddress, uint256 tokenValue, trcToken id) payable public    {
+        require(id > 1000000);
         toAddress.transferToken(tokenValue, id);
     }
     function msgTokenValueAndTokenIdTest() public payable returns(trcToken, uint256){
@@ -60,6 +61,7 @@ contract transferTokenContract {
     }
     function getTokenBalanceTest(address accountAddress) payable public returns (uint256){
         trcToken id = 1000001;
+        require(id > 1000000);
         return accountAddress.tokenBalance(id);
     }
 }
