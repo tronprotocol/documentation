@@ -468,6 +468,106 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address
 address：查询账户的地址
 返回值：账户的资源信息
 
+wallet/addtransactionsign(Odyssey-v3.5开始支持)
+作用：对交易增加签名，该api有泄漏private key的风险，请确保在安全的环境中调用该api
+demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d {
+"transaction" : {"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}, "privateKey": "your private key"
+}
+}
+参数说明：transaction是通过http api创建的交易或者已经签过名的交易，privateKey是用户private key
+返回值：签名之后的transaction
+
+wallet/getsignweight(Odyssey-v3.5开始支持)
+作用：获取当前经过签名的transaction的weight
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d {
+"transaction" : {"txID":"454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8","raw_data":{"contract":[{"parameter":{"value":{"amount":1000,"owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0","to_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract"}],"ref_block_bytes":"267e","ref_block_hash":"9a447d222e8de9f2","expiration":1530893064000,"timestamp":1530893006233}}
+}
+}
+参数说明：transaction是已经签过名的交易
+返回值：当前transaction的TransactionSignWeight
+
+wallet/accountpermissionupdate(Odyssey-v3.5开始支持)
+作用：更新账户的permission
+demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d {
+"owner_address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+"permissions": [
+  {
+      "name": "owner",
+      "threshold": 1,
+      "keys": [
+          {
+              "address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+              "weight": 1
+          },
+      ]
+  },
+  {
+      "name": "active",
+      "threshold": 1,
+      "parent": "owner",
+      "keys": [
+          {
+              "address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+              "weight": 2
+          },
+      ]
+  }
+]
+}
+}
+参数说明：
+owner_address: 账户地址
+permissions：账户的permission列表
+返回值：更新账户permission的交易
+
+wallet/permissionaddkey(Odyssey-v3.5开始支持)
+作用：增加账户的permission key
+demo: curl -X POST  http://127.0.0.1:8090/wallet/permissionaddkey -d {
+  "owner_address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+  "key": {
+  		"address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+  		"weight": 1
+  	},
+	"permission_name": "active"
+}
+}
+参数说明：
+owner_address: 账户地址
+key：账户的permission key
+permission_name: 账户的permission name("owner" or "active")
+返回值：更新账户permission key的交易
+
+wallet/permissiondeletekey(Odyssey-v3.5开始支持)
+作用：删除账户的permission key
+demo: curl -X POST  http://127.0.0.1:8090/wallet/permissiondeletekey -d {
+  "owner_address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+	"key_address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+	"permission_name": "active"
+}
+}
+参数说明：
+owner_address: 账户地址
+key_address：要删除的账户的permission key的地址
+permission_name: 账户的permission name("owner" or "active")
+返回值：删除账户permission key的交易
+
+wallet/permissionupdatekey(Odyssey-v3.5开始支持)
+作用：更新账户的permission key
+demo: curl -X POST  http://127.0.0.1:8090/wallet/permissionupdatekey -d {
+  "owner_address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+	"key": {
+    	"address": "454f156bf1256587ff6ccdbc56e64ad0c51e4f8efea5490dcbc720ee606bc7b8",
+    	"weight": 1
+  },
+	"permission_name": "active"
+}
+}
+参数说明：
+owner_address: 账户地址
+key：要更新的账户的permission key
+permission_name: 账户的permission name("owner" or "active")
+返回值：更新账户permission key的交易
+
 wallet/exchangecreate
 作用：创建交易对
 demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
