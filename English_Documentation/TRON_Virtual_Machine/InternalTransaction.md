@@ -2,9 +2,9 @@
 
 ## 1. BackGround
 
-InternalTransactions represented all transactions happened in a smart contract call. Some important information are included in the transaction, such as the sender/reciever address in a token/trx transfer transaction, trx/token amount, transfer status, etc.
+InternalTransactions represent all transactions happened in a smart contract call. Some important information are included in the transaction, such as the sender/reciever address in a token/trx transfer transaction, trx/token amount, transfer status, etc.
 
-An user can check all the information within a interanlTransaction list, which contains all transaction in a single triggerSmartContract or createSmartContract call.
+An user can check all the information about InternalTransactions in a interanlTransaction list, which contains all transaction in a single triggerSmartContract or createSmartContract call.
 
 ## 2. Structure of InternalTransaction information.
 
