@@ -84,7 +84,7 @@ contract transferTokenContract {
 
 - **IMPORTANT**: tokenId valide value must > 1000000. The best-practice would be use a require function to guarantee its correctness.
              
-- **IMPORTANT**: tokenId = 0 (Only in this function) is preserved here, which is presented TRX. But don't recommend to use this logic to transfer trx.
+- **IMPORTANT**: tokenId = 0 (Only in this function) is preserved here, which is presented TRX. This is a experimental feature, we don't recommend to use this logic to transfer trx at least for now.
 
 ## 3.4 address.tokenBalance(trcToken) returns(uint256 tokenAmount)native function
 
