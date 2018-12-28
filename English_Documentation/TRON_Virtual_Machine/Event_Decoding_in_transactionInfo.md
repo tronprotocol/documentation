@@ -64,7 +64,7 @@ message TransactionInfo {
  
  topics[3] => event third indexed param if exist (Maximum 3).
 
-- data:       other params value without being indexed.
+- data:       other params value without being indexed. If it is more than one parameters, all the parameter will be appended one by one. And you can decode them the same way as the contract result in https://github.com/tronprotocol/Documentation/blob/master/中文文档/虚拟机/TVM调用结果解析说明.md basing on abi
 
 # 4. Example of decoding events.
 Use the solidity code in section 2 above.
