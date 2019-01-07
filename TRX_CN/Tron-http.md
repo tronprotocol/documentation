@@ -34,6 +34,25 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 参数说明：offset是起始Token的index，limit是期望返回的Token数量
 返回值：Token列表
 
+/walletsolidity/getassetissuebyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token。
+注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
+
+/walletsolidity/getassetissuelistbyname(Odyssey-v3.2开始支持)
+作用：根据名称查询token list。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
+参数说明：通证名称，格式为hexString。
+返回值：token列表。
+
+/walletsolidity/getassetissuebyid(Odyssey-v3.2开始支持)
+作用：根据id查询token。
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
+参数说明：通证id，格式为String。
+返回值：token。
+
 /walletsolidity/getnowblock
 作用：查询最新block
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
@@ -52,22 +71,50 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d '
 参数说明：value是交易id，需要是hexString
 返回值：指定ID的Transaction
 
+/walletsolidity/gettransactioncountbyblocknum(Odyssey-v3.2开始支持)
+作用：查询特定block上transaction的个数
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbyblocknum -d '{"num" : 100}' 
+参数说明：num是块的高度.
+返回值e：transaction的个数.
+
 /walletsolidity/gettransactioninfobyid
 作用：根据id查询交易的fee，所在的block
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 参数说明：value是交易id，需要是hexString
 返回值：Transaction的交易fee，所在block的高度，创建时间
 
+/walletsolidity/getdelegatedresource(Odyssey-v3.2开始支持)
+作用：查看一个账户代理给另外一个账户的资源情况
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d '
+{
+"fromAddress": "419844f7600e018fd0d710e2145351d607b3316ce9",
+"toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
+}'
+参数说明：
+fromAddress：是要查询的账户地址，hexString格式
+toAddress：代理对象的账户地址，hexString格式
+返回值：账户的资源代理的列表，列表的元素为DelegatedResource
+
+/walletsolidity/getdelegatedresourceaccountindex(Odyssey-v3.2开始支持)
+作用：查看一个账户的资源代理情况
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceaccountindex -d '
+{
+"value": "419844f7600e018fd0d710e2145351d607b3316ce9", 
+}'
+参数说明：
+value：是要查询的账户地址，hexString格式
+返回值：账户的DelegatedResourceAccountIndex
+
 /walletsolidity/getexchangebyid(Odyssey-v3.2开始支持)
 作用：根据id查询交易对
-demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/getexchangebyid -d {"id":1}
+demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/getexchangebyid -d {"id":1}
 参数说明：
 id：交易对id
 返回值：交易对
 
 /walletsolidity/listexchanges(Odyssey-v3.2开始支持)
 作用：查询所有交易对
-demo：curl -X POST  http://127.0.0.1:8090/walletsolidity/listexchanges
+demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 参数说明：
 返回值：所有交易对
 
@@ -83,6 +130,11 @@ demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis 
 参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index；limit是期望返回的交易数量
 返回值：Transaction列表
 
+/wallet/getnodeinfo(Odyssey-v3.2开始支持)
+作用：获取当前node的信息
+demo: curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo 
+参数说明：无
+返回值：当前节点的信息NodeInfo
 ```
 
 # FullNode接口说明
@@ -145,6 +197,14 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
 返回值：发行Token的Transaction
 
+wallet/updatewitness
+作用：修改witness的url
+demo：curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d '{
+"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", 
+"update_url": "007570646174654e616d6531353330363038383733343633"
+}'
+参数说明：owner_address是创建人地址，需要是hexString格式；update_url是更新的官网的url，需要是hexString格式；
+
 wallet/createaccount
 作用：创建账号，一个已经激活的账号创建一个新账号，需要花费0.1trx
 demo：curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "account_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0"}'
@@ -162,6 +222,8 @@ wallet/transferasset
 demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "0x6173736574497373756531353330383934333132313538", "amount": 100}'
 参数说明：owner_address是token转出地址，需要是hexString格式；to_address是token转入地址，需要是hexString格式；asset_name是token名称，需要是hexString格式；amount是token转账数量
 返回值：token转账的Transaction
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 wallet/easytransfer
 作用：快捷转账，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。调用该api前请先调用createAddress生成地址。
@@ -194,6 +256,8 @@ owner_address是参与token人的地址，需要是hexString格式
 amount是参与token的数量
 asset_name是token的名称，需要是hexString格式
 返回值：参与token发行的transaction
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 wallet/freezebalance
 作用：冻结trx，获取带宽，获取投票权
@@ -201,25 +265,31 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
 "frozen_balance": 10000,
 "frozen_duration": 3,
-"resource" : "BANDWIDTH"
+"resource" : "BANDWIDTH",
+"receiveraddress":"414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 参数说明：
 owner_address是冻结trx账号的地址，需要是hexString格式
 frozen_balance是冻结trx的数量
 frozen_duration是冻结天数，最少是3天
 resource: 冻结trx获取资源的类型(可以是BANDWIDTH或者ENERGY，BANDWIDTH为带宽，ENERGY为虚拟机消耗资源)
+receiverAddress表示受委托账户的地址
 返回值：冻结trx的transaction
+【注意】资源委托功能需要委员会开启
 
 wallet/unfreezebalance
 作用：解冻已经结束冻结期的trx，会同时失去这部分trx带来的带宽和投票权
 demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
-"resource": "BANDWIDTH"
+"resource": "BANDWIDTH",
+"receiveraddress":"414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 参数说明：
 owner_address是解冻trx账号的地址，需要是hexString格式
 resource可以是BANDWIDTH或者ENERGY
+receiverAddress表示受委托账户的地址
 返回值：解冻trx的transaction
+【注意】资源委托功能需要委员会开启
 
 walle/unfreezeasset
 作用：解冻已经结束冻结期的Token
@@ -231,7 +301,7 @@ owner_address是解冻token账号的地址，需要是hexString格式
 返回值：解冻token的transaction
 
 wallet/withdrawbalance
-作用：超级代表体现奖励到balance，每24个小时可以提现一次
+作用：超级代表提现奖励到balance，每24个小时可以提现一次
 demo：curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
 }'
@@ -280,6 +350,7 @@ wallet/getassetissuebyname
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 参数说明：通证名称，格式为hexString。
 返回值：token。
+注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
 
 wallet/getassetissuelistbyname(Odyssey-v3.2开始支持)
 作用：根据名称查询token list。
@@ -331,6 +402,18 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value"
 参数说明：交易ID。
 返回值：交易信息。
 
+wallet/gettransactioninfobyid(Odyssey-v3.2开始支持)
+作用：根据id查询交易的fee，所在的block
+demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
+参数说明：value是交易id，需要是hexString
+返回值：Transaction的交易fee，所在block的高度，创建时间
+
+/wallet/gettransactioncountbyblocknum(Odyssey-v3.2开始支持)
+作用：查询特定block上transaction的个数
+demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -d '{"num" : 100}' 
+参数说明：num是块的高度.
+返回值e：transaction的个数.
+
 wallet/getaccount
 作用：查询一个账号的信息
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
@@ -354,6 +437,18 @@ wallet/getpaginatedassetissuelist
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedassetissuelist -d '{"offset": 0, "limit": 10}'
 参数说明：offset是起始Token的index，limit是期望返回的Token数量
 返回值：token列表。
+
+wallet/getpaginatedproposallist(Odyssey-v3.5开始支持)
+作用：分页查询proposal列表
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedproposallist -d '{"offset": 0, "limit": 10}'
+参数说明：offset是起始Token的index，limit是期望返回的Token数量
+返回值：token列表。
+
+wallet/getpaginatedexchangelist(Odyssey-v3.2开始支持)
+作用：分页查询交易对列表
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getpaginatedexchangelist -d '{"offset": 0, "limit":10}'
+参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
+返回值：提案列表
 
 wallet/totaltransaction
 作用：统计所有交易总数
@@ -417,6 +512,13 @@ call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
+wallet/getcontract
+作用：获取合约
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
+参数说明：
+value：合约地址，hexString格式
+返回值：SmartContract，智能合约的内容 
+
 wallet/proposalcreate
 作用：创建提案
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9","parameters":[{"key": 0,"value": 100000},{"key": 1,"value": 2}] }
@@ -437,12 +539,6 @@ wallet/listproposals
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
 参数说明：无
 返回值：提案列表信息
-
-wallet/listproposalspaginated(Odyssey-v3.1.1暂不支持)
-作用：分页查询提案列表
-demo: curl -X POST  http://127.0.0.1:8091/wallet/listproposalspaginated -d '{"offset": 0, "limit":10}'
-参数说明：offset是起始提案的index，limit是期望返回的提案数量
-返回值：提案列表
 
 wallet/proposalapprove
 作用：提案批准
@@ -529,16 +625,15 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 参数说明：
 返回值：区块链委员会可以设置的所有参数
 
-wallet/listexchangespaginated(Odyssey-v3.1.1暂不支持)
-作用：分页查询交易对列表
-demo: curl -X POST  http://127.0.0.1:8091/wallet/listexchangespaginated -d '{"offset": 0, "limit":10}'
-参数说明：offset是起始交易对的index，limit是期望返回的交易对数量
-返回值：提案列表
- 
- 
+wallet/getnodeinfo(Odyssey-v3.2开始支持)
+作用：获取当前node的信息
+demo: curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo 
+参数说明：无
+返回值：当前节点的信息NodeInfo
+
 wallet/updatesetting
 作用：更新合约的consume_user_resource_percent
-demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
 参数说明：
 owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址
@@ -547,12 +642,34 @@ consume_user_resource_percent：指定的使用该合约用户的资源占比
 
 wallet/updateenergylimit
 作用：更新合约的origin_energy_limit
-demo: curl -X POST  http://127.0.0.1:8091/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
 参数说明：
 owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址
 origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
+wallet/getdelegatedresource(Odyssey-v3.2开始支持)
+作用：查看一个账户代理给另外一个账户的资源情况
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d '
+{
+"fromAddress": "419844f7600e018fd0d710e2145351d607b3316ce9", 
+"toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
+}'
+参数说明：
+fromAddress：是要查询的账户地址，hexString格式
+toAddress：代理对象的账户地址，hexString格式
+返回值：账户的资源代理的列表，列表的元素为DelegatedResource
+
+wallet/getdelegatedresourceaccountindex(Odyssey-v3.2开始支持)
+作用：查看一个账户给哪些账户代理了资源
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d '
+{
+"value": "419844f7600e018fd0d710e2145351d607b3316ce9", 
+}'
+参数说明：
+value：是要查询的账户地址，hexString格式
+返回值：账户的资源代理概况，结构为DelegatedResourceAccountIndex
 
 wallet/getnodeinfo(Odyssey-v3.2.2开始支持)
 作用：查看节点的信息

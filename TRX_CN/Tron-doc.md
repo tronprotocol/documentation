@@ -1,5 +1,7 @@
 # TRON公链文档
 
+[TOC]
+
 # 1 项目仓库
 仓库地址：https://github.com/tronprotocol
 其中 java-tron是主网代码，protocol是api和数据结构定义。wallet-cli是官方命令行钱包。
@@ -74,7 +76,9 @@ votewitness witness1 3 witness2 7 // 同时给witness1投了3票，给witness2�
 - 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms
 - 14: ALLOW_UPDATE_ACCOUNT_NAME, // 用于允许用户更改昵称以及昵称同名，目前为0，表示不允许
 - 15: ALLOW_SAME_TOKEN_NAME, // 用于允许创建相同名称的token，目前为0，表示不允许
-- 19: ALLOW_MULTI_SIGN, //允许多重签名，目前为0，表示不允许。设置为1表示允许
+- 16: ALLOW_DELEGATE_RESOURCE, // 用于控制资源代理功能的开启
+- 17: TOTAL_ENERGY_LIMIT, // 用于调整Energy上限
+- 18: ALLOW_TVM_TRANSFER_TRC10, // 允许智能合约调用TRC10 token的接口，目前为0，表示不允许。设置为1表示允许
 
 
 + API：
@@ -779,15 +783,14 @@ https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%
 
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
-# 7 Tron Token说明
-用户在Tron公链发行token，有两种方式，一种是通过智能合约实现TRC20协议，一种是通过Tron公链内置的AssetIssueContract
-合约。下面对AssetIssueContract合约发行token进行说明。
-## 7.1 如何发行token
-grpc接口
+# 7 Tron TRC10 token说明
+TRON网络支持2种token，一种是通过智能合约发行的TRC20协议的token，一种是通过Tron公链内置的TRC10 token。   
 
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
+下面对TRC10 token进行说明。
+## 7.1 如何发行TRC10 token
+[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
 
-http接口
+http接口：
 
 wallet/createassetissue
 作用：发行Token
@@ -798,6 +801,7 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "total_supply" :4321,
 "trx_num":1,
 "num":1,
+"precision":1,
 "start_time" : 1530894315158,
 "end_time":1533894312158,
 "description":"007570646174654e616d6531353330363038383733343633",
@@ -807,13 +811,14 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "frozen_supply":{"frozen_amount":1, "frozen_days":2}
 }'
 参数说明：
-owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
+owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；precision是精度，也就是小数点个数；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
 返回值：发行Token的Transaction
+【注意】
+- 当前不支持precision，也就是说，目前的precision默认为0。只有当委员会通过AllowSameTokenName提议后，才允许设置精度。
+- 当前不支持token重名。只有当委员会通过AllowSameTokenName提议后，才允许发行相同名字的token。
 
-## 7.2 如何参与token
-grpc接口：
-
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C
+## 7.2 参与TRC10 token
+[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
 
 http接口：
 
@@ -832,18 +837,41 @@ amount是参与token的数量
 asset_name是token的名称，需要是hexString格式
 返回值：参与token发行的transaction
 
-# 8 Tron交易费用
-## 8.1 费用模型介绍
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
-TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的内存模型，TRON网络中的存储资源几乎是无限的。
-但是过多无关紧要的交易仍然会消耗过多的带宽和CPU资源时，导致导致系统阻塞，影响正常交易的处理确认。
-为了保持交易的相对公平，波场网络引入了Bandwidth point 和 Energy 两种资源。
-其中带宽消耗的是Bandwidth Point，而CPU消耗的是Energy。   
+## 7.3 TRC10 token转账
+[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#11)
+
+http接口：
+
+wallet/transferasset
+作用：转账Token
+demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{
+  "owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", 
+  "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
+  "asset_name": "0x6173736574497373756531353330383934333132313538", 
+  "amount": 100
+}'
+参数说明：
+  owner_address是token转出地址，需要是hexString格式；
+  to_address是token转入地址，需要是hexString格式；
+  asset_name是token名称，需要是hexString格式；
+  amount是token转账数量
+返回值：token转账的Transaction
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
+
+# 8 Tron资源（Resource）模型
+## 8.1 资源模型介绍
+
+TRON网络中的资源有4种：带宽，CPU，存储和内存。得益于波场独有的内存模型，TRON网络中的内存资源几乎是无限的。   
+TRON网络引入了Bandwidth point 和 Energy 两种资源概念。其中Bandwidth Point表示带宽资源，Energy表示CPU和存储资源。   
 **注意** 
 - 普通交易仅消耗Bandwidth points
 - 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
 
-#### 8.1.1 Bandwidth Points
+## 8.2 Bandwidth Points
 
 
 交易以字节数组的形式在网络中传输及存储，一条交易消耗的Bandwidth Points = 交易字节数 * Bandwidth Points费率。当前Bandwidth Points费率 = 1。
@@ -852,7 +880,7 @@ TRON网络中的资源有3种：带宽，CPU和存储。得益于波场独有的
 
 **注意** 由于网络中总冻结资金以及账户的冻结资金随时可能发生变化，因此账户拥有的Bandwidth Points不是固定值。
 
-#### 8.1.2 Bandwidth PointsBandwidth Points的来源
+### 8.2.1 Bandwidth PointsBandwidth Points的来源
 
 Bandwidth Points的获取分两种：
 
@@ -861,13 +889,13 @@ Bandwidth Points的获取分两种：
 
 - 还有一种是每个账户固定免费额度的TRX，为5000。
 
-#### 8.1.3 Bandwith Points的消耗
+### 8.2.2 Bandwith Points的消耗
 
 除了查询操作，任何交易都需要消耗bandwidth points。
 
 还有一种情况，如果是转账，包括普通转账或发行Token转账，如果目标账户不存在，转账操作则会创建账户并转账，只会扣除创建账户消耗的Bandwidth Points，转账不会再消耗额外的Bandwidth Points。
 
-#### 8.1.4 Bandwidth Points的计算规则
+### 8.2.3 Bandwidth Points的计算规则
 
 Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间内，整个网络能够处理的Bandwidth为确定值。
 
@@ -896,18 +924,30 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
     
     3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
 
-#### 8.1.4 带宽的自动恢复
+### 8.2.4 带宽的自动恢复
 在网络总锁定资金以及账户锁定资金不变的情况向，账户的带宽的已使用量随着时间增加而按比例衰减，24h衰减到0。如时间T1时刻，账户带宽已使用量为U，到T1+12h，账户再次使用带宽u,此时账户已使用带宽为 U/2 + u。具体公式如下：
 
 ![image](https://github.com/tronprotocol/Documentation/blob/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
 
 即可以理解为每24h，用户已使用的带宽值重置为0。
 
-## 8.2 交易费用说明
-### 8.2.1 费用总体说明
-### 8.2.2 创建账号手续费
-### 8.2.3 Token转账费用
-## 8.3 交易费明细
+## 8.3 Energy
+[5.3 Energy介绍](#5.3 Energy介绍)
+
+## 8.4 资源委托（resource delegate）
+在TRON中，一个账户可以通过冻结TRX来获取带宽和能量。同时，也可以把冻结TRX获取的带宽或者能量委托（delegate）给其他地址。
+此时，主账号拥有冻结的TRX以及相应的投票权，受委托账户拥有冻结获取的资源（带宽或者能量）。
+和普通冻结一样，委托资源也至少冻结3天。
+资源委托的命令如下：
+`
+  freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
+`
+其中frozen_balance是冻结的TRX数量（单位为sun），frozen_duration为冻结的天数（目前固定为3天），
+ResourceCode表示要获取的资源是带宽还是能量，receiverAddress表示受委托账户的地址
+【注意】资源委托功能需要委员会开启
+
+
+## 8.5 其他交易费
 
 |交易类型|费用|
 | :------|:------:|
@@ -916,10 +956,10 @@ Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间
 |创建account|0.1TRX|
 |创建exchange|1024TRX|
 
-# 9 去中心化交易对说明
+# 9 去中心化交易所(DEX)说明
 
 ## 9.1 什么是交易对
-TRON网络原生支持去中心化交易所。去中心化交易所由多个交易对构成。一个交易对（Exchange）是token与token之间，或者token与TRX之间的交易市场（Exchange Market）。
+TRON网络原生支持去中心化交易所(DEX)。去中心化交易所由多个交易对构成。一个交易对（Exchange）是token与token之间，或者token与TRX之间的交易市场（Exchange Market）。
 任何账户都可以创建任何token之间的交易对，即使TRON网络中已经存在相同的交易对。交易对的买卖与价格波动遵循Bancor协议。
 TRON网络规定，所有交易对中的两个token的权重相等，因此它们数量（balance）的比率即是它们之间的价格。
 举一个简单的例子，假设一个交易对包含ABC和DEF两种token，ABC的balance为1000万，DEF的balance为100万，由于权重相等，因此10 ABC = 1 DEF，也就是说，当前ABC对于DEF的价格为10ABC/DEF。
@@ -940,7 +980,9 @@ ExchangeCreate abc 10000000 _ 1000000000000
 `
 该交易会创建abc与TRX之间的交易对，初始balance分别为10000000个abc和1000000000000 sun（1000000TRX），
 如果创建者没有足够的abc和TRX，则交易对创建失败；否则创建者账户中立即扣除相应的abc和TRX，交易对创建成功，可以开始交易。
-相关api:      
+
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。  
 
 ## 9.3 交易
 任何账户都可以在任何交易对中进行交易。交易量和价格完全遵循Bancor协议。也就是说，一个账户在交易时，交易的对象是exchange。交易是即时的，不需要挂单和抢单，只要有足够的token，就可以交易成功。     
@@ -957,6 +999,8 @@ ExchangeTransaction 1 _ 100 990
 `     
 其中"_"表示TRX，即向交易对卖出100个TRX。如果成功，该交易会使得交易对中增加100个TRX，并根据Bancor协议计算出减少的abc的数量，交易对创建者的账户中abc和TRX的数量会相应地增加和减少。
 
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 ## 9.4 注资
 当一个交易对其中1种token的balance很小时，只需要很小的交易量就会造成很大的价格波动，这不利于正常交易。为了避免这种情况，该交易对的创建者可以选择向该交易对注资（inject）。
@@ -976,6 +1020,9 @@ ExchangeInject 1 abc 1000000
 `    
 如果成功，该交易会使得交易对中增加1000000个abc，并增加100000个TRX，交易对创建者的账户中abc和TRX的数量会相应地减少。
 
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
+
 ## 9.5 撤资
 一个交易对中的所有资产都是创建者的。创建者可以随时撤资（withdraw），把交易对中的token赎回到自身账户中。一个交易对只能由该交易对的创建者来撤资。撤资不需要手续费。    
 和注资一样，撤资需要指定一种token以及撤资金额，TRON网络会自动根据当前交易对中两种token的比例，计算出另一个token撤资的金额，从而保证撤资前后，交易对中两个token的比例相同，价格没有变化。    
@@ -991,6 +1038,9 @@ ExchangeInject 1 abc 1000000
 ExchangeWithdraw 1 abc 1000000
 `    
 如果成功，该交易会使得交易对中减少1000000个abc，以及减少100000个TRX，交易对创建者的账户中abc和TRX的数量会相应地增加。
+
+【注意】
+- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
 
 ## 9.6 查询
 ### 9.6.1 查询交易
