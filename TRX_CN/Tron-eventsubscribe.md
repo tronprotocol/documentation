@@ -16,13 +16,11 @@
 - https://github.com/tronprotocol/TIPs/issues/12
 
 ## 5. event plugin
-- https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/eventplugin_deploy.md (master)
+- kafka plugin: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/eventplugin_deploy.md
 
-## 6. mongodb
-### Deploy
-- https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/mongodb_deploy.md (master)
+- mongodb plugin: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/mongodb_deploy.md
 
-## 7. tron-eventquery
+## 6. tron-eventquery
 ### Deploy
 - https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/tron-eventquery_deploy.md
 ### Http API
