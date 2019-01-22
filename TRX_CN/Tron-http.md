@@ -118,17 +118,21 @@ demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 参数说明：
 返回值：所有交易对
 
-/walletextension/gettransactionsfromthis
+/walletextension/gettransactionsfromthis（新版本将不再支持）
 作用：查询某个账号的出账交易记录
 demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
 参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index；limit是期望返回的交易数量
 返回值：Transaction列表
+备注：该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionsfromthis,
+   使用参考getTransactionsFromThis。
 
-/walletextension/gettransactionstothis
+/walletextension/gettransactionstothis（新版本将不再支持）
 作用：查询某个账号的入账交易记录
 demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
 参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index；limit是期望返回的交易数量
 返回值：Transaction列表
+备注：该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionstothis,
+   使用参考getTransactionsToThis。
 
 /wallet/getnodeinfo(Odyssey-v3.2开始支持)
 作用：获取当前node的信息
