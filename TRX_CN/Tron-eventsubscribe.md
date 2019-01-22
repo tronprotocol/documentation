@@ -5,7 +5,7 @@
 ## 2.  主要功能：
 1. 事件plugin的支持，目前已支持kafka、mongodb两种插件，开发者也可以根据自己的需求定制自己的事件插件。
 2. 支持block、transaction、contract log、contract event等链上数据的订阅。对于transaction event，开发者可以获取internal transaction、contract等信息；对于contract event，开发者可以配置contract address列表或者contract topic列表，只接收自己感兴趣的events，并且event订阅具有较低的时延，fullnode执行合约后便可以收到event信息。
-3. 事件查询服务tron-eventquery，波场提供的线上Event查询服务，开发者可通过http方式查询最近七天的trigger信息，查询地址为: https://api.tronex.io，使用说明。
+3. 事件查询服务tron-eventquery，波场提供的线上Event查询服务，开发者可通过http方式查询最近七天的trigger信息，查询地址为: https://api.tronex.io。
 
 ## 3. github项目
 - [java-tron](https://github.com/tronprotocol/java-tron) develop分支 (目前为3.5 beta版本)
@@ -24,6 +24,6 @@
 
 ## 7. tron-eventquery
 ### Deploy
-- https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/tron-eventquery_deploy.md (master)
+- https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/tron-eventquery_deploy.md
 ### Http API
-- https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/tron-eventquery.md (master)
+- https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/tron-eventquery.md
