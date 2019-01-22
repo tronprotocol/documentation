@@ -376,7 +376,7 @@ TransactionList：交易列表。
 22.5 功能说明  
 通过起止时间查询所有发生的交易。
 
-## <h2 id="23">23. 通过地址查询所有发起交易</h2>
+## <h2 id="23">23. 通过地址查询所有发起交易(新版本将不再支持)</h2>
 
 23.1 接口声明  
 rpc getTransactionsFromThis (Account) returns (TransactionList) {};  
@@ -388,8 +388,11 @@ Account：发起方账户，只需要地址。
 TransactionList：交易列表。  
 23.5 功能说明  
 通过账户地址查询所有发起的交易。
+23.6 备注说明
+该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionsfromthis,
+使用参考getTransactionsFromThis。
 
-## <h2 id="24">24. 通过地址查询所有接收交易</h2>
+## <h2 id="24">24. 通过地址查询所有接收交易(新版本将不再支持)</h2>
 
 24.1 接口声明  
 rpc getTransactionsToThis (Account) returns (NumberMessage) {};  
@@ -401,6 +404,9 @@ Account：接收方账户，只需要地址。
 TransactionList：交易列表。  
 24.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。
+24.6 备注说明
+该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionstothis,
+使用参考getTransactionsToThis。
 
 ## <h2 id="25">25. 锁定资金</h2>
 
