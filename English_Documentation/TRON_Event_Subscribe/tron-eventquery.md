@@ -69,6 +69,7 @@ parameters
 transactionId
 
 Example: https://api.tronex.io/events/transaction/cd402e64cad7e69c086649401f6427f5852239f41f51a100abfc7beaa8aa0f9c
+Note: if developer wants to check whether this event is confirmed or not, could check the blocknumber is small than the solidified block number(get from url https://api.tronex.io/blocks/latestblockNum). If it is smaller than block number, it is conformed
 ```
 Function: get events by contract address
 ```
