@@ -66,18 +66,5 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 -  db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000
 
 #### Set database index to speedup query：
-- db.contractevent.ensureIndex({contractAddress:-1})
-- db.transaction.ensureIndex({fromAddress:-1})
-- db.transaction.ensureIndex({contractType:-1})
-- db.transaction.ensureIndex({toAddress:-1})
-- db.transaction.ensureIndex({timeStamp:-1})
-- db.transaction.ensureIndex({transactionId:-1})
-- db.transaction.ensureIndex({blockNumber:-1})
-- db.transaction.ensureIndex({contractAddress:-1})
-- db.transaction.ensureIndex({assetName:-1})
-- db.contractevent.ensureIndex({eventSignature:-1})
-- db.contractevent.ensureIndex({transactionId:-1})
-- db.contractevent.ensureIndex({contractAddress:-1})
-- db.contractevent.ensureIndex({blockNumber:-1})
-- db.contractevent.ensureIndex({timeStamp:-1})
-- db.contractevent.ensureIndex({eventName:-1})
+cd /{projectPath}
+sh insertIndex.sh
