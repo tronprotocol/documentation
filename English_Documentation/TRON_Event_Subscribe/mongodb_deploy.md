@@ -66,5 +66,5 @@ Create data, log subfolder in mongodb directory,  and add their absolute path to
 -  db.block.find({blockNumber: {$lt: 1000}});  // return records whose blockNumber less than1000
 
 #### Set database index to speedup query：
-cd /{projectPath}
+cd /{projectPath}   
 sh insertIndex.sh
