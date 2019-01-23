@@ -206,26 +206,26 @@ In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` i
 
 5. Check `Transaction.Raw.Contract.Parameter` to get contract details according to `Contract.Type`. 
 
-`owner_address` is the trx or trc10 sender address. 
+`owner_address` (Bytes) is the trx or trc10 sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
-`contract_address` is the trx or trc10 reciever's address and it has to be a smart contract address. 
+`contract_address` (Bytes) is the trx or trc10 reciever's address and it HAS-TO-BE a smart contract address. Need to convert Bytes to a base58 String to show readable Tron address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
-`call_value` is the trx amount send to the contract address. 
+`call_value` (int64) is the trx amount send to the contract address. 
 
-`call_token_value` is the trc10 amount send to the contract address. 
+`call_token_value` (int64) is the trc10 amount send to the contract address. 
 
-`token_id` is the related trc10 id. 
+`token_id` (String) is the related trc10 id. No need to do any convert to show readable Tron address
 
 6. Check trx transfering or trc10 transfering in `InternalTransaction`. 
 
-`caller_address` is the trx or trc10 token sender address. 
+`caller_address` (Bytes) is the trx or trc10 token sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
-`transferTo_address` is the trx or trc10 token reciever address. 
+`transferTo_address`(Bytes) is the trx or trc10 token reciever address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
-`CallValueInfo`is a list of transfer details. 
+`CallValueInfo` is a list of transfer details. 
 
-`callvalue` represent trx amount if `tokenId` is empty. Otherwise it is the token transfer value. 
+`callvalue` (int64) represent trx amount if `tokenId` is empty. Otherwise it is the token transfer value. 
 
-`tokenId`is the token identifier. `rejected` represent whether this internaltransaction is failed and rejected. If it is `true`. You do not need to deal with current internaltrasaction, since some error occurred. Otherwise, it is successful with value `false`.
+`tokenId` (String) is the token identifier. `rejected` represent whether this internaltransaction is failed and rejected. If it is `true`. You do not need to deal with current internaltrasaction, since some error occurred. Otherwise, it is successful with value `false`.
 
 
