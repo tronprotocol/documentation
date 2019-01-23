@@ -188,9 +188,9 @@ message Block {
 }
 ```
 
-# II. Detect and record TransferContract and TransferAssetContract
+# II. Detect and record Transfer with TransferContract and TransferAssetContract
 
-# III. Detect and record CreateSmartContract and TriggerSmartContract.
+# III. Detect and record Transfer with CreateSmartContract and TriggerSmartContract.
 
 In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` is pretty similar. By using `GetTransactionbyid` or travel the latest block to get latest transactions one by one, transaction data can be retrieved. As long as you get transaction id, you can use `GetTransactionInfoById` to fetch InternalTransaction info and other smart contract execution details.
 
