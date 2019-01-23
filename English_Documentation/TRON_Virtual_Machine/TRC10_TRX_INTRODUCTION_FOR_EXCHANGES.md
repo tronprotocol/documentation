@@ -1,10 +1,18 @@
 # I. Abstract
 
-To detect a trc10 transaction in tron mainly need to deal with 3 different types of contracts, TransferAssetContract (System contract type), CreateSmartContract (Smart Contract Type), TriggerSmartContract (Smart Contract Type).
+To detect a trx or trc10 transaction in tron mainly need to deal with 4 different types of contracts,TransferContract (System Contract Type) TransferAssetContract (System Contract Type), CreateSmartContract (Smart Contract Type), TriggerSmartContract (Smart Contract Type).
 
 The data type also need to be notice are `Transaction`, `TransactionInfo` and `Block`, those contans all the result information for a smart contract transaction.
 
 ## Related Protobuf 
+- TransferContract
+```
+message TransferContract {
+  bytes owner_address = 1;
+  bytes to_address = 2;
+  int64 amount = 3;
+}
+```
 - TransferAssetContract
 ```
 message TransferAssetContract {
@@ -180,7 +188,7 @@ message Block {
 }
 ```
 
-# II. Detect and record TransferAssetContract
+# II. Detect and record TransferContract and TransferAssetContract
 
 # III. Detect and record CreateSmartContract and TriggerSmartContract.
 
@@ -196,8 +204,28 @@ In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` i
 
 4. Check `Transaction.Raw.Contract.Type` to get contract type information (`CreateSmartContract` or `TriggerSmartContract`).
 
-5. Check `Transaction.Raw.Contract.Parameter` to get contract details according to `Contract.Type`. `owner_address` is the trx or trc10 sender address. `contract_address` is the trx or trc10 reciever's address and it has to be a smart contract address. `call_value` is the trx amount send to the contract address. `call_token_value` is the trc10 amount send to the contract address. `token_id` is the related trc10 id. 
+5. Check `Transaction.Raw.Contract.Parameter` to get contract details according to `Contract.Type`. 
 
-6. Check trx transfering or trc10 transfering in `InternalTransaction`. `caller_address` is the trx or trc10 token sender address. `transferTo_address` is the trx or trc10 token reciever address. `CallValueInfo`is a list of transfer details. `callvalue` represent trx amount if `tokenId` is empty. Otherwise it is the token transfer value. `tokenId`is the token identifier. `rejected` represent whether this internaltransaction is failed and rejected. If it is `true`. You do not need to deal with internaltrasaction, since some error occurred. otherwise, it is successful with value `false`.
+`owner_address` is the trx or trc10 sender address. 
+
+`contract_address` is the trx or trc10 reciever's address and it has to be a smart contract address. 
+
+`call_value` is the trx amount send to the contract address. 
+
+`call_token_value` is the trc10 amount send to the contract address. 
+
+`token_id` is the related trc10 id. 
+
+6. Check trx transfering or trc10 transfering in `InternalTransaction`. 
+
+`caller_address` is the trx or trc10 token sender address. 
+
+`transferTo_address` is the trx or trc10 token reciever address. 
+
+`CallValueInfo`is a list of transfer details. 
+
+`callvalue` represent trx amount if `tokenId` is empty. Otherwise it is the token transfer value. 
+
+`tokenId`is the token identifier. `rejected` represent whether this internaltransaction is failed and rejected. If it is `true`. You do not need to deal with current internaltrasaction, since some error occurred. Otherwise, it is successful with value `false`.
 
 
