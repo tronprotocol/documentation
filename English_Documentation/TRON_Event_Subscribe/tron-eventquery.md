@@ -161,12 +161,12 @@ block: block number, block number >= block will be shown
 
 Example: https://api.tronex.io/blocks?limit=1&sort=timeStamp&start=0&block=0
 ```
-Function: get latest block number
+Function: get latest solidified block number
 ```
-subpath: $baseUrl/blocks/latestblockNum
+subpath: $baseUrl/blocks/latestSolidifiedBlockNumber
 
 parameters   
 none
 
-Example: https://api.tronex.io/blocks/latestblockNum
+Example: https://api.tronex.io/blocks/latestSolidifiedBlockNumber
 ```
