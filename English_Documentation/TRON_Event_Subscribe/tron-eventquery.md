@@ -134,6 +134,7 @@ limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 start: start page, default is 1
 
+Note: if developers wants to check whether this event is confirmed or not, they could check the blocknumber is small than the solidified block number(get from url https://api.tronex.io/blocks/latestblockNum). If it is smaller than block number, it is conformed
 
 Example: https://api.tronex.io/events/confirmed?since=1544483426749&limit=1&start=1&sort=timeStamp
 ```
