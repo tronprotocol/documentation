@@ -190,6 +190,43 @@ message Block {
 
 # II. Detect and record Transfer with TransferContract and TransferAssetContract
 
+
+These two contracts,  `TransferContract`and `TransferAssetContract`, are system contracts, which are used to transfer trx and trc10 respectively.A transaction contains only one contract, so the query transaction can get specific information about a contract, using interface `GetTransactionbyid`.In addition, using the interface `GetBlockByNum` can get all the transactions of a block.
+
+
+## Steps
+
+1. Get Block (optional step): Use `GetBlockByNum` to retreive block info (`Block`).
+
+2. Get Transaction: Travel `Block` or use `GetTransactionInfoById` to get specific transaction (`Transaction`).
+
+3. Check root Transaction result: Transaction.Result.code is FAILED, simply reject this transaction. No transferring happened. Otherwise, continue to read below.
+
+4. Check `type` in `Transaction.raw` to get contract type information (`TransferContract` or `TransferAssetContract`).
+
+5. Check `parameter` in `Transaction.raw` to get contract details according to `type`. 
+
+#### TransferContract
+
+  - `owner_address` (Bytes) is the trx  sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
+  
+  - `to_address` (Bytes) is the trx  receiver address. Need to convert Bytes to a base58Check String to show readable Tron address.
+  
+  - `amount` (int64) is the trx amount send to the contract address. 
+  
+#### TransferAssetContract
+
+  - `asset_name` (String) is the trc10 id. No need to do any convert to show readable Tron address. (This parameter used to represent the name of the trc10. After the proposal ALLOW_SAME_TOKEN_NAME, it has been modified to trc10 id)
+  
+  - `owner_address` (Bytes) is the trc10  sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
+  
+  - `to_address` (Bytes) is the trc10  receiver address. Need to convert Bytes to a base58Check String to show readable Tron address.
+  
+  - `amount` (int64) is the trc10 amount send to the contract address.   
+  
+
+  
+
 # III. Detect and record Transfer with CreateSmartContract and TriggerSmartContract.
 
 In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` is pretty similar. By using `GetTransactionbyid` or travel the latest block to get latest transactions one by one, transaction data can be retrieved. As long as you get transaction id, you can use `GetTransactionInfoById` to fetch InternalTransaction info and other smart contract execution details.
