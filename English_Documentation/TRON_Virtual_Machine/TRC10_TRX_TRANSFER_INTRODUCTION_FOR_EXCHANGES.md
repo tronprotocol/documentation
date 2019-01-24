@@ -241,13 +241,13 @@ In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` i
 
 4. Check `type` in `Transaction.raw` to get contract type information (`CreateSmartContract` or `TriggerSmartContract`).
 
-5. Check `parameter` in `Transaction.raw` to get contract details according to `type`. 
+5. **Get trx and trc10 transfer information those send along with the root transaction:** Check `parameter` in `Transaction.raw` to get contract details according to `type`. 
 
 #### CreateSmartContract
 
   - `owner_address` (Bytes) is the trx or trc10 sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
-  - `SmartContract.contract_address` (Bytes) is the trx or trc10 reciever's address and it HAS-TO-BE a smart contract address. Since it is created in runtime. You cannot retrieve it from the `Transaction`, instead you need to use `GetTransactionInfoById` to get `contract_address` in `TransactionInfo`.  Need to convert Bytes to a base58Check String to show readable Tron address.
+  - `SmartContract.contract_address` (Bytes) is the trx or trc10 reciever's address and it **HAS-TO-BE** a smart contract address. Due to it is created in runtime, you cannot retrieve it from the `Transaction`, instead you have to use `GetTransactionInfoById` to get `contract_address` in `TransactionInfo`.  The data need to be converted from Bytes to a base58Check String to show readable Tron address.
 
   - `SmartContract.call_value` (int64) is the trx amount send to the contract address. 
 
@@ -259,7 +259,7 @@ In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` i
 
   - `owner_address` (Bytes) is the trx or trc10 sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
-  - `contract_address` (Bytes) is the trx or trc10 reciever's address and it HAS-TO-BE a smart contract address. Need to convert Bytes to a base58 String to show readable Tron address. Need to convert Bytes to a base58Check String to show readable Tron address.
+  - `contract_address` (Bytes) is the trx or trc10 reciever's address and it **HAS-TO-BE** a smart contract address. Need to convert Bytes to a base58 String to show readable Tron address.
 
   - `call_value` (int64) is the trx amount send to the contract address. 
 
@@ -267,7 +267,7 @@ In general, the way to detect `CreateSmartContract` and `TriggerSmartContract` i
 
   - `token_id` (String) is the related trc10 id. No need to do any convert to show readable Tron address
 
-6. Check trx transfering or trc10 transfering in `InternalTransaction`. 
+6. **Check trx transfering or trc10 transfering in `InternalTransaction`**. 
 
   - `caller_address` (Bytes) is the trx or trc10 token sender address. Need to convert Bytes to a base58Check String to show readable Tron address.
 
