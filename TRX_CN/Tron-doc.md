@@ -228,6 +228,15 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
+ 命令行参数说明:
+ --witness: 启动witness功能，i.e.: --witness
+ --log-config: 指定日志配置文件路径，i.e.: --log-config logback.xml
+ -c: 指定配置文件路径，i.e.: -c config.conf
+ 
+ 日志文件使用：
+ 可以修改模块的level等级来控制日志的输出，默认每个模块的level级别为INFO，比如，只打印网络模块warn以上级别的信息，可以如下修改
+ <logger name="net" level="WARN"/>
+ 
  配置文件中需要修改的参数：  
  ip.list:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)
