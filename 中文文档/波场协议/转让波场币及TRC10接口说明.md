@@ -89,10 +89,11 @@ demo：\
 "amount":100, 
 "asset_name":"3230313271756265696a696e67"
 }'`
+
 Parameters：\
 `to_address` is the address of the Token issuer，converted to a hex string\
 `owner_address` is the address of the Token owner，converted to a hex string\
-`amount` is the number of tokens created
+`amount` is the number of tokens created\
 `asset_name` is the name of the token，converted to a hex string\
 
 Return value：Token creation Transaction raw data
@@ -118,15 +119,15 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 
 ## HTTP
 
-wallet/exchangecreate\
+`wallet/exchangecreate\`
 作用：创建交易对\
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
-"first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}\
+`demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
+"first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}`\
 参数说明：\
-first_token_id  ：第1种token的id\
-first_token_balance：第1种token的balance\
-second_token_id ： 第2种token的id\
-second_token_balance：第2种token的balance\
+`first_token_id`  ：第1种token的id\
+`first_token_balance`：第1种token的balance\
+`second_token_id` ： 第2种token的id\
+`second_token_balance`：第2种token的balance\
 返回值：创建交易对的transaction。
 
 ##  交易所注资
@@ -148,14 +149,15 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 
 ## HTTP
 
-wallet/exchangeinject\
+`wallet/exchangeinject`\
 作用：给交易对注资，注资后可以防止交易对价格波动太大\
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}\
+`demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}`\
+
 参数说明：\
-owner_address：交易对创建者的地址，hexString格式\
-exchange_id：交易对id\
-token_id： token的id，一般情况是token的name，需要是hexString格式\
-quant：注资token的数量\
+`owner_address`：交易对创建者的地址，hexString格式\
+`exchange_id`：交易对id\
+`token_id`： token的id，一般情况是token的name，需要是hexString格式\
+`quant`：注资token的数量\
 返回值：注资的transaction。
 
 ##  交易所撤资
@@ -177,14 +179,14 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 
 ## HTTP
 
-wallet/exchangewithdraw\
+`wallet/exchangewithdraw`\
 作用：对交易对撤资，撤资后容易引起交易对价格波动太大。\
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+`demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}`\
 参数说明：\
-owner_address：是交易对创建者的地址，hexString格式\
-exchange_id：交易对id\
-token_id： token的id，一般情况是token的name，需要是hexString格式\
-quant：撤资token的数量\
+`owner_address`：是交易对创建者的地址，hexString格式\
+`exchange_id`：交易对id\
+`token_id`： token的id，一般情况是token的name，需要是hexString格式\
+`quant`：撤资token的数量\
 返回值：撤资的transaction
 
 ##  交易所交易
@@ -207,15 +209,15 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 
 ## HTTP
 
-wallet/exchangetransaction\
+`wallet/exchangetransaction\`
 作用：参与交易对交易。\
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}\
+`demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}`\
 参数说明：\
-owner_address：是交易对创建者的地址，hexString格式\
-exchange_id：交易对id\
-token_id： 卖出的token的id，一般情况是token的name，需要是hexString格式\
-quant：卖出token的数量\
-expected：期望买入token的数量\
+`owner_address`：是交易对创建者的地址，hexString格式\
+`exchange_id`：交易对id\
+`token_id`： 卖出的token的id，一般情况是token的name，需要是hexString格式\
+`quant`：卖出token的数量\
+`expected`：期望买入token的数量\
 返回值：token交易的transaction
 
 ##  查询所有交易对
@@ -234,9 +236,9 @@ ExchangeList：所有交易对。
 
 ## HTTP
 
-wallet/listexchanges\
+`wallet/listexchanges`\
 作用：查询所有交易对\
-demo：curl -X POST  http://127.0.0.1:8090/wallet/listexchanges\
+`demo：curl -X POST  http://127.0.0.1:8090/wallet/listexchanges`\
 参数说明：\
 返回值：所有交易对
 
@@ -256,9 +258,9 @@ Exchange：交易对。
 
 ## HTTP
 
-wallet/getexchangebyid\
+`wallet/getexchangebyid`\
 作用：根据id查询交易对\
-demo：curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}\
+`demo：curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}`\
 参数说明：\
-id：交易对id\
+`id`：交易对id\
 返回值：交易对 
