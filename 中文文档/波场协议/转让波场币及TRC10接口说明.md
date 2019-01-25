@@ -41,11 +41,11 @@ Return value：Transaction contract data
 2 提供节点  
 fullnode。  
 3 参数说明  
-`TransferAssetContract`：包含通证名称、提供方地址、接收方地址、通证数量。  
+`TransferAssetContract`：包含TRC10名称、提供方地址、接收方地址、TRC10数量。  
 4 返回值  
 `TransactionExtention`：返回交易、交易ID、操作结果等。钱包对交易签名后再请求广播交易。  
 5 功能说明  
-转让通证。创建一个转让通证的交易。
+转让TRC10。创建一个转让TRC10的交易。
 注意，凡带xxx2的接口，与xxx接口功能相同，只是返回值增加更详细的提示。如果result的result值为false，则message为错误提示，transaction和txid字段忽略。constant_result只和职能合约调用有关，其他交易忽略。
 
 ## HTTP
