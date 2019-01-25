@@ -99,7 +99,7 @@ Parameters：\
 Return value：Token creation Transaction raw data
 
 
-##  创建交易对
+#  创建交易对
 
 ## RPC
 
@@ -130,7 +130,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 `second_token_balance`：第2种token的balance\
 返回值：创建交易对的transaction。
 
-##  交易所注资
+#  交易所注资
 
 ## RPC
 
@@ -160,7 +160,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 `quant`：注资token的数量\
 返回值：注资的transaction。
 
-##  交易所撤资
+#  交易所撤资
 
 ## RPC
 
@@ -189,7 +189,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 `quant`：撤资token的数量\
 返回值：撤资的transaction
 
-##  交易所交易
+#  交易所交易
 
 ## RPC
 
@@ -220,7 +220,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 `expected`：期望买入token的数量\
 返回值：token交易的transaction
 
-##  查询所有交易对
+#  查询所有交易对
 
 ## RPC
 
@@ -242,7 +242,7 @@ ExchangeList：所有交易对。
 参数说明：\
 返回值：所有交易对
 
-##  查询指定交易对
+#  查询指定交易对
 
 ## RPC
 
@@ -264,3 +264,41 @@ Exchange：交易对。
 参数说明：\
 `id`：交易对id\
 返回值：交易对 
+
+
+# 特别说明
+
+在"允许token—id重名"提议通过后，账户及接口发生一些变化，这里特别说明。
+
+## account账户变化
+
+     message Account {
+       ...
+       // the other asset owned by this account
+       map<string, int64> asset = 6;
+     
+       // the other asset owned by this account，key is assetId
+       map<string, int64> assetV2 = 56;
+     }
+
+在提议生效前，账户拥有的TRC10的数量在asset属性中描述，并以TRC10的name为key。
+在提议生效后，在account中增加assetV2，并以id为key。原asset中的asset自动映射到assetV2
+中，并自动生成id。可以使用原getAssetByName接口，查询到TRC10，并记录下id。
+
+## GetAssetIssueByName 接口变化
+在提议生效前，通过该接口查询TRC10，输入参数为TRC10的name，在提议生效后建议采用 GetAssetIssueById 来查询。
+
+`
+ rpc GetAssetIssueByName (BytesMessage) returns (AssetIssueContract) {
+  }
+  ` 
+  
+ 
+
+## GetAssetIssueById 接口变化
+在提议生效后，采用GetAssetIssueById来查询TRC10详细信息，输入参数为TRC10的id。
+
+`
+ rpc GetAssetIssueById (BytesMessage) returns (AssetIssueContract) {
+  }
+`
