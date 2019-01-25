@@ -58,7 +58,8 @@ demo：\
 
 Parameters：\
 `Owner_address` is the address of the withdrawal account, converted to a hex string；\
-`To_address` is the recipient address，converted to a hex string；asset_name is the Token Name(NOT SYMBOL)，converted to a hex string；\
+`To_address` is the recipient address，converted to a hex string；\
+`asset_name` ,this field is token name before the proposal ALLOW_SAME_TOKEN_NAME is active, otherwise it is token id and token is should be in string format.\
 `Amount` is the amount of token to transfer
 
 Return value：Token transfer Transaction raw data
@@ -94,7 +95,7 @@ Parameters：\
 `to_address` is the address of the Token issuer，converted to a hex string\
 `owner_address` is the address of the Token owner，converted to a hex string\
 `amount` is the number of tokens created\
-`asset_name` is the name of the token，converted to a hex string\
+`asset_name` ,this field is token name before the proposal ALLOW_SAME_TOKEN_NAME is active, otherwise it is token id and token is should be in string format.\
 
 Return value：Token creation Transaction raw data
 
@@ -268,7 +269,7 @@ Exchange：交易对。
 
 # 特别说明
 
-在"允许token—id重名"提议通过后，账户及接口发生一些变化，这里特别说明。
+在"ALLOW_SAME_TOKEN_NAME"提议通过后，账户及接口发生一些变化，这里特别说明。
 
 ## account账户变化
 
@@ -296,6 +297,7 @@ Exchange：交易对。
  
 
 ## GetAssetIssueById 接口变化
+
 在提议生效后，采用GetAssetIssueById来查询TRC10详细信息，输入参数为TRC10的id。
 
 `
