@@ -59,7 +59,24 @@
 [54. 分页获取区块2](#54)\
 [55. 查询最后区块2](#55)\
 [57. 通过地址查询所有发起交易2](#57)\
-[58. 通过地址查询所有接收交易2](#58)
+[58. 通过地址查询所有接收交易2](#58)\
+[59. 创建交易对](#59)\
+[60. 交易所注资](#60)\
+[61. 交易所撤资](#61)\
+[62. 交易所交易](#62)\
+[63. 查询所有交易对](#63)\
+[64. 查询指定交易对](#64)\
+[65. 分页查询交易对](#65)\
+[66. 创建提议](#66)\
+[67. 赞成提议](#67)\
+[68. 删除提议](#68)\
+[69. 查询所有提议](#69)\
+[70. 分页查询提议](#70)\
+[71. 查询指定提议](#71) \
+[72. 查询资源委派账户索引](#72) \
+[73. 查询资源委派的详细信息](#73) \
+[74. 通证快捷转账](#74) \
+[75. 通证快捷转账（通过私钥）](#75) 
      
      
 ## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
@@ -376,7 +393,7 @@ TransactionList：交易列表。
 22.5 功能说明  
 通过起止时间查询所有发生的交易。
 
-## <h2 id="23">23. 通过地址查询所有发起交易</h2>
+## <h2 id="23">23. 通过地址查询所有发起交易(新版本将不再支持)</h2>
 
 23.1 接口声明  
 rpc getTransactionsFromThis (Account) returns (TransactionList) {};  
@@ -387,9 +404,12 @@ Account：发起方账户，只需要地址。
 23.4 返回值  
 TransactionList：交易列表。  
 23.5 功能说明  
-通过账户地址查询所有发起的交易。
+通过账户地址查询所有发起的交易。  
+23.6 备注说明  
+该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionsfromthis,
+使用参考getTransactionsFromThis。
 
-## <h2 id="24">24. 通过地址查询所有接收交易</h2>
+## <h2 id="24">24. 通过地址查询所有接收交易(新版本将不再支持)</h2>
 
 24.1 接口声明  
 rpc getTransactionsToThis (Account) returns (NumberMessage) {};  
@@ -400,7 +420,10 @@ Account：接收方账户，只需要地址。
 24.4 返回值  
 TransactionList：交易列表。  
 24.5 功能说明  
-通过账户地址查询所有其它账户发起和本账户有关的交易。
+通过账户地址查询所有其它账户发起和本账户有关的交易。  
+24.6 备注说明  
+该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionstothis,
+使用参考getTransactionsToThis。
 
 ## <h2 id="25">25. 锁定资金</h2>
 
@@ -854,7 +877,7 @@ TransactionListExtention：交易列表。
 58.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。
 
-## 59. 创建交易对
+## <h2 id="59">59. 创建交易对</h2> 
 
 59.1 接口声明  
 rpc ExchangeCreate (ExchangeCreateContract) returns (TransactionExtention) {};  
@@ -871,7 +894,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 创建交易对
 
 
-## 60. 交易所注资
+## <h2 id="60">60. 交易所注资</h2>  
 
 60.1 接口声明  
 rpc ExchangeInject (ExchangeInjectContract) returns (TransactionExtention) {};  
@@ -886,8 +909,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 60.5 功能说明 
 对交易对进行注资
 
-
-## 61. 交易所撤资
+## <h2 id="61">61. 交易所撤资</h2> 
 
 61.1 接口声明  
 rpc ExchangeWithdraw (ExchangeWithdrawContract) returns (TransactionExtention) {};  
@@ -903,8 +925,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 对交易对进行撤资
 
 
-
-## 62. 交易所交易
+## <h2 id="62">62. 交易所交易</h2> 
 
 62.1 接口声明  
 rpc ExchangeTransaction (ExchangeTransactionContract) returns (TransactionExtention) {};  
@@ -920,8 +941,7 @@ TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 62.5 功能说明 
 交易
 
-
-## 63. 查询所有交易对
+## <h2 id="63">63. 查询所有交易对</h2> 
 
 63.1 接口声明  
 rpc ListExchanges (EmptyMessage) returns (ExchangeList) {};  
@@ -933,8 +953,7 @@ fullnode。
 ExchangeList：所有交易对。
 63.5 功能说明 
 
-
-## 64. 查询指定交易对
+## <h2 id="64">64. 查询指定交易对</h2> 
 
 64.1 接口声明  
 rpc GetExchangeById (BytesMessage) returns (Exchange) {};  
@@ -946,8 +965,7 @@ value：交易对id
 Exchange：交易对。
 64.5 功能说明 
 
-
-## 65. 分页查询交易对(Odyssey-v3.1.1暂不支持)
+## <h2 id="65">65. 分页查询交易对</h2> 
 
 65.1 接口声明  
 rpc GetPaginatedExchangeList (PaginatedMessage) returns (ExchangeList) {};  
@@ -960,8 +978,7 @@ limit：个数限制
 Exchange：交易对。
 65.5 功能说明 
  
-
-## 66. 创建提议
+## <h2 id="66">66. 创建提议</h2> 
 
 66.1 接口声明  
 rpc ProposalCreate (ProposalCreateContract) returns (TransactionExtention) {};  
@@ -973,8 +990,7 @@ parameters：提议参数
 TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 66.5 功能说明 
 
-
-## 67. 赞成提议
+## <h2 id="67">67. 赞成提议</h2> 
 
 67.1 接口声明  
 rpc ProposalApprove (ProposalApproveContract) returns (TransactionExtention) {};  
@@ -987,8 +1003,7 @@ is_add_approval ：赞成或取消赞成
 TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 67.5 功能说明 
 
-
-## 68. 删除提议
+## <h2 id="68">68. 删除提议</h2> 
 
 68.1 接口声明  
 rpc ProposalDelete (ProposalDeleteContract) returns (TransactionExtention) {};  
@@ -1000,8 +1015,7 @@ proposal_id ：提议id
 TransactionExtention：返回签名后的交易、交易ID、操作结果等。
 68.5 功能说明 
 
-
-## 69. 查询所有提议
+## <h2 id="69">69. 查询所有提议</h2> 
 
 69.1 接口声明  
 rpc ListProposals (EmptyMessage) returns (ProposalList) {};  
@@ -1013,8 +1027,7 @@ fullnode。
 ProposalList：提议列表
 69.5 功能说明 
 
-
-## 70. 分页查询提议(Odyssey-v3.1.1暂不支持)
+## <h2 id="70">70. 分页查询提议</h2> 
 
 70.1 接口声明  
 rpc GetPaginatedProposalList (PaginatedMessage) returns (ProposalList) {};  
@@ -1027,8 +1040,7 @@ limit：个数限制
 ProposalList：提议列表
 70.5 功能说明 
 
-
-## 71. 查询指定提议
+## <h2 id="71">71. 查询指定提议</h2> 
 
 71.1 接口声明  
 rpc GetProposalById (BytesMessage) returns (Proposal) {};  
@@ -1039,3 +1051,59 @@ proposal_id ：提议id
 71.4 返回值                                             
 ProposalList：提议列表
 71.5 功能说明 
+
+## <h2 id="72">72. 查询资源委派账户索引</h2> 
+
+72.1 接口声明  
+rpc GetDelegatedResourceAccountIndex (BytesMessage) returns (DelegatedResourceAccountIndex) { };\
+72.2 提供节点  
+fullnode。  
+72.3 参数说明 
+BytesMessage ：查询的账户地址\
+72.4 返回值               
+account：查询的地址 \
+fromAccounts：从哪些账户中获得了资源 \
+toAccounts：给哪些账户中委派了资源\
+72.5 功能说明 
+
+## <h2 id="73">73. 查询资源委派的详细信息</h2> 
+
+73.1 接口声明  
+rpc GetDelegatedResource (DelegatedResourceMessage) returns (DelegatedResourceList) {
+  };\
+73.2 提供节点  
+fullnode。  
+73.3 参数说明  
+fromAddress ：资源委派发起地址 \
+toAddress ：资源委派接受地址\
+73.4 返回值         
+DelegatedResourceList:只包含一个元素 \
+from:发起资源委派的地址\
+to:接受资源委派的地址\
+frozen_balance_for_bandwidth:委派的带宽\
+frozen_balance_for_energy:委派的energy\
+expire_time_for_bandwidth:委派的带宽解冻时间\
+expire_time_for_energy:委派的energy解冻时间\
+73.5 功能说明  
+
+## <h2 id="74">74. 通证快捷转账</h2> 
+
+74.1 接口说明                                                                                  
+rpc EasyTransferAsset (EasyTransferAssetMessage) returns (EasyTransferResponse) {};  
+74.2 提供节点                                                                                  
+fullnode  
+74.3 参数说明                                                                                  
+EasyTransferAssetMessage：转账用的密码，toAddress，通证ID，转账的数量  
+74.4 返回值                                                                                  
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
+
+## <h2 id="75">75. 通证快捷转账（通过私钥）</h2>
+
+75.1 接口说明                                                                                  
+rpc EasyTransferAssetByPrivate (EasyTransferAssetByPrivateMessage) returns (EasyTransferResponse) {};  
+75.2 提供节点                                                                                  
+fullnode  
+75.3 参数说明                                                                                  
+EasyTransferAssetByPrivateMessage：转账用的私钥，toAddress，通证ID，转账的数量  
+75.4 返回值                                                                                  
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
