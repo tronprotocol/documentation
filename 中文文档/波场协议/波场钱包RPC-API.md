@@ -1045,3 +1045,23 @@ proposal_id ：提议id
 71.4 返回值                                             
 ProposalList：提议列表
 71.5 功能说明 
+
+## 72. 通证快捷转账
+72.1 接口说明                                                                                  
+rpc EasyTransferAsset (EasyTransferAssetMessage) returns (EasyTransferResponse) {};  
+72.2 提供节点                                                                                  
+fullnode  
+72.3 参数说明                                                                                  
+EasyTransferAssetMessage：转账用的密码，toAddress，通证ID，转账的数量  
+72.4 返回值                                                                                  
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
+
+## 73. 通证快捷转账（通过私钥）
+73.1 接口说明                                                                                  
+rpc EasyTransferAssetByPrivate (EasyTransferAssetByPrivateMessage) returns (EasyTransferResponse) {};  
+73.2 提供节点                                                                                  
+fullnode  
+73.3 参数说明                                                                                  
+EasyTransferAssetByPrivateMessage：转账用的私钥，toAddress，通证ID，转账的数量  
+73.4 返回值                                                                                  
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
