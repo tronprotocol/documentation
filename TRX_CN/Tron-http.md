@@ -239,6 +239,17 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
 参数说明：passPhrase是用户密码，需要是hexString格式；toAddress是转入地址，需要是hexString格式；amount是转账trx数量
 返回值：对应的Transaction和广播是否成功的状态
 
+wallet/easytransferasset
+作用：快捷转账，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。调用该api前请先调用createAddress生成地址。
+demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
+"passPhrase": "your password",
+"toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
+"assetId": "1000001", 
+"amount":100
+}'
+参数说明：passPhrase是用户密码，需要是hexString格式；toAddress是转入地址，需要是hexString格式；assetId是通证的ID；amount是转账通证数量,单位是通证的最小单位。
+返回值：对应的Transaction和广播是否成功的状态
+
 wallet/createaddress
 作用：通过密码创建地址，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。
 demo：curl -X POST http://127.0.0.1:8090/wallet/createaddress -d '{"value": "3230313271756265696a696e67"}'
@@ -473,6 +484,19 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"pri
    privateKey：私钥，hexString格式
    toAddress：转入账户地址，hexString格式。
    amount：转账的drop数量。
+返回值：交易，含执行结果。
+警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
+
+wallet/easytransferbyprivate
+作用：快捷转账
+demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5",
+"assetId": "1000001",
+"amount":10000}'
+参数说明：
+   privateKey：私钥，hexString格式
+   toAddress：转入账户地址，hexString格式。
+   assetId：通证ID。
+   amount：转账的通证数量，单位是通证的最小单位。
 返回值：交易，含执行结果。
 警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
 
