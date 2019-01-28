@@ -187,7 +187,7 @@ Transaction：返回通证发行的交易，钱包签名后再请求广播交易
 发行通证。所有人都可以发行通证，发行通证会消耗1024个trx。发行通证后，在有效期内任何人都可以参与通证发行，用trx按照比例兑换通证。
 + 示例：
 
-assetissue password abc 1000000 1 1 2018-5-31 2018-6-30 abcdef a.com 1000 1000000 200000 180 300000 365` 
+`assetissue password abc 1000000 1 1 2018-5-31 2018-6-30 abcdef a.com 1000 1000000 200000 180 300000 365` 
 
 以上命令的发行了名为abc的资产，发行总量为100万，abc与TRX的兑换比例为1:1，发行日期为2018-5-31至2018-6-30，描述为abcdef，网址为a.com，
 每个账户每天的token转账最多消耗自己1000 bandwidth points，整个网络每天最多消耗自己1000000 bandwidth points。其中20万锁仓180天，30万锁仓365天。
@@ -1092,3 +1092,24 @@ frozen_balance_for_energy:委派的energy\
 expire_time_for_bandwidth:委派的带宽解冻时间\
 expire_time_for_energy:委派的energy解冻时间\
 73.5 功能说明  
+
+
+## 72. 通证快捷转账
+72.1 接口说明                                                                                  
+rpc EasyTransferAsset (EasyTransferAssetMessage) returns (EasyTransferResponse) {};  
+72.2 提供节点                                                                                  
+fullnode  
+72.3 参数说明                                                                                  
+EasyTransferAssetMessage：转账用的密码，toAddress，通证ID，转账的数量  
+72.4 返回值                                                                                  
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
+
+## 73. 通证快捷转账（通过私钥）
+73.1 接口说明                                                                                  
+rpc EasyTransferAssetByPrivate (EasyTransferAssetByPrivateMessage) returns (EasyTransferResponse) {};  
+73.2 提供节点                                                                                  
+fullnode  
+73.3 参数说明                                                                                  
+EasyTransferAssetByPrivateMessage：转账用的私钥，toAddress，通证ID，转账的数量  
+73.4 返回值                                                                                  
+EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
