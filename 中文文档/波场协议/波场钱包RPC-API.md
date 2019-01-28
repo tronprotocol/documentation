@@ -59,7 +59,20 @@
 [54. 分页获取区块2](#54)\
 [55. 查询最后区块2](#55)\
 [57. 通过地址查询所有发起交易2](#57)\
-[58. 通过地址查询所有接收交易2](#58)
+[58. 通过地址查询所有接收交易2](#58)\
+[59. 创建交易对](#59)\
+[60. 交易所注资](#60)\
+[61. 交易所撤资](#61)\
+[62. 交易所交易](#62)\
+[63. 查询所有交易对](#63)\
+[64. 查询指定交易对](#64)\
+[65. 分页查询交易对](#65)\
+[66. 创建提议](#66)\
+[67. 赞成提议](#67)\
+[68. 删除提议](#68)\
+[69. 查询所有提议](#69)\
+[70. 分页查询提议](#70)\
+[71. 查询指定提议](#71)
      
      
 ## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
@@ -174,7 +187,7 @@ Transaction：返回通证发行的交易，钱包签名后再请求广播交易
 发行通证。所有人都可以发行通证，发行通证会消耗1024个trx。发行通证后，在有效期内任何人都可以参与通证发行，用trx按照比例兑换通证。
 + 示例：
 
-`assetissue password abc 1000000 1 1 2018-5-31 2018-6-30 abcdef a.com 1000 1000000 200000 180 300000 365` 
+assetissue password abc 1000000 1 1 2018-5-31 2018-6-30 abcdef a.com 1000 1000000 200000 180 300000 365` 
 
 以上命令的发行了名为abc的资产，发行总量为100万，abc与TRX的兑换比例为1:1，发行日期为2018-5-31至2018-6-30，描述为abcdef，网址为a.com，
 每个账户每天的token转账最多消耗自己1000 bandwidth points，整个网络每天最多消耗自己1000000 bandwidth points。其中20万锁仓180天，30万锁仓365天。
@@ -953,7 +966,7 @@ Exchange：交易对。
 64.5 功能说明 
 
 
-## 65. 分页查询交易对(Odyssey-v3.1.1暂不支持)
+## 65. 分页查询交易对
 
 65.1 接口声明  
 rpc GetPaginatedExchangeList (PaginatedMessage) returns (ExchangeList) {};  
@@ -1020,7 +1033,7 @@ ProposalList：提议列表
 69.5 功能说明 
 
 
-## 70. 分页查询提议(Odyssey-v3.1.1暂不支持)
+## 70. 分页查询提议
 
 70.1 接口声明  
 rpc GetPaginatedProposalList (PaginatedMessage) returns (ProposalList) {};  
@@ -1045,3 +1058,37 @@ proposal_id ：提议id
 71.4 返回值                                             
 ProposalList：提议列表
 71.5 功能说明 
+
+## 72. 查询资源委派账户索引
+
+72.1 接口声明  
+rpc GetDelegatedResourceAccountIndex (BytesMessage) returns (DelegatedResourceAccountIndex) { };\
+72.2 提供节点  
+fullnode。  
+72.3 参数说明 
+BytesMessage ：查询的账户地址\
+72.4 返回值               
+account：查询的地址 \
+fromAccounts：从哪些账户中获得了资源 \
+toAccounts：给哪些账户中委派了资源\
+72.5 功能说明 
+
+## 73. 查询资源委派的详细信息
+
+73.1 接口声明  
+rpc GetDelegatedResource (DelegatedResourceMessage) returns (DelegatedResourceList) {
+  };\
+73.2 提供节点  
+fullnode。  
+73.3 参数说明  
+fromAddress ：资源委派发起地址 \
+toAddress ：资源委派接受地址\
+73.4 返回值         
+DelegatedResourceList:只包含一个元素 \
+from:发起资源委派的地址\
+to:接受资源委派的地址\
+frozen_balance_for_bandwidth:委派的带宽\
+frozen_balance_for_energy:委派的energy\
+expire_time_for_bandwidth:委派的带宽解冻时间\
+expire_time_for_energy:委派的energy解冻时间\
+73.5 功能说明  
