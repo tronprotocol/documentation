@@ -72,7 +72,11 @@
 [68. 删除提议](#68)\
 [69. 查询所有提议](#69)\
 [70. 分页查询提议](#70)\
-[71. 查询指定提议](#71)
+[71. 查询指定提议](#71) \
+[72. 查询资源委派账户索引](#72) \
+[73. 查询资源委派的详细信息](#73) \
+[74. 通证快捷转账](#74) \
+[75. 通证快捷转账（通过私钥）](#75) 
      
      
 ## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
@@ -1094,22 +1098,22 @@ expire_time_for_energy:委派的energy解冻时间\
 73.5 功能说明  
 
 
-## 72. 通证快捷转账
-72.1 接口说明                                                                                  
+## 74. 通证快捷转账
+74.1 接口说明                                                                                  
 rpc EasyTransferAsset (EasyTransferAssetMessage) returns (EasyTransferResponse) {};  
-72.2 提供节点                                                                                  
+74.2 提供节点                                                                                  
 fullnode  
-72.3 参数说明                                                                                  
+74.3 参数说明                                                                                  
 EasyTransferAssetMessage：转账用的密码，toAddress，通证ID，转账的数量  
-72.4 返回值                                                                                  
+74.4 返回值                                                                                  
 EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
 
-## 73. 通证快捷转账（通过私钥）
-73.1 接口说明                                                                                  
+## 75. 通证快捷转账（通过私钥）
+75.1 接口说明                                                                                  
 rpc EasyTransferAssetByPrivate (EasyTransferAssetByPrivateMessage) returns (EasyTransferResponse) {};  
-73.2 提供节点                                                                                  
+75.2 提供节点                                                                                  
 fullnode  
-73.3 参数说明                                                                                  
+75.3 参数说明                                                                                  
 EasyTransferAssetByPrivateMessage：转账用的私钥，toAddress，通证ID，转账的数量  
-73.4 返回值                                                                                  
+75.4 返回值                                                                                  
 EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
