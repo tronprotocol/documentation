@@ -984,7 +984,7 @@ Exchange：交易对。
 65.5 功能说明 
  
 
- ## 66. 创建提议
+## 66. 创建提议
 
 66.1 接口声明  
 rpc ProposalCreate (ProposalCreateContract) returns (TransactionExtention) {};  
