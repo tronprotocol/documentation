@@ -241,7 +241,7 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
 
 wallet/easytransferasset
 作用：快捷转账，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。调用该api前请先调用createAddress生成地址。
-demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
+demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d '{
 "passPhrase": "your password",
 "toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
 "assetId": "1000001", 
