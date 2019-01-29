@@ -487,7 +487,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"pri
 返回值：交易，含执行结果。
 警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
 
-wallet/easytransferbyprivate
+wallet/easytransferassetbyprivate
 作用：快捷转账
 demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5",
 "assetId": "1000001",
