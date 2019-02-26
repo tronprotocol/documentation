@@ -907,7 +907,7 @@ Bandwidth Points的获取分两种：
 - 一种是通过冻结TRX获取的Bandwidth Points， 额度 = 为获取Bandwidth Points冻结的TRX / 整个网络为获取Bandwidth Points冻结的TRX 总额 * 43_200_000_000。
 也就是所有用户按冻结TRX平分固定额度的Bandwidth Points。
 
-- 还有一种是每个账户固定免费额度的TRX，为5000。
+- 还有一种是每个账号每天有固定免费额度的带宽，为5000。
 
 ### 8.2.2 Bandwith Points的消耗
 
