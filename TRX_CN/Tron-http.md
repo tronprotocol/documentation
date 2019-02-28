@@ -699,9 +699,4 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountinde
 value：是要查询的账户地址，hexString格式
 返回值：账户的资源代理概况，结构为DelegatedResourceAccountIndex
 
-wallet/getnodeinfo(Odyssey-v3.2.2开始支持)
-作用：查看节点的信息
-demo: curl  http://127.0.0.1:8090/wallet/getnodeinfo
-返回值：节点当前状态的相关信息(省略)
-
 ```
