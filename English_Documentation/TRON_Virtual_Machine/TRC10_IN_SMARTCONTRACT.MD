@@ -104,7 +104,7 @@ contract transferTokenContract {
 
 - msg.tokenid, represent the token id in current msg call, default 0.
 
-- **IMPORTANT**: msg.tokenid = 0 doesn't represent, just a default value, means no token transferring.
+- **IMPORTANT**: msg.tokenid = 0 is just a default value, means no token transferring.
 
 
 # 4 solidity compiler
