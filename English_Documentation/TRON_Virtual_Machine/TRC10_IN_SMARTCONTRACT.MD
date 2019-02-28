@@ -104,9 +104,8 @@ contract transferTokenContract {
 
 - msg.tokenid, represent the token id in current msg call, default 0.
 
-- @deprecated **IMPORTANT**: msg.tokenid = 0 doesn't represent trx in current version.
+- **IMPORTANT**: msg.tokenid = 0 doesn't represent, just a default value, means no token transferring.
 
-- In Odyssey_v3.5 tokenId is NOT allowed to be 0 in this function. 
 
 # 4 solidity compiler
 
