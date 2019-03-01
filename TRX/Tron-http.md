@@ -577,4 +577,52 @@ contract_address：要修改的合约的地址
 origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
+wallet/accountpermissionupdate
+作用：更新用户权限（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d '{"owner_address":"41ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700","owner":{"type":0,"permission_name":"owner","threshold":2,"keys":[{"address":"41F08012B4881C320EB40B80F1228731898824E09D","weight":1},{"address":"41DF309FEF25B311E7895562BD9E11AAB2A58816D2","weight":1},{"address":"41BB7322198D273E39B940A5A4C955CB7199A0CDEE","weight":1}]},"actives":[{"type":2,"permission_name":"active0","threshold":3,"operations":"7fff1fc0037e0000000000000000000000000000000000000000000000000000","keys":[{"address":"41F08012B4881C320EB40B80F1228731898824E09D","weight":1},{"address":"41DF309FEF25B311E7895562BD9E11AAB2A58816D2","weight":1},{"address":"41BB7322198D273E39B940A5A4C955CB7199A0CDEE","weight":1}]}]}'
+参数说明：
+owner_address：待修改权限的账户的地址\
+owner：修改后的 owner 权限\
+witness：修改后的 witness 权限（如果是 witness ）\
+actives：修改后的 actives 权限
+permission.PermissionType: 权限类型，目前仅支持三种权限\
+permission.id: 值由系统自动设置，Owner id=0, Witness id=1, Active id 从2开始递增分配。在执行合约时，
+通过该id来指定使用哪个权限，如使用owner权限，即将id设置为0。\
+permission.permission_name: 权限名称，由用户设定，长度限制为32字节\
+permission.threshold: 阈值，只有当参与签名的权重之和超过域值才允许做相应的操作。要求小于Long类型的最大值\
+permission.parent_id：目前只能为0 \
+permission.operations：共32字节（256位），每位代表一个合约的权限，为1时表示拥有该合约的权限。
+如`operations=0x0100...00(十六进制),即100...0(二进制)`时,查看proto中Transaction.ContractType定义，合约AccountCreateContract的id为0，
+即表示该permission只拥有执行AccountCreateContract的权限，可以使用"active权限中operations的计算示例"计算获得。\
+permission.keys：共同拥有该权限的地址及权重，最多允许5个key。
+permission.key.address：拥有该权限的地址     
+permission.key.weight：该地址对该权限拥有权重   
+
+返回值：TransactionExtention, TransactionExtention中包含增加签名后的交易Transaction
+
+
+wallet/addtransactionsign
+作用：增加签名（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{"transaction": "TransferContract", "privateKey": "permissionkey1"}'
+参数说明：
+transaction：交易，TransferContract需要替换成实际交易信息
+privateKey：私钥，permissionkey1需要替换成实际签名的私钥
+返回值：TransactionExtention, TransactionExtention中包含增加签名后的交易Transaction
+
+wallet/getapprovedlist
+作用：查询已签名地址（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{"transaction"}'
+参数说明：
+transaction：交易，需要替换成实际交易信息 
+返回值：TransactionApprovedList, TransactionApprovedList包含已签名的地址，交易
+
+wallet/getsignweight
+作用：查询交易签名权重（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"transaction"}'
+参数说明：
+transaction：交易，需要替换成实际交易信息 
+返回值：TransactionSignWeight, TransactionSignWeight包含结果result，表示交易的签名是否满足权限阈值。
+
+
+
 ```

@@ -77,6 +77,10 @@
 [73. 查询资源委派的详细信息](#73) \
 [74. 通证快捷转账](#74) \
 [75. 通证快捷转账（通过私钥）](#75) 
+[76. 更新用户权限（用于多重签名）](#76)  
+[77. 增加签名（用于多重签名）](#77)  
+[78. 查询已签名地址（用于多重签名）](#78) 
+[79. 查询交易签名权重（用于多重签名）](#79) 
      
      
 ## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
@@ -1107,3 +1111,54 @@ fullnode
 EasyTransferAssetByPrivateMessage：转账用的私钥，toAddress，通证ID，转账的数量  
 75.4 返回值                                                                                  
 EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
+
+## <h2 id="76">76. 更新用户权限（用于多重签名）</h2>
+
+76.1 接口说明                                                                                  
+rpc AccountPermissionUpdate (AccountPermissionUpdateContract) returns (TransactionExtention)  {}\
+76.2 提供节点                                                                                  
+fullnode  
+76.3 参数说明                                                                                  
+owner_address：待修改权限的账户的地址\
+owner：修改后的 owner 权限\
+witness：修改后的 witness 权限（如果是 witness ）\
+actives：修改后的 actives 权限
+ 
+76.4 返回值                                                                                  
+TransactionExtention：转账创建的transaction，交易ID，以及广播的结果result
+
+
+
+
+## <h2 id="77">77. 增加签名（用于多重签名）</h2>
+
+77.1 接口说明                                                                                  
+rpc AddSign (TransactionSign) returns (TransactionExtention) {}\
+77.2 提供节点                                                                                  
+fullnode  
+77.3 参数说明                                                                                  
+TransactionSign：交易，私钥  
+77.4 返回值                                                                                  
+TransactionExtention：转账创建的transaction，交易ID，以及广播的结果result
+
+## <h2 id="78">78. 查询已签名地址（用于多重签名）</h2>
+
+78.1 接口说明                                                                                  
+rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList)   {}\
+78.2 提供节点                                                                                  
+fullnode  
+78.3 参数说明                                                                                 
+Transaction：交易\
+78.4 返回值                                                                                  
+TransactionApprovedList：已签名的地址，交易
+
+## <h2 id="79">79. 查询交易签名权重（用于多重签名）</h2>
+
+79.1 接口说明                                                                                  
+rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}\
+79.2 提供节点                                                                                  
+fullnode  
+79.3 参数说明                                                                                 
+Transaction：交易\
+79.4 返回值                                                                                  
+TransactionSignWeight：结果result（交易的签名是否满足权限阈值）
