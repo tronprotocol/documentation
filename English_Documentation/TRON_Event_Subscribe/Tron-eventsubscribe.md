@@ -16,7 +16,8 @@ TRON has implemented the event subscription mechanism to support developer commu
 - [tron-eventquery](https://github.com/tronprotocol/tron-eventquery) master branch
 
 ## 4. event subscribe
-- https://github.com/tronprotocol/TIPs/issues/12
+- TIP: https://github.com/tronprotocol/TIPs/issues/12
+- Description: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/Tron-event_description.md
 
 ## 5. event plugin
 - kafka plugin: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/eventplugin_deploy.md
