@@ -83,13 +83,3 @@ contractAddresses: "addressA"
 
 contractTopics: "TopicA"
 
-> 插件实现
-插件的功能是为了实现Trigger的转储，开发者可依据自己的需求做定制化，消息队列、Kafka、Mongdb或者写文件。
-
-插件独立于java-tron，默认不被加载，可配置命令行参数开启插件。默认只支持智能合约日志的订阅，开发者可以通过修改配置文件实现对其他Trigger的订阅。
-
-开发者可灵活定义插件的配置文件，包括消息队列server地址，定义的Trigger类型等等。
-
-以kafka插件为例，在配置文件中定义Kafka server地址，Kafka topics(对应Trigger类别)。插件接收到java-tron发送的Trigger后，依据Trigger类别把Trigger发送到对应的Kafka topic.
-
-插件实现ILogsFilterPlugin接口，包括插件的初始化、启动，接收Trigger，由java-tron依据配置文件加载插件。
