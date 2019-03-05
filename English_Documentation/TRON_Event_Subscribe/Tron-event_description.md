@@ -9,6 +9,7 @@
  - contractLogTrigger: 智能合约日志
  - contractEventTrigger:智能合约事件
 
+
 > Filter定义
 
 只针对智能合约日志、事件的订阅，具体包括如下字段：
@@ -18,6 +19,7 @@ toBlock: 结束区块高度，可以设置为""，"latest"或者具体的区块�
 contractAddress：智能合约地址列表
 contractTopics：智能合约主题列表
 **注意**: 不支持历史数据查询。
+
 
 > 交易Log
 
@@ -30,6 +32,7 @@ contractTopics：智能合约主题列表
  - energyFee，能量费用 
  - originEnergyUsage origin energy usage 
  - energyUsageTotal, total energy usage total
+
 
 > 智能合约Log
 
@@ -44,6 +47,7 @@ contractTopics：智能合约主题列表
  - data: Solidity 语言中,Log 能够输出的 data
  - removed，如果日志已被删除则为true，有效日志则为false
 
+
 > 智能合约Event
 
  - transactionId, transaction id 
@@ -56,12 +60,14 @@ contractTopics：智能合约主题列表
  - data: Solidity 语言中, Event 能够输出的 data 字段
  - removed，如果日志已被删除则为true，有效日志则为false
 
+
 > Trigger触发
 
  - 区块事件的触发，区块插入时创建blockTrigger
  - 交易事件的触发，交易执行之前创建transactionTrigger
  - 智能合约日志的触发，在合约执行并且解析之后创建contractLogTrigger
  - 智能合约事件的触发，在合约执行并且解析之后创建contractEventTrigger
+
 
 > Trigger发送
 
@@ -77,7 +83,7 @@ contractAddresses: "addressA"
 
 contractTopics: "TopicA"
 
-插件实现
+> 插件实现
 插件的功能是为了实现Trigger的转储，开发者可依据自己的需求做定制化，消息队列、Kafka、Mongdb或者写文件。
 
 插件独立于java-tron，默认不被加载，可配置命令行参数开启插件。默认只支持智能合约日志的订阅，开发者可以通过修改配置文件实现对其他Trigger的订阅。
