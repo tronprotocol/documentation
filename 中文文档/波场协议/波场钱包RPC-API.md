@@ -410,9 +410,9 @@ limit:  分页大小，最大为50，这个值可能会调整。当limit>50，�
 startTime:起始时间。  
 endTime: 结束时间，获取[startTime,endTime]时间段的交易。  
 23.4 返回值  
-TransactionList：交易列表。  
+TransactionList：交易列表，按照交易创建时间的降序排列。 
 total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
-rangeTotal: 在[startTime,endTime]时间段内的所有交易数。  
+rangeTotal: 在[startTime,endTime]时间段内的所有交易数，则默认返回最近7天的数据。   
 23.5 功能说明  
 通过账户地址查询所有发起的交易。  
 23.6 备注说明  
@@ -430,9 +430,9 @@ Account：接收方账户，只需要地址。
 offset: 分页的起始值，大于10000将提示错误。  
 limit:  分页大小，最大为50，这个值可能会调整。当limit>50，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000  
 startTime:起始时间。  
-endTime: 结束时间，获取[startTime,endTime]时间段的交易。  
+endTime: 结束时间，获取[startTime,endTime]时间段的交易，如果不传递，则默认返回最近7天的数据。    
 24.4 返回值  
-TransactionList：交易列表。  
+TransactionList：交易列表,按照交易创建时间的降序排列。    
 total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
 rangeTotal: 在[startTime,endTime]时间段内的所有交易数。  
 24.5 功能说明  
