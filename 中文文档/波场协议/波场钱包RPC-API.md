@@ -404,9 +404,15 @@ rpc getTransactionsFromThis (Account) returns (TransactionList) {};
 23.2 提供节点  
 soliditynode。  
 23.3 参数说明  
-Account：发起方账户，只需要地址。  
+Account:发起方账户，只需要地址。   
+offset: 分页的起始值，大于10000将提示错误。  
+limit:  分页大小，最大为50，这个值可能会调整。当limit>50，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000  
+startTime:起始时间。  
+endTime: 结束时间，获取[startTime,endTime]时间段的交易。  
 23.4 返回值  
 TransactionList：交易列表。  
+total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
+rangeTotal: 在[startTime,endTime]时间段的交易内的所有交易数。  
 23.5 功能说明  
 通过账户地址查询所有发起的交易。  
 23.6 备注说明  
@@ -421,8 +427,14 @@ rpc getTransactionsToThis (Account) returns (NumberMessage) {};
 soliditynode。  
 24.3 参数说明  
 Account：接收方账户，只需要地址。  
+offset: 分页的起始值，大于10000将提示错误。  
+limit:  分页大小，最大为50，这个值可能会调整。当limit>50，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000  
+startTime:起始时间。  
+endTime: 结束时间，获取[startTime,endTime]时间段的交易。  
 24.4 返回值  
 TransactionList：交易列表。  
+total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
+rangeTotal: 在[startTime,endTime]时间段的交易内的所有交易数。  
 24.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。  
 24.6 备注说明  
