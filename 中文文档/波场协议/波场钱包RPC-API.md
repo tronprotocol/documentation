@@ -412,7 +412,7 @@ endTime: 结束时间，获取[startTime,endTime]时间段的交易。
 23.4 返回值  
 TransactionList：交易列表。  
 total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
-rangeTotal: 在[startTime,endTime]时间段的交易内的所有交易数。  
+rangeTotal: 在[startTime,endTime]时间段内的所有交易数。  
 23.5 功能说明  
 通过账户地址查询所有发起的交易。  
 23.6 备注说明  
@@ -434,7 +434,7 @@ endTime: 结束时间，获取[startTime,endTime]时间段的交易。
 24.4 返回值  
 TransactionList：交易列表。  
 total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
-rangeTotal: 在[startTime,endTime]时间段的交易内的所有交易数。  
+rangeTotal: 在[startTime,endTime]时间段内的所有交易数。  
 24.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。  
 24.6 备注说明  
