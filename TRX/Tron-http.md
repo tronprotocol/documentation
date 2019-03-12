@@ -109,17 +109,36 @@ demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 Parameters: None
 Return value：List of all exchanges
 
-/walletextension/gettransactionsfromthis
+/walletextension/gettransactionsfromthis(The new version will no longer be supported)
 Function：Query the list of transactions sent by an address
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
-Parameters：Address is the account address, converted to a hex string; offset is the index of the starting transaction; limit is the number of transactions expected to be returned
-Return value：Transactions list
+demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" 
+  : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10,"startTime": 1546099200000, "endTime": 1552028828000}'
+Parameters：Address is the account address, converted to a hex string; offset is the index of the 
+starting transaction,Can't be greater than 10000, otherwise an error; limit is the number of 
+transactions expected to be returned;This value may be adjusted. If limit>50 or 
+offset+limit>10000, adjust to limit<=50 and offset+limit<=10000, startTime: Start time; endTime: End time;
+ get the transaction  from startTime to endTime] . If not set, the default  will gets the transaction in the last 7 days.
+Return value：Transactions list sort by  creation time, total: the maximum number of transactions 
+for paging from startTime to endTime, rangeTotal:the total transactions from startTime to endTime.
+Remarks:This interface will no longer be available in the new version of the node. If you need 
+this function, you can use the interface provided by the central node, 47.90.247
+.237:8091/walletextension/gettransactionsfromthis,Reference getTransactionsFromThis
 
-/walletextension/gettransactionstothis
+/walletextension/gettransactionstothis(The new version will no longer be supported)
 Function：Query the list of transactions received by an address
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
-Parameters：Address is the account address, converted to a hex string; offset is the index of the starting transaction; limit is the number of transactions expected to be returned
-Return value：Transactions list
+demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : 
+ {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10,"startTime": 1546099200000, "endTime": 1552028828000}'
+Parameters：Address is the account address, converted to a hex string; offset is the index of the 
+starting transaction,Can't be greater than 10000, otherwise an error; limit is the number of 
+transactions expected to be returned;This value may be adjusted. If limit>50 or  
+offset+limit>10000, adjust to limit<=50 and offset+limit<=10000, startTime: Start time; endTime: 
+End time; get the transaction from startTime to endTime]. If not set, the default  will gets the 
+transaction in the last 7 days.Return value：Transactions list sort by  creation time, total: the maximum number of transactions for paging from startTime to endTime, rangeTotal:the total transactions from startTime to endTime.
+Return value：Transactions list sort by  creation time, total: the maximum number of transactions 
+for paging from startTime to endTime, rangeTotal:the total transactions from startTime to endTime.
+Remarks:This interface will no longer be available in the new version of the node. If you need 
+this function, you can use the interface provided by the central node, 47.90.247
+.237:8091/walletextension/gettransactionstothis,Reference gettransactionstothis
 
 ```
 
