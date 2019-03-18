@@ -1185,7 +1185,7 @@ rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {};\
 fullnode  
 80.3 参数说明                                                                                 
 CreateSmartContract：提供创建合约信息的交易类型对象，包含owner_address(交易发送者地址), new_contract（SmartContract类型对象）, call_token_value(trc10), token_id(trc10) 4个参数\
-new_contract: smartcontract信息，包括，origin_address（合约部署者地址）， contract_address（合约地址，默认为空），abi，bytecode，call_value（trx放入合约数量），consume_user_resource_percent（调用合约时用户方需支付的energy占所有花费比例）， name（合约名字）， origin_energy_limit（开发者愿意帮助用户支付的最高energy数量）\ 
+new_contract: smartcontract信息，包括，origin_address（合约部署者地址）， contract_address（合约地址，默认为空），abi，bytecode，call_value（trx放入合约数量），consume_user_resource_percent（调用合约时用户方需支付的energy占所有花费比例）， name（合约名字）， origin_energy_limit（开发者愿意帮助用户支付的最高energy数量) \
 80.4 返回值                                                                                  
 TransactionExtention：展示交易执行结果的信息类型对象，包含transaction, transaction_id, constant_result 以及 on-block result.
 
