@@ -474,7 +474,7 @@ rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {};\
 FullNode.  
 80.3 Parameters  
 CreateSmartContract: message type for creating a new smart contract, including owner_address, new_contract(a SmartContract Object), call_token_value(trc10), token_id(trc10) \
-new_contract: origin_address(contract deployer address), contract_address, abi, bytecode, call_value(trx), consume_user_resource_percent(user energy consume percentage), name(contract name), origin_energy_limit(the energy limit developer willing to afford for a trigger operation).
+new_contract: origin_address(contract deployer address), contract_address, abi, bytecode, call_value(trx), consume_user_resource_percent(user energy consume percentage), name(contract name), origin_energy_limit(the energy limit developer willing to afford for a trigger operation).\
 80.4 Returns  
 TransactionExtention: a message type contains transaction, transaction_id, constant_result and on-block result.
 
