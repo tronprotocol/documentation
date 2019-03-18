@@ -80,7 +80,9 @@
 [76. 更新用户权限（用于多重签名）](#76)  
 [77. 增加签名（用于多重签名）](#77)  
 [78. 查询已签名地址（用于多重签名）](#78) 
-[79. 查询交易签名权重（用于多重签名）](#79) 
+[79. 查询交易签名权重（用于多重签名）](#79) \
+[80. 部署智能合约 ](#80)\
+[81. 执行智能合约 ](#81)\
      
      
 ## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
@@ -1174,3 +1176,25 @@ fullnode
 Transaction：交易\
 79.4 返回值                                                                                  
 TransactionSignWeight：结果result（交易的签名是否满足权限阈值）
+
+## <h2 id="80">80. 部署智能合约</h2>
+
+80.1 接口说明                                                                                  
+rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {};\
+80.2 提供节点                                                                                  
+fullnode  
+80.3 参数说明                                                                                 
+CreateSmartContract：提供创建合约信息的交易类型对象，包含owner_address(交易发送者地址), new_contract（SmartContract类型对象）, call_token_value(trc10), token_id(trc10) 4个参数\
+80.4 返回值                                                                                  
+TransactionExtention：展示交易执行结果的信息类型对象，包含transaction, transaction_id, constant_result 以及 on-block result.
+
+## <h2 id="81">81. 执行智能合约</h2>
+
+81.1 接口说明                                                                                  
+rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {};\
+81.2 提供节点                                                                                  
+fullnode  
+81.3 参数说明                                                                                 
+TriggerSmartContract：提供执行合约信息的交易类型对象，包含owner_address(交易发送者地址), contract_address, call_value(随交易打入合约的trx数量), data(被调用的方法的签名及参数), call_token_value(trc10数量), token_id(trc10 id) 6个参数\
+81.4 返回值                                                                                  
+TransactionExtention：展示交易执行结果的信息类型对象，包含transaction, transaction_id, constant_result 以及 on-block result.
