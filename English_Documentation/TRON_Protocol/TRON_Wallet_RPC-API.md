@@ -456,12 +456,16 @@ EasyTransferResponse: the transaction of a transfer and the result of broadcasti
 ## 37. Generate address and private key  
 37.1 Interface statement  
 rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {};
+
 37.2 Nodes  
 FullNode and SolidityNode.  
+
 37.3 Parameters  
 EmptyMessage: null.  
+
 37.4 Returns  
 AddressPrKeyPairMessage: generate address and private key.  
+
 37.5 Function  
 Address and private key generation. Please invoke this API only on a trusted offline node to prevent private key leakage.
 
@@ -470,19 +474,25 @@ Address and private key generation. Please invoke this API only on a trusted off
 ## 80. Deploy a smart contract 
 80.1 Interface statement  
 rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {};
+
 80.2 Nodes  
 FullNode.  
+
 80.3 Parameters  
 CreateSmartContract: message type for creating a new smart contract, including owner_address, new_contract, call_token_value(trc10), token_id(trc10) 
+
 80.4 Returns  
 TransactionExtention: a message type contains transaction, transaction_id, constant_result and on-block result.
 
 ## 81. Trigger a smart contract
 81.1 Interface statement  
 rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {};
+
 81.2 Nodes  
 FullNode.  
+
 81.3 Parameters  
-TriggerSmartContract: message type for triggering an existing contract, including owner_address(transaction sender address), contract_address, call_value(trx), data(triggered function signature and parameter), call_token_value(trc10), token_id(trc10) 
+TriggerSmartContract: message type for triggering an existing contract, including owner_address(transaction sender address), contract_address, call_value(trx), data(triggered function signature and parameter), call_token_value(trc10), token_id(trc10)
+
 81.4 Returns  
 TransactionExtention: a message type contains transaction, transaction_id, constant_result and on-block result.
