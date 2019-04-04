@@ -314,7 +314,7 @@ receiverAddress表示受委托账户的地址
 返回值：解冻trx的transaction
 【注意】资源委托功能需要委员会开启
 
-walle/unfreezeasset
+wallet/unfreezeasset
 作用：解冻已经结束冻结期的Token
 demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
