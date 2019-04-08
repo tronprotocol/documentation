@@ -1,7 +1,7 @@
 1、Tuning the Database。
 
 
-| 对比项	| leveldb	| rocksdb |
+| Comparison item	| leveldb	| rocksdb |
 | ------ | ------ | ------|
 |stage	|Compilation phase，can not be modified|	Runtime phase，can be modified
 |number of parameter	|few|	more
@@ -11,7 +11,7 @@ Some tuning parameters of rocksdb supported in java-tron are listed as follows, 
 
 <b>block sync stage</b>
 
-| Machine configuration|	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| target File | level 1大小	| level multiplier | target File Multiplier |	说明	 |
+| Machine configuration|	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| target File | level 1 size	| level multiplier | target File Multiplier |	description	 |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------| ------ |
 |16 cores，32G RAM|	7 |	16|	4	|64k|	256MB|	256MB|	10|	1|	It is recommanded to turn up the parameter "compactThreads" and "level0FileNumCompactionTrigger" for more fast speed of writing data to database|	
 |8 cores，16G RAM |	7	| 8	|4|	64k|	256MB|	256MB|	10|	1|	It is recommanded to turn up the parameter "compactThreads" and "level0FileNumCompactionTrigger" for more fast speed of writing data to database|
@@ -19,7 +19,7 @@ Some tuning parameters of rocksdb supported in java-tron are listed as follows, 
 
 <b>block advertise stage</b>
 
-| Machine configuration |	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| target File | level 1大小	| level multiplier | target File Multiplier |	说明	 |
+| Machine configuration |	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| target File | level 1 size	| level multiplier | target File Multiplier |	description	 |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------| ------ |
 |16 cores，32G RAM|	7|	8|	2|	64k|	256MB|	256MB|	10|	1|	It is recommanded to turn down the parameter "compactThreads" and "level0FileNumCompactionTrigger" for more fast speed of reading data to database|	
 |8 cores，16G RAM|	7|	4|	2|	64k|	256MB|	256MB|	10|	1|	It is recommanded to turn down the parameter "compactThreads" and "level0FileNumCompactionTrigger" for more fast speed of reading data to database|	
@@ -43,13 +43,12 @@ leveldb can not support for database backup when the application is running。
 
 rocksdb can support for database backup when the application is running and it just need a few seconds.
 
-|block height|	数据库大小|	备份时间
+|block height|	database size|	backup used time 
 |-----|-----|-----|
 |block height: 4900000|	27GB	|1 second|
 |block height: 7900000|	126GB|	1.4 second|
 
 
-rocksdb提供丰富了配置参数允许节点根据自身机器配置进行调优，节点数据库占用的磁盘空间相比于leveldb更少，在程序运行时备份上百G数据只需要几秒而且不需要节点停止运行。
-
+Rocksdb provides a rich set of configuration parameters to allow nodes to tune according to their own machine configuration. The database occupies less disk space than leveldb. It only takes a few seconds to back up hundreds of GB data when the program is running and does not require the node to stop running.
 
 
