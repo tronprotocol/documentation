@@ -302,7 +302,9 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  ```
 #### 4.7.1.4 rocksdb与leveldb的对比
 你可以查看以下文档获取详细的信息：
+<br>
 [rocksdb与leveldb对比](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
+<br>
 [ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
 
 # 5 智能合约
