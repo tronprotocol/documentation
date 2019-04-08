@@ -265,7 +265,10 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
 #### 4.7.1.1 config配置说明
  使用rocksdb作为数据存储引擎，需要将db.engine配置项设置为"ROCKSDB"
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)
- 注意: rocksdb不支持db.version=1。
+ 注意: rocksdb只支持db.version=2, 不支持db.version=1。
+ rocksdb支持的优化参数如下：
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/rocksdb_tuning_parameters.png)
+
 #### 4.7.1.2 使用rocksdb数据备份功能
  选择rocksdb作为数据存储引擎，可以使用其提供的运行时数据备份功能。
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)
