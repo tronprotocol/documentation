@@ -10,17 +10,17 @@
 
 下面列举了java-tron中使用rocksdb引擎支持的数据库调优参数，针对不同的区块处理阶段进行优化。
 
-同步模式阶段
+<b>同步模式阶段</b>
 
-| 机器配置 |	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| block size | level 1大小	| level multiplier | target File Multiplier |	说明	 |
+| 机器配置 |	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| target File | level 1大小	| level multiplier | target File Multiplier |	说明	 |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------| ------ |
 |16核32G内存|	7 |	16|	4	|64k|	256MB|	256MB|	10|	1|	此时区块数据集中写入，调高compactThreads和level0FileNumCompactionTrigger的值有利于数据写入更快。|	
 |8核16G内存 |	7	| 8	|4|	64k|	256MB|	256MB|	10|	1|	此时区块数据集中写入，调高compactThreads和level0FileNumCompactionTrigger的值有利于数据写入更快。|	
 
 
-广播模式阶段
+<b>广播模式阶段</b>
 
-| 机器配置 |	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| block size | level 1大小	| level multiplier | target File Multiplier |	说明	 |
+| 机器配置 |	level_number | compactThreads	| level0FileNumCompactionTrigger | block size	| target File | level 1大小	| level multiplier | target File Multiplier |	说明	 |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------| ------ |
 |16核32G内存|	7|	8|	2|	64k|	256MB|	256MB|	10|	1|	此时更多的是数据读取，调降compactThreads和level0FileNumCompactionTrigger的值有利于提高数据读取效率。|	
 |8核16G内存|	7|	4|	2|	64k|	256MB|	256MB|	10|	1|	此时更多的是数据读取，调降compactThreads和level0FileNumCompactionTrigger的值有利于提高数据读取效率。|	
