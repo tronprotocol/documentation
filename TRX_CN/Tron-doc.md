@@ -260,7 +260,43 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  node.discovery.enable:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
  
-
+## 4.7 数据库引擎
+### 4.7.1 rocksdb
+#### 4.7.1.1 config配置说明
+ 使用rocksdb作为数据存储引擎，需要将db.engine配置项设置为"ROCKSDB"
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)
+ 注意: rocksdb不支持db.version=1。
+#### 4.7.1.2 使用rocksdb数据备份功能
+ 选择rocksdb作为数据存储引擎，可以使用其提供的运行时数据备份功能。
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)
+ 注意: FullNode可以使用数据备份功能；为了不影响SuperNode的产块性能，数据备份功能不支持SuperNode，但是SuperNode的备份服务节点可以使用此功能。
+#### 4.7.1.3 leveldb数据转换为rocksdb数据
+  leveldb和rocksdb的数据存储架构并不兼容，请确保节点始终使用同一种数据引擎。我们提供了数据转换脚本，用于将leveldb数据转换到rocksdb数据。
+  使用方法：
+```text
+  cd 源代码根目录
+  ./gradlew build   #编译源代码
+  java -jar build/libs/DBConvert.jar  #执行数据转换指令
+```
+  注意：如果节点的数据存储目录是自定义的，运行DBConvert.jar时添加下面2个可选参数。
+  <br>
+  <b>src_db_path</b>:指定LevelDB数据库路径源，默认是 output-directory/database
+  <br>
+  <b>dst_db_path</b>:指定RocksDB数据库路径，默认是 output-directory-dst/database
+  <br>
+  ```text
+  java -jar build/libs/DBConvert.jar  src_db_path  dst_db_path
+  ```
+  <br>
+  必须停止节点的运行，然后再运行数据转换脚本。
+  如果不希望节点停止时间太长，可以在节点停止后先将leveldb数据目录output-directory拷贝一份到新的目录下，然后恢复节点的运行。然后在新目录的上级目录中执行DBConvert.jar并指定`src_db_path` 和 `dst_db_path` 参数。
+  例如:
+ 
+  ```text
+  cp -rf output-directory /tmp/output-directory
+  cd /tmp
+  java -jar DBConvert.jar output-directory  output-directory-dst
+ ```
 # 5 智能合约
 ## 5.1 Tron智能合约介绍
 
