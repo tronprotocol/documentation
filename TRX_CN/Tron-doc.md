@@ -334,7 +334,7 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
    <b>It is emphasized that you must stop the node before running the DBConvert.jar</b>
    you can copy the leveldb database dir to a new dir and then recover the node running.
    <br>
-   run DBConvert.jar with parameters `src_db_path` and `dst_db_path` in the new directory。
+   After that, run DBConvert.jar with parameters `src_db_path` and `dst_db_path` in the parent directory of new directory.
    for example,
    ```text
    cp -rf output-directory /tmp/output-directory
