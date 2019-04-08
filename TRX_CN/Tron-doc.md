@@ -287,10 +287,15 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
   <br>
   <b>dst_db_path</b>:指定RocksDB数据库路径，默认是 output-directory-dst/database
   <br>
+  例如，如果节点是像这样的脚本运行的:
   ```text
-  java -jar build/libs/DBConvert.jar  src_db_path  dst_db_path
+     nohup java -jar FullNode.jar -d your_database_dir &
   ```
-  必须停止节点的运行，然后再运行数据转换脚本。
+  那么，你应该这样运行数据转换工具DBConvert.jar:
+  ```text
+  java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
+  ```
+  注意：必须停止节点的运行，然后再运行数据转换脚本。
   如果不希望节点停止时间太长，可以在节点停止后先将leveldb数据目录output-directory拷贝一份到新的目录下，然后恢复节点的运行。
   <br>
   在新目录的上级目录中执行DBConvert.jar并指定参数`src_db_path`和`dst_db_path` 。
@@ -300,7 +305,46 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
   cd /tmp
   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
  ```
-#### 4.7.1.4 rocksdb与leveldb的对比
+  整个的数据转换过程可能需要10个小时左右。
+ 
+ #### 4.7.1.4 leveldb database convert to rocksdb database （english verison）
+   You must only use one db engine(leveldb or rocksdb) throughout the life cycle of node because rocksdb's data structure is incompatible with the leveldb's.
+   A convert tool is provided to convert the leveldb data to rocksdb data and the usage of tool is described in the following。
+   
+   How to use：
+ ```text
+   cd [source code directory of java-tron]
+   ./gradlew build   # build the code
+   java -jar build/libs/DBConvert.jar  # run the jar
+ ```
+   note: you can run DBConvert.jar with two additional parameters if your node is started up with specified location of database directory. 
+   <br>
+   <b>src_db_path</b>:source of leveldb directory. The default value is output-directory/database
+   <br>
+   <b>dst_db_path</b>:destination of rocksdb directory. The default value is output-directory-dst/database
+   <br>
+   for example,if you run a node with the script:
+   ```text
+     nohup java -jar FullNode.jar -d your_database_dir &
+   ```
+   you should run the DBConvert.jar like this:
+   ```text
+   java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
+   ```
+   <b>It is emphasized that you must stop the node before running the DBConvert.jar</b>
+   you can copy the leveldb database dir to a new dir and then recover the node running.
+   <br>
+   run DBConvert.jar with parameters `src_db_path` and `dst_db_path` in the new directory。
+   for example,
+   ```text
+   cp -rf output-directory /tmp/output-directory
+   cd /tmp
+   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
+  ```
+  <br>
+  It may cost about 10 hours to finish the data convert.
+  
+#### 4.7.1.5 rocksdb与leveldb的对比
 你可以查看以下文档获取详细的信息：
 <br>
 [rocksdb与leveldb对比](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
