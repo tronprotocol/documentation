@@ -1,4 +1,6 @@
-1、Tuning the Database。
+# ROCKSDB VS LEVELDB
+
+##1、Tuning the Database。
 
 
 | Comparison item	| leveldb	| rocksdb |
@@ -27,7 +29,7 @@ Some tuning parameters of rocksdb supported in java-tron are listed as follows, 
 
 note：these are just parameters we suggested on some specific machine，you should tune the parameters according to the logs of database running。
 
-2、a ".sst" file in rocksdb can stores more data than the leveldb, so it may ocuppy less storage space。
+##2、a ".sst" file in rocksdb can stores more data than the leveldb, so it may ocuppy less storage space。
 
 |database size | sst files amount of leveldb|	sst files amount of rocksdb|
 |-----|-----|-----|
@@ -37,7 +39,7 @@ note：these are just parameters we suggested on some specific machine，you sho
 |-----|-----|-----|
 |block height:7930000|	142GB	|126GB|
 
-3、Supporting for database backup。
+##3、Supporting for database backup。
 
 leveldb can not support for database backup when the application is running。
 

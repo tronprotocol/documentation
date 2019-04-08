@@ -300,7 +300,10 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
   cd /tmp
   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
  ```
-#### 4.7.1.4 为何使用RocksDB
+#### 4.7.1.4 rocksdb与leveldb的对比
+你可以查看以下文档获取详细的信息：
+[rocksdb与leveldb对比](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
+[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
 
 # 5 智能合约
 ## 5.1 Tron智能合约介绍
