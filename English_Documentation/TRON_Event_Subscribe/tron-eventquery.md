@@ -181,7 +181,7 @@ block: block number, block number >= block will be shown
 
 Example: https://api.tronex.io/contractlogs
 ```
-Function: get contract log list based from transactionId
+Function: get contract log list based on transactionId
 ```
 subpath: $baseUrl/contractlogs/transaction/{transactionId}
 
@@ -190,7 +190,7 @@ transactionId
 
 Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
 ```
-Function: post abi string and get contract log list based from transactionId
+Function: post abi string and get contract log list based on transactionId(release on 3.6)
 ```
 subpath: $baseUrl/contractlogs/transaction/{transactionId}
 
@@ -201,7 +201,7 @@ abi: user self upload abi
 
 Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
 ```
-Function: get contract log list based from contractAddress
+Function: get contract log list based on contractAddress
 ```
 subpath: $baseUrl/contractlogs/contract/{contractAddress}
 
@@ -210,7 +210,7 @@ contractAddress
 
 Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
 ```
-Function: post abi string and get contract log list based from contractAddress
+Function: post abi string and get contract log list based on contractAddress(release on 3.6)
 ```
 subpath: $baseUrl/contractlogs/contract/{contractAddress}
 
@@ -220,7 +220,7 @@ abi: user self upload abi
 
 Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
 ```
-Function: get contract log list based from uniqueId
+Function: get contract log list based on uniqueId
 ```
 subpath: $baseUrl/contractlogs/uniqueId/{uniqueId}
 
@@ -229,7 +229,7 @@ uniqueId
 
 Example: https://api.tronex.io/contractlogs/uniqueId/{uniqueId}
 ```
-Function: post abi string and get contract log list based from uniqueId
+Function: post abi string and get contract log list based on uniqueId(release on 3.6)
 ```
 subpath: $baseUrl/contractlogs/uniqueId/{uniqueId}
 
