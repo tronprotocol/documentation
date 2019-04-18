@@ -134,7 +134,6 @@ limit: each page size, default is 25
 sort: sort Field, default is sort by timeStamp descending order
 start: start page, default is 1
 
-Note: if developers wants to check whether this event is confirmed or not, they could check the blocknumber is small than the solidified block number(get from url https://api.tronex.io/blocks/latestblockNum). If it is smaller than block number, it is conformed
 
 Example: https://api.tronex.io/events/confirmed?since=1544483426749&limit=1&start=1&sort=timeStamp
 ```
@@ -161,7 +160,7 @@ block: block number, block number >= block will be shown
 
 Example: https://api.tronex.io/blocks?limit=1&sort=timeStamp&start=0&block=0
 ```
-Function: get latest solidified block number
+Function: get latest block number
 ```
 subpath: $baseUrl/blocks/latestSolidifiedBlockNumber
 
@@ -169,4 +168,74 @@ parameters
 none
 
 Example: https://api.tronex.io/blocks/latestSolidifiedBlockNumber
+```
+Function: get contract log list
+```
+subpath: $baseUrl/contractlogs
+
+parameters   
+limit: each page size, default is 25
+sort: sort Field, default is sort by timeStamp descending order
+start: start page, default is 1
+block: block number, block number >= block will be shown 
+
+Example: https://api.tronex.io/contractlogs
+```
+Function: get contract log list based from transactionId
+```
+subpath: $baseUrl/contractlogs/transaction/{transactionId}
+
+parameters   
+transactionId
+
+Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
+```
+Function: post abi string and get contract log list based from transactionId
+```
+subpath: $baseUrl/contractlogs/transaction/{transactionId}
+
+parameters   
+transactionId
+body:
+abi: user self upload abi
+
+Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
+```
+Function: get contract log list based from contractAddress
+```
+subpath: $baseUrl/contractlogs/contract/{contractAddress}
+
+parameters   
+contractAddress
+
+Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
+```
+Function: post abi string and get contract log list based from contractAddress
+```
+subpath: $baseUrl/contractlogs/contract/{contractAddress}
+
+parameters   
+contractAddress
+abi: user self upload abi
+
+Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
+```
+Function: get contract log list based from uniqueId
+```
+subpath: $baseUrl/contractlogs/uniqueId/{uniqueId}
+
+parameters   
+uniqueId
+
+Example: https://api.tronex.io/contractlogs/uniqueId/{uniqueId}
+```
+Function: post abi string and get contract log list based from uniqueId
+```
+subpath: $baseUrl/contractlogs/uniqueId/{uniqueId}
+
+parameters   
+uniqueId
+abi: user self upload abi
+
+Example: https://api.tronex.io/contractlogs/uniqueId/{uniqueId}
 ```
