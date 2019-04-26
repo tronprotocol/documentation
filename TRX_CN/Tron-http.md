@@ -6,6 +6,17 @@ https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/de
 php:
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php 
 
+**3.6版本之后，增加参数visible，当visible设置为true时，相应的地址和字符串不再需要转码。该参数针对所有的接口有效，包括solidityNode接口和FullNode接口**   
+当参数visible为true时，输入的地址必须为base58格式，字符串为可见字符串，输出的格式也是如此；如果设置为false
+或不设置时，接口行为同原来保持一致。如果参数格式与visible设置不匹配，将会报错。   
+设置参数方式：
+1. 不需要参数的查询接口，通过在url中增加参数。如 127.0.0.1:8090/wallet/listexchanges?visible=true      
+2. POST方式请求接口时，通过在json体最外层中增加参数。如 curl -X POST http://127.0.0.1:8090/wallet/createtransaction 
+{"owner_address_":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+"to_address_":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW","amount":1000000,"visible":true}   
+3. GET方式请求接口时，通过在url中增加参数。同方式1。     
+
+    
 # SolidityNode接口说明
 
 solidityNode默认的http端口是8091，启动solidityNode的时候会同时启动http服务。
@@ -13,7 +24,7 @@ solidityNode默认的http端口是8091，启动solidityNode的时候会同时启
 /walletsolidity/getaccount
 作用：查询一个账号的信息
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
-参数说明：address 需要转为hexString
+参数说明：address 默认为hexString
 返回值：Account对象
 
 /walletsolidity/listwitnesses
@@ -37,24 +48,24 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getpaginatedassetissuel
 /walletsolidity/getassetissuebyname(Odyssey-v3.2开始支持)
 作用：根据名称查询token。
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
-参数说明：通证名称，格式为hexString。
+参数说明：通证名称，默认为hexString。
 返回值：token。
 注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
 
 /walletsolidity/getassetissuelistbyname(Odyssey-v3.2开始支持)
 作用：根据名称查询token list。
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelistbyname -d '{"value": "44756354616E"}'
-参数说明：通证名称，格式为hexString。
+参数说明：通证名称，默认为hexString。
 返回值：token列表。
 
 /walletsolidity/getassetissuebyid(Odyssey-v3.2开始支持)
 作用：根据id查询token。
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyid -d '{"value": "1000001"}'
-参数说明：通证id，格式为String。
+参数说明：通证id
 返回值：token。
 
 /walletsolidity/getnowblock
-作用：查询最新block
+作用：查询最新block    
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
 参数说明：
 返回值：solidityNode上的最新block
@@ -68,7 +79,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbynum -d '{"num
 /walletsolidity/gettransactionbyid
 作用：根据id查询交易
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactionbyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
-参数说明：value是交易id，需要是hexString
+参数说明：value是交易id
 返回值：指定ID的Transaction
 
 /walletsolidity/gettransactioncountbyblocknum(Odyssey-v3.2开始支持)
@@ -80,7 +91,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioncountbybl
 /walletsolidity/gettransactioninfobyid
 作用：根据id查询交易的fee，所在的block
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
-参数说明：value是交易id，需要是hexString
+参数说明：value是交易id
 返回值：Transaction的交易fee，所在block的高度，创建时间
 
 /walletsolidity/getdelegatedresource(Odyssey-v3.2开始支持)
@@ -91,8 +102,8 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresource -d
 "toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
 }'
 参数说明：
-fromAddress：是要查询的账户地址，hexString格式
-toAddress：代理对象的账户地址，hexString格式
+fromAddress：是要查询的账户地址，默认为hexString格式
+toAddress：代理对象的账户地址，默认为hexString格式
 返回值：账户的资源代理的列表，列表的元素为DelegatedResource
 
 /walletsolidity/getdelegatedresourceaccountindex(Odyssey-v3.2开始支持)
@@ -102,7 +113,7 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdelegatedresourceacc
 "value": "419844f7600e018fd0d710e2145351d607b3316ce9", 
 }'
 参数说明：
-value：是要查询的账户地址，hexString格式
+value：是要查询的账户地址，默认为hexString格式
 返回值：账户的DelegatedResourceAccountIndex
 
 /walletsolidity/getexchangebyid(Odyssey-v3.2开始支持)
@@ -117,6 +128,33 @@ id：交易对id
 demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 参数说明：
 返回值：所有交易对
+
+walletsolidity/getaccountbyid
+作用：通过accountId查询一个账号的信息
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d '{"account_id":"6161616162626262"}'
+参数说明：account_id 默认为hexString格式
+返回值：Account对象
+
+walletsolidity/getblockbyid
+作用：通过ID查询块
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d '{"value": 
+"0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
+参数说明：块ID。
+返回值：块。
+
+walletsolidity/getblockbylimitnext
+作用：按照范围查询块
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
+参数说明：
+   startNum：起始块高度，包含此块
+   endNum：截止块高度，不包含此此块
+返回值：块的列表。
+
+walletsolidity/getblockbylatestnum
+作用：查询最新的几个块
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d '{"num": 5}'
+参数说明：块的数量。
+返回值：块的列表。
 
 /walletextension/gettransactionsfromthis（新版本将不再支持）
 作用：查询某个账号的出账交易记录
@@ -147,6 +185,18 @@ endTime]时间段内的所有交易数。
 demo: curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo 
 参数说明：无
 返回值：当前节点的信息NodeInfo
+
+/walletsolidity/getdeferredtransactionbyid
+作用：根据id查询延迟交易
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactionbyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
+参数说明：value是交易id
+返回值：指定ID的Transaction
+
+/walletsolidity/getdeferredtransactioninfobyid
+作用：根据id查询交易的fee，所在的block
+demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
+参数说明：value是交易id
+返回值：Transaction的交易fee，所在block的高度，创建时间
 ```
 
 # FullNode接口说明
@@ -157,7 +207,11 @@ FullNode默认的http端口是8090，启动FullNode的时候会同时启动http�
 wallet/createtransaction
 作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_address": "41e9d79cc47518930bc322d9bf7cddd260a0260a8d", "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292", "amount": 1000 }'
-参数说明：to_address是转账转入地址，需要转为hexString；owner_address是转账转出地址，需要转为hexString；amount是转账数量
+参数说明：
+to_address是转账转入地址，默认为hexString    
+owner_address是转账转出地址，默认为hexString    
+amount是转账数量    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId         
 返回值：转账合约
 
 /wallet/gettransactionsign
@@ -177,7 +231,10 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/broadcasttransaction -d '{"sig
 wallet/updateaccount
 作用：修改账号名称
 demo：curl -X POST  http://127.0.0.1:8090/wallet/updateaccount -d '{"account_name": "0x7570646174654e616d6531353330383933343635353139" ,"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292"}'
-参数说明：account_name是账号名称，需要是hexString格式；owner_address是要修改名称的账号地址，需要是hexString格式
+参数说明：
+account_name是账号名称，默认为hexString格式    
+owner_address是要修改名称的账号地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：修改名称的Transaction
 
 wallet/votewitnessaccount
@@ -186,7 +243,12 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/votewitnessaccount -d '{
 "owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", 
 "votes": [{"vote_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "vote_count": 5}]
 }'
-参数说明：owner_address是投票人地址，需要是hexString格式；votes.vote_address是被投票的超级代表的地址，需要是hexString格式；vote_count是投票数量
+参数说明：
+owner_address是投票人地址，默认为hexString格式    
+votes.vote_address是被投票的超级代表的地址，默认为hexString格式    
+vote_count是投票数量    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
+返回值：投票的Transaction      
 
 wallet/createassetissue
 作用：发行Token
@@ -206,8 +268,20 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "frozen_supply":{"frozen_amount":1, "frozen_days":2}
 }'
 参数说明：
-owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
-返回值：发行Token的Transaction
+owner_address发行人地址，默认为hexString格式    
+name是token名称，默认为hexString格式    
+abbr是token简称，默认为hexString格式     
+total_supply是发行总量    
+trx_num和num是token和trx的最小单位兑换比   
+start_time和end_time是token发行起止时间    
+description是token说明，默认为hexString格式    
+url 是token发行方的官网，默认为hexString格式    
+free_asset_net_limit是Token的总的免费带宽    
+public_free_asset_net_limit 是每个token拥护者能使用本token的免费带宽    
+frozen_supply是token发行者可以在发行的时候指定冻结的token    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId      
+返回值：
+发行Token的Transaction
 
 wallet/updatewitness
 作用：修改witness的url
@@ -215,24 +289,40 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/updatewitness -d '{
 "owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", 
 "update_url": "007570646174654e616d6531353330363038383733343633"
 }'
-参数说明：owner_address是创建人地址，需要是hexString格式；update_url是更新的官网的url，需要是hexString格式；
+参数说明：
+owner_address是创建人地址，默认为hexString格式     
+update_url是更新的官网的url，默认为hexString格式     
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId       
+返回值：
+更新witness的Transaction
 
 wallet/createaccount
 作用：创建账号，一个已经激活的账号创建一个新账号，需要花费0.1trx
 demo：curl -X POST  http://127.0.0.1:8090/wallet/createaccount -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "account_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0"}'
-参数说明：owner_address是已经激活的账号，需要是hexString格式；account_address是新账号的地址，需要是hexString格式，这个地址需要事先创建好
+参数说明：
+owner_address是已经激活的账号，默认为hexString格式    
+account_address是新账号的地址，默认为hexString格式，这个地址需要事先创建好    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId      
 返回值：创建账号的Transaction
 
 wallet/createwitness
 作用：申请成为超级代表
 demo：curl -X POST  http://127.0.0.1:8090/wallet/createwitness -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "url": "007570646174654e616d6531353330363038383733343633"}'
-参数说明：owner_address是申请成为超级代表的账号地址，需要是hexString格式；url是官网地址，需要是hexString格式
+参数说明：
+owner_address是申请成为超级代表的账号地址，默认为hexString格式    
+url是官网地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId       
 返回值：申请超级代表的Transaction
 
 wallet/transferasset
 作用：转账Token
 demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "0x6173736574497373756531353330383934333132313538", "amount": 100}'
-参数说明：owner_address是token转出地址，需要是hexString格式；to_address是token转入地址，需要是hexString格式；asset_name是token名称，需要是hexString格式；amount是token转账数量
+参数说明：
+owner_address是token转出地址，默认为hexString格式    
+to_address是token转入地址，默认为hexString格式    
+asset_name是token名称，默认为hexString格式    
+amount是token转账数量    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId         
 返回值：token转账的Transaction
 【注意】
 - 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
@@ -244,8 +334,12 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/easytransfer -d '{
 "toAddress": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
 "amount":100
 }'
-参数说明：passPhrase是用户密码，需要是hexString格式；toAddress是转入地址，需要是hexString格式；amount是转账trx数量
-返回值：对应的Transaction和广播是否成功的状态
+参数说明：
+passPhrase是用户密码，默认为hexString格式    
+toAddress是转入地址，默认为hexString格式    
+amount是转账trx数量    
+返回值：    
+对应的Transaction和广播是否成功的状态    
 
 wallet/easytransferasset
 作用：快捷转账，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。调用该api前请先调用createAddress生成地址。
@@ -255,15 +349,19 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/easytransferasset -d '{
 "assetId": "1000001", 
 "amount":100
 }'
-参数说明：passPhrase是用户密码，需要是hexString格式；toAddress是转入地址，需要是hexString格式；assetId是通证的ID；amount是转账通证数量,单位是通证的最小单位。
-返回值：对应的Transaction和广播是否成功的状态
+参数说明：
+passPhrase是用户密码，默认为hexString格式    
+toAddress是转入地址，默认为hexString格式    
+assetId是通证的ID    
+amount是转账通证数量,单位是通证的最小单位    
+返回值：
+对应的Transaction和广播是否成功的状态
 
 wallet/createaddress
 作用：通过密码创建地址，该api存在泄漏密码的风险，请确保在安全的环境中调用该api。
 demo：curl -X POST http://127.0.0.1:8090/wallet/createaddress -d '{"value": "3230313271756265696a696e67"}'
-参数说明：value是用户密码，需要是hexString格式
-返回值：一个地址
-
+参数说明：value是用户密码，默认为hexString格式    
+返回值：一个地址    
 
 wallet/participateassetissue
 作用：参与token发行
@@ -274,10 +372,11 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
 "asset_name":"3230313271756265696a696e67"
 }'
 参数说明：
-to_address是Token发行人的地址，需要是hexString格式
-owner_address是参与token人的地址，需要是hexString格式
+to_address是Token发行人的地址，默认为hexString格式    
+owner_address是参与token人的地址，默认为hexString格式    
 amount是参与token的数量
-asset_name是token的名称，需要是hexString格式
+asset_name是token的名称，默认为hexString格式          
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId       
 返回值：参与token发行的transaction
 【注意】
 - 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
@@ -292,11 +391,12 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/freezebalance -d '{
 "receiveraddress":"414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 参数说明：
-owner_address是冻结trx账号的地址，需要是hexString格式
+owner_address是冻结trx账号的地址，默认为hexString格式    
 frozen_balance是冻结trx的数量
 frozen_duration是冻结天数，最少是3天
 resource: 冻结trx获取资源的类型(可以是BANDWIDTH或者ENERGY，BANDWIDTH为带宽，ENERGY为虚拟机消耗资源)
-receiverAddress表示受委托账户的地址
+receiverAddress表示受委托账户的地址，默认为hexString格式           
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId      
 返回值：冻结trx的transaction
 【注意】资源委托功能需要委员会开启
 
@@ -308,9 +408,10 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezebalance -d '{
 "receiveraddress":"414332f387585c2b58bc2c9bb4492bc1f17342cd1"
 }'
 参数说明：
-owner_address是解冻trx账号的地址，需要是hexString格式
+owner_address是解冻trx账号的地址，默认为hexString格式    
 resource可以是BANDWIDTH或者ENERGY
-receiverAddress表示受委托账户的地址
+receiverAddress表示受委托账户的地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId     
 返回值：解冻trx的transaction
 【注意】资源委托功能需要委员会开启
 
@@ -320,7 +421,8 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
 }'
 参数说明：
-owner_address是解冻token账号的地址，需要是hexString格式
+owner_address是解冻token账号的地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId      
 返回值：解冻token的transaction
 
 wallet/withdrawbalance
@@ -329,7 +431,8 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/withdrawbalance -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
 }'
 参数说明：
-owner_address是提现账号的地址，需要是hexString格式
+owner_address是提现账号的地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId       
 返回值：提现Trx的transaction
 
 wallet/updateasset
@@ -342,13 +445,14 @@ demo：curl -X POST http://127.0.0.1:8090/wallet/updateasset -d '{
 "new_public_limit" : 100
 }'
 参数说明：
-owner_address是token发行人的地址，需要是hexString格式
-description是token的描述，需要是hexString格式
-url是token发行人的官网地址，需要是hexString格式
+owner_address是token发行人的地址，默认为hexString格式    
+description是token的描述，默认为hexString格式    
+url是token发行人的官网地址，默认为hexString格式    
 new_limit是token每个持有人能够使用的免费带宽
 new_public_limit是该token全部的免费带宽
-返回值：修改Token信息的transaction
-
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
+返回值：    
+修改Token信息的transaction     
 
 wallet/listnodes
 作用：查询api所在机器连接的节点。
@@ -359,32 +463,32 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/listnodes
 wallet/getassetissuebyaccount
 作用：查询账户发行的token。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyaccount -d '{"address": "41F9395ED64A6E1D4ED37CD17C75A1D247223CAF2D"}'
-参数说明：发行者账户地址，格式为hexString。
+参数说明：发行者账户地址，默认为hexString格式    
 返回值：用户发行的token（一个用户只能发行一个token）。
 
 wallet/getaccountnet
 作用：查询带宽信息。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountnet -d '{"address": "4112E621D5577311998708F4D7B9F71F86DAE138B5"}'
-参数说明：账户地址，格式为hexString。
+参数说明：账户地址，默认为hexString格式    
 返回值：带宽信息。
 
 wallet/getassetissuebyname
 作用：根据名称查询token。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
-参数说明：通证名称，格式为hexString。
+参数说明：通证名称，默认为hexString格式    
 返回值：token。
 注意：Odyssey-v3.2开始，推荐使用getassetissuebyid或者getassetissuelistbyname替换此接口，因为从3.2开始将允许通证名称相同。如果存在相同的通证名称，此接口将会报错。
 
 wallet/getassetissuelistbyname(Odyssey-v3.2开始支持)
 作用：根据名称查询token list。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelistbyname -d '{"value": "44756354616E"}'
-参数说明：通证名称，格式为hexString。
+参数说明：通证名称，默认为hexString格式    
 返回值：token列表。
 
 wallet/getassetissuebyid(Odyssey-v3.2开始支持)
 作用：根据id查询token。
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyid -d '{"value": "1000001"}'
-参数说明：通证id，格式为String。
+参数说明：通证id  
 返回值：token。
 
 wallet/getnowblock
@@ -428,7 +532,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactionbyid -d '{"value"
 wallet/gettransactioninfobyid(Odyssey-v3.2开始支持)
 作用：根据id查询交易的fee，所在的block
 demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
-参数说明：value是交易id，需要是hexString
+参数说明：value是交易id
 返回值：Transaction的交易fee，所在block的高度，创建时间
 
 /wallet/gettransactioncountbyblocknum(Odyssey-v3.2开始支持)
@@ -440,7 +544,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/gettransactioncountbyblocknum -
 wallet/getaccount
 作用：查询一个账号的信息
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
-参数说明：address 需要转为hexString
+参数说明：address 默认为hexString格式    
 返回值：Account对象
 
 wallet/listwitnesses
@@ -489,8 +593,8 @@ wallet/easytransferbyprivate
 作用：快捷转账
 demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferbyprivate -d '{"privateKey": "D95611A9AF2A2A45359106222ED1AFED48853D9A44DEFF8DC7913F5CBA727366", "toAddress":"4112E621D5577311998708F4D7B9F71F86DAE138B5","amount":10000}'
 参数说明：
-   privateKey：私钥，hexString格式
-   toAddress：转入账户地址，hexString格式。
+   privateKey：私钥，默认为hexString格式    
+   toAddress：转入账户地址，默认为hexString格式    
    amount：转账的drop数量。
 返回值：交易，含执行结果。
 警告：该api有泄漏private key的风险，请确保在安全的环境中调用该api。
@@ -501,8 +605,8 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/easytransferassetbyprivate -d '
 "assetId": "1000001",
 "amount":10000}'
 参数说明：
-   privateKey：私钥，hexString格式
-   toAddress：转入账户地址，hexString格式。
+   privateKey：私钥，默认为hexString格式    
+   toAddress：转入账户地址，默认为hexString格式    
    assetId：通证ID。
    amount：转账的通证数量，单位是通证的最小单位。
 返回值：交易，含执行结果。
@@ -531,28 +635,30 @@ parameter：构造函数的参数列表，需要按照ABI encoder编码后转话
 consume_user_resource_percent：指定的使用该合约用户的资源占比，是[0, 100]之间的整数。如果是0，则表示用户不会消耗资源。如果开发者资源消耗完了，才会完全使用用户的资源。
 fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
-owner_address：发起deploycontract的账户地址
+owner_address：发起deploycontract的账户地址，默认为hexString格式    
 name：合约名
 origin_energy_limit: 创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy，是大于0的整数
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 wallet/triggersmartcontract
 作用：调用合约
 demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 参数说明：
-contract_address，hexString格式
+contract_address，默认为hexString格式    
 function_selector，函数签名，不能有空格
 parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
 fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
-owner_address：发起triggercontract的账户地址
+owner_address：发起triggercontract的账户地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 wallet/getcontract
 作用：获取合约
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
 参数说明：
-value：合约地址，hexString格式
+value：合约地址，默认为hexString格式    
 返回值：SmartContract，智能合约的内容 
 
 wallet/proposalcreate
@@ -561,6 +667,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_addre
 参数说明：
 owner_address：创建人地址
 parameters：提案参数
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：创建提案的交易
 
 wallet/getproposalbyid
@@ -580,24 +687,26 @@ wallet/proposalapprove
 作用：提案批准
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1, "is_add_approval":true}
 参数说明：
-owner_address：批准人地址
+owner_address：批准人地址，默认为hexString格式    
 proposal_id：提案id
 is_add_approval：是否批准
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：批准提案的交易
 
 wallet/proposaldelete
 作用：删除提案
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1}
 参数说明：
-owner_address：删除人的地址，只有提案所有人允许删除提案
+owner_address：删除人的地址，只有提案所有人允许删除提案，默认为hexString格式    
 proposal_id：提案id
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：删除提案的交易
 
 wallet/getaccountresource
 作用：查询账户的资源信息
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address" : "419844f7600e018fd0d710e2145351d607b3316ce9"}
 参数说明：
-address：查询账户的地址
+address：查询账户的地址，默认为hexString格式    
 返回值：账户的资源信息
 
 wallet/exchangecreate
@@ -605,48 +714,52 @@ wallet/exchangecreate
 demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
 "first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}
 参数说明：
-first_token_id  ：第1种token的id
+first_token_id  ：第1种token的id，默认为hexString格式    
 first_token_balance：第1种token的balance
-second_token_id ： 第2种token的id
+second_token_id ： 第2种token的id，默认为hexString格式    
 second_token_balance：第2种token的balance
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：创建交易对的transaction。
 
 wallet/exchangeinject
 作用：给交易对注资，注资后可以防止交易对价格波动太大
 demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
 参数说明：
-owner_address：交易对创建者的地址，hexString格式
+owner_address：交易对创建者的地址，默认为hexString格式    
 exchange_id：交易对id
-token_id： token的id，一般情况是token的name，需要是hexString格式
+token_id： token的id，一般情况是token的name，默认为hexString格式    
 quant：注资token的数量
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：注资的transaction。
 
 wallet/exchangewithdraw
 作用：对交易对撤资，撤资后容易引起交易对价格波动太大。
 demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
 参数说明：
-owner_address：是交易对创建者的地址，hexString格式
+owner_address：是交易对创建者的地址，默认为hexString格式    
 exchange_id：交易对id
 token_id： token的id，一般情况是token的name，需要是hexString格式
 quant：撤资token的数量
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：撤资的transaction
 
 wallet/exchangetransaction
 作用：参与交易对交易。
 demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}
 参数说明：
-owner_address：是交易对创建者的地址，hexString格式
+owner_address：是交易对创建者的地址，默认为hexString格式    
 exchange_id：交易对id
-token_id： 卖出的token的id，一般情况是token的name，需要是hexString格式
+token_id： 卖出的token的id，一般情况是token的name，默认为hexString格式    
 quant：卖出token的数量
 expected：期望买入token的数量
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：token交易的transaction
 
 wallet/getexchangebyid
 作用：根据id查询交易对
 demo：curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
 参数说明：
-id：交易对id
+id：交易对id 
 返回值：交易对
 
 wallet/listexchanges
@@ -661,28 +774,24 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters
 参数说明：
 返回值：区块链委员会可以设置的所有参数
 
-wallet/getnodeinfo(Odyssey-v3.2开始支持)
-作用：获取当前node的信息
-demo: curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo 
-参数说明：无
-返回值：当前节点的信息NodeInfo
-
 wallet/updatesetting
 作用：更新合约的consume_user_resource_percent
 demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
 参数说明：
-owner_address：是交易对创建者的地址，hexString格式
-contract_address：要修改的合约的地址
+owner_address：是交易对创建者的地址，默认为hexString格式    
+contract_address：要修改的合约的地址，默认为hexString格式    
 consume_user_resource_percent：指定的使用该合约用户的资源占比
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 wallet/updateenergylimit
 作用：更新合约的origin_energy_limit
 demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
 参数说明：
-owner_address：是交易对创建者的地址，hexString格式
-contract_address：要修改的合约的地址
+owner_address：是交易对创建者的地址，默认为hexString格式    
+contract_address：要修改的合约的地址，默认为hexString格式    
 origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 wallet/getdelegatedresource(Odyssey-v3.2开始支持)
@@ -693,8 +802,8 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d '
 "toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
 }'
 参数说明：
-fromAddress：是要查询的账户地址，hexString格式
-toAddress：代理对象的账户地址，hexString格式
+fromAddress：是要查询的账户地址，默认为hexString格式    
+toAddress：代理对象的账户地址，默认为hexString格式    
 返回值：账户的资源代理的列表，列表的元素为DelegatedResource
 
 wallet/getdelegatedresourceaccountindex(Odyssey-v3.2开始支持)
@@ -704,12 +813,114 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountinde
 "value": "419844f7600e018fd0d710e2145351d607b3316ce9", 
 }'
 参数说明：
-value：是要查询的账户地址，hexString格式
+value：是要查询的账户地址，默认为hexString格式    
 返回值：账户的资源代理概况，结构为DelegatedResourceAccountIndex
 
 wallet/getnodeinfo(Odyssey-v3.2.2开始支持)
 作用：查看节点的信息
 demo: curl  http://127.0.0.1:8090/wallet/getnodeinfo
 返回值：节点当前状态的相关信息(省略)
+
+wallet/setaccountid
+作用：设置一个账户的accountID
+demo: curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d '{	
+"owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0","account_id":"6161616162626262"}'
+参数说明：
+owner_address：是交易对创建者的地址，默认为hexString格式        
+account_id 需要转为hexString   
+返回值:设置AccountID的transaction   
+
+wallet/getaccountbyid
+作用：通过accountId查询一个账号的信息
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d 
+'{"account_id":"6161616162626262"}'
+参数说明：account_id 默认为hexString格式    
+返回值：Account对象
+
+wallet/getdeferredtransactionbyid
+作用：通过ID查询延迟交易
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
+参数说明：交易ID。
+返回值：交易信息。
+
+wallet/canceldeferredtransactionbyid
+作用：通过ID查询延迟交易
+demo: curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d '{
+"transactionId":"34e6b6497b71100756790a7f20cd729376768dd2bebb6a4a9c5e87b920d5de10",
+"ownerAddress":"41a7d8a35b260395c14aa456297662092ba3b76fc0"}'
+参数说明：
+owner_address：取消交易账户的地址，同时也是发起交易的账户地址，默认为hexString格式      
+transactionId:交易ID  
+返回值：交易信息。
+
+wallet/getdeferredtransactioninfobyid
+作用：根据id查询延迟交易的fee，所在的block
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
+参数说明：value是交易id
+返回值：Transaction的交易fee，所在block的高度，创建时间
+
+wallet/triggerconstantcontract
+作用：调用常量合约，产生的交易不上链
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+参数说明：
+contract_address，默认为hexString格式    
+function_selector，函数签名，不能有空格
+parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
+fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
+call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
+owner_address：发起triggercontract的账户地址，默认为hexString格式    
+可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
+返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
+wallet/clearabi
+作用：设置一个账户的accountID
+demo: curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d '{	
+"owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
+"contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
+参数说明：
+owner_address：创建合约的账户地址，默认为hexString格式    
+contract_address：合约地址,默认为hexString   
+返回值:设置AccountID的transaction
+
+wallet/addtransactionsign
+作用：设置一个账户的accountID
+demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{	
+"owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
+"contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
+参数说明：
+owner_address：创建合约的账户地址，默认为hexString格式    
+contract_address：合约地址,默认为hexString   
+返回值:设置AccountID的transaction
+
+wallet/getsignweight
+作用：查询多重签名的交易的相关信息
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"visible":true,
+"signature
+":["36c9d227b9dd6b6f377d018bb2df784be884f28c743dc97edfdaa8bd64b2ffb058bca24a4eb8b4543a052a4f353fee8cb9e606ff739c74d22f9451c7a35c8f5200"],"txID":"4d928f7adfbad5c82f5b8518a6f7b7c5e459d06d1cb5306c61fad8a793587d2d","raw_data":{"contract":[{"parameter":{"value":{"amount":1000000,"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract","Permission_id":2}],"ref_block_bytes":"0380","ref_block_hash":"6cdc8193f096be0f","expiration":1556249055000,"timestamp":1556248995694},"raw_data_hex":"0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"}'    
+参数说明：
+参数整体是一个完整的交易
+返回值:已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，permission的详细信息，已签名的权重及交易信息。
+
+wallet/getapprovedlist
+作用：查询多重签名的交易的相关信息
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{"visible":true,
+"signature
+":["36c9d227b9dd6b6f377d018bb2df784be884f28c743dc97edfdaa8bd64b2ffb058bca24a4eb8b4543a052a4f353fee8cb9e606ff739c74d22f9451c7a35c8f5200"],"txID":"4d928f7adfbad5c82f5b8518a6f7b7c5e459d06d1cb5306c61fad8a793587d2d","raw_data":{"contract":[{"parameter":{"value":{"amount":1000000,"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract","Permission_id":2}],"ref_block_bytes":"0380","ref_block_hash":"6cdc8193f096be0f","expiration":1556249055000,"timestamp":1556248995694},"raw_data_hex":"0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"}'    
+参数整体是一个完整的交易
+返回值:已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，交易信息。
+
+wallet/accountpermissionupdate
+作用：为账户创建多重签名
+demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d 
+'{"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","owner":{"type":0,
+"permission_name":"owner","threshold":1,"keys":[{"address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+"weight":1}]},"witness":{"type":1,"permission_name":"witness","threshold":1,
+"keys":[{"address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","weight":1}]},"actives":[{"type":2,"permission_name":"active12323","threshold":2,"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR","weight":1},{"address":"TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP","weight":1}]}],"visible":true}'    
+参数说明：
+owner_address：创建合约的账户地址，默认为hexString格式    
+owner：账户owner权限的分配信息    
+witness：出块前线的分配信息，如果不是witness，不需要设置   
+actives：其他功能权限的分配信息      
+返回值:账户创建多重签名的transaction       
 
 ```
