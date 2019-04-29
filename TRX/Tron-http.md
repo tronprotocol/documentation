@@ -2,12 +2,12 @@
 # hexString and base58check transcode demo
 java: 
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92
-
 php:
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php 
 
 **Since v3.6, parameter 'visible' is added, when 'visible' is set true, no need to transcode the relevant address and string. This parameter is valid for all api, including solidityNode api and FullNode api.**   
 When 'visible' is set true, the format of the input address must be base58, input string must text string, so does the format of the output. If 'visible' is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.   
+
 Way to set the 'visible' parameter:
 1. For the api need no parameter: By adding 'visible' parameter in the url, like 127.0.0.1:8090/wallet/listexchanges?visible=true      
 2. For POST method api: By adding 'visible' parameter to the most out layer of the json, like curl -X POST http://127.0.0.1:8090/wallet/createtransaction 
@@ -24,18 +24,18 @@ solidityNode api's default http port is 8091, when solidityNode is started, http
 Description: Query an account information
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 Parameter address: Default hexString
-Return: Account Object
+Return: Account object
 
 /walletsolidity/listwitnesses
 Description: Qyery the list of the witnesses
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/listwitnesses
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of all the witnesses
 
 /walletsolidity/getassetissuelist
 Description: Query the list of all the tokens
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuelist 
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of all the tokens
 
 /walletsolidity/getpaginatedassetissuelist
@@ -49,7 +49,7 @@ Return: The list of tokens by pagination
 Description: Query a token by token name
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getassetissuebyname -d '{"value": "44756354616E"}'
 Parameter value: Token name, default hexString
-Return: Token Object
+Return: Token object
 Note: Since Odyssey-v3.2, getassetissuebyid or getassetissuelistbyname is recommended, as since v3.2, token name can be repeatable. If the token name you query is not unique, this api will throw out an error
 
 /walletsolidity/getassetissuelistbyname(Since Odyssey-v3.2)
@@ -67,7 +67,7 @@ Return: Token object
 /walletsolidity/getnowblock
 Description: Query the latest block information   
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getnowblock
-Parameter: No Parameter
+Parameter: No parameter
 Return: the latest block from solidityNode
 
 /walletsolidity/getblockbynum
@@ -123,7 +123,7 @@ Return: Exchange pair object
 /walletsolidity/listexchanges(Since Odyssey-v3.2)
 Description: Query the list of all the exchange pairs
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of all the exchange pairs
 
 /walletsolidity/getaccountbyid
@@ -179,7 +179,7 @@ Note: This api is no longer supported in the latest version, you can use the cen
 /wallet/getnodeinfo(Since Odyssey-v3.2)
 Description: Query the current node infromation
 demo: curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo 
-Parameter: No Parameter
+Parameter: No parameter
 Return: The node information
 
 /walletsolidity/getdeferredtransactionbyid
@@ -439,7 +439,7 @@ Return: Transaction object
 wallet/listnodes
 Description: Query the list of nodes connected to the ip of the api
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listnodes
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of nodes
 
 wallet/getassetissuebyaccount
@@ -458,7 +458,7 @@ wallet/getassetissuebyname
 Description: Query a token by token name
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuebyname -d '{"value": "44756354616E"}'
 Parameter value: Token name, default hexString
-Return: Token Object
+Return: Token object
 Note: Since Odyssey-v3.2, getassetissuebyid or getassetissuelistbyname is recommended, as since v3.2, token name can be repeatable. If the token name you query is not unique, this api will throw out an error
 
 wallet/getassetissuelistbyname(Since Odyssey-v3.2)
@@ -476,7 +476,7 @@ Return: Token object
 wallet/getnowblock
 Description: Query the latest block information   
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getnowblock
-Parameter: No Parameter
+Parameter: No parameter
 Return: the latest block from solidityNode
 
 wallet/getblockbynum
@@ -527,18 +527,18 @@ wallet/getaccount
 Description: Query an account information
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccount -d '{"address": "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}'
 Parameter address: Default hexString
-Return: Account Object
+Return: Account object
 
 wallet/listwitnesses
 Description: Qyery the list of the witnesses
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listwitnesses
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of all the witnesses
 
 wallet/getassetissuelist
 Description: Query the list of all the tokens
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getassetissuelist 
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of all the tokens
 
 wallet/getpaginatedassetissuelist
@@ -672,7 +672,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_addr
 Parameter owner_address: The address that makes the approve action, default hexString   
 Parameter proposal_id: Proposal id
 Parameter is_add_approval: Whether to approve
-Parameter Permission_id: Optional, for multi-signature use    
+Parameter permission_id: Optional, for multi-signature use    
 Return: Transaction object
 
 wallet/proposaldelete
@@ -680,7 +680,7 @@ Description: To delete a proposal
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1}
 Parameter owner_address: Owner address of the proposal, default hexString   
 Parameter proposal_id: Proposal id
-Parameter Permission_id: Optional, for multi-signature use       
+Parameter permission_id: Optional, for multi-signature use       
 Return: Transaction object
 
 wallet/getaccountresource
@@ -744,13 +744,13 @@ return: Exchange pair information
 /wallet/listexchanges
 Description: Query the list of all the exchange pairs
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of all the exchange pairs
 
 wallet/getchainparameters
 Description: Query the parameters of the blockchain used for witnessses to create a proposal
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters 
-Parameter: No Parameter
+Parameter: No parameter
 Return: The list of parameters of the blockchain
 
 wallet/updatesetting
