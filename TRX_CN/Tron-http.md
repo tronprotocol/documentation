@@ -187,7 +187,7 @@ demo: curl -X GET http://127.0.0.1:8091/wallet/getnodeinfo
 返回值：当前节点的信息NodeInfo
 
 /walletsolidity/getdeferredtransactionbyid
-作用：根据id查询延迟交易
+作用：通过交易id查询延迟交易
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactionbyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
 参数说明：value是交易id
 返回值：指定ID的Transaction
@@ -650,8 +650,7 @@ function_selector，函数签名，不能有空格
 parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
 parameter_string：调用参数[1,
 2]的虚拟机格式，字符串格式，如果设置该参数，则忽略parameter参数设置的值，如trigger
-函数的参数为空，设置为""，不为空则为设置为具体的值。形如"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
-"500"。     
+函数的参数为空，设置为""，不为空则为设置为具体的值。形如"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW","500"。     
 fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址，默认为hexString格式    
@@ -831,7 +830,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d '{
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0","account_id":"6161616162626262"}'
 参数说明：
 owner_address：是交易对创建者的地址，默认为hexString格式        
-account_id 需要转为hexString   
+account_id accountid,默认为hexString格式       
 返回值:设置AccountID的transaction   
 
 wallet/getaccountbyid
@@ -842,20 +841,20 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d
 返回值：Account对象
 
 wallet/getdeferredtransactionbyid
-作用：通过ID查询延迟交易
+作用：通过交易id查询延迟交易
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
 参数说明：交易ID。
 返回值：交易信息。
 
 wallet/canceldeferredtransactionbyid
-作用：通过ID查询延迟交易
+作用：创建取消延迟交易对象
 demo: curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d '{
 "transactionId":"34e6b6497b71100756790a7f20cd729376768dd2bebb6a4a9c5e87b920d5de10",
 "ownerAddress":"41a7d8a35b260395c14aa456297662092ba3b76fc0"}'
 参数说明：
 owner_address：取消交易账户的地址，同时也是发起交易的账户地址，默认为hexString格式      
 transactionId:交易ID  
-返回值：交易信息。
+返回值：交易对象。
 
 wallet/getdeferredtransactioninfobyid
 作用：根据id查询延迟交易的fee，所在的block
@@ -872,8 +871,7 @@ function_selector，函数签名，不能有空格
 parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
 parameter_string：调用参数[1,
 2]的虚拟机格式，字符串格式，如果设置该参数，则忽略parameter参数设置的值，如trigger
-函数的参数为空，设置为""，不为空则为设置为具体的值。形如"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
-"500"。   
+函数的参数为空，设置为""，不为空则为设置为具体的值。形如"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW","500"。   
 fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址，默认为hexString格式    
@@ -881,49 +879,146 @@ owner_address：发起triggercontract的账户地址，默认为hexString格式
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
 wallet/clearabi
-作用：设置一个账户的accountID
+作用：创建清除智能合约ABI的交易对象
 demo: curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d '{	
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
 "contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
 参数说明：
 owner_address：创建合约的账户地址，默认为hexString格式    
 contract_address：合约地址,默认为hexString   
-返回值:设置AccountID的transaction
+返回值:交易对象
 
 wallet/addtransactionsign
-作用：设置一个账户的accountID
-demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{	
-"owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
-"contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
+作用：给交易签名，支持多重签名
+demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{
+	"transaction": {
+		"visible": true,
+		"txID": "752cece5a68e40e30eaeeb4c5844b3f4b004d23485ccef42e0609a9a90eeb675",
+		"raw_data": {
+			"contract": [{
+				"parameter": {
+					"value": {
+						"data": "a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f4",
+						"owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+						"contract_address": "TVf6sdWWu8zvmtcWfZerMDefoptiVhbhXC"
+					},
+					"type_url": "type.googleapis.com/protocol.TriggerSmartContract"
+				},
+				"type": "TriggerSmartContract"
+			}],
+			"ref_block_bytes": "0883",
+			"ref_block_hash": "84c32fcee77f6be7",
+			"expiration": 1556449785000,
+			"fee_limit": 10000,
+			"timestamp": 1556449725625
+		},
+		"raw_data_hex": "0a020883220884c32fcee77f6be740a8e98b9da62d5aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a1541a7d8a35b260395c14aa456297662092ba3b76fc0121541d7f5e9b3b997006444c1646ecfae6549b5737e622244a9059cbb0000000000000000000000415a523b449890854c8fc460ab602df9f31fe4293f00000000000000000000000000000000000000000000000000000000000001f470b999889da62d9001904e"
+	},
+	"privateKey": "950139607044677436d29ff1ea2900c9402f783a91547cdc47cf706f1129c76a"
+	}'
 参数说明：
-owner_address：创建合约的账户地址，默认为hexString格式    
-contract_address：合约地址,默认为hexString   
-返回值:设置AccountID的transaction
+transaction：交易对象  
+privateKey： owner_address对应的私钥，hexString格式，存在泄漏私钥的风险。    
+返回值:签名后的交易对象
 
 wallet/getsignweight
 作用：查询多重签名的交易的相关信息
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"visible":true,
-"signature
-":["36c9d227b9dd6b6f377d018bb2df784be884f28c743dc97edfdaa8bd64b2ffb058bca24a4eb8b4543a052a4f353fee8cb9e606ff739c74d22f9451c7a35c8f5200"],"txID":"4d928f7adfbad5c82f5b8518a6f7b7c5e459d06d1cb5306c61fad8a793587d2d","raw_data":{"contract":[{"parameter":{"value":{"amount":1000000,"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract","Permission_id":2}],"ref_block_bytes":"0380","ref_block_hash":"6cdc8193f096be0f","expiration":1556249055000,"timestamp":1556248995694},"raw_data_hex":"0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"}'    
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{
+	"signature": [
+		"e0bd4a60f1b3c89d4da3894d400e7e32385f6dd690aee17fdac4e016cdb294c5128b66f62f3947a7182c015547496eba95510c113bda2a361d811b829343c36501",
+		"596ead6439d0f381e67f30b1ed6b3687f2bd53ce5140cdb126cfe4183235804741eeaf79b4e91f251fd7042380a9485d4d29d67f112d5387bc7457b355cd3c4200"
+	],
+	"txID": "0ae84a8439f5aa8fd2c458879a4031a7452aebed8e6e99ffbccd26842d4323c4",
+	"raw_data": {
+		"contract": [{
+			"parameter": {
+				"value": {
+					"amount": 1000000,
+					"owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+					"to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
+				},
+				"type_url": "type.googleapis.com/protocol.TransferContract"
+			},
+			"type": "TransferContract"
+		}],
+		"ref_block_bytes": "163d",
+		"ref_block_hash": "77ef4ace148b05ba",
+		"expiration": 1555664823000,
+		"timestamp": 1555664763418
+	},
+	"raw_data_hex": "0a02163d220877ef4ace148b05ba40d8c5e5a6a32d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d2802709af4e1a6a32d",
+	"visible": true}'    
 参数说明：
 参数整体是一个完整的交易
 返回值:已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，permission的详细信息，已签名的权重及交易信息。
 
 wallet/getapprovedlist
 作用：查询多重签名的交易的相关信息
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{"visible":true,
-"signature
-":["36c9d227b9dd6b6f377d018bb2df784be884f28c743dc97edfdaa8bd64b2ffb058bca24a4eb8b4543a052a4f353fee8cb9e606ff739c74d22f9451c7a35c8f5200"],"txID":"4d928f7adfbad5c82f5b8518a6f7b7c5e459d06d1cb5306c61fad8a793587d2d","raw_data":{"contract":[{"parameter":{"value":{"amount":1000000,"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract","Permission_id":2}],"ref_block_bytes":"0380","ref_block_hash":"6cdc8193f096be0f","expiration":1556249055000,"timestamp":1556248995694},"raw_data_hex":"0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"}'    
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{
+	"signature": [
+		"e0bd4a60f1b3c89d4da3894d400e7e32385f6dd690aee17fdac4e016cdb294c5128b66f62f3947a7182c015547496eba95510c113bda2a361d811b829343c36501",
+		"596ead6439d0f381e67f30b1ed6b3687f2bd53ce5140cdb126cfe4183235804741eeaf79b4e91f251fd7042380a9485d4d29d67f112d5387bc7457b355cd3c4200"
+	],
+	"txID": "0ae84a8439f5aa8fd2c458879a4031a7452aebed8e6e99ffbccd26842d4323c4",
+	"raw_data": {
+		"contract": [{
+			"parameter": {
+				"value": {
+					"amount": 1000000,
+					"owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+					"to_address": "TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"
+				},
+				"type_url": "type.googleapis.com/protocol.TransferContract"
+			},
+			"type": "TransferContract"
+		}],
+		"ref_block_bytes": "163d",
+		"ref_block_hash": "77ef4ace148b05ba",
+		"expiration": 1555664823000,
+		"timestamp": 1555664763418
+	},
+	"raw_data_hex": "0a02163d220877ef4ace148b05ba40d8c5e5a6a32d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d2802709af4e1a6a32d",
+	"visible": true}'    
 参数整体是一个完整的交易
 返回值:已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，交易信息。
 
 wallet/accountpermissionupdate
 作用：为账户创建多重签名
 demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d 
-'{"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","owner":{"type":0,
-"permission_name":"owner","threshold":1,"keys":[{"address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
-"weight":1}]},"witness":{"type":1,"permission_name":"witness","threshold":1,
-"keys":[{"address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","weight":1}]},"actives":[{"type":2,"permission_name":"active12323","threshold":2,"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR","weight":1},{"address":"TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP","weight":1}]}],"visible":true}'    
+'{
+	"owner_address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+	"owner": {
+		"type": 0,
+		"permission_name": "owner",
+		"threshold": 1,
+		"keys": [{
+			"address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+			"weight": 1
+		}]
+	},
+	"witness": {
+		"type": 1,
+		"permission_name": "witness",
+		"threshold": 1,
+		"keys": [{
+			"address": "TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
+			"weight": 1
+		}]
+	},
+	"actives": [{
+		"type": 2,
+		"permission_name": "active12323",
+		"threshold": 2,
+		"operations": "7fff1fc0033e0000000000000000000000000000000000000000000000000000",
+		"keys": [{
+			"address": "TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR",
+			"weight": 1
+		}, {
+			"address": "TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP",
+			"weight": 1
+		}]
+	}],
+	"visible": true}'    
 参数说明：
 owner_address：创建合约的账户地址，默认为hexString格式    
 owner：账户owner权限的分配信息    
