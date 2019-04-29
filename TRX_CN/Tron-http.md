@@ -648,6 +648,10 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"contract_
 contract_address，默认为hexString格式    
 function_selector，函数签名，不能有空格
 parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
+parameter_string：调用参数[1,
+2]的虚拟机格式，字符串格式，如果设置该参数，则忽略parameter参数设置的值，如trigger
+函数的参数为空，设置为""，不为空则为设置为具体的值。形如"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
+"500"。     
 fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址，默认为hexString格式    
@@ -866,6 +870,10 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"c
 contract_address，默认为hexString格式    
 function_selector，函数签名，不能有空格
 parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
+parameter_string：调用参数[1,
+2]的虚拟机格式，字符串格式，如果设置该参数，则忽略parameter参数设置的值，如trigger
+函数的参数为空，设置为""，不为空则为设置为具体的值。形如"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW",
+"500"。   
 fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
 call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起triggercontract的账户地址，默认为hexString格式    
