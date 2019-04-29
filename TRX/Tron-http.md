@@ -1,5 +1,5 @@
 #  TRON Built-in Http Introduction
-# hexString and base58check transcode demo
+## hexString and base58check transcode demo
 java: 
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92 
 php:
@@ -17,7 +17,7 @@ Way to set the 'visible' parameter:
 3. For GET method api: By adding 'visible' parameter in the url, as way 1  
 
     
-# SolidityNode Api Introduction
+## SolidityNode Api Introduction
 
 solidityNode api's default http port is 8091, when solidityNode is started, http service will be started too.
 ```
@@ -196,7 +196,7 @@ Parameter value: transaction id
 Return: Deferred transaction fee & block height
 ```
 
-# FullNode Api Introduction
+## FullNode Api Introduction
 FullNode api's default http port is 8090, when FullNode is started, http service will be started too.
 
 ```
