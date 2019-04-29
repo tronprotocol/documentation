@@ -126,27 +126,27 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 Parameter: No Parameter
 Return: The list of all the exchange pairs
 
-walletsolidity/getaccountbyid
+/walletsolidity/getaccountbyid
 Description: Query an account information by account id
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getaccountbyid -d '{"account_id":"6161616162626262"}'
 Parameter account_id: Account id, default hexString
 Return: Account object
 
-walletsolidity/getblockbyid
+/walletsolidity/getblockbyid
 Description: Query a block information by block id 
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbyid-d '{"value": 
 "0000000000038809c59ee8409a3b6c051e369ef1096603c7ee723c16e2376c73"}'
 Parameter value: Block id 
 Return: Block object
 
-walletsolidity/getblockbylimitnext
+/walletsolidity/getblockbylimitnext
 Description: Query a list of blocks by range
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylimitnext -d '{"startNum": 1, "endNum": 2}'
 Parameter startNum: The start block height, itself included
 Parameter endNum: The end block height, itself not included
 Return: The list of the blocks
 
-walletsolidity/getblockbylatestnum
+/walletsolidity/getblockbylatestnum
 Description: Query the several latest blocks
 demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getblockbylatestnum -d '{"num": 5}'
 Parameter num: The number of the blocks expected to return
@@ -624,287 +624,271 @@ Parameter name: Contract name
 Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation 
 Parameter permission_id: Optional, for multi-signature use    
 Return: Transaction object
+Note: The unit of TRX in the parameters is SUN
 
 wallet/triggersmartcontract
-作用：调用合约
+Description: Trigger smart contract
 demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
-参数说明：
-contract_address，默认为hexString格式    
-function_selector，函数签名，不能有空格
-parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
-fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
-call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
-owner_address：发起triggercontract的账户地址，默认为hexString格式    
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+Parameter contract_address: Contract address, default hexString    
+Parameter function_selector: Function call, must not leave a blank space
+Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
+Parameter fee_limit: The maximum TRX burns for resource consumption
+Parameter call_value: The TRX transfer to the contract for each call
+Parameter owner_address: Owner address that triggers the contract, default hexString    
+Parameter permission_id: Optional, for multi-signature use     
+Return: Transaction object
+Note: The unit of TRX in the parameters is SUN
 
 wallet/getcontract
-作用：获取合约
+Description: Query a contract
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getcontract -d '{"value":"4189139CB1387AF85E3D24E212A008AC974967E561"}'
-参数说明：
-value：合约地址，默认为hexString格式    
-返回值：SmartContract，智能合约的内容 
+Parameter value: Contract address, default hexString   
+Return: Smart contract object
 
 wallet/proposalcreate
-作用：创建提案
+Description: Create a proposal
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalcreate -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9","parameters":[{"key": 0,"value": 100000},{"key": 1,"value": 2}] }
-参数说明：
-owner_address：创建人地址
-parameters：提案参数
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：创建提案的交易
+Parameter owner_address: Creator address
+Parameter parameters: Proposal parameters
+Parameter permission_id: Optional, for multi-signature use      
+Return: Transaction object
 
 wallet/getproposalbyid
-作用：根据id查询提案
+Description: Query a proposal by proposal id
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getproposalbyid -d {"id":1}
-参数说明：
-id：提案id
-返回值：提案详细信息
+Parameter id: Proposal id
+Return: The proposal information
 
 wallet/listproposals
-作用：查询所有提案
+Description: Query all the proposals
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listproposals
-参数说明：无
-返回值：提案列表信息
+Parameter: No parameter
+Return: The list of all the proposals
 
 wallet/proposalapprove
-作用：提案批准
+Description: To approve a proposal
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposalapprove -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1, "is_add_approval":true}
-参数说明：
-owner_address：批准人地址，默认为hexString格式    
-proposal_id：提案id
-is_add_approval：是否批准
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：批准提案的交易
+Parameter owner_address: The address that makes the approve action, default hexString   
+Parameter proposal_id: Proposal id
+Parameter is_add_approval: Whether to approve
+Parameter Permission_id: Optional, for multi-signature use    
+Return: Transaction object
 
 wallet/proposaldelete
-作用：删除提案
+Description: To delete a proposal
 demo: curl -X POST  http://127.0.0.1:8090/wallet/proposaldelete -d {"owner_address" : "419844F7600E018FD0D710E2145351D607B3316CE9", "proposal_id":1}
-参数说明：
-owner_address：删除人的地址，只有提案所有人允许删除提案，默认为hexString格式    
-proposal_id：提案id
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：删除提案的交易
+Parameter owner_address: Owner address of the proposal, default hexString   
+Parameter proposal_id: Proposal id
+Parameter Permission_id: Optional, for multi-signature use       
+Return: Transaction object
 
 wallet/getaccountresource
-作用：查询账户的资源信息
+Description: Query the resource information of an account
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountresource -d {"address" : "419844f7600e018fd0d710e2145351d607b3316ce9"}
-参数说明：
-address：查询账户的地址，默认为hexString格式    
-返回值：账户的资源信息
+Parameter address: Address, default hexString  
+Return: The resource information
 
 wallet/exchangecreate
-作用：创建交易对
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
+Description: Create an exchange pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangecreate -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", 、
 "first_token_id":token_a, "first_token_balance":100, "second_token_id":token_b,"second_token_balance":200}
-参数说明：
-first_token_id  ：第1种token的id，默认为hexString格式    
-first_token_balance：第1种token的balance
-second_token_id ： 第2种token的id，默认为hexString格式    
-second_token_balance：第2种token的balance
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：创建交易对的transaction。
+Parameter first_token_id: The first token's id, default hexString    
+Parameter first_token_balance: The first token's balance
+Parameter second_token_id: The second token's id, default hexString    
+Parameter second_token_balance: The second token's balance
+Parameter permission_id: Optional, for multi-signature use      
+Return: Transaction object
+Note: The unit of 'first_token_balance' and 'second_token_balance' is the smallest unit of the token
 
 wallet/exchangeinject
-作用：给交易对注资，注资后可以防止交易对价格波动太大
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
-参数说明：
-owner_address：交易对创建者的地址，默认为hexString格式    
-exchange_id：交易对id
-token_id： token的id，一般情况是token的name，默认为hexString格式    
-quant：注资token的数量
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：注资的transaction。
+Description: Inject funds for exchange pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangeinject -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+Parameter owner_address: Owner address of the exchange pair, default hexString    
+Parameter exchange_id: Exchange pair id
+Parameter token_id: Token id, default hexString  
+Parameter quant: Token inject amount
+Parameter permission_id: Optional, for multi-signature use   
+Return: Transaction object
+Note: The unit of 'quant' is the smallest unit of the token
 
 wallet/exchangewithdraw
-作用：对交易对撤资，撤资后容易引起交易对价格波动太大。
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
-参数说明：
-owner_address：是交易对创建者的地址，默认为hexString格式    
-exchange_id：交易对id
-token_id： token的id，一般情况是token的name，需要是hexString格式
-quant：撤资token的数量
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：撤资的transaction
+Description: Withdraw from exchange pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangewithdraw -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100}
+Parameter owner_address: Owner address of the exchange pair, default hexString    
+Parameter exchange_id: Exchange pair id
+Parameter token_id: Token id, default hexString
+Parameter quant: Token withdraw amount
+Parameter permission_id: Optional, for multi-signature use      
+Return: Transaction object
+Note: The unit of 'quant' is the smallest unit of the token
 
 wallet/exchangetransaction
-作用：参与交易对交易。
-demo：curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}
-参数说明：
-owner_address：是交易对创建者的地址，默认为hexString格式    
-exchange_id：交易对id
-token_id： 卖出的token的id，一般情况是token的name，默认为hexString格式    
-quant：卖出token的数量
-expected：期望买入token的数量
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：token交易的transaction
+Description: Participate the transaction of exchange pair
+demo: curl -X POST  http://127.0.0.1:8090/wallet/exchangetransaction -d {"owner_address":"419844f7600e018fd0d710e2145351d607b3316ce9", "exchange_id":1, "token_id":"74726f6e6e616d65", "quant":100,"expected":10}
+Parameter owner_address: Owner address of the exchange pair, default hexString       
+Parameter exchange_id: Exchange pair id
+Parameter token_id: Token id, default hexString    
+Parameter quant: Sell token amount
+Parameter expected: Expected token amount to get
+Parameter permission_id: Optional, for multi-signature use       
+Return: Transaction object
+Note: The unit of 'quant' and 'expected' is the smallest unit of the token
 
 wallet/getexchangebyid
-作用：根据id查询交易对
-demo：curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
-参数说明：
-id：交易对id 
-返回值：交易对
+Description: Query an exchange pair by exchange pair id
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
+Parameter id: Exchange pair id
+return: Exchange pair information
 
-wallet/listexchanges
-作用：查询所有交易对
-demo：curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
-参数说明：
-返回值：所有交易对
+/wallet/listexchanges
+Description: Query the list of all the exchange pairs
+demo: curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
+Parameter: No Parameter
+Return: The list of all the exchange pairs
 
 wallet/getchainparameters
-作用：查询所有交易对
-demo：curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters 
-参数说明：
-返回值：区块链委员会可以设置的所有参数
+Description: Query the parameters of the blockchain used for witnessses to create a proposal
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getchainparameters 
+Parameter: No Parameter
+Return: The list of parameters of the blockchain
 
 wallet/updatesetting
-作用：更新合约的consume_user_resource_percent
+Description: Update the consume_user_resource_percent parameter of a smart contract
 demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "consume_user_resource_percent": 7}'
-参数说明：
-owner_address：是交易对创建者的地址，默认为hexString格式    
-contract_address：要修改的合约的地址，默认为hexString格式    
-consume_user_resource_percent：指定的使用该合约用户的资源占比
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+Parameter owner_address: Owner address of the smart contract, default hexString   
+Parameter contract_address: Smart contract address, default hexString   
+Parameter consume_user_resource_percent: Consume user's resource percentage
+Parameter permission_id: Optional, for multi-signature use    
+Return: Transaction object
 
 wallet/updateenergylimit
-作用：更新合约的origin_energy_limit
+Description: Update the origin_energy_limit parameter of a smart contract
 demo: curl -X POST  http://127.0.0.1:8090/wallet/updatesetting -d '{"owner_address": "419844f7600e018fd0d710e2145351d607b3316ce9", "contract_address": "41c6600433381c731f22fc2b9f864b14fe518b322f", "origin_energy_limit": 7}'
-参数说明：
-owner_address：是交易对创建者的地址，默认为hexString格式    
-contract_address：要修改的合约的地址，默认为hexString格式    
-origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+Parameter owner_address: Owner address of the smart contract, default hexString    
+Parameter contract_address: Smart contract address, default hexString    
+Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation
+Parameter permission_id: Optional, for multi-signature use    
+Return: Transaction object
 
-wallet/getdelegatedresource(Odyssey-v3.2开始支持)
-作用：查看一个账户代理给另外一个账户的资源情况
+wallet/getdelegatedresource(Since Odyssey-v3.2)
+Description: Query the energy delegation information
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresource -d '
 {
-"fromAddress": "419844f7600e018fd0d710e2145351d607b3316ce9", 
+"fromAddress": "419844f7600e018fd0d710e2145351d607b3316ce9",
 "toAddress": "41c6600433381c731f22fc2b9f864b14fe518b322f"
 }'
-参数说明：
-fromAddress：是要查询的账户地址，默认为hexString格式    
-toAddress：代理对象的账户地址，默认为hexString格式    
-返回值：账户的资源代理的列表，列表的元素为DelegatedResource
+Parameter fromAddress: Energy from address, default hexString
+Parameter toAddress: Energy to address, default hexString
+Return: Energy delegation information
 
-wallet/getdelegatedresourceaccountindex(Odyssey-v3.2开始支持)
-作用：查看一个账户给哪些账户代理了资源
+wallet/getdelegatedresourceaccountindex(Since Odyssey-v3.2)
+Description: Query the energy delegation index by an account
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getdelegatedresourceaccountindex -d '
 {
 "value": "419844f7600e018fd0d710e2145351d607b3316ce9", 
 }'
-参数说明：
-value：是要查询的账户地址，默认为hexString格式    
-返回值：账户的资源代理概况，结构为DelegatedResourceAccountIndex
+Parameter value: Address, default hexString
+Return: Energy delegation index
 
-wallet/getnodeinfo(Odyssey-v3.2.2开始支持)
-作用：查看节点的信息
-demo: curl  http://127.0.0.1:8090/wallet/getnodeinfo
-返回值：节点当前状态的相关信息(省略)
+wallet/getnodeinfo(Since Odyssey-v3.2)
+Description: Query the current node infromation
+demo: curl -X GET http://127.0.0.1:8090/wallet/getnodeinfo 
+Parameter: No Parameter
+Return: The node information
 
 wallet/setaccountid
-作用：设置一个账户的accountID
+Description: To set an account id for an account
 demo: curl -X POST  http://127.0.0.1:8090/wallet/setaccountid -d '{	
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0","account_id":"6161616162626262"}'
-参数说明：
-owner_address：是交易对创建者的地址，默认为hexString格式        
-account_id 需要转为hexString   
-返回值:设置AccountID的transaction   
+Parameter owner_address: Owner address, default hexString       
+Parameter account_id: Account id, default hexString   
+Return: Transaction object  
 
 wallet/getaccountbyid
-作用：通过accountId查询一个账号的信息
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d 
-'{"account_id":"6161616162626262"}'
-参数说明：account_id 默认为hexString格式    
-返回值：Account对象
+Description: Query an account information by account id
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getaccountbyid -d '{"account_id":"6161616162626262"}'
+Parameter account_id: Account id, default hexString
+Return: Account object
 
 wallet/getdeferredtransactionbyid
-作用：通过ID查询延迟交易
-demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d '{"value": "d5ec749ecc2a615399d8a6c864ea4c74ff9f523c2be0e341ac9be5d47d7c2d62"}'
-参数说明：交易ID。
-返回值：交易信息。
+Description: Query the deferred transaction infromation by transaction id
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactionbyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
+Parameter value: Transaction id
+Return: Deferred transaction object
 
 wallet/canceldeferredtransactionbyid
-作用：通过ID查询延迟交易
+Description: Query a deferred transaction by transaction id
 demo: curl -X POST  http://127.0.0.1:8090/wallet/canceldeferredtransactionbyid -d '{
 "transactionId":"34e6b6497b71100756790a7f20cd729376768dd2bebb6a4a9c5e87b920d5de10",
 "ownerAddress":"41a7d8a35b260395c14aa456297662092ba3b76fc0"}'
-参数说明：
-owner_address：取消交易账户的地址，同时也是发起交易的账户地址，默认为hexString格式      
-transactionId:交易ID  
-返回值：交易信息。
+Parameter owner_address: Owner address of the transaction, default hexString     
+Parameter transactionId: Transaction id  
+Return: Transaction object
 
 wallet/getdeferredtransactioninfobyid
-作用：根据id查询延迟交易的fee，所在的block
+Description: Query the deferred transaction fee, block height by transaction id
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getdeferredtransactioninfobyid -d '{"value" : "309b6fa3d01353e46f57dd8a8f27611f98e392b50d035cef213f2c55225a8bd2"}'
-参数说明：value是交易id
-返回值：Transaction的交易fee，所在block的高度，创建时间
+Parameter value: Transaction id
+Return: Deferred transaction fee & block height
 
 wallet/triggerconstantcontract
-作用：调用常量合约，产生的交易不上链
+Description: Trigger the constant of the smart contract, the transaction is off the blockchain
 demo: curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
-参数说明：
-contract_address，默认为hexString格式    
-function_selector，函数签名，不能有空格
-parameter：调用参数[1,2]的虚拟机格式，使用remix提供的js工具，将合约调用者调用的参数数组[1,2]转化为虚拟机所需要的参数格式
-fee_limit：最大消耗的SUN（1TRX = 1,000,000SUN）
-call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
-owner_address：发起triggercontract的账户地址，默认为hexString格式    
-可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
-返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+Parameter contract_address: Smart contract address, defualt hexString   
+Parameter function_selector:  Function call, must not leave a blank space
+Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
+Parameter fee_limit: The maximum TRX burns for resource consumption
+Parameter call_value: The TRX transfer to the contract for each call
+Parameter owner_address: Owner address that triggers the contract, default hexString    
+Parameter permission_id: Optional, for multi-signature use     
+Return: Transaction object
+Note: The unit of TRX in the parameters is SUN
 
 wallet/clearabi
-作用：设置一个账户的accountID
+Description: To clear the abi of a smart contract
 demo: curl -X POST  http://127.0.0.1:8090/wallet/clearabi -d '{	
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
 "contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
-参数说明：
-owner_address：创建合约的账户地址，默认为hexString格式    
-contract_address：合约地址,默认为hexString   
-返回值:设置AccountID的transaction
+Parameter owner_address: Owner address of the smart contract   
+Parameter contract_address: Smart contract address, default hexString      
+Return: Transaction object
 
 wallet/addtransactionsign
-作用：设置一个账户的accountID
+Description: To sign the transaction of trigger constant contract
 demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{	
 "owner_address":"41a7d8a35b260395c14aa456297662092ba3b76fc0",
 "contract_address":"417bcb781f4743afaacf9f9528f3ea903b3782339f"}'
-参数说明：
-owner_address：创建合约的账户地址，默认为hexString格式    
-contract_address：合约地址,默认为hexString   
-返回值:设置AccountID的transaction
+Parameter owner_address: Owner address of the smart contract     
+Parameter contract_address: Smart contract address, default hexString  
+Return: Transaction object after sign
 
 wallet/getsignweight
-作用：查询多重签名的交易的相关信息
+Description: Query the current signatures total weight of a transaction after sign
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"visible":true,
 "signature
 ":["36c9d227b9dd6b6f377d018bb2df784be884f28c743dc97edfdaa8bd64b2ffb058bca24a4eb8b4543a052a4f353fee8cb9e606ff739c74d22f9451c7a35c8f5200"],"txID":"4d928f7adfbad5c82f5b8518a6f7b7c5e459d06d1cb5306c61fad8a793587d2d","raw_data":{"contract":[{"parameter":{"value":{"amount":1000000,"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract","Permission_id":2}],"ref_block_bytes":"0380","ref_block_hash":"6cdc8193f096be0f","expiration":1556249055000,"timestamp":1556248995694},"raw_data_hex":"0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"}'    
-参数说明：
-参数整体是一个完整的交易
-返回值:已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，permission的详细信息，已签名的权重及交易信息。
+Parameter: Transaction object after sign
+Return: The current signatures total weight
 
 wallet/getapprovedlist
-作用：查询多重签名的交易的相关信息
+Description: Query the signatures list of a transaction after sign
 demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{"visible":true,
 "signature
 ":["36c9d227b9dd6b6f377d018bb2df784be884f28c743dc97edfdaa8bd64b2ffb058bca24a4eb8b4543a052a4f353fee8cb9e606ff739c74d22f9451c7a35c8f5200"],"txID":"4d928f7adfbad5c82f5b8518a6f7b7c5e459d06d1cb5306c61fad8a793587d2d","raw_data":{"contract":[{"parameter":{"value":{"amount":1000000,"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","to_address":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW"},"type_url":"type.googleapis.com/protocol.TransferContract"},"type":"TransferContract","Permission_id":2}],"ref_block_bytes":"0380","ref_block_hash":"6cdc8193f096be0f","expiration":1556249055000,"timestamp":1556248995694},"raw_data_hex":"0a02038022086cdc8193f096be0f40989eb0bda52d5a69080112630a2d747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e73666572436f6e747261637412320a1541a7d8a35b260395c14aa456297662092ba3b76fc01215415a523b449890854c8fc460ab602df9f31fe4293f18c0843d280270eeceacbda52d"}'    
-参数整体是一个完整的交易
-返回值:已签名权重是否达到阈值（即是否满足验签标准），签名地址列表，交易信息。
+Parameter: Transaction object after sign
+Return: The list of the signatures
 
 wallet/accountpermissionupdate
-作用：为账户创建多重签名
+Description: To set multi-signature for an account
 demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d 
 '{"owner_address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","owner":{"type":0,
 "permission_name":"owner","threshold":1,"keys":[{"address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
 "weight":1}]},"witness":{"type":1,"permission_name":"witness","threshold":1,
 "keys":[{"address":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ","weight":1}]},"actives":[{"type":2,"permission_name":"active12323","threshold":2,"operations":"7fff1fc0033e0000000000000000000000000000000000000000000000000000","keys":[{"address":"TNhXo1GbRNCuorvYu5JFWN3m2NYr9QQpVR","weight":1},{"address":"TKwhcDup8L2PH5r6hxp5CQvQzZqJLmKvZP","weight":1}]}],"visible":true}'    
-参数说明：
-owner_address：创建合约的账户地址，默认为hexString格式    
-owner：账户owner权限的分配信息    
-witness：出块前线的分配信息，如果不是witness，不需要设置   
-actives：其他功能权限的分配信息      
-返回值:账户创建多重签名的transaction       
+Parameter owner_address: Owner address of the account, default hexString   
+Parameter owner: Account owner permission     
+Parameter witness: Account witness permission, only for witness  
+Parameter actives: Operation permission     
+Return: Transaction object      
 
 ```
