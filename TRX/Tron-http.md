@@ -1,19 +1,20 @@
 #  TRON Built-in Http Introduction
 # hexString and base58check transcode demo
 java: 
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java#L92 
 php:
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/index.php 
 
-**Since v3.6, parameter 'visible' is added, when 'visible' is set true, no need to transcode the relevant address and string. This parameter is valid for all api, including solidityNode api and FullNode api.**   
+**Since v3.6, parameter 'visible' is added, when 'visible' is set true, no need to transcode the relevant address and string. This parameter is valid for all api, including solidityNode api and FullNode api.**    
+
 When 'visible' is set true, the format of the input address must be base58, input string must text string, so does the format of the output. If 'visible' is set false or null, the api acts the same as previous version. If the format of the parameters do not match with the set of visible, it will throw out an error.   
 
-Way to set the 'visible' parameter:
+Way to set the 'visible' parameter:       
 1. For the api need no parameter: By adding 'visible' parameter in the url, like 127.0.0.1:8090/wallet/listexchanges?visible=true      
 2. For POST method api: By adding 'visible' parameter to the most out layer of the json, like curl -X POST http://127.0.0.1:8090/wallet/createtransaction 
 {"owner_address_":"TRGhNNfnmgLegT4zHNjEqDSADjgmnHvubJ",
 "to_address_":"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW","amount":1000000,"visible":true}   
-3. For GET method api: By adding 'visible' parameter in the url, like way 1  
+3. For GET method api: By adding 'visible' parameter in the url, as way 1  
 
     
 # SolidityNode Api Introduction
