@@ -203,7 +203,6 @@ demo: curl -X POST  http://127.0.0.1:8091/walletsolidity/getdeferredtransactioni
 FullNode默认的http端口是8090，启动FullNode的时候会同时启动http服务。
 
 ```
-
 wallet/createtransaction
 作用： 创建一个转账的Transaction，如果转账的to地址不存在，则在区块链上创建该账号
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createtransaction -d '{"to_address": "41e9d79cc47518930bc322d9bf7cddd260a0260a8d", "owner_address": "41D1E7A6BC354106CB410E65FF8B181C600FF14292", "amount": 1000 }'
@@ -638,6 +637,8 @@ call_value：本次调用往合约转账的SUN（1TRX = 1,000,000SUN）
 owner_address：发起deploycontract的账户地址，默认为hexString格式    
 name：合约名
 origin_energy_limit: 创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy，是大于0的整数
+call_token_value:本次调用往合约中转账10币的数量，如果不设置token_id，这项设置为0或者不设置    
+token_id:本次调用往合约中转账10币的id，如果没有，不需要设置       
 可选参数Permission_id，多重签名时使用，设置交易多重签名时使用的permissionId    
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
 
@@ -1022,7 +1023,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d
 参数说明：
 owner_address：创建合约的账户地址，默认为hexString格式    
 owner：账户owner权限的分配信息    
-witness：出块前线的分配信息，如果不是witness，不需要设置   
+witness：出块权限的分配信息，如果不是witness，不需要设置   
 actives：其他功能权限的分配信息      
 返回值:账户创建多重签名的transaction       
 
