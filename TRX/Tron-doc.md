@@ -39,43 +39,42 @@ votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witn
 votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
 ```
 
-以上命令的最终结果是给witness1投了3票，给witness2投了7票
+The final output above is: Vote 3 votes for witness1, 7 votes for witness2
 
-## 2.3 超级代表的奖励
+## 2.3 Reward for super representatives
 
-1. 票数奖励，每6小时，票数排名前127名的超级代表会获得共计115,200 TRX的票数奖励，这部分奖励将按照票数比例分发。每年的票数奖励总计168,192,000 TRX。
+1. Votes reward. Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total.
 
-2. 出块奖励，波场协议网络每3秒中会出一个区块，每个区块将给予超级代表32个TRX奖励，每年总计336,384,000 TRX将会被奖励给超级代表。
+2. Block producing reward. Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.
 
-+ 超级代表每次出块完成后，出块奖励都会发到超级代表的子账号当中，超级代表不能直接使用这部分资产，但可以查询。 每24h允许一次提取操作。从该子账号转移到超级代表的账户中。
++ Every time after a super representative produces a block, the 32 TRX block producing reward will be sent to it's sub account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
-## 2.4 委员会
+## 2.4 Committee
 
-### 2.4.1 什么是委员会
-委员会用于修改Tron网络动态参数，如出块奖励、交易费用等等。委员会由当前的27个超级代表组成。每个超级代表都具有提议权、对提议的投票权，
-当提议获得19个代表及以上的赞成票时，该提议获得通过，并在下个维护期内进行网络参数修改。
+### 2.4.1 What is committee
+Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed by the current 27 super representatives. Every super representative has the right to start a propose. The propose will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
 
-### 2.4.2 创建提议
-只有超级代表对应账户具有提议权，其他账户无法创建提议。允许修改的网络动态参数以及编号如下( [min,max] )：
-- 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000 ,24 * 3600 * 1000] //修改超级代表调整时间间隔，目前为6 * 3600 * 1000ms
-- 1: ACCOUNT_UPGRADE_COST, [0,100 000 000 000 000 000]  //修改账户升级为超级代表的费用，目前为9999_000_000 Sun
-- 2: CREATE_ACCOUNT_FEE, [0,100 000 000 000  000 000] // 修改创建账户费用，目前为100_000Sun
-- 3: TRANSACTION_FEE, [0,100 000 000 000 000 000] // 修改TRX抵扣带宽的费用，目前为10Sun/byte
-- 4: ASSET_ISSUE_FEE, [0,100 000 000 000 000 000] // 修改资产发行费用，目前为1024_000_000 Sun
-- 5: WITNESS_PAY_PER_BLOCK, [0,100 000 000 000 000 000] // 修改超级代表出块奖励，目前为32_000_000 Sun
-- 6: WITNESS_STANDBY_ALLOWANCE, [0,100 000 000 000 000 000] // 修改分给前127名超级代表候选人的奖励，115_200_000_000 Sun
-- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, []// 修改系统创建账户的费用，目前为0 Sun
-- 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, // 提议7、8，组合使用，用于修改创建账户时对资源或TRX的消耗
-- 9: ALLOW_CREATION_OF_CONTRACTS, // 用于控制虚拟机功能的开启
-- 10: REMOVE_THE_POWER_OF_THE_GR  // 用于清除GR的创世票数
+### 2.4.2 Create a propose
+Only the account of a super representative can create a propose. The network parameters can be modified([min,max]):
+- 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000 ,24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms
+- 1: ACCOUNT_UPGRADE_COST, [0,100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 Sun
+- 2: CREATE_ACCOUNT_FEE, [0,100 000 000 000  000 000] //the fee to create an account, currently 100_000 Sun
+- 3: TRANSACTION_FEE, [0,100 000 000 000 000 000] //the fee for bandwidth, currently 10 Sun/byte
+- 4: ASSET_ISSUE_FEE, [0,100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 Sun
+- 5: WITNESS_PAY_PER_BLOCK, [0,100 000 000 000 000 000] //the block producing reward, currently 32_000_000 Sun
+- 6: WITNESS_STANDBY_ALLOWANCE, [0,100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 Sun
+- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, []//the fee to create an account in system, currently 0 Sun
+- 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwith or TRX while creating an account, using together with #7
+- 9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM
+- 10: REMOVE_THE_POWER_OF_THE_GR  //to clear the votes of GR
 - 11: ENERGY_FEE, [0,100 000 000 000 000 000] //sun
 - 12: EXCHANGE_CREATE_FEE, [0,100 000 000 000 000 000] //sun
 - 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms
-- 14: ALLOW_UPDATE_ACCOUNT_NAME, // 用于允许用户更改昵称以及昵称同名，目前为0，表示不允许
-- 15: ALLOW_SAME_TOKEN_NAME, // 用于允许创建相同名称的token，目前为0，表示不允许
-- 16: ALLOW_DELEGATE_RESOURCE, // 用于控制资源代理功能的开启
-- 17: TOTAL_ENERGY_LIMIT, // 用于调整Energy上限
-- 18: ALLOW_TVM_TRANSFER_TRC10, // 允许智能合约调用TRC10 token的接口，目前为0，表示不允许。设置为1表示允许
+- 14: ALLOW_UPDATE_ACCOUNT_NAME, //to allow users to change account name and allow account duplicate name, currently 0, means false
+- 15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true
+- 16: ALLOW_DELEGATE_RESOURCE, //to enable the resource delegation
+- 17: TOTAL_ENERGY_LIMIT, //to modify the energy limit
+- 18: ALLOW_TVM_TRANSFER_TRC10, //允许智能合约调用TRC10 token的接口，目前为0，表示不允许。设置为1表示允许
 
 
 + API：
