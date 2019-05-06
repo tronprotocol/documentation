@@ -620,8 +620,8 @@ Parameter parameter: The list of the parameters of the constructor, It should be
 Parameter consume_user_resource_percent: Consume user's resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user's resource until the developer's resource has been used up
 Parameter fee_limit: The maximum TRX burns for resource consumption
 Parameter call_value: The TRX transfer to the contract for each call   
-Parameter call_token_value: The amount of  trc10 token transfer to the contract for each call   
-Parameter token_id: The id of trc10 token transfer to the contract  
+Parameter call_token_value: The amount of  trc10 token transfer to the contract for each call (Optional)  
+Parameter token_id: The id of trc10 token transfer to the contract (Optional)  
 Parameter owner_address: Owner address of the contract, default hexString  
 Parameter name: Contract name
 Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation 
