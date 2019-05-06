@@ -619,7 +619,9 @@ Parameter bytecode: Bytecode, default hexString
 Parameter parameter: The list of the parameters of the constructor, It should be converted hexString after encoded according to ABI encoder. If constructor has no parameter, this can be optional
 Parameter consume_user_resource_percent: Consume user's resource percentage. It should be an integer between [0, 100]. if 0, means it does not consume user's resource until the developer's resource has been used up
 Parameter fee_limit: The maximum TRX burns for resource consumption
-Parameter call_value: The TRX transfer to the contract for each call
+Parameter call_value: The TRX transfer to the contract for each call   
+Parameter call_token_value: The amount of  trc10 token transfer to the contract for each call   
+Parameter token_id: The id of trc10 token transfer to the contract  
 Parameter owner_address: Owner address of the contract, default hexString  
 Parameter name: Contract name
 Parameter origin_energy_limit: The maximum resource consumption of the creator in one execution or creation 
@@ -629,14 +631,15 @@ Note: The unit of TRX in the parameters is SUN
 
 wallet/triggersmartcontract
 Description: Trigger smart contract
-demo: curl -X POST  http://127.0.0.1:8090/wallet/triggercontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
+demo: curl -X POST  http://127.0.0.1:8090/wallet/triggersmartcontract -d '{"contract_address":"4189139CB1387AF85E3D24E212A008AC974967E561","function_selector":"set(uint256,uint256)","parameter":"00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002","fee_limit":10,"call_value":100,"owner_address":"41D1E7A6BC354106CB410E65FF8B181C600FF14292"}'
 Parameter contract_address: Contract address, default hexString    
 Parameter function_selector: Function call, must not leave a blank space
 Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a js tool provided by remix to convert a parameter like [1,2] to the format that VM requires
-Parameter parameter_string: The parameter passed to 'function_selector' in text string format, this 'parameter_string' will override 'parameter'. Example: "\"100\", \"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW\"", if the function call has no parameter, 'parameter_string' should be set ""
 Parameter fee_limit: The maximum TRX burns for resource consumption
 Parameter call_value: The TRX transfer to the contract for each call
-Parameter owner_address: Owner address that triggers the contract, default hexString    
+Parameter call_token_value: The amount of  trc10 token transfer to the contract for each call   
+Parameter token_id: The id of trc10 token transfer to the contract   
+Parameter owner_address: Owner address that triggers the contract, default hexString   
 Parameter permission_id: Optional, for multi-signature use     
 Return: Transaction object
 Note: The unit of TRX in the parameters is SUN
@@ -839,7 +842,6 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/triggerconstantcontract -d '{"c
 Parameter contract_address: Smart contract address, defualt hexString   
 Parameter function_selector:  Function call, must not leave a blank space
 Parameter parameter: The parameter passed to 'function_selector', the format must match with the VM's requirement. You can use a hs tool provided by remix to convert a parameter like [1,2] to the format that VM requires
-Parameter parameter_string: The parameter passed to 'function_selector' in text string format, this 'parameter_string' will override 'parameter'. Example: "\"100\", \"TJCnKsPa7y5okkXvQAidZBzqx3QyQ6sxMW\"", if the function call has no parameter, 'parameter_string' should be set ""
 Parameter fee_limit: The maximum TRX burns for resource consumption
 Parameter call_value: The TRX transfer to the contract for each call
 Parameter owner_address: Owner address that triggers the contract, default hexString    
