@@ -192,14 +192,14 @@ Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
 ```
 Function: post abi string and get contract log list based on transactionId(release on 3.6)
 ```
-subpath: $baseUrl/contractlogs/transaction/{transactionId}
+subpath: $baseUrl/contract/transaction/{transactionId}
 
 parameters   
 transactionId
 body:
 abi: user self upload abi
 
-Example: https://api.tronex.io/contractlogs/transaction/{transactionId}
+Example: https://api.tronex.io/contract/transaction/{transactionId}
 ```
 Function: get contract log list based on contractAddress
 ```
@@ -212,13 +212,13 @@ Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
 ```
 Function: post abi string and get contract log list based on contractAddress(release on 3.6)
 ```
-subpath: $baseUrl/contractlogs/contract/{contractAddress}
+subpath: $baseUrl/contract/contractAddress/{contractAddress}
 
 parameters   
 contractAddress
 abi: user self upload abi
 
-Example: https://api.tronex.io/contractlogs/contract/{contractAddress}
+Example: https://api.tronex.io/contract/contractAddress/{contractAddress}
 ```
 Function: get contract log list based on uniqueId
 ```
@@ -231,11 +231,11 @@ Example: https://api.tronex.io/contractlogs/uniqueId/{uniqueId}
 ```
 Function: post abi string and get contract log list based on uniqueId(release on 3.6)
 ```
-subpath: $baseUrl/contractlogs/uniqueId/{uniqueId}
+subpath: $baseUrl/contract/uniqueId/{uniqueId}
 
 parameters   
 uniqueId
 abi: user self upload abi
 
-Example: https://api.tronex.io/contractlogs/uniqueId/{uniqueId}
+Example: https://api.tronex.io/contract/uniqueId/{uniqueId}
 ```
