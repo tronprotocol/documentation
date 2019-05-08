@@ -52,10 +52,10 @@ The final output above is: Vote 3 votes for witness1, 7 votes for witness2
 ## 2.4 Committee
 
 ### 2.4.1 What is committee
-Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed by the current 27 super representatives. Every super representative has the right to start a propose. The propose will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
+Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed by the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
 
-### 2.4.2 Create a propose
-Only the account of a super representative can create a propose. The network parameters can be modified([min,max]):
+### 2.4.2 Create a proposal
+Only the account of a super representative can create a proposal. The network parameters can be modified([min,max]):
 - 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000 ,24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms
 - 1: ACCOUNT_UPGRADE_COST, [0,100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 Sun
 - 2: CREATE_ACCOUNT_FEE, [0,100 000 000 000  000 000] //the fee to create an account, currently 100_000 Sun
@@ -74,144 +74,142 @@ Only the account of a super representative can create a propose. The network par
 - 15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true
 - 16: ALLOW_DELEGATE_RESOURCE, //to enable the resource delegation
 - 17: TOTAL_ENERGY_LIMIT, //to modify the energy limit
-- 18: ALLOW_TVM_TRANSFER_TRC10, //允许智能合约调用TRC10 token的接口，目前为0，表示不允许。设置为1表示允许
+- 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false
 
 
-+ API：
++ API:
 `
 createproposal id0 value0 ... idN valueN
-id0_N: 参数编号
-value0_N: 新参数值
+id0_N: parameter number
+value0_N: parameter value
 `
 
-注：Tron网络中，1 TRX = 1000_000 Sun。
+Note: In TRON network, 1 TRX = 1000_000 Sun
 
-### 2.4.3 对提议进行投票
-提议仅支持投赞成票，不投票代表不赞同。从提议创建时间开始，3天时间内为提议的有效期。超过该时间范围，该提议如果没有获得足够的
-赞成票，该提议失效。允许取消之前投的赞成票。
+### 2.4.3 Vote for a proposal
+Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.
 
 
-+ API：
++ API:
 `
 approveProposal id is_or_not_add_approval
-id: 提议Id，根据提议创建时间递增
-is_or_not_add_approval: 赞成或取消赞成
+id: Proposal id
+is_or_not_add_approval: YES vote or cancel YES vote
 `
 
-### 2.4.4 取消提议
-提议创建者，能够在提议生效前，取消提议。
+### 2.4.4 Cancel proposal
+Proposal creator can cancel the proposal before it is passed.
 
-+ API：
++ API:
 `
 deleteProposal proposalId
-id: 提议Id，根据提议创建时间递增
+id: Proposal id
 `
 
-### 2.4.5 查询提议
+### 2.4.5 Query proposal
 
-以下接口可以查询提议，包括：
-查询所有提议信息（ListProposals）、分页查询提议信息（GetPaginatedProposalList），查询指定提议信息（GetProposalById）。     
-相关api详情，请查询[Tron-http](Tron-http.md)。
+Query all the proposals list (ListProposals), Query all the proposals list by pagination (GetPaginatedProposalList), Query a proposal by proposal id (GetProposalById)     
+For more api detail, please refer to [Tron-http](Tron-http.md)
 
-# 3 Tron账号
-## 3.1 账户模型介绍
-Tron采用账户模型。账户的唯一标识为地址address，对账户操作需要验证私钥签名。每个账户拥有TRX、Token余额及智能合约、带宽、能量等各种资源。通过发送交易可以增减TRX或者Token余额，需要消耗带宽；可以发布并拥有智能合约，也可以调用他人发布的智能合约，需要消耗能量。可以申请成为超级代表并被投票，也可以对超级代表进行投票。等等。Tron所有的活动都围绕账户进行。
-## 3.2 创建账号的方式
-首先用钱包或者浏览器生成私钥和地址，生成方法见3.3和3.4，公钥可以丢弃。
-由已有老账户调用转账TRX(CreateTransaction2)、转让Token(TransferAsset2)或者创建账户(CreateAccount2)合约，并广播到网络后将完成账户创建的流程。
-## 3.3 生成密钥对算法
-Tron的签名算法为ECDSA，选用曲线为SECP256K1。其私钥为一个随机数，公钥为椭圆曲线上一个点。生成过程为，首先生成一个随机数d作为私钥，再计算P=d*G作为公钥；其中G为椭圆曲线的基点。
-## 3.4 地址格式说明
-用公钥P作为输入，计算SHA3得到结果H；这里公钥长度为64字节，SHA3选用Keccak256。
-取H的最后20字节，在前面填充一个字节0x41得到address。
-对address进行basecheck计算得到最终地址，所有地址的第一个字符为T。
-其中basecheck的计算过程为：首先对address计算sha256得到h1，再对h1计算sha256得到h2，取其前4字节作为check填充到address之后得到address||check，对其进行base58编码得到最终结果。
-我们用的字符映射表为：
+# 3 TRON Account
+## 3.1 Introduction
+TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transfered from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.
+## 3.2 Way to create an account
+a) Use a wallet to generate the address and private key
+To active the account, you need to transfer TRX or transfer token to the new created account
+b) Use an account already existed in TRON network to create an account 
+## 3.3 Key-pair generation algorithm
+Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.
+## 3.4 Address format
+Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out.
+Do basecheck to address, here is the final address. All addresses start with 'T'.
+basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.
+character map:
 ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-## 3.5 签名说明
-签名说明请参照
+## 3.5 Signature
+Signature introduction, please refer to:
 https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
 
-# 4 Tron网络中的节点和部署
+# 4 TRON Network Node
 ## 4.1 SuperNode
-### 4.1.1 SuperNode介绍
-[超级代表](https://github.com/tronprotocol/Documentation/blob/master/中文文档/波场区块链浏览器介绍/什么是超级代表.md)(简称SR)是TRON网络上的记账人，一共27个，负责对网络上广播出来的交易数据进行验证，并将交易打包进区块中，他们是轮流的方式打包区块。超级代表的信息是在TRON网络上公开的，所有人都可以获取这些信息，最便捷的方式是在TRON的[区块链浏览器](https://tronscan.org/#/representatives)查看超级代表列表及其信息。
-### 4.1.2 SuperNode部署方式
-[部署SuperNode](https://github.com/tronprotocol/java-tron#running-a-super-representative-node-for-mainnet)
-### 4.1.3 建议硬件配置
-最低配置要求：  
-CPU：16核 内存：32G 带宽：100M 硬盘：1T  
-推荐配置要求：  
-CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
+### 4.1.1 SuperNode introduction
+[Super Representative](https://github.com/tronprotocol/Documentation/blob/master/中文文档/波场区块链浏览器介绍/什么是超级代表.md)(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/representatives)
+### 4.1.2 SuperNode deployment
+[superNode deployment](https://github.com/tronprotocol/java-tron#running-a-super-representative-node-for-mainnet)
+### 4.1.3 Recommended hardware configuration
+minimum requirement:  
+CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T  
+Recommended requirement:  
+CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.2 FullNode
-### 4.2.1 FullNode介绍
-FullNode是拥有完整区块链数据的节点，能够实时更新数据，负责交易的广播和验证，提供操作区块链的api和查询数据的api。
-### 4.2.2 FullNode部署方式
-详细说明请参考[tron-deployment](https://github.com/tronprotocol/tron-deployment)
-[部署FullNode](https://github.com/tronprotocol/tron-deployment#deployment-of-fullnode-on-the-one-host)
-### 4.2.3 建议硬件配置
-最低配置要求：  
-CPU：16核 内存：32G 带宽：100M 硬盘：1T  
-推荐配置要求：  
-CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
+### 4.2.1 FullNode introduction
+FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.
+### 4.2.2 FullNode deployment
+please refer to [tron-deployment](https://github.com/tronprotocol/tron-deployment)
+[fullNode deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-fullnode-on-the-one-host)
+### 4.2.3 Recommended hardware configuration
+minimum requirement:    
+CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T   
+Recommended requirement:  
+CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.3 SolidityNode
-### 4.3.1 SolidityNode介绍
-SolidityNode是只从自己信任的FullNode同步固化块的节点，并提供区块、交易查询等服务。
-### 4.3.2 SolidityNode部署方式
-详细说明请参考[tron-deployment](https://github.com/tronprotocol/tron-deployment)
-[部署solidityNode](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
-### 4.3.3 建议硬件配置
-最低配置要求：  
-CPU：16核 内存：32G 带宽：100M 硬盘：1T   
-推荐配置要求：  
-CPU：64核及以上 内存：64G及以上 带宽：500M及以上 硬盘：20T及以上
+### 4.3.1 SolidityNode introduction
+SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.
+### 4.3.2 SolidityNode deployment
+please refer to [tron-deployment](https://github.com/tronprotocol/tron-deployment)
+[solidityNode deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
+### 4.3.3 Recommended hardware configuration
+minimum requirement:    
+CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T   
+Recommended requirement:  
+CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
-## 4.4 Tron网络结构
-Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对等。网络中的节点有SuperNode、FullNode、SolidityNode三种类型，SuperNode主要用于生成区块，FullNode用于同步区块、广播交易，SolidityNode用于同步固化的区块。任何部署运行Tron代码的设备都可以加入Tron网络并作为一个节点，和Tron网络中的其他节点有相同的地位，他们可以创建交易，广播交易，同步区块等，也可以作为SuperNode的候选人参与选举。
+## 4.4 TRON Network Instructure
+TRON network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
 ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/network.png)
-## 4.5 一键部署FullNode和SolidityNode
-下载一键部署脚本，根据不同的节点类型附加相应的参数来运行脚本。  
-详见[一键部署节点](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
-## 4.6 主网、测试网、私有网络
-加入主网或测试网或私有网络的节点在部署时运行的是同一份代码，区别仅仅在于节点启动时加载的配置文件不同。
-### 4.6.1 主网
-[主网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
-### 4.6.2 测试网
-[测试网配置文件](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
-### 4.6.3 搭建私有网络
-#### 4.6.3.1 前提
-  1、具备至少两个钱包账户的私钥与地址。 [如何生成钱包账户](https://tronscan.org/#/wallet/new)  
-  2、至少部署一个SuperNode用于出块；  
-  3、部署任意数量的FullNode节点用于同步区块、广播交易；  
-  4、SuperNode与FullNode组成了私有网络，可以进行网络发现、区块同步、广播交易。  
-#### 4.6.3.2 部署
-##### 4.6.3.2.1 步骤一:部署超级节点
- 1、下载private_net_config.conf  
+## 4.5 FullNode and SolidityNode Fast Deployment
+Download fast deployment script, run the script according to different types of node. 
+please refer to [node fast deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
+## 4.6 Main net, Test net, Private net
+Main net, Test net, Private net all use the same code, only the node start configuration varies.
+### 4.6.1 Main net
+[main net configuration](https://github.com/tronprotocol/tron-deployment/blob/master/main_net_config.conf)
+### 4.6.2 Test net
+[test net configuration](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)
+### 4.6.3 Private net
+#### 4.6.3.1 Preconditions
+  1、at least two accounts; [how to generate an account](https://tronscan.org/#/wallet/new)  
+  2、at least deploy one SuperNode to produce blocks; 
+  3、deploy some FullNode to synchronize blocks and broadcast transactions; 
+  4、SuperNode and FullNode comprise the private network;  
+#### 4.6.3.2 Deployment
+##### 4.6.3.2.1 Step 1: SuperNode Deployment
+ 1、Download private_net_config.conf  
  ```
  wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
  ```
- 2、在localwitness中添加自己的私钥  
- 3、设置genesis.block.witnesses为私钥对应的地址  
- 4、设置p2p.version为除了11111之外的任意正整数  
- 5、第1个SR设置needSyncCheck为false，其他可以设置为true  
- 6、设置node.discovery.enable为true  
- 7、运行部署脚本  
+ 2、add your private key in localwitness 
+ 3、set genesis.block.witnesses as the private key's corresponding address
+ 4、set p2p.version, any positive integer but 11111  
+ 5、set the first SR needSyncCheck = false, others can be set true  
+ 6、set node.discovery.enable = true  
+ 7、run the script  
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
  ```
- 命令行参数说明:
- --witness: 启动witness功能，i.e.: --witness
- --log-config: 指定日志配置文件路径，i.e.: --log-config logback.xml
- -c: 指定配置文件路径，i.e.: -c config.conf
+ command line parameters introduction:
+ --witness: start witness function, i.e.: --witness
+ --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
+ -c: specify the configuration file path, i.e.: -c config.conf
 
- 日志文件使用：
- 可以修改模块的level等级来控制日志的输出，默认每个模块的level级别为INFO，比如，只打印网络模块warn以上级别的信息，可以如下修改
+ The usage of the log file:
+ Can change the level of the module to control the log output, the default level of each module is INFO, for example: only print the message with the level higher than warn
  <logger name="net" level="WARN"/>
  ```
- 配置文件中需要修改的参数：  
+ The parameters in configuration file that need to modify:  
  localwitness:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)
  witnesses:  
@@ -219,32 +217,33 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  version:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
  enable:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
-##### 4.6.3.2.2 步骤二:部署FullNode节点	
- 1、下载private_net_config.conf  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png) 
+
+##### 4.6.3.2.2 Step 2: FullNode Deployment
+ 1、Download private_net_config.conf  
  ```
  wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
  ```
- 2、设置seed.node ip.list 为SR的ip地址和端口。  
- 3、设置p2p.version与超级节点的p2p.version一致。  
- 4、设置genesis.block 与SR中的genesis.block配置一致。   
- 5、设置needSyncCheck为true  
- 6、设置node.discovery.enable 为true  
- 7、运行部署脚本  
+ 2、set seed.node ip.list with SR's ip and port  
+ 3、set p2p.version the same as SuperNode's p2p.version  
+ 4、set genesis.block the same as genesis.block
+ 5、set needSyncCheck true  
+ 6、set node.discovery.enable true  
+ 7、run the script  
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
  ```
- 命令行参数说明:
- --witness: 启动witness功能，i.e.: --witness。
- --log-config: 指定日志配置文件路径，i.e.: --log-config logback.xml。
- -c: 指定配置文件路径，i.e.: -c config.conf。
+ command lines parameters
+ --witness: start witness function，i.e.: --witness
+ --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
+ -c: specify the configuration file path, i.e.: -c config.conf
  
- 日志文件使用：
- 可以修改模块的level等级来控制日志的输出，默认每个模块的level级别为INFO，比如，只打印网络模块warn以上级别的信息，可以如下修改
+ The usage of the log file:
+ Can change the level of the module to control the log output, the default level of each module is INFO, for example: only print the message with the level higher than warn
  <logger name="net" level="WARN"/>
  ```
- 配置文件中需要修改的参数：  
+ The parameters in configuration file that need to modify:    
  ip.list:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)
  p2p.version:  
@@ -256,103 +255,66 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  node.discovery.enable:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
  
-## 4.7 数据库引擎
-### 4.7.1 rocksdb
-#### 4.7.1.1 config配置说明
- 使用rocksdb作为数据存储引擎，需要将db.engine配置项设置为"ROCKSDB"
+## 4.7 DB Engine
+### 4.7.1 Rocksdb
+#### 4.7.1.1 Configuration
+ Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)
- 注意: rocksdb只支持db.version=2, 不支持db.version=1。
- rocksdb支持的优化参数如下：
+ Note: rocksdb only support db.version=2, do not support db.version=1
+ The optimization parameters rocksdb support:
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/rocksdb_tuning_parameters.png)
 
-#### 4.7.1.2 使用rocksdb数据备份功能
- 选择rocksdb作为数据存储引擎，可以使用其提供的运行时数据备份功能。
+#### 4.7.1.2 Use rocksdb's data backup function
+ Choose rocksdb to be the data storage engine, you can use it's data backup funchtion while running
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)
- 注意: FullNode可以使用数据备份功能；为了不影响SuperNode的产块性能，数据备份功能不支持SuperNode，但是SuperNode的备份服务节点可以使用此功能。
-#### 4.7.1.3 leveldb数据转换为rocksdb数据
-  leveldb和rocksdb的数据存储架构并不兼容，请确保节点始终使用同一种数据引擎。我们提供了数据转换脚本，用于将leveldb数据转换到rocksdb数据。
-  使用方法：
+ Note: FullNode can use data backup function; In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
+#### 4.7.1.3 Convert leveldb data to rocksdb data
+ The data storage structure of leveldb and rocksdb is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert leveldb data to rocksdb data.
+ Usage:
 ```text
-  cd 源代码根目录
-  ./gradlew build   #编译源代码
-  java -jar build/libs/DBConvert.jar  #执行数据转换指令
+  cd to the source code root directory
+  ./gradlew build   #build the source code
+  java -jar build/libs/DBConvert.jar  #run data conversion command
 ```
-  注意：如果节点的数据存储目录是自定义的，运行DBConvert.jar时添加下面2个可选参数。
+  Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:
   <br>
-  <b>src_db_path</b>:指定LevelDB数据库路径源，默认是 output-directory/database
+  <b>src_db_path</b>: specify LevelDB source directory, default output-directory/database
   <br>
-  <b>dst_db_path</b>:指定RocksDB数据库路径，默认是 output-directory-dst/database
+  <b>dst_db_path</b>: specify RocksDb source directory, default output-directory-dst/database
   <br>
-  例如，如果节点是像这样的脚本运行的:
+  for example, if you run the script like this:
   ```text
      nohup java -jar FullNode.jar -d your_database_dir &
   ```
-  那么，你应该这样运行数据转换工具DBConvert.jar:
+  then, you should run DBConvert.jar this way:
   ```text
   java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
   ```
-  注意：必须停止节点的运行，然后再运行数据转换脚本。
-  如果不希望节点停止时间太长，可以在节点停止后先将leveldb数据目录output-directory拷贝一份到新的目录下，然后恢复节点的运行。
+  Note: You have to stop the running of the node, and then to run the data conversion script.
+  If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node.
   <br>
-  在新目录的上级目录中执行DBConvert.jar并指定参数`src_db_path`和`dst_db_path` 。
-  例如:
+  run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path`和`dst_db_path` 
+  for example:
   ```text
   cp -rf output-directory /tmp/output-directory
   cd /tmp
   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
  ```
-  整个的数据转换过程可能需要10个小时左右。
- 
- #### 4.7.1.4 leveldb database convert to rocksdb database （english verison）
-   You must only use one db engine(leveldb or rocksdb) throughout the life cycle of node because rocksdb's data structure is incompatible with the leveldb's.
-   A convert tool is provided to convert the leveldb data to rocksdb data and the usage of tool is described in the following。
-   
-   How to use：
- ```text
-   cd [source code directory of java-tron]
-   ./gradlew build   # build the code
-   java -jar build/libs/DBConvert.jar  # run the jar
- ```
-   note: you can run DBConvert.jar with two additional parameters if your node is started up with specified location of database directory. 
-   <br>
-   <b>src_db_path</b>:source of leveldb directory. The default value is output-directory/database
-   <br>
-   <b>dst_db_path</b>:destination of rocksdb directory. The default value is output-directory-dst/database
-   <br>
-   for example,if you run a node with the script:
-   ```text
-     nohup java -jar FullNode.jar -d your_database_dir &
-   ```
-   you should run the DBConvert.jar like this:
-   ```text
-   java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
-   ```
-   <b>It is emphasized that you must stop the node before running the DBConvert.jar</b>
-   you can copy the leveldb database dir to a new dir and then recover the node running.
-   <br>
-   After that, run DBConvert.jar with parameters `src_db_path` and `dst_db_path` in the parent directory of new directory.
-   for example,
-   ```text
-   cp -rf output-directory /tmp/output-directory
-   cd /tmp
-   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
-  ```
-  <br>
-  It may cost about 10 hours to finish the data convert.
+  All the whole data conversion process may take 10 hours.
   
-#### 4.7.1.5 rocksdb与leveldb的对比
-你可以查看以下文档获取详细的信息：
+#### 4.7.1.4 rocksdb vs leveldb 
+you can refer to:
 <br>
-[rocksdb与leveldb对比](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
+[rocksdb vs leveldb](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
 <br>
 [ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
 
-# 5 智能合约
-## 5.1 Tron智能合约介绍
+# 5 Smart Contract
+## 5.1 TRON Smart Contract Introduction
 
-智能合约是一种能自动执行其条款的计算化交易协议。智能合约和普通合约一样，定义了参与者相关的条款和奖惩机制。一旦合约被启动，便能按照设定的条款执行，并自动检查所承诺的条款实施情形。
+Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
 
-Tron兼容以太坊（Ethereum）上采用Solidity编写的智能合约。当前建议的Solidity语言版本为0.4.24~0.4.25。合约编写、编译完成后，部署到Tron公链上。部署后的合约，被触发时，就会在公链的各个节点上自动执行。
+TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24~0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## 5.2 Tron智能合约特性（地址等）
 Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚拟机的特性，但基于tron自身属性也有部分的区别。
