@@ -317,10 +317,10 @@ Smart contract is a computerized transaction protocol that automatically impleme
 TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24~0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## 5.2 TRON Smart Contract Features
-TRON virtual machine is based on Etherum solidity language, it also has TRON's own features.
+TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
 
 ### 5.2.1 Smart Contract
-TRON VM is compatible with Etherum's smart contract, using protobuf to define the content of the contract:
+TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
 
     message SmartContract {
       message ABI {
@@ -408,48 +408,45 @@ There is a special type of message call, delegate call. The difference with comm
 
 4. CREATE instruction
 
-This command will create a new contract with a new address. The only difference with Ethrum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethrum, the defination of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail. 
+This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the defination of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail. 
 Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
 
-5. built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily
+5. built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
 1）TVM is compatible with solidity language's transfer format, including:
 accompany with constructor to call transfer
 accompany with internal function to call transfer
 use transfer/send/call/callcode/delegatecall to call transfer
 
-Note: 波场的智能合约与波场系统合约的逻辑不同，如果转账的目标地址账户不存在，不能通过智能合约转账的形式创建目标地址账户。这也是与以太坊的不同点。
+Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
 
-2）不同账户为超级节点投票 (Odyssey-v3.1.1及之后的版本暂时不支持)
+2）Different accouts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-3）超级节点获取所有奖励 (Odyssey-v3.1.1及之后的版本暂时不支持)
+3）SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-4）超级节点通过或否定提案 (Odyssey-v3.1.1及之后的版本暂时不支持)
+4）SuperNode approves or disappoves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-5）超级节点提出提案 (Odyssey-v3.1.1及之后的版本暂时不支持)
+5）SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-6）超级节点删除提案 (Odyssey-v3.1.1及之后的版本暂时不支持)
+6）SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-7）波场byte地址转换为solidity地址 (Odyssey-v3.1.1及之后的版本暂时不支持)
+7）TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-8）波场string地址转换为solidity地址 (Odyssey-v3.1.1及之后的版本暂时不支持)
+8）TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-9）向目标账户地址发送token转账 (Odyssey-v3.1.1及之后的版本暂时不支持)
+9）Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-10）查询目标账户地址的指定token的数量 (Odyssey-v3.1.1及之后的版本暂时不支持)
+10）Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-11）兼容所有以太坊内置函数
+11）Compatible with all the built-in functions of Ethereum
 
->注意：
-波场2）- 10）为波场自己的内置函数 具体中文文档请参看：https://github.com/tronprotocol/Documentation/blob/master/中文文档/虚拟机/虚拟机内置函数.md
-
->以太坊 RIPEMD160 函数不推荐使用，波场返回的是一个自己的基于sha256的hash结果，并不是准确的以太坊RIPEMD160。以后会考虑删除这个函数。
+>Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
  
-### 5.2.3 合约地址在solidity语言的使用
+### 5.2.3 Contract address using in solidity language
 
-以太坊虚拟机地址为是20字节，而波场虚拟机解析地址为21字节。
-1. 地址转换
-在solidity中使用的时候需要对波场地址做如下处理 （推荐）：
+Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes
+1. address conversion
+Need to convert TRON's address while using in solidity (recommended):
 ```    
     /**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
@@ -461,10 +458,9 @@ Note: 波场的智能合约与波场系统合约的逻辑不同，如果转账�
         return address(tronAddress);
     }
 ```
-
-这个和在以太坊中其他类型转换成address类型语法相同。
-2. 地址判断
-solidity中有地址常量判断，如果写的是21字节地址编译器会报错，只用写20字节地址即可，如：
+This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
+2. address judgement
+Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
 ```
     function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
@@ -475,9 +471,9 @@ solidity中有地址常量判断，如果写的是21字节地址编译器会报�
         }
     }
 ```
-tronAddress从wallet-cli传入是0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c这个21字节地址，即正常的波场地址时，是会返回1的，判断正确。
-3. 地址赋值
-solidity中有地址常量的赋值，如果写的是21字节地址编译器会报错，只用写20字节地址即可，solidity中后续操作直接利用这个20位地址，波场虚拟机内部做了补位操作。如：
+But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c
+3. variable assignment
+solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
 ```
     function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
@@ -485,207 +481,206 @@ solidity中有地址常量的赋值，如果写的是21字节地址编译器会�
         // do something
     }
 ```
-如果想直接使用string 类型的波场地址（如TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm）请参考内置函数的两种地址转换方式 （见II-4-7,II-4-8）。
+If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
 
-### 5.2.4 与以太坊有区别的特殊常量
+### 5.2.4 The specila constants differ from Ethereum
 
-1 货币
+1 Currency
 
-类似于solidity对ether的支持，波场虚拟机的代码支持的货币单位有trx和sun，其中1trx = 1000000sun，大小写敏感，只支持小写。目前tron-studio支持trx和sun，在remix中，不支持trx和sun，如果使用ether、finney等单位时，注意换算(可能会发生溢出错误)。
-我们推荐使用tron-studio代替remix进行tron智能合约的编写。
+Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun. 
+We recommend to use tron-studio instead of remix to build TRON smart contract.
 
-2 区块相关
+2 Block
 
-•	block.blockhash(uint blockNumber) returns (bytes32)：指定区块的区块哈希——仅可用于最新的 256 个区块且不包括当前区块；而 blocks 从 0.4.22 版本开始已经不推荐使用，由 blockhash(uint blockNumber) 代替
+•	block.blockhash(uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded.
 	
-•	block.coinbase (address): 产当前区块的超级节点地址
+•	block.coinbase (address): SuperNode address that produced the current block
 	
-•	block.difficulty (uint): 当前区块难度，波场不推荐使用，设置恒为0
+•	block.difficulty (uint): current block difficulty, not recommended, set 0
 	
-•	block.gaslimit (uint): 当前区块 gas 限额，波场暂时不支持使用, 暂时设置为0
+•	block.gaslimit (uint): current block gas limit, not supported, set 0
 	
-•	block.number (uint): 当前区块号
+•	block.number (uint): current block number
 	
-•	block.timestamp (uint): 当前区块以秒计的时间戳
+•	block.timestamp (uint): current block timestamp
 	
-•	gasleft() returns (uint256)：剩余的 gas
+•	gasleft() returns (uint256): remaining gas
 	
-•	msg.data (bytes): 完整的 calldata
+•	msg.data (bytes): complete call data
 	
-•	msg.gas (uint): 剩余 gas - 自 0.4.21 版本开始已经不推荐使用，由 gesleft() 代替
+•	msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gesleft()
 	
-•	msg.sender (address): 消息发送者（当前调用）
+•	msg.sender (address): message sender (current call)
 	
-•	msg.sig (bytes4): calldata 的前 4 字节（也就是函数标识符）
+•	msg.sig (bytes4): first 4 bytes of call data (function identifier)
 	
-•	msg.value (uint): 随消息发送的 sun 的数量
+•	msg.value (uint): the amount of sun send with message
 	
-•	now (uint): 目前区块时间戳（block.timestamp）
+•	now (uint): current block timestamp (block.timestamp)
 	
-•	tx.gasprice (uint): 交易的 gas 价格，波场不推荐使用，设置值恒为0
+•	tx.gasprice (uint): the gas price of transaction, not recommended, set 0
 	
-•	tx.origin (address): 交易发起者
-
-
+•	tx.origin (address): transaction initiator
 
 
-## 5.3 Energy介绍
-智能合约运行时执行每一条指令都需要消耗一定的系统资源，资源的多少用Energy的值来衡量。
 
-### 5.3.1 Energy的获取
+## 5.3 Energy Introduction
+Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.
 
-冻结获取Energy，即将持有的trx锁定，无法进行交易，作为抵押，并以此获得免费使用Energy的权利。具体计算与全网所有账户冻结有关，可参考相关部分计算。
+### 5.3.1 How to get energy
 
-##### FreezeBalance 冻结获得能量
+Freeze TRX to get energy
+
+##### FreezeBalance
 
 ```
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-通过冻结TRX获取的Energy， 额度 = 为获取Energy冻结的TRX / 整个网络为获取Energy冻结的TRX 总额 * 50_000_000_000。
-也就是所有用户按冻结TRX平分固定额度的Energy。
+Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amount of frozen TRX in TRON * 50_000_000_000。
 
-示例：
 
-```
-如全网只有两个人A，B分别冻结2TRX，2TRX。
-
-二人冻结获得的可用Energy分别是
-
-A: 25_000_000_000 且energy_limit 为25_000_000_000
-
-B: 25_000_000_000 且energy_limit 为25_000_000_000
-
-当第三人C冻结1TRX时。
-
-三人冻结获得的可用Energy调整为
-
-A: 20_000_000_000 且energy_limit调整为20_000_000_000
-
-B: 20_000_000_000 且energy_limit调整为20_000_000_000
-
-B: 10_000_000_000 且energy_limit 为10_000_000_000
+for example:
 
 ```
+If there are only two users, A freezes 2 TRX, B freezes 2 TRX
 
-##### FreezeBalance 恢复能量
+the energy they can get is:
 
-所消耗的能量会在24小时内平滑减少至0。
+A: 25_000_000_000 and energy_limit 为25_000_000_000
 
-示例：
+B: 25_000_000_000 and energy_limit 为25_000_000_000
+
+when C freezes 1 TRX:
+
+the energy they can get is:
+
+A: 20_000_000_000 and energy_limit调整为20_000_000_000
+
+B: 20_000_000_000 and energy_limit调整为20_000_000_000
+
+B: 10_000_000_000 and energy_limit 为10_000_000_000
 
 ```
-在某一时刻A的Energy已使用量为72_000_000 Energy
 
-在没有其他消耗或冻结的操作下：
+##### Energy Recovery
 
-一小时后A的Energy已使用量为 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
+The energy consumed will reduce to 0 smoothly within 24 hours.
 
-24小时后A的Energy已使用量为 0 Energy。
+for example:
+
+```
+at one moment, A has used 72_000_000 Energy
+
+if there is no continuous consumption or TRX freeze
+
+one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
+
+24 hours later, the energy consumption amount will be 0 Energy
 ```
 
-### 5.3.2 如何填写feeLimit(用户必读)
-***
-*在本节范围内，将合约的开发部署人员，简称为“开发者”；将调用合约的用户或者其他合约，简称为“调用者”。*
-
-*调用合约消耗的Energy能以一定比例折合成trx（或者sun），所以在本节范围内，指代合约消耗的资源时，并不严格区分Energy和 trx；仅在作为 数值的单位时，才区分Energy、trx和sun。*
-
+### 5.3.2 How to set fee limit (Caller Must Read)
 ***
 
-合理设置feeLimit，一方面能尽量保证正常执行；另外一方面，如果合约所需Energy过大，又不会过多消耗调用者的trx。在设置feeLimit之前，需要了解几个概念：
+*Within the scope of this section, the smart contract developer will be called "developer", the users or other contracts which call the smart contract will be called "caller"*
 
-1). 合法的feeLimit为0 - 10^9 之间的整数值，单位是sun，折合0 - 1000 trx；
+*The amount of energy consumed while call the contract can be converted to TRX or SUN, so within the scope of this section, when refer to the consumption of the resource, there's no strict difference between Energy, TRX and SUN, unless they are used as a number unit.*
 
-2). 不同复杂度的合约，每次正常执行消耗不同的Energy；相同合约每次消耗的Energy基本相同[1]；执行合约时，逐条指令计算并扣除Energy，如果超过feeLimit的限制，则合约执行失败，已扣除的Energy不退还；
+***
 
-3). 目前feeLimit仅指调用者愿意承担的Energy折合的trx[2]；执行合约允许的最大Energy还包括开发者承担的部分；
+Set a rational fee limit can guarantee the smart contract execution. And if the execution of the contract cost great energy, it will not consume too much energy from the caller. Before you set fee limit, you need to know several conception:
 
-4). 一个恶意合约，如果最终执行超时，或者因bug合约崩溃，则会扣除该合约允许的所有energy；
+1). The legal fee limit is a integer between 0 - 10^9, unit is sun
 
-5). 开发者可能会承担一定比例的Energy消耗（比如承担90%）。但是，当开发者账户的Energy不足以支付时，剩余部分完全由调用者承担。在feeLimit限制范围内，如调用者的Energy不足，则会燃烧等价值的trx。[2]
+2). Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[1]. When the contract is triggered, the commands will be excuted one by one and consume energy. If it reaches the fee limit, commands will fail to be excuted, and energy is not refundable.
 
-开发者通常会有充足的Energy，以鼓励低成本调用；调用者在估算feeLimit时，可以假设开发者能够承担其承诺比例的Energy，如果一次调用因为feeLimit不足而失败，可以再适当扩大。
+3). Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[2]. The energy consumed by triggering contract also includes developer's share.
 
-##### 示例5.3.2.1
-下面将以一个合约C的执行，来具体举例，如何估算feeLimit：
+4). For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.
 
- * 假设合约C上一次成功执行时，消耗了18000 Energy，那么预估本次执行消耗的Energy上限为20000 Energy；[3]
- * 冻结trx时，当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是冻结1 trx，可以获得400 Energy；
- * 燃烧trx时，1 trx固定可以兑换10000 Energy；[4]
- * 假设开发者承诺承担90%的Energy，而且开发者账户有充足的Energy；
+5). Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [2].
+
+To encourage caller to trigger the contract, usually developer has enough energy.
+
+##### 5.3.2.1 Example
+How to estimate the fee limit:
+
+ * Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]
+ * According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy
+ * When burn TRX, 1 TRX = 10000 energy[4]
+ * Assume developer undertake 90% energy consumption, and developer has enough energy
  
-则，feeLimit的预估方法为： 
+then the way to estimate the fee limit is:  
 
 1). A = 20000 energy * (1 trx / 400 energy) = 50 trx = 50_000_000 sun, 
 
-2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun，
+2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun,
 
-3).  取A和B的最大值，为50_000_000 sun，
+3). Take the greater number of A and B, which is 50_000_000 sun,
 
-4).  开发者承诺承担90%，用户需要承担10%，
+4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
 
-那么，建议用户填写的feeLimit为 50_000_000 sun * 10% = 5_000_000 sun。
-
-
-小节附录：
-
-[1] 根据tron各节点的情况，每次执行消耗的Energy可能会有小幅度的浮动。
-
-[2] tron可能会视后续公链的情况，调整这一策略。
-
-[3] 预估的下一次执行所需Energy上限，应该略大于上一次实际消耗的Energy。
-
-[4] 1 trx = 10^4 energy 为目前的燃烧trx的比例，后续Tron可能会根据全网拥塞情况调整，调整后，将通知到全网的节点。
+So, the caller is suggested to set fee limit to 50_000_000 sun * 10% = 5_000_000 sun
 
 
-### 5.3.3 Energy的计算(开发者必读)
+Note:
 
-在讨论本章节前，需要了解：
+[1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
 
-1). tron为了惩罚恶意开发者，对于异常合约，如果执行超时（超过50ms），或因bug异常退出（不包含revert），会扣除本次的最大可用Energy。若合约正常执行，或revert，则仅扣除执行相关指令所需的Energy；
+[2] TRON may change this policy.
 
-2). 开发者可以设置执行合约时，消耗Energy中自己承担的比例，该比例后续可修改。一次合约调用消耗的Energy，若开发者的Energy不足以支付其承担的部分，剩余部分全由调用者支付；
+[3] The estimated energy consumption limit for the next execution should be greater than the last one.
 
-3). 目前执行一个合约，可用的Energy总数由 调用者调用时设置的feeLimit 和 开发者承担部分共同决定；
+[4] 1 trx = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
 
-	注意：
-	1.若开发者不确定合约是否正常，请勿将用户承担比例设置为0%，否则在被判为恶意执行时，会扣除开发者的所有Energy。[1]
-	2.因此建议开发者设置的用户承担的比例为10%~100%。[2]
 
-下面具体举例，详细描述合约可用Energy的计算方法。
+### 5.3.3 Energy Calculation (Developer Must Read)
 
-##### 示例5.3.3.1
-如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是100%，也就是完全由调用者支付所需资源。
-此时A调用了合约C，填写的feeLimit是 30000000(单位是SUN, 30 TRX)。那么A此次调用能够使用的Energy是由两部分计算出来的：
+1). In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.
 
-* A冻结剩余的Energy
-这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
-* 按照固定比例换算出来的Energy
-如果feeLimit大于冻结剩余Energy价值的TRX，那么需要使用balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(30 - 10) TRX = 20 TRX，获得的Energy是 20 TRX / 100 SUN = 200000 Energy
+2). Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.
 
-所以，A此次调用能够使用的Energy是 (100000 + 200000) = 300000 Energy
-如果合约执行成功，没有发生任何异常，则会扣除合约运行实际消耗的Energy，一般都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
-##### 示例5.3.3.2
-如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是40%，也就是由合约开发者支付所需资源的60%，开发者是D，冻结 50 TRX 获得了500000 Energy。
-此时A调用了合约C，填写的feeLimit是 200000000(单位是SUN, 200 TRX)。
-那么A此次调用能够使用的Energy是于以下三部分相关：
+3). Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share
 
-* 调用者A冻结剩余的Energy（X Energy）
-这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于剩下的feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
-* 从调用者A的balance中，按照固定比例换算出来的Energy （Y Energy）
-如果feeLimit大于1和2的和，那么需要使用A的balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(200 - 10)TRX = 190 TRX，但是A的balance只有90 TRX，按照min(190 TRX, 90 TRX) = 90 TRX来计算获得的Energy，即为 90 TRX / 100 SUN = 900000 Energy
-* 开发者D冻结剩余的Energy (Z Energy)
-开发者D冻结剩余500000 Energy。
-会出现以下两种情况：
-当(X + Y) / 40% >= Z / 60%，A此次调用能够使用的Energy是 X + Y + Z Energy。
-当(X + Y) / 40% < Z / 60%，A此次调用能够使用的Energy是 (X + Y) / 40% Energy。
+Note:
 
-若A此次调用能够使用的Energy是 Q Energy
-同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60% = 300000 Energy。 
-一般实际消耗Energy都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
-##### 注意事项
-1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。
-开发者自己承担所有资源消耗，意味着当发生了Assert-style异常时，会消耗开发者冻结的所有Energy(Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md) )。为避免造成不必要的损失consume_user_resource_percent建议值是10-100。
+1. If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[1].
+2. We recommend to set caller's energy consumption proportion to 10%~100%[2].
+
+
+##### 5.3.3.1 Example
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;
+Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely;
+A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX), so during this trigger the energy A can use is from two parts:
+
+1. A's energy by freezing TRX
+2. The energy converted from the amount of TRX according to a fixed rate
+If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy
+
+Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.
+If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error come out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+
+##### 5.3.3.2 Example
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;
+Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption;
+Developer D freezes 50 TRX to get 500000 energy;
+A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX), so during this trigger the energy A can use is from three parts:
+
+
+1. A's energy by freezing TRX -- X
+2. The energy converted from the amount of TRX according to a fixed rate -- Y
+If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy
+3. D's energy by freezing TRX -- Z
+
+There are two situation:
+if (X + Y) / 40% >= Z / 60%, the energy A can use is X + Y + Z
+if (X + Y) / 40% < Z / 60%, the energy A can use is (X + Y) / 40%
+
+If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+
+##### Note
+1. when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md).
+To avoid unnecessary lost, consume_user_resource_percent is recommended 10-100
 
 ## 5.4 智能合约开发工具介绍
 ### 5.4.1 TronStudio
