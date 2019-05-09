@@ -316,11 +316,11 @@ Smart contract is a computerized transaction protocol that automatically impleme
 
 TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24~0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
-## 5.2 Tron智能合约特性（地址等）
-Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚拟机的特性，但基于tron自身属性也有部分的区别。
+## 5.2 TRON Smart Contract Features
+TRON virtual machine is based on Etherum solidity language, it also has TRON's own features.
 
-### 5.2.1 智能合约
-波场虚拟机运行的智能合约兼容以太坊智能合约特性，以protobuf的形式定义合约内容：
+### 5.2.1 Smart Contract
+TRON VM is compatible with Etherum's smart contract, using protobuf to define the content of the contract:
 
     message SmartContract {
       message ABI {
@@ -367,59 +367,58 @@ Tron virtual machine 基于以太坊 solidity 语言实现，兼容以太坊虚�
       int64 origin_energy_limit = 8;
     }
     
-origin_address: 合约创建者地址
+origin_address: smart contract creator address
 
-contract_address: 合约地址
+contract_address: smart contract address
 
-abi:合约所有函数的接口信息
+abi: the api information of the all the function of the smart contract
 
-bytecode：合约字节码
+bytecode: smart contract byte code
 
-call_value：随合约调用传入的trx金额
+call_value: TRX transferred into smart contract while call the contract
 
-consume_user_resource_percent：开发者设置的调用者的资源扣费百分比
+consume_user_resource_percent: resource consumption percentage set by the developer
 
-name：合约名称
+name: smart contract name
 
-origin_energy_limit: 开发者设置的在一次合约调用过程中自己消耗的energy的上限，必须大于0。对于之前老的合约，deploy的时候没有提供设置该值的参数，会存成0，但是会按照1000万energy上限计算，开发者可以通过updateEnergyLimit接口重新设置该值，设置新值时也必须大于0
-
-
-通过另外两个grpc message类型 CreateSmartContract 和 TriggerSmartContract 来创建和使用smart contract
+origin_energy_limit: energy consumption of the developer limit in one call, must greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0). 
 
 
-### 5.2.2 合约函数的使用
-
-1. constant function和非constant function
-
-函数调用从对链上属性是否有更改可分为两种：constant function 和 非constant function。
-Constant function 是指用 view/pure/constant 修饰的函数。会在调用的节点上直接返回结果，并不以一笔交易的形式广播出去。
-非constant function是指需要依托一笔交易的形式被广播的方法调用。函数会改变链上数据的内容，比如转账，改变合约内部变量的值等等。
-
->注意，如果在合约内部使用create指令（CREATE instruction），即使用view/pure/constant来修饰这个动态创建的合约合约方法，这个合约方法仍会被当作非constant function，以交易的形式来处理。
-
-2. 消息调用 （message calls）
-
-消息调用可以向其他的合约发起函数调用，也可以向合约的账户或非合约的账户转帐trx。 与普通的波场triggercontract类似， 消息调用也有调用的发起者，接受者，数据，转账金额，扣费，以及返回值等属性。每一个消息调用都可以递归的生成新的消息调用。
-合约可以决定在其内部的消息调用中，对于剩余的 energy ，应发送和保留多少。如果在内部消息调用时发生了OutOfEnergyException
-异常（或其他任何异常）,会返回false，但不会以异常的形式抛出。此时，只有与该内部消息调用一起发送的gas会被消耗掉，如果不表明消息调用所传入的费用call.value(energy)，则会扣掉所有的剩余energy。 
+Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract
 
 
-3. 委托调用/代码调用和库 (delegatecall/callcode/libary)
+### 5.2.2 The usage of the function of smart contract
 
-有一种特殊类型的消息调用，被称为 委托调用(delegatecall) 。它和一般的消息调用的区别在于，目标地址的代码将在发起调用的合约的上下文中执行，并且msg.sender 和msg.value 不变。 这意味着一个合约可以在运行时从另外一个地址动态加载代码。存储、当前地址和余额都指向发起调用的合约，只有代码是从被调用地址获取的。 这使得 Solidity 可以实现”库“能力：可复用的代码库可以放在一个合约的存储上，如用来实现复杂的数据结构的库。
+1. constant function and inconstant function
 
-4. CREATE 指令 （CREATE instruction）
+There are two types of function according to whether any change will be made to the properties on the chain: constant function and inconstant function
+Constant function uses view/pure/constant to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
+Inconstant function will be broadcasted in the form of a transaction while be called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
 
-另一个与合约调用相关的是调用指令集的时候使用CREATE指令。这个指令将会创建一个新的合约并生成新的地址。与以太坊的创建唯一的不同在于波场新生成的地址使用的是传入的本次智能合约交易id与调用的nonce的哈希组合。和以太坊不同，这个nonce的定义为本次根调用开始创建的合约序号。即如果有多次的 CREATE指令调用，从1开始，顺序编号每次调用的合约。详细请参考代码。还需注意，与deploycontract的grpc调用创建合约不同，CREATE的合约并不会保存合约的abi。
+Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction
 
-5. 内置功能属性及内置函数 (Odyssey-v3.1.1及之后的版本暂时不支持TVM内置函数)
+2. message calls
 
-1）TVM兼容solidity语言的转账形式，包括：
-伴随constructor调用转账
-伴随合约内函数调用转账
-transfer/send/call/callcode/delegatecall函数调用转账
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
 
->注意，波场的智能合约与波场系统合约的逻辑不同，如果转账的目标地址账户不存在，不能通过智能合约转账的形式创建目标地址账户。这也是与以太坊的不同点。
+
+3. delegate call/call code/libary
+
+There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
+
+4. CREATE instruction
+
+This command will create a new contract with a new address. The only difference with Ethrum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethrum, the defination of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail. 
+Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
+
+5. built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily
+
+1）TVM is compatible with solidity language's transfer format, including:
+accompany with constructor to call transfer
+accompany with internal function to call transfer
+use transfer/send/call/callcode/delegatecall to call transfer
+
+Note: 波场的智能合约与波场系统合约的逻辑不同，如果转账的目标地址账户不存在，不能通过智能合约转账的形式创建目标地址账户。这也是与以太坊的不同点。
 
 2）不同账户为超级节点投票 (Odyssey-v3.1.1及之后的版本暂时不支持)
 
