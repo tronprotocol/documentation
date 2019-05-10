@@ -9,16 +9,14 @@ MainNet Configuration: https://github.com/tronprotocol/TronDeployment/blob/maste
 
 # 2 Tron Super Representatives and Committee
 
-## 2.1 How to become a super representative
+## 2.1 How to Become a Super Representative
 
  In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  
  To prevent vicious attack, TRON network burns 9999 TRX from the account that applies to become a super representative candidate.
 
-## 2.2 Super representatives election
+## 2.2 Super Representatives Election
 
- To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP).  
- Every account in TRON network has the right to vote for a super representative candidate.  
- After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.  
+ To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP). Every account in TRON network has the right to vote for a super representative candidate. After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.  
  Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.  
 
 + Examples (Using wallet-cli):  
@@ -31,7 +29,7 @@ votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witn
 
 The final output above is: Vote 3 votes for witness1, 7 votes for witness2
 
-## 2.3 Reward for super representatives
+## 2.3 Reward for Super Representatives
 
 Votes reward. Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total.  
 Block producing reward. Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.  
@@ -39,26 +37,26 @@ Every time after a super representative produces a block, the 32 TRX block produ
 
 ## 2.4 Committee
 
-### 2.4.1 What is committee
+### 2.4.1 What is Committee
 
 Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
 
-### 2.4.2 Create a proposal
+### 2.4.2 Create a Proposal
 
 Only the account of a super representative can create a proposal. The network parameters can be modified([min,max]):
 - 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000 ,24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms
-- 1: ACCOUNT_UPGRADE_COST, [0,100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 Sun
-- 2: CREATE_ACCOUNT_FEE, [0,100 000 000 000  000 000] //the fee to create an account, currently 100_000 Sun
-- 3: TRANSACTION_FEE, [0,100 000 000 000 000 000] //the fee for bandwidth, currently 10 Sun/byte
-- 4: ASSET_ISSUE_FEE, [0,100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 Sun
-- 5: WITNESS_PAY_PER_BLOCK, [0,100 000 000 000 000 000] //the block producing reward, currently 32_000_000 Sun
-- 6: WITNESS_STANDBY_ALLOWANCE, [0,100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 Sun
-- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, []//the fee to create an account in system, currently 0 Sun
+- 1: ACCOUNT_UPGRADE_COST, [0,100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 SUN
+- 2: CREATE_ACCOUNT_FEE, [0,100 000 000 000  000 000] //the fee to create an account, currently 100_000 SUN
+- 3: TRANSACTION_FEE, [0,100 000 000 000 000 000] //the fee for bandwidth, currently 10 SUN/byte
+- 4: ASSET_ISSUE_FEE, [0,100 000 000 000 000 000] //the fee to issue an asset, currently 1024_000_000 SUN
+- 5: WITNESS_PAY_PER_BLOCK, [0,100 000 000 000 000 000] //the block producing reward, currently 32_000_000 SUN
+- 6: WITNESS_STANDBY_ALLOWANCE, [0,100 000 000 000 000 000] //the votes reward for top 127 super representative candidates, currently 115_200_000_000 SUN
+- 7: CREATE_NEW_ACCOUNT_FEE_IN_SYSTEM_CONTRACT, []//the fee to create an account in system, currently 0 SUN
 - 8: CREATE_NEW_ACCOUNT_BANDWIDTH_RATE, //the consumption of bandwith or TRX while creating an account, using together with #7
 - 9: ALLOW_CREATION_OF_CONTRACTS, //to enable the VM
 - 10: REMOVE_THE_POWER_OF_THE_GR  //to clear the votes of GR
-- 11: ENERGY_FEE, [0,100 000 000 000 000 000] //sun
-- 12: EXCHANGE_CREATE_FEE, [0,100 000 000 000 000 000] //sun
+- 11: ENERGY_FEE, [0,100 000 000 000 000 000] //SUN
+- 12: EXCHANGE_CREATE_FEE, [0,100 000 000 000 000 000] //SUN
 - 13: MAX_CPU_TIME_OF_ONE_TX, [0, 1000] //ms
 - 14: ALLOW_UPDATE_ACCOUNT_NAME, //to allow users to change account name and allow account duplicate name, currently 0, means false
 - 15: ALLOW_SAME_TOKEN_NAME, //to allow create a token with duplicate name, currently 1, means true
@@ -73,9 +71,9 @@ id: the serial number
 value: the parameter value  
 ```
 
-Note: In TRON network, 1 TRX = 1000_000 Sun
+Note: In TRON network, 1 TRX = 1000_000 SUN
 
-### 2.4.3 Vote for a proposal
+### 2.4.3 Vote for a Proposal
 
 Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.  
 
@@ -86,7 +84,7 @@ id: proposal id
 is_or_not_add_approval: YES vote or cancel YES vote  
 ```
 
-### 2.4.4 Cancel proposal
+### 2.4.4 Cancel Proposal
 
 Proposal creator can cancel the proposal before it is passed.  
 
@@ -96,7 +94,7 @@ deleteProposal id
 id: proposal id
 ```
 
-### 2.4.5 Query proposal
+### 2.4.5 Query Proposal
 
 Query all the proposals list (ListProposals), Query all the proposals list by pagination (GetPaginatedProposalList), Query a proposal by proposal id (GetProposalById).       
 For more api detail, please refer to [Tron-http](Tron-http.md)  
@@ -107,16 +105,15 @@ For more api detail, please refer to [Tron-http](Tron-http.md)
 
 TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transfered from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.
 
-## 3.2 Way to create an account
+## 3.2 Way to Create an Account
 
-a) Use a wallet to generate the address and private key  
-To active the account, you need to transfer TRX or transfer token to the new created account  
-b) Use an account already existed in TRON network to create an account   
+- Use a wallet to generate the address and private key. To active the account, you need to transfer TRX or transfer token to the new created account  
+- Use an account already existed in TRON network to create an account   
 
-## 3.3 Key-pair generation algorithm
+## 3.3 Key-pair Generation Algorithm
 Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.
 
-## 3.4 Address format
+## 3.4 Address Format
 Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out. Do basecheck to address, here is the final address. All addresses start with 'T'.    
 basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.  
 character map:  
@@ -128,35 +125,35 @@ https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E
 
 # 4 TRON Network Node
 ## 4.1 SuperNode
-### 4.1.1 SuperNode introduction
+### 4.1.1 SuperNode Introduction
 [Super Representative](https://github.com/tronprotocol/Documentation/blob/master/中文文档/波场区块链浏览器介绍/什么是超级代表.md)(abbr: SR) is the block producer in TRON network, there are 27 SR. They verify the transactions and write the transactions into the blocks, they take turns to produce blocks. The super Representatives' information is public to everyone in TRON network. The best way to browse is using [tronscan](https://tronscan.org/#/representatives)
-### 4.1.2 SuperNode deployment
+### 4.1.2 SuperNode Deployment
 [superNode deployment](https://github.com/tronprotocol/java-tron#running-a-super-representative-node-for-mainnet)
-### 4.1.3 Recommended hardware configuration
+### 4.1.3 Recommended Hardware Configuration
 minimum requirement:  
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T  
 Recommended requirement:  
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.2 FullNode
-### 4.2.1 FullNode introduction
+### 4.2.1 FullNode Introduction
 FullNode has the complete block chain data, can update data in real time. It can broadcast the transactions and provide api service.
-### 4.2.2 FullNode deployment
+### 4.2.2 FullNode Deployment
 please refer to [tron-deployment](https://github.com/tronprotocol/tron-deployment)
 [fullNode deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-fullnode-on-the-one-host)
-### 4.2.3 Recommended hardware configuration
+### 4.2.3 Recommended Hardware Configuration
 minimum requirement:    
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T   
 Recommended requirement:  
 CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.3 SolidityNode
-### 4.3.1 SolidityNode introduction
+### 4.3.1 SolidityNode Introduction
 SolidityNode only synchronize solidified blocks data from the fullNode it specifies, It also provie api service.
-### 4.3.2 SolidityNode deployment
+### 4.3.2 SolidityNode Deployment
 please refer to [tron-deployment](https://github.com/tronprotocol/tron-deployment)
 [solidityNode deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
-### 4.3.3 Recommended hardware configuration
+### 4.3.3 Recommended Hardware Configuration
 minimum requirement:    
 CPU: 16 cores, RAM: 32G, Bandwidth: 100M, Disk: 1T   
 Recommended requirement:  
@@ -176,22 +173,22 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 [TestNet configuration](https://github.com/tronprotocol/tron-deployment/blob/master/test_net_config.conf)  
 ### 4.6.3 PrivateNet
 #### 4.6.3.1 Preconditions
-  1、at least two accounts [generate an account](https://tronscan.org/#/wallet/new)  
-  2、at least deploy one SuperNode to produce blocks  
-  3、deploy some FullNode to synchronize blocks and broadcast transactions  
-  4、SuperNode and FullNode comprise the private network  
+ - at least two accounts [generate an account](https://tronscan.org/#/wallet/new)  
+ - at least deploy one SuperNode to produce blocks  
+ - deploy serval FullNodes to synchronize blocks and broadcast transactions  
+ - SuperNode and FullNode comprise the private network  
 #### 4.6.3.2 Deployment
 ##### 4.6.3.2.1 Step 1: SuperNode Deployment
- 1、Download private_net_config.conf   
+ 1) Download private_net_config.conf   
  ```
  wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
  ```
- 2、add your private key in localwitness 
- 3、set genesis.block.witnesses as the private key's corresponding address
- 4、set p2p.version, any positive integer but 11111  
- 5、set the first SR needSyncCheck = false, others can be set true  
- 6、set node.discovery.enable = true  
- 7、run the script   
+ 2) add your private key in localwitness 
+ 3) set genesis.block.witnesses as the private key's corresponding address
+ 4) set p2p.version, any positive integer but 11111  
+ 5) set the first SR needSyncCheck = false, others can be set true  
+ 6) set node.discovery.enable = true  
+ 7) run the script   
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
@@ -216,16 +213,16 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
 
 ##### 4.6.3.2.2 Step 2: FullNode Deployment
- 1、Download private_net_config.conf  
+ 1) Download private_net_config.conf  
  ```
  wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
  ```
- 2、set seed.node ip.list with SR's ip and port  
- 3、set p2p.version the same as SuperNode's p2p.version   
- 4、set genesis.block the same as genesis.block  
- 5、set needSyncCheck true   
- 6、set node.discovery.enable true   
- 7、run the script   
+ 2) set seed.node ip.list with SR's ip and port  
+ 3) set p2p.version the same as SuperNode's p2p.version   
+ 4) set genesis.block the same as genesis.block  
+ 5) set needSyncCheck true   
+ 6) set node.discovery.enable true   
+ 7) run the script   
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
@@ -287,9 +284,9 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
  java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
  ```
  Note: You have to stop the running of the node, and then to run the data conversion script.  
- If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node.
- <br>
- run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path`和`dst_db_path` 
+
+ If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node.  
+ Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path`和`dst_db_path` 
  for example:  
  ```
  cp -rf output-directory /tmp/output-directory
@@ -371,7 +368,7 @@ origin_energy_limit: energy consumption of the developer limit in one call, must
 
 Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.  
 
-### 5.2.2 The usage of the function of smart contract
+### 5.2.2 The Usage of the Function of Smart Contract
 
 1、constant function and inconstant function
 
@@ -415,7 +412,7 @@ Note: TRON's smart contract is different from TRON's system contract, if the tra
 
 >Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
  
-### 5.2.3 Contract address using in solidity language
+### 5.2.3 Contract Address Using in Solidity Language
 
 Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.  
 1、address conversion  
@@ -446,7 +443,7 @@ function compareAddress(address tronAddress) public view returns (uint256){
 ```
 But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c  
 3、variable assignment  
-solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:  
+Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:  
 ```
 function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
@@ -456,7 +453,7 @@ function assignAddress() public view {
 ```
 If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).  
 
-### 5.2.4 The specila constants differ from Ethereum
+### 5.2.4 The Special Constants Differ from Ethereum
 
 1、Currency
 Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.   
@@ -474,7 +471,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 •	msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gesleft()  
 •	msg.sender (address): message sender (current call)  
 •	msg.sig (bytes4): first 4 bytes of call data (function identifier)  
-•	msg.value (uint): the amount of sun send with message  
+•	msg.value (uint): the amount of SUN send with message  
 •	now (uint): current block timestamp (block.timestamp)  
 •	tx.gasprice (uint): the gas price of transaction, not recommended, set 0  
 •	tx.origin (address): transaction initiator  
@@ -482,7 +479,7 @@ We recommend to use tron-studio instead of remix to build TRON smart contract.
 ## 5.3 Energy Introduction
 Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.  
 
-### 5.3.1 How to get energy
+### 5.3.1 How to Get Energy
 
 Freeze TRX to get energy.  
 
@@ -533,7 +530,7 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 24 hours later, the energy consumption amount will be 0 Energy
 ```
 
-### 5.3.2 How to set fee limit (Caller Must Read)
+### 5.3.2 How to Set Fee Limit (Caller Must Read)
 ***
 
 *Within the scope of this section, the smart contract developer will be called "developer", the users or other contracts which call the smart contract will be called "caller"*
@@ -544,7 +541,7 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 
 Set a rational fee limit can guarantee the smart contract execution. And if the execution of the contract cost great energy, it will not consume too much energy from the caller. Before you set fee limit, you need to know several conception:  
 
-1). The legal fee limit is a integer between 0 - 10^9, unit is sun.  
+1). The legal fee limit is a integer between 0 - 10^9, unit is SUN.  
 
 2). Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[1]. When the contract is triggered, the commands will be excuted one by one and consume energy. If it reaches the fee limit, commands will fail to be excuted, and energy is not refundable.  
 
@@ -556,7 +553,7 @@ Set a rational fee limit can guarantee the smart contract execution. And if the 
 
 To encourage caller to trigger the contract, usually developer has enough energy.  
 
-##### 5.3.2.1 Example
+##### Example
 How to estimate the fee limit:  
  * Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]  
  * According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy  
@@ -565,26 +562,19 @@ How to estimate the fee limit:
  
 then the way to estimate the fee limit is:   
 
-1). A = 20000 energy * (1 trx / 400 energy) = 50 trx = 50_000_000 sun,  
-
-2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun,  
-
-3). Take the greater number of A and B, which is 50_000_000 sun,  
-
+1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,  
+2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,  
+3). Take the greater number of A and B, which is 50_000_000 SUN,  
 4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,  
 
-So, the caller is suggested to set fee limit to 50_000_000 sun * 10% = 5_000_000 sun  
+So, the caller is suggested to set fee limit to 50_000_000 SUN * 10% = 5_000_000 SUN  
 
 Note:  
 
 [1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.  
-
 [2] TRON may change this policy.  
-
 [3] The estimated energy consumption limit for the next execution should be greater than the last one.  
-
-[4] 1 trx = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.  
-
+[4] 1 TRX = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.  
 
 ### 5.3.3 Energy Calculation (Developer Must Read)  
 
@@ -598,7 +588,7 @@ Note:
 - If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[1].  
 - We recommend to set caller's energy consumption proportion to 10% ~ 100%[2]. 
 
-##### 5.3.3.1 Example
+##### Example 1
 A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;  
 Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely;  
 A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX), so during this trigger the energy A can use is from two parts:  
@@ -608,7 +598,7 @@ If fee limit is greater than the energy obtained from freezing TRX, then it will
 Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.  
 If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error come out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
 
-##### 5.3.3.2 Example
+##### Example 2
 A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;  
 Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption;  
 Developer D freezes 50 TRX to get 500000 energy;  
@@ -778,18 +768,18 @@ When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDd
 Please refer to:  
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md
 
-## 6.2 gRPC API introduction
+## 6.2 gRPC API Introduction
 Please refer to:  
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
 
-## 6.3 http API introduction
+## 6.3 http API Introduction
 Please refer to:  
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
 # 7 Tron TRC-10 Token Introduction
 TRON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.    
 
-## 7.1 How to issue a TRC-10 token
+## 7.1 How to Issue a TRC-10 Token
 [grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)  
 http api:  
 ```
@@ -828,7 +818,7 @@ Return: Transaction object
 Note: The unit of 'trx_num' is SUN
 ```
 
-## 7.2 Participate TRC-10 token
+## 7.2 Participate TRC-10 Token
 [grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)  
 http api:  
 ```
@@ -924,12 +914,12 @@ command lines
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 ```
 
-frozen_balance: the amount of TRX to freeze (unit sun)  
+frozen_balance: the amount of TRX to freeze (unit SUN)  
 frozen_duration: the freezing period (currently a fixed 3 days)
 ResourceCode: 0 for Bandwidth, 1 for Energy  
 receiverAddress: recipient account address  
   
-## 8.5 Other fees
+## 8.5 Other Fees
 
 |Type|Fee|
 | :------|:------:|
