@@ -745,7 +745,7 @@ demo: curl -X POST  http://127.0.0.1:8090/wallet/getexchangebyid -d {"id":1}
 Parameter id: Exchange pair id
 return: Exchange pair information
 
-/wallet/listexchanges
+wallet/listexchanges
 Description: Query the list of all the exchange pairs
 demo: curl -X POST  http://127.0.0.1:8090/wallet/listexchanges
 Parameter: No parameter

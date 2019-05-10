@@ -822,49 +822,47 @@ If the function called is constant or view, wallet-cli will return the result di
 If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...
 
 ```
-# 比如使用remix生成的合约，bytecode是
+# for instance, using remix to get the bytecode of the contract, like:
 608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
 ```
 
-之前部署的library地址是：TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54
-那么部署的时候，需要将 browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 作为deploycontract的参数。
+The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54
+When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract
 
-# 6 内置合约以及API说明
-## 6.1 内置合约说明
-请参考:
+# 6 Built-in Contracts and API introduction
+## 6.1 Built-in Contracts
+Please refer to:
 
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md
 
-## 6.2 gRPC 接口说明
-请参考:
+## 6.2 gRPC API introduction
+Please refer to:
 
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
 
-## 6.3 http 接口说明
-请参考:
+## 6.3 http API introduction
+Please refer to:
 
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
-# 7 Tron TRC10 token说明
-TRON网络支持2种token，一种是通过智能合约发行的TRC20协议的token，一种是通过Tron公链内置的TRC10 token。   
+# 7 Tron TRC-10 Token Introduction
+TRON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.  
 
-下面对TRC10 token进行说明。
-## 7.1 如何发行TRC10 token
-[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
+## 7.1 How to issue a TRC-10 token
+[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
 
-http接口：
+http api:
 
 wallet/createassetissue
-作用：发行Token
-demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
+Description: Issue a token
+demo: curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "owner_address":"41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
 "name":"0x6173736574497373756531353330383934333132313538",
 "abbr": "0x6162627231353330383934333132313538",
 "total_supply" :4321,
 "trx_num":1,
 "num":1,
-"precision":1,
-"start_time" : 1530894315158,
+"start_time" : 1530894315158,
 "end_time":1533894312158,
 "description":"007570646174654e616d6531353330363038383733343633",
 "url":"007570646174654e616d6531353330363038383733343633",
@@ -872,283 +870,198 @@ demo：curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
 "public_free_asset_net_limit":10000,
 "frozen_supply":{"frozen_amount":1, "frozen_days":2}
 }'
-参数说明：
-owner_address发行人地址；name是token名称；abbr是token简称；total_supply是发行总量；trx_num和num是token和trx的兑换价值；precision是精度，也就是小数点个数；start_time和end_time是token发行起止时间；description是token说明，需要是hexString格式；url是token发行方的官网，需要是hexString格式；free_asset_net_limit是Token的总的免费带宽；public_free_asset_net_limit是每个token拥护者能使用本token的免费带宽；frozen_supply是token发行者可以在发行的时候指定冻结的token
-返回值：发行Token的Transaction
-【注意】
-- 当前不支持precision，也就是说，目前的precision默认为0。只有当委员会通过AllowSameTokenName提议后，才允许设置精度。
-- 当前不支持token重名。只有当委员会通过AllowSameTokenName提议后，才允许发行相同名字的token。
+Parameter owner_address: Owner address, default hexString  
+Parameter name: Token name, default hexString    
+Parameter abbr: Token name abbreviation, default hexString  
+Parameter total_supply: Token total supply    
+Parameter trx_num: Define the price by the ratio of trx_num/num,
+Parameter num: Define the price by the ratio of trx_num/num   
+Parameter start_time: ICO start time
+Parameter end_time: ICO end time    
+Parameter description: Token description, default hexString
+Parameter url: Token official website url, default hexString   
+Parameter free_asset_net_limit: Token free asset net limit   
+Parameter public_free_asset_net_limit: Token public free asset net limit    
+Parameter frozen_supply: Token frozen supply  
+Parameter permission_id: Optional, for multi-signature use    
+Return: Transaction object
+Note: The unit of 'trx_num' is SUN
 
-## 7.2 参与TRC10 token
-[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
+## 7.2 Participate TRC-10 token
+[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
 
-http接口：
+http api:
 
 wallet/participateassetissue
-作用：参与token发行
-demo：curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
+Description: Participate a token
+demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
 "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0",
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1", 
 "amount":100, 
 "asset_name":"3230313271756265696a696e67"
 }'
-参数说明：
-to_address是Token发行人的地址，需要是hexString格式
-owner_address是参与token人的地址，需要是hexString格式
-amount是参与token的数量
-asset_name是token的名称，需要是hexString格式
-返回值：参与token发行的transaction
+Parameter to_address: The issuer address of the token, default hexString    
+Parameter owner_address: The participant address, default hexString 
+Parameter amount: Participate token amount
+Parameter asset_name: Token id, default hexString         
+Parameter permission_id: Optional, for multi-signature use          
+Return: Transaction object
+Note: The unit of 'amount' is the smallest unit of the token
 
-【注意】
-- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
+## 7.3 TRC-10 Token Transfer
+[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#11)
 
-## 7.3 TRC10 token转账
-[grpc接口](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#11)
-
-http接口：
+http api:
 
 wallet/transferasset
-作用：转账Token
-demo：curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{
-  "owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", 
-  "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", 
-  "asset_name": "0x6173736574497373756531353330383934333132313538", 
-  "amount": 100
-}'
-参数说明：
-  owner_address是token转出地址，需要是hexString格式；
-  to_address是token转入地址，需要是hexString格式；
-  asset_name是token名称，需要是hexString格式；
-  amount是token转账数量
-返回值：token转账的Transaction
-【注意】
-- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
+Description: Transfer token
+demo: curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "31303030303031", "amount": 100}'
+Parameter owner_address: Owner address, default hexString    
+Parameter to_address: To address, default hexString    
+Parameter asset_name: Token id, default hexString   
+Parameter amount: Token transfer amount    
+Parameter permission_id: Optional, for multi-signature use         
+Return: Transaction object
+Note: The unit of 'amount' is the smallest unit of the token
 
-# 8 Tron资源（Resource）模型
-## 8.1 资源模型介绍
+# 8 TRON Resource Model
+## 8.1 Resource Model Introduction
 
-TRON网络中的资源有4种：带宽，CPU，存储和内存。得益于波场独有的内存模型，TRON网络中的内存资源几乎是无限的。   
-TRON网络引入了Bandwidth point 和 Energy 两种资源概念。其中Bandwidth Point表示带宽资源，Energy表示CPU和存储资源。   
-**注意** 
-- 普通交易仅消耗Bandwidth points
-- 智能合约的操作不仅要消耗Bandwidth points，还会消耗Energy
+TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.  
+TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage. 
+**Note** 
+- Ordinary transaction only consumes Bandwidth points
+- Smart contract related transaction not only consumes Bandwidth points, but also Energy
 
 ## 8.2 Bandwidth Points
 
+The transaction information is stored and transmitted in the form of byte array, Bandwidth Points consumed = the number of bytes of the transaction * Bandwidth Points rate. Currently Bandwidth Points rate = 1
 
-交易以字节数组的形式在网络中传输及存储，一条交易消耗的Bandwidth Points = 交易字节数 * Bandwidth Points费率。当前Bandwidth Points费率 = 1。
+Such as if the number of bytes of a transaction is 200, so this transaction consumes 200 Bandwidth Points.
 
-如一条交易的字节数组长度为200，那么该交易需要消耗200 Bandwidth Points。
+**Note** Due to the change of the total amount of the frozen TRX in the network and the self-frozen TRX amount, the Bandwidth Points an account possesses is not fixed.
 
-**注意** 由于网络中总冻结资金以及账户的冻结资金随时可能发生变化，因此账户拥有的Bandwidth Points不是固定值。
+### 8.2.1 How to Get Bandwidth Points 
 
-### 8.2.1 Bandwidth PointsBandwidth Points的来源
+- By Freezing TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-frozen / the total amount of TRX frozen for Bandwidth Points in the network * 43_200_000_000
 
-Bandwidth Points的获取分两种：
+- Every account has a fixed amount of free Bandwidth Points(5000) every day
 
-- 一种是通过冻结TRX获取的Bandwidth Points， 额度 = 为获取Bandwidth Points冻结的TRX / 整个网络为获取Bandwidth Points冻结的TRX 总额 * 43_200_000_000。
-也就是所有用户按冻结TRX平分固定额度的Bandwidth Points。
+### 8.2.2 Bandwith Points Consumption
 
-- 还有一种是每个账号每天有固定免费额度的带宽，为5000。
+Except for query operation, any transaction consumes Bandwidth points.
 
-### 8.2.2 Bandwith Points的消耗
+There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.
 
-除了查询操作，任何交易都需要消耗bandwidth points。
+Create a new account transaction, Bandwidth points consumption sequence:
 
-还有一种情况，如果是转账，包括普通转账或发行Token转账，如果目标账户不存在，转账操作则会创建账户并转账，只会扣除创建账户消耗的Bandwidth Points，转账不会再消耗额外的Bandwidth Points。
+    1、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
+    2、Burn 0.1 TRX;
 
-### 8.2.3 Bandwidth Points的计算规则
-
-Bandwidth Points是一个账户1天内能够使用的总字节数。一定时间内，整个网络能够处理的Bandwidth为确定值。
-
-如果交易需要创建新账户，Bandwidth Points消耗如下：
-
-    1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-    
-    2、尝试消耗交易发起者的TRX，这部分烧掉0.1TRX。
-
-如果交易是发行Token转账，Bandwidth Points消耗如下：
+Token transfer transaction, Bandwidth points consumption sequence:
 
     1、依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
     Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。
     
-    2、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-    
-    3、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
-    
-    4、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
+    2、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
+    3、Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;
+    4、Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
 
-如果交易普通交易，Bandwidth Points消耗如下：
+Ordinary transaction, Bandwidth points consumption sequence: 
 
-    1、尝试消耗交易发起者冻结获取的Bandwidth Points。如果交易发起者Bandwidth Points不足，则进入下一步。
-    
-    2、尝试消耗交易发起者的免费Bandwidth Points。如果免费Bandwidth Points也不足，则进入下一步。
-    
-    3、尝试消耗交易发起者的TRX，交易的字节数 * 10 sun。
+    1、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
+    2、Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
+    3、Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
 
-### 8.2.4 带宽的自动恢复
-在网络总锁定资金以及账户锁定资金不变的情况向，账户的带宽的已使用量随着时间增加而按比例衰减，24h衰减到0。如时间T1时刻，账户带宽已使用量为U，到T1+12h，账户再次使用带宽u,此时账户已使用带宽为 U/2 + u。具体公式如下：
+### 8.2.3 Bandwidth Points Recovery
+Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
 
 ![image](https://github.com/tronprotocol/Documentation/blob/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
 
-即可以理解为每24h，用户已使用的带宽值重置为0。
+Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
 
 ## 8.3 Energy
-[5.3 Energy介绍](#5.3 Energy介绍)
+[5.3 Energy Introduction](#5.3 Energy Introduction)
 
-## 8.4 资源委托（resource delegate）
-在TRON中，一个账户可以通过冻结TRX来获取带宽和能量。同时，也可以把冻结TRX获取的带宽或者能量委托（delegate）给其他地址。
-此时，主账号拥有冻结的TRX以及相应的投票权，受委托账户拥有冻结获取的资源（带宽或者能量）。
-和普通冻结一样，委托资源也至少冻结3天。
-资源委托的命令如下：
+## 8.4 Resource Delegation
+In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.
+
+command lines
 `
   freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 `
-其中frozen_balance是冻结的TRX数量（单位为sun），frozen_duration为冻结的天数（目前固定为3天），
-ResourceCode表示要获取的资源是带宽还是能量，receiverAddress表示受委托账户的地址
-【注意】资源委托功能需要委员会开启
+
+frozen_balance: the amount of TRX to freeze (unit sun), 
+frozen_duration: the freezing period (currently a fixed 3 days),
+ResourceCode: 0 for Bandwidth, 1 for Energy
+receiverAddress: recipient account address
 
 
-## 8.5 其他交易费
+## 8.5 Other fees
 
-|交易类型|费用|
+|Type|Fee|
 | :------|:------:|
-|创建witness|9999TRX|
-|发行token|1024TRX|
-|创建account|0.1TRX|
-|创建exchange|1024TRX|
+|Create a witness|9999TRX|
+|Issue a token|1024TRX|
+|Create an account|0.1TRX|
+|Create an exchange|1024TRX|
 
-# 9 去中心化交易所(DEX)说明
+# 9 DEX Introduction
 
-## 9.1 什么是交易对
-TRON网络原生支持去中心化交易所(DEX)。去中心化交易所由多个交易对构成。一个交易对（Exchange）是token与token之间，或者token与TRX之间的交易市场（Exchange Market）。
-任何账户都可以创建任何token之间的交易对，即使TRON网络中已经存在相同的交易对。交易对的买卖与价格波动遵循Bancor协议。
-TRON网络规定，所有交易对中的两个token的权重相等，因此它们数量（balance）的比率即是它们之间的价格。
-举一个简单的例子，假设一个交易对包含ABC和DEF两种token，ABC的balance为1000万，DEF的balance为100万，由于权重相等，因此10 ABC = 1 DEF，也就是说，当前ABC对于DEF的价格为10ABC/DEF。
+TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs
 
-## 9.2 创建交易对 
-任何账户都可以创建任何token之间的交易对。创建交易对的手续费是1024TRX，这个手续费会被TRON网络烧掉。   
-创建交易对相当于为该交易对注入（inject）原始资本，因此创建者账户中要拥有该交易对的初始balance。当创建成功后，会立即从创建者账户中扣除这两个token的balance。   
-创建交易对的合约是ExchangeCreateContract，该合约有4个参数：
-- first_token_id，第1种token的id   
-- first_token_balance，第1种token的balance   
-- second_token_id，第2种token的id   
-- second_token_balance，第2种token的balance   
+## 9.1 What is an Exchange Pair
+The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.
 
-其中token的id由token的name得到，具体概念请参见token发行相关部分的文档。如果交易对中包含TRX，则使用"_"表示TRX的id。需要注意的是，TRX的单位是sun，即10-6 TRX。    
-例子：
-`    
-ExchangeCreate abc 10000000 _ 1000000000000    
-`
-该交易会创建abc与TRX之间的交易对，初始balance分别为10000000个abc和1000000000000 sun（1000000TRX），
-如果创建者没有足够的abc和TRX，则交易对创建失败；否则创建者账户中立即扣除相应的abc和TRX，交易对创建成功，可以开始交易。
+## 9.2 Exchange Pair Creation
+Any account can create an exchange pair, it burns 1024 TRX.  
+Please refer to 'wallet/exchangecreate' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
 
-【注意】
-- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。  
+## 9.3 Exchange Pair Transaction
+Any account can trade in the DEX. The trade follows Bancor protocol. 
+Please refer to 'wallet/exchangetransaction' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
 
-## 9.3 交易
-任何账户都可以在任何交易对中进行交易。交易量和价格完全遵循Bancor协议。也就是说，一个账户在交易时，交易的对象是exchange。交易是即时的，不需要挂单和抢单，只要有足够的token，就可以交易成功。     
-交易的合约是ExchangeTransactionContract，该合约有3个参数：     
- - exchange_id，交易对的id，TRON网络会根据交易对创建时间顺序给每个交易对唯一的id
- - token_id，要卖出的token的id
- - quant，要卖出的token的金额
- - expected，期望得到的另一个token的最小金额。如果小于此数值，交易不会成功
+## 9.4 Exchange Pair Injection
+The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged. 
+Please refer to 'wallet/exchangeinject' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)    
 
-例子：       
-我们在刚刚创建的abc与TRX的交易对中进行交易，假设此交易对id为1，当前交易对中abc balance为10000000，TRX balance为1000000，如果期望花100个TRX买到至少990个abc，则      
-`  
-ExchangeTransaction 1 _ 100 990 
-`     
-其中"_"表示TRX，即向交易对卖出100个TRX。如果成功，该交易会使得交易对中增加100个TRX，并根据Bancor协议计算出减少的abc的数量，交易对创建者的账户中abc和TRX的数量会相应地增加和减少。
+## 9.5 Exchange Pair Withdrawal
+The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged. 
+Please refer to 'wallet/exchangewithdraw' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md) 
 
-【注意】
-- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
+## 9.6 Query
+### 9.6.1 Transaction Query
+ListExchanges: Query the list of all the exchange pairs
+GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination
+GetExchangeById: Query an exchange pair by exchange pair id
+Please refer to (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md) 
 
-## 9.4 注资
-当一个交易对其中1种token的balance很小时，只需要很小的交易量就会造成很大的价格波动，这不利于正常交易。为了避免这种情况，该交易对的创建者可以选择向该交易对注资（inject）。
-一个交易对只能由该交易对的创建者来注资。注资不需要手续费。    
-注资需要指定一种token以及注资金额，TRON网络会自动根据当前交易对中两种token的比例，计算出另一个token所需的金额，从而保证注资前后，交易对中两个token的比例相同，价格没有变化。    
-与创建交易对相同，注资要求创建者拥有足够多的两种token的balance。    
-注资的合约是ExchangeInjectContract，该合约有3个参数： 
+### 9.6.2 Price Calculation
+The token price is determined by the ratio of the balance of the two tokens.
 
- - exchange_id，交易对的id
- - token_id，要注资的token的id
- - quant，要注资的token的金额
+### 9.6.3 Calculate the amount of token you will get
+sellTokenQuant is the amount of the first_token you want to sell, buyTokenQuant is the amount of second_token you can get.
 
-例子：    
-我们对刚刚创建的abc与TRX的交易对进行注资，假设此交易对id为1（TRON网络中第1个交易对），当前交易对中abc balance为10000000，TRX balance为1000000，如果要增加10%的abc，则
-`
-ExchangeInject 1 abc 1000000
-`    
-如果成功，该交易会使得交易对中增加1000000个abc，并增加100000个TRX，交易对创建者的账户中abc和TRX的数量会相应地减少。
-
-【注意】
-- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
-
-## 9.5 撤资
-一个交易对中的所有资产都是创建者的。创建者可以随时撤资（withdraw），把交易对中的token赎回到自身账户中。一个交易对只能由该交易对的创建者来撤资。撤资不需要手续费。    
-和注资一样，撤资需要指定一种token以及撤资金额，TRON网络会自动根据当前交易对中两种token的比例，计算出另一个token撤资的金额，从而保证撤资前后，交易对中两个token的比例相同，价格没有变化。    
-【风险提示】撤资前后价格没有变化，但是价格波动会更大    
-撤资的合约是ExchangeWithdrawContract，该合约有3个参数：    
- - exchange_id，交易对的id
- - token_id，要撤资的token的id
- - quant，要撤资的token的金额
-
-例子：    
-我们对之前创建的abc与TRX的交易对进行撤资，假设此交易对id为1，当前交易对中abc balance为10000000，TRX balance为1000000，如果要赎回10%的abc，则    
-`
-ExchangeWithdraw 1 abc 1000000
-`    
-如果成功，该交易会使得交易对中减少1000000个abc，以及减少100000个TRX，交易对创建者的账户中abc和TRX的数量会相应地增加。
-
-【注意】
-- 当前的asset_name为token名称。当委员会通过AllowSameTokenName提议后asset_name改为token ID的String类型。
-
-## 9.6 查询
-### 9.6.1 查询交易
-有三个查询交易对的接口，包括：查询所有交易对信息（ListExchanges）、分页查询交易对信息（GetPaginatedExchangeList）(Odyssey-v3.1.1暂不支持)，查询指定交易对信息（GetExchangeById）。
-相关api详情，请查询[波场RPC-API说明]。
-
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#64-%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E4%BA%A4%E6%98%93%E5%AF%B9
-
-### 9.6.2 计算当前价格
-交易中token的当前价格信息的计算过程：\
-假设 first_token 当前的价格为 100 Sun，first_token_balance 为1000_000,second_token_balance 为2000_000，\
-second_token 当前的价格为 first_token*first_token_balance/second_token_balance = 50 Sun \
-first_token的价格可有"first_token&&TRX"交易对计算获得。
-
-### 9.6.3 计算交易获得token量
-交易中花费first_token置换获得的second_token的数量的计算过程：\
-假设 sellTokenQuant是要卖出的first_token的金额，buyTokenQuant是要买入的second_token的金额。
-
-supply = 1_000_000_000_000_000_000L；\
+supply = 1_000_000_000_000_000_000L; \
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant）, 0.0005)); \
-buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0)；
+buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / supply, 2000.0) - 1.0); 
 
-注意：由于网络其他账户发生交易，价格可能发生变化。    
 
-相关api详情，请查询[Tron-http](Tron-http.md)。
-
-# 10 多重签名
-详细信息请参考
+# 10 Multi-signature
+Please refer to: 
 https://github.com/tronprotocol/documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E5%A4%9A%E9%87%8D%E7%AD%BE%E5%90%8D.md
 
-# 11 钱包介绍
-## 11.1 wallet-cli功能介绍
-请参考:
+# 11 Wallet Introduction
+## 11.1 wallet-cli Introduction
+Please refer to:
+https://github.com/tronprotocol/wallet-cli/blob/master/README.md
 
-  https://github.com/tronprotocol/wallet-cli/blob/master/README.md
-
-## 11.2 计算交易ID
-
-对交易的RawData取Hash。
+## 11.2 Get Transaction ID
 ```
 Hash.sha256(transaction.getRawData().toByteArray())
 
 ```
-## 11.3 计算blockID
-block id是块高度和块头raw_data的hash的混合，具体是计算出块头中raw_data的hash。用
- 块的高度替换该hash中的前8个byte。具体代码如下：
+## 11.3 Get Block ID
 ```
 private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
   byte[] numBytes = Longs.toByteArray(blockNum); 
@@ -1157,9 +1070,12 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
   return hash;
   }
 ```
+## 11.4 How to Build a Transaction Locally
+According to the defination of the transaction, fill up all the fields of the transaction. 
+You need to set refference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of refference block, use the latest block time plus N minutes as the value of expiration time.
+The network judgment condition is if (expiration > latest block time and expiration < latest block time + 24 hours) means the transaction is in period of validity. Otherwise, it will be a overdue transaction, will not be accepted by the Mainnet.
 
-## 11.4 如何本地构造交易
-根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 refference block 的设置方法：设置RefBlockHash为最新块的hash的第8到16(不包含)之间的字节，设置BlockBytes为最新块高度的第6到8（不包含）之间的字节，代码如下：
+Way to set refference block: set RefBlockHash the bytes from the 8 to 16(not included) of the hash of the latest block, set BlockBytes the bytes from 6 to 8(not included) of the height of the latest block.
 ```
 public static Transaction setReference(Transaction transaction, Block newestBlock) {
      long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
@@ -1172,7 +1088,7 @@ public static Transaction setReference(Transaction transaction, Block newestBloc
      return transaction.toBuilder().setRawData(rawData).build();
    }
 ```
-Expiration 和交易时间戳的设置方法：
+Way to set expiration time and transaction timestamp:
 ```
 public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
      Transaction.Builder transactionBuilder = Transaction.newBuilder();
@@ -1201,13 +1117,12 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
      return refTransaction;
    }
 ```
-## 11.5 相关demo
+## 11.5 Related Demo
 
-本地构造交易、签名的demo请参考 
-
+Build transaction locally, signature demo, please refer to:
 
 https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
 
-nodejs的demo，具体请参考
+nodejs demo, please refer to:
 
 https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
