@@ -24,9 +24,9 @@ MainNet Configuration: https://github.com/tronprotocol/TronDeployment/blob/maste
 + Examples (Using wallet-cli):  
 
 ```
-freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)
-votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2
-votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2
+freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)  
+votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2  
+votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2  
 ```
 
 The final output above is: Vote 3 votes for witness1, 7 votes for witness2
@@ -67,11 +67,11 @@ Only the account of a super representative can create a proposal. The network pa
 - 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false
 
 + Examples (Using wallet-cli):  
-`
-createproposal id value
-id: the serial number
-value: the parameter value
-`
+```
+createproposal id value  
+id: the serial number  
+value: the parameter value  
+```
 
 Note: In TRON network, 1 TRX = 1000_000 Sun
 
@@ -80,21 +80,21 @@ Note: In TRON network, 1 TRX = 1000_000 Sun
 Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.  
 
 + Examples (Using wallet-cli):  
-`
+```
 approveProposal id is_or_not_add_approval
-id: proposal id
-is_or_not_add_approval: YES vote or cancel YES vote
-`
+id: proposal id  
+is_or_not_add_approval: YES vote or cancel YES vote  
+```
 
 ### 2.4.4 Cancel proposal
 
 Proposal creator can cancel the proposal before it is passed.  
 
 + Examples (Using wallet-cli):  
-`
+```
 deleteProposal proposalId
 id: proposal id
-`
+```
 
 ### 2.4.5 Query proposal
 
@@ -191,7 +191,7 @@ Main net, Test net, Private net all use the same code, only the node start confi
  4、set p2p.version, any positive integer but 11111  
  5、set the first SR needSyncCheck = false, others can be set true  
  6、set node.discovery.enable = true  
- 7、run the script  
+ 7、run the script   
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
@@ -966,9 +966,9 @@ Every 24 hours, the amount of the usage of Bandwidth points of an account will b
 ## 8.4 Resource Delegation
 In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.  
 command lines  
-`
+```
   freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
-`
+```
 
 frozen_balance: the amount of TRX to freeze (unit sun)  
 frozen_duration: the freezing period (currently a fixed 3 days)
