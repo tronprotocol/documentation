@@ -1,35 +1,25 @@
 # TRON Blockchain Documentation
 
-[TOC]
-
 # 1 Project Repository
 
-Github Url: https://github.com/tronprotocol
-java-tron is the source code of the main net, protocol is the defination of the api and data structure, wallet-cli is the official command line wallet
-
-Test net Configuration:
-https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
-
-Main net Configuration:
-https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf
+Github Url: https://github.com/tronprotocol    
+java-tron is the source code of the MainNet, protocol is the defination of the api and data structure, wallet-cli is the official command line wallet.  
+TestNet Configuration: https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf    
+MainNet Configuration: https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf    
 
 # 2 Tron Super Representatives and Committee
 
 ## 2.1 How to become a super representative
 
- In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours. 
-
+ In TRON network, any account can apply to become a super representative candidate. Every account can vote for super representative candidates. The top 27 candidates with the most votes are the super representatives. Super representatives can produce blocks. The votes will be counted every 6 hours, so super representatives may also change every 6 hours.  
  To prevent vicious attack, TRON network burns 9999 TRX from the account that applies to become a super representative candidate.
 
 ## 2.2 Super representatives election
 
- To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP).
-
- Every account in TRON network has the right to vote for a super representative candidate.
-
- After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.
-
- Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.
+ To vote, you need to have TRON Power(TP). To get TRON Power, you need to freeze TRX. Every 1 frozen TRX accounts for one TRON Power(TP).  
+ Every account in TRON network has the right to vote for a super representative candidate.  
+ After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.  
+ Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.  
 
 + Examples (Using wallet-cli):
 
@@ -43,18 +33,18 @@ The final output above is: Vote 3 votes for witness1, 7 votes for witness2
 
 ## 2.3 Reward for super representatives
 
-1. Votes reward. Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total.
-
-2. Block producing reward. Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.
-
-+ Every time after a super representative produces a block, the 32 TRX block producing reward will be sent to it's sub account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
+Votes reward. Every 6 hours, the top 127 super representative candidates with the most votes will share a total amount of 115,200 TRX according to their votes percentage. The annual votes reward is 168,192,000 TRX in total.  
+Block producing reward. Every time after a super representative produces a block, it will be reward 32 TRX. The 27 super representatives take turns to produce blocks every 3 seconds. The annual block producing reward is 336,384,000 TRX in total.  
+Every time after a super representative produces a block, the 32 TRX block producing reward will be sent to it's sub account. The sub-account is a read-only account, it allows a withdraw action from sub-account to super representative account every 24 hours.
 
 ## 2.4 Committee
 
 ### 2.4.1 What is committee
-Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed by the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
+
+Committee can modify the TRON network parameters, like transacton fees, block producing reward amount, etc. Committee is composed of the current 27 super representatives. Every super representative has the right to start a proposal. The proposal will be passed after it gets more than 19 approves from the super representatives and will become valid in the next maintenance period.
 
 ### 2.4.2 Create a proposal
+
 Only the account of a super representative can create a proposal. The network parameters can be modified([min,max]):
 - 0: MAINTENANCE_TIME_INTERVAL, [3 * 27* 1000 ,24 * 3600 * 1000] //super representative votes count time interval, currently 6 * 3600 * 1000 ms
 - 1: ACCOUNT_UPGRADE_COST, [0,100 000 000 000 000 000]  //the fee to apply to become a super representative candidate, currently 9999_000_000 Sun
@@ -76,58 +66,64 @@ Only the account of a super representative can create a proposal. The network pa
 - 17: TOTAL_ENERGY_LIMIT, //to modify the energy limit
 - 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false
 
-
-+ API:
++ Examples (Using wallet-cli):
 `
-createproposal id0 value0 ... idN valueN
-id0_N: parameter number
-value0_N: parameter value
+createproposal id value
+id: the serial number
+value: the parameter value
 `
 
 Note: In TRON network, 1 TRX = 1000_000 Sun
 
 ### 2.4.3 Vote for a proposal
-Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.
 
+Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.  
 
-+ API:
++ Examples (Using wallet-cli):
 `
 approveProposal id is_or_not_add_approval
-id: Proposal id
+id: proposal id
 is_or_not_add_approval: YES vote or cancel YES vote
 `
 
 ### 2.4.4 Cancel proposal
-Proposal creator can cancel the proposal before it is passed.
 
-+ API:
+Proposal creator can cancel the proposal before it is passed.  
+
++ Examples (Using wallet-cli):
 `
 deleteProposal proposalId
-id: Proposal id
+id: proposal id
 `
 
 ### 2.4.5 Query proposal
 
-Query all the proposals list (ListProposals), Query all the proposals list by pagination (GetPaginatedProposalList), Query a proposal by proposal id (GetProposalById)     
-For more api detail, please refer to [Tron-http](Tron-http.md)
+Query all the proposals list (ListProposals), Query all the proposals list by pagination (GetPaginatedProposalList), Query a proposal by proposal id (GetProposalById).       
+For more api detail, please refer to [Tron-http](Tron-http.md)  
 
 # 3 TRON Account
+
 ## 3.1 Introduction
+
 TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transfered from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.
+
 ## 3.2 Way to create an account
+
 a) Use a wallet to generate the address and private key
 To active the account, you need to transfer TRX or transfer token to the new created account
 b) Use an account already existed in TRON network to create an account 
+
 ## 3.3 Key-pair generation algorithm
 Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.
+
 ## 3.4 Address format
-Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out.
-Do basecheck to address, here is the final address. All addresses start with 'T'.
-basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.
-character map:
-ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+Use the public key P as the input, by SHA3 get the result H. The length of the public key is 64 bytes, SHA3 uses Keccak256. Use the last 20 bytes of H, and add a byte of 0x41 in front of it, then the address come out. Do basecheck to address, here is the final address. All addresses start with 'T'.    
+basecheck process: first do sha256 caculation to address to get h1, then do sha256 to h1 to get h2, use the first 4 bytes as check to add it to the end of the address to get address||check, do base58 encode to address||check to get the final result.  
+character map:  
+ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"  
+
 ## 3.5 Signature
-Signature introduction, please refer to:
+Signature introduction, please refer to:  
 https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
 
 # 4 TRON Network Node
