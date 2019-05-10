@@ -21,7 +21,7 @@ MainNet Configuration: https://github.com/tronprotocol/TronDeployment/blob/maste
  After you unfreeze your frozen TRX, you will lose the responding TRON Power(TP), so your previous vote will be invalid.  
  Note: Only your latest vote will be counted in TRON network which means your previous vote will be over written by your latest vote.  
 
-+ Examples (Using wallet-cli):
++ Examples (Using wallet-cli):  
 
 ```
 freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)
@@ -66,7 +66,7 @@ Only the account of a super representative can create a proposal. The network pa
 - 17: TOTAL_ENERGY_LIMIT, //to modify the energy limit
 - 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false
 
-+ Examples (Using wallet-cli):
++ Examples (Using wallet-cli):  
 `
 createproposal id value
 id: the serial number
@@ -79,7 +79,7 @@ Note: In TRON network, 1 TRX = 1000_000 Sun
 
 Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.  
 
-+ Examples (Using wallet-cli):
++ Examples (Using wallet-cli):  
 `
 approveProposal id is_or_not_add_approval
 id: proposal id
@@ -90,7 +90,7 @@ is_or_not_add_approval: YES vote or cancel YES vote
 
 Proposal creator can cancel the proposal before it is passed.  
 
-+ Examples (Using wallet-cli):
++ Examples (Using wallet-cli):  
 `
 deleteProposal proposalId
 id: proposal id
@@ -196,24 +196,24 @@ Main net, Test net, Private net all use the same code, only the node start confi
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
  ```
- command line parameters introduction:
- --witness: start witness function, i.e.: --witness
- --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
- -c: specify the configuration file path, i.e.: -c config.conf
+ command line parameters introduction:  
+ --witness: start witness function, i.e.: --witness  
+ --log-config: specify the log configuration file path, i.e.: --log-config logback.xml  
+ -c: specify the configuration file path, i.e.: -c config.conf  
 
- The usage of the log file:
- Can change the level of the module to control the log output, the default level of each module is INFO, for example: only print the message with the level higher than warn
+ The usage of the log file:  
+ You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:  
  <logger name="net" level="WARN"/>
  ```
  The parameters in configuration file that need to modify:  
  localwitness:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)  
  witnesses:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/witness.png) 
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/witness.png)  
  version:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
  enable:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png) 
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
 
 ##### 4.6.3.2.2 Step 2: FullNode Deployment
  1、Download private_net_config.conf  
@@ -221,102 +221,101 @@ Main net, Test net, Private net all use the same code, only the node start confi
  wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
  ```
  2、set seed.node ip.list with SR's ip and port  
- 3、set p2p.version the same as SuperNode's p2p.version  
- 4、set genesis.block the same as genesis.block
- 5、set needSyncCheck true  
- 6、set node.discovery.enable true  
- 7、run the script  
+ 3、set p2p.version the same as SuperNode's p2p.version   
+ 4、set genesis.block the same as genesis.block  
+ 5、set needSyncCheck true   
+ 6、set node.discovery.enable true   
+ 7、run the script   
  ```
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
  ```
  ```
- command lines parameters
- --witness: start witness function，i.e.: --witness
- --log-config: specify the log configuration file path, i.e.: --log-config logback.xml
- -c: specify the configuration file path, i.e.: -c config.conf
+ command lines parameters  
+ --witness: start witness function，i.e.: --witness  
+ --log-config: specify the log configuration file path, i.e.: --log-config logback.xml  
+ -c: specify the configuration file path, i.e.: -c config.conf  
  
- The usage of the log file:
- Can change the level of the module to control the log output, the default level of each module is INFO, for example: only print the message with the level higher than warn
+ The usage of the log file:  
+ You can change the level of the module to control the log output. The default level of each module is INFO, for example: only print the message with the level higher than warn:  
  <logger name="net" level="WARN"/>
  ```
  The parameters in configuration file that need to modify:    
  ip.list:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)  
  p2p.version:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
  genesis.block:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/genesis_block.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/genesis_block.png)  
  needSyncCheck:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/need_sync_check.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/need_sync_check.png)  
  node.discovery.enable:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
  
 ## 4.7 DB Engine
 ### 4.7.1 Rocksdb
 #### 4.7.1.1 Configuration
- Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)
- Note: rocksdb only support db.version=2, do not support db.version=1
- The optimization parameters rocksdb support:
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/rocksdb_tuning_parameters.png)
+ Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)  
+ Note: rocksdb only support db.version=2, do not support db.version=1  
+ The optimization parameters rocksdb support:  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/rocksdb_tuning_parameters.png)  
 
 #### 4.7.1.2 Use rocksdb's data backup function
- Choose rocksdb to be the data storage engine, you can use it's data backup funchtion while running
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)
- Note: FullNode can use data backup function; In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.
+ Choose rocksdb to be the data storage engine, you can use it's data backup funchtion while running  
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)  
+ Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.  
 #### 4.7.1.3 Convert leveldb data to rocksdb data
- The data storage structure of leveldb and rocksdb is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert leveldb data to rocksdb data.
- Usage:
+ The data storage structure of leveldb and rocksdb is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert leveldb data to rocksdb data.  
+ Usage:  
 ```text
   cd to the source code root directory
   ./gradlew build   #build the source code
   java -jar build/libs/DBConvert.jar  #run data conversion command
 ```
-  Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:
+  Note: If the node's data storage directory is self-defined, before run DBConvert.jar, you need to add the following parameters:  
   <br>
   <b>src_db_path</b>: specify LevelDB source directory, default output-directory/database
   <br>
   <b>dst_db_path</b>: specify RocksDb source directory, default output-directory-dst/database
   <br>
-  for example, if you run the script like this:
+  for example, if you run the script like this:  
   ```text
      nohup java -jar FullNode.jar -d your_database_dir &
   ```
-  then, you should run DBConvert.jar this way:
+  then, you should run DBConvert.jar this way:  
   ```text
   java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
   ```
-  Note: You have to stop the running of the node, and then to run the data conversion script.
+  Note: You have to stop the running of the node, and then to run the data conversion script.  
   If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node.
   <br>
   run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path`和`dst_db_path` 
-  for example:
+  for example:  
   ```text
   cp -rf output-directory /tmp/output-directory
   cd /tmp
   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
  ```
-  All the whole data conversion process may take 10 hours.
+  All the whole data conversion process may take 10 hours.  
   
-#### 4.7.1.4 rocksdb vs leveldb 
-you can refer to:
+#### 4.7.1.4 rocksdb vs leveldb  
+you can refer to:  
 <br>
-[rocksdb vs leveldb](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
+[rocksdb vs leveldb](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)  
 <br>
-[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
+[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)  
 
 # 5 Smart Contract
 ## 5.1 TRON Smart Contract Introduction
 
-Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.
-
-TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24~0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
+Smart contract is a computerized transaction protocol that automatically implements its terms. Smart contract is the same as common contract, they all define the terms and rules related to the participants. Once the contract is started, it can runs in the way it is designed.  
+TRON smart contract support Solidity language in (Ethereum). Currently recommend Solidity language version is 0.4.24 ~ 0.4.25. Write a smart contract, then build the smart contract and deploy it to TRON network. When the smart contract is triggered, the corresponding function will be executed automatically.
 
 ## 5.2 TRON Smart Contract Features
-TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.
+TRON virtual machine is based on Ethereum solidity language, it also has TRON's own features.  
 
 ### 5.2.1 Smart Contract
-TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:
+TRON VM is compatible with Ethereum's smart contract, using protobuf to define the content of the contract:  
 
     message SmartContract {
       message ABI {
@@ -363,25 +362,23 @@ TRON VM is compatible with Ethereum's smart contract, using protobuf to define t
       int64 origin_energy_limit = 8;
     }
     
-origin_address: smart contract creator address
+origin_address: smart contract creator address  
 
-contract_address: smart contract address
+contract_address: smart contract address  
 
-abi: the api information of the all the function of the smart contract
+abi: the api information of the all the function of the smart contract  
 
-bytecode: smart contract byte code
+bytecode: smart contract byte code  
 
-call_value: TRX transferred into smart contract while call the contract
+call_value: TRX transferred into smart contract while call the contract  
 
-consume_user_resource_percent: resource consumption percentage set by the developer
+consume_user_resource_percent: resource consumption percentage set by the developer  
 
-name: smart contract name
+name: smart contract name  
 
-origin_energy_limit: energy consumption of the developer limit in one call, must greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0). 
+origin_energy_limit: energy consumption of the developer limit in one call, must greater than 0. For the old contracts, if this parameter is not set, it will be set 0, developer can use updateEnergyLimit api to update this parameter (must greater than 0) 
 
-
-Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract
-
+Through other two grpc message types CreateSmartContract and TriggerSmartContract to create and use smart contract.  
 
 ### 5.2.2 The usage of the function of smart contract
 
@@ -389,60 +386,59 @@ Through other two grpc message types CreateSmartContract and TriggerSmartContrac
 
 There are two types of function according to whether any change will be made to the properties on the chain: constant function and inconstant function
 Constant function uses view/pure/constant to decorate, will return the result on the node it is called and not be broadcasted in the form of a transaction
-Inconstant function will be broadcasted in the form of a transaction while be called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.
+Inconstant function will be broadcasted in the form of a transaction while be called, the function will change the data on the chain, such as transfer, changing the value of the internal variables of contracts, etc.  
 
-Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction
+Note: If you use create command inside a contract (CREATE instruction), even use view/pure/constant to decorate the dynamically created contract function, this function will still be treated as inconstant function, be dealt in the form of transaction.  
 
 2. message calls
 
-Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.
-
+Message calls can call the functions of other contracts, also can transfer TRX to the accounts of contract and none-contract. Like the common TRON triggercontract, Message calls have initiator, recipient, data, transfer amount, fees and return attributes. Every message call can generate a new one recursively. Contract can define the distribution of the remaining energy in the internal message call. If it comes with OutOfEnergyException in the internal message call, it will return false, but not error. In the meanwhile, only the gas sent with the internal message call will be consumed, if energy is not specified in call.value(energy), all the remaining energy will be used.  
 
 3. delegate call/call code/libary
 
-There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.
+There is a special type of message call, delegate call. The difference with common message call is the code of the target address will be run in the context of the contract that initiates the call, msg.sender and msg.value remain unchanged. This means a contract can dynamically loadcode from another address while running. Storage, current address and balance all point to the contract that initiates the call, only the code is get from the address being called. This gives Solidity the ability to achieve the 'lib' function: the reusable code lib can be put in the storage of a contract to implement complex data structure library.  
 
 4. CREATE instruction
 
 This command will create a new contract with a new address. The only difference with Ethereum is the newly generated TRON address used the smart contract creation transaction id and the hash of nonce called combined. Different from Ethereum, the defination of nonce is the comtract sequence number of the creation of the root call. Even there are many CREATE commands calls, contract number in sequence from 1. Refer to the source code for more detail. 
-Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.
+Note: Different from creating a contract by grpc's deploycontract, contract created by CREATE command does not store contract abi.  
 
 5. built-in function and built-in function attribute (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
 
-1）TVM is compatible with solidity language's transfer format, including:
-accompany with constructor to call transfer
-accompany with internal function to call transfer
-use transfer/send/call/callcode/delegatecall to call transfer
+1）TVM is compatible with solidity language's transfer format, including:  
+accompany with constructor to call transfer  
+accompany with internal function to call transfer  
+use transfer/send/call/callcode/delegatecall to call transfer  
 
-Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.
+Note: TRON's smart contract is different from TRON's system contract, if the transfer to address does not exist it can not create an account by smart contract transfer.  
 
-2）Different accouts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+2）Different accouts vote for SuperNode (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-3）SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+3）SuperNode gets all the reward (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-4）SuperNode approves or disappoves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+4）SuperNode approves or disappoves the proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-5）SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+5）SuperNode proposes a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-6）SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+6）SuperNode deletes  a proposal (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-7）TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+7）TRON byte address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-8）TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+8）TRON string address converts to solidity address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-9）Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+9）Send token to target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-10）Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)
+10）Query token amount of target address (Since Odyssey-v3.1.1, TVM built-in function is not supported temporarily)  
 
-11）Compatible with all the built-in functions of Ethereum
+11）Compatible with all the built-in functions of Ethereum  
 
 >Ethereum's RIPEMD160 function is not recommended, because the return of TRON is a hash result based on TRON's sha256, not an accurate Ethereum RIPEMD160.
  
 ### 5.2.3 Contract address using in solidity language
 
-Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes
-1. address conversion
-Need to convert TRON's address while using in solidity (recommended):
+Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.  
+1. address conversion  
+Need to convert TRON's address while using in solidity (recommended):  
 ```    
     /**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
@@ -454,9 +450,9 @@ Need to convert TRON's address while using in solidity (recommended):
         return address(tronAddress);
     }
 ```
-This is similar with the grammar of the conversion from other types converted to address type in Ethereum.
-2. address judgement
-Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
+This is similar with the grammar of the conversion from other types converted to address type in Ethereum.  
+2. address judgement  
+Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:  
 ```
     function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
@@ -467,9 +463,9 @@ Solidity has address constant judgement, if using 21 bytes address the compiler 
         }
     }
 ```
-But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c
-3. variable assignment
-solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:
+But if you are using wallet-cli, you can use 21 bytes address, like 0000000000000000000041ca35b7d915458ef540ade6068dfe2f44e8fa733c  
+3. variable assignment  
+solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:  
 ```
     function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
@@ -477,66 +473,63 @@ solidity has address constant assignment, if using 21 bytes address the compiler
         // do something
     }
 ```
-If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).
+If you want to use TRON address of string type (TLLM21wteSPs4hKjbxgmH1L6poyMjeTbHm) please refer to (2-4-7,2-4-8).  
 
 ### 5.2.4 The specila constants differ from Ethereum
 
 1 Currency
 
-Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun. 
+Like solidity supports ETH, TRON VM supports trx and sun, 1 trx = 1000000 sun, case sensitive, only support lower case. tron-studio supports trx and sun, remix does not support trx and sun.   
 We recommend to use tron-studio instead of remix to build TRON smart contract.
 
-2 Block
+2 Block  
 
-•	block.blockhash(uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded.
+•	block.blockhash(uint blockNumber) returns (bytes32): specified block hash, can only apply to the latest 256 blocks and current block excluded  
 	
-•	block.coinbase (address): SuperNode address that produced the current block
+•	block.coinbase (address): SuperNode address that produced the current block  
 	
-•	block.difficulty (uint): current block difficulty, not recommended, set 0
+•	block.difficulty (uint): current block difficulty, not recommended, set 0  
 	
-•	block.gaslimit (uint): current block gas limit, not supported, set 0
+•	block.gaslimit (uint): current block gas limit, not supported, set 0  
 	
-•	block.number (uint): current block number
+•	block.number (uint): current block number  
 	
-•	block.timestamp (uint): current block timestamp
+•	block.timestamp (uint): current block timestamp  
 	
-•	gasleft() returns (uint256): remaining gas
+•	gasleft() returns (uint256): remaining gas  
 	
-•	msg.data (bytes): complete call data
+•	msg.data (bytes): complete call data  
 	
-•	msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gesleft()
+•	msg.gas (uint): remaining gas - since 0.4.21, not recommended, replaced by gesleft()  
 	
-•	msg.sender (address): message sender (current call)
+•	msg.sender (address): message sender (current call)  
 	
-•	msg.sig (bytes4): first 4 bytes of call data (function identifier)
+•	msg.sig (bytes4): first 4 bytes of call data (function identifier)  
 	
-•	msg.value (uint): the amount of sun send with message
+•	msg.value (uint): the amount of sun send with message  
 	
-•	now (uint): current block timestamp (block.timestamp)
+•	now (uint): current block timestamp (block.timestamp)  
+	 
+•	tx.gasprice (uint): the gas price of transaction, not recommended, set 0  
 	
-•	tx.gasprice (uint): the gas price of transaction, not recommended, set 0
-	
-•	tx.origin (address): transaction initiator
-
-
+•	tx.origin (address): transaction initiator  
 
 ## 5.3 Energy Introduction
-Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.
+Each command of smart contract consume system resource while running, we use 'Energy' as the unit of the consumption of the resource.  
 
 ### 5.3.1 How to get energy
 
-Freeze TRX to get energy
+Freeze TRX to get energy.  
 
-##### FreezeBalance
+##### FreezeBalance  
 
 ```
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
-Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amount of frozen TRX in TRON * 50_000_000_000。
+Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amount of frozen TRX in TRON * 50_000_000_000.  
 
-
-for example:
+for example:  
 
 ```
 If there are only two users, A freezes 2 TRX, B freezes 2 TRX
@@ -561,9 +554,9 @@ B: 10_000_000_000 and energy_limit 为10_000_000_000
 
 ##### Energy Recovery
 
-The energy consumed will reduce to 0 smoothly within 24 hours.
+The energy consumed will reduce to 0 smoothly within 24 hours.  
 
-for example:
+for example:  
 
 ```
 at one moment, A has used 72_000_000 Energy
@@ -584,117 +577,110 @@ one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 *
 
 ***
 
-Set a rational fee limit can guarantee the smart contract execution. And if the execution of the contract cost great energy, it will not consume too much energy from the caller. Before you set fee limit, you need to know several conception:
+Set a rational fee limit can guarantee the smart contract execution. And if the execution of the contract cost great energy, it will not consume too much energy from the caller. Before you set fee limit, you need to know several conception:  
 
-1). The legal fee limit is a integer between 0 - 10^9, unit is sun
+1). The legal fee limit is a integer between 0 - 10^9, unit is sun.  
 
-2). Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[1]. When the contract is triggered, the commands will be excuted one by one and consume energy. If it reaches the fee limit, commands will fail to be excuted, and energy is not refundable.
+2). Different smart contracts consume different amount of energy due to their complexity. The same trigger in the same contract almost consumes the same amount fo energy[1]. When the contract is triggered, the commands will be excuted one by one and consume energy. If it reaches the fee limit, commands will fail to be excuted, and energy is not refundable.  
 
-3). Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[2]. The energy consumed by triggering contract also includes developer's share.
+3). Currently fee limit only refers to the energy converted to SUN that will be consumed from the caller[2]. The energy consumed by triggering contract also includes developer's share.  
 
-4). For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.
+4). For a vicious contract, if it encounters execution timeout or bug crash, all it's energy will be consumed.  
 
-5). Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [2].
+5). Developer may undertake a proportion of energy consumption(like 90%). But if the developer's energy is not enough for consumption, the rest of the energy consumption will be undertaken by caller completely. Within the fee limit range, if the caller does not have enough energy, then it will burn equivalent amount of TRX [2].  
 
-To encourage caller to trigger the contract, usually developer has enough energy.
+To encourage caller to trigger the contract, usually developer has enough energy.  
 
 ##### 5.3.2.1 Example
-How to estimate the fee limit:
-
- * Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]
- * According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy
- * When burn TRX, 1 TRX = 10000 energy[4]
- * Assume developer undertake 90% energy consumption, and developer has enough energy
+How to estimate the fee limit:  
+ * Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]  
+ * According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy  
+ * When burn TRX, 1 TRX = 10000 energy[4]  
+ * Assume developer undertake 90% energy consumption, and developer has enough energy  
  
-then the way to estimate the fee limit is:  
+then the way to estimate the fee limit is:   
 
-1). A = 20000 energy * (1 trx / 400 energy) = 50 trx = 50_000_000 sun, 
+1). A = 20000 energy * (1 trx / 400 energy) = 50 trx = 50_000_000 sun,  
 
-2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun,
+2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun,  
 
-3). Take the greater number of A and B, which is 50_000_000 sun,
+3). Take the greater number of A and B, which is 50_000_000 sun,  
 
-4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,
+4). Developer undertakes 90% energy consumption, caller undertakes 10% energy consumption,  
 
-So, the caller is suggested to set fee limit to 50_000_000 sun * 10% = 5_000_000 sun
+So, the caller is suggested to set fee limit to 50_000_000 sun * 10% = 5_000_000 sun  
+
+Note:  
+
+[1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.  
+
+[2] TRON may change this policy.  
+
+[3] The estimated energy consumption limit for the next execution should be greater than the last one.  
+
+[4] 1 trx = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.  
 
 
-Note:
+### 5.3.3 Energy Calculation (Developer Must Read)  
 
-[1] The energy consumption of each execution may fluctuate slightly due to the situation of all the nodes.
+1). In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.  
 
-[2] TRON may change this policy.
+2). Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.  
 
-[3] The estimated energy consumption limit for the next execution should be greater than the last one.
+3). Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share  
 
-[4] 1 trx = 10^4 energy is a fixed number for burning TRX to get energy, TRON may change it in future.
+Note:  
 
-
-### 5.3.3 Energy Calculation (Developer Must Read)
-
-1). In order to punish the vicious developer, for the abnormal contract, if the execution times out (more than 50ms) or quits due to bug (revert not included), the maximum available energy will be deducted. If the contract runs normally or revert, only the energy needed for the execution of the commands will be deducted.
-
-2). Developer can set the proportion of the energy consumption it undertakes during the execution, this proportion cna be changed later. If the developer's energy is not enough, it will consume the caller's energy.
-
-3). Currently, the total energy available when trigger a contract is composed of caller fee limit and developer's share
-
-Note:
-
-1. If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[1].
-2. We recommend to set caller's energy consumption proportion to 10%~100%[2].
-
+1. If the developer is not sure about whether the contract is normal, do not set caller's energy consumption proportion to 0%, in case all developer's energy will be deducted due to vicious execution[1].  
+2. We recommend to set caller's energy consumption proportion to 10% ~ 100%[2]. 
 
 ##### 5.3.3.1 Example
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;
-Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely;
-A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX), so during this trigger the energy A can use is from two parts:
-
-1. A's energy by freezing TRX
-2. The energy converted from the amount of TRX according to a fixed rate
-If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy
-
-Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.
-If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error come out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;  
+Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely;  
+A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX), so during this trigger the energy A can use is from two parts:  
+1. A's energy by freezing TRX;  
+2. The energy converted from the amount of TRX according to a fixed rate;  
+If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.    
+Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.  
+If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error come out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
 
 ##### 5.3.3.2 Example
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;
-Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption;
-Developer D freezes 50 TRX to get 500000 energy;
-A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX), so during this trigger the energy A can use is from three parts:
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;  
+Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption;  
+Developer D freezes 50 TRX to get 500000 energy;  
+A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX), so during this trigger the energy A can use is from three parts:  
+1. A's energy by freezing TRX -- X;  
+2. The energy converted from the amount of TRX according to a fixed rate -- Y;   
+If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;  
+3. D's energy by freezing TRX -- Z;  
 
+There are two situation:  
+if (X + Y) / 40% >= Z / 60%, the energy A can use is X + Y + Z  
+if (X + Y) / 40% < Z / 60%, the energy A can use is (X + Y) / 40%  
 
-1. A's energy by freezing TRX -- X
-2. The energy converted from the amount of TRX according to a fixed rate -- Y
-If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy
-3. D's energy by freezing TRX -- Z
+If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
 
-There are two situation:
-if (X + Y) / 40% >= Z / 60%, the energy A can use is X + Y + Z
-if (X + Y) / 40% < Z / 60%, the energy A can use is (X + Y) / 40%
-
-If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
-
-##### Note
-1. when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md).
-To avoid unnecessary lost, 10-100 is recommended for consume_user_resource_percent 
+##### Note  
+1. when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.  
 
 ## 5.4 Smart Contract Development Tool
 ### 5.4.1 TronStudio
-Support the build, debug, run, etc. for solidity language written smart contract
+Support the build, debug, run, etc. for solidity language written smart contract.  
 https://developers.tron.network/docs/tron-studio-intro
 ### 5.4.2 TronBox
-Support the build, deploy, transplant, etc. for solidity language written smart contract
+Support the build, deploy, transplant, etc. for solidity language written smart contract.  
 https://developers.tron.network/docs/tron-box-user-guide
 ### 5.4.3 TronWeb
-Provide http api service for the usage of smart contract
+Provide http api service for the usage of smart contract.  
 https://developers.tron.network/docs/tron-web-intro
 ### 5.4.4 TronGrid
-Provide smart contract event query service
+Provide smart contract event query service.  
 https://developers.tron.network/docs/tron-grid-intro
 
 ## 5.5 Using Command Lines Tool to Develop Smart Contract
 
-First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:
+First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:  
 
 ```
 pragma solidity ^0.4.0;
@@ -714,20 +700,20 @@ contract DataStore {
 
 ### Start a Private Net
 
-Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log
+Make sure the fullnode code has been deployed locally, you can check if 'Produce block successfully' log appears in FullNode/logs/tron.log  
 
 ### Develop a Smart Contract
 
-Copy the code example above to remix to debug
+Copy the code example above to remix to debug.  
 
 ### Compile in SimpleWebCompiler for ABI and ByteCode
 
-Copy the code example above to SimpleWebCompiler to get ABI and ByteCode 
-Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.
+Copy the code example above to SimpleWebCompiler to get ABI and ByteCode.   
+Because TRON's compiler is a little different from Ethereum, so you can not get ABI and ByteCode by using Remix. But it will soon be supported.  
 
 ### Using Wallet-cli to Deploy
 
-Download Wallet-Cli and build
+Download Wallet-Cli and build  
 
 ```
 shell
@@ -739,15 +725,15 @@ cd  wallet-cli
 cd  build/libs
 ```
 
-> Note: You need to change the node ip and port in config.conf
+> Note: You need to change the node ip and port in config.conf  
 
-start wallet-cli
+start wallet-cli  
 
 ```
 java -jar wallet-cli.jar
 ```
 
-after started, you can use command lines to operate:
+after started, you can use command lines to operate:  
 
 ```
 importwallet
@@ -758,7 +744,7 @@ login
 getbalance
 ```
 
-deploy contract
+deploy contract  
 
 ```
 Shell
@@ -781,7 +767,7 @@ deploycontract DataStore [{"constant":false,"inputs":[{"name":"key","type":"uint
 If it is deployed successfully, it will return 'Deploy the contract successfully'
 ```
 
-get the contract address
+get the contract address  
 
 ```
 Your smart contract address will be: <contract address>
@@ -790,7 +776,7 @@ Your smart contract address will be: <contract address>
 Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
 ```
 
-call the contract to store data, query data
+call the contract to store data, query data  
 
 ```
 Shell
@@ -813,42 +799,39 @@ triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 fals
 triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
 ```
 
-If the function called is constant or view, wallet-cli will return the result directly.
+If the function called is constant or view, wallet-cli will return the result directly.  
 
-If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...
+If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...  
 
 ```
 # for instance, using remix to get the bytecode of the contract, like:
 608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
 ```
 
-The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54
-When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract
+The address of the library deployed before is: TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54  
+When you deploy, you need to use browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 as the parameter of deploycontract.  
 
 # 6 Built-in Contracts and API introduction
 ## 6.1 Built-in Contracts
-Please refer to:
-
+Please refer to:  
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E4%BA%A4%E6%98%93%E6%93%8D%E4%BD%9C%E7%B1%BB%E5%9E%8B%E8%AF%B4%E6%98%8E.md
 
 ## 6.2 gRPC API introduction
-Please refer to:
-
+Please refer to:  
 https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md
 
 ## 6.3 http API introduction
-Please refer to:
-
+Please refer to:  
 https://github.com/tronprotocol/Documentation/blob/master/TRX_CN/Tron-http.md
 
 # 7 Tron TRC-10 Token Introduction
-TRON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.  
+TRON network support two types of token, one is TRC-20 token issued by smart contract, the other one is TRC-10 token issued by system contract.    
 
 ## 7.1 How to issue a TRC-10 token
-[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
+[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#7-%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)  
 
-http api:
-
+http api:  
+```
 wallet/createassetissue
 Description: Issue a token
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
@@ -882,12 +865,13 @@ Parameter frozen_supply: Token frozen supply
 Parameter permission_id: Optional, for multi-signature use    
 Return: Transaction object
 Note: The unit of 'trx_num' is SUN
+```
 
 ## 7.2 Participate TRC-10 token
-[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)
+[grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#12-%E5%8F%82%E4%B8%8E%E9%80%9A%E8%AF%81%E5%8F%91%E8%A1%8C)  
 
-http api:
-
+http api:  
+```
 wallet/participateassetissue
 Description: Participate a token
 demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
@@ -903,12 +887,13 @@ Parameter asset_name: Token id, default hexString
 Parameter permission_id: Optional, for multi-signature use          
 Return: Transaction object
 Note: The unit of 'amount' is the smallest unit of the token
+```
 
 ## 7.3 TRC-10 Token Transfer
 [grpc api](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#11)
 
-http api:
-
+http api:  
+```
 wallet/transferasset
 Description: Transfer token
 demo: curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "31303030303031", "amount": 100}'
@@ -919,80 +904,77 @@ Parameter amount: Token transfer amount
 Parameter permission_id: Optional, for multi-signature use         
 Return: Transaction object
 Note: The unit of 'amount' is the smallest unit of the token
+```
 
 # 8 TRON Resource Model
 ## 8.1 Resource Model Introduction
 
-TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.  
-TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage. 
+TRON network has 4 types of resources: Bandwidth, CPU, Storage and RAM. Benefit by TRON's exclusive RAM model, TRON's RAM resource is almost infinite.   
+TRON network imports two resource conceptions: Bandwidth points and Energy. Bandwidth Point represents Bandwidth, Energy represents CPU and Storage.  
 **Note** 
 - Ordinary transaction only consumes Bandwidth points
 - Smart contract related transaction not only consumes Bandwidth points, but also Energy
 
 ## 8.2 Bandwidth Points
 
-The transaction information is stored and transmitted in the form of byte array, Bandwidth Points consumed = the number of bytes of the transaction * Bandwidth Points rate. Currently Bandwidth Points rate = 1
-
+The transaction information is stored and transmitted in the form of byte array, Bandwidth Points consumed = the number of bytes of the transaction * Bandwidth Points rate. Currently Bandwidth Points rate = 1  
 Such as if the number of bytes of a transaction is 200, so this transaction consumes 200 Bandwidth Points.
 
 **Note** Due to the change of the total amount of the frozen TRX in the network and the self-frozen TRX amount, the Bandwidth Points an account possesses is not fixed.
 
 ### 8.2.1 How to Get Bandwidth Points 
 
-- By Freezing TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-frozen / the total amount of TRX frozen for Bandwidth Points in the network * 43_200_000_000
+- By Freezing TRX to get Bandwidth Points, Bandwidth Points = the amount of TRX self-frozen / the total amount of TRX frozen for Bandwidth Points in the network * 43_200_000_000  
 
-- Every account has a fixed amount of free Bandwidth Points(5000) every day
+- Every account has a fixed amount of free Bandwidth Points(5000) every day  
 
 ### 8.2.2 Bandwith Points Consumption
 
-Except for query operation, any transaction consumes Bandwidth points.
+Except for query operation, any transaction consumes Bandwidth points.  
 
-There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.
+There's another situation: When you transfer(TRX or token) to an account that does not exist in the network, this operation will first create that account in the network and then do the transfer. It only consumes Bandwidth points for account creation, no extra Bandwidth points consumption for transfer.  
 
-Create a new account transaction, Bandwidth points consumption sequence:
+Create a new account transaction, Bandwidth points consumption sequence:  
 
-    1、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
-    2、Burn 0.1 TRX;
+    1、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;  
+    2、Burn 0.1 TRX;  
 
-Token transfer transaction, Bandwidth points consumption sequence:
+Token transfer transaction, Bandwidth points consumption sequence:  
 
     1、依次验证 发行Token资产总的免费Bandwidth Points是否足够消耗，转账发起者的Token剩余免费Bandwidth Points是否足够消耗，
     Token发行者冻结TRX获取Bandwidth Points剩余量是否足够消耗。如果满足则扣除Token发行者的Bandwidth Points，任意一个不满足则进入下一步。
     
-    2、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-    3、Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;
-    4、Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
+    2、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;  
+    3、Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 4;  
+    4、Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;  
 
-Ordinary transaction, Bandwidth points consumption sequence: 
+Ordinary transaction, Bandwidth points consumption sequence:   
 
-    1、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;
-    2、Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;
-    3、Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;
+    1、Bandwidth points from freezing TRX. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 2;  
+    2、Free Bandwidth points. If transaction initiator does not have enough Bandwidth Points of this type, it will go to step 3;  
+    3、Bandwidth points from burning TRX, the rate = the number of bytes of the transaction * 10 SUN;  
 
 ### 8.2.3 Bandwidth Points Recovery
-Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:
-
+Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:  
 ![image](https://github.com/tronprotocol/Documentation/blob/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
 
-Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.
+Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.  
 
 ## 8.3 Energy
-[5.3 Energy Introduction](#5.3 Energy Introduction)
+[5.3 Energy Introduction](#5.3 Energy Introduction)  
 
 ## 8.4 Resource Delegation
-In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.
-
-command lines
+In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.  
+command lines  
 `
   freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 `
 
-frozen_balance: the amount of TRX to freeze (unit sun), 
-frozen_duration: the freezing period (currently a fixed 3 days),
-ResourceCode: 0 for Bandwidth, 1 for Energy
-receiverAddress: recipient account address
-
-
+frozen_balance: the amount of TRX to freeze (unit sun)  
+frozen_duration: the freezing period (currently a fixed 3 days)
+ResourceCode: 0 for Bandwidth, 1 for Energy  
+receiverAddress: recipient account address  
+  
 ## 8.5 Other fees
 
 |Type|Fee|
@@ -1004,39 +986,39 @@ receiverAddress: recipient account address
 
 # 9 DEX Introduction
 
-TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs
+TRON network supports decentralized exchange(DEX) using Bancor protocol. DEX is composed of many exchange pairs.  
 
 ## 9.1 What is an Exchange Pair
-The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.
+The term of 'Exchange Pair' describes a trade between one token with another, like A/B, A/TRX.  
 
 ## 9.2 Exchange Pair Creation
-Any account can create an exchange pair, it burns 1024 TRX.  
-Please refer to 'wallet/exchangecreate' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+Any account can create an exchange pair, it burns 1024 TRX.    
+Please refer to 'wallet/exchangecreate' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)  
 
 ## 9.3 Exchange Pair Transaction
-Any account can trade in the DEX. The trade follows Bancor protocol. 
-Please refer to 'wallet/exchangetransaction' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)
+Any account can trade in the DEX. The trade follows Bancor protocol.   
+Please refer to 'wallet/exchangetransaction' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)  
 
 ## 9.4 Exchange Pair Injection
-The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged. 
-Please refer to 'wallet/exchangeinject' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)    
+The exchange pair creator can inject more tokens into the exchange pair. Injection can decrease the range of ratio fluctuation. If one token is injected, the other one will be injected automatically to keep the current ratio of the two tokens unchanged.   
+Please refer to 'wallet/exchangeinject' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)      
 
 ## 9.5 Exchange Pair Withdrawal
-The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged. 
-Please refer to 'wallet/exchangewithdraw' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md) 
+The exchange pair creator can withdraw tokens from the exchange pair. Withdrawal can increase the range of ratio fluctuation. If one token is withdrawn, the other one will be withdrawn automatically to keep the current ratio of the two tokens unchanged.   
+Please refer to 'wallet/exchangewithdraw' in (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)    
 
 ## 9.6 Query
 ### 9.6.1 Transaction Query
-ListExchanges: Query the list of all the exchange pairs
-GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination
-GetExchangeById: Query an exchange pair by exchange pair id
-Please refer to (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md) 
+ListExchanges: Query the list of all the exchange pairs  
+GetPaginatedExchangeList: Query the list of all the exchange pairs by pagination  
+GetExchangeById: Query an exchange pair by exchange pair id  
+Please refer to (https://github.com/tronprotocol/documentation/blob/master/TRX/Tron-http.md)   
 
 ### 9.6.2 Price Calculation
-The token price is determined by the ratio of the balance of the two tokens.
+The token price is determined by the ratio of the balance of the two tokens.  
 
 ### 9.6.3 Calculate the amount of token you will get
-sellTokenQuant is the amount of the first_token you want to sell, buyTokenQuant is the amount of second_token you can get.
+sellTokenQuant is the amount of the first_token you want to sell, buyTokenQuant is the amount of second_token you can get.  
 
 supply = 1_000_000_000_000_000_000L; \
 supplyQuant = -supply * (1.0 - Math.pow(1.0 + (double) sellTokenQuant/（firstTokenBalance + sellTokenQuant）, 0.0005)); \
@@ -1044,12 +1026,12 @@ buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / suppl
 
 
 # 10 Multi-signature
-Please refer to: 
+Please refer to:   
 https://github.com/tronprotocol/documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E5%A4%9A%E9%87%8D%E7%AD%BE%E5%90%8D.md
 
 # 11 Wallet Introduction
 ## 11.1 wallet-cli Introduction
-Please refer to:
+Please refer to:  
 https://github.com/tronprotocol/wallet-cli/blob/master/README.md
 
 ## 11.2 Get Transaction ID
@@ -1067,11 +1049,11 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
   }
 ```
 ## 11.4 How to Build a Transaction Locally
-According to the defination of the transaction, fill up all the fields of the transaction. 
-You need to set refference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of refference block, use the latest block time plus N minutes as the value of expiration time.
-The network judgment condition is if (expiration > latest block time and expiration < latest block time + 24 hours) means the transaction is in period of validity. Otherwise, it will be a overdue transaction, will not be accepted by the Mainnet.
+According to the defination of the transaction, fill up all the fields of the transaction.   
+You need to set refference block and expiration time information, so you need to connect to the Mainnet. We recommend to use the latest block on fullnode as the value of refference block, use the latest block time plus N minutes as the value of expiration time.  
+The network judgment condition is if (expiration > latest block time and expiration < latest block time + 24 hours) means the transaction is in period of validity. Otherwise, it will be a overdue transaction, will not be accepted by the Mainnet.  
 
-Way to set refference block: set RefBlockHash the bytes from the 8 to 16(not included) of the hash of the latest block, set BlockBytes the bytes from 6 to 8(not included) of the height of the latest block.
+Way to set refference block: set RefBlockHash the bytes from the 8 to 16(not included) of the hash of the latest block, set BlockBytes the bytes from 6 to 8(not included) of the height of the latest block.  
 ```
 public static Transaction setReference(Transaction transaction, Block newestBlock) {
      long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
@@ -1084,7 +1066,7 @@ public static Transaction setReference(Transaction transaction, Block newestBloc
      return transaction.toBuilder().setRawData(rawData).build();
    }
 ```
-Way to set expiration time and transaction timestamp:
+Way to set expiration time and transaction timestamp:  
 ```
 public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
      Transaction.Builder transactionBuilder = Transaction.newBuilder();
@@ -1115,10 +1097,10 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
 ```
 ## 11.5 Related Demo
 
-Build transaction locally, signature demo, please refer to:
+Build transaction locally, signature demo, please refer to:  
 
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java
+https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java  
 
-nodejs demo, please refer to:
+nodejs demo, please refer to:  
 
-https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs
+https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs  
