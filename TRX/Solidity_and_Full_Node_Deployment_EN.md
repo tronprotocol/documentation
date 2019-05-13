@@ -67,8 +67,8 @@ You should see something similar to this in your logs for block synchronization:
 
 ## SolidityNode
 
-      12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
-
+      20:06:10.866 INFO  [Thread-14] [app](SolidityNode.java:142) Get last remote solid blockNum: 0, remoteBlockNum: 0, cost: 4
+      
 # Stop node gracefully
 Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
 You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
