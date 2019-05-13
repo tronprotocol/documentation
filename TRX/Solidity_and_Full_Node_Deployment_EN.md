@@ -63,7 +63,7 @@ You should see something similar to this in your logs for block synchronization:
 
 ## FullNode
 
-      12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
+      00:01:14.073 INFO  [nioEventLoopGroup-6-28] [o.t.c.n.TronNetDelegate](TronNetDelegate.java:176) Success process block Num:9171046,ID:00000000008bf06616a0895f515a91fda077e2c7c762b902f2e84414d536ca39.
 
 ## SolidityNode
 
