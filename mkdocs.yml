@@ -1,1 +1,6 @@
-site_name: My Docs
+site_name: TRON Documentation
+nav:
+    - Home: index.md
+    - TRON Overview: Tron-overview.md
+    - TRON Http Api: Tron-http.md
+theme: readthedocs
