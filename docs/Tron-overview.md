@@ -3,14 +3,14 @@
 # 1 Project Repository
 
 Github Url: [https://github.com/tronprotocol](https://github.com/tronprotocol)    
-java-tron is the source code of the MainNet  
-protocol is the defination of the api and data structure  
-wallet-cli is the official command line wallet   
+[java-tron](https://github.com/tronprotocol/java-tron) is the source code of the MainNet.  
+[protocol](https://github.com/tronprotocol/protocol) is the defination of the api and data structure.  
+[wallet-cli](https://github.com/tronprotocol/wallet-cli) is the official command line wallet.   
 
 MainNet Configuration:  
-https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf    
+[https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf](https://github.com/tronprotocol/TronDeployment/blob/master/main_net_config.conf)    
 TestNet Configuration:   
-https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf    
+[https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf](https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf)    
 
 # 2 Tron Super Representatives and Committee
 
@@ -28,7 +28,7 @@ https://github.com/tronprotocol/TronDeployment/blob/master/test_net_config.conf
 
 + Examples (Using wallet-cli):  
 
-```
+```text
 freezebalance 10,000,000 3 // Freeze 10 TRX to get 10 TRON Power(TP)  
 votewitness witness1 4 witness2 6 // Vote 4 votes for witness1, 6 votes for witness2  
 votewitness witness1 3 witness2 7 // Vote 3 votes for witness1, 7 votes for witness2  
@@ -78,7 +78,7 @@ The network parameters can be modified([min,max]):
 18: ALLOW_TVM_TRANSFER_TRC10, //to allow smart contract to transfer TRC-10 token, currently 0, means false  
 
 + Examples (Using wallet-cli):  
-```
+```text
 createproposal id value  
 id: the serial number (0 ~ 18)  
 value: the parameter value  
@@ -91,7 +91,7 @@ Note: In TRON network, 1 TRX = 1000_000 SUN
 Proposal only support YES vote. Since the creation time of the proposal, the proposal is valid within 3 days. If the proposal does not receive enough YES votes within the period of validity, the proposal will be invalid beyond the period of validity. Yes vote can be cancelled.  
 
 + Examples (Using wallet-cli):  
-```
+```text
 approveProposal id is_or_not_add_approval
 id: proposal id  
 is_or_not_add_approval: YES vote or cancel YES vote  
@@ -102,7 +102,7 @@ is_or_not_add_approval: YES vote or cancel YES vote
 Proposal creator can cancel the proposal before it is passed.  
 
 + Examples (Using wallet-cli):  
-```
+```text
 deleteProposal id
 id: proposal id
 ```
@@ -195,7 +195,7 @@ MainNet, TestNet, PrivateNet all use the same code, only the node start configur
 #### 4.6.3.2 Deployment
 ##### 4.6.3.2.1 Step 1: SuperNode Deployment
  1.&nbsp;download private_net_config.conf  
-```
+```text
 wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf
 ```
  2.&nbsp;add your private key in localwitness  
@@ -204,7 +204,7 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  5.&nbsp;set the first SR needSyncCheck = false, others can be set true  
  6.&nbsp;set node.discovery.enable = true  
  7.&nbsp;run the script    
-```
+```text
 nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
 command line parameters introduction:  
@@ -228,7 +228,7 @@ command line parameters introduction:
 
 ##### 4.6.3.2.2 Step 2: FullNode Deployment
  1.&nbsp;Download private_net_config.conf  
-```
+```text
 wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_config.conf 
 ```
  2.&nbsp;set seed.node ip.list with SR's ip and port  
@@ -237,7 +237,7 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  5.&nbsp;set needSyncCheck true   
  6.&nbsp;set node.discovery.enable true   
  7.&nbsp;run the script   
-```
+```text
  nohup java -Xmx6g -XX:+HeapDumpOnOutOfMemoryError -jar FullNode.jar  --witness  -c private_net_config.conf
 
  command lines parameters  
@@ -278,7 +278,7 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
 #### 4.7.1.3 Convert leveldb data to rocksdb data
  The data storage structure of leveldb and rocksdb is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert leveldb data to rocksdb data.  
  Usage:  
-```
+```text
  cd to the source code root directory
  ./gradlew build   #build the source code
  java -jar build/libs/DBConvert.jar  #run data conversion command
@@ -289,11 +289,11 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  **dst_db_path**: specify RocksDb source directory, default output-directory-dst/database  
  
 + example, if you run the script like this:  
-```
+```text
  nohup java -jar FullNode.jar -d your_database_dir &
 ```
 + then, you should run DBConvert.jar this way:  
-```
+```text
  java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
 ```
  Note: You have to stop the running of the node, and then to run the data conversion script.  
@@ -301,7 +301,7 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  If you do not want to stop the running of the node for too long, after node is shut down, you can copy leveldb's output-directory to the new directory, and then restart the node. Run DBConvert.jar in the previous directory of the new directory, and specify the parameters: `src_db_path`和`dst_db_path`.   
 
 + example:  
-```
+```text
  cp -rf output-directory /tmp/output-directory
  cd /tmp
  java -jar DBConvert.jar output-directory/database  output-directory-dst/database
@@ -434,7 +434,7 @@ Ethereum VM address is 20 bytes, but TRON's VM address is 21 bytes.
 1.&nbsp;address conversion  
 
 Need to convert TRON's address while using in solidity (recommended):  
-```    
+```text    
 /**
      *  @dev    convert uint256 (HexString add 0x at beginning) tron address to solidity address type
      *  @param  tronAddress uint256 tronAddress, begin with 0x, followed by HexString
@@ -450,7 +450,7 @@ This is similar with the grammar of the conversion from other types converted to
 2.&nbsp;address judgement  
 
 Solidity has address constant judgement, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:  
-```
+```text
 function compareAddress(address tronAddress) public view returns (uint256){
         // if (tronAddress == 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c) { // compile error
         if (tronAddress == 0xca35b7d915458ef540ade6068dfe2f44e8fa733c) { // right
@@ -465,7 +465,7 @@ But if you are using wallet-cli, you can use 21 bytes address, like 000000000000
 3.&nbsp;variable assignment  
 
 Solidity has address constant assignment, if using 21 bytes address the compiler will throw out an error, so you should use 20 bytes address, like:  
-```
+```text
 function assignAddress() public view {
         // address newAddress = 0x41ca35b7d915458ef540ade6068dfe2f44e8fa733c; // compile error
         address newAddress = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
@@ -508,7 +508,7 @@ Freeze TRX to get energy.
 
 + Example (Using wallet-cli):  
 
-```
+```text
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY]
 ```
 
@@ -516,7 +516,7 @@ Freeze TRX to get energy, energy obtained = user's TRX frozen amount / total amo
 
 + Example:  
 
-```
+```text
 If there are only two users, A freezes 2 TRX, B freezes 2 TRX
 the energy they can get is:
 A: 25_000_000_000 and energy_limit is 25_000_000_000
@@ -535,7 +535,7 @@ The energy consumed will reduce to 0 smoothly within 24 hours.
 
 + Example:  
 
-```
+```text
 at one moment, A has used 72_000_000 Energy
 if there is no continuous consumption or TRX freeze
 one hour later, the energy consumption amount will be 72_000_000 - (72_000_000 * (60*60/60*60*24)) Energy = 69_000_000 Energy
@@ -568,12 +568,15 @@ To encourage caller to trigger the contract, usually developer has enough energy
 ##### Example
 How to estimate the fee limit:  
 
- * Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]  
- * According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy  
- * When burn TRX, 1 TRX = 10000 energy[4]  
- * Assume developer undertake 90% energy consumption, and developer has enough energy  
+Assume contract C's last execution consumes 18000 Energy, so estimate the energy consumption limit to be 20000 Energy[3]  
+
+According to the frozen TRX amount and energy conversion, assume 1 TRX = 400 energy. 
+
+When to burn TRX, 1 TRX = 10000 energy[4]  
+
+Assume developer undertake 90% energy consumption, and developer has enough energy.  
  
-then the way to estimate the fee limit is:   
+Then the way to estimate the fee limit is:   
 
 1). A = 20000 energy * (1 TRX / 400 energy) = 50 TRX = 50_000_000 SUN,  
 2). B = 20000 energy * (1 TRX / 10000 energy) = 2 TRX = 2_000_000 SUN,  
@@ -602,22 +605,38 @@ Note:
 - We recommend to set caller's energy consumption proportion to 10% ~ 100%[2]. 
 
 ##### Example 1
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;  
-Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely;  
-A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX), so during this trigger the energy A can use is from two parts:  
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy.
+
+Smart contract C set the caller energy consumption proportion to 100% which means the caller will pay for the energy consumption completely.
+
+A triggers C, the fee limit set is 30000000 (unit SUN, 30 TRX)
+
+So during this trigger the energy A can use is from two parts:  
 - A's energy by freezing TRX;  
-- The energy converted from the amount of TRX according to a fixed rate;  
-If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.    
+- The energy converted from the amount of TRX burning according to a fixed rate;  
+
+If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (30 - 10) TRX = 20 TRX available, so the energy it can keep consuming is 20 TRX / 100 SUN = 200000 energy.   
+
 Finally, in this call, the energy A can use is (100000 + 200000) = 300000 energy.  
-If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error come out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
+
+If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. 
+
+If Assert-style error come out, it will consume the whole number of energy set for fee limit.  
+
+Assert-style error introduction, refer to [https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
 
 ##### Example 2
-A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy;  
-Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption;  
-Developer D freezes 50 TRX to get 500000 energy;  
-A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX), so during this trigger the energy A can use is from three parts:  
+A has an account with a balance of 90 TRX(90000000 SUN) and 10 TRX frozen for 100000 energy.  
+
+Smart contract C set the caller energy consumption proportion to 40% which means the developer will pay for the rest 60% energy consumption.  
+
+Developer D freezes 50 TRX to get 500000 energy.  
+
+A triggers C, the fee limit set is 200000000 (unit SUN, 200 TRX).  
+
+So during this trigger the energy A can use is from three parts:  
 - A's energy by freezing TRX -- X;  
-- The energy converted from the amount of TRX according to a fixed rate -- Y;   
+- The energy converted from the amount of TRX bruning according to a fixed rate -- Y;   
 If fee limit is greater than the energy obtained from freezing TRX, then it will burn TRX to get energy. The fixed rate is: 1 Energy = 100 SUN, fee limit still has (200 - 10) TRX = 190 TRX available, but A only has 90 TRX left, so the energy it can keep consuming is 90 TRX / 100 SUN = 900000 energy;  
 - D's energy by freezing TRX -- Z;  
 
@@ -625,30 +644,35 @@ There are two situation:
 if (X + Y) / 40% >= Z / 60%, the energy A can use is X + Y + Z  
 if (X + Y) / 40% < Z / 60%, the energy A can use is (X + Y) / 40%  
 
-If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use. If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
+If contract executes successfully without any exception, the energy needed for the execution will be deducted. Generally, it is far more less than the amount of energy this trigger can use.   
+
+If Assert-style error comes out, it will consume the whole number of energy set for fee limit. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
  
-Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef. Assert-style error introduction, refer to (https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+Note: when developer create a contract, do not set consume_user_resource_percent to 0, which means developer will undertake all the energy consumption. If Assert-style error comes out, it will consume all energy from the developer itsef.  
+
+Assert-style error introduction, refer to [https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)  
+
 To avoid unnecessary lost, 10 - 100 is recommended for consume_user_resource_percent.  
 
 ## 5.4 Smart Contract Development Tool
 ### 5.4.1 TronStudio
 Support the build, debug, run, etc. for solidity language written smart contract.  
-https://developers.tron.network/docs/tron-studio-intro
+[https://developers.tron.network/docs/tron-studio-intro](https://developers.tron.network/docs/tron-studio-intro)
 ### 5.4.2 TronBox
 Support the build, deploy, transplant, etc. for solidity language written smart contract.  
-https://developers.tron.network/docs/tron-box-user-guide
+[https://developers.tron.network/docs/tron-box-user-guide](https://developers.tron.network/docs/tron-box-user-guide)
 ### 5.4.3 TronWeb
 Provide http api service for the usage of smart contract.  
-https://developers.tron.network/docs/tron-web-intro
+[https://developers.tron.network/docs/tron-web-intro](https://developers.tron.network/docs/tron-web-intro)
 ### 5.4.4 TronGrid
 Provide smart contract event query service.  
-https://developers.tron.network/docs/tron-grid-intro
+[https://developers.tron.network/docs/tron-grid-intro](https://developers.tron.network/docs/tron-grid-intro)
 
 ## 5.5 Using Command Lines Tool to Develop Smart Contract
 
 First you can use TronStudio to write, build and debug the smart contract. After you finish the development of the contract, you can copy it to [SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler) to compile to get ABI and ByteCode. We provide a simple data read/write smart contract code example to demonstrate:  
 
-```
+```text
 pragma solidity ^0.4.0;
 contract DataStore {
 
@@ -681,7 +705,7 @@ Because TRON's compiler is a little different from Ethereum, so you can not get 
 
 Download Wallet-Cli and build  
 
-```
+```text
 shell
 # download cource code
 git clone https://github.com/tronprotocol/wallet-cli
@@ -695,13 +719,13 @@ Note: You need to change the node ip and port in config.conf
 
 start wallet-cli  
 
-```
+```text
 java -jar wallet-cli.jar
 ```
 
 after started, you can use command lines to operate:  
 
-```
+```text
 importwallet
 <input your password twice for your account>
 <input your private key>
@@ -712,7 +736,7 @@ getbalance
 
 deploy contract  
 
-```
+```text
 Shell
 # contract deployment command
 DeployContract contractName ABI byteCode constructor params isHex fee_limit consume_user_resource_percent <value> <library:address,library:address,...>
@@ -735,7 +759,7 @@ If it is deployed successfully, it will return 'Deploy the contract successfully
 
 get the contract address  
 
-```
+```text
 Your smart contract address will be: <contract address>
 
 # in this example
@@ -744,7 +768,7 @@ Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
 
 call the contract to store data, query data  
 
-```
+```text
 Shell
 # call contract command
 triggercontract <contract_address> <method> <args> <is_hex> <fee_limit> <value>
@@ -768,7 +792,7 @@ triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000 
 If the function called is constant or view, wallet-cli will return the result directly.  
 If it contains library, before deploy the contract you need to deploy the library first. After you deploy library, you can get the library address, then fill the address in library:address,library:address,...  
 
-```
+```text
 # for instance, using remix to get the bytecode of the contract, like:
 608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
 ```
@@ -794,7 +818,7 @@ TRON network support two types of token, one is TRC-20 token issued by smart con
 
 ## 7.1 How to Issue a TRC-10 Token
 Http Api:
-```
+```text
 wallet/createassetissue
 Description: Issue a token
 demo: curl -X POST  http://127.0.0.1:8090/wallet/createassetissue -d '{
@@ -832,7 +856,7 @@ Note: The unit of 'trx_num' is SUN
 
 ## 7.2 Participate TRC-10 Token
 Http Api:  
-```
+```text
 wallet/participateassetissue
 Description: Participate a token
 demo: curl -X POST http://127.0.0.1:8090/wallet/participateassetissue -d '{
@@ -852,7 +876,7 @@ Note: The unit of 'amount' is the smallest unit of the token
 
 ## 7.3 TRC-10 Token Transfer
 Http Api:  
-```
+```text
 wallet/transferasset
 Description: Transfer token
 demo: curl -X POST  http://127.0.0.1:8090/wallet/transferasset -d '{"owner_address":"41d1e7a6bc354106cb410e65ff8b181c600ff14292", "to_address": "41e552f6487585c2b58bc2c9bb4492bc1f17132cd0", "asset_name": "31303030303031", "amount": 100}'
@@ -917,7 +941,7 @@ Ordinary transaction, Bandwidth points consumption sequence:
 
 ### 8.2.3 Bandwidth Points Recovery
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:  
-![image](https://github.com/tronprotocol/Documentation/blob/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
+![image](https://github.com/tronprotocol/Documentation/raw/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.  
 
@@ -928,7 +952,7 @@ Every 24 hours, the amount of the usage of Bandwidth points of an account will b
 In TRON network, an account can freeze TRX for Bandwidth or Energy for other accounts. The primary account owns the frozen TRX and TRON power, the recipient account owns the Bandwidth or Energy. Like ordinary freezing, resource delegation freezing is also at least 3 days.  
 
 + Example(Using wallet-cli)  
-```
+```text
 freezeBalance frozen_balance frozen_duration [ResourceCode:0 BANDWIDTH,1 ENERGY] [receiverAddress]
 
 frozen_balance: the amount of TRX to freeze (unit SUN)  
@@ -1007,11 +1031,11 @@ Please refer to:
 [https://github.com/tronprotocol/wallet-cli/blob/master/README.md](https://github.com/tronprotocol/wallet-cli/blob/master/README.md)
 
 ## 11.2 Get Transaction ID
-```
+```text
 Hash.sha256(transaction.getRawData().toByteArray())
 ```
 ## 11.3 Get Block ID
-```
+```text
 private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
   byte[] numBytes = Longs.toByteArray(blockNum); 
   byte[] hash = blockHash; 
@@ -1027,7 +1051,7 @@ You need to set refference block and expiration time information, so you need to
 The network judgment condition is if (expiration > latest block time and expiration < latest block time + 24 hours) means the transaction is in period of validity. Otherwise, it will be a overdue transaction, will not be accepted by the Mainnet.  
 
 Way to set refference block: set RefBlockHash the bytes from the 8 to 16(not included) of the hash of the latest block, set BlockBytes the bytes from 6 to 8(not included) of the height of the latest block.  
-```
+```text
 public static Transaction setReference(Transaction transaction, Block newestBlock) {
      long blockHeight = newestBlock.getBlockHeader().getRawData().getNumber();
      byte[] blockHash = getBlockHash(newestBlock).getBytes();
@@ -1040,7 +1064,7 @@ public static Transaction setReference(Transaction transaction, Block newestBloc
    }
 ```
 Way to set expiration time and transaction timestamp:  
-```
+```text
 public static Transaction createTransaction(byte[] from, byte[] to, long amount) {
      Transaction.Builder transactionBuilder = Transaction.newBuilder();
      Block newestBlock = WalletClient.getBlock(-1);
@@ -1071,6 +1095,6 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
 ## 11.5 Related Demo
 
 Build transaction locally, signature demo, please refer to:  
-https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java  
+[https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java](https://github.com/tronprotocol/wallet-cli/blob/master/src/main/java/org/tron/demo/TransactionSignDemo.java)  
 nodejs demo, please refer to:  
-https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs  
+[https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs](https://github.com/tronprotocol/tron-demo/tree/master/demo/nodejs)  
