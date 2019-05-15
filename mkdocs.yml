@@ -3,4 +3,7 @@ nav:
     - Home: index.md
     - TRON Overview: Tron-overview.md
     - TRON Http Api: Tron-http.md
+    - TRON RPC Api: Tron-rpc.md
+    - TRON Official Public Nodes: Official_Public_Node.md
+    - TRON Virtual Mmachine: Tron-VM.md
 theme: readthedocs
