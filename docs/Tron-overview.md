@@ -178,7 +178,7 @@ CPU: > 64 cores RAM: > 64G, Bandwidth: > 500M, Disk: > 20T
 
 ## 4.4 TRON Network Instructure
 TRON network uses Peer-to-Peer(P2P) network instructure, all nodes status equal. There are three types of node: SuperNode, FullNode, SolidityNode. SuperNode produces blocks, FullNode synchronizes blocks and broadcasts transactions, SolidityNode synchronizes solidified blocks. Any device that deploy the java-tron code can join TRON network as a node.
-![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/network.png)
+![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/network.png)
 ## 4.5 FullNode and SolidityNode Fast Deployment
 Download fast deployment script, run the script according to different types of node.   
 please refer to [Node Fast Deployment](https://github.com/tronprotocol/tron-deployment#deployment-of-soliditynode-on-the-one-host)
@@ -220,13 +220,13 @@ command line parameters introduction:
  <logger name="net" level="WARN"/>
  The parameters in configuration file that need to modify:  
  localwitness:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/localwitness.jpg)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/localwitness.jpg)  
  witnesses:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/witness.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/witness.png)  
  version:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/p2p_version.png)  
  enable:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/discovery_enable.png)  
 
 ##### 4.6.3.2.2 Step 2: FullNode Deployment
  1.&nbsp;Download private_net_config.conf  
@@ -253,29 +253,29 @@ wget https://github.com/tronprotocol/tron-deployment/blob/master/private_net_con
  <logger name="net" level="WARN"/>
  The parameters in configuration file that need to modify:    
  ip.list:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/ip_list.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/ip_list.png)  
  p2p.version:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/p2p_version.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/p2p_version.png)  
  genesis.block:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/genesis_block.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/genesis_block.png)  
  needSyncCheck:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/need_sync_check.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/need_sync_check.png)  
  node.discovery.enable:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/discovery_enable.png)  
  
 ## 4.7 DB Engine
 ### 4.7.1 Rocksdb
 #### 4.7.1.1 Configuration
  Use rocksdb as the data storage engine, need to set db.engine to "ROCKSDB"  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/db_engine.png)  
  Note: rocksdb only support db.version=2, do not support db.version=1  
 
  The optimization parameters rocksdb support:  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/rocksdb_tuning_parameters.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/rocksdb_tuning_parameters.png)  
 
 #### 4.7.1.2 Use rocksdb's data backup function
  Choose rocksdb to be the data storage engine, you can use it's data backup funchtion while running  
- ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)  
+ ![image](https://raw.githubusercontent.com/tronprotocol/documentation/tree/docs_reorganization/imags/db_backup.png)  
  Note: FullNode can use data backup function. In order not to affect SuperNode's block producing performance, SuperNode does not support backup service, but SuperNode's backup service node can use this function.  
 #### 4.7.1.3 Convert leveldb data to rocksdb data
  The data storage structure of leveldb and rocksdb is not compatible, please make sure the node use the same type of data engine all the time. We provide data conversion script which can convert leveldb data to rocksdb data.  
@@ -943,7 +943,7 @@ Ordinary transaction, Bandwidth points consumption sequence:
 
 ### 8.2.3 Bandwidth Points Recovery
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0. For the specific formula:  
-![image](https://github.com/tronprotocol/Documentation/raw/fix_http/TRX_CN/figures/bandwidthRestoreEqn.gif)
+![image](https://github.com/tronprotocol/documentation/tree/docs_reorganization/imags/bandwidthRestoreEqn.gif)
 
 Every 24 hours, the amount of the usage of Bandwidth points of an account will be reset to 0.  
 
