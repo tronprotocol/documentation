@@ -29,7 +29,7 @@ The following interfaces are available in Tron Wallet-CLI:
  + getcontract(contractAddress)
 Developers can call these interfaces to deploy, trigger or check smart contracts.
 
-## How TVM works
+## How TVM Works
 	
 ![Flowchart of Tron Virtual Machine](https://raw.githubusercontent.com/ybhgenius/Documentation/master/images/Virtual_Machine/虚拟机.png)
 
@@ -41,7 +41,7 @@ Put simply, the flow is as follows:
 + A virtual machine processes data through opcode, which is equivalent to operating a logic of a stack-based finite state machine.
 + TVM accesses blockchain data and invoke External Data Interface through the Interoperation layer.
 
-## Future development of TVM
+## Future Development of TVM
 1.&nbsp;More developer-friendly debugging tools   
 
 Tron will be committed to the development of optimized debugging tools and the establishment of standardized symbol and data format, for improved developer efficiency.  
@@ -54,7 +54,7 @@ Different from gas consumption mechanism for every transaction on EVM, there is 
 
 Improving JIT compilation speed is conducive to faster interpretation and optimized compilation of local code. Meanwhile, Tron is planning to further optimize its TVM based on WebAssembly (WASM). WebAssembly, spearheaded by Apple, Google, Microsoft and Mozilla, is designed to break bottlenecks of current Web browsers and can be generated through compiling C/C++ and other programming languages. Integrating WASM, TVM will be able to provide high performance and high throughput for blockchain to cope with complex scenarios.
 
-## The following is a guide to TVM (smart contract deployment)
+## Usage Guide to TVM 
 
 1.&nbsp;Compile contract  
 

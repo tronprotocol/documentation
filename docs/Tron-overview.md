@@ -120,10 +120,11 @@ For more api detail, please refer to [Tron-http](Tron-http.md)
 
 TRON uses account model. An account's identity is address, it needs private key signature to operate an account. An account has many attributes, like TRX balance, tokens balance, bandwidth, etc. TRX and tokens can be transfered from account to account and it costs bandwidth. An account can also issue a smart contract, apply to become a super representative candidate, vote, etc. All TRON's activities are based on account.
 
-## 3.2 Way to Create an Account
+## 3.2 How to Create an Account
 
-1. Use a wallet to generate the address and private key. To active the account, you need to transfer TRX or transfer token to the new created account.  
-2. Use an account already existed in TRON network to create an account   
+1.&nbsp;Use a wallet to generate the address and private key. To active the account, you need to transfer TRX or transfer token to the new created account. [generate an account](https://tronscan.org/#/wallet/new)
+
+2.&nbsp;Use an account already existed in TRON network to create an account   
 
 ## 3.3 Key-pair Generation Algorithm
 Tron signature algorithm is ECDSA, curve used is SECP256K1. Private key is a random bumber, public key is a point in the elliptic curve. The process is: first generate a random number d to be the private key, then caculate P = d * G as the public key, G is the elliptic curve base point.
@@ -138,7 +139,8 @@ ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
 ## 3.5 Signature
 Signature introduction, please refer to:  
-https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md
+[https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md]( 
+https://github.com/tronprotocol/Documentation/blob/fix_http/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E4%BA%A4%E6%98%93%E7%AD%BE%E5%90%8D%E6%B5%81%E7%A8%8B.md)
 
 # 4 TRON Network Node
 ## 4.1 SuperNode
