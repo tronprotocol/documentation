@@ -1,10 +1,10 @@
 site_name: TRON Documentation
 nav:
-    - Home: index.md
-    - TRON Overview: Tron-overview.md
-    - TRON Http Api: Tron-http.md
-    - TRON RPC Api: Tron-rpc.md
-    - TRON Official Public Nodes: Official_Public_Node.md
-    - TRON Virtual Machine: Tron-VM.md
-    - TRON Deployment: SolidityNode&FullNode_Deployment.md
+    - 导航页: index.md
+    - TRON概览: Tron-overview.md
+    - TRON Http接口: Tron-http.md
+    - TRON RPC接口: Tron-rpc.md
+    - TRON 官方公共节点: Official_Public_Node.md
+    - TRON 虚拟机: Tron-VM.md
+    - TRON 部署: SolidityNode&FullNode_Deployment.md
 theme: readthedocs
