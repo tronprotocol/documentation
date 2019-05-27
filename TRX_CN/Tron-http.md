@@ -120,17 +120,25 @@ demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 
 /walletextension/gettransactionsfromthis（新版本将不再支持）
 作用：查询某个账号的出账交易记录
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
-参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index；limit是期望返回的交易数量
-返回值：Transaction列表
+demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" 
+: {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10,"startTime": 1546099200000, "endTime": 1552028828000}'
+参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index，不能大于10000，否则报错；limit是期望返回的交易数量，最大为50
+，这个值可能会调整。当limit>50，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000，startTime
+:起始时间，endTime:结束时间，获取[startTime,endTime]时间段的交易。如果不传递，默认获取获取最近7天内的交易
+返回值：Transaction列表，按交易创建时间的降序排列，total在[startTime,endTime]时间段内允许分页的最大交易数，rangeTotal在[startTime,
+endTime]时间段内的所有交易数。
 备注：该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionsfromthis,
    使用参考getTransactionsFromThis。
 
 /walletextension/gettransactionstothis（新版本将不再支持）
 作用：查询某个账号的入账交易记录
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
-参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index；limit是期望返回的交易数量
-返回值：Transaction列表
+demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : 
+{"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10,"startTime": 1546099200000, "endTime": 1552028828000}'
+参数说明：address是账号地址，需要是hexString格式；offset是起始交易的index；limit是期望返回的交易数量，最大为50，这个值可能会调整。当limit>50
+，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000，startTime:起始时间，endTime
+:结束时间，获取[startTime,endTime]时间段的交易。如果不传递，默认获取获取最近7天内的交易
+返回值：Transaction列表，按交易创建时间的降序排列，total在[startTime,endTime]时间段内允许分页的最大交易数，rangeTotal在[startTime,
+endTime]时间段内的所有交易数。
 备注：该接口在新版本节点中将不再提供，如需要该功能，可以使用中心节点提供的接口，47.90.247.237:8091/walletextension/gettransactionstothis,
    使用参考getTransactionsToThis。
 
@@ -306,7 +314,7 @@ receiverAddress表示受委托账户的地址
 返回值：解冻trx的transaction
 【注意】资源委托功能需要委员会开启
 
-walle/unfreezeasset
+wallet/unfreezeasset
 作用：解冻已经结束冻结期的Token
 demo：curl -X POST http://127.0.0.1:8090/wallet/unfreezeasset -d '{
 "owner_address":"41e472f387585c2b58bc2c9bb4492bc1f17342cd1",
