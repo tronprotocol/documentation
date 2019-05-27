@@ -84,7 +84,9 @@ contract transferTokenContract {
 
 - **IMPORTANT**: tokenId valide value must > 1000000. The best-practice would be use a require function to guarantee its correctness.
              
-- **IMPORTANT**: tokenId = 0 (Only in this function) is preserved here, which is presented TRX. This is a experimental feature, we **DO NOT** recommend to use this logic to transfer TRX at least for now for your safety. Please use the widely used transfer() function to send TRX.
+- @deprecated **IMPORTANT**: tokenId = 0 (Only in this function) is preserved here, which is presented TRX. This is a experimental feature, we **DO NOT** recommend to use this logic to transfer TRX at least for now for your safety. Please use the widely used transfer() function to send TRX.
+
+- In Odyssey_v3.5 tokenId is NOT allowed to be 0 in this function. So, the function is only related to trc10 token.
 
 ## 3.4 address.tokenBalance(trcToken) returns(uint256 tokenAmount)native function
 
@@ -92,7 +94,9 @@ contract transferTokenContract {
 
 - An address type variable can invoke this native function which returns the amount of target token owned by the account with the address.
 
-- **IMPORTANT**: Query tokenBalance(0) doesn't represent trx balance, instead it will return 0. 
+- @deprecated **IMPORTANT**: Query tokenBalance(0) doesn't represent trx balance, instead it will return 0. 
+
+- In Odyssey_v3.5 tokenId is NOT allowed to be 0 in tokenBalance(trcToken) function. 
 
 ## 3.5 msg.tokenvalue & msg.tokenid
 
@@ -100,7 +104,8 @@ contract transferTokenContract {
 
 - msg.tokenid, represent the token id in current msg call, default 0.
 
-- **IMPORTANT**: msg.tokenid = 0 doesn't represent trx in current version.
+- **IMPORTANT**: msg.tokenid = 0 is just a default value, means no token transferring.
+
 
 # 4 solidity compiler
 

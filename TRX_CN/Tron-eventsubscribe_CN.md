@@ -1,6 +1,6 @@
 # 波场事件订阅机制
 ## 1.  项目背景
-为了更好支持开发者社区，波场正式推出事件订阅机制，已完成内部测试，随Java-tron 3.5版本正式上线。现阶段为beta版，开发者们可以开始体验了。
+为了更好支持开发者社区，波场正式推出事件订阅机制，在3.5版本中已经上线,开发者目前可进行新功能体验。
 
 ## 2.  主要功能：
 1. 事件plugin的支持，目前已支持kafka、mongodb两种插件，开发者也可以根据自己的需求定制自己的事件插件。
@@ -8,7 +8,7 @@
 3. 事件查询服务tron-eventquery，波场提供的线上Event查询服务，开发者可通过http方式查询最近七天的trigger信息，查询地址为: https://api.tronex.io。
 
 ## 3. github项目
-- [java-tron](https://github.com/tronprotocol/java-tron) develop分支 (目前为3.5 beta版本)
+- [java-tron](https://github.com/tronprotocol/java-tron) master分支
 - [eventplugin](https://github.com/tronprotocol/event-plugin) master分支
 - [tron-eventquery](https://github.com/tronprotocol/tron-eventquery) master分支
 

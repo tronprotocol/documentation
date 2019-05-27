@@ -1,6 +1,6 @@
 # Tron event subscribe support 
 ## 1.  Background
-TRON has implemented the event subscription mechanism to support developer community, we have finished the testing. The featured will be released on version 3.5 of Java-tron. Developers could start experiencing right now, although it's still in beta stage.
+TRON has implemented the event subscription mechanism to support developer community, we have finished the testing. The featured has been released on version 3.5 of Java-tron, and developers could start experiencing now.
 
 
 ## 2.  New features
@@ -11,12 +11,13 @@ TRON has implemented the event subscription mechanism to support developer commu
 3. Event query service tron-eventquery, online Event query service provided. Developers can query trigger information in the last seven days through https, and the query address is https://api.tronex.io.
 
 ## 3. github project
-- [java-tron](https://github.com/tronprotocol/java-tron) develop branch  (Now it's still in 3.5 beta)
+- [java-tron](https://github.com/tronprotocol/java-tron) master branch 
 - [eventplugin](https://github.com/tronprotocol/event-plugin) master branch
 - [tron-eventquery](https://github.com/tronprotocol/tron-eventquery) master branch
 
 ## 4. event subscribe
-- https://github.com/tronprotocol/TIPs/issues/12
+- TIP: https://github.com/tronprotocol/TIPs/issues/12
+- Description: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/Tron-event_description.md
 
 ## 5. event plugin
 - kafka plugin: https://github.com/tronprotocol/Documentation/blob/master/English_Documentation/TRON_Event_Subscribe/eventplugin_deploy.md

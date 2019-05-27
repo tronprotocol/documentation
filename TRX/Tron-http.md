@@ -109,17 +109,36 @@ demo：curl -X POST  http://127.0.0.1:8091/walletsolidity/listexchanges
 Parameters: None
 Return value：List of all exchanges
 
-/walletextension/gettransactionsfromthis
+/walletextension/gettransactionsfromthis(The new version will no longer be supported)
 Function：Query the list of transactions sent by an address
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
-Parameters：Address is the account address, converted to a hex string; offset is the index of the starting transaction; limit is the number of transactions expected to be returned
-Return value：Transactions list
+demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionsfromthis -d '{"account" 
+  : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10,"startTime": 1546099200000, "endTime": 1552028828000}'
+Parameters：Address is the account address, converted to a hex string; offset is the index of the 
+starting transaction,Can't be greater than 10000, otherwise an error; limit is the number of 
+transactions expected to be returned;This value may be adjusted. If limit>50 or 
+offset+limit>10000, adjust to limit<=50 and offset+limit<=10000, startTime: Start time; endTime: End time;
+ get the transaction  from startTime to endTime] . If not set, the default  will gets the transaction in the last 7 days.
+Return value：Transactions list sort by  creation time, total: the maximum number of transactions 
+for paging from startTime to endTime, rangeTotal:the total transactions from startTime to endTime.
+Remarks:This interface will no longer be available in the new version of the node. If you need 
+this function, you can use the interface provided by the central node, 47.90.247
+.237:8091/walletextension/gettransactionsfromthis,Reference getTransactionsFromThis
 
-/walletextension/gettransactionstothis
+/walletextension/gettransactionstothis(The new version will no longer be supported)
 Function：Query the list of transactions received by an address
-demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10}'
-Parameters：Address is the account address, converted to a hex string; offset is the index of the starting transaction; limit is the number of transactions expected to be returned
-Return value：Transactions list
+demo: curl -X POST  http://127.0.0.1:8091/walletextension/gettransactionstothis -d '{"account" : 
+ {"address" : "41E552F6487585C2B58BC2C9BB4492BC1F17132CD0"}, "offset": 0, "limit": 10,"startTime": 1546099200000, "endTime": 1552028828000}'
+Parameters：Address is the account address, converted to a hex string; offset is the index of the 
+starting transaction,Can't be greater than 10000, otherwise an error; limit is the number of 
+transactions expected to be returned;This value may be adjusted. If limit>50 or  
+offset+limit>10000, adjust to limit<=50 and offset+limit<=10000, startTime: Start time; endTime: 
+End time; get the transaction from startTime to endTime]. If not set, the default  will gets the 
+transaction in the last 7 days.Return value：Transactions list sort by  creation time, total: the maximum number of transactions for paging from startTime to endTime, rangeTotal:the total transactions from startTime to endTime.
+Return value：Transactions list sort by  creation time, total: the maximum number of transactions 
+for paging from startTime to endTime, rangeTotal:the total transactions from startTime to endTime.
+Remarks:This interface will no longer be available in the new version of the node. If you need 
+this function, you can use the interface provided by the central node, 47.90.247
+.237:8091/walletextension/gettransactionstothis,Reference gettransactionstothis
 
 ```
 
@@ -576,5 +595,53 @@ owner_address：是交易对创建者的地址，hexString格式
 contract_address：要修改的合约的地址
 origin_energy_limit：创建者设置的，在一次合约执行或创建过程中创建者自己消耗的最大的energy
 返回值：TransactionExtention, TransactionExtention中包含未签名的交易Transaction
+
+wallet/accountpermissionupdate
+作用：更新用户权限（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/accountpermissionupdate -d '{"owner_address":"41ffa9466d5bf6bb6b7e4ab6ef2b1cb9f1f41f9700","owner":{"type":0,"permission_name":"owner","threshold":2,"keys":[{"address":"41F08012B4881C320EB40B80F1228731898824E09D","weight":1},{"address":"41DF309FEF25B311E7895562BD9E11AAB2A58816D2","weight":1},{"address":"41BB7322198D273E39B940A5A4C955CB7199A0CDEE","weight":1}]},"actives":[{"type":2,"permission_name":"active0","threshold":3,"operations":"7fff1fc0037e0000000000000000000000000000000000000000000000000000","keys":[{"address":"41F08012B4881C320EB40B80F1228731898824E09D","weight":1},{"address":"41DF309FEF25B311E7895562BD9E11AAB2A58816D2","weight":1},{"address":"41BB7322198D273E39B940A5A4C955CB7199A0CDEE","weight":1}]}]}'
+参数说明：
+owner_address：待修改权限的账户的地址\
+owner：修改后的 owner 权限\
+witness：修改后的 witness 权限（如果是 witness ）\
+actives：修改后的 actives 权限
+permission.PermissionType: 权限类型，目前仅支持三种权限\
+permission.id: 值由系统自动设置，Owner id=0, Witness id=1, Active id 从2开始递增分配。在执行合约时，
+通过该id来指定使用哪个权限，如使用owner权限，即将id设置为0。\
+permission.permission_name: 权限名称，由用户设定，长度限制为32字节\
+permission.threshold: 阈值，只有当参与签名的权重之和超过域值才允许做相应的操作。要求小于Long类型的最大值\
+permission.parent_id：目前只能为0 \
+permission.operations：共32字节（256位），每位代表一个合约的权限，为1时表示拥有该合约的权限。
+如`operations=0x0100...00(十六进制),即100...0(二进制)`时,查看proto中Transaction.ContractType定义，合约AccountCreateContract的id为0，
+即表示该permission只拥有执行AccountCreateContract的权限，可以使用"active权限中operations的计算示例"计算获得。\
+permission.keys：共同拥有该权限的地址及权重，最多允许5个key。
+permission.key.address：拥有该权限的地址     
+permission.key.weight：该地址对该权限拥有权重   
+
+返回值：TransactionExtention, TransactionExtention中包含增加签名后的交易Transaction
+
+
+wallet/addtransactionsign
+作用：增加签名（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/addtransactionsign -d '{"transaction": "TransferContract", "privateKey": "permissionkey1"}'
+参数说明：
+transaction：交易，TransferContract需要替换成实际交易信息
+privateKey：私钥，permissionkey1需要替换成实际签名的私钥
+返回值：TransactionExtention, TransactionExtention中包含增加签名后的交易Transaction
+
+wallet/getapprovedlist
+作用：查询已签名地址（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getapprovedlist -d '{"transaction"}'
+参数说明：
+transaction：交易，需要替换成实际交易信息 
+返回值：TransactionApprovedList, TransactionApprovedList包含已签名的地址，交易
+
+wallet/getsignweight
+作用：查询交易签名权重（用于多重签名）
+demo: curl -X POST  http://127.0.0.1:8090/wallet/getsignweight -d '{"transaction"}'
+参数说明：
+transaction：交易，需要替换成实际交易信息 
+返回值：TransactionSignWeight, TransactionSignWeight包含结果result，表示交易的签名是否满足权限阈值。
+
+
 
 ```

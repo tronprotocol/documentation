@@ -77,6 +77,12 @@
 [73. 查询资源委派的详细信息](#73) \
 [74. 通证快捷转账](#74) \
 [75. 通证快捷转账（通过私钥）](#75) 
+[76. 更新用户权限（用于多重签名）](#76)  
+[77. 增加签名（用于多重签名）](#77)  
+[78. 查询已签名地址（用于多重签名）](#78) 
+[79. 查询交易签名权重（用于多重签名）](#79) \
+[80. 部署智能合约 ](#80)\
+[81. 执行智能合约 ](#81)
      
      
 ## <h2 id="API的具体定义请参考">API的具体定义请参考</h2> 
@@ -400,9 +406,15 @@ rpc getTransactionsFromThis (Account) returns (TransactionList) {};
 23.2 提供节点  
 soliditynode。  
 23.3 参数说明  
-Account：发起方账户，只需要地址。  
+Account:发起方账户，只需要地址。   
+offset: 分页的起始值，大于10000将提示错误。  
+limit:  分页大小，最大为50，这个值可能会调整。当limit>50，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000  
+startTime:起始时间。  
+endTime: 结束时间，获取[startTime,endTime]时间段的交易。  
 23.4 返回值  
-TransactionList：交易列表。  
+TransactionList：交易列表，按照交易创建时间的降序排列。 
+total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
+rangeTotal: 在[startTime,endTime]时间段内的所有交易数，则默认返回最近7天的数据。   
 23.5 功能说明  
 通过账户地址查询所有发起的交易。  
 23.6 备注说明  
@@ -417,8 +429,14 @@ rpc getTransactionsToThis (Account) returns (NumberMessage) {};
 soliditynode。  
 24.3 参数说明  
 Account：接收方账户，只需要地址。  
+offset: 分页的起始值，大于10000将提示错误。  
+limit:  分页大小，最大为50，这个值可能会调整。当limit>50，或offset+limit>10000时，调整后满足limit<=50且offset+limit<=10000  
+startTime:起始时间。  
+endTime: 结束时间，获取[startTime,endTime]时间段的交易，如果不传递，则默认返回最近7天的数据。    
 24.4 返回值  
-TransactionList：交易列表。  
+TransactionList：交易列表,按照交易创建时间的降序排列。    
+total: 在[startTime,endTime]时间段内允许分页的最大交易数。  
+rangeTotal: 在[startTime,endTime]时间段内的所有交易数。  
 24.5 功能说明  
 通过账户地址查询所有其它账户发起和本账户有关的交易。  
 24.6 备注说明  
@@ -1107,3 +1125,77 @@ fullnode
 EasyTransferAssetByPrivateMessage：转账用的私钥，toAddress，通证ID，转账的数量  
 75.4 返回值                                                                                  
 EasyTransferResponse：转账创建的transaction，交易ID，以及广播的结果result
+
+## <h2 id="76">76. 更新用户权限（用于多重签名）</h2>
+
+76.1 接口说明                                                                                  
+rpc AccountPermissionUpdate (AccountPermissionUpdateContract) returns (TransactionExtention)  {}\
+76.2 提供节点                                                                                  
+fullnode  
+76.3 参数说明                                                                                  
+owner_address：待修改权限的账户的地址\
+owner：修改后的 owner 权限\
+witness：修改后的 witness 权限（如果是 witness ）\
+actives：修改后的 actives 权限
+ 
+76.4 返回值                                                                                  
+TransactionExtention：转账创建的transaction，交易ID，以及广播的结果result
+
+
+
+
+## <h2 id="77">77. 增加签名（用于多重签名）</h2>
+
+77.1 接口说明                                                                                  
+rpc AddSign (TransactionSign) returns (TransactionExtention) {}\
+77.2 提供节点                                                                                  
+fullnode  
+77.3 参数说明                                                                                  
+TransactionSign：交易，私钥  
+77.4 返回值                                                                                  
+TransactionExtention：转账创建的transaction，交易ID，以及广播的结果result
+
+## <h2 id="78">78. 查询已签名地址（用于多重签名）</h2>
+
+78.1 接口说明                                                                                  
+rpc GetTransactionApprovedList(Transaction) returns (TransactionApprovedList)   {}\
+78.2 提供节点                                                                                  
+fullnode  
+78.3 参数说明                                                                                 
+Transaction：交易\
+78.4 返回值                                                                                  
+TransactionApprovedList：已签名的地址，交易
+
+## <h2 id="79">79. 查询交易签名权重（用于多重签名）</h2>
+
+79.1 接口说明                                                                                  
+rpc GetTransactionSignWeight (Transaction) returns (TransactionSignWeight) {}\
+79.2 提供节点                                                                                  
+fullnode  
+79.3 参数说明                                                                                 
+Transaction：交易\
+79.4 返回值                                                                                  
+TransactionSignWeight：结果result（交易的签名是否满足权限阈值）
+
+## <h2 id="80">80. 部署智能合约</h2>
+
+80.1 接口说明                                                                                  
+rpc DeployContract (CreateSmartContract) returns (TransactionExtention) {};\
+80.2 提供节点                                                                                  
+fullnode  
+80.3 参数说明                                                                                 
+CreateSmartContract：提供创建合约信息的交易类型对象，包含owner_address(交易发送者地址), new_contract（SmartContract类型对象）, call_token_value(trc10), token_id(trc10) 4个参数\
+附new_contract: smartcontract信息，包括，origin_address（合约部署者地址）， contract_address（合约地址，默认为空），abi，bytecode，call_value（trx放入合约数量），consume_user_resource_percent（调用合约时用户方需支付的energy占所有花费比例）， name（合约名字）， origin_energy_limit（开发者愿意帮助用户支付的最高energy数量) \
+80.4 返回值                                                                                  
+TransactionExtention：展示交易执行结果的信息类型对象，包含transaction, transaction_id, constant_result 以及 on-block result.
+
+## <h2 id="81">81. 执行智能合约</h2>
+
+81.1 接口说明                                                                                  
+rpc TriggerContract (TriggerSmartContract) returns (TransactionExtention) {};\
+81.2 提供节点                                                                                  
+fullnode  
+81.3 参数说明                                                                                 
+TriggerSmartContract：提供执行合约信息的交易类型对象，包含owner_address(交易发送者地址), contract_address, call_value(随交易打入合约的trx数量), data(被调用的方法的签名及参数), call_token_value(trc10数量), token_id(trc10 id) 6个参数\
+81.4 返回值                                                                                  
+TransactionExtention：展示交易执行结果的信息类型对象，包含transaction, transaction_id, constant_result 以及 on-block result.

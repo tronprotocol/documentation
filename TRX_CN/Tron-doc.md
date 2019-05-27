@@ -260,6 +260,96 @@ Tron网络采用Peer-to-Peer(P2P)的网络架构，网络中的节点地位对�
  node.discovery.enable:  
  ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/fix_http/TRX_CN/figures/discovery_enable.png)
  
+## 4.7 数据库引擎
+### 4.7.1 rocksdb
+#### 4.7.1.1 config配置说明
+ 使用rocksdb作为数据存储引擎，需要将db.engine配置项设置为"ROCKSDB"
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_engine.png)
+ 注意: rocksdb只支持db.version=2, 不支持db.version=1。
+ rocksdb支持的优化参数如下：
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/rocksdb_tuning_parameters.png)
+
+#### 4.7.1.2 使用rocksdb数据备份功能
+ 选择rocksdb作为数据存储引擎，可以使用其提供的运行时数据备份功能。
+ ![image](https://raw.githubusercontent.com/tronprotocol/Documentation/master/TRX_CN/figures/db_backup.png)
+ 注意: FullNode可以使用数据备份功能；为了不影响SuperNode的产块性能，数据备份功能不支持SuperNode，但是SuperNode的备份服务节点可以使用此功能。
+#### 4.7.1.3 leveldb数据转换为rocksdb数据
+  leveldb和rocksdb的数据存储架构并不兼容，请确保节点始终使用同一种数据引擎。我们提供了数据转换脚本，用于将leveldb数据转换到rocksdb数据。
+  使用方法：
+```text
+  cd 源代码根目录
+  ./gradlew build   #编译源代码
+  java -jar build/libs/DBConvert.jar  #执行数据转换指令
+```
+  注意：如果节点的数据存储目录是自定义的，运行DBConvert.jar时添加下面2个可选参数。
+  <br>
+  <b>src_db_path</b>:指定LevelDB数据库路径源，默认是 output-directory/database
+  <br>
+  <b>dst_db_path</b>:指定RocksDB数据库路径，默认是 output-directory-dst/database
+  <br>
+  例如，如果节点是像这样的脚本运行的:
+  ```text
+     nohup java -jar FullNode.jar -d your_database_dir &
+  ```
+  那么，你应该这样运行数据转换工具DBConvert.jar:
+  ```text
+  java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
+  ```
+  注意：必须停止节点的运行，然后再运行数据转换脚本。
+  如果不希望节点停止时间太长，可以在节点停止后先将leveldb数据目录output-directory拷贝一份到新的目录下，然后恢复节点的运行。
+  <br>
+  在新目录的上级目录中执行DBConvert.jar并指定参数`src_db_path`和`dst_db_path` 。
+  例如:
+  ```text
+  cp -rf output-directory /tmp/output-directory
+  cd /tmp
+  java -jar DBConvert.jar output-directory/database  output-directory-dst/database
+ ```
+  整个的数据转换过程可能需要10个小时左右。
+ 
+ #### 4.7.1.4 leveldb database convert to rocksdb database （english verison）
+   You must only use one db engine(leveldb or rocksdb) throughout the life cycle of node because rocksdb's data structure is incompatible with the leveldb's.
+   A convert tool is provided to convert the leveldb data to rocksdb data and the usage of tool is described in the following。
+   
+   How to use：
+ ```text
+   cd [source code directory of java-tron]
+   ./gradlew build   # build the code
+   java -jar build/libs/DBConvert.jar  # run the jar
+ ```
+   note: you can run DBConvert.jar with two additional parameters if your node is started up with specified location of database directory. 
+   <br>
+   <b>src_db_path</b>:source of leveldb directory. The default value is output-directory/database
+   <br>
+   <b>dst_db_path</b>:destination of rocksdb directory. The default value is output-directory-dst/database
+   <br>
+   for example,if you run a node with the script:
+   ```text
+     nohup java -jar FullNode.jar -d your_database_dir &
+   ```
+   you should run the DBConvert.jar like this:
+   ```text
+   java -jar build/libs/DBConvert.jar  your_database_dir/database  output-directory-dst/database
+   ```
+   <b>It is emphasized that you must stop the node before running the DBConvert.jar</b>
+   you can copy the leveldb database dir to a new dir and then recover the node running.
+   <br>
+   After that, run DBConvert.jar with parameters `src_db_path` and `dst_db_path` in the parent directory of new directory.
+   for example,
+   ```text
+   cp -rf output-directory /tmp/output-directory
+   cd /tmp
+   java -jar DBConvert.jar output-directory/database  output-directory-dst/database
+  ```
+  <br>
+  It may cost about 10 hours to finish the data convert.
+  
+#### 4.7.1.5 rocksdb与leveldb的对比
+你可以查看以下文档获取详细的信息：
+<br>
+[rocksdb与leveldb对比](https://github.com/tronprotocol/documentation/blob/master/TRX_CN/Rocksdb_vs_Leveldb.md)
+<br>
+[ROCKSDB vs LEVELDB](https://github.com/tronprotocol/documentation/blob/master/TRX/Rocksdb_vs_Leveldb.md)
 
 # 5 智能合约
 ## 5.1 Tron智能合约介绍
@@ -1087,20 +1177,24 @@ buyTokenQuant = （long）balance * (Math.pow(1.0 + (double) supplyQuant / suppl
 
 相关api详情，请查询[Tron-http](Tron-http.md)。
 
-# 10 钱包介绍
-## 10.1 wallet-cli功能介绍
+# 10 多重签名
+详细信息请参考
+https://github.com/tronprotocol/documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E5%A4%9A%E9%87%8D%E7%AD%BE%E5%90%8D.md
+
+# 11 钱包介绍
+## 11.1 wallet-cli功能介绍
 请参考:
 
   https://github.com/tronprotocol/wallet-cli/blob/master/README.md
 
-## 10.2 计算交易ID
+## 11.2 计算交易ID
 
 对交易的RawData取Hash。
 ```
 Hash.sha256(transaction.getRawData().toByteArray())
 
 ```
-## 10.3 计算blockID
+## 11.3 计算blockID
 block id是块高度和块头raw_data的hash的混合，具体是计算出块头中raw_data的hash。用
  块的高度替换该hash中的前8个byte。具体代码如下：
 ```
@@ -1112,7 +1206,7 @@ private byte[] generateBlockId(long blockNum, byte[] blockHash) { 
   }
 ```
 
-## 10.4 如何本地构造交易
+## 11.4 如何本地构造交易
 根据交易的定义，自己填充交易的各个字段，本地构造交易。需要注意是交易里面需要设置refference block信息和Expiration信息，所以在构造交易的时候需要连接mainnet。建议设置refference block为fullnode上面的最新块，设置Expiration为最新块的时间加N分钟。N的大小根据需要设定，后台的判断条件是(Expiration > 最新块时间 and Expiration < 最新块时时 + 24小时），如果条件成立则交易合法，否则交易为过期交易，不会被mainnet接收。 refference block 的设置方法：设置RefBlockHash为最新块的hash的第8到16(不包含)之间的字节，设置BlockBytes为最新块高度的第6到8（不包含）之间的字节，代码如下：
 ```
 public static Transaction setReference(Transaction transaction, Block newestBlock) {
@@ -1155,7 +1249,7 @@ public static Transaction createTransaction(byte[] from, byte[] to, long amount)
      return refTransaction;
    }
 ```
-## 10.5 相关demo
+## 11.5 相关demo
 
 本地构造交易、签名的demo请参考 
 

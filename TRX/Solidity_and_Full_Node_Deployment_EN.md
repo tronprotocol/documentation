@@ -63,12 +63,12 @@ You should see something similar to this in your logs for block synchronization:
 
 ## FullNode
 
-      12:00:57.658 INFO  [pool-7-thread-1] [o.t.c.n.n.NodeImpl](NodeImpl.java:830) Success handle block Num:236610,ID:0000000000039c427569efa27cc2493c1fff243cc1515aa6665c617c45d2e1bf
+      00:01:14.073 INFO  [nioEventLoopGroup-6-28] [o.t.c.n.TronNetDelegate](TronNetDelegate.java:176) Success process block Num:9171046,ID:00000000008bf06616a0895f515a91fda077e2c7c762b902f2e84414d536ca39.
 
 ## SolidityNode
 
-      12:00:40.691 INFO  [pool-17-thread-1] [o.t.p.SolidityNode](SolidityNode.java:88) sync solidity block, lastSolidityBlockNum:209671, remoteLastSolidityBlockNum:211823
-
+      20:06:10.866 INFO  [Thread-14] [app](SolidityNode.java:142) Get last remote solid blockNum: 0, remoteBlockNum: 0, cost: 4
+      
 # Stop node gracefully
 Create file stop.sh，use kill -15 to close java-tron.jar（or FullNode.jar、SolidityNode.jar）.
 You need to modify pid=`ps -ef |grep java-tron.jar |grep -v grep |awk '{print $2}'` to find the correct pid.
