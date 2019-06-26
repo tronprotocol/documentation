@@ -1,3 +1,5 @@
+<font color="red">This documentation project will be deprecated in the future, if you want to update or add a new documentation, please go to our new documentation project [documentation-EN](https://github.com/tronprotocol/documentation-EN) [documentation-ZH](https://github.com/tronprotocol/documentation-ZH) </font>  
+
 # Documentation
 
 #### Please visit the new [TRON Developers Hub](https://developers.tron.network/) for detailed guides, interactive APIs, and much more!
