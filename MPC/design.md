@@ -32,13 +32,13 @@
   + 销毁机器，避免信息泄露；
 * 组织者（5小时）：   
   + 验证challenge文件和response文件关系（4小时）；  
-  + 若验证成功，生成new_challenge文件和response_hash值；new_challenge是response文件的未压缩版，把new_challenge上传到aliyun云存储（1小时），把new_challenge文件链接和hash发布到github的wiki。这个new_challenge是后一个参与者的challenge文件。每个参与者一个目录。  
+  + 若验证成功，生成new_challenge文件和response_hash值；new_challenge是response文件的未压缩版，把response、new_challenge上传到aliyun云存储（1小时），把new_challenge文件链接和hash发布到github的wiki。这个new_challenge是后一个参与者的challenge文件。每个参与者一个目录。  
   + 若验证失败，丢弃此次response文件；  
   + 通知第i+1个参与者，转4。
 * 组织者：在所有m个用户参与完成后   
   + 添加随机信标，生成response文件。   
   + 把最终的response文件上传到aliyun云存储，把beacon值发布到github的wiki。
-* 组织者把生成的所有new_challenge文件合并成一个大的transcript文件，便于其他参与者验证贡献。  
+* 组织者把生成的所有response文件合并成一个大的transcript文件，上传到aliyun，便于其他参与者验证贡献。  
 * 所有参与者：验证大的transcript文件，生成22个参数文件，并判定是否包含自己的贡献；或者只验证最后一个response，生成22个参数文件。
 * 组织者：把这22个文件发布到amazon云存储服务器。
 * 总时间估计：m天（每个用户工作日1天，休息日0.4天）* 1.4 + 合并大文件2天 + 上传大文件2天 + 校验大文件3天 = 1.4m + 7天。若30个人参与，需要50天。
