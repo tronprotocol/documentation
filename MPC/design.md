@@ -49,19 +49,20 @@
 * 在社区选取n个参与者，规划用户的参与时间节点，每轮预留9个小时的参与时间，1天大约可以让1.5个参与者完成；
 * 把zcash第一阶段发布的22个参数文件（2.3GB）发布到amazon云存储服务器；
 * 组织者：生成第一个param文件（770MB），发布到aliyun云存储服务器；
-* 组织者：发邮件或通过keybase通知第 i 个用户params文件的下载地址；
+* 组织者：发邮件通知第 i 个用户params文件和第一阶段22个参数文件的地址；
 * 参与者（6.5小时）：   
   + rust运行环境准备（0.5小时）；   
   + 下载22个参数文件和params文件，共约3GB（1小时）；   
   + 执行compute流程（4小时）；   
   + 完成后把hash值、new_params文件、硬件信息等通过keybase客户端发送给组织者（1小时）；
 * 组织者（2.5小时）：   
-  + 验证new_params是否可信：  
+  + 验证params、new_params文件关系(verify_transform)；
   + 若验证失败，丢弃本次new_params文件；  
   + 若验证成功，把new_params上传到aliyun云存储，并把参与者的名称、hash值、时间记录和new_params链接发布到github的wiki。每个用户一个目录   
   + 通知第i+1个参与者；
 * 组织者：  
   + 在所有n个用户参与完成后添加随机信标beacon；     
-  + 把params文件上传到amazon，把hash和params文件链接发布到github的wiki；
-* 所有用户分割params文件，可以得到output，spend的proof key、verify key文件；
+  + 把params文件上传到amazon，把对应hash和params文件地址发布到github的wiki；
+* 所有参与者：可以验证(verify)最后一个params文件是否包含自己的贡献
+* 组织者：分割params文件，可以得到sapling-output.params、sapling-spend.params、sprout-groth16.params共3个文件，计算hash值待后续使用；
 * 总时间估计：每周5个工作日可让7个用户完成。若30个人参与，需要4周约一个月。
