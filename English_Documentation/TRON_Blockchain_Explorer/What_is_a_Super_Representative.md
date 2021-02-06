@@ -22,3 +22,4 @@
    + The total of blocks produced by the delegate.
    + The total missed blocks of delegate.
 
+STATE OF THE DAPPS
