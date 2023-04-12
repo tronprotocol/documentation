@@ -1,4 +1,4 @@
-# TRON Mainnet - Integration Guide
+# TRON Mainnet - Integration signature:0xf7f0f462774c3c3e28be1d65c8cbf22e0b1b93d848a449f7f30bcf32e611cf644760a33284902880771237e113f49e7fdaee54122346541ed9299e94c79b45071c
 
 Connecting to the TRON network is extremely easy and only requires running 1-2 nodes on a machine. Once you've connected to the network, you have multiple ways of interacting with the nodes based on your system's requirements. When you're fully integrated, please reach out to the TRON team so that we can help you verify your setup.
 
