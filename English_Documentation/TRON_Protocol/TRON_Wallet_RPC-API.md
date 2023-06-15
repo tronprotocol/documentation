@@ -1,7 +1,7 @@
 # TRON Wallet RPC-API
 
 ## For the specific definition of API, please refer to the following link:  
-https://github.com/tronprotocol/java-tron/blob/develop/src/main/protos/api/api.proto
+https://github.com/tronprotocol/java-tron/blob/develop/protocol/src/main/protos/api/api.proto
 
 ## Frequently used APIs:
 1. Get general info of the wallet (similar to bitcoin getinfo)  
