@@ -627,109 +627,52 @@ B: 10_000_000_000 且energy_limit 为10_000_000_000
 24小时后A的Energy已使用量为 0 Energy。
 ```
 
-### 5.3.2 如何填写feeLimit(用户必读)
-***
-*在本节范围内，将合约的开发部署人员，简称为“开发者”；将调用合约的用户或者其他合约，简称为“调用者”。*
-
-*调用合约消耗的Energy能以一定比例折合成trx（或者sun），所以在本节范围内，指代合约消耗的资源时，并不严格区分Energy和 trx；仅在作为 数值的单位时，才区分Energy、trx和sun。*
-
-***
-
-合理设置feeLimit，一方面能尽量保证正常执行；另外一方面，如果合约所需Energy过大，又不会过多消耗调用者的trx。在设置feeLimit之前，需要了解几个概念：
-
-1). 合法的feeLimit为0 - 10^9 之间的整数值，单位是sun，折合0 - 1000 trx；
-
-2). 不同复杂度的合约，每次正常执行消耗不同的Energy；相同合约每次消耗的Energy基本相同[1]；执行合约时，逐条指令计算并扣除Energy，如果超过feeLimit的限制，则合约执行失败，已扣除的Energy不退还；
-
-3). 目前feeLimit仅指调用者愿意承担的Energy折合的trx[2]；执行合约允许的最大Energy还包括开发者承担的部分；
-
-4). 一个恶意合约，如果最终执行超时，或者因bug合约崩溃，则会扣除该合约允许的所有energy；
-
-5). 开发者可能会承担一定比例的Energy消耗（比如承担90%）。但是，当开发者账户的Energy不足以支付时，剩余部分完全由调用者承担。在feeLimit限制范围内，如调用者的Energy不足，则会燃烧等价值的trx。[2]
-
-开发者通常会有充足的Energy，以鼓励低成本调用；调用者在估算feeLimit时，可以假设开发者能够承担其承诺比例的Energy，如果一次调用因为feeLimit不足而失败，可以再适当扩大。
-
-##### 示例5.3.2.1
-下面将以一个合约C的执行，来具体举例，如何估算feeLimit：
-
- * 假设合约C上一次成功执行时，消耗了18000 Energy，那么预估本次执行消耗的Energy上限为20000 Energy；[3]
- * 冻结trx时，当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是冻结1 trx，可以获得400 Energy；
- * 燃烧trx时，1 trx固定可以兑换10000 Energy；[4]
- * 假设开发者承诺承担90%的Energy，而且开发者账户有充足的Energy；
- 
-则，feeLimit的预估方法为： 
-
-1). A = 20000 energy * (1 trx / 400 energy) = 50 trx = 50_000_000 sun, 
-
-2). B = 20000 energy * (1 trx / 10000 energy) = 2 trx = 2_000_000 sun，
-
-3).  取A和B的最大值，为50_000_000 sun，
-
-4).  开发者承诺承担90%，用户需要承担10%，
-
-那么，建议用户填写的feeLimit为 50_000_000 sun * 10% = 5_000_000 sun。
 
 
-小节附录：
-
-[1] 根据tron各节点的情况，每次执行消耗的Energy可能会有小幅度的浮动。
-
-[2] tron可能会视后续公链的情况，调整这一策略。
-
-[3] 预估的下一次执行所需Energy上限，应该略大于上一次实际消耗的Energy。
-
-[4] 1 trx = 10^4 energy 为目前的燃烧trx的比例，后续Tron可能会根据全网拥塞情况调整，调整后，将通知到全网的节点。
 
 
-### 5.3.3 Energy的计算(开发者必读)
-
-在讨论本章节前，需要了解：
-
-1). tron为了惩罚恶意开发者，对于异常合约，如果执行超时（超过50ms），或因bug异常退出（不包含revert），会扣除本次的最大可用Energy。若合约正常执行，或revert，则仅扣除执行相关指令所需的Energy；
-
-2). 开发者可以设置执行合约时，消耗Energy中自己承担的比例，该比例后续可修改。一次合约调用消耗的Energy，若开发者的Energy不足以支付其承担的部分，剩余部分全由调用者支付；
-
-3). 目前执行一个合约，可用的Energy总数由 调用者调用时设置的feeLimit 和 开发者承担部分共同决定；
-
-	注意：
-	1.若开发者不确定合约是否正常，请勿将用户承担比例设置为0%，否则在被判为恶意执行时，会扣除开发者的所有Energy。[1]
-	2.因此建议开发者设置的用户承担的比例为10%~100%。[2]
-
-下面具体举例，详细描述合约可用Energy的计算方法。
-
-##### 示例5.3.3.1
+### 5.3.2 Energy的消耗
+##### 示例1
 如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是100%，也就是完全由调用者支付所需资源。
 此时A调用了合约C，填写的feeLimit是 30000000(单位是SUN, 30 TRX)。那么A此次调用能够使用的Energy是由两部分计算出来的：
-
-* A冻结剩余的Energy
+1. A冻结剩余的Energy
 这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
-* 按照固定比例换算出来的Energy
+2. 按照固定比例换算出来的Energy
 如果feeLimit大于冻结剩余Energy价值的TRX，那么需要使用balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(30 - 10) TRX = 20 TRX，获得的Energy是 20 TRX / 100 SUN = 200000 Energy
-
 所以，A此次调用能够使用的Energy是 (100000 + 200000) = 300000 Energy
+
 如果合约执行成功，没有发生任何异常，则会扣除合约运行实际消耗的Energy，一般都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
-##### 示例5.3.3.2
+##### 示例2
 如果一个账户A的balance是 100 TRX(100000000 SUN)，冻结 10 TRX 获得了100000 Energy，未冻结的balance是 90 TRX。有一个合约C设置的消耗调用者资源的比例是40%，也就是由合约开发者支付所需资源的60%，开发者是D，冻结 50 TRX 获得了500000 Energy。
 此时A调用了合约C，填写的feeLimit是 200000000(单位是SUN, 200 TRX)。
 那么A此次调用能够使用的Energy是于以下三部分相关：
-
-* 调用者A冻结剩余的Energy（X Energy）
+1. 调用者A冻结剩余的Energy（X Energy）
 这部分的价格是根据账户A当前冻结的TRX和当前冻结所获得的Energy总量按比例计算出来的，也就是：1 Energy = (10 / 100000) TRX，还剩100000 Energy，价值10 TRX，小于剩下的feeLimit，则能获得所有的100000 Energy，价值的10 TRX算进feeLimit中。
-* 从调用者A的balance中，按照固定比例换算出来的Energy （Y Energy）
+2. 从调用者A的balance中，按照固定比例换算出来的Energy （Y Energy）
 如果feeLimit大于1和2的和，那么需要使用A的balance中的TRX来换算。固定比例是： 1 Energy = 100 SUN, feeLimit还有(200 - 10)TRX = 190 TRX，但是A的balance只有90 TRX，按照min(190 TRX, 90 TRX) = 90 TRX来计算获得的Energy，即为 90 TRX / 100 SUN = 900000 Energy
-* 开发者D冻结剩余的Energy (Z Energy)
+3. 开发者D冻结剩余的Energy (Z Energy)
 开发者D冻结剩余500000 Energy。
 会出现以下两种情况：
-当(X + Y) / 40% >= Z / 60%，A此次调用能够使用的Energy是 X + Y + Z Energy。
-当(X + Y) / 40% < Z / 60%，A此次调用能够使用的Energy是 (X + Y) / 40% Energy。
-
+当(X+Y)/(40%) >= Z/(60%) ，A此次调用能够使用的Energy是 X+Y+Z Energy。
+当(X+Y)/(40%) < Z/(60%) ，A此次调用能够使用的Energy是 (X+Y)/(40%) Energy。
 若A此次调用能够使用的Energy是 Q Energy
-同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60% = 300000 Energy。 
+
+同上，如果合约执行成功，没有发生任何异常，消耗总Energy小于Q Energy，如消耗 500000 Energy ，会按照比例扣除合约运行实际消耗的Energy，调用者A消耗500000 * 40=200000 Energy，开发者D消耗500000 * 60%=300000 Energy。 
 一般实际消耗Energy都远远小于此次调用能够使用的Energy。如果发生了Assert-style异常，则会消耗feeLimit对应的所有的Energy。Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md)
+
+##### 怎么填写feeLimit
+建议填写的feeLimit要略大于当前环境下，获得此次合约执行所需Energy要冻结的SUN的值。例如：
+1. 此次合约执行大概需要的Energy，比如是20000 Energy
+2. 当前全网用于CPU冻结的TRX总量和Energy总量的比值，假设是1 TRX = 100 Energy
+3. feeLimit填写为200 TRX = 200 * 10^6 SUN = 200000000 SUN
 ##### 注意事项
 1. 开发者创建合约的时候，consume_user_resource_percent不要设置成0，也就是开发者自己承担所有资源消耗。
-开发者自己承担所有资源消耗，意味着当发生了Assert-style异常时，会消耗开发者冻结的所有Energy(Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md) )。为避免造成不必要的损失consume_user_resource_percent建议值是10-100。
 
+   * 开发者自己承担所有资源消耗，意味着当发生了Assert-style异常时，会消耗开发者冻结的所有Energy(Assert-style异常的介绍详见[异常介绍](https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E8%99%9A%E6%8B%9F%E6%9C%BA/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86.md) )。
+
+     为避免造成不必要的损失consume_user_resource_percent建议值是1-100。
+
+2. feeLimit必须在0-1000TRX之间
 ## 5.4 智能合约开发工具介绍
 ### 5.4.1 TronStudio
 波场智能合约开发工具。提供可视化界面，支持开发者对solidity语言智能合约进行编译，调试，运行等功能。
@@ -744,138 +687,7 @@ https://developers.tron.network/docs/tron-web-intro
 波场智能合约事件查询服务。可以查询智能合约中写入的事件log信息。
 https://developers.tron.network/docs/tron-grid-intro
 
-## 5.5 使用命令行工具进行智能合约开发
-
-在tron上进行智能合约的开发，除了使用现有的工具之(tron-studio)外，也可以直接使用wallet-cli命令行工具进行智能合约的开发，编译和部署。编写智能合约，可以使用使用TronStudio进行编译、调试等前期的开发工作。 当合约开发完成之后，可以把合约复制到[SimpleWebCompiler](https://github.com/tronprotocol/tron-demo/tree/master/SmartContractTools/SimpleWebCompiler)中进行编译，获取ABI和ByteCode。 我们提供一个简单的数据存取的合约代码示例，以这个示例来说明编译、部署、调用的步骤。
-
-```
-pragma solidity ^0.4.0;
-contract DataStore {
-
-    mapping(uint256 => uint256) data;
-
-    function set(uint256 key, uint256 value) public {
-        data[key] = value;
-    }
-    
-    function get(uint256 key) view public returns (uint256 value) {
-        value = data[key];
-    }
-}
-```
-
-### 启动私有链
-
-确保前提条件中，私有链已经在本地部署完成。可以检查FullNode/logs/tron.log中，是否有持续产块的log信息出现：“Produce block successfully”
-
-### 开发智能合约
-
-把上述代码复制到remix中编译，调试，确保代码的逻辑是自己需要的，编译通过，没有错误
-
-### 在SimpleWebCompiler编译得到ABI和ByteCode
-
-因为波场的编译器与以太坊的编译略有差异，正在与Remix集成中，所以临时采用改方案获取ABI和ByteCode，而不是通过Remix直接获取ABI和ByteCode。
-把上述代码复制到SimpleWebCompiler中，点击Compile按钮，获取ABI和ByteCode。
-
-### 通过Wallet-cli部署智能合约
-
-下载Wallet-Cli，文件然后编译。
-
-```
-shell
-# 下载源代码
-git clone https://github.com/tronprotocol/wallet-cli
-cd  wallet-cli
-# 编译
-./gradlew build
-cd  build/libs
-```
-
-> Note：wallet-cli 默认的配置会连接本地127.0.0.1:50051的 fullnode，如果开发者需要连接不同的其他节点或者端口可在 config.conf 文件中进行修改
-
-启动wallet-cli
-
-```
-java -jar wallet-cli.jar
-```
-
-启动之后，可在命令中交互式输入指令。导入私钥，并查询余额是否正确
-
-```
-importwallet
-<输入你自己的设定的钱包密码2次>
-<输入私钥：da146374a75310b9666e834ee4ad0866d6f4035967bfc76217c5a495fff9f0d0>
-login
-<输入你自己的设定的钱包密码>
-getbalance
-```
-
-部署合约
-
-```
-Shell
-# 合约部署指令
-DeployContract contractName ABI byteCode constructor params isHex fee_limit consume_user_resource_percent <value> <library:address,library:address,...>
-
-# 参数说明
-contract_name:自己制定的合约名
-ABI:从SimpleWebCompiler中获取到的 ABI json 数据
-bytecode:从SimpleWebCompiler中获取到的二进制代码
-constructor:部署合约时，会调用构造函数，如果需要调用，就把构造函数的参数类型填写到这里，例如：constructor(uint256,string)，如果没有，就填写一个字符#
-params：构造函数的参数，使用逗号分隔开来，例如  1,"test"   ，如果没有构造函数，就填写一个字符#
-fee_limit:本次部署合约消耗的TRX的上限，单位是SUN(1 SUN = 10^-6 TRX)，包括CPU资源、STORAGE资源和可用余额的消耗
-consume_user_resource_percent:指定的使用该合约用户的资源占比，是[0, 100]之间的整数。如果是0，则表示用户不会消耗资源。如果开发者资源消耗完了，才会完全使用用户的资源。
-value:在部署合约时，给该合约转账金额，使用十六进制32位表示
-library:address,library:address,...:如果合约包含library，则需要在部署合约的时候指定library的地址，具体见下文；没有library的话则不需要填写。
-
-# 运行例子
-deploycontract DataStore [{"constant":false,"inputs":[{"name":"key","type":"uint256"},{"name":"value","type":"uint256"}],"name":"set","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"key","type":"uint256"}],"name":"get","outputs":[{"name":"value","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"}] 608060405234801561001057600080fd5b5060de8061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416631ab06ee58114604d5780639507d39a146067575b600080fd5b348015605857600080fd5b506065600435602435608e565b005b348015607257600080fd5b50607c60043560a0565b60408051918252519081900360200190f35b60009182526020829052604090912055565b600090815260208190526040902054905600a165627a7a72305820fdfe832221d60dd582b4526afa20518b98c2e1cb0054653053a844cf265b25040029 # # false 1000000 30 0
-部署成功会显示Deploy the contract successfully
-```
-
-得到合约的地址
-
-```
-Your smart contract address will be: <合约地址>
-
-# 在本例中
-Your smart contract address will be: TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
-```
-
-调用合约存储数据、查询数据
-
-```
-Shell
-# 调用合约指令
-triggercontract <contract_address> <method> <args> <is_hex> <fee_limit> <value>
-
-# 参数说明
-contract_address:即之前部署过合约的地址，格式 base58，如：TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6
-method:调用的函数签名，如set(uint256,uint256)或者 fool()，参数使用','分割且不能有空格
-args:如果非十六进制，则自然输入使用','分割且不能有空格，如果是十六进制，直接填入即可
-is_hex：输入参数是否为十六进制，false 或者 true
-fee_limit:和deploycontract的时候类似，表示本次部署合约消耗的TRX的上限，单位是SUN(1 SUN = 10^-6 TRX)，包括CPU资源、STORAGE资源和可用余额的消耗。
-value:在部署合约时，给该合约转账金额，使用十六进制32位表示
-
-# 调用的例子
-## 设置 mapping 1->1
-triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 set(uint256,uint256) 1,1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
-
-## 取出 mapping key = 1的 value
-triggercontract TTWq4vMEYB2yibAbPV7gQ4mrqTyX92fha6 get(uint256) 1 false 1000000  0000000000000000000000000000000000000000000000000000000000000000
-```
-
-如果调用的函数是 constant 或 view，wallet-cli 将会直接返回结果
-
-如果包含library，则需要在部署合约之前先部署library，部署完library之后，知道了library地址，将地址填进library:address,library:address,...
-
-```
-# 比如使用remix生成的合约，bytecode是
-608060405234801561001057600080fd5b5061013f806100206000396000f300608060405260043610610041576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063f75dac5a14610046575b600080fd5b34801561005257600080fd5b5061005b610071565b6040518082815260200191505060405180910390f35b600073<b>__browser/oneLibrary.sol.Math3__________<\b>634f2be91f6040518163ffffffff167c010000000000000000000000000000000000000000000000000000000002815260040160206040518083038186803b1580156100d357600080fd5b505af41580156100e7573d6000803e3d6000fd5b505050506040513d60208110156100fd57600080fd5b81019080805190602001909291905050509050905600a165627a7a7230582052333e136f236d95e9d0b59c4490a39e25dd3a3dcdc16285820ee0a7508eb8690029  
-```
-
-之前部署的library地址是：TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54
-那么部署的时候，需要将 browser/oneLibrary.sol.Math3:TSEJ29gnBkxQZR3oDdLdeQtQQykpVLSk54 作为deploycontract的参数。
+## 5.5 智能合约的开发，编译，部署方法
 
 # 6 内置合约以及API说明
 ## 6.1 内置合约说明
@@ -1155,9 +967,7 @@ ExchangeWithdraw 1 abc 1000000
 ## 9.6 查询
 ### 9.6.1 查询交易
 有三个查询交易对的接口，包括：查询所有交易对信息（ListExchanges）、分页查询交易对信息（GetPaginatedExchangeList）(Odyssey-v3.1.1暂不支持)，查询指定交易对信息（GetExchangeById）。
-相关api详情，请查询[波场RPC-API说明]。
-
-https://github.com/tronprotocol/Documentation/blob/master/%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/%E6%B3%A2%E5%9C%BA%E5%8D%8F%E8%AE%AE/%E6%B3%A2%E5%9C%BA%E9%92%B1%E5%8C%85RPC-API.md#64-%E6%9F%A5%E8%AF%A2%E6%8C%87%E5%AE%9A%E4%BA%A4%E6%98%93%E5%AF%B9
+相关api详情，请查询[波场RPC-API说明](波场钱包RPC-API.md)。
 
 ### 9.6.2 计算当前价格
 交易中token的当前价格信息的计算过程：\
