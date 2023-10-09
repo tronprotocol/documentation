@@ -40,7 +40,7 @@ TRON Foundation open to the community
 [CoinMarketCap](https://coinmarketcap.com/currencies/tron/)  
 [Github](https://github.com/tronprotocol)  
 [Telegram](https://t.me/tronnetworkEN)  
-[E-mail](service@tron.network)
+[E-mail](mailto:service@tron.network)
 
 Other community platforms for international usership.
 
