@@ -1,5 +1,5 @@
 name: Laravel
-
+[![Laravel](https://github.com/srbaeza-ai/documentation/actions/workflows/laravel.yml/badge.svg?branch=srbaeza-ai-patch-1)](https://github.com/srbaeza-ai/documentation/actions/workflows/laravel.yml)
 on:
   push:
     branches: [ "master" ]
